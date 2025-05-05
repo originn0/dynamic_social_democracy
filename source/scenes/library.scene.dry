@@ -83,6 +83,7 @@ Reichstag composition:
 # 1928: 10, 1930: 13
 <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>: [+ kpd_r +]%
 # 1928: 5, 1930: 4 (as DStP)
+[? if kpo_formed: <span class="tooltip-text" title="Communist Party of Germany (Opposition)" style="color: #C43988;">**KPD(O)**</span>: [+ kpo_r +]% ?]
 [? if lvp_formed: <span class="tooltip-text" title="Liberal People's Party" style="color: #FFCC00;">**LVP**</span>: [+ lvp_r +]% ?]
 [? if (not lvp_formed or not ddp_name) : [? if not ddp_name:<span class="tooltip-text" title="German Democratic Party" style="color: #D3C24D;">**DDP**</span>?][? if ddp_name = "DDP":<span class="tooltip-text" title="German Democratic Party" style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if ddp_name = "DStP":<span class="tooltip-text" title="German State Party" style="color: #D3C24D;">**[+ ddp_name +]**</span>?]: [+ ddp_r +]% ?]
 # 1928: 9, 1930: 5
@@ -293,6 +294,8 @@ go-to: menu
 
 [? if sapd_formed: <span style="color: #9B0000;">**SAPD**</span>: [+ sapd_votes +]% ?]
 
+[? if kpo_formed: <span style="color: #C43988;">**KPD(O)**</span>: [+ kpo_votes +]% ?]
+
 # 1928: 15, 1930: 15, 1932: 
 <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>: [+ z_votes +]%
 
@@ -382,6 +385,15 @@ go-to: menu
             <td style="background-color: rgba(112, 0, 0, 0.2);">[+ unemployed_kpd_display +]%</td>
             <td style="background-color: rgba(112, 0, 0, 0.2);">[+ catholics_kpd_display +]%</td>
         </tr>
+        [? if kpo_formed: {!<tr>!}
+            <td><span style="color: #C43988;">**KPD(O)**</span></td>
+            <td style="background-color: rgba(196, 57, 136, 0.2); padding: 10px;">[+ workers_kpo_display +]%</td>
+            <td style="background-color: rgba(196, 57, 136, 0.2);">[+ new_middle_kpo_display +]%</td>
+            <td style="background-color: rgba(196, 57, 136, 0.2);">[+ old_middle_kpo_display +]%</td>
+            <td style="background-color: rgba(196, 57, 136, 0.2);">[+ rural_kpo_display +]%</td>
+            <td style="background-color: rgba(196, 57, 136, 0.2);">[+ unemployed_kpo_display +]%</td>
+            <td style="background-color: rgba(196, 57, 136, 0.2);">[+ catholics_kpo_display +]%</td>
+        {!</tr>!}?]
         [? if not lvp_formed: <tr>
             <td><span style="color: #D3C24D;">**[+ ddp_name +]**</span></td>
             <td style="background-color: rgba(211, 194, 77, 0.2); padding: 10px;">[+ workers_ddp_display +]%</td>
@@ -630,6 +642,15 @@ data = [{
     "seats": Math.round(Q.kpd_r * 5),
 }];
 
+if (Q.kpo_formed && Q.kpo_r) {
+    data.push({
+        "id": "kpo",
+        "legend": "KPD(O)",
+        "name": "KPD(O)",
+        "seats": Math.round(Q.kpo_r * 5),
+    });
+}
+
 if (Q.sapd_formed && Q.sapd_r) {
     data.push({
         "id": "sapd",
@@ -785,8 +806,8 @@ if (d3 && window) {
 
     var lines = d3.linegraph(false, false,
             Q.parties_graph,
-            {'spd': '#E3000F', 'kpd': '#700000', 'ddp': '#D3C24D', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3E88B3', 'nsdap': '#7A3C00', 'other': '#a0a0a0', 'sapd': '#9B0000', 'dnf': '#003755', 'kvp': '#0087DC', 'lvp': '#FFCC00', 'dnef': '#BFC8CC'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': Q.z_party_name + ' + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD', 'dnf': 'DNF', 'kvp': 'KVP', 'lvp': 'LVP', 'dnef': 'DNEF'});
+            {'spd': '#E3000F', 'kpd': '#700000', 'ddp': '#D3C24D', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3E88B3', 'nsdap': '#7A3C00', 'other': '#a0a0a0', 'sapd': '#9B0000', 'dnf': '#003755', 'kvp': '#0087DC', 'lvp': '#FFCC00', 'dnef': '#BFC8CC', 'kpo': '#C43988'},
+            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': Q.z_party_name + ' + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD', 'dnf': 'DNF', 'kvp': 'KVP', 'lvp': 'LVP', 'dnef': 'DNEF', 'kpo': 'KPD(O)'});
     lines.width(width).height(400);
     //var svg = lines(Q.election_records);
     if (Q.election_records.length > 0) {
@@ -798,8 +819,8 @@ if (d3 && window) {
     if (Q.game_over || (!Q.historical_mode && !Q.rubicon)) {
         var lines_2 = d3.linegraph(true, true,
             Q.parties_graph,
-            {'spd': '#E3000F', 'kpd': '#700000', 'ddp': '#D3C24D', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3E88B3', 'nsdap': '#7A3C00', 'other': '#a0a0a0', 'sapd': '#9B0000', 'dnf': '#003755', 'kvp': '#0087DC', 'lvp': '#FFCC00', 'dnef': '#BFC8CC'},
-            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': Q.z_party_name + ' + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD', 'dnf': 'DNF', 'kvp': 'KVP', 'lvp': 'LVP', 'dnef': 'DNEF'});
+            {'spd': '#E3000F', 'kpd': '#700000', 'ddp': '#D3C24D', 'z': '#000', 'dvp': '#D5AC27', 'dnvp': '#3E88B3', 'nsdap': '#7A3C00', 'other': '#a0a0a0', 'sapd': '#9B0000', 'dnf': '#003755', 'kvp': '#0087DC', 'lvp': '#FFCC00', 'dnef': '#BFC8CC', 'kpo': '#C43988'},
+            {'spd': 'SPD', 'kpd': 'KPD', 'ddp': Q.ddp_name, 'z': Q.z_party_name + ' + BVP', 'dvp': 'DVP', 'dnvp': 'DNVP', 'nsdap': 'NSDAP', 'other': 'Others', 'sapd': 'SAPD', 'dnf': 'DNF', 'kvp': 'KVP', 'lvp': 'LVP', 'dnef': 'DNEF', 'kpo': 'KPD(O)'});
         lines_2.width(width).height(400);
         d3.select("#party_support_history").datum(Q.party_support_records).call(lines_2);
     }
@@ -826,6 +847,8 @@ if (d3 && window) {
 [? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div></td><td>!} SPD: {!</td><td>!} [+ spd_r +] {!</td></tr>!} ?]
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div></td> <td> !}SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
+
+[? if kpo_formed : {!<tr><td><div class="box" style='background-color:#C43988'> </div></td> <td> !}KPD(O): {!</td><td>!} [+ kpo_r +]% {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#700000'> </div></td> <td>!}KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
 

@@ -1,7 +1,7 @@
 title: Wittorf Affair
 subtitle: A crisis in the <span style="color: #700000;">**KPD**</span>?
 new-page: true
-view-if: kpd_relation >= 30 and comintern_seen and year = 1928 and month >= 8 and month <= 10
+view-if: (prussian_police_loyalty >= 0.65 or comintern_seen) and year = 1928 and month = 8
 max-visits: 1
 on-arrival: wittorf_affair_seen = 1
 tags: event
@@ -20,7 +20,7 @@ What should we do with this information?
 
 @publicize
 title: We will publicize the scandal to damage the <span style="color: #700000;">**KPD**</span> and Thälmann.
-on-arrival: kpd_relation -= 10; workers_kpd -= 4; unemployed_kpd -= 4
+on-arrival: kpd_relation -= 10; workers_kpd -= 4; unemployed_kpd -= 4; wirtoff_blowback = 1
 
 Our newspapers are among the first to publicize the affair, bringing a torment of criticism to the hypocrisy of the communists. We have damaged the <span style="color: #700000;">**KPD**</span>'s standing among the workers, but also perhaps closed the door on further cooperation.
 
@@ -35,7 +35,6 @@ The information spreads without our help, leading to some loss of <span style="c
 
 @secret
 title: It is best to keep this information secret. Prevent the Leninbund and dissident <span style="color: #700000;">**KPD**</span> members from spreading this.
-choose-if: levi_advisor or rosenfeld_advisor
 unavailable-subtitle: We do not have contacts among the dissident communists.
 on-arrival: wittorf_secret = 1; reformist_dissent += 5; left_dissent += 5
 

@@ -1,0 +1,36 @@
+on-arrival: {!
+Q.kpo_formed = 1;
+// set up the infrastructure
+Q.parties.push('kpo');
+Q.parties_graph.push('kpo');
+
+Q.kpo_leader = "Brandler";
+Q.kpo_idealogy = "Right Communism";
+
+Q.workers_kpo = 3;
+Q.workers_other -= 2;
+Q.workers_kpd -= 1;
+Q.new_middle_kpo = 1;
+Q.old_middle_kpo = 0;
+Q.rural_kpo = 0;
+Q.unemployed_kpo = 4;
+Q.unemployed_other -= 4;
+Q.catholics_kpo = 0;
+
+Q.old_workers_kpo_display = 0;
+Q.old_new_middle_kpo_display = 0;
+Q.old_old_middle_kpo_display = 0;
+Q.old_rural_kpo_display = 0;
+Q.old_unemployed_kpo_display = 0;
+Q.old_catholics_kpo_display = 0;
+
+// update all records
+Q.kpo_r = 0;
+Q.old_kpo_r = 0;
+for (var record of Q.election_records) {
+    record['kpo'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['kpo'] = 0;
+}
+!}
