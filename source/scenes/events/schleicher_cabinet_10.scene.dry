@@ -1,0 +1,36 @@
+title: The <span style="color: #000000;">Center Party</span> Enters Government
+subtitle: Promises of a <i>Reichskonkordat</i> lures them into cooperation.
+view-if: chancellor == "Schleicher" and dsu_in_gov and not z_in_gov and z_relation < 70 and z_leader == "Kaas" and schleicher_post_time >= 2
+max-visits: 1
+new-page: true
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichskonkordat.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= The <span style="color: #000000;">Center Party</span> Enters Government
+
+Schleicher has concluded that he needs broader popular and parliamentary support beyond the <span style="color: #6A1E1E;">**DSU**</span>, and has opened talks with Ludwig Kaas to secure the backing of the <span style="color: #000000;">Center Party</span>. Kaas has proven far more willing to cooperate with Schleicher than he ever was with Papen, and the party itself is eager to return to government.
+
+The main obstacle, however, is the <span style="color: #000000;">Center Party</span>’s deep reservations about sharing a cabinet with the <span style="color: #7A3C00;">Nazis</span>. To overcome this, Schleicher and the <span style="color: #6A1E1E;">**DSU**</span> have signaled their readiness to fast-track a <i>Reichskonkordat</i> with the Vatican—an offer that Kaas, a longtime advocate of such, finds difficult to refuse.
+
+- @z_in_gov
+
+@z_in_gov
+title: Schleicher has found a new puppet in Kaas.
+on-arrival: kaas_puppet = 1; z_in_gov = 1; z_relation -= 20; pro_republic -= 5; schleicher_approval += 1
+
+The <span style="color: #000000;">Center Party</span> claims its ministerial positions, with Adam Stegerwald securing the Labor Ministry, and other members taking the Transport and Justice portfolios. The <span style="color: #000000;">Center Party</span> also brings the <span style="color: #A2D8E0;">**BVP**</span> into the fold, which is granted the Postal Ministry.
+
+With Ludwig Kaas’s connections in Rome, the negotiation of a <i>Reichskonkordat</i> is fast-tracked and set to be ready for signing in a few weeks.
+
+However, their entry into government has strained our relations, as they had previously stood in united opposition with us.

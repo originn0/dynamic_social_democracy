@@ -1,0 +1,44 @@
+title: The <span style="color: #000000;">Center Party</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+subtitle: Schleicher consolidates further.
+view-if: chancellor = "Schleicher" and z_in_gov and z_leader == "Bracht" and not z_dnef and bracht_time >= 12 and republicans_schleicher >= 10 and dnef_formed
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+
+= <span style="color: #000000;">Center Party</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+
+The end is is near.
+
+- @schleicher_2: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its newest member.
+
+@schleicher_2
+on-arrival: {!
+Q.z_dnef = 1;
+
+Q.pro_republic -= Q.z_votes;
+
+Q.z_relation = (Q.dnef_relation - 10);
+
+Q.dnef_r += Q.z_r;
+Q.z_r = 0;
+Q.bvp_r = 0;
+!}
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]

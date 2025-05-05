@@ -1,0 +1,50 @@
+title: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+subtitle: The miniscule party can no longer survive on its own.
+view-if: chancellor = "Schleicher" and schleicher_time >= 35 and republicans_schleicher >= 12 and not lvp_formed and ddp_r < 2 and dnef_formed
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+
+= <span style="color: #D3C24D;">**[+ ddp_name +]**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+
+With the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> effectively dead as a political force, many former politicians—especially on its right wing—have long advocated for its self-dissolution, believing only then could a new, unified force rise from its ashes.
+
+That belief has only strengthened with the rise of the <span style="color: #BFC8CC;">**DNEF**</span>. Now, more party members are calling for a formal merger into Schleicher's organization. His appeals to national unity have struck a psychological blow to the rank and file of a party that always championed the welfare and unity of the nation as a whole above all.
+
+Old-line <span style="color: #D3C24D;">democrats</span> like Dietrich and Heuss remain the most resistant, committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> to the core. But figures like Lemmer and the party’s left wing are proving more susceptible to Schleicher’s calls for national unity.
+
+Nonetheless, a vote is conducted, and the opposition wins.
+
+- @schleicher_2: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new member.
+
+@schleicher_2
+on-arrival: {!
+Q.dstp_dnef = 1
+
+Q.pro_republic -= Q.ddp_votes;
+
+Q.ddp_relation = Q.dnef_relation;
+
+Q.dnef_r += Q.ddp_r;
+Q.ddp_r = 0;
+!}
+
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]

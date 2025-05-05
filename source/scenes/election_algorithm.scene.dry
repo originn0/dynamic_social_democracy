@@ -39,6 +39,32 @@ for (var party of Q.parties) {
         Q.wp_normalized = (Q.new_middle_other_normalized*Q.new_middle) + (Q.old_middle_other_normalized*Q.old_middle);
         Q.csvd_normalized = Q.workers_other_normalized*Q.workers;
     }
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_normalized = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_normalized += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_normalized += Q.catholics_nsdap_normalized*Q.catholics;
+
+        if (Q.dsu_exist && !Q.nvf_exist) {
+            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+        } else if (!Q.dsu_exist && Q.nvf_exist) {
+            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_normalized += Q.new_middle_nsdap*Q.new_middle;
+        } else if (Q.dsu_exist && Q.nvf_exist) {
+            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+
+            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+        } else {
+            Q.nsdap_hitler_normalized += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_normalized += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_normalized += Q.new_middle_nsdap*Q.new_middle;
+        }
+    }
 }
 // 2. normalize support (fraction)
 // 3. Round to integers
@@ -48,6 +74,11 @@ for (var party of Q.parties) {
         Q.cnblp_votes = (Q.csvd_normalized/total_support);
         Q.wp_votes = (Q.wp_normalized/total_support);
         Q.csvd_votes = (Q.csvd_normalized/total_support);
+    }
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_votes = Math.round((Q.nsdap_hitler_normalized / total_support) * 1000 / 10);
+        Q.dsu_votes = Math.round((Q.dsu_normalized / total_support) * 1000 / 10);
+        Q.nvf_votes = Math.round((Q.nvf_normalized / total_support) * 1000 / 10);
     }
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
     if (party == "other") {

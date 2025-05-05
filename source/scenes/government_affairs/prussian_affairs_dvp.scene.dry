@@ -53,6 +53,8 @@ The <span style="color: #C0A054;">**DVP**</span> fills up the bureaucracy with t
 
 @ban_sa
 view-if: nazi_urgency >= 3 and sa_banned == 0
+choose-if: not sa_ban_repealed and (prussia_coup_win or not otl_prussian_coup_seen)
+unavailable-subtitle: [+ chancellor +] has threatened a <i>Reichsexekution</i>, if we don't follow the orders of his decree.
 on-arrival: sa_strength *= 0.92; sa_strength *= 0.8 if prussian_police_loyalty >= 0.75; sa_banned_pro = 1 if prussian_police_loyalty >= 0.75; sa_banned_pro = 0 if prussian_police_loyalty < 0.75; sa_banned = 1; prussian_police_loyalty -= 0.07; sa_militancy -= 0.03; sa_ban_timer = 6; coup_progress -= 2 if coup_progress >= 6
 
 As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has many allies in the police and bureaucracy, such as in the <span style="color: #C0A054;">**DVP**</span>. Our relationship with the police weakens, and the <span style="color: #7A3C00;">**SA**</span> can still organize illegally, right under the police's noses. [? if sa_banned_pro : Nevertheless, the <span style="color: #7A3C00;">**SA**</span> is substantially weakened by our ban. ?] 
@@ -60,7 +62,7 @@ As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="colo
 [? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have disrupted some of these plans, but the threat is still present. ?]
 
 @prosecute_sa
-view-if: nazi_urgency >= 3 and not sa_banned and chancellor == "Papen"
+view-if: nazi_urgency >= 3 and not sa_banned and (chancellor == "Papen" or chancellor == "Schleicher")
 on-arrival: sa_strength *= 0.97; sa_militancy -= 0.02; prussian_police_loyalty -= 0.02; sa_strength *= 0.98 if prussian_police_loyalty >= 0.75
 
 While an outright ban on the <span style="color: #7A3C00;">**SA**</span> may be out of reach, we can make life as difficult as possible for the <span style="color: #7A3C00;">Storm Troopers</span>. The most reckless among them can be prosecuted on charges of murder and related crimes, and we can ensure legal public demonstrations and meetings are protected from their unlawful disruptions.

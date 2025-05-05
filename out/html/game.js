@@ -113,6 +113,17 @@
     window.dendryUI.saveSettings();
 };
 
+window.enableLightMode = function() {
+    window.dendryUI.dark_mode = false;
+    document.body.classList.remove('dark-mode');
+    window.dendryUI.saveSettings();
+};
+window.enableDarkMode = function() {
+    window.dendryUI.dark_mode = true;
+    document.body.classList.add('dark-mode');
+    window.dendryUI.saveSettings();
+};
+
   // populates the checkboxes in the options view
   window.populateOptions = function() {
     var disable_bg = window.dendryUI.disable_bg;
@@ -138,6 +149,11 @@
         $('#images_yes')[0].checked = true;
     } else {
         $('#images_no')[0].checked = true;
+    }
+    if (window.dendryUI.dark_mode) {
+        $('#dark_mode')[0].checked = true;
+    } else {
+        $('#light_mode')[0].checked = true;
     }
   };
 
@@ -172,12 +188,12 @@
   };
 
   window.updateSidebarRight = function() {
-      $('#qualities_right').empty();
-      var scene = dendryUI.game.scenes[window.statusTabRight];
-      dendryUI.dendryEngine._runActions(scene.onArrival);
-      var displayContent = dendryUI.dendryEngine._makeDisplayContent(scene.content, true);
-      $('#qualities_right').append(dendryUI.contentToHTML.convert(displayContent));
-  };
+    $('#qualities_right').empty();
+    var scene = dendryUI.game.scenes[window.statusTabRight];
+    dendryUI.dendryEngine._runActions(scene.onArrival);
+    var displayContent = dendryUI.dendryEngine._makeDisplayContent(scene.content, true);
+    $('#qualities_right').append(dendryUI.contentToHTML.convert(displayContent));
+};
 
   window.changeTab = function(newTab, tabId, isRight) {
       if (tabId == 'poll_tab' && (dendryUI.dendryEngine.state.qualities.historical_mode || dendryUI.dendryEngine.state.qualities.rubicon)) {
@@ -301,6 +317,9 @@
 
   window.onload = function() {
     window.dendryUI.loadSettings({show_portraits: true});
+    if (window.dendryUI.dark_mode) {
+        document.body.classList.add('dark-mode');
+    }
     window.pinnedCardsDescription = "Advisor cards - actions are only usable once per 6 months.";
     window.statusTab = "status";
     window.updateSidebar();

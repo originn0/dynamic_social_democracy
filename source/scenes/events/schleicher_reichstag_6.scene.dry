@@ -1,0 +1,83 @@
+title: Reichstag Reconvenes
+subtitle: Schleicher has a decree to present.
+view-if: chancellor = "Schleicher" and schleicher_time and schleicher_post_reichstag and next_reichstag_time == rubicon_time and next_reichstag_time > 0
+new-page: true
+tags: event
+max-visits: 1
+priority: 2
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichstag.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Reichstag Reconvenes
+
+After the break cut short by Schleicher's insistence, the Reichstag is back in session. Reportedly, Schleicher has obtained Hindenburg's authorization for an unconstitutional decree, presumably in the vein of forcing the Reichstag's adjournment or cancelling new elections.
+
+However, the situation has changed, Schleicher is much more popular and its expected that the backlash to an unconstitutional act will be more limited, and not be to the degree that it would provoke a civil war. 
+
+- @reichstag
+
+@reichstag
+title: The Reichstag enters session.
+on-arrival: {!
+Q.pro_republic -= 20;
+
+Q.workers_kpd -= 10;
+Q.new_middle_kpd -= 5;
+Q.unemployed_kpd -= 10;
+
+Q.workers_spd -= 2;
+Q.new_middle_spd -= 2;
+Q.unemployed_spd -= 2;
+
+Q.workers_dnef += 6;
+Q.new_middle_dnef += 4;
+Q.unemployed_dnef += 4;
+
+Q.workers_dnef_bonus += 6;
+Q.new_middle_dnef_bonus += 4;
+Q.unemployed_dnef_bonus += 4;
+
+Q.rfb_militancy *= 0.5;
+Q.rfb_strength *= 0.5;
+Q.rb_militancy *= 0.95;
+Q.rb_strength *= 0.95;
+
+Q.reichstag_rubicon = 0;
+Q.reichstag_break = 1;
+
+Q.next_reichstag_time = Q.rubicon_time + 10000;
+Q.next_reichstag_week = Q.week + 10000;
+Q.next_reichstag_month = Q.month;
+Q.next_reichstag_year = Q.year;
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_month > 12) {
+  Q.next_reichstag_month -= 12;
+  Q.next_reichstag_year += 1;
+}
+!}
+
+Schleicher immediately issues his decree to unconstitutionally adjourn the Reichstag indefinitely, declaring that the chamber will remain closed until the parties prove they can govern constructively again. Reactions inside the chamber are mixed: Schleicher's supporters applaud the chancellor’s show of strong leadership, while the <span style="color: #700000;">**Communists**</span> ignite brawls that police are forced to break up.
+
+In the following days, civil demonstrations are violently suppressed. Police disperse crowds with tear gas, street clashes erupt, and several civilians are killed. The strengthened Reichswehr and the divided stance of <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> make any serious rebellion futile. At least half of the <span style="color: #700000;">**Communist**</span> deputies in the Reichstag are arrested and sent to special courts for inciting violence.
+
+The <span style="color: #c00000;">**SPD**</span> remains largely untouched[? if rb_militancy > 0.1:, though suspicious activity has been reported to be planned against the Reichsbanner?].

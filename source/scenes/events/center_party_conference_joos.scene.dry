@@ -1,10 +1,10 @@
 title: <span style="color: #000000;">Center Party</span> Conference
 subtitle: Joseph Joos has been forced to resign...
-view-if: year >= 1930 and z_leader = "Joos" and not kaas_explode_seen and ((z_relation < 40 or spd_break_toleration) or ((not reichskonkordat_progress and in_weimar_coalition and foreign_minister_party == "SPD" and spd_in_foreign_time >= 24) or (spd_prussia_time >= 30 and not prussian_concordat_progress and not prussian_concordat)) or secularized_a or abortion_rights or homosexual_rights)
+view-if: year >= 1930 and z_leader = "Joos" and not kaas_explode_seen and ((z_relation < 40 or spd_break_toleration) or ((not reichskonkordat_progress and in_weimar_coalition and foreign_minister_party == "SPD" and spd_in_foreign_time >= 24) and (spd_prussia_time >= 30 and not prussian_concordat_progress and not prussian_concordat)) or secularized_a or abortion_rights or homosexual_rights) 
 on-arrival: {!
 Q.z_relation -= 10;
 
-if ((Q.spd_in_government_time >= 36 && (!Q.reichskonkordat_progress && Q.in_weimar_coalition && Q.foreign_minister_party == "SPD")) || (Q.spd_prussia_time >= 30 && !Q.prussian_concordat_progress)) {
+if ((Q.spd_in_foreign_time >= 24 && (!Q.reichskonkordat_progress && Q.in_weimar_coalition && Q.foreign_minister_party == "SPD")) && (Q.spd_prussia_time >= 30 && !Q.prussian_concordat_progress)) {
     Q.concordat_explode = 1;
 }
 

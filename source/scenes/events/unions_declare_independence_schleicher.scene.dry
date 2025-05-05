@@ -1,0 +1,15 @@
+title: Unions Declare Independence
+new-page: true 
+subtitle: Labor's disagreements with our policies have grown too severe.
+tags: event
+view-if: labor_dissent >= 60 and not unions_independent and chancellor == "Schleicher"
+on-arrival: unions_independent = 1; unions_schleicher = 1; labor_strength = labor_strength/2; workers_spd -= 20; unemployed_spd -= 10; workers_kpd += 3; workers_nsdap += 3; workers_dnef += 14; unemployed_dnef += 7; workers_dnef_bonus += 14; unemployed_dnef_bonus += 7; n_advisors -= 1 if woytinsky_advisor == 1; n_advisors -= 1 if leipart_advisor == 1; woytinsky_advisor = 0; leipart_advisor = 0; rb_strength -= 600; workers_sapd += 5 if sapd_formed; unemployed_sapd += 3 if sapd_formed; schleicher_spd_support -= 6; schleicher_spd_r -= 3; schleicher_spd_influence -= 3
+max-visits: 1
+
+= Unions Declare Independence
+
+Our policy choices have greatly offended the labor movement. Union leaders have declared that they are independent of any political party, and some have been seen seeking accommodation with the <span style="color: #700000;">**KPD**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>. However, most unionists are now seeking an accommodation with Chancellor Schleicher[? if dnef_formed:&nbsp;and his <span style="color: #BFC8CC;">**DNEF**</span>?][? if not dnef_formed:, pressuring him to establish a political vehicle of his own?]. In doing so, they have stepped away from <span style="color: #9B0000;">Marxist</span> ideology and shifted toward a more pragmatic laborist stance.
+
+Nonetheless, most workers remain loyal to the <span style="color: #c00000;">**SPD**</span>, although their affiliation is less solid. Many workers move left[? if sapd_formed:, to the <span style="color: #700000;">**KPD**</span> or the nascent <span style="color: #9B0000;">**SAPD**</span>?], while others are drawn in a nationalist direction, as the ADGB signals its readiness to cooperate with the <span style="color: #c00000;">Red</span> General to tackle the crisis.
+
+Much of our working-class base has defected, and labor's influence in our party has greatly diminished.

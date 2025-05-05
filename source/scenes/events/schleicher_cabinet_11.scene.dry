@@ -1,0 +1,103 @@
+title: The <i>Reichskonkordat</i> Is Signed!
+subtitle: Catholic rights across Germany are now formally guaranteed.
+view-if: chancellor == "Schleicher" and z_in_gov and z_in_gov_time >= 6
+max-visits: 1
+new-page: true
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichskonkordat.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Reichskonkordat Signing
+
+During weeks of intense negotiations in Rome headed by Ludwig Kaas, the <i>Reichskonkordat</i> has officially been signed between Germany and the Roman Catholic Church. The treaty defines a formal relationship between the Church and the German state, guaranteeing freedom of worship for Catholics, and the right of the church to appoint their own clergy. Catholics in Germany are pleased, as are their representatives in the <span style="color: #000000;">Center Party</span>.
+
+- @reichskonkordat
+
+@reichskonkordat
+title: What will happen to the <span style="color: #000000;">Center Party</span>?
+on-arrival: {!
+Q.schleicher_approval += 1;
+Q.reichskonkordat = 1;
+Q.z_relation -= 10;
+Q.catholics_z += 6;
+Q.catholics_dnef += 6;
+Q.catholics_dnef_bonus += 4;
+
+Q.stegerwald_points = 0;
+Q.bracht_points = 0;
+
+if (Q.prussian_concordat) Q.stegerwald_points += 1;
+if (Q.pro_republic < 10) {
+  Q.bracht_points += 6;
+} else if (Q.pro_republic < 20) {
+  Q.bracht_points += 4;
+} else if (Q.pro_republic < 30) {
+  Q.bracht_points += 3;
+} else if (Q.pro_republic < 40) {
+  Q.bracht_points += 1;
+} else if (Q.pro_republic < 50) {
+  Q.stegerwald_points += 1;
+} else {
+  Q.stegerwald_points += 3;
+}
+if (Q.z_relation < 10) {
+  Q.bracht_points += 4;
+} else if (Q.z_relation < 20) {
+  Q.bracht_points += 3;
+} else if (Q.z_relation < 30) {
+  Q.bracht_points += 2;
+} else if (Q.z_relation < 40) {
+  Q.bracht_points += 1;
+} else if (Q.z_relation < 50) {
+  Q.stegerwald_points += 1;
+} else if (Q.z_relation < 60) {
+  Q.stegerwald_points += 3;
+} else if (Q.z_relation < 70) {
+  Q.stegerwald_points += 5
+}
+
+Q.stegerwald_points += Q.workers_z_normalized / 2;
+Q.bracht_points += Q.catholics_z_normalized / 10;
+!}
+face-image: img/portraits/KaasLudwig.jpg
+
+= Center Party Conference
+
+Having achieved his lifelong goal, Kaas sees little reason to remain as leader of the <span style="color: #000000;">Center Party</span>—a position he had long described as a burden and expressed displeasure with. As a result, a new leadership race is set to take place within the party, with Schleicher able to influence the outcome through his connections with Kaas and the <span style="color: #000000;">Christian</span> Trade Unions.
+
+The candidate backed by the <span style="color: #000000;">Christian</span> unions and those advocating for a more interconfessional <span style="color: #000000;">Center Party</span> rallies around Stegerwald.
+
+Franz Bracht, Schleicher's [? if not dsu_in_gov: former ?]Interior Minister[? if prussia_coup_lose:&nbsp;of Prussia and the Reich?], has rejoined the party and is Schleicher’s preferred candidate. Bracht is a true believer in Schleicher's vision for a new Germany—one less entangled in parliamentarianism—and aligns with the <span style="color: #000000;">Center</span>'s right wing, though not as far right as Papen. However, due to his lack of influence within the party and limited prior experience, having served only as Mayor of Essen for eight years, it is Schleicher's backing that remains the key to elevating him to leadership.
+
+- @bracht
+- @stegerwald
+
+@bracht
+title: Franz Bracht is installed as the <span style="color: #000000;">Center Party</span>'s new chairman.
+unavailable-subtitle: The <span style="color: #000000;">Center Party</span> is still rooted in <span style="color: #000000;">repub</span><span style="color: #DD0000;">lica</span><span style="color: #FFCC00;">nism</span>.
+choose-if: bracht_points > stegerwald_points
+on-arrival: z_leader = "Bracht"; workers_z -= 4; unemployed_z -= 2; new_middle_z -= 2; old_middle_z += 4; rural_z += 4; z_relation -= 15
+
+Undoubtedly thanks to Schleicher's meddling, Franz Bracht has been elected chairman of the <span style="color: #000000;">Center Party</span>. With Kaas’s endorsement and Schleicher's ability to "persuade" key party members to switch their votes, Bracht narrowly defeats Stegerwald and his more <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> support base.
+
+The internal reaction has been surprisingly muted. Perhaps the <span style="color: #000000;">Center Party</span>’s gradual shift to the right has made a <span style="color: #808080;">reactionary</span> like Bracht finally acceptable—or perhaps other forces are quietly at work.
+
+@stegerwald
+title: Stegerwald wins the leadership vote!
+unavailable-subtitle: Stegerwald is unavailable.
+choose-if: stegerwald_points >= bracht_points
+on-arrival: z_leader = "Stegerwald"; catholics_z -= 8; catholics_spd += 2; catholics_dnvp += 2; catholics -= 5; workers_z += 4; new_middle_z += 2; old_middle_z += 2; rural_z += 2; z_relation -= 5
+
+Stegerwald has won the leadership vote! By rallying the <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> behind his candidacy, he has successfully blocked Bracht from seizing control of the <span style="color: #000000;">Center Party</span>. Backing such a right-wing conservative proved unacceptable to the <span style="color: #000000;">Christian</span> unions, who continue to resist Schleicher's growing influence.
+
+Although Stegerwald favors immediately opening the <span style="color: #000000;">Center Party</span> to Protestants, the party simply lacks the funds to establish regional branches across Protestant Germany, with recent elections having already exhausted its resources.

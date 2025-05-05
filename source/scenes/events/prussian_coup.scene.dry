@@ -9,7 +9,7 @@ face-image: img/Reichswehr.jpg
 
 = Coup in Prussia
 
-A crisis! Chancellor [+ chancellor +] has ordered the dismissal of the Prussian government through a procedure known as the *Reichsexekution*. He claims the state government can no longer maintain order amid escalating street battles between the <span style="color: #7A3C00;">**SA**</span>, Reichsbanner, and other paramilitary groups—despite his own administration having legalized them.
+A crisis! Chancellor [+ chancellor +] has ordered the dismissal of the Prussian government through a procedure known as the <i>Reichsexekution</i>. He claims the state government can no longer maintain order amid escalating street battles between the <span style="color: #7A3C00;">**SA**</span>, Reichsbanner, and other paramilitary groups—despite his own administration having legalized them.
 
 [? if not altona_good: The recent clashes in Altona have handed him the pretext to depose the Prussian government?][? if altona_good: The surge in politically motivated violence has given Papen the pretext to depose the Prussian government?]. [? if prussia_leader == "Braun": With Otto Braun still abroad on convalescent leave following the heartbreaking events of the past few months?][? if prussia_leader != "Braun": With Minister-President [+ prussia_leader +] unwilling to risk a civil war to defend his administration?], Papen is moving to seize control. If this coup is successful, Papen will transfer control of Prussia to a <span style="color: #808080;">reactionary</span> <i>Reichskommissar</i>, a calculated move to win over the <span style="color: #7A3C00;">**NSDAP**</span> by granting the <span style="color: #7A3C00;">**SA**</span> free rein in the state. We suspect Defense Minister Schleicher to be the mastermind behind this scheme—another step in advancing his <span class="tooltip-text" title="Coined by conservative elites like Schleicher and Papen, this strategy aims to control the dynamic Nazi movement and integrate it into the state by introducing the party to government. In their eyes, this would moderate the Nazis, transforming them into a constructive component of the state.">taming strategy</span>.
 
@@ -33,7 +33,7 @@ The Reichswehr are already on the streets of Berlin, with a national force of a 
 - @surrender
 
 @defend_2
-view-if: nsdap_votes >= 25 and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and spd_votes < 26 and rb_militancy < 0.2
+view-if: nsdap_votes >= 25 and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and spd_votes < 26 and rb_militancy < 0.3
 on-arrival: {!
 
 Q.sa_force_prussia = Q.sa_strength*Q.sa_militancy;
@@ -85,7 +85,7 @@ Our forces confront the government troops and their supporters on the streets of
 - @civil_war: It is a civil war.
 
 @defend_3
-view-if: not (nsdap_votes >= 25 and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and spd_votes < 26 and rb_militancy < 0.2)
+view-if: not (nsdap_votes >= 25 and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and spd_votes < 26 and rb_militancy < 0.3)
 on-arrival: papen_strength -= 1; hindenburg_papen_r -= 1; pro_republic += 5
 
 Papen has backed down without a fight! With Severing and the Prussian government standing firm, declaring they would only respond to force, Papen has refused to press ahead with his plan, unwilling to risk civil war. Hindenburg is reportedly displeased with Papen's weakness but believes another opportunity will come soon.
@@ -95,7 +95,7 @@ For now, we remain in control of the democratic bulwark.
 @surrender
 title: Give up on the Prussian government.
 subtitle: We will attempt to fight this out legally.
-on-arrival: older_prussia_leader = prussia_leader; prussia_coup_lose = 1; was_in_weimar_coalition_prussia = 1 if ((in_weimar_coalition_prussia == 1 or in_minority_weimar_coalition_prussia == 1) or (in_grand_coalition_prussia == 1 and lvp_formed)); was_in_grand_coalition_prussia = 1 if (in_grand_coalition_prussia == 1 or in_minority_grand_coalition_prussia == 1); in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; prussia_leader = "Papen"; workers_spd -= 5; new_middle_spd -= 5; new_middle_ddp -= 3; unemployed_spd -= 3; left_dissent += 10; labor_dissent += 10; neorevisionist_dissent += 20; rb_militancy *= 0.8; rb_strength -= 200; prussian_police_loyalty -= 0.5; next_election_time_prussia = time + 48; next_election_year_prussia = year + 4; papen_strength += 1
+on-arrival: older_prussia_leader = prussia_leader; prussia_coup_lose = 1; pre_in_weimar_coalition_prussia = 1 if ((in_weimar_coalition_prussia == 1 or in_minority_weimar_coalition_prussia == 1) or (in_grand_coalition_prussia == 1 and lvp_formed)); pre_in_grand_coalition_prussia = 1 if (in_grand_coalition_prussia == 1 or in_minority_grand_coalition_prussia == 1); in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; prussia_leader = "Papen"; workers_spd -= 5; new_middle_spd -= 5; new_middle_ddp -= 3; unemployed_spd -= 3; left_dissent += 10; labor_dissent += 10; neorevisionist_dissent += 20; rb_militancy *= 0.8; rb_strength -= 200; prussian_police_loyalty -= 0.5; next_election_time_prussia = time + 48; next_election_year_prussia = year + 4; papen_strength += 1
 
 On the morning of the coup, the decree is presented to the Prussian government. Despite fierce objections to its constitutionality—and Severing’s vow to yield only to force—a hundred thousand Reichswehr troops occupy key government buildings in Berlin. One by one, Severing and the police chiefs allow themselves to be removed without resistance.
 

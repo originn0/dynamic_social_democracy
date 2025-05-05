@@ -5,7 +5,18 @@ new-page: true
 tags: event
 max-visits: 1
 priority: 2
-face-image: img/reichstag.jpg
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichstag.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 
 = Reichstag Reconvocation Decision
 

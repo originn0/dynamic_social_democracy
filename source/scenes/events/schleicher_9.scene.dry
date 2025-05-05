@@ -1,0 +1,34 @@
+title: Election Irregularities?
+subtitle: Or the usual backroom deals and dirty tricks of politics?
+view-if: chancellor = "Schleicher" and schleicher_time >= 11 and dnef_formed and next_election_time - time < 1
+on-arrival: schleicher_rig = 1;
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+face-image: img/portraits/schleicher.jpg
+
+= Election Irregularities
+
+Schleicher has made it clear he won’t establish a military dictatorship—after all, how could the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> trust us if he can’t even maintain the façade of democracy? But that won’t stop him from meddling in our democratic processes, or so our informants claim. We have proof that Schleicher has funneled significant state funds to the <span style="color: #BFC8CC;">**DNEF**</span>.
+
+Maybe Schleicher hasn’t done anything at all, and this is just the paranoia of the anti-Schleicher factions within the <span style="color: #c00000;">**SPD**</span> trying to sabotage our cooperation.
+
+Either way, it’s given fresh ammunition to the <span style="color: #c00000;">**SPD**</span>'s "old guard," who now demand the party sever ties with him before we become complicit in the slow destruction of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic we helped build.
+
+- @schleicher_1: Nonsense!
+- @schleicher_2: There may be truth to their claim...
+
+@schleicher_1
+on-arrival: schleicher_spd_support -= 2; schleicher_spd_influence += 1; pro_republic -= 5; adjustmentFactors_votes_dnef += 0.08
+
+Nonsense indeed.
+
+@schleicher_2
+choose-if: schleicher_spd_influence < 6
+unavailable-subtitle: There isn't any.
+on-arrival: schleicher_spd_support -= 6; schleicher_spd_influence -= 3; schleicher_spd_r -= 4; schleicher_approval -= 2; schleicher_spd_adopted = 0; z_relation += 3; ddp_relation += 3; lvp_relation += 3; workers_spd += 4; unemployed_spd += 2; workers_kpd -= 2; workers_dnef -= 2; unemployed_dnef -= 2; new_middle_spd += 6; new_middle_ddp -= 4; new_middle_lvp -= 4; new_middle_dnef -= 2; labor_dissent += 25; reformist_dissent += 15; labor_strength -= 10; reformist_strength -= 10; center_dissent -= 20; left_dissent -= 20; neorevisionist_dissent -= 10; adjustmentFactors_dnef += 0.06; schleicher_rig_exposed = 1
+
+We have publicly broken with Schleicher, presenting the frankly thin evidence to the public—including a shady 3-million Reichsmark transaction between big business and the <span style="color: #BFC8CC;">**DNEF**</span>.
+
+Schleicher dismisses it as simple politics, but many voters aren’t convinced. They’re rallying behind us as *the* democratic choice, now alert to democratic backsliding.

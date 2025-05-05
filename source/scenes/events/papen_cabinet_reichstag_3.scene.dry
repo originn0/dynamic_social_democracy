@@ -38,7 +38,7 @@ if (Q.hugenberg_dvp) {
     Q.papen_votes += Q.dvp_r;
 }
 if (Q.dnvp_ideology == "Radical") Q.papen_votes += Q.dnvp_r;
-if (Q.dnvp_ideology == "Moderate" && (Q.dnvp_leader == "Schiele" || Q.dnvp_leader == "Westarp" || Q.dnvp_leader == "Hergt")) {
+if (Q.dnvp_ideology == "Moderate" && (Q.dnvp_leader == "Schiele" || Q.dnvp_leader == "Westarp" || Q.dnvp_leader == "Hergt" || Q.dnvp_leader == "Treviranus" && !Q.true_christian_democracy)) {
     Q.papen_votes += Q.dnvp_r;
     Q.dnvp_papen = 1;
 }
@@ -102,14 +102,52 @@ if (Q.dnvp_papen) {
     Q.catholics_dnf -= 4;
 }
 !}
+go-to: reichstag_1 if papen_votes < 14; reichstag_1_alt if papen_votes >= 14
+
+@reichstag_1
 
 As expected, the <span style="color: #700000;">**Communists**</span> have secured unanimous approval for a change in the order of business to allow an immediate vote on a motion of no confidence against Papen, and not even the <span style="color: #3E88B3;">**DNVP**</span> was willing to lift a finger to prevent this. 
 
 With no objection, the vote was to begin just as Chancellor von Papen has arrived inside the Reichstag to present his emergency decree to the chamber, disrupting his plans to present both decrees at once. He had placed the folder on Reichstag President [? if reichstag_president == "Göring": Hermann Göring?][? if reichstag_president == "Löbe": Paul Löbe?][? if reichstag_president == "Eßer": Thomas Eßer?]'s desk, and demanded him to read it to the floor. However, [+ reichstag_president +] has trick up his sleeve: he could pretend he didn't see it and proceed with the no confidence motion anyway.
 
-In the end, Papen is defeated by a humiliating margin with [+ anti_papen_votes +]% of the Reichstag voting against him, only supported by the [? if dnvp_papen or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if (dnvp_ideology == "Moderate" and dnvp_papen) or kvp_papen:, ?][? if dnvp_ideology == "Moderate":<span style="color: #003755;">**DNF**</span>?][? if kvp_papen: <span style="color: #0087DC;">**KVP**</span>?][? if hugenberg_dvp:&nbsp;and <span style="color: #C0A054;">**DVP**</span>?]. These parties are expected to benefit from disillusioned conservative <span style="color: #7A3C00;">Nazi</span> voters, who had backed them under the impression they would support the Papen cabinet.
+In the end, Papen is defeated by a humiliating margin with [+ anti_papen_votes +]% of the Reichstag voting against him, only supported by the [? if dnvp_papen or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if (dnvp_ideology == "Moderate" and dnvp_papen) or kvp_papen:, ?][? if dnvp_ideology == "Moderate":<span style="color: #003755;">**DNF**</span>?][? if kvp_papen: <span style="color: #0087DC;">**KVP**</span>?][? if hugenberg_dvp:&nbsp;and <span style="color: #C0A054;">**DVP**</span>?]. They're expected to benefit from disillusioned conservative <span style="color: #7A3C00;">Nazi</span> voters, who had backed them under the impression they would support the Papen cabinet.
 
 - @reichstag_2
+
+@reichstag_1_alt
+on-arrival: {!
+Q.papen_goal = "Maintain public order";
+Q.marburg_time = 0;
+Q.marburg_trigger = 1;
+Q.hindenburg_papen_r += 1;
+Q.papen_strength += 1;
+Q.schleicher_papen_r -= 1;
+Q.reichstag_rubicon = 0;
+
+Q.next_election_week = Q.week + 36;
+Q.next_election_month = Q.month;
+Q.next_election_year = Q.year;
+Q.next_election_time = Q.time;
+
+let added_months = Math.floor(Q.next_election_week / 4);
+Q.next_election_month += added_months;
+Q.next_election_time += added_months;
+Q.next_election_week = Q.next_election_week % 4;
+if (Q.next_election_week === 0) Q.next_election_week = 1;
+
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year += 1;
+}
+!}
+
+As expected, the <span style="color: #700000;">**Communists**</span> have attempted to secure approval for a change in the order of business to allow an immediate vote on a motion of no confidence against Papen, but however, the [? if dnvp_papen: <span style="color: #3E88B3;">**DNVP**</span>?][? if not dnvp_papen and dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?][? if not dnvp_papen and dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?] had objected to the motion, delaying it.
+
+Before the vote was to begin, Chancellor von Papen has arrived inside the Reichstag to present his emergency decree to the chamber, one to dissolve it and one to postpone future elections. He had placed the folder on Reichstag President [? if reichstag_president == "Göring": Hermann Göring?][? if reichstag_president == "Löbe": Paul Löbe?][? if reichstag_president == "Eßer": Thomas Eßer?]'s desk, who read it to the floor. The chamber erupted in uproar, prompting police on standby to detain numerous Reichstag members involved in the violence, primarily from the <span style="color: #700000;">**Communists**</span>.
+
+News has quickly spread, and Papen has only narrowly escaped from the area before violent mobs assembled all across Berlin were formed to protest the violation of the constitution. Brüning and the <span style="color: #000000;">Center Party</span> vow to impeach President Hindenburg, if the Reichstag ever convenes. Germany's in for a violent civil war, and Papen shows no sign of backing down.
+
+- @reichstag_2_alt
 
 @reichstag_2
 title: The Reichstag is dissolved for new elections.
@@ -142,3 +180,8 @@ With the vulnerability and widespread opposition to the Papen cabinet now fully 
 The time is not yet right for the government to openly violate the constitution, and doing so could spark a civil war. The Reichswehr would not be able to withstand the opposition of 90% of the nation.
 
 A minor constitutional crisis erupts when Reichstag President [+ reichstag_president +] disputes the validity of Papen's dissolution decree. [+ reichstag_president +] argues that the Reichstag remains in session, contending that the decree is invalid as it was countersigned by a government that had just been overthrown by a vote of no confidence. [+ reichstag_president +] ultimately concedes the issue before the courts were to decide, and new Reichstag elections are scheduled for [+ next_election_month : month +] [+ next_election_year +], Week [+ next_election_week +].
+
+@reichstag_2_alt
+title: The government cannot adequately suppress unrest, civil war is inevitable.
+subtitle: We will fight, whether we choose to or not.
+go-to: papen_civil_war

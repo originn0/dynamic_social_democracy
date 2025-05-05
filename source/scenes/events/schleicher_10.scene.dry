@@ -1,0 +1,49 @@
+title: The <span style="color: #C0A054;">**DVP**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+subtitle: [? if dvp_votes < 4 and dvp_leader != "Glatzel": Struggling at the polls, the party tries to stay relevant by merging into a larger bloc?][? if dvp_leader == "Glatzel": Glatzel's views align closely with the chancellor's?].
+view-if: chancellor = "Schleicher" and schleicher_time >= 11 and not lvp_formed and dvp_exist and ((dvp_votes < 4 and not bourgeois_list) or dvp_leader == "Glatzel") and dnef_formed and next_election_time - time < 2
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+face-image: img/portraits/schleicher.jpg
+
+= <span style="color: #C0A054;">**DVP**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+
+[? if dvp_votes < 4 and dvp_leader != "Glatzel": The electoral decline of the <span style="color: #C0A054;">**DVP**</span> and the threat of being wiped out of parliament due to Germany's imperfect proportional system have forced the party to abandon its political independence and join Schleicher's <span style="color: #BFC8CC;">**DNEF**</span>. This decision has faced significant internal objections, as many still hope for an understanding with the bourgeois and right-wing parties to secure a place on their electoral list. ?]
+[? if dvp_leader == "Glatzel": Frank Glatzel, leader of the <span style="color: #C0A054;">**DVP**</span>, shares much ideological ground with Schleicher's new party—nationalism, corporatism, and the goal of a <i>Volksgemeinschaft</i>. A merger with the <span style="color: #BFC8CC;">German National Unity Front</span> has thus become inevitable. ?]
+
+[? if dvp_votes < 4 and dvp_leader != "Glatzel": Nonetheless, the <span style="color: #C0A054;">**DVP**</span> and its industrial backers will bolster the <span style="color: #BFC8CC;">**DNEF**</span> and legitimize it among the middle class, eliminating yet another option for non-<span style="color: #7A3C00;">Nazi</span> bourgeois voters. ?]
+[? if dvp_leader == "Glatzel": Glatzel's vision of a "new nationalism" will carry a sizable following into his new political home, along with his affiliated white-collar union, the DHV, which he is bringing into the <span style="color: #BFC8CC;">**DNEF**</span> as well. ?]
+
+- @schleicher_2: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new member.
+
+@schleicher_2
+on-arrival: {!
+Q.dvp_dnef = 1
+
+Q.pro_republic -= Q.dvp_votes;
+
+Q.dvp_relation = (Q.dnef_relation - 20);
+
+Q.dnef_r += Q.dvp_r;
+Q.dvp_r = 0;
+!}
+
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]

@@ -44,10 +44,6 @@ go-to: goring if largest_party == "NSDAP" and z_relation < 55 and hitler_right_c
 
 @goring
 on-arrival: {!
-Q.pro_republic -= 3;
-Q.reichstag_goring = 1;
-Q.reichstag_president = "Göring";
-
 Q.next_reichstag_time = Q.rubicon_time + 2;
 Q.next_reichstag_week = Q.week + 2;
 Q.next_reichstag_month = Q.month;
@@ -67,6 +63,10 @@ if (Q.next_reichstag_month > 12) {
   Q.next_reichstag_month -= 12;
   Q.next_reichstag_year += 1;
 }
+
+Q.pro_republic -= 3;
+Q.reichstag_goring = 1;
+Q.reichstag_president = "Göring";
 !}
 
 With negotiations between the <span style="color: #000000;">Center Party</span> and the <span style="color: #7A3C00;">**NSDAP**</span> underway, previously hostile relations have thawed enough for the <span style="color: #000000;">Center Party</span> to support Hermann Göring’s election as President of the Reichstag. The <span style="color: #7A3C00;">**NSDAP**</span> delegation’s newfound decorum convinced many that the party had turned over a new leaf.
@@ -75,11 +75,6 @@ In line with a promise made to the <span style="color: #000000;">Center Party</s
 
 @spd
 on-arrival: {!
-Q.pro_republic += 3;
-Q.reichstag_goring = 0;
-Q.reichstag_president = "Löbe";
-if (!(Q.largest_party != "NSDAP" && ((Q>weimar_coalition >= 40) || (Q.popular_front_coalition >= 50 && Q.kpd_relation >= 50)))) Q.reichstag_president = "Eßer";
-
 Q.next_reichstag_time = Q.rubicon_time + 2;
 Q.next_reichstag_week = Q.week + 2;
 Q.next_reichstag_month = Q.month;
@@ -99,6 +94,11 @@ if (Q.next_reichstag_month > 12) {
   Q.next_reichstag_month -= 12;
   Q.next_reichstag_year += 1;
 }
+
+Q.pro_republic += 3;
+Q.reichstag_goring = 0;
+Q.reichstag_president = "Löbe";
+if (!(Q.largest_party != "NSDAP" && ((Q.weimar_coalition >= 40) || (Q.popular_front_coalition >= 50 && Q.kpd_relation >= 50)))) Q.reichstag_president = "Eßer";
 !}
 
 [? if largest_party != "NSDAP": In Reichstag tradition, as the <span style="color: #c00000;">**SPD**</span> is the largest party, the <span style="color: #000000;">Center Party</span> feels bound to support us, regardless of our relations. ?][? if (z_relation >= 55 or hitler_right_coalition < 50) and largest_party == "NSDAP": However, the <span style="color: #000000;">Center Party</span> simply cannot bring itself to support elevating a <span style="color: #7A3C00;">Nazi</span> to the Reichstag presidency, breaking with tradition to elect our candidate. ?]

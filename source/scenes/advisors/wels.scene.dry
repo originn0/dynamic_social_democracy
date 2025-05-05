@@ -12,6 +12,7 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @clear_agenda
 - @party_discipline
 - @emergency_fundraising
+- @test
 - @snap_election
 - @root: Return to main
 
@@ -49,6 +50,14 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 on-arrival: advisor_action_timer = 6; resources += 2; emergency_fundraising_timer = 16
 
 We have gained +2 resources.
+
+@test
+title: test
+view-if: modman_secret_code = "Yeah."
+subtitle: for modman only
+call: kvp_formed
+
+ok
 
 @snap_election
 title: Snap Election

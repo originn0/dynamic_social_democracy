@@ -414,6 +414,7 @@ max-visits: 1
 We remind the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] leaders of <span style="color: #808080;">Hindenburg</span>'s anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. [? if in_weimar_coalition_prussia: We also remind them of the successes they've had as part of our <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition in Prussia with [+ spd_candidate_1932_disp +], and our support for the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Wilhelm Marx in the 1925 presidential election?][? if not in_weimar_coalition_prussia: We also remind them of our support for the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Wilhelm Marx in the 1925 presidential election?]. [? if bruning_time: Unfortunately, Hindenburg's support for Brüning's government has left them with little room to oppose the very president sustaining his cabinet. ?]
 
 @z_success
+on-arrival: hindenburg_angry_bruning += 50 if bruning_time
 go-to: endorsements_braun
 
 The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is convinced! They will be part of the Braun coalition.
@@ -427,7 +428,7 @@ The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][?
 
 @give_up_prussia
 subtitle: Braun will resign.
-on-arrival: z_support_spd = 1; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; reformist_dissent += 10; centrist_dissent += 10; labor_dissent += 10; left_dissent += 5; workers_spd -= 5; new_middle_spd -= 5; rural_spd -= 3; braun_resign = 1
+on-arrival: z_support_spd = 1; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; reformist_dissent += 10; centrist_dissent += 10; labor_dissent += 10; left_dissent += 5; workers_spd -= 5; new_middle_spd -= 5; rural_spd -= 3; braun_resign = 1; hindenburg_angry_bruning += 30 if bruning_time
 go-to: endorsements_braun
 
 Ironic, considering that seven years ago, we brokered a deal for Wilhelm Marx to resign in favor of Braun in exchange for our support for him in the presidential elections. Anyhow, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is now convinced to support Braun over Hindenburg.

@@ -1,0 +1,67 @@
+title: Schleicher Enacts Concessions to Labor!
+subtitle: The <span style="color: #000000;">Christian</span> and <span style="color: #c00000;">Free Unions</span> are ecstatic!
+view-if: chancellor == "Schleicher" and schleicher_post and not schleicher_labor and next_reichstag_time == (rubicon_time + 1) and next_reichstag_time > 0
+max-visits: 1
+new-page: true
+priority: 2
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/workers_2.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Schleicher Enacts Concessions to Labor!
+
+Presumably aiming to win over the unions' affiliated parties—the <span style="color: #000000;">Center Party</span> and the <span style="color: #c00000;">SPD</span>—and to bolster public confidence in his leadership at the grassroots level, Schleicher has enacted a new decree.
+
+An eight-hour workday is now mandated across most industries, intended to "spread out" employment among more workers. The means test for unemployment insurance has been abolished, and welfare funding has been increased to offset years of austerity.
+
+The <span style="color: #c00000;">Social</span> General has lived up to his nickname. Yet, cynically, the cost is clear—Schleicher now wields significant leverage over the unions, and many workers are beginning to shift their loyalty toward the chancellor, who delivers results, rather than the opposition parties. His image as a strongman, standing above the old parties, is slowly conditioning the workers to accept a more authoritarian system.
+
+- @labor
+
+@labor
+title: The decree is signed into law.
+on-arrival: {!
+Q.schleicher_labor = 1; 
+Q.schleicher_spd_influence += 3; 
+Q.schleicher_spd_support += 2; 
+Q.schleicher_spd_r += 2; 
+Q.schleicher_approval += 4;
+
+Q.adgb_explode = 1;
+
+Q.unemployed -= 1.8;
+Q.economic_growth += 0.8;
+Q.inflation += 1.4;
+Q.budget -= 1;
+
+Q.workers_kpd -= 6; 
+Q.unemployed_kpd -= 6; 
+Q.workers_nsdap -= 2; 
+Q.unemployed_nsdap -= 2; 
+Q.workers_spd -= 2; 
+Q.unemployed_spd -= 2; 
+Q.workers_z += 2;
+Q.unemployed_z += 2;
+Q.workers_dnef += 8;
+Q.unemployed_dnef += 6;
+Q.workers_dnef_bonus += 8; 
+Q.unemployed_dnef_bonus += 6; 
+
+Q.pro_republic -= 5; 
+Q.labor_dissent += 20; 
+Q.labor_strength += 5; 
+!}
+
+With Schleicher granting concessions to the workers on his own initiative—rather than under pressure from the <span style="color: #c00000;">SPD</span>—he alone reaps the political rewards. Even some radicalized <span style="color: #700000;">Communist</span> workers begin to drift away, as the less ideological and politically disengaged prioritize their livelihoods over loyalty to their traditional parties.
+
+But hey, at least the workers aren’t suffering as much anymore. This alone has led the ADGB to adopt a friendlier stance toward the chancellor, giving Schleicher growing influence within our party, using the unions as his middleman.

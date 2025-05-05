@@ -1,0 +1,61 @@
+title: The Reichstag Reconvenes
+subtitle: The Reichstag hesitates to confront Schleicher and trigger yet another round of elections.
+view-if: chancellor = "Schleicher" and schleicher_time and schleicher_post and next_reichstag_time == rubicon_time and next_reichstag_time > 0
+on-arrival: reichstag_rubicon = 1
+new-page: true
+tags: event
+max-visits: 1
+priority: 2
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichstag.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Reichstag Reconvenes
+
+The Reichstag reconvenes under Schleicher, and nearly all parties present are unwilling to move against the popular chancellor on the chamber’s first day back. The opposition chooses to wait, looking for the inevitable misstep—a constitutional violation or a divisive policy—to use as a pretext and rallying point against him.
+
+Meanwhile, Schleicher shows little concern over the threat of a no-confidence vote. He makes his position clear: unless a united bloc emerges with a viable successor, he will continue governing as usual, backed by Hindenburg.
+
+- @reichstag
+
+@reichstag
+title: The <span style="color: #700000;">**Communists**</span> put forth a motion of no confidence.
+on-arrival: {!
+Q.pro_republic += 5;
+
+Q.reichstag_rubicon = 0;
+Q.schleicher_post_reichstag = 1;
+
+Q.next_reichstag_time = Q.rubicon_time + 4;
+Q.next_reichstag_week = Q.week + 4;
+Q.next_reichstag_month = Q.month;
+Q.next_reichstag_year = Q.year;
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_month > 12) {
+  Q.next_reichstag_month -= 12;
+  Q.next_reichstag_year += 1;
+}
+!}
+
+As before, the motion to place a vote of no confidence on the agenda is defeated—thanks to support from elements of the <span style="color: #7A3C00;">Nazis</span>, the <span style="color: #000000;">Center Party</span>, and various right-wing and bourgeois factions.
+
+With only a handful of bills scheduled, the agenda committee successfully pushes through a thirty-day adjournment, with the option for extension.

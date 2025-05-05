@@ -247,6 +247,7 @@ Q.parties_graph = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
 
 Q.sapd_formed = 0;
 Q.dnf_formed = 0;
+Q.dnef_formed = 0;
 Q.kvp_formed = 0;
 Q.lvp_formed = 0;
 Q.cvp_formed = 0;
@@ -360,6 +361,7 @@ Q.old_nvf_r = 0;
 Q.previous_dsu_last_election_votes = 0.0;
 Q.previous_nsdap_hitler_last_election_votes = 0.0;
 Q.previous_nvf_last_election_votes = 0.0;
+Q.previous_schleicher_dnef_last_election_votes = 0.0;
 
 // prussian gov right now
 Q.spd_r_prussia = 25.3;
@@ -438,6 +440,13 @@ Q.lvp_ideology = "Moderate";
 Q.lvp_normalized = 0;
 Q.lvp_votes = 0;
 
+Q.dnef_left = 0;
+Q.dnef_right = 0;
+Q.dnef_leader = "Schleicher";
+Q.dnef_ideology = "Moderate";
+Q.dnef_normalized = 0;
+Q.dnef_votes = 0;
+
 Q.cvp_right = 0;
 Q.cvp_left = 0;
 
@@ -452,8 +461,23 @@ Q.adjustmentFactors_lvp = 1.0;
 Q.adjustmentFactors_dnvp = 1.0;
 Q.adjustmentFactors_nsdap = 1.0;
 Q.adjustmentFactors_dnf = 1.0;
+Q.adjustmentFactors_dnef = 1.0;
 Q.adjustmentFactors_kvp = 1.0;
 Q.adjustmentFactors_other = 0.75;
+
+Q.adjustmentFactors_votes_spd = 1.0;
+Q.adjustmentFactors_votes_sapd = 1.0;
+Q.adjustmentFactors_votes_kpd = 1.0;
+Q.adjustmentFactors_votes_z = 1.0;
+Q.adjustmentFactors_votes_ddp = 1.0;
+Q.adjustmentFactors_votes_dvp = 1.0;
+Q.adjustmentFactors_votes_lvp = 1.0;
+Q.adjustmentFactors_votes_dnvp = 1.0;
+Q.adjustmentFactors_votes_nsdap = 1.0;
+Q.adjustmentFactors_votes_dnf = 1.0;
+Q.adjustmentFactors_votes_dnef = 1.0;
+Q.adjustmentFactors_votes_kvp = 1.0;
+Q.adjustmentFactors_votes_other = 1.0;
 
 Q.adjustmentFactors_spd_prussia = 1.0;
 Q.adjustmentFactors_sapd_prussia = 1.0;
@@ -466,6 +490,7 @@ Q.adjustmentFactors_lvp_prussia = 1.0;
 Q.adjustmentFactors_dnvp_prussia = 1.0;
 Q.adjustmentFactors_nsdap_prussia = 1.0;
 Q.adjustmentFactors_dnf_prussia = 1.0;
+Q.adjustmentFactors_dnef_prussia = 1.0;
 Q.adjustmentFactors_kvp_prussia = 1.0;
 Q.adjustmentFactors_other_prussia = 0.7;
 
@@ -679,7 +704,8 @@ Q.timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     'dnf_decay', 'march_on_berlin', 'prussian_reichsexekution',
     'bruning_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger',
     'bourgeois_negotiations_1930', 'bourgeois_negotiations_1930_aftermath', 'schleichers_schemes',
-    'bourgeois_negotiations_elections_1930', 'nazi_decay', 'stegerwald_transformation', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds'];
+    'bourgeois_negotiations_elections_1930', 'nazi_decay', 'stegerwald_transformation', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds',
+    'dsu_policy'];
 Q.rubicon_timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     'fundraising', 'ideology',
     'inter_party_relationships', 'international_relations',
@@ -704,7 +730,7 @@ Q.rubicon_timers = ['advisor_action', 'confronting_nazis', 'crisis_program',
     'dnf_decay', 'march_on_berlin', 'prussian_reichsexekution',
     'bruning_event', 'lvp_merger', 'lvp_merger_1', 'lvp_merger_2', 'bourgeois_merger', 'schleichers_schemes',
     'bourgeois_negotiations_elections_1930', 'emergency_fundraising', 'red_general', 'weimar_rally', 'nazi_funds',
-    'campaigning'];
+    'campaigning', 'dsu_policy'];
 Q.advisor_action_timer = 0;
 // party affairs timers
 Q.confronting_nazis_timer = 0;
@@ -725,6 +751,7 @@ Q.streetfighting_timer = 0;
 Q.peoples_party_timer = 0;
 Q.bruning_event_timer = 0;
 Q.stegerwald_transformation_timer = 0;
+Q.dsu_policy_timer = 0;
 // n_elections is the number of elections that have happened since the start of the game.
 Q.n_elections = 0;
 Q.n_elections_prussia = 0;
@@ -849,6 +876,8 @@ Q.total_bruning_time = 0;
 Q.total_bruning_toleration_time = 0;
 Q.papen_time = 0;
 Q.schleicher_time = 0;
+Q.schleicher_post_time = 0;
+Q.z_in_gov_time = 0;
 Q.rubicon_time = 0; 
 Q.reichstag_rubicon = 0;
 Q.nazi_peak = 25;
@@ -883,6 +912,18 @@ Q.schleicher_explode = 0;
 Q.schleicher_victory = 0;
 Q.old_prussia_leader = " ";
 Q.schleicher_post = 0;
+Q.schleicher_spd_concession = 0;
+Q.dsu_interior = 0;
+Q.mefo_bills = 0;
+Q.marburg_time = 0;
+Q.marburg_trigger = 0;
+Q.workers_dnef_bonus = 0;
+Q.new_middle_dnef_bonus = 0;
+Q.unemployed_dnef_bonus = 0;
+Q.catholics_dnef_bonus = 0;
+Q.bracht_time = 0;
+Q.schleicher_post_reichstag = 0;
+Q.scheming_active = 0;
 
 // rubicon
 Q.hindenburg_schleicher_r = 5;
@@ -912,6 +953,7 @@ Q.industrial_lvp_backing = 4;
 Q.industrial_dnvp_backing = 3;
 Q.industrial_kvp_backing = 3;
 Q.industrial_dnf_backing = 0;
+Q.industrial_dnef_backing = 0;
 Q.industrial_nsdap_backing = 0;
 
 // flavour text stuff

@@ -1,0 +1,32 @@
+title: Schleicher Founds a New Political Party!
+subtitle: He seeks to capitalize on his newfound popularity.
+view-if: chancellor = "Schleicher" and schleicher_time >= 11 and schleicher_approval >= 8
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+face-image: img/portraits/schleicher.jpg
+
+= A New Political Force
+
+Schleicher, once reviled by the public, is now hailed as Germany’s savior. Through his public works campaign and ruthlessly pragmatic ideology, he has managed to win support from across the political spectrum. But a key question remains: where can these grateful voters turn to express their support for the chancellor?
+
+The <span style="color: #808080;">reactionary</span> right will never win over the workers, and the <span style="color: #c00000;">**SPD**</span> is seen as unreliable when it comes to backing Schleicher’s government.
+
+In the past, Schleicher flirted with the idea of building a new "presidential party"—a direct vehicle for rallying public support behind his cabinet. Until now, he had taken no concrete steps. But with new ties to the working class and the moderate forces on the German Right, he now has an opportunity to bring such a party to life[? if next_election_time - time < 3: with the elections coming up?].
+
+- @schleicher_2: The <i>Deutschnationale Einheitsfront</i> (<span style="color: #BFC8CC;">German National Unity Front</span>, <span style="color: #BFC8CC;">**DNEF**</span>) is formed!
+
+@schleicher_2
+on-arrival: dnef_formed = 1; chancellor_party = "DNEF"
+go-to: dnef_formed
+
+In terms of ideology, the party offers no clear position on the traditional political spectrum. Its program is whatever Schleicher advocates: Germany’s rearmament, a return to great power status, and economic revival through public works.
+
+The "Unity Front" portion of the name signals the party's openness to absorbing other groups, [? if kvp_formed: [? if schleicher_kvp: with the <span style="color: #0087DC;">**KVP**</span> approached as the prime candidate, especially given Schleicher's influence over the party. However, it prefers to retain a "sister party" status for now, similar to the <span style="color: #A2D8E0;">**BVP**</span>'s relationship with the <span style="color: #000000;">Center</span>. Schleicher approves, as his newly launched party has struggled to attract rural voters. ?][? if not schleicher_kvp: with the <span style="color: #0087DC;">**KVP**</span> approached as the prime candidate, given the close ties between its leaders and Schleicher. However, it seeks to maintain its independence for now. ?]?][? if not kvp_formed and dnvp_ideology == "Radical": with politically homeless former moderate <span style="color: #3E88B3;">**DNVP**</span> members forming the main recruits, and Treviranus taking a leading role in organizing the merger of the minuscule <span style="color: #0087DC;">**KVP**</span> into the front. ?][? if dnvp_ideology == "Moderate": with the <span style="color: #3E88B3;">**DNVP**</span> especially being courted to join, as they have supported both presidential governments in the past out of loyalty to the president. However, they refuse to offer more than continued support for the chancellor. ?]
+
+The front has also moved to recruit the moribund special-interest and bourgeois parties stranded between the <span style="color: #FFCC00;">liberals</span> and the <span style="color: #3E88B3;">right</span>, such as the <span style="color: #b8996f;">**WP**</span>[? if csvd_formed:,?][? if not csvd_formed:&nbsp;and?] <span style="color: #7FCEB1;">**CNBLP**</span>[? if csvd_formed:, and <span style="color: #8ED8E4;">**CSVD**</span>?]. [? if csvd_formed: The latter, in particular, stands out, having long advocated for a non-partisan presidential government over traditional party rule and for having a sizable political base. ?] 
+
+[? if dstp_maintained: The <span style="color: #D3C24D;">[+ ddp_name +]</span> and the Young German Order have officially joined the front, citing their ideological similarity with the <span style="color: #BFC8CC;">**DNEF**</span>. They're both nationalist, corporatist, and socially pragmatic. The Young German Order coerced the party to join despite the objections of old-line members like Dietrich and Heuss. ?]
+
+The <span style="color: #BFC8CC;">**DNEF**</span>, for its part, avoids calling itself a party at all, instead presenting as a mass movement open to everyone—from workers to industrial magnates—claiming to rise above partisan divides.

@@ -23,8 +23,8 @@ While the <span style="color: #c00000;">**SPD**</span> remains steadfast in its 
 subtitle: The unions have firmly decided, but convincing the party is a whole another matter.
 unavailable-subtitle: The pro-Schleicher factions aren't strong enough to have an impact on ADGB policy.
 view-if: schleicher_spd_support >= 10
-choose-if: labor_strength + reformist_strength >= (center_strength*2) + left_strength
-on-arrival: schleicher_spd_adopted = 1; schleicher_spd_r += 1 if schleicher_spd_r < 5; center_dissent += 5; left_dissent += 10; labor_strength += 10; reformist_strength += 5
+choose-if: labor_strength + reformist_strength >= (center_strength*1.5) + left_strength
+on-arrival: schleicher_spd_adopted = 1; schleicher_spd_r += 1 if schleicher_spd_r < 5; center_dissent += 5; left_dissent += 10; labor_strength += 10; reformist_strength += 5; schleicher_approval += 2
 max-visits: 1
 
 The ADGB leadership has now officially—although only in private—taken a stance in favor of cooperating with the "Red General." The union will attempt to leverage its influence over the <span style="color: #c00000;">**SPD**</span> to push our hesitant party leadership toward adopting the same position.
@@ -35,7 +35,7 @@ Gradually, a shift in opinion is becoming visible within the party. Otto Braun h
 subtitle: [? if chancellor == "Papen": It's almost impossible to argue to the party to pursue this line, at least with Papen as chancellor. ?][? if chancellor == "Schleicher": Cooperation with the General himself is not unthinkable, with his concessions made toward the unions. ?]
 unavailable-subtitle: The pro-Schleicher factions aren't strong enough to have an impact on ADGB policy.
 view-if: schleicher_spd_support < 10
-choose-if: labor_strength + reformist_strength >= (center_strength*2) + left_strength
+choose-if: labor_strength + reformist_strength >= (center_strength*1.5) + left_strength
 on-arrival: schleicher_spd_support += 3; schleicher_spd_support += 1 if wtb_adopted; schleicher_spd_support -= 1 if chancellor == "Papen"; schleicher_spd_support -= 1 if otl_prussian_coup_seen; workers_spd -= 1; unemployed_spd -= 1; workers_kpd += 1; unemployed_kpd += 1; center_dissent += 5; left_dissent += 5
 
 Slowly but surely, the ADGB leadership is beginning to warm to the idea of constructive cooperation with the so-called "Red General." However, much work remains to be done—many within the union, and the overwhelming majority of the <span style="color: #c00000;">**SPD**</span>, remain firmly opposed to cooperating with the man [? if chancellor == "Papen": propping up the widely despised Papen cabinet?][? if chancellor == "Schleicher": who now heads a widely unpopular government?]. [? if wtb_adopted: Our adoption of the WTB Plan—and Schleicher’s public support for similar public works initiatives—has modestly increased the party’s willingness to consider cooperation. ?]
@@ -44,30 +44,36 @@ Slowly but surely, the ADGB leadership is beginning to warm to the idea of const
 
 @united_front
 subtitle: The consensus view within the <span style="color: #c00000;">**SPD**</span>. We are a democratic party after all.
-on-arrival: schleicher_spd_support -= 1 if schleicher_spd_support > 0; schleicher_spd_r -= 1 if schleicher_spd_r >= 1; workers_spd += 2; workers_kpd -= 1; left_dissent -= 5; center_dissent -= 5
+on-arrival: schleicher_spd_support -= 2 if schleicher_spd_support > 0; schleicher_spd_r -= 1 if schleicher_spd_r > 0; schleicher_spd_influence -= 1 if schleicher_spd_influence > 0; workers_spd += 2; workers_kpd -= 1; left_dissent -= 5; center_dissent -= 5
 
 We continue to argue for a united opposition of the democratic parties against the unpopular [+ chancellor +] government, and win support among the people for doing so. 
 
 @schleicher_spd_established
 
 - @schleicher_ties: Cultivate closer ties with the Red General.
+- @schleicher_distance: Distance ourselves from Schleicher.
 - @concessions: Using our influence, demand concessions on the government.
 - @easy_discard
 
 @schleicher_ties
 subtitle: More regular meetings will be held between the two groups.
-on-arrival: schleicher_spd_r += 1
+on-arrival: schleicher_spd_r += 1; schleicher_spd_support += 1; schleicher_spd_influence += 1
 
 Regular secret meetings between the ADGB, the <span style="color: #c00000;">**SPD**</span>, and von Schleicher are being held. This will aid in reducing the mutual distrust between the party and the government.
 
+@schleicher_distance
+subtitle: We will sideline his sympathizers.
+on-arrival: schleicher_spd_r -= 1; schleicher_spd_support -= 2; schleicher_spd_influence -= 1; labor_dissent += 8; reformist_dissent += 8; center_dissent -= 5; left_dissent -= 5; neorevisionist_dissent -= 5; reformist_strength -= 4; labor_strength -= 4
+
+In recent months, Schleicher has gained significant sympathizers within the Reformist and Labor factions of the <span style="color: #c00000;">**SPD**</span>. Sidelining them would provoke Schleicher’s distrust and stir dissent within their factions affected.
+
 @concessions
+view-if: chancellor == "Schleicher" and schleicher_time >= 8 and not schleicher_spd_concession
 subtitle: There's a limit to what we can demand, but we can look at our options.
 
 [? if prussia_leader == "Schleicher": Braun demands the restoration of his government in Prussia. ?]
 
-Labor demands the restoration of their rights.
-
-The Reichsbanner demands the banning of the <span style="color: #7A3C00;">**SA**</span>.
+Labor demands the restoration of their rights and welfare.
 
 The <span style="color: #c00000;">**SPD**</span> a cabinet reshuffle.
 
@@ -75,27 +81,44 @@ We may only demand one, as to not push our luck.
 
 - @prussia
 - @labor
-- @sa_ban
 - @cabinet_reshuffle
 
 @prussia
 title: Demand the reinstatement of our government in Prussia.
-subtitle: Regain control over the Prussian police and secure participation in government.
+subtitle: Regain control over the Prussian police and secure participation in state government.
+unavailable-subtitle: [? if schleicher_spd_r < 5: We must improve our relations with Schleicher first. ?][? if hindenburg_schleicher_r < 5: Hindenburg is extremely reluctant to give back Prussia in the hands of the <span style="color: #c00000;">socialists</span>. ?][? if not schleicher_post: Schleicher urges us to wait until the next elections. ?][? if dsu_in_gov: Schleicher is firmly committed to keeping the <span style="color: #7A3C00;">Nazis</span> in government. ?]
+choose-if: schleicher_spd_r >= 7 and hindenburg_schleicher_r >= 5 and schleicher_post
+view-if: prussia_leader == "Schleicher"
+on-arrival: schleicher_spd_concession = 1; schleicher_spd_influence += 4; schleicher_spd_support += 2; schleicher_spd_r -= 2; prussia_returned = 1; prussia_leader = older_prussia_leader; in_weimar_coalition_prussia = 1 if pre_in_weimar_coalition_prussia; in_grand_coalition_prussia = 1 if pre_in_grand_coalition_prussia; in_minority_weimar_coalition_prussia = 1 if in_weimar_coalition_prussia and weimar_coalition_prussia < 50; in_minority_grand_coalition_prussia = 1 if in_grand_coalition_prussia and grand_coalition_prussia < 50; pro_republic += 10; workers_spd += 5; new_middle_spd += 5; unemployed_spd += 3; new_middle_ddp += 3; labor_dissent -= 15; reformist_dissent -= 15; reformist_strength += 15; left_dissent -= 15; prussian_police_loyalty += 0.3; rb_strength *= 1.1; rb_militancy *= 1.1; papen_strength += 1; schleicher_strength -= 1; hindenburg_schleicher_r -= 2; schleicher_approval += 1
 
-# TODO
+Despite rejecting Braun’s offer a few months ago, Schleicher has since reconsidered. With such a popular statesman on his side, his rule will gain legitimacy in the eyes of the <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> and the public. Braun, in turn, will tirelessly advocate for a pro-Schleicher policy within the party.
+
+Now, with control over the democratic bulwark once again, we can reassert democratic oversight over the bureaucracy and the Prussian police force, reversing the purges enacted under Papen and Schleicher.
+
+- @prussian_affairs
+- @prussian_affairs_dvp
 
 @labor
-title: Demand more concessions for the trade unions.
+title: Demand more concessions for the trade unions, and restoration of the German welfare system.
 subtitle: Push for higher wages, the repeal of Papen’s decrees, and the restoration of the eight-hour workday.
+unavailable-subtitle: [? if schleicher_spd_r < 5: We must improve our relations with Schleicher first. ?][? if hindenburg_schleicher_r < 3: Schleicher insists Hindenburg would block such a decree, unwilling to undo Papen’s measures. ?]
+choose-if: schleicher_spd_r >= 5 and hindenburg_schleicher_r >= 3
+view-if: not schleicher_labor
+on-arrival: schleicher_spd_concession = 1; schleicher_labor = 1; schleicher_spd_influence += 4; schleicher_spd_support += 2; schleicher_spd_r -= 2; hindenburg_schleicher_r -= 1; unemployed -= 1.8; economic_growth += 0.8; inflation += 1.4; budget -= 1; workers_kpd -= 6; unemployed_kpd -= 6; workers_nsdap -= 2; unemployed_nsdap -= 2; workers_spd += 6; unemployed_spd += 6; workers_z += 2; unemployed_z += 2; workers_dnef += 4; unemployed_dnef += 2; workers_dnef_bonus += 4; unemployed_dnef_bonus += 2; pro_republic += 5; labor_dissent -= 40; labor_strength += 15; schleicher_approval += 2
 
+The <span style="color: #c00000;">Social</span> General has lived up to his nickname: the means test for unemployment insurance has been abolished, and an eight-hour workday has been reinstated in select industries to "spread out" the work among more people. Funding for the Labor Ministry, gutted under Papen, has been restored, and welfare levels are climbing back from their absolute lows.
 
-@sa_ban
-title: Demand a nationwide ban on the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span>.
-subtitle: We must not push our luck—Schleicher has long aimed to "integrate" the paramilitaries, not dismantle them.
-
+The downside is clear—Schleicher now holds significant leverage over the unions, and many workers are beginning to place their loyalty in the chancellor, rather than the party that fought to make this possible.
 
 @cabinet_reshuffle
 title: Demand a reshuffle of the cabinet.
 subtitle: Schleicher’s cabinet remains dominated by deeply <span style="color: #808080;">reactionary</span> holdovers from the Papen cabinet of barons.
+unavailable-subtitle: [? if schleicher_spd_r < 5: We must improve our relations with Schleicher first. ?][? if hindenburg_schleicher_r < 5: Schleicher insists Hindenburg would block a reorganization of the cabinet away from his <span style="color: #808080;">reactionary</span> favorites. ?][? if not schleicher_post: Schleicher insists his government is merely a caretaker, and we must wait until after the next election. ?][? if dsu_in_gov: Schleicher is firmly committed to keeping the <span style="color: #7A3C00;">Nazis</span> in government. ?]
+choose-if: schleicher_spd_r >= 7 and z_in_gov and not dsu_in_gov and hindenburg_schleicher_r >= 5
+on-arrival: schleicher_spd_concession = 1; schleicher_spd_influence += 2; schleicher_spd_support += 2; schleicher_spd_r -= 2; papen_strength += 2; schleicher_strength -= 1; hindenburg_schleicher_r -= 3; schleicher_cabinet_weak = 1; unemployed -= 0.4; economic_growth += 0.2; workers_spd += 2; unemployed_spd += 2; workers_kpd -= 2; unemployed_kpd -= 2; pro_republic += 8; reformist_dissent -= 10; reformist_strength += 5; schleicher_approval += 1
 
+Although many <span style="color: #808080;">reactionary</span> figures in the cabinet have already been replaced by <span style="color: #000000;">Center Party</span> appointees, further reform is needed to nudge Schleicher’s government toward a more democratic appearance.
 
+The Finance Ministry, previously held by Schwerin von Krosigk, is handed over to a more neutral, non-partisan banker. The Interior Ministry and the Minister without Portfolio post are assigned to the [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?] moderate, Gottfried Treviranus. The Agricultural Ministry is granted to Hans Schlange-Schöningen, a [? if not kvp_formed and dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?][? if kvp_formed: <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?] <span style="color: #385A38;">agrarian</span> in support of peasant homesteads. Meanwhile, the <span style="color: #A2D8E0;">**BVP**</span> regains control over the Postal Ministry.
+
+Though these shifts may seem minor on the surface, the entry of more democratic-leaning ministers into the cabinet makes our continued support more palatable to both the party and our electorate—and subtly shifts the balance in key cabinet votes.

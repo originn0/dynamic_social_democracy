@@ -1,42 +1,95 @@
-title: Scheming
+title: [? if not dnef_formed: Scheming?][? if dnef_formed: The House of Cards?]
 new-page: true
 is-special: true
 
-= Scheming
+= [? if not dnef_formed: Scheming?][? if dnef_formed: The House of Cards?]
 
-<div style="text-align: center;">President: Paul von Hindenburg (<span style="color: #808080;">I</span>)</div>
-<div><img src="img/portraits/hindenburger.jpg" alt="Paul von Hindenburg" style="width: 60%;display: block;margin: auto;margin-bottom: 5px;"></div>
-<p style="text-align: center;margin-bottom: 0;">Favorite: [? if schleicher_strength >= papen_strength: Kurt von Schleicher?][? if schleicher_strength < papen_strength: Franz von Papen?]</p>
-<p style="text-align: center;margin-bottom: 5px;">[+ nsdap_chancellor +] chancellorship: [+ hindenburg_hitler_r : hindenburg_hitler +]</p>
-<h1>The Camarilla</h1>
-<div style="display: flex;gap: 5px;margin-bottom: 5px;margin-left: -3px;">
-<img src="img/portraits/PapenFranz.jpg" alt="Franz von Papen" style="width: 50%;">
-<img src="img/portraits/SchleicherKurt.jpg" alt="Kurt von Schleicher" style="width: 50%;"></div>
-<div style="display: flex; justify-content: space-between; gap: 0px; margin-bottom: 5px;">
-<div style="flex: 1;">
-  <p style="font-weight: bold;margin-bottom: 2px;">Franz von Papen</p>
-  <p style="white-space: nowrap;margin-bottom: 2px;">Influence: [+ papen_strength : camarilla_strength +]</p>
-  <p style="margin-bottom: 2px;">Goal: [+ papen_goal +] </p>
-</div>
-<div style="flex: 1;margin-right: -8px;">
-  <p style="white-space: nowrap;text-align: center;font-weight: bold;margin-bottom: 0px;">Kurt von Schleicher</p>
-  <p style="margin-bottom: 2px;">Influence: [+ schleicher_strength : camarilla_strength +]</p>
-  <p style="margin-bottom: 2px;">Goal: [+ schleicher_goal +]</p>
-</div>
-</div>
-<div style="display: flex;gap: 5px;margin-bottom: 5px;margin-left: -3px;">
-<img src="img/portraits/Meissner.jpg" alt="Otto Meissner" style="width: 50%;">
-<img src="img/portraits/oskar.jpg" alt="Oskar von Hindenburg" style="width: 50%;">
-</div>
-<div style="display: flex; justify-content: space-between; gap: 0px; margin-bottom: 5px;">
-<div style="flex: 1;">
-  <p style="font-weight: bold;margin-bottom: 2px;">Otto Meissner</p>
-  <p style="margin-bottom: 2px;">Influence: [+ meissner_strength : camarilla_strength +]</p>
-  <p style="margin-bottom: 2px;">Goal: [+ meissner_goal +]</p>
-</div>
-<div style="flex: 1;">
-  <p style="font-weight: bold; margin-bottom: 0px;">Oskar von Hindenburg</p>
-  <p style="margin-bottom: 2px;">Influence: [+ oskar_strength : camarilla_strength +]</p>
-  <p style="margin-bottom: 2px;">Goal: [+ oskar_goal +]</p>
-</div>
-</div>
+[? if not dnef_formed: <div style="text-align: center;">President: Paul von Hindenburg (<span style="color: #808080;">I</span>)</div> ?]
+[? if not dnef_formed: <div><img src="img/portraits/hindenburger.jpg" alt="Paul von Hindenburg" style="width: 60%;display: block;margin: auto;margin-bottom: 5px;"></div> ?]
+[? if not dnef_formed: <p style="text-align: center;margin-bottom: 0;">Favorite: [? if schleicher_strength >= papen_strength: Kurt von Schleicher?][? if schleicher_strength < papen_strength: Franz von Papen?]</p> ?]
+[? if not dnef_formed: <p style="text-align: center;margin-bottom: 5px;">[+ nsdap_chancellor +] chancellorship: [+ hindenburg_hitler_r : hindenburg_hitler +]</p> ?]
+[? if not dnef_formed: <h1>The Camarilla</h1> ?]
+[? if not dnef_formed: <div style="display: flex;gap: 5px;margin-bottom: 5px;margin-left: -3px;"> ?]
+[? if not dnef_formed: <img src="img/portraits/PapenFranz.jpg" alt="Franz von Papen" style="width: 50%;"> ?]
+[? if not dnef_formed: <img src="img/portraits/SchleicherKurt.jpg" alt="Kurt von Schleicher" style="width: 50%;"> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: <div style="display: flex; justify-content: space-between; gap: 0px; margin-bottom: 5px;"> ?]
+[? if not dnef_formed: <div style="flex: 1;"> ?]
+[? if not dnef_formed: <p style="font-weight: bold;margin-bottom: 2px;">Franz von Papen</p> ?]
+[? if not dnef_formed: <p style="white-space: nowrap;margin-bottom: 2px;">Influence: [+ papen_strength : camarilla_strength +]</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Goal: [+ papen_goal +] </p> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: <div style="flex: 1;margin-right: -8px;"> ?]
+[? if not dnef_formed: <p style="white-space: nowrap;text-align: center;font-weight: bold;margin-bottom: 0px;">Kurt von Schleicher</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Influence: [+ schleicher_strength : camarilla_strength +]</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Goal: [+ schleicher_goal +]</p> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: <div style="display: flex;gap: 5px;margin-bottom: 5px;margin-left: -3px;"> ?]
+[? if not dnef_formed: <img src="img/portraits/Meissner.jpg" alt="Otto Meissner" style="width: 50%;"> ?]
+[? if not dnef_formed: <img src="img/portraits/oskar.jpg" alt="Oskar von Hindenburg" style="width: 50%;"> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: <div style="display: flex; justify-content: space-between; gap: 0px; margin-bottom: 5px;"> ?]
+[? if not dnef_formed: <div style="flex: 1;"> ?]
+[? if not dnef_formed: <p style="font-weight: bold;margin-bottom: 2px;">Otto Meissner</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Influence: [+ meissner_strength : camarilla_strength +]</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Goal: [+ meissner_goal +]</p> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: <div style="flex: 1;"> ?]
+[? if not dnef_formed: <p style="font-weight: bold; margin-bottom: 0px;">Oskar von Hindenburg</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Influence: [+ oskar_strength : camarilla_strength +]</p> ?]
+[? if not dnef_formed: <p style="margin-bottom: 2px;">Goal: [+ oskar_goal +]</p> ?]
+[? if not dnef_formed: </div> ?]
+[? if not dnef_formed: </div> ?]
+
+[? if dnef_formed: <div style="position: relative; width: 100%; max-width: 600px; margin: auto;"> ?]
+
+[? if dnef_formed: <div style="display: flex; justify-content: space-between; width: 100%;"> ?]
+[? if dnef_formed: <div style="text-align: left; flex: 1;">Paul von Hindenburg</div> ?]
+[? if dnef_formed: <div style="text-align: right; flex: 1;">Kurt von Schleicher</div> ?]
+[? if dnef_formed: </div> ?]
+[? if dnef_formed: <div style="display: flex;gap: 5px;margin-bottom: 5px;margin-left: -3px;"> ?]
+[? if dnef_formed: <img src="img/portraits/hindenburger.jpg" alt="Paul von Hindenburg" style="width: 50%;"> ?]
+[? if dnef_formed: <img src="img/portraits/SchleicherKurt.jpg" alt="Kurt von Schleicher" style="width: 50%;"> ?]
+[? if dnef_formed: </div> ?]
+[? if dnef_formed: <p style="text-align: center;margin-bottom: 5px;">Hindenburg's confidence: [+ hindenburg_schleicher_r : confidence +]</p> ?]
+[? if dnef_formed: <p style="text-align: center;margin-bottom: 5px;">Schleicher's public popularity: [+ schleicher_approval : schleicher_popularity +]</p> ?]
+
+[? if dnef_formed: <div style="display: flex; gap: 5px; margin-bottom: 5px; margin-left: -3px;"> ?]
+[? if dnef_formed: <img src="img/beauty_of_labor.jpg" alt="Workers and Trade Unions" style="width: 50%;"> ?]
+[? if dnef_formed: <img src="img/capitalism.jpg" alt="Big Business and Industrialists" style="width: 50%;"> ?]
+[? if dnef_formed: </div> ?]
+
+[? if dnef_formed: <div style="display: flex; justify-content: space-between; gap: 0px; margin-bottom: 5px;"> ?]
+[? if dnef_formed: <div style="flex: 1;"> ?]
+[? if dnef_formed: <p style="font-weight: bold;margin-bottom: 2px;">Workers</p> ?]
+[? if dnef_formed: <p style="white-space: nowrap;margin-bottom: 2px;">Influence: dominant</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Opinion of Schleicher: [+ workers_schleicher : schleicher_spd_4 +]</p> ?]
+[? if dnef_formed: </div> ?]
+[? if dnef_formed: <div style="flex: 1; margin-right: -8px;"> ?]
+[? if dnef_formed: <p style="white-space: nowrap;font-weight: bold;margin-bottom: 0px;">Industrialists</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Influence: powerful</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Opinion of Schleicher: [+ industrialists_schleicher : schleicher_spd_4 +]</p> ?]
+[? if dnef_formed: </div> ?]
+[? if dnef_formed: </div> ?]
+
+[? if dnef_formed: <div style="display: flex; gap: 5px; margin-bottom: 5px; margin-left: -3px;"> ?]
+[? if dnef_formed: <img src="img/weimar_coalition_3.jpg" alt="Republicans and Constitutionalists" style="width: 50%;"> ?]
+[? if dnef_formed: <img src="img/dnvp_monarchy.jpg" alt="Nationalists and Conservatives" style="width: 50%;"> ?]
+[? if dnef_formed: </div> ?]
+
+[? if dnef_formed: <div style="display: flex; justify-content: space-between; gap: 0px; margin-bottom: 5px;"> ?]
+  
+[? if dnef_formed: <div style="flex: 1;"> ?]
+[? if dnef_formed: <p style="font-weight: bold;margin-bottom: 2px;">Republicans</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Influence: [? if weimar_votes < 20: modest?][? if weimar_votes < 30 and weimar_votes >= 20: sizable?][? if weimar_votes < 40 and weimar_votes >= 30: substantial?][? if weimar_votes >= 40: powerful?]</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Opinion of Schleicher: [+ republicans_schleicher : schleicher_spd_4 +]</p> ?]
+[? if dnef_formed: </div> ?]
+
+[? if dnef_formed: <div style="flex: 1;"> ?]
+[? if dnef_formed: <p style="font-weight: bold; margin-bottom: 0px;">Nationalists</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Influence: [? if dnvp_votes + dnf_votes + kvp_votes < 15: modest?][? if dnvp_votes + dnf_votes + kvp_votes >= 15: sizable?]</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Opinion of Schleicher: [+ nationalists_schleicher : schleicher_spd_4 +]</p> ?]
+[? if dnef_formed: </div> ?]
+
+[? if dnef_formed: </div> ?]

@@ -2,7 +2,6 @@ title: The Reichstag Agenda Committee Discusses Reconvocation
 subtitle: Schleicher's new lease on life?
 view-if: chancellor = "Schleicher" and schleicher_time and (next_reichstag_time - 1) == rubicon_time
 on-arrival: {!
-
 if (((Q.reichswehr_strength*Q.reichswehr_militancy + Q.prussian_police_strength*Q.prussian_police_militancy)*2 < Q.total_force && Q.prussia_leader == "Schleicher") || (Q.reichswehr_strength*Q.reichswehr_militancy)*2 < (Q.total_force + Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty) && Q.prussia_leader != "Schleicher") {
   Q.schleicher_reichstag_smart = 1;
 }
@@ -12,7 +11,18 @@ new-page: true
 tags: event
 max-visits: 1
 priority: 2
-face-image: img/reichstag.jpg
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichstag.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 go-to: schleicher_reichstag_menu
 
 = Reichstag Reconvocation Decision
