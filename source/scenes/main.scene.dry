@@ -1232,6 +1232,7 @@ max-cards: 3
 - @govt
 - @eco
 - @time
+- @time_2
 - #advisor
 - @shuffle_leadership_pinned
 
@@ -2473,6 +2474,7 @@ max-cards: 4
 - @govt
 - @eco
 - @time
+- @time_2
 - #advisor
 - @shuffle_leadership_pinned
 
@@ -2494,8 +2496,16 @@ is-deck: true
 
 @time
 title: Bide our Time
-view-if: rubicon
+view-if: rubicon and (schleicher_spd_influence < 6 or chancellor != "Schleicher" or not schleicher_time or schleicher_time < 8)
 card-image: img/hourglass.jpg
+is-deck: true
+
+- @rubicon_filler
+
+@time_2
+title: ‎ 
+view-if: rubicon and not (schleicher_spd_influence < 6 or chancellor != "Schleicher" or not schleicher_time or schleicher_time < 8)
+card-image: img/black.jpg
 is-deck: true
 
 - @rubicon_filler

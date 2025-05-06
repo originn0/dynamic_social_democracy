@@ -1,0 +1,333 @@
+title: The <span style="color: #700000;">**KPD**</span> Is Banned!
+subtitle: The Interior Ministry discovers "alarming evidence" of a planned revolution.
+view-if: chancellor == "Schleicher" and dsu_in_gov and dsu_policy and reichstag_joever_time >= 1
+max-visits: 1
+new-page: true
+priority: -1
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/left_wing.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= The <span style="color: #700000;">**KPD**</span> Is Banned!
+
+Wilhelm Frick of the Interior Ministry has announced an emergency measure, effectively banning the <span style="color: #700000;">**KPD**</span> after conveniently "uncovering" evidence of a planned revolution involving the <span style="color: #700000;">**RFB**</span>—including several warehouses allegedly stocked with weapons. A raid on a <span style="color: #700000;">**Communist**</span> party office has also produced a so-called plan to establish a new "<span style="color: #750e0e;">Soviet Germany</span>" in the aftermath of the revolt.
+
+According to the government, these plans were to be set in motion in protest against Schleicher's unconstitutional adjournment and the mass arrests of <span style="color: #700000;">**Communist**</span> deputies that followed. Only the state's last-minute intervention, they claim, has saved Germany from violent revolt.
+
+But Schleicher and the <span style="color: #7A3C00;">Nazis</span> cannot be trusted. They could just as easily have planted the evidence to manufacture a pretext for crushing the <span style="color: #700000;">**Communists**</span>.
+
+- @kpd_ban
+
+@kpd_ban
+title: President Hindenburg wastes no time signing all requested emergency powers.
+on-arrival: {!
+Q.schleicher_spd_r -= 2;
+Q.schleicher_spd_influence -= 1;
+Q.schleicher_spd_support -= 3;
+
+Q.pro_republic -= 10;
+
+Q.rfb_militancy *= 0.8;
+Q.rfb_strength *= 0.6;
+
+Q.workers_spd += 2;
+Q.workers_kpd -= 6;
+Q.workers_sapd -= 4;
+
+Q.new_middle_kpd -= 2;
+Q.new_middle_sapd -= 2;
+
+Q.unemployed_spd += 2;
+Q.unemployed_kpd -= 4;
+Q.unemployed_sapd -= 4;
+
+Q.kpd_banned = 1;
+Q.sapd_banned = 1;
+
+Q.kpd_r = 0;
+Q.sapd_r = 0;
+
+total_r_sum = 0;
+
+for (var party of Q.parties) {
+    total_r_sum += Q[party + '_r'];
+}
+
+if (total_r_sum !== 100) {
+    let normalization_factor = 100 / total_r_sum;
+    for (var party of Q.parties) {
+        Q[party + '_r'] = Math.round(Q[party + '_r'] * normalization_factor * 10) / 10;
+    }
+}
+
+if (Q.prussia_leader === "Strasser") {
+  Q.rfb_militancy *= 0.9;
+  Q.rfb_strength *= 0.8;
+  Q.workers_kpd -= 4;
+  Q.new_middle_kpd -= 2;
+  Q.unemployed_kpd -= 4;
+  Q.workers_sapd -= 2;
+  Q.unemployed_sapd -= 2;
+}
+!}
+
+All <span style="color: #700000;">**Communist**</span> Reichstag members who haven't fled to Moscow are arrested and thrown in forced labor camps, working over 14 hours a day to further public works projects, and more problematic <span style="color: #700000;">**RFB**</span> fighters are given the death penalty en masse, being prosecuted by special local courts. 
+
+<span style="color: #700000;">**Communist**</span> party offices are officially closed down, with the Reichswehr's militia quickly suppressing any public demonstration or attempted armed uprising against the ban. Local mayors belonging to the <span style="color: #700000;">**KPD**</span> are removed by force, and replaced with [? if dnef_formed: <span style="color: #BFC8CC;">**DNEF**</span>?][? if not dnef_formed: Schleicher?] loyalists.
+
+[? if prussia_leader == "Strasser": Furthermore, Strasser has authorized an extensive crackdown on suspected <span style="color: #700000;">Communist</span> members using his authority as Minister-President of Prussia, even if said members don't pose a significant threat. ?]
+
+[? if sapd_formed: Along with the <span style="color: #700000;">**KPD**</span>, the <span style="color: #9B0000;">**SAPD**</span> is seen as complicit and has its members persecuted in the same fashion as the former. Are we really going to allow the government to throw our former party members and comrades into prisons? ?][? if not sapd_formed: Are we really going to allow the government to throw our comrades into prisons? ?]
+
+- @do_nothing
+- @fight
+
+@do_nothing
+title: We should be grateful that nothing happened to us!
+on-arrival: {!
+Q.z_minus_bvp_votes = parseFloat((Q.z_votes - Q.bvp_votes).toFixed(1));
+Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
+!}
+on-display: {!
+data = [{
+    "id": "kpd",
+    "legend": "KPD",
+    "name": "KPD",
+    "seats": Math.round(Q.kpd_r * 5),
+}];
+
+if (Q.sapd_formed && Q.sapd_r) {
+    data.push({
+        "id": "sapd",
+        "legend": "SAPD",
+        "name": "SAPD",
+        "seats": Math.round(Q.sapd_r * 5),
+    });
+}
+
+data = data.concat([{
+    "id": "spd",
+    "legend": "SPD",
+    "name": "SPD",
+    "seats": Math.round(Q.spd_r * 5),
+}]);
+
+if (Q.ddp_r && !Q.lvp_formed) {
+    data.push({
+        "id": "ddp",
+        "legend": Q.ddp_name,
+        "name": Q.ddp_name,
+        "seats": Math.round(Q.ddp_r * 5),
+    });
+}
+
+if (Q.lvp_r && Q.lvp_formed) {
+    data.push({
+        "id": "lvp",
+        "legend": "LVP",
+        "name": "LVP",
+        "seats": Math.round(Q.lvp_r * 5),
+    });
+}
+
+data = data.concat([{
+        "id": "z",
+        "legend": "Center",
+        "name": "Center",
+        "seats": Math.round(Q.z_minus_bvp_r * 5),
+    },
+    {
+        "id": "bvp",
+        "legend": "BVP",
+        "name": "BVP",
+        "seats": Math.round(Q.bvp_r * 5),
+    }
+]);
+
+if (Q.dvp_r && !Q.lvp_formed && Q.dvp_exist) {
+    data.push({
+        "id": "dvp",
+        "legend": "DVP",
+        "name": "DVP",
+        "seats": Math.round(Q.dvp_r * 5),
+    });
+}
+
+if (Q.dnef_r && Q.dnef_formed) {
+    data.push({
+        "id": "dnef",
+        "legend": "DNEF",
+        "name": "DNEF",
+        "seats": Math.round(Q.dnef_r * 5),
+    });
+}
+
+if (Q.other_r) {
+    data.push({
+        "id": "other",
+        "legend": "Other",
+        "name": "Other",
+        "seats": Math.round(Q.other_r * 5),
+    });
+}
+
+if (Q.kvp_formed && Q.kvp_r) {
+    data.push({
+        "id": "kvp",
+        "legend": "KVP",
+        "name": "KVP",
+        "seats": Math.round(Q.kvp_r * 5),
+    });
+}
+
+if (Q.dnvp_r) {
+    data.push({
+        "id": "dnvp",
+        "legend": "DNVP",
+        "name": "DNVP",
+        "seats": Math.round(Q.dnvp_r * 5),
+    });
+}
+
+if (Q.dnf_formed && Q.dnf_r) {
+    data.push({
+        "id": "dnf",
+        "legend": "DNF",
+        "name": "DNF",
+        "seats": Math.round(Q.dnf_r * 5),
+    });
+}
+
+if (Q.dsu_exist && Q.dsu_r) {
+    data.push({
+        "id": "dsu",
+        "legend": "DSU",
+        "name": "DSU",
+        "seats": Math.round(Q.dsu_r * 5),
+    });
+}
+
+if (Q.nsdap_split && Q.nsdap_hitler_r) {
+    data.push({
+        "id": "nsdap",
+        "legend": "NSDAP",
+        "name": "NSDAP",
+        "seats": Math.round(Q.nsdap_hitler_r * 5),
+    });
+}
+
+if (!Q.nsdap_split && Q.nsdap_r) {
+    data.push({
+        "id": "nsdap",
+        "legend": "NSDAP",
+        "name": "NSDAP",
+        "seats": Math.round(Q.nsdap_r * 5),
+    });
+}
+
+if (Q.nvf_exist && Q.nvf_r) {
+    data.push({
+        "id": "nvf",
+        "legend": "NVF",
+        "name": "NVF",
+        "seats": Math.round(Q.nvf_r * 5),
+    });
+}
+if (d3 && window) {
+    // get screen width
+    var width = 500;
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50;
+        height = width;
+        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
+    }
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#reichstag").datum(data).call(parliament);
+}
+!}
+
+It must suck for those <span style="color: #700000;">**Communists**</span>, but they had it coming for them. Cynically, we could benefit electorally as the only legal <span style="color: #9B0000;">Marxist</span> party.
+
+= Reichstag composition
+
+{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+
+{!<table>!}
+[? if not dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!} ?]
+[? if dnef_formed: {!<tr><td><div class="box" style='background-color:#BFC8CC; outline: 2px; outline-style: solid;'> </div></td><td>!} **DNEF:** {!</td><td>!} **[+ dnef_r +]%** {!</td></tr>!} ?]
+
+[? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div></td><td>!} SPD: {!</td><td>!} [+ spd_r +]% {!</td></tr>!} ?]
+
+[? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div></td><td>!} SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
+
+{!<tr><td><div class="box" style='background-color:#700000'> </div></td><td>!} KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
+
+[? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!} ?]
+[? if not lvp_formed and not dstp_dnef: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!} ?]
+
+[? if lvp_formed: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r +]% {!</td></tr>!} ?]
+
+[? if z_dnef: {!<tr><td><div class="box" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!} ?]
+[? if not z_dnef: {!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!} ?]
+
+[? if z_dnef: {!<tr><td><div class="box" style='background-color:#7aa7af'> </div></td><td>!} BVP: {!</td><td>!} [+ bvp_r +]% {!</td></tr>!} ?]
+[? if not z_dnef: {!<tr><td><div class="box" style='background-color:#A2D8E0'> </div></td><td>!} BVP: {!</td><td>!} [+ bvp_r +]% {!</td></tr>!} ?]
+
+[? if not lvp_formed and dvp_exist and dvp_dnef: {!<tr><td><div class="box" style='background-color:#AA861F'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!} ?]
+[? if not lvp_formed and dvp_exist and not dvp_dnef: {!<tr><td><div class="box" style='background-color:#D5AC27'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!} ?]
+
+[? if other_dnef: {!<tr><td><div class="box" style='background-color:#707070'> </div></td><td>!} Others: {!</td><td>!} [+ other_r +]% {!</td></tr>!} ?]
+[? if not other_dnef: {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div></td><td>!} Other parties: {!</td><td>!} [+ other_r +]% {!</td></tr>!} ?]
+
+[? if kvp_formed and not cvp_kvp_formed and kvp_dnef: {!<tr><td><div class="box" style='background-color:#0072C0'> </div></td><td>!} KVP: {!</td><td>!} [+ kvp_r +]% {!</td></tr>!} ?]
+[? if kvp_formed and not cvp_kvp_formed and not kvp_dnef: {!<tr><td><div class="box" style='background-color:#0087DC'> </div></td><td>!} KVP: {!</td><td>!} [+ kvp_r +]% {!</td></tr>!} ?]
+
+[? if not cvp_formed and dnvp_dnef: {!<tr><td><div class="box" style='background-color:#316B8F'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!} ?]
+[? if not cvp_formed and not dnvp_dnef: {!<tr><td><div class="box" style='background-color:#3E88B3'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!} ?]
+
+[? if dnf_formed: {!<tr><td><div class="box" style='background-color:#003755'> </div></td><td>!} DNF: {!</td><td>!} [+ dnf_r +]% {!</td></tr>!} ?]
+
+[? if dsu_exist: {!<tr><td><div class="box" style='background-color:#6A1E1E'> </div></td><td>!} DSU: {!</td><td>!} [+ dsu_r +]% {!</td></tr>!} ?]
+
+[? if not nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td></tr>!} ?]
+[? if nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_hitler_r +]% {!</td></tr>!} ?]
+
+[? if nvf_exist: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r +]% {!</td></tr>!} ?]
+{!</table>!}
+
+- @soviet_union_aid
+
+@soviet_union_aid
+title: How will the <span style="color: #750e0e;">Soviet Union</span> respond?
+subtitle: The country ironically funding the Reichswehr's secret rearmament.
+
+Despite the <span style="color: #750e0e;">Soviet Union</span> perhaps being indirectly responsible by training the officers battling their <span style="color: #700000;">**Communist**</span> brethren on the streets, many <span style="color: #750e0e;">Soviet</span> politicians are privately outraged as fleeing <span style="color: #700000;">**KPD**</span> politicians spread the news of their party's dissolution.
+
+However, despite this, Stalin has adhered to his policy of secretly aiding Germany in its rearmament through officer training and supplying armament technology. Schleicher's fears have thus subsided for now, with Stalin having near complete control over his party.
+
+@fight
+title: Revolt! This is Schleicher's second step toward dictatorship!
+
+Schleicher isn't going to hand over power once there is stability, he is (rightfully) paranoid that we will simply reverse all the progress made toward militarization the moment we re-enter office democratically considering Hindenburg isn't expected to live much longer. 
+
+This, along with the unconstitutional violation committed just a week ago, has finally energized the remaining <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> against the Chancellor. 
+
+Perhaps its our time to strike?
+
+- @civil_war: The <span style="color: #c00000;">**SPD**</span> stands with the <span style="color: #700000;">**Communists**</span>.
+- @do_nothing: This isn't our fight.
