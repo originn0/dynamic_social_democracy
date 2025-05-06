@@ -16,6 +16,7 @@ The <span style="color: #c00000;">**SPD**</span> cannot govern by itself yet. Be
 - @liberals_lvp: Strengthen our bonds with the <span style="color: #FFCC00;">Liberal People's Party</span>.
 - @center: Strengthen our bonds with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 - @cvp: Reconcile with the <span style="color: #000000;">Christian People's Party</span>.
+- @sapd: Improve relations with our Marxist brethren in the <span style="color: #9B0000;">**SAPD**</span>.
 - @kpd: Work towards repairing relationships with the <span style="color: #700000;">Communist Party</span>.
 - @spd_alone: The <span style="color: #c00000;">SPD</span> can stand alone for now.
 - @easy_discard
@@ -72,6 +73,14 @@ choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; z_relation += 2 if z_ideology == "Left"
 go-to: center_op if not spd_in_government and chancellor != "Brüning" and ((chancellor != "Papen" and chancellor != "Schleicher") or z_in_gov); center_op_2 if not spd_in_government and (chancellor == "Papen" or chancellor == "Schleicher") and not z_in_gov; center_coalition if spd_in_government; center_bruning if chancellor = "Brüning" and not spd_in_government
+
+@sapd
+subtitle: -1 resources
+view-if: sapd_formed
+choose-if: resources >= 1
+on-arrival: resources -= 1; sapd_relation += 8
+
+Relations are improved with the <span style="color: #9B0000;">**SAPD**</span>, the party formed out of our dissendent left.
 
 @center_op
 on-arrival: z_relation += 5*(1 - dissent)

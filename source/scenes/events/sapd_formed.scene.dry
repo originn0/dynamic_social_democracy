@@ -4,13 +4,19 @@ Q.sapd_formed = 1;
 Q.parties.push('sapd');
 Q.parties_graph.push('sapd');
 
+Q.sapd_leader = "Rosenfeld";
+Q.sapd_idealogy = "Centrist Marxism";
+
 Q.workers_sapd = 10;
-Q.workers_spd -= 3;
+Q.workers_spd -= 6;
 Q.new_middle_sapd = 1;
 Q.old_middle_sapd = 0;
 Q.rural_sapd = 0;
-Q.unemployed_sapd = 2;
+Q.unemployed_sapd = 6;
+Q.unemployed_spd -= 6;
 Q.catholics_sapd = 0;
+
+Q.sapd_relation = Q.old_sapd_relation;
 
 Q.workers_other -= 5;
 
@@ -18,13 +24,16 @@ if (Q.unions_independent) {
     Q.workers_sapd += 8;
     Q.unemployed_sapd += 4;
 }
-
-Q.old_workers_sapd_display = 0
-Q.old_new_middle_sapd_display = 0
-Q.old_old_middle_sapd_display = 0
-Q.old_rural_sapd_display = 0
-Q.old_unemployed_sapd_display = 0
-Q.old_catholics_sapd_display = 0
+if (Q.kpd_leader == "Thälmann") {
+ Q.workers_kpd -= 5;
+ Q.workers_sapd += 5;
+}
+Q.old_workers_sapd_display = 0;
+Q.old_new_middle_sapd_display = 0;
+Q.old_old_middle_sapd_display = 0;
+Q.old_rural_sapd_display = 0;
+Q.old_unemployed_sapd_display = 0;
+Q.old_catholics_sapd_display = 0;
 
 // update all records
 Q.sapd_r = 0;
