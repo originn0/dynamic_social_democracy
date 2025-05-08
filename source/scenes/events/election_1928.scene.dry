@@ -72,6 +72,9 @@ on-arrival: {!
     if (Q.other_votes >= 8 && Q.year >= 1931) {
         Q.adjustmentFactors_other += 0.1;
     }
+    if (Q.other_dnef) {
+        Q.adjustmentFactors_other = 0;
+    }
     if (Q.cvp_formed) Q.adjustmentFactors_other = 0.6;
     Q.adjustmentFactors_ddp = 1.0;
     if (!Q.bourgeois_list_ddp && !Q.dstp_dnef) {
@@ -120,11 +123,12 @@ on-arrival: {!
         Q['old_' + party + '_r'] = Q[party + '_r']; // Store the original r value for comparison
         
         // Handle constitutional reform logic: set the party's share to 0 based on conditions
-        if (Q.constitutional_reform > 0 &&
-            (Q[party + '_votes'] < Q.electoral_threshold || 
-            (Q.electoral_threshold > 1 && party === 'other') || 
-            Q[party + '_banned'])) {
+        if ((Q.constitutional_reform > 0 &&
+             (Q[party + '_votes'] < Q.electoral_threshold || 
+             (Q.electoral_threshold > 1 && party === 'other'))) 
+            || Q[party + '_banned']) {
             Q[party + '_r'] = 0;
+        
         } else {
             // Adjust `r` based on the adjustment factor if not affected by constitutional reform
             Q['original_' + party + '_r'] = Math.round(Q[party + '_votes'] * 10) / 10;
@@ -1773,6 +1777,7 @@ Q.vice_chancellor = "Strasser";
 Q.workers_nsdap += 3;
 Q.new_middle_nsdap += 3;
 Q.unemployed_nsdap += 3;
+Q.hindenburg_schleicher_r += 2;
 
 Q.schleicher_approval += (Q.nsdap_votes / 10);
 Q.schleicher_approval -= (Q.spd_votes / 10);
@@ -1869,6 +1874,7 @@ if (Q.prussia_leader == "Schleicher") {
 Q.vice_chancellor = "Stegerwald";
 Q.workers_z += 2;
 Q.pro_republic += 5;
+Q.hindenburg_schleicher_r += 1;
 
 Q.schleicher_approval += ((Q.z_votes + Q.spd_votes) / 10);
 Q.schleicher_approval -= (Q.nsdap_votes / 10);

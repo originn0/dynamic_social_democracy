@@ -17,8 +17,8 @@ if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 4))) {
     Q.dvp_ideology = "Moderate"
 }
 
-if (((Q.pro_republic >= 80 && Q.dvp_ideology == "Left") && Q.dvp_reform) || Q.dnvp_leader == "Lambach") Q.thiel_unlock = 1;
-if (((Q.pro_republic < 80 || Q.dvp_ideology != "Left") && Q.dvp_reform) || Q.dnvp_leader == "Lambach") Q.glatzel_unlock = 1;
+if ((Q.pro_republic >= 80 && Q.dvp_ideology == "Left") && Q.dvp_reform && Q.dnvp_leader != "Lambach") Q.thiel_unlock = 1;
+if ((Q.pro_republic < 80 || Q.dvp_ideology != "Left") && Q.dvp_reform && Q.dnvp_leader != "Lambach") Q.glatzel_unlock = 1;
 if (Q.dvp_ideology == "Right" && !Q.thiel_unlock && !Q.glatzel_unlock) Q.dingeldey_unlock = 1;
 if ((Q.dvp_ideology == "Moderate" || Q.dvp_ideology == "Left") && !Q.thiel_unlock && !Q.glatzel_unlock) Q.kardorff_unlock = 1;
 

@@ -34,6 +34,7 @@ Q.old_middle_dvp -= 4;
 Q.old_middle_lvp -= 4;
 Q.old_middle_z -= 2;
 Q.old_middle_spd -= 4;
+Q.old_middle_dnef += Q.old_middle_dnef_bonus;
 
 Q.rural_dnef = 12;
 Q.rural_dnvp -= 6;
@@ -42,6 +43,7 @@ Q.rural_dvp -= 2;
 Q.rural_lvp -= 2;
 Q.rural_z -= 2;
 Q.rural_spd -= 2;
+Q.rural_dnef += Q.rural_dnef_bonus;
 
 Q.unemployed_dnef = 14;
 Q.unemployed_nsdap -= 4;
@@ -59,7 +61,16 @@ Q.catholics_dnef = 8;
 Q.catholics_z -= 4;
 Q.catholics_nsdap -= 2;
 Q.catholics_spd -= 2;
-Q.unemployed_dnef += Q.catholics_dnef_bonus;
+Q.catholics_dnef += Q.catholics_dnef_bonus;
+
+if (Q.total_dnef_bonus) {
+    Q.workers_dnef -= Q.total_dnef_bonus;
+    Q.new_middle_dnef -= Q.total_dnef_bonus;
+    Q.old_middle_dnef -= Q.total_dnef_bonus;
+    Q.rural_dnef -= Q.total_dnef_bonus;
+    Q.unemployed_dnef -= Q.total_dnef_bonus;
+    Q.catholics_dnef -= Q.total_dnef_bonus;
+}
 
 Q.workers_other *= 0.8;
 Q.workers_dnef += Q.workers_other*0.2;

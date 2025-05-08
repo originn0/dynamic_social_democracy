@@ -1,0 +1,40 @@
+title: Reichstag Reconvenes
+subtitle: Schleicher faces a vote of no confidence!
+view-if: chancellor = "Schleicher" and schleicher_time and schleicher_post_protests and next_reichstag_time == rubicon_time and next_reichstag_time > 0
+on-arrival: reichstag_rubicon = 1
+new-page: true
+tags: event
+max-visits: 1
+priority: 2
+
+= Reichstag Reconvenes
+
+Let's cut to the chase.
+
+- @reichstag
+
+@reichstag
+title: A vote of no confidence is introduced against Schleicher.
+on-arrival: {!
+Q.reichstag_rubicon = 0;
+
+Q.next_election_week = Q.week + 6;
+Q.next_election_month = Q.month;
+Q.next_election_year = Q.year;
+Q.next_election_time = Q.time;
+
+let added_months = Math.floor(Q.next_election_week / 4);
+Q.next_election_month += added_months;
+Q.next_election_time += added_months;
+Q.next_election_week = Q.next_election_week % 4;
+if (Q.next_election_week === 0) Q.next_election_week = 1;
+
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year += 1;
+}
+!}
+
+It succeeds.
+
+New Reichstag elections are scheduled for [+ next_election_month : month +] [+ next_election_year +], Week [+ next_election_week +].

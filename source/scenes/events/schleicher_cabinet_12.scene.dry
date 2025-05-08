@@ -1,6 +1,7 @@
 title: The <span style="color: #700000;">**KPD**</span> Is Banned!
 subtitle: The Interior Ministry discovers "alarming evidence" of a planned revolution.
 view-if: chancellor == "Schleicher" and dsu_in_gov and dsu_policy and reichstag_joever_time >= 1
+on-arrival: kpd_relation = 40 if kpd_relation < 40
 max-visits: 1
 new-page: true
 priority: -1
@@ -31,9 +32,12 @@ But Schleicher and the <span style="color: #7A3C00;">Nazis</span> cannot be trus
 @kpd_ban
 title: President Hindenburg wastes no time signing all requested emergency powers.
 on-arrival: {!
+Q.kpd_explode = 1;
+
 Q.schleicher_spd_r -= 2;
 Q.schleicher_spd_influence -= 1;
 Q.schleicher_spd_support -= 3;
+Q.schleicher_approval -= 1;
 
 Q.pro_republic -= 10;
 
@@ -53,6 +57,10 @@ Q.unemployed_sapd -= 4;
 
 Q.kpd_banned = 1;
 Q.sapd_banned = 1;
+
+for (var party of Q.parties) {
+    Q[party+'_r_pre'] = Q[party+'_r'];
+}
 
 Q.kpd_r = 0;
 Q.sapd_r = 0;
@@ -90,6 +98,7 @@ All <span style="color: #700000;">**Communist**</span> Reichstag members who hav
 [? if sapd_formed: Along with the <span style="color: #700000;">**KPD**</span>, the <span style="color: #9B0000;">**SAPD**</span> is seen as complicit and has its members persecuted in the same fashion as the former. Are we really going to allow the government to throw our former party members and comrades into prisons? ?][? if not sapd_formed: Are we really going to allow the government to throw our comrades into prisons? ?]
 
 - @do_nothing
+- @fight_mild
 - @fight
 
 @do_nothing
@@ -320,14 +329,259 @@ Despite the <span style="color: #750e0e;">Soviet Union</span> perhaps being indi
 
 However, despite this, Stalin has adhered to his policy of secretly aiding Germany in its rearmament through officer training and supplying armament technology. Schleicher's fears have thus subsided for now, with Stalin having near complete control over his party.
 
+@fight_mild
+title: We'll launch peaceful protests and a general strike. Schleicher can't rule without the people's support. 
+subtitle: But he may seize on this as a pretext to escalate the crackdown.
+unavailable-subtitle: Schleicher has too much influence over us.
+choose-if: schleicher_spd_influence < 6
+
+We are in no position to fight a civil war against the full force of the state, but we cannot let Schleicher live without consequences. We have an array of options at our disposal, the ADGB can launch a general strike, and use the Reichsbanner as leverage, if we had maintained its strength. Cracking down on the universally hated <span style="color: #700000;">**RFB**</span> is one thing, but a mass <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> movement?
+
+We don't know if Schleicher will budge. Our former coalition partners and members are skeptical to potentially risk the survival of the <span style="color: #c00000;">**SPD**</span> to protest in solidarity with the <span style="color: #700000;">**Communists**</span>. 
+
+Do we continue to bide our time?
+
+- @fight_mild_2
+- @do_nothing: This isn't our fight.
+
+@fight_mild_2
+title: The workers stopped the Kapp Putsch in 1920.
+subtitle: And we can do it again.
+on-arrival: {!
+Q.schleicher_points = 0;
+Q.spd_points = 0;
+
+Q.schleicher_points += Q.workers_schleicher;
+if (Q.unions_independent) Q.schleicher_points += 5;
+Q.schleicher_points += Q.republicans_schleicher;
+if (Q.dnef_formed) Q.schleicher_points += Q.dnef_votes / 10;
+
+Q.normalized_workers_total = Q.workers_spd_normalized;
+if (Q.kpd_relation >= 40) {
+    Q.normalized_workers_total += Q.workers_kpd_normalized;
+} else if (Q.kpd_relation < 40) {
+    Q.normalized_workers_total += Q.workers_kpd_normalized*0.5;
+}
+Q.spd_points += ((1 - Q.labor_dissent/100)*Q.normalized_workers_total*(1 - Q.unemployed/100)*2.5) / 5;
+
+Q.rb_power = Q.rb_strength*Q.rb_militancy;
+if (Q.dissent > 0.15) {
+    Q.rb_power *= (1 - Q.dissent/1.5);
+}
+Q.spd_points += Q.rb_power / 50;
+
+Q.prussian_police_power = Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+Q.evil_prussian_police_power = Q.prussian_police_strength*Q.prussian_police_militancy*(1 - Q.prussian_police_loyalty);
+if (Q.spd_prussia && Q.prussia_leader == "Braun" || Q.prussia_leader == "Rosenfeld") {
+    Q.spd_points += Q.prussian_police_power / 10;
+} else if (Q.spd_prussia && Q.prussia_leader !== "Braun" && Q.prussia_leader !== "Rosenfeld") {
+    Q.spd_points += (Q.prussian_police_power / 20);
+}
+if (Q.prussia_leader == "Schleicher" || Q.z_in_gov && Q.prussia_leader == "Stegerwald" || Q.prussia_leader == "Strasser") {
+    Q.schleicher_points += Q.evil_prussian_police_power / 50;
+}
+Q.reichswehr_power = Q.reichswehr_strength*Q.reichswehr_militancy;
+Q.schleicher_points += Q.reichswehr_power/50;
+
+Q.rfb_power = Q.rfb_strength*Q.rfb_militancy / 50;
+if (Q.spd_points >= 40) {
+    Q.spd_points += Q.rfb_power;
+} else if (Q.kpd_relation < 40) {
+    Q.spd_points += Q.rfb_power*0.5;
+}
+
+Q.enemy_power = 0;
+Q.sa_power = Q.sa_strength*Q.sa_militancy / 50;
+// adjust if sa is friends with schleicher
+Q.enemy_power += Q.sa_power;
+Q.sh_power = Q.sh_strength*Q.sh_militancy / 50;
+Q.enemy_power += Q.sh_power;
+
+Q.schleicher_points += Q.enemy_power;
+
+if (!Q.dstp_dnef && !Q.lvp_dnef && !Q.dstp_maintained && Q.republicans_schleicher < 8 && (Q.ddp_relation >= 35 && !Q.lvp_formed || Q.lvp_relation >= 45 && Q.lvp_formed) && (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" || !Q.lvp_formed)) Q.libs_against_schleicher = 1;
+if ((Q.z_ideology == "Left" || Q.stegerwald_path || Q.z_relation >= 60) && Q.republicans_schleicher < 6 && Q.z_leader != "Bracht") Q.z_against_schleicher = 1;
+
+if (Q.z_against_schleicher) Q.spd_points += 5;
+if (Q.z_against_schleicher && Q.z_in_gov) Q.spd_points += 2;
+if (Q.libs_against_schleicher) Q.spd_points += 3;
+
+if (!Q.z_against_schleicher && !Q.libs_against_schleicher) Q.spd_alone = 1;
+
+if (Q.spd_points > Q.schleicher_points) {
+    Q.spd_win = 1;
+} else if (Q.spd_points >= (Q.schleicher_points / 2)) {
+    Q.spd_med = 1;
+} else {
+    Q.spd_lose = 1;
+}
+
+Q.schleicher_fight = 1;
+
+!}
+
+We are not alone. [? if spd_alone: Well, we actually are, never mind. ?]
+
+<span style="color: #000000;">[? if not stegerwald_path: Catholics?][? if stegerwald_path: Christians?]</span> - [? if z_against_schleicher: In Favor?][? if not z_against_schleicher: Political Neutrality?]
+
+<span style="color: #FFCC00;">Left Liberals</span> - [? if libs_against_schleicher: In Favor?][? if not libs_against_schleicher: Political Neutrality?]
+
+[? if not spd_alone: The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition parties are nominally against such unconstitutional acts as well. While they may not have an armed self-defense militia, they have several hundred thousand employees in blue-collar and white-collar jobs, and could completely cripple the economy if they act alongside the <span style="color: #c00000;">socialist</span> Free Unions. ?]
+
+- @spd_win
+- @spd_med
+- @spd_lose
+
+@spd_win
+title: The government is paralyzed!
+on-arrival: {!
+Q.schleicher_spd_influence = 0;
+Q.schleicher_spd_r = 0;
+Q.schleicher_spd_support = 0;
+Q.schleicher_approval -= 4;
+Q.republicans_schleicher_bonus -= 4;
+Q.workers_schleicher_bonus -= 6;
+Q.industrialists_schleicher_bonus -= 2;
+Q.nationalists_schleicher_bonus -= 2;
+
+Q.hindenburg_schleicher_r -= 2;
+Q.schleicher_strength -= 2;
+Q.papen_strength += 1;
+
+Q.workers_spd += 8;
+Q.unemployed_spd += 6;
+Q.new_middle_spd += 2;
+Q.old_middle_spd += 2;
+Q.rural_spd += 2;
+Q.workers_kpd += 2;
+Q.unemployed_kpd += 2;
+
+Q.workers_dnef -= 6;
+Q.new_middle_dnef -= 6;
+Q.old_middle_dnef -= 6;
+Q.rural_dnef -= 6;
+Q.unemployed_dnef -= 6;
+Q.total_dnef_bonus -= 6;
+
+Q.rb_strength *= 1.2;
+Q.rb_militancy *= 0.8;
+Q.rfb_strength *= 1.4;
+Q.rfb_militancy *= 1.4;
+
+Q.reformist_dissent -= 20;
+Q.labor_dissent -= 20;
+!}
+view-if: spd_win
+
+The mass general strike has crippled the German economy, bringing the country to a complete standstill. With the Reichsbanner strong and organized, the government cannot simply crush the hundreds of thousands of <span style="color: #c00000;">socialist</span> protesters flooding the streets.
+
+Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties have banded together to unofficially reconvene the chamber at a separate location, openly challenging federal authority.
+
+The next few days will be chaotic—and decisive for Germany as a whole.
+
+- @z_break
+
+@spd_med
+title: Schleicher attempts to negotiate with us.
+on-arrival: {!
+Q.schleicher_spd_influence = 0;
+Q.schleicher_spd_r = 0;
+Q.schleicher_spd_support = 0;
+Q.schleicher_approval -= 2;
+Q.republicans_schleicher_bonus -= 3;
+Q.workers_schleicher_bonus -= 4;
+Q.industrialists_schleicher_bonus -= 1;
+Q.nationalists_schleicher_bonus -= 1;
+
+Q.hindenburg_schleicher_r -= 1;
+Q.schleicher_strength -= 1;
+
+Q.workers_spd += 6;
+Q.unemployed_spd += 4;
+Q.workers_kpd += 2;
+Q.unemployed_kpd += 2;
+
+Q.workers_dnef -= 4;
+Q.new_middle_dnef -= 4;
+Q.old_middle_dnef -= 4;
+Q.rural_dnef -= 4;
+Q.unemployed_dnef -= 4;
+Q.total_dnef_bonus -= 4;
+
+Q.rb_strength *= 1.1;
+Q.rb_militancy *= 0.9;
+Q.rfb_strength *= 1.2;
+Q.rfb_militancy *= 1.2;
+
+Q.reformist_dissent -= 10;
+Q.labor_dissent -= 10;
+!}
+view-if: spd_med
+
+The nationwide general strike against Schleicher's authoritarian regime has brought the country to a standstill. The chancellor could unleash the Reichswehr and <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> paramilitaries to brutally crush the protests—but for now, that remains a last resort. Instead, Schleicher has chosen to open negotiations with the opposition.
+
+Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties have banded together to unofficially reconvene the chamber at a separate location, openly challenging federal authority.
+
+However, perhaps we have overestimated our strength—strikes rarely last with unemployment so high, especially with Schleicher’s sympathizers embedded within the unions themselves.
+
+- @z_break
+
+@spd_lose
+title: Our protests are ineffective.
+view-if: spd_lose
+
+The general strike proves short-lived. An endless supply of unemployed strikebreakers and Schleicher's own sympathizers within the unions render it largely ineffective. Protesters are shot, civilians killed. The Reichsbanner is no match for the Reichswehr.
+
+Seizing the moment, Schleicher expands his crackdown, accusing the <span style="color: #c00000;">**SPD**</span> of conspiring with the <span style="color: #700000;">**Communists**</span> to incite revolution.
+
+Germany is lost.
+
+- @game_over
+
+@z_break
+title: The <span style="color: #000000;">Center Party</span> breaks with Schleicher!
+subtitle: The house of cards is falling apart.
+view-if: z_against_schleicher
+go-to: z_break_gov if z_in_gov; z_break_oppo if not z_in_gov
+
+@z_break_gov
+on-arrival: hindenburg_schleicher_r -= 2; republicans_schleicher_bonus -= 4; z_in_gov = 0; catholics_dnef -= 10; catholics_dnef_bonus -= 8; catholics_z -= 4; catholics_dnvp += 2 if not kvp_formed; catholics_kvp += 2; catholics_dvp += 2
+
+= The <span style="color: #000000;">Center Party</span> exits cabinet
+
+With the <span style="color: #000000;">Center Party</span> already on the verge of breaking with Schleicher's cabinet after the unconstitutional adjournment of the chamber, this latest undemocratic act has convinced its leaders that only a united <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> front can restore Germany to normalcy.
+
+Schleicher’s presidential cabinet now stands deeply delegitimized and increasingly unpopular in the eyes of the public, effectively ending his hopes of manipulating the party’s internal politics or using them to maintain even a façade of parliamentary democracy going forward.
+
+- @schleicher_cabinet_13_pre
+
+@z_break_oppo
+on-arrival: hindenburg_schleicher_r -= 1; republicans_schleicher_bonus -= 2; catholics_dnef -= 6; catholics_dnef_bonus -= 4; catholics_z -= 2; catholics_dnvp += 2 if not kvp_formed; catholics_kvp += 2
+
+= The <span style="color: #000000;">Center Party</span> cuts all ties
+
+The ongoing negotiations to bring the <span style="color: #000000;">Center Party</span> into Schleicher's cabinet have collapsed entirely, with the party now in full opposition to President Hindenburg and the government he supports.
+
+- @schleicher_cabinet_13_pre
+
+
+@schleicher_cabinet_13_pre
+title: Schleicher's Turn to Play
+subtitle: Will the general hold firm?
+go-to: schleicher_cabinet_13
+
+
 @fight
 title: Revolt! This is Schleicher's second step toward dictatorship!
+unavailable-subtitle: Schleicher has too much influence over us.
+choose-if: schleicher_spd_influence < 4
 
-Schleicher isn't going to hand over power once there is stability, he is (rightfully) paranoid that we will simply reverse all the progress made toward militarization the moment we re-enter office democratically considering Hindenburg isn't expected to live much longer. 
+Schleicher has no intention of relinquishing power once stability is restored—his paranoia (not entirely unfounded) tells him that the moment we return to office democratically, we’ll undo all the progress made toward rearmament, especially with Hindenburg not expected to live much longer.
 
-This, along with the unconstitutional violation committed just a week ago, has finally energized the remaining <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> against the Chancellor. 
+This, combined with his blatant constitutional breach just a week ago, has finally galvanized the remaining <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> against the Chancellor.
 
 Perhaps its our time to strike?
 
 - @civil_war: The <span style="color: #c00000;">**SPD**</span> stands with the <span style="color: #700000;">**Communists**</span>.
+- @fight_mild
 - @do_nothing: This isn't our fight.
