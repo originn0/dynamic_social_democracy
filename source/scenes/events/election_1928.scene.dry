@@ -1208,9 +1208,9 @@ Placeholder
 @popular_front_coalition
 title: A new "Popular Front" coalition?
 subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span>[? if (liberal_parliament == 0 and bourgeois_parliament_ddp == 0) and not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?] ([+ popular_front_coalition +]%)
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #700000;">KPD</span> + <span style="color: #000000;">[+ z_party_name +]</span>[? if liberal_parliament = 0 and not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">SAPD</span>?] ([+ popular_front_coalition +]%) - [? if ((kpd_relation < 65 and kpd_leader == "Thälmann") or (kpd_relation < 45 and kpd_leader == "Conciliators")) or ((z_leader == "Joos" and kpd_leader == "Conciliators" and kpd_relation < 35) or (z_leader == "Kaiser" and kpd_leader == "Conciliators" and kpd_relation < 30)): We do not have good enough relations with the <span style="color: #700000;">KPD</span>. ?][? if (z_relation < 45 and z_leader == "Joos") or (z_relation < 40 and z_leader == "Kaiser") or (z_relation < 65 and z_ideology == "Right" and kpd_leader != "Conciliators") or (z_relation < 55 and z_ideology == "Right" and kpd_leader == "Conciliators") or ((z_leader == "Joos" and kpd_leader == "Conciliators" and z_relation < 35) or (z_leader == "Kaiser" and kpd_leader == "Conciliators" and z_relation < 30)): We do not have good enough relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if ((ddp_relation < 50 and ddp_ideology != "Left") or (ddp_relation < 40 and ddp_ideology == "Left")) and liberal_parliament == 0 and bourgeois_parliament_ddp == 0 and not lvp_formed: We do not have good enough relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?][? if communist_coalition < 3 : The <span style="color: #700000;">Communists</span> are unwilling to compromise at all. ?] [? if rubicon: - Why the hell would Hindenburg allow this? ?]
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #700000;">KPD</span> + <span style="color: #000000;">[+ z_party_name +]</span>[? if liberal_parliament = 0 and not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">SAPD</span>?] ([+ popular_front_coalition +]%) - [? if ((kpd_relation < 65 and comintern_talk == 0) or (kpd_relation < 45 and comintern_talk == 1)) or ((z_leader == "Joos" and comintern_talk == 1 and kpd_relation < 35) or (z_leader == "Kaiser" and comintern_talk == 1 and kpd_relation < 30)): We do not have good enough relations with the <span style="color: #700000;">KPD</span>. ?][? if (z_relation < 45 and z_leader == "Joos") or (z_relation < 40 and z_leader == "Kaiser") or (z_relation < 65 and z_ideology == "Right" and comintern_talk == 0) or (z_relation < 55 and z_ideology == "Right" and comintern_talk == 1) or ((z_leader == "Joos" and comintern_talk == 1 and z_relation < 35) or (z_leader == "Kaiser" and comintern_talk == 1 and z_relation < 30)): We do not have good enough relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if ((ddp_relation < 50 and ddp_ideology != "Left") or (ddp_relation < 40 and ddp_ideology == "Left")) and liberal_parliament == 0 and bourgeois_parliament_ddp == 0 and not lvp_formed: We do not have good enough relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?][? if communist_coalition < 3 : The <span style="color: #700000;">Communists</span> are unwilling to compromise at all. ?] [? if rubicon: - Why the hell would Hindenburg allow this? ?]
 view-if: popular_front_coalition >= 50 and not cvp_formed and not rubicon
-choose-if: (((kpd_relation >= 65 and comintern_talk == "0") or (kpd_relation >= 45 and comintern_talk == "1")) and ((z_relation >= 45 and z_leader == "Joos") or (z_relation >= 40 and z_leader == "Kaiser") or (z_relation >= 65 and z_ideology == "Right" and kpd_leader != "Conciliators") or (z_relation >= 55 and z_ideology == "Right" and kpd_leader == "Conciliators")) and ((liberal_parliament = 1 or bourgeois_parliament_ddp or lvp_formed) or ((ddp_relation >= 50 and ddp_ideology != "Left") or (ddp_relation >= 40 and ddp_ideology == "Left"))) and communist_coalition >= 3) or (z_leader == "Joos" and kpd_leader == "Conciliators" and z_relation >= 35 and kpd_relation >= 35) or (z_leader == "Kaiser" and kpd_leader == "Conciliators" and z_relation >= 30 and kpd_relation >= 30)
+choose-if: (((kpd_relation >= 65 and comintern_talk == "0") or (kpd_relation >= 45 and comintern_talk == "1")) and ((z_relation >= 45 and z_leader == "Joos") or (z_relation >= 40 and z_leader == "Kaiser") or (z_relation >= 65 and z_ideology == "Right" and comintern_talk == 0) or (z_relation >= 55 and z_ideology == "Right" and comintern_talk == 1)) and ((liberal_parliament = 1 or bourgeois_parliament_ddp or lvp_formed) or ((ddp_relation >= 50 and ddp_ideology != "Left") or (ddp_relation >= 40 and ddp_ideology == "Left"))) and communist_coalition >= 3) or (z_leader == "Joos" and comintern_talk == 1 and z_relation >= 35 and kpd_relation >= 35) or (z_leader == "Kaiser" and comintern_talk == 1 and z_relation >= 30 and kpd_relation >= 30)
 
 Could we really form a coalition that included both the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and the <span style="color: #700000;">**Communists**</span>? It seems like an absurd concept, but given our good relationships with both sides, it is not an impossibility.
 
@@ -1220,7 +1220,7 @@ The <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right
 - @great_popular_front: Form the Popular Front!
 
 @popular_front_2
-view-if: z_ideology != "Left" or kpd_leader != "Conciliators"
+view-if: z_ideology != "Left" or comintern_talk == 0
 
 Somehow, both the <span style="color: #700000;">**Communists**</span> and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are at the very least willing to entertain negotiations. Of course, <span style="color: #700000;">**KPD**</span> radicals and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] conservatives derail the negotiations almost immediately. The <span style="color: #700000;">**KPD**</span> demands leadership of the coalition for themselves and their chairman Ernst Thälmann, [? if spd_r > kpd_r : despite our higher vote share, ?]while the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is offended by the prospect of helping <span style="color: #700000;">**Bolsheviks**</span> enter government. *Something* must be done to restore balance.
 
@@ -1239,9 +1239,9 @@ go-to: popular_front_success if in_popular_front_prussia or in_left_front_prussi
 
 @popular_front_democracy
 title: Convince the <span style="color: #700000;">**KPD**</span> to accept democracy.
-subtitle: [? if kpd_leader == "Conciliators" : The Conciliator leadership of the <span style="color: #700000;">**KPD**</span> at least claim to support the Popular Front. ?]
+subtitle: [? if comintern_talk == 1 : The Conciliator leadership of the <span style="color: #700000;">**KPD**</span> at least claim to support the Popular Front. ?]
 unavailable-subtitle: Our relationship with the <span style="color: #700000;">**KPD**</span> is not high enough.
-choose-if: (kpd_relation >= 60 and communist_coalition >= 3) or kpd_leader == "Conciliators"
+choose-if: (kpd_relation >= 60 and communist_coalition >= 3) or comintern_talk == 1
 go-to: popular_front_success if in_popular_front_prussia or in_left_front_prussia or not spd_prussia or popular_front_coalition_prussia < 50; popular_front_prussia if not in_popular_front_prussia and not in_left_front_prussia and spd_prussia and popular_front_coalition_prussia >= 50
 
 @popular_front_braun
@@ -1272,7 +1272,7 @@ go-to: popular_front_success
 @popular_front_relations
 title: Use our good relations to smooth things over.
 unavailable-subtitle: Our relationship with the <span style="color: #700000;">**KPD**</span> is not high enough.
-choose-if: (kpd_relation >= 70 and communist_coalition >= 3) or (kpd_leader == "Conciliators" and kpd_relation >= 60)
+choose-if: (kpd_relation >= 70 and communist_coalition >= 3) or (comintern_talk == 1 and kpd_relation >= 60)
 go-to: popular_front_success
 
 @popular_front_prussia_weimar
@@ -1306,7 +1306,7 @@ The right will be more active in resisting our rule considering we are going to 
 - @prussia_election_1928.kpd_goals_prussia: The <span style="color: #700000;">**KPD**</span> presents us with a list of demands.
 
 @great_popular_front
-view-if: z_ideology == "Left" and kpd_leader == "Conciliators"
+view-if: z_ideology == "Left" and comintern_talk == 1
 on-arrival: spd_in_government = 1; in_popular_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; kpd_relation += 10; coup_progress += 1; in_left_front = 0; in_weimar_coalition = 0; in_grand_coalition = 0; coalition_dissent = 0; coup_progress += 1 if in_popular_front_prussia; capital_strike_progress += 1 if in_popular_front_prussia; hindenburg_angry = 70
 achievement: grosse_volksfront
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
@@ -1386,7 +1386,7 @@ title: Is a United Left coalition possible?
 subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span> [? if sapd_formed: + <span style="color: #9B0000;">**SAPD**</span> ?] ([+ left_coalition +]%)
 unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #700000;">KPD</span> [? if sapd_formed: + <span style="color: #9B0000;">SAPD</span> ?] ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the <span style="color: #700000;">KPD</span>. ?][? if communist_coalition < 3 : The <span style="color: #700000;">Communists</span> are too committed to their radical ways to partake in government. ?] [? if rubicon: - Why the hell would Hindenburg allow this? ?]
 view-if: left_coalition >= 50
-choose-if: (kpd_relation >= 50 or (kpd_leader == "Conciliators" and kpd_relation >= 40)) and communist_coalition >= 3 and not rubicon
+choose-if: (kpd_relation >= 50 or (comintern_talk == 1 and kpd_relation >= 40)) and communist_coalition >= 3 and not rubicon
 
 There are enough votes for a <span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span> coalition government, if such a thing were actually possible.
 
@@ -1435,7 +1435,7 @@ go-to: left_coalition_success if in_popular_front_prussia or in_left_front_pruss
 @left_coalition_relations
 title: Convince the <span style="color: #700000;">**KPD**</span> to accept democracy.
 unavailable-subtitle: Our relationships with the <span style="color: #700000;">KPD</span> are not good enough.
-choose-if: kpd_relation >= 60 or kpd_leader == "Conciliators"
+choose-if: kpd_relation >= 60 or comintern_talk == 1
 go-to: left_coalition_success if in_popular_front_prussia or in_left_front_prussia or not spd_prussia or left_coalition_prussia < 50; left_front_prussia if not in_popular_front_prussia and not in_left_front_prussia and spd_prussia and left_coalition_prussia >= 50
 
 @left_front_prussia
@@ -1461,7 +1461,7 @@ go-to: left_coalition_success
 @left_coalition_relations_2
 title: Use our good relations to smooth things over.
 unavailable-subtitle: Our relationship with the <span style="color: #700000;">**KPD**</span> is not high enough.
-choose-if: (kpd_relation >= 70 and communist_coalition >= 3) or (kpd_leader == "Conciliators" and kpd_relation >= 50)
+choose-if: (kpd_relation >= 70 and communist_coalition >= 3) or (comintern_talk == 1 and kpd_relation >= 50)
 go-to: left_coalition_success
 
 @left_front_prussia_weimar
