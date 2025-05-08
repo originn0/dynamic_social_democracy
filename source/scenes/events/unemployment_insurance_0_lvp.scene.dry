@@ -30,11 +30,11 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 @accept
 unavailable-subtitle: [? if reformist_strength + center_strength + labor_strength / 2 < left_strength + labor_strength / 2: The party won't allow this. ?]
 choose-if: reformist_strength + center_strength + labor_strength / 2 >= left_strength + labor_strength / 2
-on-arrival: workers_spd -= 0.1*workers_spd; unemployed_spd -= 0.2*unemployed_spd; workers_kpd += 3; workers_nsdap += 3; unemployed_kpd += 5; unemployed_nsdap += 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; welfare -= 1; budget += 1; pro_republic -= 3; kpd_relation -= 5; inflation -= 1; unemployment_insurance_threshold = unemployed; lvp_left += 2; coalition_dissent -= 1; goal_spd_cancel += 1; economic_growth -= 0.3
+on-arrival: workers_spd -= 0.1*workers_spd; unemployed_spd -= 0.2*unemployed_spd; workers_kpd += 3; workers_nsdap += 3; workers_sapd += 2; unemployed_sapd += 4;unemployed_kpd += 5; unemployed_nsdap += 5; sapd_relation -= 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; welfare -= 1; budget += 1; pro_republic -= 3; kpd_relation -= 5; inflation -= 1; unemployment_insurance_threshold = unemployed; lvp_left += 2; coalition_dissent -= 1; goal_spd_cancel += 1; economic_growth -= 0.3
 
 Unfortunately, we must accept this if we are to maintain this coalition. The <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span> are waiting in the wings for us to fail, ready to pounce upon the instability that would result from a breakup of the governing coalition.
 
-The workers are furious at our betrayal, as are a good portion of our membership throughout the factions. Our loss is the <span style="color: #700000;">**KPD**</span>'s gain, and even the <span style="color: #7A3C00;">**NSDAP**</span>, those lapdogs of the bourgeoisie, have joined in criticizing us for our austerity.
+The workers are furious at our betrayal, as are a good portion of our membership throughout the factions. Our loss is the  <span style="color: #700000;">**KPD**</span>'s gain, and even the <span style="color: #7A3C00;">**NSDAP**</span>, those lapdogs of the bourgeoisie, have joined in criticizing us for our austerity.
 
 @compromise
 unavailable-subtitle: [? if lvp_relation < 25: We do not have good enough relations with the right-wing parties.?] [? if lvp_right - lvp_left > 8: The <span style="color: #FFCC00;">**LVP**</span> industrialists have great control over their party. ?]
@@ -47,7 +47,7 @@ choose-if: lvp_relation >= 25 and (lvp_right - lvp_left < 8)
 - @destroy: Reject the compromise and end this coalition.
 
 @accept_compromise_worse
-on-arrival: workers_spd -= 2; unemployed_spd -= 2; unemployed_kpd += 2; unemployed_nsdap += 2; workers_nsdap += 2; left_dissent += 8; labor_dissent += 5; center_dissent += 3; welfare -= 1; kpd_relation -= 4; unemployment_insurance_threshold = unemployed; lvp_left += 1; goal_spd_cancel += 1; economic_growth -= 0.2
+on-arrival: workers_spd -= 2; unemployed_spd -= 2; unemployed_kpd += 2; unemployed_nsdap += 2; workers_nsdap += 2; workers_sapd += 1; unemployed_sapd += 1;  left_dissent += 8; labor_dissent += 5; center_dissent += 3; welfare -= 1; kpd_relation -= 4; unemployment_insurance_threshold = unemployed; lvp_left += 1; goal_spd_cancel += 1; economic_growth -= 0.2
 
 We have accepted the compromise offered by the bourgeoisie. Many of the workers and unemployed see this as a betrayal, as we cut welfare without increasing employer contributions. We present it as the successful aversion of a much worse alternative.
 
