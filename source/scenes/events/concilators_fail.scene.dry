@@ -1,12 +1,42 @@
 title: Concilators Removed from Power!
 subtitle: Stalin has moved against us...
-view-if: soviet_relations >= 115 
+view-if: soviet_relations - kpd_relation >= 135
 priority: -1
+max-visits: 1
 new-page: true
 on-arrival: {! 
-kpd_leader = "Thälmann";
-kpd_idealogy = "Stalinism";
-kpd_relations -= 10;
-conciliators = 0;
-communist_coalition -= 2;
+Q.kpd_leader = "Thälmann";
+Q.kpd_idealogy = "Stalinism";
+Q.kpd_relation -= 10;
+Q.conciliators = 0;
+Q.communist_coalition -= 2;
+if (Q.kpo_formed == 1) {
+Q.workers.kpd *= 0.6;
+Q.workers.kpo += 6;
+Q.new_middle.kpd *= 0.5;
+Q.new_middle.kpo += 2;
+Q.unemployed.kpd -= 4;
+Q.unemployed.kpo += 4;
+}
+if (Q.kpo_formed == 0) {
+Q.stalin_strike = 1;
+}
 !}
+tags: event
+
+ = Concilators Expelled
+
+Stalin has made the decision to sack the Concilator leadership of the KPD, reinstating Ernst Thälmann in their place. 
+The paranoia of the Man of Steel has struck again. Our cooperative and compromising attitudes towards the Bourgioise have led Stalin to believe that we are not a worthy ally for the KPD.
+
+We knew that our good relations with the Comintern were temporary at best, but this still comes as a shock to us, as it likely closes off further cooperation with the KPD. 
+[? if stalin_strike = 1: Due to the increased influence of the Concilators and Right Communists within the KPD, the Right Wing of the party has completely broken away, fracturing it in two. The new KPD(O) remains committed to the communist parth, but esposes an anti-Stalin view. They take inspiration from many fogiures such as Luxemburg and Trotsky. Only time will tell whether they are willing to cooperate with us. ?]
+[? if stalin_strike != 1: Many former Concilators have joined their comrades in the KPD(O), who are further strengthened by Stalin's move. ?]
+
+- @kpo_new
+
+
+@kpo_new
+title: The KPD(O) is formed!
+view-if: stalin_strike = 1;
+go-to: kpo_formed2
