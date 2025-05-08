@@ -18,9 +18,6 @@ Q.new_middle.kpo += 2;
 Q.unemployed.kpd -= 4;
 Q.unemployed.kpo += 4;
 }
-if (Q.kpo_formed == 0) {
-Q.stalin_strike = 1;
-}
 !}
 tags: event
 
@@ -38,5 +35,5 @@ We knew that our good relations with the Comintern were temporary at best, but t
 
 @kpo_new
 title: The KPD(O) is formed!
-view-if: stalin_strike == 1;
+view-if: kpo_formed == 0;
 go-to: kpo_formed_stalin
