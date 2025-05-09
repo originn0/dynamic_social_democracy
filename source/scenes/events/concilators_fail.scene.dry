@@ -1,6 +1,7 @@
 title: Concilators Removed from Power!
 subtitle: Stalin has moved against us...
 view-if: soviet_relations - kpd_relation >= 65
+face-image: img/Stalin_in_1934.jpg
 priority: -1
 max-visits: 1
 new-page: true
@@ -23,19 +24,23 @@ tags: event
 
  = Concilators Expelled
 
-Stalin has made the decision to sack the Concilator leadership of the KPD, reinstating Ernst Thälmann in their place. 
-The paranoia of the Man of Steel has struck again. Our cooperative and compromising attitudes towards the Bourgioise have led Stalin to believe that we are not a worthy ally for the KPD.
+Stalin has made the decision to sack the Concilator leadership of the <span style="color: #700000;">**KPD**</span>, reinstating Ernst Thälmann in their place. 
+The paranoia of the Man of Steel has struck again. Our cooperative and compromising attitudes towards the Bourgioise have led Stalin to believe that we are not a worthy ally for the <span style="color: #700000;">**KPD**</span>.
 
 We knew that our good relations with the Comintern were temporary at best, but this still comes as a shock to us, as it likely closes off further cooperation with the KPD. 
-[? if stalin_strike = 1: Due to the increased influence of the Concilators and Right Communists within the KPD, the Right Wing of the party has completely broken away, fracturing it in two. The new KPD(O) remains committed to the communist parth, but esposes an anti-Stalin view. They take inspiration from many fogiures such as Luxemburg and Trotsky. Only time will tell whether they are willing to cooperate with us. ?]
-[? if stalin_strike != 1: Many former Concilators have joined their comrades in the KPD(O), who are further strengthened by Stalin's move. ?]
+[? if stalin_strike = 1: Due to the increased influence of the Concilators and Right Communists within the <span style="color: #700000;">**KPD**</span>, the Right Wing of the party has completely broken away, fracturing it in two. The new <span style="color: #C43988;">**KPD(O)**</span> remains committed to the communist parth, but esposes an anti-Stalin view. They take inspiration from many fogiures such as Luxemburg and Trotsky. Only time will tell whether they are willing to cooperate with us. ?]
+[? if stalin_strike != 1: Many former Concilators have joined their comrades in the <span style="color: #C43988;">**KPD(O)**</span>, who are further strengthened by Stalin's move. ?]
 
 - @kpo_new
 
 
 @kpo_new
-title: The KPD(O) is formed!
+title: The <span style="color: #C43988;">**KPD(O)**</span> is formed!
 view-if: kpo_formed == 0
-go-to: kpo_formed_stalin
+go-to: [? if year >= 1931: kpo_formed_stalin ?][[? if year <= 1930: kpo_formed ?]
 
-The KPD(O) is formed!
+ = The <span style="color: #C43988;">**KPD(O)**</span> is formed!
+
+The dissenting members of the <span style="color: #700000;">**KPD**</span>, upon founding their new party, [? if year >= 1931: have brought over a large party of the party bureacracy, as well as around half of the <span style="color: #700000;">**KPD**</span>'s support base, due to the increased influence of the Concilators in the <span style="color: #700000;">**KPD**</span>. ?][? if year <= 1930: have brought a small but loyal base with them. ?]
+They have named the new party the <span style="color: #C43988;">**KPD(O)**</span>, or the <span style="color: #C43988;">German Communist Party (Opposition)</span>. While they compose of many diverse ideaologies, who are opposed to Stalin's control of the KPD, they all share one thing in common. They all support the idea of the Popular Front, of unity of the parties of the left, standing against fascism and conservatism.
+This bodes well for us, with the far-left having been split in half, with one of the factions very open to cooperation with us.
