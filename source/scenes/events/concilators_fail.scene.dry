@@ -37,7 +37,7 @@ We knew that our good relations with the Comintern were temporary at best, but t
 @kpo_new
 title: The <span style="color: #C43988;">**KPD(O)**</span> is formed!
 view-if: kpo_formed == 0
-go-to: [? if year >= 1931: kpo_formed_stalin ?][? if year <= 1930: kpo_formed ?]
+go-to: kpo_formed_stalin if (year >= 1931) or kpo_formed if (year <= 1930)
 
  = The <span style="color: #C43988;">**KPD(O)**</span> is formed!
 
