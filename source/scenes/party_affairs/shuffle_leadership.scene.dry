@@ -265,7 +265,7 @@ Hirschfeld has been removed as an advisor.
 
 @remove_stampfer
 title: Remove Stampfer
-view-if: stampfer_advisor = 1
+view-if: stampfer_advisor = 1 and not stampfer_killed
 tags: remove_advisor
 on-arrival: stampfer_advisor = 0; n_advisors -= 1
 go-to: rm_main
@@ -653,7 +653,7 @@ title: Friedrich Stampfer
 subtitle: Friedrich Stampfer is the long-time editor-in-chief of Vorwärts, our party newspaper. {!<br><br>!}[? if difficulty < 0 : Actions - Media, Editorial Line, Cooperation with the <span style="color: #700000;">KPD</span> ?]
 is-card: true
 card-image: img/portraits/StampferFriedrich.jpg
-view-if: stampfer_advisor = 0 and n_advisors < 3
+view-if: stampfer_advisor = 0 and n_advisors < 3 and not stampfer_killed
 on-arrival: stampfer_advisor = 1; n_advisors += 1
 go-to: advisor_menu
 tags: nonfactional_advisor

@@ -1,6 +1,6 @@
 title: Schleicher's Turn to Play
 subtitle: Will the general hold firm?
-view-if: chancellor == "Schleicher" and kpd_explode
+view-if: chancellor == "Schleicher" and kpd_explode and schleicher_fight
 max-visits: 1
 new-page: true
 priority: -1
@@ -224,17 +224,19 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 [? if not dnef_formed and dnef_r_alt: {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r_alt +]%** {!</td></tr>!} ?]
 [? if dnef_formed and dnef_r_alt: {!<tr><td><div class="box" style='background-color:#BFC8CC; outline: 2px; outline-style: solid;'> </div></td><td>!} **DNEF:** {!</td><td>!} **[+ dnef_r_alt +]%** {!</td></tr>!} ?]
 
-[? if not lvp_formed and dstp_dnef and ddp_r_alt: {!<tr><td><div class="box" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r_alt +]% {!</td></tr>!} ?]
+[? if not lvp_formed and dstp_dnef and ddp_r_alt: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r_alt +]% {!</td></tr>!} ?]
 
-[? if z_dnef and z_r_alt: {!<tr><td><div class="box" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_r_alt +]% {!</td></tr>!} ?]
+[? if z_dnef and z_r_alt: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_r_alt +]% {!</td></tr>!} ?]
 
-[? if not lvp_formed and dvp_exist and dvp_dnef and dvp_r_alt: {!<tr><td><div class="box" style='background-color:#AA861F'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r_alt +]% {!</td></tr>!} ?]
+[? if not lvp_formed and dvp_exist and dvp_dnef and dvp_r_alt: {!<tr><td><div class="box2" style='background-color:#AA861F'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r_alt +]% {!</td></tr>!} ?]
 
-[? if other_dnef and other_r_alt: {!<tr><td><div class="box" style='background-color:#707070'> </div></td><td>!} Others: {!</td><td>!} [+ other_r_alt +]% {!</td></tr>!} ?]
+[? if other_dnef and other_r_alt: {!<tr><td><div class="box2" style='background-color:#707070'> </div></td><td>!} Others: {!</td><td>!} [+ other_r_alt +]% {!</td></tr>!} ?]
 
-[? if kvp_formed and not cvp_kvp_formed and kvp_dnef and kvp_r_alt: {!<tr><td><div class="box" style='background-color:#0072C0'> </div></td><td>!} KVP: {!</td><td>!} [+ kvp_r_alt +]% {!</td></tr>!} ?]
+[? if kvp_formed and not cvp_kvp_formed and kvp_dnef and kvp_r_alt: {!<tr><td><div class="box2" style='background-color:#0072C0'> </div></td><td>!} KVP: {!</td><td>!} [+ kvp_r_alt +]% {!</td></tr>!} ?]
 
-[? if not cvp_formed and dnvp_dnef and dnvp_r_alt: {!<tr><td><div class="box" style='background-color:#316B8F'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r_alt +]% {!</td></tr>!} ?]
+[? if not cvp_formed and dnvp_dnef and dnvp_r_alt: {!<tr><td><div class="box2" style='background-color:#316B8F'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r_alt +]% {!</td></tr>!} ?]
+
+[? if nvf_exist and nvf_r_alt and nvf_dnef: {!<tr><td><div class="box2" style='background-color:#0F2116'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r_alt +]% {!</td></tr>!} ?]
 
 [? if dnef_formed and spd_r_alt: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div></td><td>!} SPD: {!</td><td>!} [+ spd_r_alt +]% {!</td></tr>!} ?]
 
@@ -264,7 +266,7 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 
 [? if nsdap_split and nsdap_hitler_r_alt: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_hitler_r_alt +]% {!</td></tr>!} ?]
 
-[? if nvf_exist and nvf_r_alt: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r_alt +]% {!</td></tr>!} ?]
+[? if nvf_exist and nvf_r_alt and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r_alt +]% {!</td></tr>!} ?]
 {!</table>!}
 
 We have leverage, and we should use it to extract concessions. No one wants civil war.
@@ -289,6 +291,9 @@ title: Demand a reconvening of the Reichstag, with no dirty tricks this time.
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.reichstag_break = 0;
+
+Q.workers_schleicher_bonus -= 1;
+Q.republicans_schleicher_bonus -= 1;
 
 Q.next_reichstag_time = Q.rubicon_time + 1;
 Q.next_reichstag_week = Q.week + 1;
@@ -326,7 +331,11 @@ unavailable-subtitle: Not enough leverage.
 choose-if: spd_win and total_r_alt >= 50
 on-arrival: {!
 Q.schleicher_post_protests = 1;
+Q.schleicher_rights = 1;
 Q.reichstag_break = 0;
+
+Q.workers_schleicher_bonus -= 2;
+Q.republicans_schleicher_bonus -= 2;
 
 Q.next_reichstag_time = Q.rubicon_time + 1;
 Q.next_reichstag_week = Q.week + 1;
@@ -384,7 +393,12 @@ view-if: dnef_formed
 choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt >= 66
 on-arrival: {!
 Q.schleicher_post_protests = 1;
+Q.schleicher_rights = 1;
+Q.schleicher_pause = 1;
 Q.reichstag_break = 0;
+
+Q.workers_schleicher_bonus -= 3;
+Q.republicans_schleicher_bonus -= 3;
 
 Q.next_reichstag_time = Q.rubicon_time + 1;
 Q.next_reichstag_week = Q.week + 1;
@@ -408,21 +422,21 @@ if (Q.next_reichstag_month > 12) {
 
 Q.pro_republic += 10;
 
-Q.workers_spd += 8;
-Q.unemployed_spd += 8;
-Q.new_middle_spd += 4;
-Q.old_middle_spd += 4;
-Q.rural_spd += 4;
-Q.catholics_spd += 4;
-Q.new_middle_ddp += 4;
-Q.old_middle_ddp += 4;
-Q.new_middle_lvp += 4;
-Q.old_middle_lvp += 4;
-Q.rural_z += 4;
-Q.catholics_z += 4;
+Q.workers_spd += 6;
+Q.unemployed_spd += 6;
+Q.new_middle_spd += 3;
+Q.old_middle_spd += 3;
+Q.rural_spd += 3;
+Q.catholics_spd += 3;
+Q.new_middle_ddp += 3;
+Q.old_middle_ddp += 3;
+Q.new_middle_lvp += 3;
+Q.old_middle_lvp += 3;
+Q.rural_z += 3;
+Q.catholics_z += 3;
 
-Q.workers_kpd += 6;
-Q.unemployed_kpd += 6;
+Q.workers_kpd += 12;
+Q.unemployed_kpd += 12;
 Q.new_middle_kpd += 2;
 
 Q.kpd_banned = 0;

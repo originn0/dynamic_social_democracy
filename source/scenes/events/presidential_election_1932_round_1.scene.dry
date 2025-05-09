@@ -223,10 +223,10 @@ Q.vrp_presidential_votes_rnd_1 = Q.vrp_presidential_votes.toFixed(1);
 if (Q.thalmann_votes_disp < 15 && Q.thalmann_votes_disp) {
     Q.workers_kpd *= 0.85;
     Q.unemployed_kpd *= 0.85;
-    if (!Q.spd_candidate_1932) {
+    if (!Q.spd_campaign) {
         Q.unemployed_nsdap += 5;
         Q.workers_nsdap += 3;
-    } else if (Q.spd_candidate_1932) {
+    } else if (Q.spd_campaign) {
         Q.unemployed_spd += 5;
         Q.workers_spd += 3;
     }
@@ -272,7 +272,7 @@ There is no majority in this round. In the second round, any candidate who wins 
 
 [? if hindenburg_confidence: Hindenburg has narrowly missed securing the required majority for a first-round victory, making his success in the runoff highly probable. With state and local elections just a month away, the industrialists and parties backing him have redirected their remaining campaign funds to those contests, confident that his victory is all but assured. This, however, presents a valuable opportunity for [+ nsdap_candidate_1932 +] to gain support among [+ dnvp_candidate_1932 +] voters and leverage their dominance in the presidential campaign to coincide with their local efforts. ?]
 
-[? if thalmann_votes_disp < 15 and thalmann_votes_disp: The <span style="color: #700000;">**Communists**</span> have suffered a demoralizing defeat, leaving many of their supporters disillusioned about the prospects of revolution—a future they once saw as inevitable given Germany’s current state. In the second round, many will abstain from voting altogether, while others may even cast their ballots for [? if not spd_candidate_1932: [+ nsdap_candidate_1932 +] ?][? if spd_candidate_1932: [+ spd_candidate_1932 +] ?]in an effort to make their vote count. ?]
+[? if thalmann_votes_disp < 15 and thalmann_votes_disp: The <span style="color: #700000;">**Communists**</span> have suffered a demoralizing defeat, leaving many of their supporters disillusioned about the prospects of revolution—a future they once saw as inevitable given Germany’s current state. In the second round, many will abstain from voting altogether, while others may even cast their ballots for [? if not spd_campaign: [+ nsdap_candidate_1932 +] ?][? if spd_campaign: [+ spd_candidate_1932 +] ?]in an effort to make their vote count. ?]
 
 [? if dnvp_candidate_1932: There had been discussions of Crown Prince Wilhelm running as a Harzburg unity candidate, a prospect the <span style="color: #7A3C00;">**NSDAP**</span> showed interest in supporting. However, the <span style="color: #3E88B3;">**DNVP**</span> and the <span style="color: #3E88B3;">**Stahlhelm**</span> rejected the idea due to their hostility toward an accommodation with the <span style="color: #7A3C00;">**NSDAP**</span>. The nail in the coffin was that his own father threatened to disinherit him if he stood for the "<span style="color: #c00000;">red</span> <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">ican</span> presidential seat of an Ebert". He has since endorsed [+ nsdap_candidate_1932 +]. ?]
 

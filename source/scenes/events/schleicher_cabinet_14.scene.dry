@@ -1,0 +1,117 @@
+title: Free Speech Curtailed
+subtitle: Certain "problematic" newspapers are taken over by the state.
+view-if: chancellor == "Schleicher" and dsu_in_gov and dsu_policy and ((reichstag_joever_time >= 2 and not schleicher_post_protests) or (reichstag_joever_time >= 6 and schleicher_post_protests)) and not schleicher_rights
+max-visits: 1
+new-page: true
+priority: -1
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/propaganda.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Free Speech Curtailed
+
+In the aftermath of the crackdown against the <span style="color: #700000;">**Communists**</span>, Schleicher has since moved on to crack down on the free German press, which have been dominated by anti-Schleicher <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span>, <span style="color: #FFCC00;">liberals</span>, or the hated Hugenberg. The chancellor claims that the press is undermining the state and aiding the <span style="color: #700000;">revolutionaries</span> in its biases and fake news.
+
+We know all of this is nonsense, but Schleicher has slowly taken steps toward the <i>Gleichschaltung</i> (synchronization) of his regime, having recently established the "Ministry of National Guidance" in the decree in which he banned the <span style="color: #700000;">**KPD**</span>, to "fight against <span style="color: #700000;">Bolshevism</span>". 
+
+- @press_censorship
+
+@press_censorship
+title: Hopefully nothing happens to Vorwärts.
+on-arrival: {!
+Q.press_censorship = 1;
+Q.schleicher_approval += 2;
+Q.hindenburg_schleicher_r += 1;
+Q.stampfer_advisor = 0;
+Q.stampfer_killed = 1;
+Q.pro_republic -= 10;
+
+Q.workers_spd -= 6;
+Q.new_middle_spd -= 4;
+Q.old_middle_spd -= 2;
+Q.rural_spd -= 2;
+Q.catholics_spd -= 4;
+Q.unemployed_spd -= 4;
+
+if (Q.schleicher_spd_r >= 5) {
+    Q.workers_spd += 3;
+    Q.new_middle_spd += 2;
+    Q.old_middle_spd += 1;
+    Q.rural_spd += 1;
+    Q.catholics_spd += 2;
+    Q.unemployed_spd += 2;
+}
+
+if (Q.schleicher_spd_influence >= 6 && Q.schleicher_spd_r < 5) {
+    Q.workers_spd += 2;
+    Q.unemployed_spd += 2;
+    Q.left_dissent += 20;
+    Q.center_dissent += 10;
+    Q.reformist_strength += 5;
+    Q.labor_strength += 5;
+}
+
+if (!Q.dstp_dnef) {
+    Q.new_middle_ddp *= 0.6;
+    Q.old_middle_ddp *= 0.6;
+    Q.rural_ddp *= 0.8;
+    if (Q.dvp_dnef) {
+        Q.new_middle_dvp *= 1.2;
+        Q.old_middle_dvp *= 1.2;
+        Q.rural_dvp *= 1.2;
+    }
+}
+if (!Q.dvp_dnef) {
+    Q.new_middle_dvp *= 0.6;
+    Q.old_middle_dvp *= 0.6;
+    Q.rural_dvp *= 0.8;
+    if (Q.dstp_dnef) {
+        Q.new_middle_ddp *= 1.2;
+        Q.old_middle_ddp *= 1.2;
+        Q.rural_ddp *= 1.2;
+    }
+}
+if (!Q.dnvp_dnef && Q.dnvp_ideology == "Radical") {
+    Q.new_middle_dnvp *= 0.8;
+    Q.old_middle_dnvp *= 0.8;
+    Q.rural_dnvp *= 0.8;
+    Q.catholics_dnvp *= 0.8;
+    if (Q.kvp_formed) {
+        Q.new_middle_kvp *= 1.2;
+        Q.old_middle_kvp *= 1.2;
+        Q.rural_kvp *= 1.2;
+        Q.catholics_kvp *= 1.2;
+    } else if (!Q.kvp_formed) {
+        Q.new_middle_other += 6;
+        Q.old_middle_other += 6;
+        Q.rural_other += 4;
+        Q.catholics_other += 2;
+    }
+}
+if (Q.dnef_formed) {
+    Q.workers_dnef += 4;
+    Q.new_middle_dnef += 8;
+    Q.old_middle_dnef += 8;
+    Q.rural_dnef += 4;
+    Q.catholics_dnef += 4;
+    Q.unemployed_dnef += 4;
+} else {
+    Q.total_dnef_bonus += 4;
+}
+!}
+
+With the powers Schleicher has handed to the new Ministry of National Guidance, fresh directives are now issued to editors, dictating what to print and what to suppress. It is censorship in all but name. Non-compliance brings swift consequences.
+
+We have already seen this unfold. The <span style="color: #BFC8CC;">**DNEF**</span> has been "acquiring" private newspapers and filling their offices with government loyalists, turning them into little more than state mouthpieces. Many other editors have been forced out of their posts—some for no reason other than being <span style="color: #005EB8;">Jewish</span>.
+
+[? if schleicher_spd_r >= 5: Schleicher, however, has been notably lenient with Vorwärts. Perhaps he is grateful for our past support—or perhaps he is simply waiting until we are too weak to resist. Collaboration, it seems, pays off? ?][? if schleicher_spd_influence >= 6 and schleicher_spd_r < 5: Using his growing influence over the <span style="color: #c00000;">**SPD**</span>, Schleicher has even managed to install some of his own supporters to quietly "edit" the paper. It's jarring to see our supposed "newfound support" for rearmament—framed as a noble way to provide jobs—splashed across the front page. ?][? if schleicher_spd_influence < 6 and schleicher_spd_r < 5: It seems even our newspaper, Vorwärts, hasn't been spared from the crackdown. The offices are raided, staff arrested on dubious charges, and we can't even broadcast the truth for the workers to hear. ?] Stampfer hasn't been seen at his desk for some time now. Must be a long vacation.

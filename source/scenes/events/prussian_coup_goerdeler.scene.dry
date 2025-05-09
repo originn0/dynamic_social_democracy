@@ -1,0 +1,20 @@
+title: New State Consolidation
+subtitle: Goerdeler resigns the position to Papen.
+view-if: chancellor == "Papen" and papen_time == 7 and prussia_leader == "Goerdeler"
+new-page: true
+tags: event
+max-visits: 1
+face-image: img/portraits/goerdeler.jpg
+
+= New State Consolidation
+
+Goerdeler, the <i>Reichskommissar</i> of Prussia, has announced his resignation in favor of Chancellor Papen, likely under pressure from both the chancellor and Schleicher as they move to consolidate power into the chancellery. Goerdeler, ever the conservative, sympathizes with these goals and steps down before Hindenburg can force the issue.
+
+It is clear this is part of Papen’s wider plan for a "New State"—a centralized, anti-democratic regime ruled by aristocrats and the rich. The upcoming Prussian elections have now been postponed indefinitely.
+
+- @surrender: How blatant can Papen be!?
+
+@surrender
+on-arrival: prussia_leader = "Papen"; workers_spd -= 2; unemployed_spd -= 2; rb_militancy *= 0.95; rb_strength -= 100; prussian_police_loyalty -= 0.1; next_election_time_prussia = time + 48; next_election_year_prussia = year + 4; papen_strength += 1
+go-to: root
+

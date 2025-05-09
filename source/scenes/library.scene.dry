@@ -685,19 +685,20 @@ if (Q.lvp_r && Q.lvp_formed) {
     });
 }
 
-data = data.concat([{
+if (Q.z_r) {
+    data.push({
         "id": "z",
         "legend": "Center",
         "name": "Center",
         "seats": Math.round(Q.z_minus_bvp_r * 5),
-    },
-    {
+    });
+    data.push({
         "id": "bvp",
         "legend": "BVP",
         "name": "BVP",
         "seats": Math.round(Q.bvp_r * 5),
-    }
-]);
+    });
+}
 
 if (Q.dvp_r && !Q.lvp_formed && Q.dvp_exist) {
     data.push({
@@ -845,19 +846,23 @@ if (d3 && window) {
 [? if not dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div></td><td>!} **SPD:** {!</td><td>!} **[+ spd_r +]%** {!</td></tr>!} ?]
 [? if dnef_formed: {!<tr><td><div class="box" style='background-color:#BFC8CC; outline: 2px; outline-style: solid;'> </div></td><td>!} **DNEF:** {!</td><td>!} **[+ dnef_r +]%** {!</td></tr>!} ?]
 
-[? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!} ?]
+[? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!} ?]
 
-[? if z_dnef: {!<tr><td><div class="box" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!} ?]
+[? if z_dnef: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!} ?]
 
-[? if z_dnef: {!<tr><td><div class="box" style='background-color:#7aa7af'> </div></td><td>!} BVP: {!</td><td>!} [+ bvp_r +]% {!</td></tr>!} ?]
+[? if z_dnef: {!<tr><td><div class="box2" style='background-color:#7aa7af'> </div></td><td>!} BVP: {!</td><td>!} [+ bvp_r +]% {!</td></tr>!} ?]
 
-[? if not lvp_formed and dvp_exist and dvp_dnef: {!<tr><td><div class="box" style='background-color:#AA861F'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!} ?]
+[? if not lvp_formed and dvp_exist and dvp_dnef: {!<tr><td><div class="box2" style='background-color:#AA861F'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r +]% {!</td></tr>!} ?]
 
-[? if other_dnef: {!<tr><td><div class="box" style='background-color:#707070'> </div></td><td>!} Others: {!</td><td>!} [+ other_r +]% {!</td></tr>!} ?]
+[? if other_dnef: {!<tr><td><div class="box2" style='background-color:#707070'> </div></td><td>!} Others: {!</td><td>!} [+ other_r +]% {!</td></tr>!} ?]
 
-[? if kvp_formed and not cvp_kvp_formed and kvp_dnef: {!<tr><td><div class="box" style='background-color:#0072C0'> </div></td><td>!} KVP: {!</td><td>!} [+ kvp_r +]% {!</td></tr>!} ?]
+[? if kvp_formed and not cvp_kvp_formed and kvp_dnef: {!<tr><td><div class="box2" style='background-color:#0072C0'> </div></td><td>!} KVP: {!</td><td>!} [+ kvp_r +]% {!</td></tr>!} ?]
 
-[? if not cvp_formed and dnvp_dnef: {!<tr><td><div class="box" style='background-color:#316B8F'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!} ?]
+[? if not cvp_formed and dnvp_dnef: {!<tr><td><div class="box2" style='background-color:#316B8F'> </div></td><td>!} DNVP: {!</td><td>!} [+ dnvp_r +]% {!</td></tr>!} ?]
+
+[? if nvf_exist and nvf_dnef: {!<tr><td><div class="box2" style='background-color:#0F2116'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r +]% {!</td></tr>!} ?]
+
+[? if dnef_formed: <tr><td colspan="3" style="text-align: center;"><hr id="read-marker"></td></tr> ?]
 
 [? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div></td><td>!} SPD: {!</td><td>!} [+ spd_r +]% {!</td></tr>!} ?]
 
@@ -892,7 +897,7 @@ if (d3 && window) {
 [? if not nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_r +]% {!</td></tr>!} ?]
 [? if nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div></td><td>!} NSDAP: {!</td><td>!} [+ nsdap_hitler_r +]% {!</td></tr>!} ?]
 
-[? if nvf_exist: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r +]% {!</td></tr>!} ?]
+[? if nvf_exist and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r +]% {!</td></tr>!} ?]
 {!</table>!}
 
 = Election history

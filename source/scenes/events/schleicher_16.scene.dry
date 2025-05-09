@@ -1,0 +1,46 @@
+title: Schleicher and the Industrialists
+subtitle: The most powerful men in Germany are brought into the fold.
+view-if: chancellor = "Schleicher" and dnef_formed and industrialists_schleicher >= 10
+new-page: true
+priority: 2
+tags: event
+max-visits: 1
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/industrialists.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Schleicher and the Industrialists
+
+The German industrialists and big business leaders have maintained a friendly stance toward Schleicher, appreciating his prioritization of their interests over those of the agrarians and his efforts to stabilize the economy. However, concerns linger over his growing state intervention and the risk that his public works campaign could trigger runaway inflation.
+
+To address this, Schleicher has summoned a secret meeting with his allies and Germany’s leading industrialists. He will offer sweeping concessions: a guarantee of capitalism’s preservation and their continued dominance over labor within a corporatist framework. In return, they are expected to pool their resources for unrestricted use by the <span style="color: #BFC8CC;">**DNEF**</span>.
+
+- @schleicher_2: The <span style="color: #C0A054;">industrialists</span> are granted their place in the new order.
+
+@schleicher_2
+on-arrival: {!
+Q.industrialists_dnef = 1
+
+Q.pro_republic -= 3;
+
+Q.workers_schleicher
+
+Q.workers_dnef -= 4;
+Q.new_middle_dnef += 10;
+Q.old_middle_dnef += 10;
+Q.rural_dnef += 4;
+Q.unemployed_dnef -= 4;
+
+Q.dnef_relation -= 10;
+!}
+
+Schleicher continues to walk a tightrope between appeasing organized labor and retaining the favor of Germany’s industrial elite. Nonetheless, the <span style="color: #BFC8CC;">**DNEF**</span> secures over five million marks in funding from a consortium of German businesses—chiefly those tied to rearmament, who see Schleicher’s survival as essential to their own profits.

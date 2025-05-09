@@ -3,7 +3,7 @@ new-page: true
 tags: event
 priority: -2
 view-if: (year = next_election_year and month >= next_election_month and (next_election_week == week or not rubicon)) or (year > next_election_year)
-on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; last_election_time = time; hindenburg_angry = hindenburg_angry_old
+on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry = hindenburg_angry_old
 set-jump: post_election_1928
 set-bg: img/map_2.jpg
 #face-image: img/Rothe_Wahlen_1903.jpg
@@ -425,6 +425,18 @@ if (Q.nsdap_split) {
     Q.old_nsdap_hitler_r = Q.nsdap_hitler_r;
 }
 
+if (Q.dnef_formed && Q.nvf_exist) {
+    if (Q.nvf_dnef) {
+        if (Q.nvf_r) {
+            Q.dnef_r += Q.nvf_r;
+            Q.nvf_r = 0;
+        }
+        Q.dnef_votes += Q.nvf_votes;
+    }
+    Q.dnef_votes = Math.round(Q.dnef_votes * 10) / 10;
+    Q.dnef_r = Math.round(Q.dnef_r * 10) / 10;
+}
+
 if (Q.dnef_formed) {
     Q.str_votes_change_schleicher_dnef = Q.schleicher_dnef_votes - Q.previous_schleicher_dnef_last_election_votes;
     var sign2 = Q.str_votes_change_schleicher_dnef > 0 ?
@@ -435,6 +447,48 @@ if (Q.dnef_formed) {
     Q.str_votes_change_schleicher_dnef = sign2 + Math.abs(Q.str_votes_change_schleicher_dnef).toFixed(1);
     Q.previous_schleicher_dnef_last_election_votes = Q.schleicher_dnef_votes;
 }
+
+if (Q.time - Q.last_election_time >= 10) {
+    if (Q.spd_votes >= 50) {
+        Q.z_relation -= 12;
+        Q.ddp_relation -= 12;
+        Q.lvp_relation -= 12;
+        Q.dvp_relation -= 12;
+        Q.lvp_right += 6;
+        Q.dvp_right += 6;
+        Q.ddp_right += 5;
+        Q.ddp_cohesion -= 4;
+    } else if (Q.spd_votes >= 45) {
+        Q.z_relation -= 9;
+        Q.ddp_relation -= 9;
+        Q.lvp_relation -= 9;
+        Q.dvp_relation -= 9;
+        Q.lvp_right += 4;
+        Q.dvp_right += 4;
+        Q.ddp_right += 3;
+        Q.ddp_cohesion -= 3;
+    } else if (Q.spd_votes >= 40) {
+        Q.z_relation -= 6;
+        Q.ddp_relation -= 6;
+        Q.lvp_relation -= 6;
+        Q.dvp_relation -= 6;
+        Q.lvp_right += 3;
+        Q.dvp_right += 3;
+        Q.ddp_right += 2;
+        Q.ddp_cohesion -= 2;
+    } else if (Q.spd_votes >= 35) {
+        Q.z_relation -= 4;
+        Q.ddp_relation -= 4;
+        Q.lvp_relation -= 4;
+        Q.dvp_relation -= 4;
+        Q.lvp_right += 2;
+        Q.dvp_right += 2;
+        Q.ddp_right += 1;
+        Q.ddp_cohesion -= 1;
+    }
+}
+
+Q.last_election_time = Q.time;
 
 // The largest party can only be the NSDAP or the SPD.
 Q.largest_party = 'SPD';
@@ -564,6 +618,7 @@ Q.support_kpd_grand = 0;
 Q.support_kpd_weimar = 0;
 
 Q.bruning_coalition = Q.neo_weimar_coalition;
+if (Q.kvp_formed) Q.bruning_coalition += Q.kvp_r;
 if (Q.dnvp_ideology == "Moderate" && !Q.dnvp_defect) Q.bruning_coalition = Q.cordon_sanitaire;
 Q.bruning_coalition_loss = 0;
 if (Q.cnblp_defect) Q.bruning_coalition_loss += Q.cnblp_r;
@@ -922,6 +977,8 @@ go-to: coalition_menu
 
 [? if not cvp_formed and dnvp_dnef: {!<tr><td><div class="box2" style='background-color:#316B8F'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes +]% {!</td><td>!} [+ str_votes_change_dnvp +] {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}?]
 
+[? if nvf_exist and nvf_dnef: {!<tr><td><div class="box2" style='background-color:#0F2116'> </div> !} NVF: {!</td><td>!} [+ nvf_votes +]% {!</td><td>!} [+ str_votes_change_nvf +] {!</td><td>!} [+ nvf_r +]% {!</td><td>!} [+ str_change_nvf +] {!</td></tr>!} ?]
+
 [? if dnef_formed: <tr><td colspan="5" style="text-align: center;"><hr id="read-marker"></td></tr> ?]
 
 [? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div> !} SPD: {!</td><td>!} [+ spd_votes +]% {!</td><td>!} [+ str_votes_change_spd +] {!</td><td>!} [+ spd_r +]% {!</td><td>!} [+ str_change_spd +] {!</td></tr>!} ?]
@@ -956,7 +1013,7 @@ go-to: coalition_menu
 
 [? if nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_hitler_votes +]% {!</td><td>!} [+ str_votes_change_nsdap_hitler +] {!</td><td>!} [+ nsdap_hitler_r +]% {!</td><td>!} [+ str_change_nsdap_hitler +] {!</td></tr>!} ?]
 
-[? if nvf_exist: {!<tr><td><div class="box" style='background-color:#142e20'> </div> !} NVF: {!</td><td>!} [+ nvf_votes +]% {!</td><td>!} [+ str_votes_change_nvf +] {!</td><td>!} [+ nvf_r +]% {!</td><td>!} [+ str_change_nvf +] {!</td></tr>!} ?]
+[? if nvf_exist and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div> !} NVF: {!</td><td>!} [+ nvf_votes +]% {!</td><td>!} [+ str_votes_change_nvf +] {!</td><td>!} [+ nvf_r +]% {!</td><td>!} [+ str_change_nvf +] {!</td></tr>!} ?]
 {!</table>!}
 
 {!<button class="tab_button" id="demographics_tab" onclick="window.toggleDem();">Demographic Results</button>!}
@@ -1160,6 +1217,8 @@ go-to: coalition_menu
 
 [? if spd_votes < 20 and schleicher_spd_r >= 3: Our poor electoral results have led Schleicher to question the wisdom of collaborating with a party on the brink, one that can’t even secure a fifth of the vote. Many within our own party now blame our ties with the <span style="color: #808080;">reactionary</span> general as a major factor behind our disappointing electoral results. ?][? if spd_votes < 25 and spd_votes > 20 and schleicher_spd_r >= 5: Our poor electoral results have led Schleicher to question the wisdom of collaborating with a party on the brink, one that can’t even secure a quarter of the vote. Many within our own party now blame our ties with the <span style="color: #808080;">reactionary</span> general as a major factor behind our disappointing electoral results. ?]
 
+[? if spd_votes >= 35: Our strong performance has, unfortunately, driven our former bourgeois coalition partners to distance themselves from us. They blame their electoral defeats on their association with us and refuse to spend their dwindling influence supporting a government with the leverage to transform Germany into <span style="color: #c00000;">socialism</span>. ?]
+
 There are some potential coalition arrangements.
 
 @coalition_menu
@@ -1167,6 +1226,7 @@ There are some potential coalition arrangements.
 - @spd_majority
 - @weimar_coalition
 - @weimar_coalition_liberal_parliament
+- @schleicher_majority_coalition
 - @schleicher_left_coalition
 - @schleicher_right_coalition
 - @social_liberal_coalition
@@ -1184,6 +1244,16 @@ There are some potential coalition arrangements.
 - @center_right_coalition
 - @bourgeois_coalition
 
+@schleicher_majority_coalition
+title: Schleicher forms a majority government with only the <span style="color: #BFC8CC;">**DNEF**</span>.
+subtitle: <span style="color: #BFC8CC;">**DNEF**</span> ([+ dnef_r +]%)
+view-if: dnef_r >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
+unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span> ([+ dnef_r +]%)
+on-arrival: in_schleicher_majority_coalition = 1; vice_chancellor = "Hammerstein"; prussia_leader = "Goerdeler" if prussia_leader == "Schleicher" or prussia_leader == "Strasser" or (prussia_leader == "Stegerwald" and z_in_gov); dsu_in_gov = 0; z_in_gov = 0; foreign_minister_party = "DNEF"; interior_minister_party = "DNEF"; justice_minister_party = "DNEF"; labor_minister_party = "DNEF"; reichswehr_minister_party = "DNEF"; economic_minister_party = "DNEF"; finance_minister_party = "DNEF"; agriculture_minister_party = "DNEF"; reichswehr_minister = "Schleicher"; pro_republic = 0; schleicher_spd_r -= 4; schleicher_spd_support -= 2
+
+Immediately after the election, the chancellor abandoned both dialogue and the appearance of cordiality with the other political parties. Power is his, and he intends to keep it.
+
+Without the constraints of the parliamentary system, he can do whatever he pleases. Only the collapse of his delicately built house of cards could topple a <span style="color: #BFC8CC;">**DNEF**</span> majority government.
 
 @schleicher_left_coalition
 title: Schleicher forms a parliamentary cabinet with the left.

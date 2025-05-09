@@ -1,0 +1,263 @@
+title: German Labor Front Formed
+subtitle: A state-controlled labor organization is established.
+view-if: chancellor = "Schleicher" and dnef_formed and ((workers_schleicher >= 10 and (rb_force < 30 or unions_independent or labor_dissent >= 40)) or schleicher_spd_labor) and schleicher_post_time >= 14 and z_relation < 50 and not schleicher_pause
+on-arrival: {!
+Q.workers_schleicher_bonus += 2;
+
+Q.workers_z -= 4;
+Q.workers_dnef += 4;
+!}
+new-page: true
+priority: 2
+tags: event
+max-visits: 1
+face-image: img/beauty_of_labor.jpg
+
+= German Labor Front
+
+Schleicher has been working intensively over the past weeks to forge a formal alliance between the trade unions and the state, focusing his efforts on the <span style="color: #000000;">Christian</span> associations. Their negotiations have now "succeeded"—with heavy doses of state intimidation and interference ensuring they accepted an offer that would have been unthinkable under normal circumstances.
+
+Under this agreement, the blue-collar <span style="color: #D3C24D;">Hirsch-Duncker</span>, <span style="color: #000000;">Christian</span>, and the Strasserist <span style="color: #7A3C00;">**NSBO**</span> unions are merged into the new German Labor Front (DAF). White-collar and civil servant unions, including the DHV, are folded into their own section within the Front. The right to strike is curtailed, and all members are made to pledge full loyalty to the so-called "national interest"—however the state chooses to define it.
+
+Local union leaders who refuse to join are having their offices raided, their funds confiscated, and themselves imprisoned. While membership in the German Labor Front is technically voluntary, access to benefits—and even basic protections—is now locked behind it, making participation all but mandatory. Furthermore, a new department is established in the DAF, tasked solely with spreading state propaganda and binding the workers more tightly into the <i>Volksgemeinschaft</i>.
+
+The chancellor is also able to palate the industrialists, by placing their power significantly above that of labor in the newly established corporatist framework.
+
+- @schleicher_2: What about the ADGB?
+
+@schleicher_2
+go-to: schleicher_adgb_influence if schleicher_spd_influence >= 8; schleicher_adgb_choice if schleicher_spd_influence < 8 and schleicher_spd_r >= 5; schleicher_adgb_joever if schleicher_spd_influence < 6 and schleicher_spd_r < 5
+
+@schleicher_adgb_influence
+on-arrival: {!
+Q.unions_independent = 1;
+Q.unions_independent_schleicher = 1;
+
+Q.rb_strength -= 400;
+Q.workers_spd -= 15;
+Q.workers_dnef += 10;
+Q.unemployed_spd -= 10;
+Q.unemployed_dnef += 10;
+Q.labor_strength *= 0.5;
+if (Q.woytinsky_advisor) Q.n_advisors -= 1
+if (Q.leipart_advisor) Q.n_advisors -= 1
+Q.woytinsky_advisor = 0;
+Q.leipart_advisor = 0;
+
+Q.schleicher_spd_influence -= 2;
+Q.schleicher_spd_r -= 2;
+Q.schleicher_spd_support -= 5;
+!}
+
+Schleicher now wields extensive influence over the <span style="color: #c00000;">**SPD**</span>, and even greater sway within our affiliated trade union, the ADGB. Exploiting this grip—alongside a relentless psychological campaign among the rank-and-file and open intimidation by the Reichswehr militia, which threatens action if no decision is made before the deadline—Schleicher forces their submission to the German Labor Front—soon to be integrated.
+
+The new ADGB chairmen waste no time: they denounce all ties to political parties and pledge loyalty to nothing but the nation. <span style="color: #9B0000;">Marxist</span> doctrine is stamped out, and the radical <span style="color: #c00000;">**SPD**</span> members are purged without ceremony.
+
+The fall of the ADGB marks the beginning of the end. If even the workers no longer stand with us—what power do we really have left?
+
+@schleicher_adgb_choice
+
+Schleicher lacks the full leverage to force a <i>fait accompli</i> over the ADGB—at least for now. But we remain cornered, with few good options left. A sizable minority, perhaps even a plurality, of unionists have already fallen under his sway. And his threat is clear: the Reichswehr’s militia stands ready to act if no decision is reached before the deadline.
+
+Our good relations have kept him from forcing the issue—so far—but his patience is running out.
+
+What shall we do?
+
+- @schleicher_adgb_choice_1
+- @schleicher_adgb_choice_2
+
+@schleicher_adgb_choice_1
+title: Approve the ADGB's entry into the DAF.
+on-arrival: {!
+Q.unions_independent = 1;
+Q.unions_independent_schleicher = 1;
+
+Q.pro_republic -= Q.spd_votes / 2;
+
+Q.rb_strength -= 400;
+Q.workers_spd -= 15;
+Q.workers_dnef += 10;
+Q.unemployed_spd -= 10;
+Q.unemployed_dnef += 8;
+Q.labor_strength *= 0.5;
+if (Q.woytinsky_advisor) Q.n_advisors -= 1
+if (Q.leipart_advisor) Q.n_advisors -= 1
+Q.woytinsky_advisor = 0;
+Q.leipart_advisor = 0;
+
+Q.schleicher_spd_influence -= 2;
+Q.schleicher_spd_r -= 2;
+Q.schleicher_spd_support -= 4;
+!}
+
+The ADGB is now being absorbed into the DAF, with its new chairmen wasting no time denouncing all ties to political parties and pledging loyalty solely to the nation. <span style="color: #9B0000;">Marxist</span> doctrine is stamped out, and the radical <span style="color: #c00000;">**SPD**</span> elements are purged without ceremony.
+
+The fall of the ADGB marks the beginning of the end. If even the workers have abandoned us—what power do we have left?
+
+@schleicher_adgb_choice_2
+title: We will refuse.
+
+Are you sure? We have lost our opportunity a long time ago, resistance at this point will be frivolous.
+
+- @schleicher_adgb_choice_1
+- @schleicher_adgb_choice_2_pro
+
+@schleicher_adgb_choice_2_pro
+title: We are sure.
+on-arrival: {!
+Q.schleicher_points = 0;
+Q.spd_points = 0;
+
+Q.schleicher_points += Q.workers_schleicher;
+if (Q.unions_independent) Q.schleicher_points += 5;
+Q.schleicher_points += Q.republicans_schleicher;
+if (Q.dnef_formed) Q.schleicher_points += Q.dnef_votes / 10;
+
+Q.normalized_workers_total = Q.workers_spd_normalized;
+if (Q.kpd_relation >= 40) {
+    Q.normalized_workers_total += Q.workers_kpd_normalized;
+} else if (Q.kpd_relation < 40) {
+    Q.normalized_workers_total += Q.workers_kpd_normalized*0.5;
+}
+Q.spd_points += ((1 - Q.labor_dissent/100)*Q.normalized_workers_total*(1 - Q.unemployed/100)*2.5) / 5;
+
+Q.rb_power = Q.rb_strength*Q.rb_militancy;
+if (Q.dissent > 0.15) {
+    Q.rb_power *= (1 - Q.dissent/1.5);
+}
+Q.spd_points += Q.rb_power / 50;
+
+Q.prussian_police_power = Q.prussian_police_strength*Q.prussian_police_militancy*Q.prussian_police_loyalty;
+Q.evil_prussian_police_power = Q.prussian_police_strength*Q.prussian_police_militancy*(1 - Q.prussian_police_loyalty);
+if (Q.spd_prussia && Q.prussia_leader == "Braun" || Q.prussia_leader == "Rosenfeld") {
+    Q.spd_points += Q.prussian_police_power / 10;
+} else if (Q.spd_prussia && Q.prussia_leader !== "Braun" && Q.prussia_leader !== "Rosenfeld") {
+    Q.spd_points += (Q.prussian_police_power / 20);
+}
+if (Q.prussia_leader == "Schleicher" || Q.prussia_leader == "Strasser") {
+    Q.schleicher_points += Q.evil_prussian_police_power / 50;
+}
+Q.reichswehr_power = Q.reichswehr_strength*Q.reichswehr_militancy;
+Q.schleicher_points += Q.reichswehr_power/50;
+
+Q.rfb_power = Q.rfb_strength*Q.rfb_militancy / 50;
+if (Q.spd_points >= 40) {
+    Q.spd_points += Q.rfb_power;
+} else if (Q.kpd_relation < 40) {
+    Q.spd_points += Q.rfb_power*0.5;
+}
+
+Q.enemy_power = 0;
+Q.sa_power = Q.sa_strength*Q.sa_militancy / 50;
+// adjust if sa is friends with schleicher
+Q.enemy_power += Q.sa_power;
+Q.sh_power = Q.sh_strength*Q.sh_militancy / 50;
+Q.enemy_power += Q.sh_power;
+
+Q.schleicher_points += Q.enemy_power;
+
+if (Q.spd_points > Q.schleicher_points / 2) {
+    Q.spd_med = 1;
+} else {
+    Q.spd_lose = 1;
+}
+
+Q.schleicher_fight = 1;
+
+!}
+
+We are alone. Nonetheless, we will do everything in our power to launch a general strike and fill the street with protesters. 
+
+- @spd_med
+- @spd_lose
+
+@spd_med
+title: Schleicher attempts to negotiate with us.
+on-arrival: {!
+Q.schleicher_spd_influence = 0;
+Q.schleicher_spd_r = 0;
+Q.schleicher_spd_support = 0;
+Q.schleicher_approval -= 2;
+Q.republicans_schleicher_bonus -= 3;
+Q.workers_schleicher_bonus -= 4;
+Q.industrialists_schleicher_bonus -= 1;
+Q.nationalists_schleicher_bonus -= 1;
+
+Q.hindenburg_schleicher_r -= 2;
+Q.schleicher_strength -= 1;
+
+Q.workers_spd += 12;
+Q.unemployed_spd += 8;
+Q.workers_kpd += 4;
+Q.unemployed_kpd += 4;
+
+Q.workers_dnef -= 6;
+Q.new_middle_dnef -= 4;
+Q.old_middle_dnef -= 4;
+Q.rural_dnef -= 4;
+Q.unemployed_dnef -= 6;
+Q.total_dnef_bonus -= 4;
+
+Q.rb_strength *= 1.1;
+Q.rb_militancy *= 0.9;
+Q.rfb_strength *= 1.2;
+Q.rfb_militancy *= 1.2;
+
+Q.reformist_dissent -= 10;
+Q.labor_dissent -= 10;
+!}
+view-if: spd_med
+
+The nationwide general strike against Schleicher's authoritarian regime has brought the country to a standstill. The chancellor could unleash the Reichswehr and <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> paramilitaries to brutally crush the protests—but for now, that remains a last resort. Instead, Schleicher has chosen to open negotiations with the opposition.
+
+Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties have banded together to unofficially reconvene the chamber at a separate location, openly challenging federal authority.
+
+However, perhaps we have overestimated our strength—strikes rarely last with unemployment so high, especially with Schleicher’s sympathizers embedded within the unions themselves.
+
+- @schleicher_cabinet_13_pre
+
+@schleicher_cabinet_13_pre
+title: Schleicher's Turn to Play
+subtitle: Will the general hold firm?
+go-to: schleicher_cabinet_13
+
+@spd_lose
+title: Our protests are ineffective.
+view-if: spd_lose
+
+The general strike proves short-lived. An endless supply of unemployed strikebreakers and Schleicher's own sympathizers within the unions render it largely ineffective. Protesters are shot, civilians killed. The Reichsbanner is no match for the Reichswehr.
+
+Seizing the moment, Schleicher expands his crackdown, accusing the <span style="color: #c00000;">**SPD**</span> of conspiring with the <span style="color: #700000;">**Communists**</span> to incite revolution.
+
+Germany is lost.
+
+- @game_over
+
+@schleicher_adgb_joever
+on-arrival: {!
+Q.unions_independent = 1;
+Q.unions_independent_schleicher = 1;
+
+Q.pro_republic -= Q.spd_votes / 2;
+
+Q.rb_strength -= 600;
+Q.workers_spd -= 20;
+Q.workers_dnef += 15;
+Q.unemployed_spd -= 14;
+Q.unemployed_dnef += 10;
+Q.labor_strength *= 0.5;
+if (Q.woytinsky_advisor) Q.n_advisors -= 1
+if (Q.leipart_advisor) Q.n_advisors -= 1
+Q.woytinsky_advisor = 0;
+Q.leipart_advisor = 0;
+
+Q.schleicher_spd_influence -= 3;
+Q.schleicher_spd_r -= 3;
+Q.schleicher_spd_support -= 5;
+!}
+
+With Schleicher lacking the influence to influence the ADGB chairmen personally, or having the adequate relations with us to negotiate a more peaceful solution, violence is the only option.
+
+Across the country, ADGB offices are ransacked by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> paramilitaries and the Reichswehr, arresting leaders, confiscating funds, and repurposing offices to be used for the DAF.
+
+The fall of the ADGB marks the beginning of the end. If even the workers have abandoned us—what power do we have left?

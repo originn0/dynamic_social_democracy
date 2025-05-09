@@ -2,7 +2,7 @@ title: The <span style="color: #3E88B3;">**DNVP**</span> joins the <span style="
 subtitle: Lambach forces the party into the front.
 view-if: chancellor = "Schleicher" and schleicher_time >= 18 and nationalists_schleicher >= 8 and dnef_formed and dnvp_leader == "Lambach"
 new-page: true
-priority: 1
+priority: 3
 tags: event
 max-visits: 1
 
@@ -21,6 +21,8 @@ Q.dnvp_dnef = 1
 Q.pro_republic -= Q.dnvp_votes;
 
 Q.dnvp_relation = (Q.dnef_relation - 35);
+
+Q.dnef_relation -= 15;
 
 Q.dnef_r += Q.dnvp_r;
 Q.dnvp_r = 0;
@@ -44,3 +46,5 @@ Current composition of the <span style="color: #BFC8CC;">German National Unity F
 [? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
 
 [? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]
+
+[? if nvf_dnef: - <span style="color: #142e20;">**NVF**</span> ?]

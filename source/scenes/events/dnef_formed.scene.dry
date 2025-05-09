@@ -63,6 +63,15 @@ Q.catholics_nsdap -= 2;
 Q.catholics_spd -= 2;
 Q.catholics_dnef += Q.catholics_dnef_bonus;
 
+if (Q.dnvp_ideology == "Radical") {
+    Q.new_middle_dnvp *= 0.8;
+    Q.old_middle_dnvp *= 0.8;
+    Q.rural_dnvp *= 0.9;
+    Q.new_middle_dnef += 4;
+    Q.old_middle_dnef += 6;
+    Q.rural_dnef += 4;
+}
+
 if (Q.total_dnef_bonus) {
     Q.workers_dnef -= Q.total_dnef_bonus;
     Q.new_middle_dnef -= Q.total_dnef_bonus;

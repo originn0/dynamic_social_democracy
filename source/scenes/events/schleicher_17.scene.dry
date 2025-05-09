@@ -1,0 +1,194 @@
+title: Hugenberg Ousted!
+subtitle: Not even his blindly loyal party stands by him now.
+view-if: chancellor = "Schleicher" and dnef_formed and ((nationalists_schleicher >= 10 and industrialists_schleicher >= 8 and not press_censorship) or (nationalists_schleicher >= 8 and industrialists_schleicher >= 6 and press_censorship))
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/dnvp_poster.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+go-to: hugenberg_dnvp if dnvp_ideology == "Radical"; hugenberg_dnf if dnvp_ideology == "Moderate"
+
+= Hugenberg Ousted
+
+@hugenberg_dnvp
+
+Initially, Hugenberg and his <span style="color: #3E88B3;">**DNVP**</span> initially stood to gain the most by backing the <span style="color: #808080;">reactionary</span> Papen cabinet. However, relations soured with the chancellery after Schleicher refused to grant him full control over the agricultural and economic ministries. His uncompromising opposition to Schleicher has sparked widespread discontent within the <span style="color: #3E88B3;">**DNVP**</span>, eroding Hugenberg’s once unchallenged authority among both party leaders and the rank-and-file.
+
+Many find it bewildering that Hugenberg would oppose a fellow <span style="color: #808080;">reactionary</span>, especially one presumably sharing his goal of steering Germany toward authoritarian rule.
+
+With internal party democracy long dead—party congresses stacked with loyalists serving as mere rubber stamps—dissenters have little choice. Now, the majority within the party are seizing Schleicher’s lifeline: the absorption of friendly <span style="color: #3E88B3;">nationalists</span> into the <span style="color: #BFC8CC;">German National Unity Front</span>, where they hope to finally gain a hand in shaping the chancellor's future policies.
+
+- @schleicher_2_dnvp: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new members.
+
+@hugenberg_dnf
+
+Hugenberg and the <span style="color: #003755;">**DNF**</span>, once buoyed by their early popularity as one of the few parties to unconditionally back Papen, have since soured their relations with the chancellery. Hugenberg's demand for full control over the agricultural and economic ministries has strained ties, and his uncompromising opposition to Schleicher has sparked discontent within the <span style="color: #003755;">**DNF**</span>—a party once built entirely from his loyalists.
+
+Many of his former allies are now bewildered that Hugenberg would turn against a fellow <span style="color: #808080;">reactionary</span>, especially one who ostensibly shares his vision of steering Germany toward authoritarian rule.
+
+With Hugenberg’s personal fortune—once sustained by his media empire—running dry, and industrial backers remaining firmly opposed to his leadership, frustrated members and former confidants are abandoning ship. They now flock to the <span style="color: #BFC8CC;">German National Unity Front</span>, preferring to back Schleicher directly without Hugenberg standing in their way.
+
+- @schleicher_2_dnf: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new members.
+
+@schleicher_2_dnvp
+go-to: schleicher_2_dnvp_post
+
+With Schleicher’s backing, the dissident factions have been absorbed into the [? if not kvp_formed: newly revived <span style="color: #0087DC;">**KVP**</span>, which, at the chancellor’s urging, has become a <i>Rechtsblock</i> where all <span style="color: #3E88B3;">nationalists</span> can coalesce. ?][? if kvp_formed and kvp_dnef: <span style="color: #0087DC;">**KVP**</span>, which, at Schleicher’s urging, has become a <i>Rechtsblock</i> where all <span style="color: #3E88B3;">nationalists</span> can coalesce. ?][? if kvp_formed and not kvp_dnef: <span style="color: #0087DC;">**KVP**</span>, which has also been strong-armed into joining the <span style="color: #BFC8CC;">German National Unity Front</span>. ?]
+
+What’s left of Hugenberg’s <span style="color: #3E88B3;">**DNVP**</span> is a shadow of its former self, and his sway on the national stage has all but vanished. But that man never gives up.
+
+@schleicher_2_dnvp_post
+on-arrival: {!
+Q.kvp_dnef = 1;
+Q.hindenburg_schleicher_r += 1;
+
+Q.pro_republic -= 3;
+
+if (!Q.kvp_formed) {
+    Q.kvp_formed = 1;
+    Q.schleicher_kvp = 1;
+    Q.parties.push('kvp');
+    Q.parties_graph.push('kvp');
+
+    Q.workers_kvp = 3;
+    Q.workers_dnvp -= 3;
+
+    Q.new_middle_kvp = 8;
+    Q.new_middle_dnvp -= 8;
+
+    Q.old_middle_kvp = 12;
+    Q.old_middle_dnvp -= 12;
+
+    Q.rural_kvp = 8;
+    Q.rural_dnvp -= 6;
+    Q.rural_other -= 2;
+
+    Q.unemployed_kvp = 0;
+
+    Q.catholics_kvp = 4;
+    Q.catholics_dnvp -= 3;
+    Q.catholics_other -= 1;
+
+    Q.kvp_r = Math.round((Q.other_r*0.2) * 10) / 10 ;
+    Q.other_r = Math.round((Q.other_r - Q.kvp_r) * 10) / 10 ;
+    Q.kvp_r = Math.round((Q.kvp_r) * 10 / 10)
+    Q.other_r = Math.round((Q.other_r) * 10 / 10)
+
+    Q.kvp_r += Math.round((Q.dnvp_r*0.6) * 10) / 10 ;
+    Q.dnvp_r = Math.round((Q.dnvp_r - Q.kvp_r) * 10) / 10 ;
+    Q.kvp_r = Math.round((Q.kvp_r) * 10 / 10)
+    Q.dnvp_r = Math.round((Q.dnvp_r) * 10 / 10)
+
+    Q.kvp_relation = 10;
+
+    Q.kvp_leader = "Treviranus";
+    Q.old_workers_kvp_display = 0;
+    Q.old_new_middle_kvp_display = 0;
+    Q.old_old_middle_kvp_display = 0;
+    Q.old_rural_kvp_display = 0;
+    Q.old_unemployed_kvp_display = 0;
+    Q.old_catholics_kvp_display = 0;
+
+    for (var record of Q.election_records) {
+        record['kvp'] = 0;
+    }
+    for (var record of Q.party_support_records) {
+        record['kvp'] = 0;
+    }
+}
+Q.dnef_relation -= 15;
+
+Q.dnef_r += Q.kvp_r;
+Q.kvp_r = 0;
+!}
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]
+
+[? if nvf_dnef: - <span style="color: #142e20;">**NVF**</span> ?]
+
+@schleicher_2_dnf
+go-to: schleicher_2_dnf_post
+
+With Schleicher’s backing, the dissident factions have been absorbed into the <span style="color: #3E88B3;">**DNVP**</span>, which has been "encouraged" to reform itself into a <i>Rechtsblock</i>[? if not dnvp_dnef:, and strong-armed into joining the <span style="color: #BFC8CC;">German National Unity Front</span> as well?], firmly aligned with the Schleicher government.
+
+Hugenberg is now left with his tiny <span style="color: #003755;">**DNF**</span>—no friends, no funds, and no influence on the national stage. There’s a strong chance he’ll give up entirely. But for now, he stubbornly clings on onto whatever influence he has left in his media empire.
+
+@schleicher_2_dnf_post
+on-arrival: {!
+Q.dnvp_dnef = 1;
+Q.hindenburg_schleicher_r += 1;
+
+Q.pro_republic -= 5;
+Q.dnvp_relation = (Q.dnef_relation - 35);
+
+Q.workers_dnf -= 3;
+Q.new_middle_dnf -= 5;
+Q.old_middle_dnf -= 5;
+Q.rural_dnf -= 5;
+Q.unemployed_dnf -= 5;
+Q.catholics_dnf -= 3;
+
+Q.workers_dnvp += 3;
+Q.new_middle_dnvp += 5;
+Q.old_middle_dnvp += 5;
+Q.rural_dnvp += 5;
+Q.unemployed_dnvp += 5;
+Q.catholics_dnvp += 3;
+
+Q.dnef_relation -= 15;
+
+Q.dnvp_r = Math.round((Q.dnf_r*0.4) * 10) / 10 ;
+Q.dnf_r = Math.round((Q.dnf_r*0.6) * 10) / 10 ;
+Q.dnvp_r = Math.round((Q.dnvp_r) * 10 / 10)
+Q.dnf_r = Math.round((Q.dnf_r) * 10 / 10)
+
+Q.dnef_r += Q.dnvp_r;
+Q.dnvp_r = 0;
+!}
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]
+
+[? if nvf_dnef: - <span style="color: #142e20;">**NVF**</span> ?]

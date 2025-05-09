@@ -1,0 +1,60 @@
+title: Schleicher and Röhm?
+subtitle: A deal is struck.
+view-if: chancellor = "Schleicher" and reichstag_joever_time >= 3 and dnef_formed and nvf_exist
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+face-image: img/portraits/rohm.jpg
+
+= Schleicher and Röhm
+
+Ernst Röhm has found little success in his efforts to rebuild the <span style="color: #7A3C00;">**SA**</span>, and in maintaining its new political organization, the 
+<span style="color: #142e20;">**NVF**</span>. There are simply not enough funds to go around, as demoralized <span style="color: #7A3C00;">Nazis</span> stopped contributing a while ago. Röhm's plan to wait for an opportune moment for his "national revolution" is no longer tenable, and a new approach has to be taken.
+
+Schleicher and Röhm goes years back, with the two becoming best friends near the turn of the decade, to the paranoia of Hitler. The two have very distinct political views however, and their cooperation only goes as far as a secret agreement promising that the <span style="color: #7A3C00;">**SA**</span> would mobilize and fight along with the Reichswehr if Germany was attacked by a foreign invader. 
+
+Now, the two aim to rekindle this bond, and Röhm has officially attached the <span style="color: #7A3C00;">**SA**</span> to be subordinate to the Reichswehr, in exchange for more authority over its operations. The <span style="color: #142e20;">**NVF**</span> has since been attached to the <span style="color: #BFC8CC;">**DNEF**</span> as well.
+
+- @schleicher_2: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new member.
+
+@schleicher_2
+on-arrival: {!
+Q.nvf_dnef = 1
+Q.hindenburg_schleicher_r -= 1;
+
+Q.pro_republic -= Q.sa_force / 2;
+
+Q.reichswehr_strength += 50;
+Q.reichswehr_loyalty = 0;
+Q.reichswehr_militancy -= 0.5;
+
+Q.dnef_relation -= 15;
+
+Q.dnef_r += Q.nvf_r;
+Q.nvf_r = 0;
+!}
+
+God knows what Röhm might do with an official government position. Fortunately, everyone, including President Hindenburg, are intensely distrustful of Röhm's <span style="color: #700000;">revolutionary</span> views. 
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]
+
+[? if nvf_dnef: - <span style="color: #142e20;">**NVF**</span> ?]
+
+- @root: Röhm is unreliable, he will soon split.
