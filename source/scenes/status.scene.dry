@@ -170,6 +170,8 @@ Economic growth: [+ economic_growth_2 +]%
 
 <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>: [+ kpd_relation : relationships +]
 
+[? if kpo_formed : <span class="tooltip-text" title="Communist Party of Germany (Opposition)" style="color: #C43988;">**KPD(O)**</span>: [+ kpo_relation : relationships +] ?]
+
 [? if sapd_formed : <span class="tooltip-text" title="Socialist Workers' Party of Germany" style="color: #9B0000;">**SAPD**</span>: [+ sapd_relation : relationships +] ?]
 
 [? if kvp_formed : <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [+ kvp_relation : relationships +] ?]
@@ -195,6 +197,8 @@ Economic growth: [+ economic_growth_2 +]%
 [? if not ddp_name and not lvp_formed: UNINITIALIZED ?][? if not lvp_formed and dvp_exist and ddp_name != 0: [? if ddp_name != 0 and dvp_leader != "Thiel" and dvp_leader != "Glatzel": <span class="tooltip-text" title="German People's Party" style="color: #C0A054;">**DVP**</span>: [? if dvp_ideology = "Left": Classical liberalism ?][? if dvp_ideology = "Moderate": Conservative liberalism?][? if dvp_ideology = "Right" and (dvp_right - dvp_left < 10 or dvp_leader == "Stresemann"): National liberalism?][? if dvp_ideology = "Right" and dvp_right - dvp_left >= 10 and dvp_leader != "Stresemann": National capitalism?] ([+ dvp_leader +])?][? if ddp_name != 0 and (dvp_leader == "Thiel" or dvp_leader == "Glatzel"): <span class="tooltip-text" title="German People's Party" style="color: #C0A054;">**DVP**</span>: Paternalistic liberalism ([+ dvp_leader +])?]?]
 
 [? if sapd_formed : <span class="tooltip-text" title="Socialist Workers' Party of Germany" style="color: #9B0000;">**SAPD**</span>: [+ sapd_idealogy +] ([+ sapd_leader +])?]
+
+[? if kpo_formed : <span class="tooltip-text" title="Communist Party of Germany (Opposition)" style="color: #C43988;">**KPD(O)**</span>: [+ kpo_idealogy +] ([+ kpo_leader +])?]
 
 [? if not ddp_name: UNINITIALIZED ?][? if ddp_name != 0: <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>: [+ kpd_idealogy +] ([+ kpd_leader +])?]
 
