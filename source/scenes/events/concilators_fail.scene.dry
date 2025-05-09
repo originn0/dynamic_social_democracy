@@ -1,6 +1,6 @@
 title: Concilators Removed from Power!
 subtitle: Stalin has moved against us...
-view-if: soviet_relations - kpd_relation >= 65
+view-if: soviet_relations - kpd_relation >= 65 and comintern_talk == 1
 face-image: img/Stalin_in_1934.jpg
 priority: -1
 max-visits: 1
@@ -39,10 +39,10 @@ title: The <span style="color: #C43988;">**KPD(O)**</span> is formed!
 view-if: kpo_formed == 0
 on-arrival: {!
 if (year <= 1930) {
-workers_kpd -= 2; 
-workers_other += 2; 
-unemployed_kpd -= 4;
-unemployed_other += 4;
+Q.workers_kpd -= 2; 
+Q.workers_other += 2; 
+Q.unemployed_kpd -= 4;
+Q.unemployed_other += 4;
 }
 !}
 go-to: kpo_formed_stalin if (year >= 1931) or kpo_formed if (year <= 1930)
