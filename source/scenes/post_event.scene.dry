@@ -421,6 +421,12 @@ if (Q.dnef_formed) {
         Q.republicans_schleicher += 1;
         Q.nationalists_schleicher += 1;
     }
+    if (Q.schleicher_cabinet_weak) {
+        Q.workers_schleicher -= 2;
+        Q.industrialists_schleicher -= 2;
+        Q.republicans_schleicher -= 2;
+        Q.nationalists_schleicher -= 3;
+    }
 
     if (Q.schleicher_spd_influence) Q.workers_schleicher += Q.schleicher_spd_influence / 2;
     if (Q.schleicher_spd_support) Q.workers_schleicher += Q.schleicher_spd_support / 4;
@@ -481,6 +487,7 @@ if (Q.dnef_formed) {
     if (Q.dnvp_ideology == "Moderate") Q.nationalists_schleicher += 2;
     if (Q.dsu_in_gov) Q.nationalists_schleicher += 1;
     if (Q.schleicher_spd_r) Q.nationalists_schleicher -= Q.schleicher_spd_r / 3;
+    if (Q.schleicher_stahlhelm) Q.nationalists_schleicher += 5;
     if (Q.nationalists_schleicher_bonus) Q.nationalists_schleicher += Q.nationalists_schleicher_bonus;
     if (Q.nationalists_schleicher > 12) Q.nationalists_schleicher = 12;
 }
@@ -4194,6 +4201,12 @@ if (Q.dvp_relation < 0) {
     Q.dvp_relation = 0;
 }
 
+if (Q.kpd_relation < 20 && !Q.blutmai) {
+    Q.kpd_relation = 20;
+} else if (Q.kpd_relation < 0 && Q.blutmai) {
+    Q.kpd_relation = 0;
+}
+
 if (Q.lvp_relation < 0) {
     Q.lvp_relation = 0;
 }
@@ -4362,6 +4375,8 @@ if (Q.dnvp_ideology === "Moderate") {
     Q.far_right_coalition_prussia = parseFloat((Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
 }
 
+if (Q.hugenberg_dvp) Q.far_right_coalition_prussia = parseFloat((Q.far_right_coalition_prussia + Q.dvp_r_prussia).toFixed(1));
+
 Q.left_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.sapd_r_prussia).toFixed(1));
 
 if (Q.lvp_formed) {
@@ -4400,6 +4415,11 @@ if (Q.lvp_formed) {
     Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + (Q.lvp_r_prussia / 2) + Q.sapd_r_prussia).toFixed(1));
 } else {
     Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.lvp_r_prussia + Q.dvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia + Q.dnvp_r_prussia + Q.dnf_r_prussia + Q.dsu_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
 }
 
 if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {

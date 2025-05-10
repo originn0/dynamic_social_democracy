@@ -1,0 +1,25 @@
+title: Coup in Prussia
+subtitle: The Chancellor attempts to overthrow the Prussian government.
+view-if: chancellor == "Schleicher" and no_majority_elections_prussia_schleicher and not presidential_powers
+on-arrival: schleicher_spd_r -= 2; schleicher_spd_support -= 4; schleicher_spd_influence -= 2;
+new-page: true
+#tags: event
+max-visits: 1
+face-image: img/Reichswehr.jpg
+
+= Coup in Prussia
+
+President Hindenburg and Chancellor Schleicher have grown fed up with the political deadlock in Prussia and move to dismiss its government, replacing it with a <i>Reichskommissar</i>—likely one of their allies or another <span style="color: #808080;">reactionary</span> figure.
+
+The move carries plausible justification, with Hindenburg citing Prussia's "ungovernable" state, brought on by repeated failures to form a stable government and escalating clashes between state forces and paramilitaries in these troubled times.
+
+- @surrender
+
+@surrender
+title: There is nothing we can do.
+subtitle: This isn't worth dying over.
+on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; prussia_leader = "Goerdeler"; workers_spd -= 3; workers_kpd -= 3; unemployed_kpd -= 3; unemployed_spd -= 3; left_dissent += 5; labor_dissent += 5; rb_militancy = rb_militancy/1.5; rb_strength -= 300; rfb_banned = 1; rfb_strength -= 100; rfb_militancy -= 0.1; prussian_reichsexekution_timer = 12; next_election_time_prussia = time + 48; next_election_year_prussia = year + 4
+
+[? if not dsu_in_gov: Hindenburg appoints the <span style="color: #3E88B3;">nationalist</span> Carl Friedrich Goerdeler—who renounces his party affiliation—to rule Prussia as <i>Reichskommissar</i>, tasked with dismantling the democratic systems we fought to build. ?][? if dsu_in_gov: Hindenburg appoints the <span style="color: #6A1E1E;">**DSU**</span>'s Gregor Strasser to rule Prussia as <i>Reichskommissar</i>, charged with ruthlessly tearing down the democratic structures we struggled to establish. On top of this, Frick is made Prussian Interior Minister. ?]
+
+Future state elections have been postponed indefinitely, to be held only when the situation is deemed "stable enough."

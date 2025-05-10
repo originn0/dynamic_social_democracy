@@ -269,6 +269,8 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 [? if nvf_exist and nvf_r_alt and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r_alt +]% {!</td></tr>!} ?]
 {!</table>!}
 
+Total: [+ total_r_alt +]% of the original Reichstag involved.
+
 We have leverage, and we should use it to extract concessions. No one wants civil war.
 
 @negotiation_menu_med
@@ -288,6 +290,7 @@ We have leverage, and we should use it to extract concessions. No one wants civi
 
 @reichstag_reconvene
 title: Demand a reconvening of the Reichstag, with no dirty tricks this time.
+subtitle:[? if reichstag_fire_decree_schleicher: Different building, of course.?]
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.reichstag_break = 0;
@@ -326,7 +329,7 @@ This is a disappointing outcome, but perhaps a vote of no confidence and new ele
 The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
 
 @rights
-title: Demand the above, and also guarantees for democratic rights.
+title: Demand the above, and [? if not reichstag_fire_decree_schleicher: also guarantees for democratic rights?][? if reichstag_fire_decree_schleicher: a repeal of the Reichstag Fire Decree?].
 unavailable-subtitle: Not enough leverage.
 choose-if: spd_win and total_r_alt >= 50
 on-arrival: {!
@@ -368,6 +371,13 @@ Q.new_middle_lvp += 2;
 Q.old_middle_lvp += 2;
 Q.rural_z += 2;
 
+if (Q.reichstag_fire_decree_schleicher) {
+    Q.workers_kpd += 4;
+    Q.unemployed_kpd += 4;
+    Q.workers_sapd += 2;
+    Q.unemployed_sapd += 2;
+}
+
 Q.workers_dnef -= 4;
 Q.new_middle_dnef -= 4;
 Q.old_middle_dnef -= 4;
@@ -379,7 +389,7 @@ Q.hindenburg_schleicher_r -= 1;
 Q.schleicher_strength -= 1;
 !}
 
-With our limited leverage, we have managed to negotiate the reconvening of the Reichstag, with Schleicher promising not to obstruct the chamber's right to assemble as it sees fit. Furthermore, we secured an agreement that his government will not infringe upon the people's right to organize peacefully or on the freedom of the press, with Schleicher lifting all emergency restrictions.
+With our limited leverage, we have managed to negotiate the reconvening of the Reichstag, with Schleicher promising not to obstruct the chamber's right to assemble as it sees fit. Furthermore, we secured an agreement that his government will not infringe upon the people's right to organize peacefully or on the freedom of the press, with Schleicher lifting all emergency restrictions. [? if reichstag_fire_decree_schleicher: This includes the repeal of the Reichstag Fire Decree. ?]
 
 This is a disappointing outcome for all our efforts, but perhaps a vote of no confidence and new elections could turn the tide. After all, we can harness the significant public enthusiasm shown in defiance of dictatorship, and we need not fear further democratic backsliding—so long as Schleicher keeps his word.
 
@@ -388,9 +398,9 @@ The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichst
 @schemes
 title: Demand the above, and also guarantees for the continued independence of political organizations.
 subtitle: Including the <span style="color: #700000;">**KPD**</span>.
-unavailable-subtitle: [? if not spd_win or total_r_alt < 66: Not enough leverage. ?][? if pro_republic < 50 and weimar_votes < 45: Schleicher is dead-set on banning the <span style="color: #700000;">Communists</span>. ?]
+unavailable-subtitle: [? if not spd_win or total_r_alt < 66: Not enough leverage. ?][? if pro_republic < 50 and weimar_votes < 45 or reichstag_fire_decree_schleicher: Schleicher is dead-set on banning the <span style="color: #700000;">Communists</span>. ?]
 view-if: dnef_formed
-choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt >= 66
+choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt >= 66 and not reichstag_fire_decree_schleicher
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;

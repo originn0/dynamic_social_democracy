@@ -1,7 +1,7 @@
-title: The <span style="color: #700000;">**KPD**</span> Is Banned!
-subtitle: The Interior Ministry discovers "alarming evidence" of a planned revolution.
-view-if: chancellor == "Schleicher" and dsu_in_gov and dsu_policy and reichstag_joever_time >= 1 and not kpd_explode
-on-arrival: kpd_relation = 40 if kpd_relation < 40
+title: The Reichstag Burns!
+subtitle: A suspected arson attack, ostensibly by a foreign <span style="color: #700000;">**Communist**</span>.
+view-if: chancellor == "Schleicher" and not dsu_in_gov and reichstag_joever_time >= 1 and not kpd_explode
+on-arrival: kpd_relation = 30 if kpd_relation < 40; reichstag_fire_decree_schleicher = 1
 max-visits: 1
 new-page: true
 priority: -1
@@ -12,25 +12,23 @@ on-display: {!
 
     var image = new Image();  
     image.className = "face-img";  
-    image.src = "img/left_wing.jpg";  
+    image.src = "img/reichstag_fire.jpg";  
 
     cardEl.appendChild(image);  
     var contentDiv = document.querySelector("#page #mid_panel #content");
     contentDiv.appendChild(cardEl);
 !}
 
-= The <span style="color: #700000;">**KPD**</span> Is Banned!
+= The Reichstag Burns
 
-Wilhelm Frick of the Interior Ministry has announced an emergency measure, effectively banning the <span style="color: #700000;">**KPD**</span> after conveniently "uncovering" evidence of a planned revolution involving the <span style="color: #700000;">**RFB**</span>—including several warehouses allegedly stocked with weapons. A raid on a <span style="color: #700000;">**Communist**</span> party office has also produced a so-called plan to establish a new "<span style="color: #750e0e;">Soviet Germany</span>" in the aftermath of the revolt.
+The Reichstag has been set ablaze! The government accuses a group of foreign <span style="color: #700000;">**Communist**</span> agitators of arson. As the accused await trial, President Hindenburg and the cabinet insist the fire was meant to signal the start of a <span style="color: #700000;">**Communist**</span> revolution against Schleicher’s <span style="color: #808080;">reactionary</span> rule.
 
-According to the government, these plans were to be set in motion in protest against Schleicher's unconstitutional adjournment and the mass arrests of <span style="color: #700000;">**Communist**</span> deputies that followed. Only the state's last-minute intervention, they claim, has saved Germany from violent revolt.
-
-But Schleicher and the <span style="color: #7A3C00;">Nazis</span> cannot be trusted. They could just as easily have planted the evidence to manufacture a pretext for crushing the <span style="color: #700000;">**Communists**</span>.
+Yet, we cannot entirely dismiss the possibility that the blaze was orchestrated by Schleicher himself to tighten his grip on power. Hindenburg, eager to endorse whatever measures are deemed necessary in the fight against <span style="color: #700000;">Bolshevism</span>, stands ready to sign off on sweeping actions—including a ban on the <span style="color: #700000;">**KPD**</span>.
 
 - @kpd_ban
 
 @kpd_ban
-title: President Hindenburg wastes no time signing all requested emergency powers.
+title: The "Reichstag Fire Decree" is signed by Hindenburg.
 on-arrival: {!
 Q.kpd_explode = 1;
 
@@ -44,19 +42,26 @@ Q.pro_republic -= 10;
 Q.rfb_militancy *= 0.8;
 Q.rfb_strength *= 0.6;
 
-Q.workers_spd += 2;
-Q.workers_kpd -= 6;
-Q.workers_sapd -= 4;
+Q.workers_kpd -= 8;
+Q.workers_sapd -= 6;
 
-Q.new_middle_kpd -= 2;
-Q.new_middle_sapd -= 2;
+Q.new_middle_kpd -= 3;
+Q.new_middle_sapd -= 3;
 
-Q.unemployed_spd += 2;
-Q.unemployed_kpd -= 4;
-Q.unemployed_sapd -= 4;
+Q.unemployed_kpd -= 6;
+Q.unemployed_sapd -= 6;
 
 Q.kpd_banned = 1;
 Q.sapd_banned = 1;
+
+if (Q.prussia_leader === "Goerdeler") {
+  Q.rfb_militancy *= 0.9;
+  Q.rfb_strength *= 0.8;
+  Q.workers_kpd -= 2;
+  Q.unemployed_kpd -= 2;
+  Q.workers_sapd -= 2;
+  Q.unemployed_sapd -= 2;
+}
 
 for (var party of Q.parties) {
     Q[party+'_r_pre'] = Q[party+'_r'];
@@ -77,32 +82,24 @@ if (total_r_sum !== 100) {
         Q[party + '_r'] = Math.round(Q[party + '_r'] * normalization_factor * 10) / 10;
     }
 }
-
-if (Q.prussia_leader === "Strasser") {
-  Q.rfb_militancy *= 0.9;
-  Q.rfb_strength *= 0.8;
-  Q.workers_kpd -= 4;
-  Q.new_middle_kpd -= 2;
-  Q.unemployed_kpd -= 4;
-  Q.workers_sapd -= 2;
-  Q.unemployed_sapd -= 2;
-}
 !}
 
-All <span style="color: #700000;">**Communist**</span> Reichstag members who haven't fled to Moscow are arrested and thrown in forced labor camps, working over 14 hours a day to further public works projects, and more problematic <span style="color: #700000;">**RFB**</span> fighters are given the death penalty en masse, being prosecuted by special local courts. 
+Contained within the Reichstag Fire Decree are measures that nullify key civil liberties and rights guaranteed by the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> constitution. This grants Schleicher the full power of the state to prosecute <span style="color: #700000;">**Communists**</span>, radical <span style="color: #c00000;">socialists</span>, and anyone the government deems a threat.
 
-<span style="color: #700000;">**Communist**</span> party offices are officially closed down, with the Reichswehr's militia quickly suppressing any public demonstration or attempted armed uprising against the ban. Local mayors belonging to the <span style="color: #700000;">**KPD**</span> are removed by force, and replaced with [? if dnef_formed: <span style="color: #BFC8CC;">**DNEF**</span>?][? if not dnef_formed: Schleicher?] loyalists.
+Ernst Thälmann is arrested the following day, along with the <span style="color: #700000;">**KPD**</span>'s Reichstag deputies. Many others flee to Moscow; those less fortunate are thrown into forced labor camps, sentenced to grueling hours on public works. <span style="color: #700000;">**RFB**</span> fighters are summarily executed by special local courts.
 
-[? if prussia_leader == "Strasser": Furthermore, Strasser has authorized an extensive crackdown on suspected <span style="color: #700000;">Communist</span> members using his authority as Minister-President of Prussia, even if said members don't pose a significant threat. ?]
+The Reichswehr and <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> militias eagerly suppress protests and replace local <span style="color: #700000;">**Communist**</span> mayors with [? if dnef_formed: <span style="color: #BFC8CC;">**DNEF**</span>?][? if not dnef_formed: Schleicher?] loyalists.
 
-[? if sapd_formed: Along with the <span style="color: #700000;">**KPD**</span>, the <span style="color: #9B0000;">**SAPD**</span> is seen as complicit and has its members persecuted in the same fashion as the former. Are we really going to allow the government to throw our former party members and comrades into prisons? ?][? if not sapd_formed: Are we really going to allow the government to throw our comrades into prisons? ?]
+[? if prussia_leader == "Goerdeler": Goerdeler, despite hopes that he would shift toward democratic rule, ignores the <span style="color: #000000;">Center Party</span>'s objections and rules with Schleicher's full confidence. ?][? if prussia_leader == "Braun" or prussia_leader == "Stegerwald" or prussia_leader == "Luther" or prussia_leader == "Brüning": The Prussian government refuses to side with Schleicher here, and does not enforce his orders. ?]
+
+[? if sapd_formed: Alongside the <span style="color: #700000;">**KPD**</span>, the <span style="color: #9B0000;">**SAPD**</span> is declared complicit and its members are hunted down just the same. Are we really going to let the government throw our former comrades into prisons? ?][? if not sapd_formed: Are we really going to let the government throw our comrades into prisons? ?]
 
 - @do_nothing
 - @fight_mild
 - @fight
 
 @do_nothing
-title: We should be grateful that nothing happened to us!
+title: The <span style="color: #700000;">**Communists**</span> had it coming for them.
 on-arrival: {!
 Q.z_minus_bvp_votes = parseFloat((Q.z_votes - Q.bvp_votes).toFixed(1));
 Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
@@ -270,7 +267,7 @@ if (d3 && window) {
 }
 !}
 
-It must suck for those <span style="color: #700000;">**Communists**</span>, but they had it coming for them. Cynically, we could benefit electorally as the only legal <span style="color: #9B0000;">Marxist</span> party.
+They should’ve simply not burned down the Reichstag. What were they thinking—are they stupid? Cynically, we might even benefit from this. As the only legal <span style="color: #9B0000;">Marxist</span> party left standing, we could capture the votes that have nowhere else to go.
 
 = Reichstag composition
 
@@ -419,6 +416,8 @@ if (Q.libs_against_schleicher) Q.spd_points += 3;
 
 if (!Q.z_against_schleicher && !Q.libs_against_schleicher) Q.spd_alone = 1;
 
+if (Q.reichstag_fire_decree_schleicher) Q.schleicher_points += 25;
+
 if (Q.spd_points > Q.schleicher_points) {
     Q.spd_win = 1;
 } else if (Q.spd_points >= (Q.schleicher_points / 2)) {
@@ -439,58 +438,8 @@ We are not alone. [? if spd_alone: Well, we actually are, never mind. ?]
 
 [? if not spd_alone: The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition parties are nominally against such unconstitutional acts as well. While they may not have an armed self-defense militia, they have several hundred thousand employees in blue-collar and white-collar jobs, and could completely cripple the economy if they act alongside the <span style="color: #c00000;">socialist</span> Free Unions. ?]
 
-- @spd_win
 - @spd_med
 - @spd_lose
-
-@spd_win
-title: The government is paralyzed!
-on-arrival: {!
-Q.schleicher_spd_influence = 0;
-Q.schleicher_spd_r = 0;
-Q.schleicher_spd_support = 0;
-Q.schleicher_approval -= 4;
-Q.republicans_schleicher_bonus -= 4;
-Q.workers_schleicher_bonus -= 6;
-Q.industrialists_schleicher_bonus -= 2;
-Q.nationalists_schleicher_bonus -= 2;
-
-Q.hindenburg_schleicher_r -= 2;
-Q.schleicher_strength -= 2;
-Q.papen_strength += 1;
-
-Q.workers_spd += 8;
-Q.unemployed_spd += 6;
-Q.new_middle_spd += 2;
-Q.old_middle_spd += 2;
-Q.rural_spd += 2;
-Q.workers_kpd += 2;
-Q.unemployed_kpd += 2;
-
-Q.workers_dnef -= 6;
-Q.new_middle_dnef -= 6;
-Q.old_middle_dnef -= 6;
-Q.rural_dnef -= 6;
-Q.unemployed_dnef -= 6;
-Q.total_dnef_bonus -= 6;
-
-Q.rb_strength *= 1.2;
-Q.rb_militancy *= 0.8;
-Q.rfb_strength *= 1.4;
-Q.rfb_militancy *= 1.4;
-
-Q.reformist_dissent -= 20;
-Q.labor_dissent -= 20;
-!}
-view-if: spd_win
-
-The mass general strike has crippled the German economy, bringing the country to a complete standstill. With the Reichsbanner strong and organized, the government cannot simply crush the hundreds of thousands of <span style="color: #c00000;">socialist</span> protesters flooding the streets.
-
-Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties have banded together to unofficially reconvene the chamber at a separate location, openly challenging federal authority.
-
-The next few days will be chaotic—and decisive for Germany as a whole.
-
-- @z_break
 
 @spd_med
 title: Schleicher attempts to negotiate with us.
@@ -589,7 +538,7 @@ choose-if: schleicher_spd_influence < 4
 
 Schleicher has no intention of relinquishing power once stability is restored—his paranoia (not entirely unfounded) tells him that the moment we return to office democratically, we’ll undo all the progress made toward rearmament, especially with Hindenburg not expected to live much longer.
 
-This, combined with his blatant constitutional breach just a week ago, has finally galvanized the remaining <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> against the Chancellor.
+This, combined with his blatant constitutional breach, has finally galvanized the remaining <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> against the Chancellor.
 
 Perhaps its our time to strike?
 

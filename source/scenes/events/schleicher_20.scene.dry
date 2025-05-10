@@ -1,0 +1,53 @@
+title: Schleicher and the <span style="color: #3E88B3;">**Stahlhelm**</span>
+subtitle: The veterans organization is integrated into the state.
+view-if: chancellor = "Schleicher" and dnef_formed and (nationalists_schleicher >= 10 and (dnvp_dnef or dnvp_dnef_alt)) and schleicher_post_time >= 6
+new-page: true
+priority: 2
+tags: event
+max-visits: 1
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/stahlhelm_3.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Schleicher and the <span style="color: #3E88B3;">**Stahlhelm**</span>
+
+The <span style="color: #3E88B3;">**Stahlhelm**</span>, a veterans' and paramilitary organization that shares much of Schleicher's worldview and commands his respect, has long been courted by the chancellor for cooperation with the Reichswehr. To this end, Schleicher plans to subsidize the organization with state funds, gradually making it dependent on the state and available for use. Still, the general is irritated that its military exercises often overshadow the numerically inferior Reichswehr.
+
+Despite their shared views, <span style="color: #3E88B3;">**Stahlhelm**</span> leaders Franz Seldte and Theodor Duesterberg remain wary of Schleicher’s encroachments on their independence. But with the <span style="color: #3E88B3;">**DNVP**</span> now folded into the <span style="color: #BFC8CC;">**DNEF**</span>, the organization finds itself politically isolated, as even its rank-and-file begin to drift into subordination.
+
+- @schleicher_2: The <span style="color: #3E88B3;">**Stahlhelm**</span> is integrated into the state.
+
+@schleicher_2
+on-arrival: {!
+Q.schleicher_stahlhelm = 1;
+
+Q.pro_republic -= 3;
+
+Q.sh_strength = 0;
+Q.sh_militancy = 0;
+
+Q.reichswehr_strength += 75;
+
+Q.old_middle_dnef += 12;
+Q.old_middle_dnvp -= 4;
+Q.old_middle_kvp -= 4;
+Q.old_middle_dvp -= 2;
+Q.old_middle_nsdap -= 2;
+
+Q.schleicher_spd_influence -= 1;
+Q.schleicher_spd_r -= 1;
+Q.schleicher_spd_support -= 2;
+!}
+
+Subordination is the last thing a self-proud veterans' organization like the <span style="color: #3E88B3;">**Stahlhelm**</span> would accept—but attempts by its leaders to resist have only backfired. At a leadership conference between national and local chapters, they conceded that the era of paramilitaries and political maneuvering is over, and agreed to align the organization with the state in service of the national interest.
+
+In return, the <span style="color: #3E88B3;">**Stahlhelm**</span> is granted official status as a veterans' association, while sympathetic leaders are rewarded with government posts. Many of its seasoned fighters and officers are absorbed into the Reichswehr, where they will be tasked with training the next generation of recruits.

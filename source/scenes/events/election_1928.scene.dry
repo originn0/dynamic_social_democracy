@@ -338,6 +338,18 @@ console.log(Q.nsdap_hitler_votes)
 console.log(Q.nvf_votes)
 
 if (Q.nsdap_split) {
+    if (Q.dsu_exist) {
+        Q.dsu_r = parseFloat(Q.dsu_votes.toFixed(1));
+        Q.dsu_votes = parseFloat(Q.dsu_votes.toFixed(1));
+    }
+    if (Q.nvf_exist) {
+        Q.nvf_r = parseFloat(Q.nvf_votes.toFixed(1));
+        Q.nvf_votes = parseFloat(Q.nvf_votes.toFixed(1));
+    }
+    if (Q.dsu_exist || Q.nvf_exist) {
+        Q.nsdap_hitler_r = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
+        Q.nsdap_hitler_votes = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
+    }
     if ((Q.dsu_votes + Q.nvf_votes + Q.nsdap_hitler_votes) !== Q.nsdap_votes) {
         let total = Q.dsu_votes + Q.nvf_votes + Q.nsdap_hitler_votes;
         let factor = Q.nsdap_votes / total;
@@ -355,9 +367,6 @@ if (Q.nsdap_split) {
         Q.nsdap_hitler_r = parseFloat((Q.nsdap_hitler_r * factor).toFixed(1));
     }
     if (Q.dsu_exist) {
-        Q.dsu_r = parseFloat(Q.dsu_votes.toFixed(1));
-        Q.dsu_votes = parseFloat(Q.dsu_votes.toFixed(1));
-
         Q.str_votes_change_dsu = Q.dsu_votes - Q.previous_dsu_last_election_votes;
         var sign2 = Q.str_votes_change_dsu > 0 ?
             '<img src="img/arrowup.png"> ' :
@@ -375,9 +384,6 @@ if (Q.nsdap_split) {
         Q.str_change_dsu = sign2 + Math.abs(Q.str_change_dsu).toFixed(1);
     }
     if (Q.nvf_exist) {
-        Q.nvf_r = parseFloat(Q.nvf_votes.toFixed(1));
-        Q.nvf_votes = parseFloat(Q.nvf_votes.toFixed(1));
-
         Q.str_votes_change_nvf = Q.nvf_votes - Q.previous_nvf_last_election_votes;
         var sign2 = Q.str_votes_change_nvf > 0 ?
             '<img src="img/arrowup.png"> ' :
@@ -395,9 +401,6 @@ if (Q.nsdap_split) {
         Q.str_change_nvf = sign2 + Math.abs(Q.str_change_nvf).toFixed(1);
     }
     if (Q.nvf_exist || Q.dsu_exist) {
-        Q.nsdap_hitler_r = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
-        Q.nsdap_hitler_votes = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
-
         if (Q.previous_nsdap_hitler_last_election_votes == 0) Q.previous_nsdap_hitler_last_election_votes = Q.previous_nsdap_last_election_votes
         if (Q.old_nsdap_hitler_r == 0) Q.old_nsdap_hitler_r = Q.old_nsdap_r
 
@@ -1261,7 +1264,7 @@ subtitle: <span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c
 view-if: schleicher_left_coalition >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
 unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span> + <span style="color: #c00000;">SPD</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?] ([+ schleicher_left_coalition +]%) [? if rubicon: - President Hindenburg will never permit Schleicher to bring <span style="color: #c00000;">socialists</span> into the government, no matter his ulterior motive. ?]
 choose-if: president != "Hindenburg"
-on-arrival: leverage -= 10; leverage += 5 if not lvp_formed; leverage += 5 if z_ideology == "Left"; in_schleicher_left_coalition = 1; spd_in_government = 1; vice_chancellor = "Stegerwald"; prussia_leader = "Stegerwald" if prussia_leader == "Schleicher" or prussia_leader == "Strasser"; foreign_minister_party = "DNEF"; interior_minister_party = "DNEF"; justice_minister_party = "Z"; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "DNEF"; economic_minister_party = "DNEF"; finance_minister_party = "DNEF"; agriculture_minister_party = "DNEF"; labor_minister = "Stegerwald"; reichswehr_minister = "Schleicher"; pro_republic += 5; schleicher_spd_influence += 4; hindenburg_angry = -500; schleicher_approval += 2
+on-arrival: leverage -= 10; leverage += 5 if not lvp_formed; leverage += 5 if z_ideology == "Left"; in_schleicher_left_coalition = 1; spd_in_government = 1; vice_chancellor = "Stegerwald"; prussia_leader = "Goerdeler" if prussia_leader == "Schleicher" or prussia_leader == "Strasser"; foreign_minister_party = "DNEF"; interior_minister_party = "DNEF"; justice_minister_party = "Z"; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "DNEF"; economic_minister_party = "DNEF"; finance_minister_party = "DNEF"; agriculture_minister_party = "DNEF"; labor_minister = "Stegerwald"; reichswehr_minister = "Schleicher"; pro_republic += 5; schleicher_spd_influence += 4; hindenburg_angry = -500; schleicher_approval += 2
 
 Placeholder
 
@@ -1661,9 +1664,9 @@ The Bourgeois Coalition is formed, with Brüning as its chancellor. We will have
 
 @no_majority
 title: There is no clear governing majority.
-view-if: ((weimar_coalition < 50 or weimar_coalition_failed == 1 or ddp_relation < 30 or z_relation < 30 or lvp_relation < 30) and (grand_coalition < 50 or grand_coalition_failed == 1) or (grand_coalition >= 50 and ((dvp_ideology == "Right" and black_thursday_seen == 1) or not dvp_exist)) and president == "Hindenburg" and far_right_coalition < 50 and ((right_coalition < 50) or (right_coalition >= 50 and dnvp_ideology == "Radical") and center_right_coalition < 50 or (center_right_coalition >= 50 and ((dnvp_ideology == "Radical") or (year = 1929 and month >= 7))))) or rubicon or cvp_formed
+view-if: ((weimar_coalition < 50 or weimar_coalition_failed == 1 or ddp_relation < 30 or z_relation < 30 or lvp_relation < 30) and (grand_coalition < 50 or grand_coalition_failed == 1) or (grand_coalition >= 50 and ((dvp_ideology == "Right" and black_thursday_seen == 1) or not dvp_exist)) and president == "Hindenburg" and far_right_coalition < 50 and ((right_coalition < 50) or (right_coalition >= 50 and dnvp_ideology == "Radical") and center_right_coalition < 50 or (center_right_coalition >= 50 and ((dnvp_ideology == "Radical") or (year = 1929 and month >= 7))))) or (rubicon and dnef_r < 50) or cvp_formed
 on-arrival: no_majority_elections += 1
-go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
+go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher" and not schleicher_post; no_majority_schleicher_2 if chancellor = "Schleicher" and schleicher_post; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
 
 
 # either new elections, or Hindenburg appoints either Brüning, Papen, Schleicher, or Hitler.
@@ -1976,6 +1979,37 @@ Schleicher has suspended talks with the <span style="color: #6A1E1E;">**DSU**</s
 [? if old_prussia_leader == "Schleicher": The Prussian <i>Reichskommissar</i> post is also handed from Schleicher to Goerdeler—a signal that Schleicher has genuinely abandoned Papen's scheme for state centralization, and gestures toward an eventual return to democratic governance once stability is restored. Braun is overjoyed at this, and argues that only a break with Schleicher would change his mind. ?]
 
 The <span style="color: #FFCC00;">liberals</span> and minor bourgeois parties have also rallied behind Schleicher once again. As part of our arrangement, he acknowledges the <span style="color: #c00000;">**SPD**</span>'s need to remain in opposition—a necessary measure, as a <span style="color: #700000;">**Communist**</span> surge is an outcome neither of us desires.
+
+@no_majority_schleicher_2
+on-arrival: {!
+Q.schleicher_post_2 = 1;
+Q.pro_republic -= 3;
+Q.hindenburg_schleicher_r -= 1;
+
+Q.next_reichstag_time = Q.rubicon_time + 4;
+Q.next_reichstag_week = Q.week + 4;
+Q.next_reichstag_month = Q.month;
+Q.next_reichstag_year = Q.year;
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_month > 12) {
+  Q.next_reichstag_month -= 12;
+  Q.next_reichstag_year += 1;
+}
+!}
+
+Schleicher's supporting parties have failed to secure a majority coalition in the Reichstag—at least, not one the chancellor finds acceptable. [? if dnef_formed: He demands total power for the <span style="color: #BFC8CC;">**DNEF**</span>, unwilling to let other parties hold his government hostage. ?]
+
+[? if schleicher_right_coalition >= 5: While a coalition of all right-wing factions around Schleicher is possible, he refuses to grant the Reichstag new legitimacy and will press on with his presidential government.?] Thus, another continuation of the current governing coalition appears inevitable.
 
 @hitler_chancellor
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"

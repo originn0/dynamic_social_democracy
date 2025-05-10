@@ -140,8 +140,10 @@ if (Q.year == 1928) {
 if (Q.ddp_votes < 3) Q.adjustmentFactors_ddp_prussia = 0.8;
 if (Q.ddp_votes < 2) Q.adjustmentFactors_ddp_prussia = 0.5;
 if (Q.ddp_votes < 1.5) Q.adjustmentFactors_ddp_prussia = 0.3;
-if (Q.ddp_votes < 1.5) Q.adjustmentFactors_ddp_prussia = 0.1;
+if (Q.ddp_votes < 1) Q.adjustmentFactors_ddp_prussia = 0.1;
 if (Q.ddp_votes >= 3) Q.adjustmentFactors_ddp_prussia = 1.0;
+
+if (Q.dstp_dnef) Q.adjustmentFactors_ddp_prussia = 1.0;
 
 if (Q.other_votes < 10) Q.adjustmentFactors_other_prussia = 0.6;
 if (Q.other_votes < 8) Q.adjustmentFactors_other_prussia = 0.5;
@@ -149,6 +151,17 @@ if (Q.other_votes < 7) Q.adjustmentFactors_other_prussia = 0.4;
 if (Q.other_votes < 6) Q.adjustmentFactors_other_prussia = 0.3;
 if (Q.other_votes < 5) Q.adjustmentFactors_other_prussia = 0.15;
 if (Q.other_votes >= 10) Q.adjustmentFactors_other_prussia = 0.7;
+
+if (Q.other_dnef) Q.adjustmentFactors_other_prussia = 0;
+
+if (!Q.hugenberg_dvp && !Q.bourgeois_list && !Q.dvp_dnef) {
+    if (Q.dvp_votes < 1.2) {
+        Q.adjustmentFactors_dvp = 0.5;
+    }
+    if (Q.dvp_votes < 0.8) {
+        Q.adjustmentFactors_dvp = 0.3;
+    }
+}
 
 // Calculate support for each of the parties
 var total_support = 0;
@@ -245,6 +258,55 @@ if (new_party_sum_prussia > 0) {
     }
 }
 
+if (Q.dnef_formed) {
+    Q.schleicher_dnef_r_prussia = Q.dnef_r_prussia;
+    Q.schleicher_dnef_votes_prussia = Q.dnef_votes_prussia;
+    if (Q.other_dnef) {
+        if (Q.other_r_prussia) {
+            Q.dnef_r_prussia += Q.other_r_prussia;
+            Q.other_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.other_votes_prussia;
+    }
+    if (Q.dstp_dnef) {
+        if (Q.ddp_r_prussia) {
+            Q.dnef_r_prussia += Q.ddp_r_prussia;
+            Q.ddp_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.ddp_votes_prussia;
+    }
+    if (Q.kvp_dnef) {
+        if (Q.kvp_r_prussia) {
+            Q.dnef_r_prussia += Q.kvp_r_prussia;
+            Q.kvp_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.kvp_votes_prussia;
+    }
+    if (Q.dvp_dnef) {
+        if (Q.dvp_r_prussia) {
+            Q.dnef_r_prussia += Q.dvp_r_prussia;
+            Q.dvp_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.dvp_votes_prussia;
+    }
+    if (Q.z_dnef_prussia) {
+        if (Q.z_r_prussia) {
+            Q.dnef_r_prussia += Q.z_r_prussia;
+            Q.z_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.z_votes_prussia;
+    }
+    if (Q.dnvp_dnef_prussia) {
+        if (Q.dnvp_r_prussia) {
+            Q.dnef_r_prussia += Q.dnvp_r_prussia;
+            Q.dnvp_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.dnvp_votes_prussia;
+    }
+    Q.dnef_votes_prussia = Math.round(Q.dnef_votes_prussia * 10) / 10;
+    Q.dnef_r_prussia = Math.round(Q.dnef_r_prussia * 10) / 10;
+}
+
 // Step 3: Calculate changes in results
 for (var party of Q.parties) {
     Q['change_' + party + '_r_prussia'] = Q[party + '_r_prussia'] - Q['old_' + party + '_r_prussia'];
@@ -274,6 +336,120 @@ for (var party of Q.parties) {
 for (var party of Q.parties) {
     Q[party + '_last_election_votes_prussia'] = parseFloat(Q[party + '_votes_prussia']).toFixed(1);
     Q['previous_' + party + '_last_election_votes_prussia'] = parseFloat(Q[party + '_last_election_votes_prussia']).toFixed(1);
+}
+
+if (Q.nsdap_split) {
+    if (Q.dsu_exist) {
+        Q.dsu_r_prussia = parseFloat(Q.dsu_votes.toFixed(1));
+        Q.dsu_votes_prussia = parseFloat(Q.dsu_votes.toFixed(1));
+    }
+    if (Q.nvf_exist) {
+        Q.nvf_r_prussia = parseFloat(Q.nvf_votes.toFixed(1));
+        Q.nvf_votes_prussia = parseFloat(Q.nvf_votes.toFixed(1));
+    }
+    if (Q.dsu_exist || Q.nvf_exist) {
+        Q.nsdap_hitler_r_prussia = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
+        Q.nsdap_hitler_votes_prussia = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
+    }
+    if ((Q.dsu_votes_prussia + Q.nvf_votes_prussia + Q.nsdap_hitler_votes_prussia) !== Q.nsdap_votes_prussia) {
+        let total = Q.dsu_votes_prussia + Q.nvf_votes_prussia + Q.nsdap_hitler_votes_prussia;
+        let factor = Q.nsdap_votes_prussia / total;
+
+        Q.dsu_votes_prussia = parseFloat((Q.dsu_votes_prussia * factor).toFixed(1));
+        Q.nvf_votes_prussia = parseFloat((Q.nvf_votes_prussia * factor).toFixed(1));
+        Q.nsdap_hitler_votes_prussia = parseFloat((Q.nsdap_hitler_votes_prussia * factor).toFixed(1));
+    }
+    if ((Q.dsu_r_prussia + Q.nvf_r_prussia + Q.nsdap_hitler_r_prussia) !== Q.nsdap_r) {
+        let total = Q.dsu_r_prussia + Q.nvf_r_prussia + Q.nsdap_hitler_r_prussia;
+        let factor = Q.nsdap_r_prussia / total;
+
+        Q.dsu_r_prussia = parseFloat((Q.dsu_r_prussia * factor).toFixed(1));
+        Q.nvf_r_prussia = parseFloat((Q.nvf_r_prussia * factor).toFixed(1));
+        Q.nsdap_hitler_r_prussia = parseFloat((Q.nsdap_hitler_r_prussia * factor).toFixed(1));
+    }
+    if (Q.dsu_exist) {
+        Q.str_votes_change_dsu_prussia = Q.dsu_votes_prussia - Q.previous_dsu_last_election_votes_prussia;
+        var sign2 = Q.str_votes_change_dsu > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_votes_change_dsu < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_votes_change_dsu = sign2 + Math.abs(Q.str_votes_change_dsu).toFixed(1);
+
+        Q.str_change_dsu_prussia = Q.dsu_r_prussia - Q.old_dsu_r_prussia;
+        var sign2 = Q.str_change_dsu_prussia > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_change_dsu_prussia < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_change_dsu_prussia = sign2 + Math.abs(Q.str_change_dsu_prussia).toFixed(1);
+    }
+    if (Q.nvf_exist) {
+        Q.str_votes_change_nvf_prussia = Q.nvf_votes_prussia - Q.previous_nvf_last_election_votes_prussia;
+        var sign2 = Q.str_votes_change_nvf_prussia > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_votes_change_nvf_prussia < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_votes_change_nvf_prussia = sign2 + Math.abs(Q.str_votes_change_nvf_prussia).toFixed(1);
+
+        Q.str_change_nvf_prussia = Q.nvf_r_prussia - Q.old_nvf_r_prussia;
+        var sign2 = Q.str_change_nvf_prussia > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_change_nvf_prussia < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_change_nvf_prussia = sign2 + Math.abs(Q.str_change_nvf_prussia).toFixed(1);
+    }
+    if (Q.nvf_exist || Q.dsu_exist) {
+        if (Q.previous_nsdap_hitler_last_election_votes_prussia == 0) Q.previous_nsdap_hitler_last_election_votes_prussia = Q.previous_nsdap_last_election_votes_prussia
+        if (Q.old_nsdap_hitler_r_prussia == 0) Q.old_nsdap_hitler_r_prussia = Q.old_nsdap_r_prussia
+
+        Q.str_votes_change_nsdap_hitler_prussia = Q.nsdap_hitler_votes_prussia - Q.previous_nsdap_hitler_last_election_votes_prussia;
+        var sign2 = Q.str_votes_change_nsdap_hitler_prussia > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_votes_change_nsdap_hitler_prussia < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_votes_change_nsdap_hitler_prussia = sign2 + Math.abs(Q.str_votes_change_nsdap_hitler_prussia).toFixed(1);
+
+        Q.str_change_nsdap_hitler_prussia = Q.nsdap_hitler_r_prussia - Q.old_nsdap_hitler_r_prussia;
+        var sign2 = Q.str_change_nsdap_hitler_prussia > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_change_nsdap_hitler_prussia < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_change_nsdap_hitler_prussia = sign2 + Math.abs(Q.str_change_nsdap_hitler_prussia).toFixed(1);
+    }
+    Q.previous_dsu_last_election_votes_prussia = Q.dsu_votes_prussia;
+    Q.old_dsu_r_prussia = Q.dsu_r_prussia;
+    Q.previous_nvf_last_election_votes_prussia = Q.nvf_votes_prussia;
+    Q.old_nvf_r_prussia = Q.nvf_r_prussia;
+    Q.previous_nsdap_hitler_last_election_votes_prussia = Q.nsdap_hitler_votes_prussia;
+    Q.old_nsdap_hitler_r_prussia = Q.nsdap_hitler_r_prussia;
+}
+
+if (Q.dnef_formed && Q.nvf_exist) {
+    if (Q.nvf_dnef_prussia) {
+        if (Q.nvf_r_prussia) {
+            Q.dnef_r += Q.nvf_r_prussia;
+            Q.nvf_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.nvf_votes_prussia;
+    }
+    Q.dnef_votes_prussia = Math.round(Q.dnef_votes_prussia * 10) / 10;
+    Q.dnef_r = Math.round(Q.dnef_r * 10) / 10;
+}
+
+if (Q.dnef_formed) {
+    Q.str_votes_change_schleicher_dnef_prussia = Q.schleicher_dnef_votes_prussia - Q.previous_schleicher_dnef_last_election_votes_prussia;
+    var sign2 = Q.str_votes_change_schleicher_dnef_prussia > 0 ?
+        '<img src="img/arrowup.png"> ' :
+        Q.str_votes_change_schleicher_dnef_prussia < 0 ?
+        '<img src="img/arrowdown.png"> ' :
+        '<img src="img/steady.png"> ';
+    Q.str_votes_change_schleicher_dnef_prussia = sign2 + Math.abs(Q.str_votes_change_schleicher_dnef_prussia).toFixed(1);
+    Q.previous_schleicher_dnef_last_election_votes_prussia = Q.schleicher_dnef_votes_prussia;
 }
 
 Q.largest_party_prussia = 'SPD';
@@ -337,6 +513,8 @@ if (Q.dnvp_ideology === "Moderate") {
     Q.far_right_coalition_prussia = parseFloat((Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
 }
 
+if (Q.hugenberg_dvp) Q.far_right_coalition_prussia = parseFloat((Q.far_right_coalition_prussia + Q.dvp_r_prussia).toFixed(1));
+
 Q.left_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.sapd_r_prussia).toFixed(1));
 
 if (Q.lvp_formed) {
@@ -377,11 +555,16 @@ if (Q.lvp_formed) {
     Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
 }
 
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.lvp_r_prussia + Q.dvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia + Q.dnvp_r_prussia + Q.dnf_r_prussia + Q.dsu_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
 if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
     Q.weimar_coalition_prussia += Q.sapd_r_prussia;
 }
 
-if ((Q.nsdap_votes + Q.dnf_votes >= 30 && Q.dnvp_ideology == "Moderate" || Q.nsdap_votes + Q.dnvp_votes >= 30 && Q.dnvp_ideology == "Radical") && Q.weimar_coalition_prussia < 45 && Q.president == "Hindenburg") {
+if ((Q.nsdap_votes_prussia + Q.dnf_votes_prussia >= 30 && Q.dnvp_ideology == "Moderate" || Q.nsdap_votes_prussia + Q.dnvp_votes_prussia >= 30 && Q.dnvp_ideology == "Radical") && Q.weimar_coalition_prussia < 45 && Q.president == "Hindenburg" && !Q.rubicon) {
     Q.hindenburg_angry_bruning += 45;
     Q.hindenburg_angry += 20;
     Q.hindenburg_angry_prussia = 1;
@@ -513,29 +696,56 @@ go-to: coalition_menu
 
 {!<table>!} 
 {!<tr><td>Party</td><td>Vote share</td><td>% Change</td><td>Landtag Seats</td><td>% Change</td></tr>!}
-{!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_votes_prussia +]%** {!</td><td>!} **[+ str_votes_change_spd_prussia +]** {!</td><td>!} **[+ spd_r_prussia +]%** {!</td><td>!} **[+ str_change_spd_prussia +]** {!</td></tr>!}
+[? if not dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_votes_prussia +]%** {!</td><td>!} **[+ str_votes_change_spd_prussia +]** {!</td><td>!} **[+ spd_r_prussia +]%** {!</td><td>!} **[+ str_change_spd_prussia +]** {!</td></tr>!} ?]
+[? if dnef_formed: {!<tr><td><div class="box" style='background-color:#BFC8CC; outline: 2px; outline-style: solid;'> </div> !} **DNEF:** {!</td><td>!} **[+ dnef_votes_prussia +]%** {!</td><td>!} **[+ str_votes_change_dnef_prussia +]** {!</td><td>!} **[+ dnef_r_prussia +]%** {!</td><td>!} **[+ str_change_dnef_prussia +]** {!</td></tr>!} ?]
+
+[? if dnef_formed: {!<tr><td><div class="box2" style='background-color:#BFC8CC'> </div> !} DNEF: {!</td><td>!} [+ schleicher_dnef_votes_prussia +]% {!</td><td>!} [+ str_votes_change_schleicher_dnef_prussia +] {!</td><td>!} [+ dnef_r_prussia +]% {!</td><td>!} [+ str_change_dnef_prussia +] {!</td></tr>!} ?]
+
+[? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_ddp_prussia +] {!</td><td>!} [+ ddp_r_prussia +]% {!</td><td>!} [+ str_change_ddp_prussia +] {!</td></tr>!} ?]
+
+[? if z_dnef: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_votes_prussia +]% {!</td><td>!} [+ str_votes_change_z_prussia +] {!</td><td>!} [+ z_r_prussia +]% {!</td><td>!} [+ str_change_z_prussia +] {!</td></tr>!} ?]
+
+[? if not lvp_formed and dvp_exist and dvp_dnef: {!<tr><td><div class="box2" style='background-color:#AA861F'> </div> !} DVP: {!</td><td>!} [+ dvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dvp_prussia +] {!</td><td>!} [+ dvp_r_prussia +]% {!</td><td>!} [+ str_change_dvp_prussia +] {!</td></tr>!} ?]
+
+[? if other_dnef: {!<tr><td><div class="box2" style='background-color:#707070'> </div> !} Others: {!</td><td>!} [+ other_votes_prussia +]% {!</td><td>!} [+ str_votes_change_other_prussia +] {!</td><td>!} [+ other_r_prussia +]% {!</td><td>!} [+ str_change_other_prussia +] {!</td></tr>!} ?]
+
+[? if kvp_formed and not cvp_kvp_formed and kvp_dnef: {!<tr><td><div class="box2" style='background-color:#0072C0'> </div> !}KVP: {!</td><td>!} [+ kvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kvp_prussia +] {!</td><td>!} [+ kvp_r_prussia +]% {!</td><td>!} [+ str_change_kvp_prussia +] {!</td></tr>!} ?]
+
+[? if not cvp_formed and dnvp_dnef: {!<tr><td><div class="box2" style='background-color:#316B8F'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dnvp_prussia +] {!</td><td>!} [+ dnvp_r_prussia +]% {!</td><td>!} [+ str_change_dnvp_prussia +] {!</td></tr>!}?]
+
+[? if nvf_exist and nvf_dnef: {!<tr><td><div class="box2" style='background-color:#0F2116'> </div> !} NVF: {!</td><td>!} [+ nvf_votes_prussia +]% {!</td><td>!} [+ str_votes_change_nvf_prussia +] {!</td><td>!} [+ nvf_r_prussia +]% {!</td><td>!} [+ str_change_nvf_prussia +] {!</td></tr>!} ?]
+
+[? if dnef_formed: <tr><td colspan="5" style="text-align: center;"><hr id="read-marker"></td></tr> ?]
+
+[? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div> !} SPD: {!</td><td>!} [+ spd_votes_prussia +]% {!</td><td>!} [+ str_votes_change_spd_prussia +] {!</td><td>!} [+ spd_r_prussia +]% {!</td><td>!} [+ str_change_spd_prussia +] {!</td></tr>!} ?]
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_votes_prussia +]% {!</td><td>!} [+ str_votes_change_sapd_prussia +] {!</td><td>!} [+ sapd_r_prussia +]% {!</td><td>!} [+ str_change_sapd_prussia +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#700000'> </div> !}KPD: {!</td><td>!} [+ kpd_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kpd_prussia +] {!</td><td>!} [+ kpd_r_prussia +]% {!</td><td>!} [+ str_change_kpd_prussia +] {!</td></tr>!}
 
-[? if not lvp_formed: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_ddp_prussia +] {!</td><td>!} [+ ddp_r_prussia +]% {!</td><td>!} [+ str_change_ddp_prussia +] {!</td></tr>!} ?]
+[? if not lvp_formed and not dstp_dnef: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_ddp_prussia +] {!</td><td>!} [+ ddp_r_prussia +]% {!</td><td>!} [+ str_change_ddp_prussia +] {!</td></tr>!} ?]
 
 [? if lvp_formed: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div> !} LVP: {!</td><td>!} [+ lvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_lvp_prussia +] {!</td><td>!} [+ lvp_r_prussia +]% {!</td><td>!} [+ str_change_lvp_prussia +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_votes_prussia +]% {!</td><td>!} [+ str_votes_change_z_prussia +] {!</td><td>!} [+ z_r_prussia +]% {!</td><td>!} [+ str_change_z_prussia +] {!</td></tr>!}
+[? if not z_dnef: {!<tr><td><div class="box" style='background-color:#000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_votes_prussia +]% {!</td><td>!} [+ str_votes_change_z_prussia +] {!</td><td>!} [+ z_r_prussia +]% {!</td><td>!} [+ str_change_z_prussia +] {!</td></tr>!} ?]
 
-[? if not lvp_formed and dvp_exist: {!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dvp_prussia +] {!</td><td>!} [+ dvp_r_prussia +]% {!</td><td>!} [+ str_change_dvp_prussia +] {!</td></tr>!} ?]
- 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_votes_prussia +]% {!</td><td>!} [+ str_votes_change_other_prussia +] {!</td><td>!} [+ other_r_prussia +]% {!</td><td>!} [+ str_change_other_prussia +] {!</td></tr>!}
+[? if not lvp_formed and dvp_exist and not dvp_dnef: {!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dvp_prussia +] {!</td><td>!} [+ dvp_r_prussia +]% {!</td><td>!} [+ str_change_dvp_prussia +] {!</td></tr>!} ?]
 
-[? if kvp_formed and not cvp_kvp_formed: {!<tr><td><div class="box" style='background-color:#0087DC'> </div> !}KVP: {!</td><td>!} [+ kvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kvp_prussia +] {!</td><td>!} [+ kvp_r_prussia +]% {!</td><td>!} [+ str_change_kvp_prussia +] {!</td></tr>!} ?]
+[? if not other_dnef: {!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_votes_prussia +]% {!</td><td>!} [+ str_votes_change_other_prussia +] {!</td><td>!} [+ other_r_prussia +]% {!</td><td>!} [+ str_change_other_prussia +] {!</td></tr>!} ?]
 
-[? if not cvp_formed: {!<tr><td><div class="box" style='background-color:#3E88B3'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dnvp_prussia +] {!</td><td>!} [+ dnvp_r_prussia +]% {!</td><td>!} [+ str_change_dnvp_prussia +] {!</td></tr>!} ?]
+[? if kvp_formed and not cvp_kvp_formed and not kvp_dnef: {!<tr><td><div class="box" style='background-color:#0087DC'> </div> !}KVP: {!</td><td>!} [+ kvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kvp_prussia +] {!</td><td>!} [+ kvp_r_prussia +]% {!</td><td>!} [+ str_change_kvp_prussia +] {!</td></tr>!} ?]
+
+[? if not cvp_formed and not dnvp_dnef: {!<tr><td><div class="box" style='background-color:#3E88B3'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dnvp_prussia +] {!</td><td>!} [+ dnvp_r_prussia +]% {!</td><td>!} [+ str_change_dnvp_prussia +] {!</td></tr>!}?]
 
 [? if dnf_formed : {!<tr><td><div class="box" style='background-color:#003755'> </div> !}DNF: {!</td><td>!} [+ dnf_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dnf_prussia +] {!</td><td>!} [+ dnf_r_prussia +]% {!</td><td>!} [+ str_change_dnf_prussia +] {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_votes_prussia +]% {!</td><td>!} [+ str_votes_change_nsdap_prussia +] {!</td><td>!} [+ nsdap_r_prussia +]% {!</td><td>!} [+ str_change_nsdap_prussia +] {!</td></tr>!}
+[? if dsu_exist: {!<tr><td><div class="box" style='background-color:#6A1E1E'> </div> !} DSU: {!</td><td>!} [+ dsu_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dsu_prussia +] {!</td><td>!} [+ dsu_r_prussia +]% {!</td><td>!} [+ str_change_dsu_prussia +] {!</td></tr>!} ?]
+
+[? if not nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_votes_prussia +]% {!</td><td>!} [+ str_votes_change_nsdap_prussia +] {!</td><td>!} [+ nsdap_r_prussia +]% {!</td><td>!} [+ str_change_nsdap_prussia +] {!</td></tr>!} ?]
+
+[? if nsdap_split: {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_hitler_votes_prussia +]% {!</td><td>!} [+ str_votes_change_nsdap_hitler_prussia +] {!</td><td>!} [+ nsdap_hitler_r_prussia +]% {!</td><td>!} [+ str_change_nsdap_hitler_prussia +] {!</td></tr>!} ?]
+
+[? if nvf_exist and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div> !} NVF: {!</td><td>!} [+ nvf_votes_prussia +]% {!</td><td>!} [+ str_votes_change_nvf_prussia +] {!</td><td>!} [+ nvf_r_prussia +]% {!</td><td>!} [+ str_change_nvf_prussia +] {!</td></tr>!} ?]
 {!</table>!}
 
 [? if nazi_urgency <= 1 and nsdap_r_prussia >= 15 : The rapid rise in <span style="color: #7A3C00;">**NSDAP**</span> votes is extremely worrying. Many had believed that the party was <span style="color: #ff0000;">moribund</span>; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
@@ -565,6 +775,7 @@ go-to: coalition_menu
 - @bourgeois_coalition_prussia
 - @bourgeois_coalition_kvp_prussia
 - @call_new_elections: No majority is able to be found.
+- @call_new_elections_rubicon: No majority is able to be found.
 
 
 @spd_majority
@@ -859,7 +1070,7 @@ on-arrival: in_center_right_coalition_prussia = 1; hands_tied_prussia = 0; hands
 
 @call_new_elections
 subtitle: New elections will be called.
-view-if: ((grand_coalition_prussia < 50) or ((grand_coalition_prussia >= 50 and (dvp_relation < 40 or (lvp_relation < 40 and lvp_formed) or z_relation < 35)))) and far_right_coalition_prussia < 50 and (center_right_coalition_prussia < 50 or ((center_right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))) and (right_coalition_prussia < 50 or (right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))))
+view-if: (((grand_coalition_prussia < 50) or ((grand_coalition_prussia >= 50 and (dvp_relation < 40 or (lvp_relation < 40 and lvp_formed) or z_relation < 35)))) and far_right_coalition_prussia < 50 and (center_right_coalition_prussia < 50 or ((center_right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))) and (right_coalition_prussia < 50 or (right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))))) and not rubicon
 go-to: call_new_elections_2 if no_majority_elections_prussia < 1 or (neo_weimar_coalition_prussia + kvp_r_prussia < 50 and dnvp_ideology == "Radical") or (neo_weimar_coalition_prussia + dnvp_r_prussia < 50 and dnvp_ideology == "Moderate"); toleration_dilemma if no_majority_elections_prussia >= 1 and ((neo_weimar_coalition_prussia + kvp_r_prussia >= 50 and dnvp_ideology == "Radical") or (neo_weimar_coalition_prussia + dnvp_r_prussia >= 50 and dnvp_ideology == "Moderate"))
 
 @toleration_dilemma
@@ -875,7 +1086,7 @@ Otherwise, new elections have to be called, where the extremist parties stand to
 on-arrival: pro_republic -= 5 if anti_democratic_coalition_prussia >= 30; workers_nsdap += 3 if anti_democratic_coalition_prussia >= 30; workers_kpd += 3 if anti_democratic_coalition_prussia >= 30; workers_spd -= 3 if anti_democratic_coalition_prussia >= 30; new_middle_nsdap += 2 if anti_democratic_coalition_prussia >= 30; old_middle_nsdap += 2 if anti_democratic_coalition_prussia >= 30; rural_nsdap += 2 if anti_democratic_coalition_prussia >= 30; new_middle_ddp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_ddp -= 2 if anti_democratic_coalition_prussia >= 30; rural_ddp -= 2 if anti_democratic_coalition_prussia >= 30; new_middle_dvp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_dvp -= 2 if anti_democratic_coalition_prussia >= 30; rural_dvp -= 2 if anti_democratic_coalition_prussia >= 30; new_middle_lvp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_lvp -= 2 if anti_democratic_coalition_prussia >= 30; rural_lvp -= 2 if anti_democratic_coalition_prussia >= 30; no_majority_elections_prussia += 1
 call: set_next_election_time_prussia
 
-[? if far_right_coalition_prussia + z_r_prussia >= 50: The <span style="color: #000000;">Center Party</span>'s failure to form a coalition with the <span style="color: #7A3C00;">NSDAP</span>, due to the latter's insistence on securing both the Minister-President's office and control of the Prussian police, has left no alternative but to call new elections. ?]
+[? if far_right_coalition_prussia + z_r_prussia >= 50: The <span style="color: #000000;">Center Party</span>'s failure to form a coalition with the <span style="color: #7A3C00;">**NSDAP**</span>, due to the latter's insistence on securing both the Minister-President's office and control of the Prussian police, has left no alternative but to call new elections. ?]
 
 New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
 
@@ -888,3 +1099,19 @@ on-arrival: prussia_leader = "Stegerwald" if z_leader != "Stegerwald"; prussia_l
 We have decided to tolerate a broad bourgeois government. This means that we will vote against no-confidence votes to make sure they fail, but also that we will not be directly participating as ministers in the government. Thus, we can prevent a new election and stop the <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span> from entering government.
 
 [? if prussia_leader != "Braun": [+ prussia_leader +] is selected to be the Minister-President of Prussia. ?]
+
+@call_new_elections_rubicon
+subtitle: New elections will be called.
+view-if: (((grand_coalition_prussia < 50) or ((grand_coalition_prussia >= 50 and (dvp_relation < 40 or (lvp_relation < 40 and lvp_formed) or z_relation < 35)))) and far_right_coalition_prussia < 50 and (center_right_coalition_prussia < 50 or ((center_right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))) and (right_coalition_prussia < 50 or (right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))))) and rubicon
+on-arrival: no_majority_elections_prussia_schleicher = 1
+go-to: call_new_elections_2_rubicon if prussia_leader != "Braun" and prussia_leader != "Stegerwald" and prussia_leader != "Luther" and prussia_leader != "Brüning"; prussia_explode if prussia_leader == "Braun" or prussia_leader == "Stegerwald" or prussia_leader == "Luther" or prussia_leader == "Brüning"
+
+@call_new_elections_2_rubicon
+call: set_next_election_time_prussia
+
+Perhaps a more stable majority can be found in more elections.
+
+New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+
+@prussia_explode
+go-to: prussian_coup_schleicher

@@ -1,0 +1,52 @@
+title: The <span style="color: #6A1E1E;">**DSU**</span> Enters Government
+subtitle: Our choice doesn't matter after all.
+view-if: chancellor == "Schleicher" and not dsu_in_gov and z_in_gov and z_leader == "Bracht" and schleicher_post_time >= 8
+max-visits: 1
+new-page: true
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/nazi_gov.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= The <span style="color: #6A1E1E;">**DSU**</span> Enters Government
+
+With the favorable Bracht being installed at the head of the <span style="color: #000000;">Center Party</span>, the party no longer voice loud reservations over the inclusion of the "reasonable" <span style="color: #6A1E1E;">**DSU**</span> into the Schleicher cabinet, to increase its popular backing, and to tame the <span style="color: #7A3C00;">Nazis</span> that can be tamed. 
+
+This goes completely against Schleicher's promise to us, that he'll never let the <span style="color: #7A3C00;">Nazis</span> into cabinet if we were to give him a major concession. e have been conned, big time.
+
+- @dsu_in_gov
+
+@dsu_in_gov
+title: Strasser enters the cabinet.
+on-arrival: {!
+Q.dsu_in_gov = 1;
+Q.schleicher_post = 1;
+Q.vice_chancellor = "Strasser";
+Q.workers_nsdap += 3;
+Q.new_middle_nsdap += 3;
+Q.unemployed_nsdap += 3;
+Q.hindenburg_schleicher_r += 2;
+
+Q.schleicher_approval += (Q.nsdap_votes / 10);
+Q.schleicher_approval -= (Q.spd_votes / 10);
+Q.schleicher_approval = Math.round(Q.schleicher_approval);
+
+Q.schleicher_spd_support -= 6;
+Q.schleicher_spd_r -= 4;
+Q.schleicher_spd_influence -= 3;
+!}
+
+Wilhelm Frick is nominated to the Interior Ministry[? if old_prussia_leader == "Schleicher": —both in the Reich and in Prussia?]. Gregor Strasser takes the vice-chancellorship—a title in name only. [? if prussia_leader == "Goerdeler":  Although the <span style="color: #6A1E1E;">**DSU**</span> would’ve preferred Strasser installed in Prussia, Goerdeler stays on—as Schleicher’s loyal puppet and as a concession to the <span style="color: #000000;">Center Party</span>. ?]
+
+At the <span style="color: #7A3C00;">Nazis’</span> insistence, Hjalmar Schacht is brought in as an independent to head the economic ministry.
+
+To compensate for the <span style="color: #000000;">Center Party</span>’s loss of influence, the <span style="color: #A2D8E0;">**BVP**</span> is handed the Postal Ministry. Not that the <span style="color: #000000;">Center</span> can complain—not with Bracht in charge.

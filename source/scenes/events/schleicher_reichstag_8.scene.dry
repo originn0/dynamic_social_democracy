@@ -1,0 +1,32 @@
+title: Snap Elections Called
+view-if: chancellor = "Schleicher" and schleicher_time and not schleicher_post_protests and reichstag_break and dnef_votes >= 35
+on-arrival: {!
+Q.reichstag_rubicon = 0;
+Q.reichstag_break = 0;
+
+Q.next_election_week = Q.week + 6;
+Q.next_election_month = Q.month;
+Q.next_election_year = Q.year;
+Q.next_election_time = Q.time;
+
+let added_months = Math.floor(Q.next_election_week / 4);
+Q.next_election_month += added_months;
+Q.next_election_time += added_months;
+Q.next_election_week = Q.next_election_week % 4;
+if (Q.next_election_week === 0) Q.next_election_week = 1;
+
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year += 1;
+}
+!}
+new-page: true
+tags: event
+max-visits: 1
+priority: 2
+
+= Snap Elections Called
+
+Chancellor Schleicher and the <span style="color: #BFC8CC;">**DNEF**</span> now see an opportunity to dramatically boost their seat share in fresh elections—paving the way to consolidate power and govern outright with only the loyal <span style="color: #6A1E1E;">**DSU**</span>, free from parliamentarianism.
+
+New Reichstag elections are scheduled for [+ next_election_month : month +] [+ next_election_year +], Week [+ next_election_week +].
