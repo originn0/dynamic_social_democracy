@@ -1,0 +1,38 @@
+title: Streetfighting Comes to an End
+subtitle: Paramilitaries are a thing of the past.
+view-if: chancellor == "Schleicher" and schleicher_post_time >= 10 and state_force >= 70
+max-visits: 1
+new-page: true
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/blutmai_3.jpg";  
+
+    cardEl.appendChild(image);      
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Streetfighting Over
+
+With the Reichswehr being deployed to quell political violence, streetfighting between the rivaling paramilitaries have died down in intensity, and the situation is effectively resolved.
+
+The mechanic is disabled.
+
+- @streetfighting_joever
+
+@streetfighting_joever
+title: Hooray?
+on-arrival: {!
+Q.streetfighting_joever = 1;
+
+Q.schleicher_portrait = 1;
+
+Q.pro_republic += 10;
+Q.schleicher_approval += 1;
+!}
+go-to: root

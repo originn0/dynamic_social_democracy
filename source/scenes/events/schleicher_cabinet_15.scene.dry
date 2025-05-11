@@ -1,6 +1,6 @@
 title: Prussian Police Dissolved
 subtitle: The <i>Staatsschutzamt</i> is formed in its stead.
-view-if: chancellor == "Schleicher" and dsu_in_gov and ((reichstag_joever_time >= 6 and not schleicher_post_protests) or (reichstag_joever_time >= 18 and schleicher_post_protests)) and not schleicher_rights and prussia_leader == "Strasser"
+view-if: chancellor == "Schleicher" and (dsu_in_gov or dsu_was_gov) and ((reichstag_joever_time >= 6 and not schleicher_post_protests) or (reichstag_joever_time >= 16 and schleicher_post_protests)) and not schleicher_rights and prussia_leader == "Strasser"
 max-visits: 1
 new-page: true
 priority: -1
@@ -22,7 +22,7 @@ on-display: {!
 
 Frick, the <span style="color: #6A1E1E;">**DSU**</span>, and Schleicher have been coordinating closely to smooth Germany’s transition into a more authoritarian system. The Prussian police, still riddled with <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> sympathizers, remains a key obstacle—too entrenched to purge outright without crippling the force.
 
-But with the Reichswehr’s militia now patrolling the streets under Frick and Strasser’s oversight, there is no longer any need for this relic of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic. In its place, the <i>Staatsschutzamt</i> (State Security Office) has been created, staffed by <span style="color: #7A3C00;">Nazis</span> and Schleicher loyalists.
+But with the Reichswehr’s militia now patrolling the streets under Frick and Strasser’s oversight, there is no longer any need for this relic of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic. In its place, the <i>Staatsschutzamt</i> (State Security Office) has been created, staffed by [? if dsu_in_gov: <span style="color: #7A3C00;">Nazis</span> and?] Schleicher loyalists.
 
 - @gestapo
 

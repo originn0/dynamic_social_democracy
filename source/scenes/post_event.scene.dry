@@ -312,6 +312,15 @@ if (Q.dstp_dnef) {
     }
 }
 
+if (Q.lvp_dnef) {
+    Q.lvp_relation = Q.dnef_relation - 5;
+
+    if (Q.lvp_r) {
+        Q.dnef_r += Q.lvp_r;
+        Q.lvp_r = 0;
+    }
+}
+
 if (Q.kvp_dnef) {
     Q.kvp_relation = (Q.dnef_relation/2);
 
@@ -367,6 +376,9 @@ if (Q.dnef_formed) {
     Q.dnef_total_votes = Q.dnef_votes;
     if (Q.dstp_dnef) {
         Q.dnef_total_votes += Q.ddp_votes;
+    }
+    if (Q.lvp_dnef) {
+        Q.dnef_total_votes += Q.lvp_votes;
     }
     if (Q.kvp_dnef) {
         Q.dnef_total_votes += Q.kvp_votes;
@@ -460,10 +472,11 @@ if (Q.dnef_formed) {
     if (Q.z_in_gov) Q.republicans_schleicher += 2;
     if (Q.schleicher_labor) Q.republicans_schleicher += 1;
     if (Q.z_leader == "Stegerwald") Q.republicans_schleicher += 1;
-    if (Q.z_leader == "Bracht" || Q.z_dnef) Q.republicans_schleicher += 2;
+    if (Q.z_leader == "Bracht" || Q.z_dnef) Q.republicans_schleicher += 3;
     if (Q.z_dnef) Q.republicans_schleicher += 1;
     if (Q.dstp_dnef) Q.republicans_schleicher += 1;
     if (Q.dvp_dnef) Q.republicans_schleicher += 1;
+    if (Q.lvp_dnef) Q.republicans_schleicher += 2;
     if (Q.nvf_dnef) Q.republicans_schleicher -= 3;
     if (Q.reichswehr_strength > 100) Q.republicans_schleicher -= Q.reichswehr_strength / 100;
     if (Q.dnef_total_votes >= Q.pro_republic) Q.republicans_schleicher += 1;
@@ -490,6 +503,49 @@ if (Q.dnef_formed) {
     if (Q.schleicher_stahlhelm) Q.nationalists_schleicher += 5;
     if (Q.nationalists_schleicher_bonus) Q.nationalists_schleicher += Q.nationalists_schleicher_bonus;
     if (Q.nationalists_schleicher > 12) Q.nationalists_schleicher = 12;
+
+    Q.schleicher_approval_decay = 0.05;
+
+    if (Q.workers_schleicher < 6) Q.schleicher_approval_decay += 0.05;
+    if (Q.workers_schleicher < 4) Q.schleicher_approval_decay += 0.05;
+    if (Q.workers_schleicher < 2) Q.schleicher_approval_decay += 0.1;
+
+    if (Q.industrialists_schleicher < 6) Q.schleicher_approval_decay += 0.05;
+    if (Q.industrialists_schleicher < 4) Q.schleicher_approval_decay += 0.05;
+    if (Q.industrialists_schleicher < 2) Q.schleicher_approval_decay += 0.1;
+
+    if (Q.republicans_schleicher < 6) {
+        Q.schleicher_approval_decay += 0.05;
+        if (Q.weimar_votes < 20) Q.schleicher_approval_decay += 0.01;
+        if (Q.weimar_votes < 30) Q.schleicher_approval_decay += 0.01;
+        if (Q.weimar_votes < 40) Q.schleicher_approval_decay += 0.01;
+    }
+    if (Q.republicans_schleicher < 4) {
+        Q.schleicher_approval_decay += 0.05;
+        if (Q.weimar_votes < 20) Q.schleicher_approval_decay += 0.01;
+        if (Q.weimar_votes < 30) Q.schleicher_approval_decay += 0.01;
+        if (Q.weimar_votes < 40) Q.schleicher_approval_decay += 0.01;
+    }
+    if (Q.republicans_schleicher < 2) {
+        Q.schleicher_approval_decay += 0.1;
+        if (Q.weimar_votes < 20) Q.schleicher_approval_decay += 0.02;
+        if (Q.weimar_votes < 30) Q.schleicher_approval_decay += 0.02;
+        if (Q.weimar_votes < 40) Q.schleicher_approval_decay += 0.02;
+    }
+
+    if (Q.nationalists_schleicher < 6) {
+        Q.schleicher_approval_decay += 0.05;
+        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay += 0.025;
+    }
+    if (Q.nationalists_schleicher < 4) {
+        Q.schleicher_approval_decay += 0.05;
+        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay += 0.025;
+    }
+    if (Q.nationalists_schleicher < 2) {
+        Q.schleicher_approval_decay += 0.05;
+        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay += 0.025;
+    }
+    Q.schleicher_approval -= Q.schleicher_approval_decay;
 }
 
 if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_checked) {
@@ -517,6 +573,7 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
         Q.dnef_relation -= 0.25;
     }
     Q.weimar_votes = Q.spd_votes + Q.ddp_votes + (Q.lvp_votes / 2) + Q.z_votes - Q.bvp_votes;
+    Q.nationalist_votes = Q.dnvp_votes + Q.dnf_votes + Q.kvp_votes;
     if (Q.chancellor == "Papen") {
         Q.papen_time += 1;
         if (Q.marburg_trigger) Q.marburg_time += 1;
@@ -526,11 +583,12 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
         if (Q.schleicher_post) {
             Q.schleicher_post_time += 1;
             if (Q.z_in_gov) Q.z_in_gov_time += 1;
+            if (Q.dsu_in_gov) Q.dsu_in_gov_time += 1;
         }
         if (Q.z_leader == "Bracht") Q.bracht_time += 1;
         if (Q.reichstag_joever) Q.reichstag_joever_time += 1;
     }
-    if (Q.state_paramilitary && Q.dnef_formed) {
+    if (Q.state_paramilitary && Q.dnef_formed && !Q.streetfighting_joever) {
         if (Q.state_paramilitary_highest) {
             Q.workers_spd -= 6/12;
             if (Q.workers_kpd_normalized >= 10) Q.workers_kpd -= 6/12;
@@ -1969,7 +2027,7 @@ Q.unemployed_nsdap_para_pre = Q.unemployed_nsdap;
 Q.new_middle_nsdap_para_pre = Q.new_middle_nsdap;
 Q.old_middle_nsdap_para_pre = Q.old_middle_nsdap;
 
-if (Q.far_right_paramilitary && Q.year >= 1930) {
+if (Q.far_right_paramilitary && Q.year >= 1930 && !Q.streetfighting_joever) {
     if (Q.far_right_paramilitary_highest) {
         Q.workers_nsdap += 4*Q.strife_size/12;
         Q.workers_spd -= 4*Q.strife_size/12;
@@ -2069,7 +2127,7 @@ if (Q.far_right_paramilitary && Q.year >= 1930) {
             Q.old_middle_nsdap = Q.old_middle_nsdap_para_pre;
         }
     }
-} else if (Q.democracy_paramilitary && Q.year >= 1930) {
+} else if (Q.democracy_paramilitary && Q.year >= 1930 && !Q.streetfighting_joever) {
     if (Q.democracy_paramilitary_highest) {
         Q.workers_spd += 4*Q.strife_size/12;
         Q.workers_nsdap -= 4*Q.strife_size/12;

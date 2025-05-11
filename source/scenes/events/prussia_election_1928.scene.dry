@@ -1,5 +1,5 @@
 title: Prussian Landtag Election
-view-if: (year = next_election_year_prussia and month >= next_election_month_prussia) or (year > next_election_year_prussia)
+view-if: ((year = next_election_year_prussia and month >= next_election_month_prussia) and (next_election_week_prussia == week or not rubicon or not next_election_week_prussia)) or (year > next_election_year_prussia)
 new-page: true
 tags: event
 priority: 2
@@ -275,6 +275,13 @@ if (Q.dnef_formed) {
         }
         Q.dnef_votes_prussia += Q.ddp_votes_prussia;
     }
+    if (Q.lvp_dnef) {
+        if (Q.lvp_r_prussia) {
+            Q.dnef_r += Q.lvp_r_prussia;
+            Q.lvp_r_prussia = 0;
+        }
+        Q.dnef_votes_prussia += Q.lvp_votes_prussia;
+    }
     if (Q.kvp_dnef) {
         if (Q.kvp_r_prussia) {
             Q.dnef_r_prussia += Q.kvp_r_prussia;
@@ -289,14 +296,14 @@ if (Q.dnef_formed) {
         }
         Q.dnef_votes_prussia += Q.dvp_votes_prussia;
     }
-    if (Q.z_dnef_prussia) {
+    if (Q.z_dnef) {
         if (Q.z_r_prussia) {
             Q.dnef_r_prussia += Q.z_r_prussia;
             Q.z_r_prussia = 0;
         }
         Q.dnef_votes_prussia += Q.z_votes_prussia;
     }
-    if (Q.dnvp_dnef_prussia) {
+    if (Q.dnvp_dnef) {
         if (Q.dnvp_r_prussia) {
             Q.dnef_r_prussia += Q.dnvp_r_prussia;
             Q.dnvp_r_prussia = 0;
@@ -430,7 +437,7 @@ if (Q.nsdap_split) {
 }
 
 if (Q.dnef_formed && Q.nvf_exist) {
-    if (Q.nvf_dnef_prussia) {
+    if (Q.nvf_dnef) {
         if (Q.nvf_r_prussia) {
             Q.dnef_r += Q.nvf_r_prussia;
             Q.nvf_r_prussia = 0;
@@ -703,6 +710,8 @@ go-to: coalition_menu
 
 [? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_ddp_prussia +] {!</td><td>!} [+ ddp_r_prussia +]% {!</td><td>!} [+ str_change_ddp_prussia +] {!</td></tr>!} ?]
 
+[? if lvp_formed and lvp_dnef: {!<tr><td><div class="box2" style='background-color:#CC9900'> </div> !} LVP: {!</td><td>!} [+ lvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_lvp_prussia +] {!</td><td>!} [+ lvp_r_prussia +]% {!</td><td>!} [+ str_change_lvp_prussia +] {!</td></tr>!} ?]
+
 [? if z_dnef: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_votes_prussia +]% {!</td><td>!} [+ str_votes_change_z_prussia +] {!</td><td>!} [+ z_r_prussia +]% {!</td><td>!} [+ str_change_z_prussia +] {!</td></tr>!} ?]
 
 [? if not lvp_formed and dvp_exist and dvp_dnef: {!<tr><td><div class="box2" style='background-color:#AA861F'> </div> !} DVP: {!</td><td>!} [+ dvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dvp_prussia +] {!</td><td>!} [+ dvp_r_prussia +]% {!</td><td>!} [+ str_change_dvp_prussia +] {!</td></tr>!} ?]
@@ -725,7 +734,7 @@ go-to: coalition_menu
 
 [? if not lvp_formed and not dstp_dnef: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_ddp_prussia +] {!</td><td>!} [+ ddp_r_prussia +]% {!</td><td>!} [+ str_change_ddp_prussia +] {!</td></tr>!} ?]
 
-[? if lvp_formed: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div> !} LVP: {!</td><td>!} [+ lvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_lvp_prussia +] {!</td><td>!} [+ lvp_r_prussia +]% {!</td><td>!} [+ str_change_lvp_prussia +] {!</td></tr>!} ?]
+[? if lvp_formed and not lvp_dnef: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div> !} LVP: {!</td><td>!} [+ lvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_lvp_prussia +] {!</td><td>!} [+ lvp_r_prussia +]% {!</td><td>!} [+ str_change_lvp_prussia +] {!</td></tr>!} ?]
 
 [? if not z_dnef: {!<tr><td><div class="box" style='background-color:#000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_votes_prussia +]% {!</td><td>!} [+ str_votes_change_z_prussia +] {!</td><td>!} [+ z_r_prussia +]% {!</td><td>!} [+ str_change_z_prussia +] {!</td></tr>!} ?]
 
@@ -758,6 +767,9 @@ go-to: coalition_menu
 
 @coalition_menu
 
+- @schleicher_majority_coalition_prussia
+- @schleicher_left_coalition_prussia
+- @schleicher_right_coalition_prussia
 - @spd_majority
 - @weimar_coalition_prussia
 - @social_christian_coalition_prussia
@@ -777,6 +789,35 @@ go-to: coalition_menu
 - @call_new_elections: No majority is able to be found.
 - @call_new_elections_rubicon: No majority is able to be found.
 
+@schleicher_majority_coalition_prussia
+title: Schleicher forms a majority government with only the <span style="color: #BFC8CC;">**DNEF**</span>.
+subtitle: <span style="color: #BFC8CC;">**DNEF**</span> ([+ dnef_r_prussia +]%)
+view-if: dnef_r_prussia >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
+unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span> ([+ dnef_r_prussia +]%)
+on-arrival: in_schleicher_majority_coalition_prussia = 1; prussia_leader = "Goerdeler"; workers_dnef += 3; new_middle_dnef += 3; old_middle_dnef += 3; rural_dnef += 3; unemployed_dnef += 3; catholics_dnef += 3; workers_kpd -= 3; workers_spd -= 3; rfb_banned = 1; rfb_strength -= 50; rb_strength -= 200; prussian_police_loyalty = 0; pro_republic -= 10
+
+With a majority in Prussia as well, Schleicher tightens his grip behind a democratic façade. The Prussian police are reshaped further to serve his purposes, and the government now sets education policy. A new curriculum is imposed, centered on discipline, nationalism, and hostility to <span style="color: #c00000;">socialism</span>.
+
+@schleicher_left_coalition_prussia
+title: Schleicher forms a majority with the left.
+subtitle: <span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?] ([+ schleicher_left_coalition_prussia +]%)
+view-if: schleicher_left_coalition_prussia >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
+unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span> + <span style="color: #c00000;">SPD</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?] ([+ schleicher_left_coalition_prussia +]%) [? if rubicon: - President Hindenburg will never permit Schleicher to bring <span style="color: #c00000;">socialists</span> into the government, no matter his ulterior motive. ?]
+choose-if: president != "Hindenburg" and super_secret_mode
+on-arrival: in_schleicher_left_coalition_prussia = 1; prussia_leader = "Goerdeler"; workers_dnef += 3; new_middle_dnef += 3; old_middle_dnef += 3; rural_dnef += 3; unemployed_dnef += 3; catholics_dnef += 3; workers_kpd -= 3; workers_spd -= 3; rfb_banned = 1; rfb_strength -= 50; rb_strength -= 200; prussian_police_loyalty = 0; pro_republic -= 10
+
+Placeholder
+
+@schleicher_right_coalition_prussia
+title: Schleicher forms a majority with the right.
+subtitle: <span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **Others**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?] ([+ schleicher_right_coalition_prussia +]%)
+view-if: schleicher_right_coalition_prussia >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
+unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">DVP</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?][? if not other_dnef:&nbsp;+ Others?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">KVP</span>?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">DNVP</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">DSU</span>?] ([+ schleicher_right_coalition_prussia +]%) [? if not schleicher_parliament_trigger: - Schleicher has no interest in leading a coalition backed by parliament, rather than decree. ?]
+on-arrival: in_schleicher_right_coalition_prussia = 1; prussia_leader = "Goerdeler" if prussia_leader != "Strasser"; prussia_leader = "Strasser" if prussia_leader != "Goerdeler"; workers_kpd -= 2; workers_spd -= 2; rfb_banned = 1; rfb_strength -= 40; rb_strength -= 150; prussian_police_loyalty = 0; pro_republic -= 8
+
+Schleicher's preferred coalition is one with the right, cooperating with the hard line <span style="color: #6A1E1E;">**DSU**</span> to enact sweeping reforms to the education and policing system reformed under our years of rule. 
+
+[+ prussia_leader +] has been selected as Minister-President of Prussia.
 
 @spd_majority
 title: <span style="color: #c00000;">**SPD**</span> majority alone
@@ -1083,12 +1124,12 @@ Otherwise, new elections have to be called, where the extremist parties stand to
 - @tolerate_bourgeois_coalition: Tolerate the bourgeois parties to prevent new elections.
 
 @call_new_elections_2
-on-arrival: pro_republic -= 5 if anti_democratic_coalition_prussia >= 30; workers_nsdap += 3 if anti_democratic_coalition_prussia >= 30; workers_kpd += 3 if anti_democratic_coalition_prussia >= 30; workers_spd -= 3 if anti_democratic_coalition_prussia >= 30; new_middle_nsdap += 2 if anti_democratic_coalition_prussia >= 30; old_middle_nsdap += 2 if anti_democratic_coalition_prussia >= 30; rural_nsdap += 2 if anti_democratic_coalition_prussia >= 30; new_middle_ddp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_ddp -= 2 if anti_democratic_coalition_prussia >= 30; rural_ddp -= 2 if anti_democratic_coalition_prussia >= 30; new_middle_dvp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_dvp -= 2 if anti_democratic_coalition_prussia >= 30; rural_dvp -= 2 if anti_democratic_coalition_prussia >= 30; new_middle_lvp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_lvp -= 2 if anti_democratic_coalition_prussia >= 30; rural_lvp -= 2 if anti_democratic_coalition_prussia >= 30; no_majority_elections_prussia += 1
+on-arrival: pro_republic -= 5 if anti_democratic_coalition_prussia >= 30; workers_nsdap += 3 if anti_democratic_coalition_prussia >= 30; workers_kpd += 3 if anti_democratic_coalition_prussia >= 30; workers_spd -= 3 if anti_democratic_coalition_prussia >= 30; new_middle_nsdap += 2 if anti_democratic_coalition_prussia >= 30; old_middle_nsdap += 2 if anti_democratic_coalition_prussia >= 30; rural_nsdap += 2 if anti_democratic_coalition_prussia >= 30; new_middle_ddp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_ddp -= 2 if anti_democratic_coalition_prussia >= 30; rural_ddp -= 2 if anti_democratic_coalition_prussia >= 30; new_middle_dvp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_dvp -= 2 if anti_democratic_coalition_prussia >= 30; rural_dvp -= 2 if anti_democratic_coalition_prussia >= 30; new_middle_lvp -= 2 if anti_democratic_coalition_prussia >= 30; old_middle_lvp -= 2 if anti_democratic_coalition_prussia >= 30; rural_lvp -= 2 if anti_democratic_coalition_prussia >= 30; no_majority_elections_prussia += 1; next_election_week_prussia = next_election_week if rubicon and next_election_time - time < 3; next_election_week_prussia = week + 6 if rubicon and next_election_time - time >= 3; next_election_week_prussia -= 4 if rubicon and next_election_week_prussia > 4; next_election_week_prussia -= 4 if rubicon and next_election_week_prussia > 4
 call: set_next_election_time_prussia
 
 [? if far_right_coalition_prussia + z_r_prussia >= 50: The <span style="color: #000000;">Center Party</span>'s failure to form a coalition with the <span style="color: #7A3C00;">**NSDAP**</span>, due to the latter's insistence on securing both the Minister-President's office and control of the Prussian police, has left no alternative but to call new elections. ?]
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +][? if rubicon:, Week [+ next_election_week +] ?].
 
 [? if anti_democratic_coalition_prussia >= 30: The people's faith in democracy is shaken by this ordeal. Of course, the <span style="color: #7A3C00;">Nazis</span> are exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader. ?]
 
@@ -1107,11 +1148,12 @@ on-arrival: no_majority_elections_prussia_schleicher = 1
 go-to: call_new_elections_2_rubicon if prussia_leader != "Braun" and prussia_leader != "Stegerwald" and prussia_leader != "Luther" and prussia_leader != "Brüning"; prussia_explode if prussia_leader == "Braun" or prussia_leader == "Stegerwald" or prussia_leader == "Luther" or prussia_leader == "Brüning"
 
 @call_new_elections_2_rubicon
+on-arrival: next_election_week_prussia = next_election_week if rubicon and next_election_time - time < 3; next_election_week_prussia = week + 6 if rubicon and next_election_time - time >= 3; next_election_week_prussia -= 4 if rubicon and next_election_week_prussia > 4; next_election_week_prussia -= 4 if rubicon and next_election_week_prussia > 4
 call: set_next_election_time_prussia
 
 Perhaps a more stable majority can be found in more elections.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +], Week [+ next_election_week +].
 
 @prussia_explode
 go-to: prussian_coup_schleicher

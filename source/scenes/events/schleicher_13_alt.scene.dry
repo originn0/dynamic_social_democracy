@@ -1,0 +1,96 @@
+title: The <span style="color: #FFCC00;">**LVP**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+subtitle: German <span style="color: #FFCC00;">liberalism</span> is dead.
+view-if: chancellor = "Schleicher" and schleicher_post and ((republicans_schleicher >= 10 and lvp_leader != "Dingeldey") or (industrialists_dnef and lvp_leader == "Dingeldey")) and lvp_formed and dnef_formed
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+
+= <span style="color: #FFCC00;">**LVP**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
+
+German <span style="color: #FFCC00;">liberalism</span> has long been intertwined with nationalism, dating back to the revolutions of 1848. The image of <span style="color: #D3C24D;">left-liberals</span> as pacifists is mostly a stereotype, with only a fringe minority truly committed to pacifism.
+
+This makes the <span style="color: #FFCC00;">**LVP**</span> a natural candidate for incorporation into the <span style="color: #BFC8CC;">**DNEF**</span>, as it has long championed a <i>Volksgemeinschaft</i>—a national community to reconcile the classes in service of the nation—offered as an alternative to <span style="color: #9B0000;">Marxist</span> class struggle.
+
+[? if industrialists_dnef: The <span style="color: #FFCC00;">**LVP**</span>, however, is drawn more by Schleicher’s promises to the industrialists, who dominate the party’s leadership. ?][? if not industrialists_dnef: Disillusionment with parliamentarianism and democracy has driven much of the party to back a strongman who can restore stability and tear up the disgraceful terms of Versailles. The committed democrats, mostly on the party’s left wing—figures like Heuss and Dietrich—are powerless to stop this. ?]
+
+- @schleicher_2: The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new member.
+
+@schleicher_2
+on-arrival: {!
+Q.lvp_dnef = 1
+
+Q.pro_republic -= Q.lvp_votes;
+
+Q.lvp_relation = (Q.dnef_relation - 5);
+
+Q.dnef_r += Q.lvp_r;
+Q.lvp_r = 0;
+!}
+
+The German middle has largely consolidated around Schleicher's regime. However, a small group of committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> from the <span style="color: #FFCC00;">**LVP**</span>’s left wing has split from the party in protest, forming the <span style="color: #E0B0FF;">Radical Democratic Party</span> (<span style="color: #E0B0FF;">**RDP**</span>). Lacking much of an electoral base of their own, they are now pleading for a place on our electoral list.
+
+Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
+
+[? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
+
+[? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if lvp_dnef: - <span style="color: #FFCC00;">**LVP**</span> ?]
+
+[? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
+
+[? if z_dnef: - <span style="color: #A2D8E0;">**BVP**</span> ?]
+
+[? if dvp_dnef: - <span style="color: #C0A054;">**DVP**</span> ?]
+
+[? if other_dnef: - **Others** ?]
+
+[? if kvp_dnef: - <span style="color: #0087DC;">**KVP**</span> ?]
+
+[? if dnvp_dnef: - <span style="color: #3E88B3;">**DNVP**</span> ?]
+
+[? if nvf_dnef: - <span style="color: #142e20;">**NVF**</span> ?]
+
+- @rdp_list
+- @rdp_decline
+
+@rdp_list
+title: Create a list connection with the <span style="color: #E0B0FF;">**RDP**</span>.
+on-arrival: {!
+Q.rdp_formed = 1;
+Q.rdp_list = 1;
+
+Q.new_middle_lvp -= 6;
+Q.new_middle_spd += 6;
+Q.pro_republic += 5;
+
+Q.left_dissent += 5;
+Q.reformist_dissent -= 3;
+Q.reformist_strength += 3;
+Q.peoples_party_support += 1;
+
+Q.previous_rdp_last_election_votes = 0;
+Q.old_rdp_r = 0;
+
+Q.lvp_relation -= 8;
+Q.lvp_right += 2;
+!}
+
+Who are we to abandon committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> willing to stand with us? They may prove a useful ally against Schleicher’s regime, even if they’re only expected to draw about a single percent of the vote in the next election.
+
+@rdp_decline
+title: We don't need dealings with the bourgeoisie.
+on-arrival: {!
+Q.rdp_formed = 1;
+Q.rdp_explode = 1;
+
+Q.new_middle_lvp -= 4;
+Q.new_middle_spd += 4;
+Q.pro_republic += 3;
+
+Q.lvp_relation -= 4;
+Q.lvp_right += 1;
+!}
+
+The <span style="color: #E0B0FF;">**RDP**</span> fails to gain real traction, and their voters will likely come to us regardless—so long as we present ourselves as the sole true democratic force on the ballot. The party is set to receive less than a single percent if new elections are called.

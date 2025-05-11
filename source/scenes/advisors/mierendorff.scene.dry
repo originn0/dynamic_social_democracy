@@ -38,6 +38,6 @@ title: Warning about the <span style="color: #7A3C00;">Nazis</span>
 subtitle: By warning the party about the <span style="color: #7A3C00;">Nazis</span>, we can spur our members to action.
 choose-if: advisor_action_timer == 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; nazi_urgency += 1; rb_militancy += 0.01; nsdap_workers -= 4*(1-dissent);
+on-arrival: advisor_action_timer = 6; nazi_urgency += 1; rb_militancy += 0.01 if not rb_explode; nsdap_workers -= 4*(1-dissent);
 
 We have begun a propaganda campaign to warn our members away from the <span style="color: #7A3C00;">Nazis</span>.

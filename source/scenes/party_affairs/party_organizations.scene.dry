@@ -51,6 +51,7 @@ It is not enough for the <span style="color: #c00000;">**SPD**</span> to solely 
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
+view-if: not rb_explode
 on-arrival: resources -= 1; rb_strength  += 100; rb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
 
 We have increased recruiting to the Reichsbanner.
@@ -59,6 +60,7 @@ We have increased recruiting to the Reichsbanner.
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
+view-if: not rb_explode
 on-arrival: resources -= 1; rb_strength += 50; rb_militancy += 0.02; young_socialists += 1; left_strength += 5; neorevisionist_strength += 5; radicalization += 1;
 
 Our new youth members flock to the left or neorevisionist wings of the party, and also bring new radicalism to the Reichsbanner.

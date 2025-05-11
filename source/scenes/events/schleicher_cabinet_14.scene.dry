@@ -1,6 +1,6 @@
 title: Free Speech Curtailed
 subtitle: Certain "problematic" newspapers are taken over by the state.
-view-if: chancellor == "Schleicher" and dsu_in_gov and dsu_policy and ((reichstag_joever_time >= 2 and not schleicher_post_protests) or (reichstag_joever_time >= 6 and schleicher_post_protests)) and not schleicher_rights
+view-if: chancellor == "Schleicher" and (dsu_in_gov or dsu_was_gov) and dsu_policy and ((reichstag_joever_time >= 2 and not schleicher_post_protests) or (reichstag_joever_time >= 6 and schleicher_post_protests)) and not schleicher_rights
 max-visits: 1
 new-page: true
 priority: -1
@@ -61,25 +61,32 @@ if (Q.schleicher_spd_influence >= 6 && Q.schleicher_spd_r < 5) {
     Q.labor_strength += 5;
 }
 
-if (!Q.dstp_dnef) {
-    Q.new_middle_ddp *= 0.6;
-    Q.old_middle_ddp *= 0.6;
-    Q.rural_ddp *= 0.8;
-    if (Q.dvp_dnef) {
-        Q.new_middle_dvp *= 1.2;
-        Q.old_middle_dvp *= 1.2;
-        Q.rural_dvp *= 1.2;
+if (!Q.lvp_formed) {
+    if (!Q.dstp_dnef) {
+        Q.new_middle_ddp *= 0.6;
+        Q.old_middle_ddp *= 0.6;
+        Q.rural_ddp *= 0.8;
+        if (Q.dvp_dnef) {
+            Q.new_middle_dvp *= 1.2;
+            Q.old_middle_dvp *= 1.2;
+            Q.rural_dvp *= 1.2;
+        }
+    }
+    if (!Q.dvp_dnef) {
+        Q.new_middle_dvp *= 0.6;
+        Q.old_middle_dvp *= 0.6;
+        Q.rural_dvp *= 0.8;
+        if (Q.dstp_dnef) {
+            Q.new_middle_ddp *= 1.2;
+            Q.old_middle_ddp *= 1.2;
+            Q.rural_ddp *= 1.2;
+        }
     }
 }
-if (!Q.dvp_dnef) {
-    Q.new_middle_dvp *= 0.6;
-    Q.old_middle_dvp *= 0.6;
-    Q.rural_dvp *= 0.8;
-    if (Q.dstp_dnef) {
-        Q.new_middle_ddp *= 1.2;
-        Q.old_middle_ddp *= 1.2;
-        Q.rural_ddp *= 1.2;
-    }
+if (Q.lvp_formed && !Q.lvp_dnef) {
+    Q.new_middle_lvp *= 0.75;
+    Q.old_middle_lvp *= 0.75;
+    Q.rural_lvp *= 0.9;
 }
 if (!Q.dnvp_dnef && Q.dnvp_ideology == "Radical") {
     Q.new_middle_dnvp *= 0.8;

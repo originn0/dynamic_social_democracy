@@ -1,6 +1,6 @@
 title: The Reichstag Burns!
 subtitle: A suspected arson attack, ostensibly by a foreign <span style="color: #700000;">**Communist**</span>.
-view-if: chancellor == "Schleicher" and not dsu_in_gov and reichstag_joever_time >= 1 and not kpd_explode
+view-if: chancellor == "Schleicher" and (not dsu_in_gov or dsu_was_gov) and reichstag_joever_time >= 1 and not kpd_explode
 on-arrival: kpd_relation = 30 if kpd_relation < 40; reichstag_fire_decree_schleicher = 1
 max-visits: 1
 new-page: true
@@ -121,12 +121,23 @@ if (Q.sapd_formed && Q.sapd_r) {
     });
 }
 
-data = data.concat([{
-    "id": "spd",
-    "legend": "SPD",
-    "name": "SPD",
-    "seats": Math.round(Q.spd_r * 5),
-}]);
+if (Q.spd_r) {
+    data.push({
+        "id": "spd",
+        "legend": "SPD",
+        "name": "SPD",
+        "seats": Math.round(Q.spd_r * 5),
+    });
+}
+
+if (Q.rdp_r) {
+    data.push({
+        "id": "rdp",
+        "legend": "RDP",
+        "name": "RDP",
+        "seats": Math.round(Q.rdp_r * 5),
+    });
+}
 
 if (Q.ddp_r && !Q.lvp_formed) {
     data.push({
@@ -279,6 +290,8 @@ They shouldâ€™ve simply not burned down the Reichstag. What were they thinkingâ€
 
 [? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!} ?]
 
+[? if lvp_formed and lvp_dnef: {!<tr><td><div class="box2" style='background-color:#CC9900'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r +]% {!</td></tr>!} ?]
+
 [? if z_dnef: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!} ?]
 
 [? if z_dnef: {!<tr><td><div class="box2" style='background-color:#7aa7af'> </div></td><td>!} BVP: {!</td><td>!} [+ bvp_r +]% {!</td></tr>!} ?]
@@ -303,7 +316,7 @@ They shouldâ€™ve simply not burned down the Reichstag. What were they thinkingâ€
 
 [? if not lvp_formed and not dstp_dnef: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r +]% {!</td></tr>!} ?]
 
-[? if lvp_formed: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r +]% {!</td></tr>!} ?]
+[? if lvp_formed and not lvp_dnef: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r +]% {!</td></tr>!} ?]
 
 [? if not z_dnef: {!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_r +]% {!</td></tr>!} ?]
 

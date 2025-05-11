@@ -28,14 +28,23 @@ Q.ddp_relation = Q.dnef_relation;
 
 Q.dnef_r += Q.ddp_r;
 Q.ddp_r = 0;
+
+if (Q.ddp_ideology == "Left") Q.ddp_leader = "Lemmer";
+if (Q.ddp_ideology != "Left") Q.ddp_leader = "Hellpach";
+
+Q.old_ddp_name = Q.ddp_name;
+Q.ddp_name = "DStP";
 !}
 
+Schleicher sees keeping the <span style="color: #D3C24D;">**[+ old_ddp_name +]**</span> as a separate but closely tied <i>Blocpartei</i> as more effective in attracting voters, and for now, maintains their nominal independence[? if not dstp_formed:, though under a new name to shed the old and ironic "Democratic" label?]. [+ ddp_leader +] has since been installed as leader of the now <i>Blocpartei</i>-aligned <span style="color: #D3C24D;">[+ ddp_name +]</span>.
 
 Current composition of the <span style="color: #BFC8CC;">German National Unity Front</span>:
 
 [? if dnef_formed: - <span style="color: #BFC8CC;">**DNEF**</span> ?]
 
 [? if dstp_dnef: - <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?]
+
+[? if lvp_dnef: - <span style="color: #FFCC00;">**LVP**</span> ?]
 
 [? if z_dnef: - <span style="color: #000000;">Center Party</span> ?]
 

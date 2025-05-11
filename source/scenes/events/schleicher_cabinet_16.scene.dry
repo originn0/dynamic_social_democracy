@@ -1,0 +1,69 @@
+title: The Reichsbanner Is Banned!
+subtitle: Our so-called "revolutionary militia" is now officially outlawed nationwide.
+view-if: chancellor == "Schleicher" and (dsu_in_gov or dsu_was_gov) and dsu_policy and ((reichstag_joever_time >= 8 and not schleicher_post_protests) or (reichstag_joever_time >= 18 and schleicher_post_protests)) and rb_force < 20 and (state_force + far_right_force) >= 80 and not schleicher_pause and (prussia_leader == "Strasser" or prussia_leader == "Goerdeler")
+max-visits: 1
+new-page: true
+priority: -1
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichsbanner_march.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= Reichsbanner Banned
+
+Following months of state repression, the hollowed-out remnants of the Reichsbanner are officially banned. With the more moderate fighters having retired or been absorbed into the state’s militias, only die-hard <span style="color: #c00000;">socialists</span> remain in the self-defense organization. This has given Schleicher the pretext to brand the <span style="color: #700000;">**RFB**</span> and the Reichsbanner as jointly conspiring toward revolutionary overthrow—and to extend the ban to both.
+
+If this ban goes through, we will be left defenseless against state oppression. Many in the party urge us to resist, while others claim that the era of paramilitaries is over and argue for preemptive disarmament to placate Schleicher.
+
+- @fight
+- @rb_explode
+
+@fight
+title: Fight!
+
+Are you sure? Schleicher is only moving against the Reichsbanner because he feels confident now that it’s weak. He may be eagerly awaiting a pretext to strike at the <span style="color: #c00000;">**SPD**</span> itself. The full force of the state is more than we can resist.
+
+You should reconsider.
+
+- @civil_war: We'll go out with a bang!
+- @rb_explode
+
+@rb_explode
+title: Disband the Reichsbanner.
+subtitle: +2 resources
+on-arrival: {!
+Q.rb_explode = 1;
+Q.pro_republic -= 5;
+
+Q.resources += 2;
+
+Q.rb_strength = 0;
+Q.rb_militancy = 0;
+
+Q.schleicher_spd_influence += 2;
+Q.schleicher_spd_r += 1;
+Q.schleicher_spd_support -= 2;
+
+Q.workers_spd -= 2;
+Q.unemployed_spd -= 4;
+
+Q.workers_dnef += 2;
+Q.unemployed_dnef += 4;
+
+Q.z_relation -= 5;
+Q.ddp_relation -= 5;
+Q.lvp_relation -= 5;
+!}
+
+We have decided to cooperate with the government by preemptively dissolving the organization and turning over weapons before the ban is to take place. A notable amount of <span style="color: #c00000;">socialists</span> have decided to fight on however, but without numbers or weapons, this ad-hoc group is destined for failure. 
+
+Schleicher hasn't expressed the gratitude for our cooperation like we hoped. Perhaps we outlived our usefulness to him.

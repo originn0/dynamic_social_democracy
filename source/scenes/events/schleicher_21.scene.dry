@@ -1,0 +1,43 @@
+title: The <span style="color: #c00000;">**SPD**</span> Slips Away
+subtitle: We handed Schleicher too much influence over us.
+view-if: chancellor = "Schleicher" and dnef_formed and schleicher_spd_influence >= 10
+new-page: true
+priority: 2
+tags: event
+max-visits: 1
+on-arrival: {!
+Q.spd_dnef = 1;
+
+const contentElement = document.getElementById('content');
+contentElement.style.backgroundColor = '#312115';
+
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'none';
+}
+
+const header = document.querySelector('header');
+header.style.color = '#ffffff';
+!}
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/spd_campaign.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= The <span style="color: #c00000;">**SPD**</span> Slips Away
+
+Low-ranking party members loyal to Schleicher have steadily climbed the ranks, until a new executive committee finally replaces the old guard that had served the party since the founding of the republic.
+
+At its head now stand Schleicher’s yes-men—figures like the notorious former Defense Minister Gerhard Noske and Lothar Erdmann, a nationalist voice within the ADGB, fiercely hostile to the Treaty of Versailles and far closer to Schleicher’s ideology than the mere pragmatism of Braun or Leipart.
+
+The <span style="color: #BFC8CC;">German National Unity Front</span> welcomes its new member.
+
+- @game_over: The end of <span style="color: #c00000;">Social Democracy</span>.

@@ -76,12 +76,23 @@ if (Q.sapd_formed && Q.sapd_r_alt) {
     });
 }
 
-data = data.concat([{
-    "id": "spd",
-    "legend": "SPD",
-    "name": "SPD",
-    "seats": Math.round(Q.spd_r_alt * 2),
-}]);
+if (Q.spd_r) {
+    data.push({
+        "id": "spd",
+        "legend": "SPD",
+        "name": "SPD",
+        "seats": Math.round(Q.spd_r * 5),
+    });
+}
+
+if (Q.rdp_r) {
+    data.push({
+        "id": "rdp",
+        "legend": "RDP",
+        "name": "RDP",
+        "seats": Math.round(Q.rdp_r * 5),
+    });
+}
 
 if (Q.ddp_r_alt && !Q.lvp_formed) {
     data.push({
@@ -226,6 +237,8 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 
 [? if not lvp_formed and dstp_dnef and ddp_r_alt: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r_alt +]% {!</td></tr>!} ?]
 
+[? if lvp_formed and lvp_dnef and lvp_r_alt: {!<tr><td><div class="box2" style='background-color:#CC9900'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r_alt +]% {!</td></tr>!} ?]
+
 [? if z_dnef and z_r_alt: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_r_alt +]% {!</td></tr>!} ?]
 
 [? if not lvp_formed and dvp_exist and dvp_dnef and dvp_r_alt: {!<tr><td><div class="box2" style='background-color:#AA861F'> </div></td><td>!} DVP: {!</td><td>!} [+ dvp_r_alt +]% {!</td></tr>!} ?]
@@ -246,7 +259,7 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 
 [? if not lvp_formed and not dstp_dnef and ddp_r_alt: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div></td><td>!} [+ ddp_name +]: {!</td><td>!} [+ ddp_r_alt +]% {!</td></tr>!} ?]
 
-[? if lvp_formed and lvp_r_alt: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r_alt +]% {!</td></tr>!} ?]
+[? if lvp_formed and lvp_r_alt and not lvp_dnef: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div></td><td>!} LVP: {!</td><td>!} [+ lvp_r_alt +]% {!</td></tr>!} ?]
 
 [? if not z_dnef and z_r_alt: {!<tr><td><div class="box" style='background-color:#000'> </div></td><td>!} [+ z_party_name +]: {!</td><td>!} [+ z_r_alt +]% {!</td></tr>!} ?]
 

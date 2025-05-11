@@ -88,7 +88,7 @@ is-special: true
 
 [? if dnef_formed: <div style="flex: 1;"> ?]
 [? if dnef_formed: <p style="font-weight: bold; margin-bottom: 0px;">Nationalists</p> ?]
-[? if dnef_formed: <p style="margin-bottom: 2px;">Influence: [? if dnvp_votes + dnf_votes + kvp_votes < 15: modest?][? if dnvp_votes + dnf_votes + kvp_votes >= 15: sizable?]</p> ?]
+[? if dnef_formed: <p style="margin-bottom: 2px;">Influence: [? if nationalist_votes < 15: modest?][? if nationalist_votes >= 15: sizable?]</p> ?]
 [? if dnef_formed: <p style="margin-bottom: 2px;">Opinion of Schleicher: [+ nationalists_schleicher : schleicher_spd_4 +]</p> ?]
 [? if dnef_formed: </div> ?]
 

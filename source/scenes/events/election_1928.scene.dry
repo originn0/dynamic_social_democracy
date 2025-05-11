@@ -3,6 +3,7 @@ new-page: true
 tags: event
 priority: -2
 view-if: (year = next_election_year and month >= next_election_month and (next_election_week == week or not rubicon)) or (year > next_election_year)
+on-arrival: election_boycott = 0
 on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry = hindenburg_angry_old
 set-jump: post_election_1928
 set-bg: img/map_2.jpg
@@ -15,6 +16,7 @@ The Reichstag elections are to be held now.
 
 - @election_algorithm: May we do our best...
 - @cancel_elections
+- @boycott_elections
 
 @cancel_elections
 title: We cannot hold the elections now. Cancel the elections.
@@ -34,9 +36,184 @@ Fine. President [+ president +] has taken the unprecedented step of canceling th
 
 Let us hope this does not backfire.
 
+@boycott_elections
+title: Boycott the elections. Schleicher will rig it anyway.
+subtitle: Maybe the other parties will join us.
+view-if: chancellor == "Schleicher" and schleicher_post and dnef_total_votes >= 30
+
+There’s little point in participating in an election that’s clearly rigged. The most we can do is boycott the vote—depress turnout and deny Schleicher the legitimacy he desperately needs. But if we aren’t strong enough, we’ll simply hand the <span style="color: #BFC8CC;">**DNEF**</span> a majority government on a silver platter.
+
+However, if we commit, we might bring the other anti-Schleicher parties into the boycott as well. Strength in numbers.
+
+Are we sure?
+
+- @boycott_elections_2: Yes, do it.
+- @election_algorithm: No, let's participate in the elections.
+
+@boycott_elections_2
+on-arrival: boycott_count = 0;
+go-to: boycott_elections_menu
+
+Alright. We'll see whether the other parties share the same sentiment. We already know the <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?] are with us—who else?
+
+@boycott_elections_menu
+
+- @spd_boycott
+- @center_boycott
+- @liberals_boycott
+- @right_boycott
+- @nazis_boycott
+- @boycott_elections_3
+
+@spd_boycott
+title: Check in our own party.
+subtitle: The workers may have a different mindset.
+on-arrival: {!
+Q.boycott_count += 1;
+Q.spd_boycott_efficacy = 1;
+
+if (Q.dissent) Q.spd_boycott_efficacy -= Q.dissent;
+if (Q.unions_independent) Q.spd_boycott_efficacy -= 0.4;
+if (!Q.unions_independent && Q.labor_dissent) Q.spd_boycott_efficacy -= (Q.labor_dissent / 150);
+if (Q.pro_republic >= 30) Q.spd_boycott_efficacy += (Q.pro_republic / 150);
+if (Q.spd_boycott_efficacy > 1) Q.spd_boycott_efficacy = 1;
+!}
+view-if: boycott_count < 5
+max-visits: 1
+go-to: boycott_elections_menu
+
+The efficacy of our boycott depends on two key factors: party dissent and our control over labor. If the Schleicher-sympathetic factions within the unions and the party choose to vote for the <span style="color: #BFC8CC;">**DNEF**</span> regardless, our boycott will be in vain.
+
+Boycott efficacy: [+ spd_boycott_efficacy : boycott_efficacy +]
+
+@center_boycott
+title: Check in the <span style="color: #000000;">Center Party</span>.
+subtitle: [? if not z_dnef: Relations: [+ z_relation : relationships +] ?][? if z_dnef: <span style="color: #000000;">**[+ z_party_name +]**</span> - Blocpartei Status?]
+on-arrival: {!
+Q.boycott_count += 1;
+Q.z_boycott_efficacy = 1;
+
+Q.z_boycott_efficacy -= ((100 - Q.z_relation) / 200);
+if (!Q.united_labor) Q.z_boycott_efficacy -= 0.2;
+Q.z_boycott_efficacy -= ((100 - Q.pro_republic) / 250);
+if (Q.z_leader == "Stegerwald") Q.z_boycott_efficacy += 0.1;
+if (!Q.z_in_gov) Q.z_boycott_efficacy += 0.2;
+if (Q.z_dnef || Q.z_boycott_efficacy < 0.2) Q.z_boycott_efficacy = 0.2;
+if (Q.z_boycott_efficacy > 1) Q.z_boycott_efficacy = 1;
+!}
+view-if: boycott_count < 5
+max-visits: 1
+go-to: boycott_elections_menu
+
+[? if not z_dnef: The <span style="color: #000000;">Center Party</span> is internally split on this. Their ties to the Schleicher cabinet and the pro-Schleicher sentiment expressed by many of their party members have made joining the <span style="color: #c00000;">socialist</span>-led boycott a hard pill to swallow. However, we have gained the sympathy of their left wing. ?][? if z_dnef: The <span style="color: #000000;">Center Party</span> is already a <i>Blocpartei</i>, so it's out of the question. However, we have some sympathetic voices on the party's left wing, like Wirth and Jakob Kaiser of the <span style="color: #000000;">Christian</span> labor unions, lending their support nonetheless. ?]
+
+Boycott efficacy: [+ z_boycott_efficacy : boycott_efficacy +]
+
+@liberals_boycott
+title: Check in the <span style="color: #FFCC00;">liberals</span>.
+subtitle: [? if lvp_formed and not lvp_dnef: Relations: [+ lvp_relation : relationships +] ?][? if lvp_formed and lvp_dnef: <span style="color: #FFCC00;">**LVP**</span> - Blocpartei Status?][? if not lvp_formed and not dvp_exist and not dstp_dnef: Relations: [+ ddp_relation : relationships +] ?][? if not lvp_formed and not dvp_exist and dstp_dnef: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> - Blocpartei Status ?][? if not lvp_formed and dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> [? if not dstp_dnef: relations: [+ ddp_relation : relationships +] ?][? if dstp_dnef: - Blocpartei Status ?] <br> <span style="color: #C0A054;">**DVP**</span> [? if not dvp_dnef: relations: [+ dvp_relation : relationships +] ?][? if dvp_dnef: - Blocpartei Status ?] ?]
+on-arrival: {!
+Q.boycott_count += 1;
+Q.lib_boycott_efficacy = 1;
+if (Q.dstp_dnef) Q.lib_boycott_efficacy -= 0.4;
+if (Q.dvp_dnef) Q.lib_boycott_efficacy -= 0.4;
+if (Q.lvp_dnef) Q.lib_boycott_efficacy -= 0.8;
+
+if (!Q.lvp_formed) Q.lib_boycott_efficacy -= ((100 - Q.ddp_relation) / 400);
+if (Q.ddp_leader != "Lemmer" && !Q.lvp_formed) Q.lib_boycott_efficacy += 0.2;
+if (Q.lvp_formed) Q.lib_boycott_efficacy -= ((100 - Q.lvp_relation) / 400);
+if (!Q.lvp_formed && Q.dvp_relation >= 40) Q.lib_boycott_efficacy += (Q.dvp_relation / 400);
+if (Q.ddp_ideology == "Right" && !Q.lvp_formed) Q.lib_boycott_efficacy -= 0.1;
+if (Q.dvp_ideology != "Right" && !Q.lvp_formed) Q.lib_boycott_efficacy += 0.1;
+if (Q.lvp_formed && Q.lvp_ideology == "Left") Q.lib_boycott_efficacy += 0.2;
+if (Q.united_labor && !Q.lvp_formed) Q.lib_boycott_efficacy += 0.2;
+if (Q.united_labor && Q.lvp_formed) Q.lib_boycott_efficacy += 0.1;
+Q.lib_boycott_efficacy -= ((100 - Q.pro_republic) / 250);
+if (Q.rdp_list) Q.lib_boycott_efficacy += 0.1;
+if (!Q.z_in_gov) Q.lib_boycott_efficacy += 0.1;
+if (Q.lib_boycott_efficacy < 0.4 || (Q.dvp_dnef || Q.dstp_dnef)) Q.lib_boycott_efficacy = 0.4;
+if (Q.lib_boycott_efficacy < 0.2 || (Q.dvp_dnef && Q.dstp_dnef || Q.lvp_dnef)) Q.lib_boycott_efficacy = 0.2;
+if (Q.lib_boycott_efficacy > 1) Q.lib_boycott_efficacy = 1;
+!}
+view-if: boycott_count < 5
+max-visits: 1
+go-to: boycott_elections_menu
+
+[? if not lvp_dnef and lvp_formed: As much as we expect the <span style="color: #FFCC00;">**LVP**</span> to put up a defense of the Republic, since they're liberal, pro-Schleicher elements run rampant throughout the party. We can, however, expect strong support from their left wing and intelligentsia. ?][? if lvp_dnef and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> have succumb to Schleicher's influence, becoming a <i>Blocpartei</i>. We can only expect support from the miniscule <span style="color: #E0B0FF;">**RDP**</span>. ?]
+
+[? if not lvp_formed and not dstp_dnef: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> are effectively dead electorally and offer little of value to us. However, they are embroiled in an internal struggle, and surprisingly, the business wing of the party—figures like Heuss and Dietrich—are more inclined to align with us than the left wing's Lemmer. ?][? if not lvp_formed and dstp_dnef: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> have fully fallen under Schleicher's influence. Not like their electorally dead party could offer much impact anyway. ?]
+
+[? if not lvp_formed and dvp_exist and not dvp_dnef: The <span style="color: #C0A054;">**DVP**</span> is quite distant from us, even more so as they drift under Schleicher's influence. [? if dvp_relation < 40: We cannot expect them to take part in a <span style="color: #c00000;">socialist</span>-led boycott. ?][? if dvp_relation >= 40: We can count on the support of Stresemannites like Thiel and Curtius to lobby the party. ?] ?][? if not lvp_formed and dvp_exist and dvp_dnef: The <span style="color: #C0A054;">**DVP**</span> is firmly under Schleicher's control, and their leadership is far too hostile to us to consider participation, even if they weren’t a <i>Blocpartei</i>. ?]
+
+Boycott efficacy: [+ lib_boycott_efficacy : boycott_efficacy +]
+
+@right_boycott
+title: Hugenberg can be relied on.
+subtitle: We can count on him to boycott the elections.
+on-arrival: {!
+Q.boycott_count += 1;
+!}
+view-if: boycott_count < 5
+max-visits: 1
+go-to: boycott_elections_menu
+
+On the right, we can only truly count on Hugenberg and what remains of his followers to boycott the election, as he remains a mortal enemy of the chancellor. However, his stance of total opposition is deeply unpopular—even among his most fanatically loyal supporters, many of whom are likely to vote for Schleicher anyway.
+
+@nazis_boycott
+title: Perhaps the <span style="color: #7A3C00;">Nazis</span> could participate..?
+subtitle: We shouldn't expect much.
+on-arrival: {!
+Q.boycott_count += 1;
+!}
+view-if: boycott_count < 5
+max-visits: 1
+go-to: boycott_elections_menu
+
+It appears that the <span style="color: #7A3C00;">**NSDAP**</span> and <span style="color: #6A1E1E;">**DSU**</span> haven’t abandoned their ballot-box tactics and have chosen to participate in the elections regardless. [? if nvf_exist and not nvf_dnef: The <span style="color: #142e20;">**NVF**</span>, however, have boycotted, preferring to pool their limited resources into the <span style="color: #7A3C00;">**SA**</span> rather than waste them on a costly electoral campaign. ?]
+
+@boycott_elections_3
+title: We have finished negotiations.
+on-arrival: {!
+Q.election_boycott = 1;
+!}
+view-if: boycott_count >= 5
+
+Hopefully, this will have some effect.
+
+- @election_algorithm: We've done enough.
+
 @post_election_1928
 on-arrival: {!  
     Q.pre_previous_z_last_election_votes = Q.previous_z_last_election_votes;
+    Q.z_votes_pre = Q.z_votes;
+
+    Q.adjustmentFactors_votes_spd = 1.0;
+    Q.adjustmentFactors_votes_sapd = 1.0;
+    Q.adjustmentFactors_votes_kpd = 1.0;
+    Q.adjustmentFactors_votes_z = 1.0;
+    Q.adjustmentFactors_votes_ddp = 1.0;
+    Q.adjustmentFactors_votes_dvp = 1.0;
+    Q.adjustmentFactors_votes_lvp = 1.0;
+    Q.adjustmentFactors_votes_dnvp = 1.0;
+    Q.adjustmentFactors_votes_nsdap = 1.0;
+    Q.adjustmentFactors_votes_dnf = 1.0;
+    Q.adjustmentFactors_votes_kvp = 1.0;
+    Q.adjustmentFactors_votes_other = 1.0;
+
+    Q.adjustmentFactors_spd = 1.0;
+    Q.adjustmentFactors_sapd = 1.0;
+    Q.adjustmentFactors_kpd = 1.0;
+    Q.adjustmentFactors_z = 1.0;
+    Q.adjustmentFactors_ddp = 1.0;
+    Q.adjustmentFactors_dvp = 1.0;
+    Q.adjustmentFactors_lvp = 1.0;
+    Q.adjustmentFactors_dnvp = 1.0;
+    Q.adjustmentFactors_nsdap = 1.0;
+    Q.adjustmentFactors_dnf = 1.0;
+    Q.adjustmentFactors_dnef = 1.0;
+    Q.adjustmentFactors_kvp = 1.0;
+    Q.adjustmentFactors_other = 0.75;
+
     var new_party_sum = 0;
     var total_reichstag_without = 0;  // Initialize a variable to accumulate 'reichstag_without_' values
     var total_other_party_sum = 0;    // Initialize a variable to accumulate '_other_party_sum' values
@@ -104,6 +281,37 @@ on-arrival: {!
     }
     if (Q.hugenberg_dvp) Q.adjustmentFactors_dvp = 1.0;
 
+    if (Q.election_boycott) {
+        Q.adjustmentFactors_votes_spd = 1.0*(1-Q.spd_boycott_efficacy);
+        Q.adjustmentFactors_votes_sapd = 0.0;
+        Q.adjustmentFactors_votes_kpd = 0.0;
+        Q.adjustmentFactors_votes_z = 1.0*(1-Q.z_boycott_efficacy);
+        Q.adjustmentFactors_votes_ddp = 1.0*(1-Q.lib_boycott_efficacy);
+        Q.adjustmentFactors_votes_dvp = 1.0*(1.2-Q.lib_boycott_efficacy);
+        Q.adjustmentFactors_votes_lvp = 1.0*(1-Q.lib_boycott_efficacy);
+        Q.adjustmentFactors_votes_dnvp = 1.0;
+        if (Q.dnvp_ideology == "Radical") Q.adjustmentFactors_votes_dnvp = 0.6;
+        Q.adjustmentFactors_votes_nsdap = 1.0;
+        if (Q.nvf_exist && !Q.nvf_dnef) Q.adjustmentFactors_votes_nsdap -= 0.1;
+        Q.adjustmentFactors_votes_dnf = 1.0;
+        if (Q.dnvp_ideology == "Moderate") Q.adjustmentFactors_votes_dnf = 0.4;
+        Q.adjustmentFactors_votes_kvp = 1.0;
+        Q.adjustmentFactors_votes_other = 1.0;
+
+        Q.adjustmentFactors_spd = 0.0;
+        Q.adjustmentFactors_sapd = 0.0;
+        Q.adjustmentFactors_kpd = 0.0;
+        if (Q.z_boycott_efficacy >= 0.74) Q.adjustmentFactors_z = 0.0;
+        if (Q.lib_boycott_efficacy >= 0.74) Q.adjustmentFactors_ddp = 0.0;
+        if (Q.lib_boycott_efficacy >= 0.89) Q.adjustmentFactors_dvp = 0.0;
+        if (Q.lib_boycott_efficacy >= 0.74) Q.adjustmentFactors_lvp = 0.0;
+        if (Q.dnvp_ideology == "Radical") Q.adjustmentFactors_dnvp = 0.0;
+        Q.adjustmentFactors_nsdap = 1.0;
+        if (Q.dnvp_ideology == "Moderate") Q.adjustmentFactors_dnf = 0.0;
+        Q.adjustmentFactors_dnef = 1.0;
+        Q.adjustmentFactors_kvp = 1.0;
+        Q.adjustmentFactors_other = 0.75;
+    }
     let total_adjusted_votes = 0;
     for (var party of Q.parties) {
         let factor = Q['adjustmentFactors_votes_' + party] || 1.0;
@@ -113,8 +321,9 @@ on-arrival: {!
     }
 
     let normalization_factor = 100 / total_adjusted_votes;
+    Q.boycott_effect = normalization_factor;
     for (var party of Q.parties) {
-        Q[party + '_votes'] = Math.round(Q[party + '_votes'] * normalization_factor * 10) / 10;  // Round only after normalization
+        Q[party + '_votes'] = Math.round(Q[party + '_votes'] * normalization_factor * 10) / 10;
     }
     // Step 1: Calculate adjusted values and the sum for redistribution
     for (var party of Q.parties) {
@@ -182,6 +391,34 @@ if (new_party_sum > 0) {
         }
     }
 }
+if (Q.election_boycott) {
+    Q.dnef_votes += Q.spd_votes;
+    Q.spd_votes = 0;
+    if (Q.z_boycott_efficacy >= 0.74) {
+        Q.dnef_votes += Q.z_votes;
+        Q.z_votes = 0;
+    }
+    if (Q.lib_boycott_efficacy >= 0.74) { 
+        Q.dnef_votes += Q.ddp_votes;
+        Q.ddp_votes = 0;
+    }
+    if (Q.lib_boycott_efficacy >= 0.89) { 
+        Q.dnef_votes += Q.lvp_votes;
+        Q.dvp_votes = 0;
+    }
+    if (Q.lib_boycott_efficacy >= 0.74) { 
+        Q.dnef_votes += Q.dvp_votes;
+        Q.lvp_votes = 0;
+    }
+    if (Q.dnvp_ideology == "Radical") {
+        Q.dnef_votes += Q.dnvp_votes;
+        Q.dnvp_votes = 0;
+    }
+    if (Q.dnvp_ideology == "Moderate") {
+        Q.dnef_votes += Q.dnf_votes;
+        Q.dnf_votes = 0;
+    }
+}
 if (Q.dnef_formed) {
     Q.schleicher_dnef_r = Q.dnef_r;
     Q.schleicher_dnef_votes = Q.dnef_votes;
@@ -198,6 +435,13 @@ if (Q.dnef_formed) {
             Q.ddp_r = 0;
         }
         Q.dnef_votes += Q.ddp_votes;
+    }
+    if (Q.lvp_dnef) {
+        if (Q.lvp_r) {
+            Q.dnef_r += Q.lvp_r;
+            Q.lvp_r = 0;
+        }
+        Q.dnef_votes += Q.lvp_votes;
     }
     if (Q.kvp_dnef) {
         if (Q.kvp_r) {
@@ -278,6 +522,10 @@ Q.csvd_r = Math.round(Q.csvd_votes * Q.adjustmentFactors_other * 10) / 10;
 
 if (!Q.bavaria_spd) Q.bvp_votes = Q.z_votes*0.2;
 if (Q.bavaria_spd) Q.bvp_votes = Q.z_votes*0.1;
+if (Q.election_boycott) {
+    if (!Q.bavaria_spd && Q.z_boycott_efficacy >= 0.74) Q.bvp_votes = Q.z_votes_pre*0.2;
+    if (Q.bavaria_spd && Q.z_boycott_efficacy >= 0.74) Q.bvp_votes = Q.z_votes_pre*0.1;
+}
 if (Q.bvp_votes > 3.6 && !Q.cvp_formed) {
     Q.bvp_votes = 3.6;
 } else if (Q.bvp_votes > 3.9 && Q.cvp_formed) {
@@ -295,6 +543,11 @@ Q.bvp_votes = parseFloat(Q.bvp_votes.toFixed(1));
 
 Q.z_minus_bvp_votes = parseFloat((Q.z_votes - Q.bvp_votes).toFixed(1));
 Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
+if (Q.election_boycott && Q.z_boycott_efficacy >= 0.74) {
+    Q.z_minus_bvp_votes = 0;
+    Q.z_minus_bvp_r = 0;
+    Q.z_r = Q.bvp_r;
+}
 
 console.log("z_minus_bvp_votes:", Q.z_minus_bvp_votes);
 console.log("pre_previous_z_last_election_votes:", Q.pre_previous_z_last_election_votes);
@@ -345,6 +598,10 @@ if (Q.nsdap_split) {
     if (Q.nvf_exist) {
         Q.nvf_r = parseFloat(Q.nvf_votes.toFixed(1));
         Q.nvf_votes = parseFloat(Q.nvf_votes.toFixed(1));
+        if (Q.election_boycott && !Q.nvf_dnef) {
+            Q.nvf_r = 0;
+            Q.nvf_votes = 0;
+        }
     }
     if (Q.dsu_exist || Q.nvf_exist) {
         Q.nsdap_hitler_r = parseFloat(Q.nsdap_hitler_votes.toFixed(1));
@@ -428,6 +685,57 @@ if (Q.nsdap_split) {
     Q.old_nsdap_hitler_r = Q.nsdap_hitler_r;
 }
 
+if (Q.rdp_list) {
+    Q.rdp_votes = Q.new_middle_spd_normalized;
+    Q.rdp_votes *= (Q.spd_votes / 100);
+    if (Q.pro_republic >= 15) Q.rdp_votes *= (Q.pro_republic / 100);
+    if (Q.pro_republic < 15) Q.rdp_votes *= 0.15;
+    if (Q.rdp_votes < 0.5) Q.rdp_votes = 0.5;
+    Q.spd_votes -= Q.rdp_votes;
+    Q.str_votes_change_rdp = Q.rdp_votes - Q.previous_rdp_last_election_votes;
+
+    Q.rdp_r = Q.rdp_votes*(Q.spd_r / Q.spd_votes);
+
+    // vote share
+
+    var sign2 = Q.str_votes_change_rdp > 0 ?
+        '<img src="img/arrowup.png"> ' :
+        Q.str_votes_change_rdp < 0 ?
+        '<img src="img/arrowdown.png"> ' :
+        '<img src="img/steady.png"> ';
+    Q.str_votes_change_rdp = sign2 + Math.abs(Q.str_votes_change_rdp).toFixed(1);
+    Q.previous_rdp_last_election_votes = Q.rdp_votes;
+
+    Q.str_votes_change_spd = Q.spd_votes - Q.previous_spd_last_election_votes;
+    var sign2 = Q.str_votes_change_spd > 0 ?
+        '<img src="img/arrowup.png"> ' :
+        Q.str_votes_change_spd < 0 ?
+        '<img src="img/arrowdown.png"> ' :
+        '<img src="img/steady.png"> ';
+    Q.str_votes_change_spd = sign2 + Math.abs(Q.str_votes_change_spd).toFixed(1);
+    Q.previous_spd_last_election_votes = Q.spd_votes;
+
+    // reichstag share
+
+    Q.str_change_rdp = Q.rdp_r - Q.old_rdp_r;
+    var sign2 = Q.str_change_rdp > 0 ?
+        '<img src="img/arrowup.png"> ' :
+        Q.str_change_rdp < 0 ?
+        '<img src="img/arrowdown.png"> ' :
+        '<img src="img/steady.png"> ';
+    Q.str_change_rdp = sign2 + Math.abs(Q.str_change_rdp).toFixed(1);
+    Q.old_rdp_r = Q.rdp_r;
+
+    Q.str_change_spd = Q.spd_r - Q.old_spd_r;
+    var sign2 = Q.str_change_spd > 0 ?
+        '<img src="img/arrowup.png"> ' :
+        Q.str_change_spd < 0 ?
+        '<img src="img/arrowdown.png"> ' :
+        '<img src="img/steady.png"> ';
+    Q.str_change_spd = sign2 + Math.abs(Q.str_change_spd).toFixed(1);
+    Q.old_spd_r = Q.spd_r;
+}
+
 if (Q.dnef_formed && Q.nvf_exist) {
     if (Q.nvf_dnef) {
         if (Q.nvf_r) {
@@ -451,7 +759,7 @@ if (Q.dnef_formed) {
     Q.previous_schleicher_dnef_last_election_votes = Q.schleicher_dnef_votes;
 }
 
-if (Q.time - Q.last_election_time >= 10) {
+if (Q.time - Q.last_election_time >= 10 && (Q.left_strength >= Q.reformist_strength + Q.labor_strength)) {
     if (Q.spd_votes >= 50) {
         Q.z_relation -= 12;
         Q.ddp_relation -= 12;
@@ -489,9 +797,27 @@ if (Q.time - Q.last_election_time >= 10) {
         Q.ddp_right += 1;
         Q.ddp_cohesion -= 1;
     }
+    Q.last_election_time = Q.time;
 }
 
-Q.last_election_time = Q.time;
+if (Q.election_boycott && Q.boycott_effect) {
+    Q.workers_schleicher_bonus -= 1;
+    Q.republicans_schleicher_bonus -= 1;
+    Q.industrialists_schleicher_bonus -= 0.5;
+    Q.nationalists_schleicher_bonus -= 0.5;
+    if (Q.boycott_effect >= 1.05) {
+        Q.workers_schleicher_bonus -= 1;
+        Q.republicans_schleicher_bonus -= 1;
+        Q.industrialists_schleicher_bonus -= 0.5;
+        Q.nationalists_schleicher_bonus -= 0.5;
+    }
+    if (Q.boycott_effect >= 1.1) {
+        Q.workers_schleicher_bonus -= 1;
+        Q.republicans_schleicher_bonus -= 1;
+        Q.industrialists_schleicher_bonus -= 0.5;
+        Q.nationalists_schleicher_bonus -= 0.5;
+    }
+}
 
 // The largest party can only be the NSDAP or the SPD.
 Q.largest_party = 'SPD';
@@ -728,6 +1054,12 @@ if ((Q.spd_votes < 20 && Q.schleicher_spd_r >= 3) || (Q.spd_votes < 25 && Q.spd_
 
 if (Q.dnef_formed) Q.hindenburg_schleicher_r += Math.round((Q.dnef_votes / 10) * 10) / 10;
 
+if (Q.left_coalition >= 50) {
+    Q.kpd_relation += 10;
+    Q.left_strength += 10;
+    Q.communist_coalition += 1;
+}
+
 var lippe_adjustment_factors = {
     spd: 1.32,
     sapd: 0.4,
@@ -789,12 +1121,23 @@ if (Q.sapd_formed && Q.sapd_r) {
     });
 }
 
-data = data.concat([{
-    "id": "spd",
-    "legend": "SPD",
-    "name": "SPD",
-    "seats": Math.round(Q.spd_r * 5),
-}]);
+if (Q.spd_r) {
+    data.push({
+        "id": "spd",
+        "legend": "SPD",
+        "name": "SPD",
+        "seats": Math.round(Q.spd_r * 5),
+    });
+}
+
+if (Q.rdp_r) {
+    data.push({
+        "id": "rdp",
+        "legend": "RDP",
+        "name": "RDP",
+        "seats": Math.round(Q.rdp_r * 5),
+    });
+}
 
 if (Q.ddp_r && !Q.lvp_formed) {
     data.push({
@@ -968,6 +1311,8 @@ go-to: coalition_menu
 
 [? if not lvp_formed and dstp_dnef: {!<tr><td><div class="box2" style='background-color:#A79A3F'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes +]% {!</td><td>!} [+ str_votes_change_ddp +] {!</td><td>!} [+ ddp_r +]% {!</td><td>!} [+ str_change_ddp +] {!</td></tr>!} ?]
 
+[? if lvp_formed and lvp_dnef: {!<tr><td><div class="box2" style='background-color:#CC9900'> </div> !} LVP: {!</td><td>!} [+ lvp_votes +]% {!</td><td>!} [+ str_votes_change_lvp +] {!</td><td>!} [+ lvp_r +]% {!</td><td>!} [+ str_change_lvp +] {!</td></tr>!} ?]
+
 [? if z_dnef: {!<tr><td><div class="box2" style='background-color:#1A0000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_votes +]% {!</td><td>!} [+ str_votes_change_z +] {!</td><td>!} [+ z_minus_bvp_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!} ?]
 
 [? if z_dnef: {!<tr><td><div class="box2" style='background-color:#7aa7af'> </div> !} BVP: {!</td><td>!} [+ bvp_votes +]% {!</td><td>!} [+ str_votes_change_bvp +] {!</td><td>!} [+ bvp_r +]% {!</td><td>!} [+ str_change_bvp +] {!</td></tr>!} ?]
@@ -986,6 +1331,8 @@ go-to: coalition_menu
 
 [? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div> !} SPD: {!</td><td>!} [+ spd_votes +]% {!</td><td>!} [+ str_votes_change_spd +] {!</td><td>!} [+ spd_r +]% {!</td><td>!} [+ str_change_spd +] {!</td></tr>!} ?]
 
+[? if lvp_formed and rdp_list: {!<tr><td><div class="box2" style='background-color:#E0B0FF'> </div> !} RDP: {!</td><td>!} [+ rdp_votes +]% {!</td><td>!} [+ str_votes_change_rdp +] {!</td><td>!} [+ rdp_r +]% {!</td><td>!} [+ str_change_rdp +] {!</td></tr>!} ?]
+
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_votes +]% {!</td><td>!} [+ str_votes_change_sapd +] {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
 
 [? if kpo_formed : {!<tr><td><div class="box" style='background-color:#C43988'> </div> !}KPD(O): {!</td><td>!} [+ kpo_votes +]% {!</td><td>!} [+ str_votes_change_kpo +] {!</td><td>!} [+ kpo_r +]% {!</td><td>!} [+ str_change_kpo +] {!</td></tr>!} ?]
@@ -994,7 +1341,7 @@ go-to: coalition_menu
 
 [? if not lvp_formed and not dstp_dnef: {!<tr><td><div class="box" style='background-color:#D3C24D'> </div> !} [+ ddp_name +]: {!</td><td>!} [+ ddp_votes +]% {!</td><td>!} [+ str_votes_change_ddp +] {!</td><td>!} [+ ddp_r +]% {!</td><td>!} [+ str_change_ddp +] {!</td></tr>!} ?]
 
-[? if lvp_formed: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div> !} LVP: {!</td><td>!} [+ lvp_votes +]% {!</td><td>!} [+ str_votes_change_lvp +] {!</td><td>!} [+ lvp_r +]% {!</td><td>!} [+ str_change_lvp +] {!</td></tr>!} ?]
+[? if lvp_formed and not lvp_dnef: {!<tr><td><div class="box" style='background-color:#FFCC00'> </div> !} LVP: {!</td><td>!} [+ lvp_votes +]% {!</td><td>!} [+ str_votes_change_lvp +] {!</td><td>!} [+ lvp_r +]% {!</td><td>!} [+ str_change_lvp +] {!</td></tr>!} ?]
 
 [? if not z_dnef: {!<tr><td><div class="box" style='background-color:#000'> </div> !} [+ z_party_name +]: {!</td><td>!} [+ z_minus_bvp_votes +]% {!</td><td>!} [+ str_votes_change_z +] {!</td><td>!} [+ z_minus_bvp_r +]% {!</td><td>!} [+ str_change_z +] {!</td></tr>!} ?]
 
@@ -1200,9 +1547,9 @@ go-to: coalition_menu
 
 [? if (cvp_formed and far_right_coalition >= 25) or (hitler_right_coalition >= 50 and rubicon): Black-Brown Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ hitler_right_coalition +]% ?]
 
-[? if dnef_formed: Schleicher Right Coalition (<span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **Others**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate" and not dnvp_dnef:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?]): [+ schleicher_right_coalition +]% ?]
+[? if dnef_formed: Schleicher Right Coalition (<span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **Others**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate" and not dnvp_dnef:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?]): [+ schleicher_right_coalition +]% ?]
 
-[? if dnef_formed: Schleicher Left Coalition (<span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?]): [+ schleicher_left_coalition +]% ?]
+[? if dnef_formed: Schleicher Left Coalition (<span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?]): [+ schleicher_left_coalition +]% ?]
 
 [? if dnvp_ideology == "Radical" and far_right_coalition >= 35 and not cvp_formed: <span style="color: #7A3C00;">Far</span>-<span style="color: #3E88B3;">right</span> Coalition ([?  if hugenberg_dvp: <span style="color: #C0A054;">**DVP**</span> + ?]<span style="color: #3E88B3;">**DNVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition +]% ?]
 
@@ -1220,7 +1567,11 @@ go-to: coalition_menu
 
 [? if spd_votes < 20 and schleicher_spd_r >= 3: Our poor electoral results have led Schleicher to question the wisdom of collaborating with a party on the brink, one that can’t even secure a fifth of the vote. Many within our own party now blame our ties with the <span style="color: #808080;">reactionary</span> general as a major factor behind our disappointing electoral results. ?][? if spd_votes < 25 and spd_votes > 20 and schleicher_spd_r >= 5: Our poor electoral results have led Schleicher to question the wisdom of collaborating with a party on the brink, one that can’t even secure a quarter of the vote. Many within our own party now blame our ties with the <span style="color: #808080;">reactionary</span> general as a major factor behind our disappointing electoral results. ?]
 
-[? if spd_votes >= 35: Our strong performance has, unfortunately, driven our former bourgeois coalition partners to distance themselves from us. They blame their electoral defeats on their association with us and refuse to spend their dwindling influence supporting a government with the leverage to transform Germany into <span style="color: #c00000;">socialism</span>. ?]
+[? if spd_votes >= 35 and left_strength >= reformist_strength + labor_strength: Our strong performance has, unfortunately, driven our former bourgeois coalition partners to distance themselves from us. They blame their electoral defeats on their association with us and refuse to spend their dwindling influence supporting a government with the leverage to transform Germany into <span style="color: #c00000;">socialism</span>. ?]
+
+[? if left_coalition >= 50: The fact that the <span style="color: #9B0000;">Marxist</span> parties now hold a majority in the Reichstag by themselves has energized the grassroots of both our parties to push for closer cooperation. ?]
+
+[? if election_boycott: We have boycotted this election, delegitimizing the results in the eyes of workers and <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> alike. The impact is measured by how many stayed home instead of voting for the <span style="color: #BFC8CC;">**DNEF**</span>. [? if boycott_effect < 1.05: In the end, we achieved only limited success—our boycott has proven relatively unimpactful. So much for nothing. ?][? if boycott_effect >= 0.05 and boycott_effect < 1.1: In the end, we achieved notable success. ?][? if boycott_effect >= 1.1: In the end, we achieved smashing success. ?] ?]
 
 There are some potential coalition arrangements.
 
@@ -1260,9 +1611,9 @@ Without the constraints of the parliamentary system, he can do whatever he pleas
 
 @schleicher_left_coalition
 title: Schleicher forms a parliamentary cabinet with the left.
-subtitle: <span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?] ([+ schleicher_left_coalition +]%)
+subtitle: <span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?] ([+ schleicher_left_coalition +]%)
 view-if: schleicher_left_coalition >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
-unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span> + <span style="color: #c00000;">SPD</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?] ([+ schleicher_left_coalition +]%) [? if rubicon: - President Hindenburg will never permit Schleicher to bring <span style="color: #c00000;">socialists</span> into the government, no matter his ulterior motive. ?]
+unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span> + <span style="color: #c00000;">SPD</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?] ([+ schleicher_left_coalition +]%) [? if rubicon: - President Hindenburg will never permit Schleicher to bring <span style="color: #c00000;">socialists</span> into the government, no matter his ulterior motive. ?]
 choose-if: president != "Hindenburg"
 on-arrival: leverage -= 10; leverage += 5 if not lvp_formed; leverage += 5 if z_ideology == "Left"; in_schleicher_left_coalition = 1; spd_in_government = 1; vice_chancellor = "Stegerwald"; prussia_leader = "Goerdeler" if prussia_leader == "Schleicher" or prussia_leader == "Strasser"; foreign_minister_party = "DNEF"; interior_minister_party = "DNEF"; justice_minister_party = "Z"; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "DNEF"; economic_minister_party = "DNEF"; finance_minister_party = "DNEF"; agriculture_minister_party = "DNEF"; labor_minister = "Stegerwald"; reichswehr_minister = "Schleicher"; pro_republic += 5; schleicher_spd_influence += 4; hindenburg_angry = -500; schleicher_approval += 2
 
@@ -1270,9 +1621,9 @@ Placeholder
 
 @schleicher_right_coalition
 title: Schleicher forms a parliamentary cabinet with the right.
-subtitle: <span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **Others**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?] ([+ schleicher_right_coalition +]%)
+subtitle: <span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **Others**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?] ([+ schleicher_right_coalition +]%)
 view-if: schleicher_right_coalition >= 50 and chancellor == "Schleicher" and schleicher_time and dnef_formed
-unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">DVP</span>?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?][? if not other_dnef:&nbsp;+ Others?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">KVP</span>?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">DNVP</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">DSU</span>?] ([+ schleicher_right_coalition +]%) [? if not schleicher_parliament_trigger: - Schleicher has no interest in leading a coalition backed by parliament, rather than decree. ?]
+unavailable-subtitle: <span style="color: #BFC8CC;">DNEF</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">DVP</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?][? if not other_dnef:&nbsp;+ Others?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">KVP</span>?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">DNVP</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">DSU</span>?] ([+ schleicher_right_coalition +]%) [? if not schleicher_parliament_trigger: - Schleicher has no interest in leading a coalition backed by parliament, rather than decree. ?]
 choose-if: schleicher_parliament_trigger
 on-arrival: in_schleicher_right_coalition = 1; spd_in_government = 0; dsu_in_gov = 1; vice_chancellor = "Strasser"; prussia_leader = "Strasser" if prussia_leader == "Schleicher" or prussia_leader == "Stegerwald"; foreign_minister_party = "DNEF"; interior_minister_party = "DSU"; justice_minister_party = "Z"; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "DNEF"; economic_minister_party = "I"; finance_minister_party = "DNEF"; agriculture_minister_party = "DNEF"; labor_minister = "Stegerwald"; reichswehr_minister = "Schleicher"; pro_republic -= 8; schleicher_spd_influence -= 2; schleicher_spd_support -= 4; schleicher_spd_r -= 2; schleicher_approval += 2
 
@@ -1664,7 +2015,7 @@ The Bourgeois Coalition is formed, with Brüning as its chancellor. We will have
 
 @no_majority
 title: There is no clear governing majority.
-view-if: ((weimar_coalition < 50 or weimar_coalition_failed == 1 or ddp_relation < 30 or z_relation < 30 or lvp_relation < 30) and (grand_coalition < 50 or grand_coalition_failed == 1) or (grand_coalition >= 50 and ((dvp_ideology == "Right" and black_thursday_seen == 1) or not dvp_exist)) and president == "Hindenburg" and far_right_coalition < 50 and ((right_coalition < 50) or (right_coalition >= 50 and dnvp_ideology == "Radical") and center_right_coalition < 50 or (center_right_coalition >= 50 and ((dnvp_ideology == "Radical") or (year = 1929 and month >= 7))))) or (rubicon and dnef_r < 50) or cvp_formed
+view-if: (((weimar_coalition < 50 or weimar_coalition_failed == 1 or ddp_relation < 30 or z_relation < 30 or lvp_relation < 30) and (grand_coalition < 50 or grand_coalition_failed == 1) or (grand_coalition >= 50 and ((dvp_ideology == "Right" and black_thursday_seen == 1) or not dvp_exist)) and president == "Hindenburg" and far_right_coalition < 50 and ((right_coalition < 50) or (right_coalition >= 50 and dnvp_ideology == "Radical") and center_right_coalition < 50 or (center_right_coalition >= 50 and ((dnvp_ideology == "Radical") or (year = 1929 and month >= 7))))) or rubicon or cvp_formed) and dnef_r < 50
 on-arrival: no_majority_elections += 1
 go-to: no_majority_bruning if chancellor = "Brüning" or chancellor = "Wirth"; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher" and not schleicher_post; no_majority_schleicher_2 if chancellor = "Schleicher" and schleicher_post; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
 
@@ -1883,7 +2234,7 @@ if (Q.next_reichstag_month > 12) {
 
 Wilhelm Frick is nominated to the Interior Ministry[? if old_prussia_leader == "Schleicher": in both the Reich and Prussia, with the latter now under the control of [+ prussia_leader +], appointed as commissioner?]. Gregor Strasser takes the vice-chancellorship—a title without power.
 
-At the <span style="color: #7A3C00;">Nazis’</span> insistence, Hjalmar Schacht is named to the economic ministry as an independent. Hans Kerrl, a <span style="color: #7A3C00;">Nazi</span> parliamentarian, receives the post of Minister without Portfolio.
+At the <span style="color: #7A3C00;">Nazis’</span> insistence, Hjalmar Schacht is named to the Economic Ministry as an independent. Hans Kerrl, a <span style="color: #7A3C00;">Nazi</span> parliamentarian, receives the post of Minister without Portfolio.
 
 Schleicher blocks <span style="color: #7A3C00;">Nazi</span> claims to the Labor Ministry, unwilling to provoke organized labor and still hoping to bring Adam Stegerwald—and the <span style="color: #000000;">Center Party</span>—into his coalition.
 
@@ -1974,7 +2325,7 @@ if (Q.next_reichstag_month > 12) {
 }
 !}
 
-Schleicher has suspended talks with the <span style="color: #6A1E1E;">**DSU**</span> by deliberately creating an impasse over control of the Interior Ministry. In the meantime, the absence of <span style="color: #7A3C00;">Nazis</span> in the cabinet has made it tolerable for the <span style="color: #000000;">Center Party</span> to return to government, with Adam Stegerwald securing the Labor Ministry and the nominal Vice Chancellorship, alongside other members claiming the Transport and Justice portfolios. [? if z_leader == "Kaas": Schleicher has also secured Ludwig Kaas's backing by promising the immediate negotiation of a <i>Reichskonkordat</i> with the Vatican. ?]
+Schleicher has suspended talks with the <span style="color: #6A1E1E;">**DSU**</span> by deliberately creating an impasse over control of the Interior Ministry. In the meantime, the absence of <span style="color: #7A3C00;">Nazis</span> in the cabinet has made it tolerable for the <span style="color: #000000;">Center Party</span> to return to government, with Adam Stegerwald securing the Labor Ministry and the nominal Vice Chancellorship, alongside other members claiming the Transport and Justice portfolios. The <span style="color: #A2D8E0;">**BVP**</span> is also granted the Postal Ministry. [? if z_leader == "Kaas": Schleicher has also secured Ludwig Kaas's backing by promising the immediate negotiation of a <i>Reichskonkordat</i> with the Vatican. ?]
 
 [? if old_prussia_leader == "Schleicher": The Prussian <i>Reichskommissar</i> post is also handed from Schleicher to Goerdeler—a signal that Schleicher has genuinely abandoned Papen's scheme for state centralization, and gestures toward an eventual return to democratic governance once stability is restored. Braun is overjoyed at this, and argues that only a break with Schleicher would change his mind. ?]
 
@@ -2009,7 +2360,7 @@ if (Q.next_reichstag_month > 12) {
 
 Schleicher's supporting parties have failed to secure a majority coalition in the Reichstag—at least, not one the chancellor finds acceptable. [? if dnef_formed: He demands total power for the <span style="color: #BFC8CC;">**DNEF**</span>, unwilling to let other parties hold his government hostage. ?]
 
-[? if schleicher_right_coalition >= 5: While a coalition of all right-wing factions around Schleicher is possible, he refuses to grant the Reichstag new legitimacy and will press on with his presidential government.?] Thus, another continuation of the current governing coalition appears inevitable.
+[? if schleicher_right_coalition >= 50: While a coalition of all right-wing factions around Schleicher is possible, he refuses to grant the Reichstag new legitimacy and will press on with his presidential government.?] Thus, another continuation of the current governing coalition appears inevitable.
 
 @hitler_chancellor
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"

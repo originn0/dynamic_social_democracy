@@ -9,11 +9,11 @@ if (Q.land_reform >= 1 || Q.rural_spd_normalized >= 30 || (Q.rural_nsdap_normali
     Q.schiele_trigger = 1;
 }
 
-if (((Q.pro_republic >= ((Q.nsdap_votes + Q.dnf_votes + Q.kpd_votes + 3)*2)) && Q.true_christian_democracy) || !Q.true_christian_democracy) {
+if (((Q.pro_republic >= ((Q.nsdap_votes + Q.dnf_votes + Q.kpd_votes)*2)) && Q.true_christian_democracy) || !Q.true_christian_democracy) {
     Q.treviranus_trigger = 1;
 }
 
-if (Q.pro_republic < ((Q.nsdap_votes + Q.dnf_votes + Q.kpd_votes + 3)*2) && Q.true_christian_democracy) {
+if (Q.pro_republic < ((Q.nsdap_votes + Q.dnf_votes + Q.kpd_votes)*2) && Q.true_christian_democracy) {
     Q.westarp_trigger = 1;
 }
 
@@ -39,7 +39,7 @@ unavailable-subtitle: [? if schiele_trigger: The <span style="color: #385A38;">a
 on-arrival: treviranus_stays = 1; rural_dnvp -= 3; rural_nsdap += 3; rural_dnf += 3; new_middle_dnvp += 4; new_middle_dvp -= 2; new_middle_ddp -= 2; new_middle_lvp -= 4; workers_dnvp += 2; workers_z -= 2; catholics_dnvp += 6; catholics_z -= 3; catholics_other -= 3; pro_republic += dnvp_votes / 2; dvp_left += 5; ddp_left += 2.5; lvp_left += 3
 face-image: img/portraits/Treviranus.jpg
 
-Surprisingly, Treviranus has survived efforts to replace him with a more conservative figure, securing a mandate to further reform the party—despite opposition from bourgeois and <span style="color: #808080;">reactionary</span> elites. [? if hugenberg_removed: This has allowed Treviranus to grant more party positions to his Young Conservative faction and gives him the authority needed to democratize the party’s more <span style="color: #808080;">reactionary</span> local chapters.?]
+Surprisingly, Treviranus has survived efforts to replace him with a more conservative figure, securing a mandate to further reform the party—despite opposition from bourgeois and <span style="color: #808080;">reactionary</span> elites. [? if hugenberg_removed: However, he remains a puppet of the <span style="color: #3E88B3;">**DNVP**</span>'s old guard—figures like Westarp and Hergt—who block any drastic shift toward <span style="color: #0087DC;">People's Conservatism</span>. ?]
 
 While some conservative and <span style="color: #808080;">reactionary</span> supporters defect to the <span style="color: #003755;">**DNF**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>, the party compensates for these losses by attracting <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> previously alienated by the <span style="color: #3E88B3;">**DNVP**</span>’s monarchist stance. Although monarchism remains in the party’s platform, it has taken a backseat to more pressing issues.
 

@@ -27,6 +27,7 @@ With the <span style="color: #7A3C00;">Nazis</span> in government, they seek to 
 
 - @interior
 - @works
+- @works_alt
 
 @interior
 title: The <span style="color: #7A3C00;">Nazis</span> crack down on the Reichsbanner and <span style="color: #700000;">**RFB**</span>!
@@ -81,7 +82,7 @@ The <span style="color: #7A3C00;">Nazis</span> have continued cracking down on e
 @works
 title: "MEFO Bills"
 subtitle: Ordered by Hjalmar Schacht of the Economic Ministry.
-view-if: dsu_policy == 2
+view-if: dsu_policy == 2 and not mefo_bills_alt
 on-arrival: {!
 Q.schleicher_spd_r -= 1;
 Q.schleicher_spd_support -= 2;
@@ -125,3 +126,31 @@ face-image: img/portraits/dreyse.jpg
 The Reichsbank, long known for its strict fiscal conservatism and obsessive anti-inflation stance, had already slashed Schleicher's initial public works decree by 15%. So, it was no surprise when news of even greater government spending met with their disapproval.
 
 However, the endorsement of the campaign by Hjalmar Schacht—a respected banker and former Reichsbank President credited with ending hyperinflation—has done much to calm the business community. Under government pressure, the Reichsbank is ultimately coerced into backing the plan.
+
+@works_alt
+title: "MEFO Bills"
+subtitle: Ordered by Hjalmar Schacht of the Economic Ministry.
+view-if: dsu_policy == 2 and mefo_bills_alt
+on-arrival: {!
+Q.schleicher_spd_r -= 2;
+Q.schleicher_spd_support -= 3;
+Q.schleicher_spd_influence -= 1;
+
+Q.schleicher_economy_time += 24;
+
+Q.unemployed -= 0.8;
+Q.inflation += 0.4;
+Q.economic_growth += 0.4;
+
+Q.schleicher_approval += 1;
+
+Q.reichswehr_militancy += 1.5;
+
+Q.mefo_bills = 1;
+Q.dsu_policy += 1;
+!}
+face-image: img/portraits/SchachtHjalmar.jpg
+
+Despite the public works campaign being expanded before Hjalmar Schacht took office as Economic Minister, he now seeks to build upon it—transforming it into a mass industrialization and rearmament program, more closely aligned with Schleicher's ambitions. Only then, he argues, can Germany hope to rival the major powers.
+
+An innovative new method for disguising rearmament has also been devised: the "MEFO bill," a system of promissory notes issued through a dummy company to secretly finance arms production while keeping the spending off the official government books. Nevertheless, Schacht insists that reviving Germany's economy must take precedence over rearmament—for now.
