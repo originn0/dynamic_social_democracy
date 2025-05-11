@@ -45,8 +45,8 @@ if (Q.vice_chancellor == "Strasser" && Q.z_in_gov) Q.vice_chancellor = "Stegerwa
 if (Q.vice_chancellor == "Strasser" && !Q.z_in_gov) Q.vice_chancellor = 0;
 if (Q.prussia_leader == "Strasser") Q.prussia_leader = "Goerdeler";
 
-Q.dnef_r += Math.round(Q.dsu_r * 0.6 * 10) / 10;
-Q.dsu_r = Math.round(Q.dsu_r * 0.4 * 10) / 10;
+Q.dnef_r += parseFloat((Q.dsu_r * 0.6).toFixed(1));
+Q.dsu_r = parseFloat((Q.dsu_r * 0.4).toFixed(1));
 !}
 on-display: {!  
     var cardEl = document.createElement('div');  

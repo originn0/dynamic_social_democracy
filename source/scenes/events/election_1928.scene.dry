@@ -298,19 +298,23 @@ on-arrival: {!
         Q.adjustmentFactors_votes_kvp = 1.0;
         Q.adjustmentFactors_votes_other = 1.0;
 
-        Q.adjustmentFactors_spd = 0.0;
-        Q.adjustmentFactors_sapd = 0.0;
-        Q.adjustmentFactors_kpd = 0.0;
-        if (Q.z_boycott_efficacy >= 0.74) Q.adjustmentFactors_z = 0.0;
-        if (Q.lib_boycott_efficacy >= 0.74) Q.adjustmentFactors_ddp = 0.0;
-        if (Q.lib_boycott_efficacy >= 0.89) Q.adjustmentFactors_dvp = 0.0;
-        if (Q.lib_boycott_efficacy >= 0.74) Q.adjustmentFactors_lvp = 0.0;
-        if (Q.dnvp_ideology == "Radical") Q.adjustmentFactors_dnvp = 0.0;
-        Q.adjustmentFactors_nsdap = 1.0;
-        if (Q.dnvp_ideology == "Moderate") Q.adjustmentFactors_dnf = 0.0;
-        Q.adjustmentFactors_dnef = 1.0;
-        Q.adjustmentFactors_kvp = 1.0;
-        Q.adjustmentFactors_other = 0.75;
+        Q.kpd_banned = 1;
+        Q.sapd_banned = 1;
+        Q.spd_banned = 1;
+        if (Q.z_boycott_efficacy >= 0.74) Q.z_banned = 1;
+        if (Q.lib_boycott_efficacy >= 0.74) Q.ddp_banned = 1;
+        if (Q.lib_boycott_efficacy >= 0.89) Q.dvp_banned = 1;
+        if (Q.lib_boycott_efficacy >= 0.74) Q.lvp_banned = 1;
+        if (Q.dnvp_ideology == "Radical") Q.dnvp_banned = 1;
+        if (Q.dnvp_ideology == "Moderate") Q.dnf_banned = 1;
+    } else {
+        Q.spd_banned = 0;
+        Q.z_banned = 0;
+        Q.ddp_banned = 0;
+        Q.dvp_banned = 0;
+        Q.lvp_banned = 0;
+        Q.dnvp_banned = 0;
+        Q.dnf_banned = 0;
     }
     let total_adjusted_votes = 0;
     for (var party of Q.parties) {
@@ -1157,6 +1161,7 @@ if (Q.lvp_r && Q.lvp_formed) {
     });
 }
 
+
 if (Q.z_r) {
     data.push({
         "id": "z",
@@ -1164,6 +1169,9 @@ if (Q.z_r) {
         "name": "Center",
         "seats": Math.round(Q.z_minus_bvp_r * 5),
     });
+}
+
+if (Q.bvp_r) {
     data.push({
         "id": "bvp",
         "legend": "BVP",
