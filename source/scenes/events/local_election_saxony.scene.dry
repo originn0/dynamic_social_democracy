@@ -31,7 +31,7 @@ on-arrival: {!
 var saxony_adjustment_factors = {
     spd: 1.25,
     sapd: 1.0,
-    kpo: 1.25,
+    kpo: 1.5,
     kpd: 1.25,
     ddp: 1.0,
     lvp: 1.5,
@@ -79,8 +79,8 @@ if (Q.workers_spd_normalized >= 70) saxony_adjustment_factors.spd += 0.1;
 Q.spd_saxony_elections_vote = Q.spd_votes*saxony_adjustment_factors.spd;
 Q.sapd_saxony_elections_vote = Q.sapd_votes*saxony_adjustment_factors.sapd;
 if (Q.year == 1929 && Q.month == 5) {
-if (Q.kpo_saxony == 1) saxony_adjustment_factors.kpo = 1.7;
-if (Q.kpo_saxony == 2) saxony_adjustment_factors.kpo = 2.3;
+if (Q.kpo_saxony == 1) saxony_adjustment_factors.kpo = 1.8;
+if (Q.kpo_saxony == 2) saxony_adjustment_factors.kpo = 2.5;
 if (Q.kpo_saxony == 2) saxony_adjustment_factors.kpd = 1;
 }
 Q.kpo_saxony_elections_vote = Q.kpo_votes*saxony_adjustment_factors.kpo;
@@ -532,6 +532,9 @@ if (Q.lvp_ideology != "Left") {
 if (Q.united_left_saxony >= 50) {
     lvp_toleration_threshold -= 15;
     dvp_toleration_threshold -= 15;
+}
+if (Q.kpo_saxony_elections_vote >= Q.kpd_saxony_elections_vote / 2.5) {
+Q.kpo_saxon_victory = 1;
 }
 if ((Q.dvp_relation >= dvp_toleration_threshold && !Q.lvp_formed) || (Q.lvp_relation >= lvp_toleration_threshold && Q.lvp_formed)) {
     Q.toleration_possible_saxony = 1;
