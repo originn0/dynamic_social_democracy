@@ -538,8 +538,11 @@ if (Q.united_left_saxony >= 50) {
     lvp_toleration_threshold -= 15;
     dvp_toleration_threshold -= 15;
 }
-if (Q.kpo_saxony_elections_vote >= Q.kpd_saxony_elections_vote / 2.5) {
+if (Q.kpo_saxony_elections_vote >= Q.kpd_saxony_elections_vote / 3) {
 Q.kpo_saxon_victory = 1;
+}
+if (Q.kpo_saxony_elections_vote >= Q.kpd_saxony_elections_vote / 2) {
+Q.kpo_saxon_victory = 2;
 }
 if ((Q.dvp_relation >= dvp_toleration_threshold && !Q.lvp_formed) || (Q.lvp_relation >= lvp_toleration_threshold && Q.lvp_formed)) {
     Q.toleration_possible_saxony = 1;
@@ -637,7 +640,7 @@ As one of the most left-wing and industrial states in Germany, we will use our l
 title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #C43988;">**KPD(O)**</span>.
 subtitle: This victory will legitimize the <span style="color: #C43988;">**KPD(O)**</span>.
 view-if: socialist_coalition_saxony >= 50 and (kpo_relation >= 35 and kpo_formed == 1) or (sapd_relation >= 35 and sapd_formed == 1)
-on-arrival: red_saxony = 1; hindenburg_angry += 20; kpo_relation += 15; workers_kpo += 3; workers_kpd -= 3; unemployed_kpo += 4; unemployed_kpd -= 4;
+on-arrival: red_saxony = 1; hindenburg_angry += 20; kpo_relation += 15; workers_kpo += 6; workers_kpd -= 4; workers_spd -= 2; unemployed_kpo += 4; unemployed_kpd -= 4;
 
 We have entered into a coalition with the <span style="color: #C43988;">**KPD(O)**</span>. This is unprecendented. A left wing coalition in Saxony without the anti-democratic <span style="color: #700000;">**KPD**</span>? The success of the <span style="color: #C43988;">**KPD(O)**</span> has driven many supporters of the <span style="color: #700000;">**KPD**</span> to the new party. 
 
