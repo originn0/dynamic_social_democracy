@@ -16,7 +16,7 @@ The <span style="color: #c00000;">**SPD**</span> cannot govern by itself yet. Be
 - @liberals_lvp: Strengthen our bonds with the <span style="color: #FFCC00;">Liberal People's Party</span>.
 - @center: Strengthen our bonds with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 - @cvp: Reconcile with the <span style="color: #000000;">Christian People's Party</span>.
-- @sapd: Improve relations with our Marxist brethren in the <span style="color: #9B0000;">**SAPD**</span>.
+- @sapd: Improve relations with our Marxist brethren in the [? if sapd_formed: <span style="color: #9B0000;">**SAPD**</span>?][? if sapd_formed and kpo_formed: and ?][? if kpo_formed: <span style="color: #C43988;">**KPD(O)**</span> ?]
 - @kpd: Work towards repairing relationships with the <span style="color: #700000;">Communist Party</span>.
 - @spd_alone: The <span style="color: #c00000;">SPD</span> can stand alone for now.
 - @easy_discard
@@ -78,9 +78,10 @@ go-to: center_op if not spd_in_government and chancellor != "Brüning" and ((cha
 subtitle: -1 resources
 view-if: sapd_formed
 choose-if: resources >= 1
-on-arrival: resources -= 1; sapd_relation += 8
+on-arrival: resources -= 1; sapd_relation += 4; kpo_relation += 4;
 
-Relations are improved with the <span style="color: #9B0000;">**SAPD**</span>, the party formed out of our dissendent left.
+[? if sapd_formed: Relations are improved with the <span style="color: #9B0000;">**SAPD**</span>, the party formed out of our dissendent left. ?]
+[? if kpo_formed: We have increased cooperation with the <span style="color: #C43988;">**KPD(O)**</span>, the Concilatory Communist Party. ?]
 
 @center_op
 on-arrival: z_relation += 5*(1 - dissent)
