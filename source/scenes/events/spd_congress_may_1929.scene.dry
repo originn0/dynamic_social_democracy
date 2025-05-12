@@ -53,16 +53,23 @@ var imageFiles = [
   "MüllerHermann.jpg",
   "HilferdingRudolf.jpg"
 ];
+
 var contentDiv = document.querySelector("#page #mid_panel #content");
-imageFiles.forEach(function(fileName) {
+
+imageFiles.forEach(function(fileName, index) {
   var cardEl = document.createElement('div');  
-  cardEl.className = "face-figure2";  
+  cardEl.className = "face-figure2";
+
+  cardEl.classList.add(index % 2 === 0 ? "float-left" : "float-right");
+
   var image = new Image();  
   image.className = "face-img";  
   image.src = "img/portraits/" + fileName;
-  cardEl.appendChild(image);  
+  cardEl.appendChild(image);
+
   contentDiv.appendChild(cardEl);
 });
+
 !}
 
 = The <span style="color: #CE2D2D;">**Centrist Marxists**</span>
