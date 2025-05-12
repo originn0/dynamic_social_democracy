@@ -233,6 +233,7 @@ Q.kvp_r_thuringia = (Q.kvp_r_thuringia != undefined ? parseFloat(Q.kvp_r_thuring
 Q.dnf_r_thuringia = (Q.dnf_r_thuringia != undefined ? parseFloat(Q.dnf_r_thuringia.toFixed(1)) : 0);
 
 Q.left_coalition_thuringia = parseFloat((Q.spd_r_thuringia + Q.kpd_r_thuringia + Q.sapd_r_thuringia + Q.kpo_r_thuringia).toFixed(1));
+Q.socialist_coalition_thuringia = parseFloat((Q.spd_r_thuringia + Q.sapd_r_thuringia + Q.kpo_r_thuringia).toFixed(1));
 Q.bourgeois_coalition_thuringia = parseFloat((Q.z_r_thuringia + Q.ddp_r_thuringia + Q.dvp_r_thuringia + Q.lvp_r_thuringia + Q.kvp_r_thuringia + Q.other_r_thuringia).toFixed(1));
 if (Q.dnvp_ideology == "Moderate") Q.bourgeois_coalition_thuringia = parseFloat((Q.z_r_thuringia + Q.ddp_r_thuringia + Q.dvp_r_thuringia + Q.lvp_r_thuringia + Q.dnvp_r_thuringia + Q.other_r_thuringia).toFixed(1));
 Q.far_right_coalition_thuringia = parseFloat((Q.z_r_thuringia + Q.dvp_r_thuringia + Q.lvp_r_thuringia + Q.kvp_r_thuringia + Q.other_r_thuringia + Q.dnvp_r_thuringia + Q.nsdap_r_thuringia + Q.dnf_r_thuringia).toFixed(1));
@@ -446,6 +447,8 @@ Thuringia is currently governed by a broad center-right coalition, which holds e
 <hr id="read-marker">
 United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPD(O)**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_thuringia +]% 
 
+[? if kpo_formed or sapd_formed: United Socialist Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPD(O)**</span> [? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ socialist_coalition_thuringia +]% ?]
+
 Grand Coalition (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_thuringia:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_thuringia +]% 
 
 Bourgeois Coalition ([? if z_r_thuringia: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #7FCEB1;">**CNBLP**</span> + <span style="color: #b8996f;">**WP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ bourgeois_coalition_thuringia +]%
@@ -492,6 +495,7 @@ Meanwhile, the surging <span style="color: #7A3C00;">**NSDAP**</span>, now contr
 - @bourgeois_coalition_thuringia
 - @grand_coalition_thuringia
 - @united_left_thuringia
+- @socialist_coalition_thuringia
 - @no_majority
 
 
@@ -555,6 +559,12 @@ on-display: {!
     var contentDiv = document.querySelector("#page #mid_panel #content");
     contentDiv.appendChild(cardEl);
 !}
+
+@socialist_coalition_thuringia
+title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #C43988;">**KPD(O)**</span>.
+subtitle: This will bolster the <span style="color: #C43988;">**KPD(O)**</span> further.
+view-if: socialist_coalition_thuringia >= 50 and kpo_relation >= 35
+on-arrival: red_thuringia = 1; hindenburg_angry += 20; workers_kpo += 3; workers_kpd -= 3;
 
 Surprisingly, despite reluctance on both sides due to fears that the <span style="color: #808080;">reactionary</span> Hindenburg will order a <i>Reichsexekution</i> if a coalition were to form. <span style="color: #c00000;">Red</span> Thuringia is restored! 
 
