@@ -574,6 +574,8 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
     }
     Q.weimar_votes = Q.spd_votes + Q.ddp_votes + (Q.lvp_votes / 2) + Q.z_votes - Q.bvp_votes;
     Q.nationalist_votes = Q.dnvp_votes + Q.dnf_votes + Q.kvp_votes;
+    if (Q.next_election_week == 0) Q.new_election_week = 1;
+    if (Q.next_election_week_prussia == 0) Q.next_election_week_prussia = 1;
     if (Q.chancellor == "Papen") {
         Q.papen_time += 1;
         if (Q.marburg_trigger) Q.marburg_time += 1;
@@ -3696,6 +3698,7 @@ if (Q.president == "Hindenburg" && Q.chancellor == "Brüning" && !Q.spd_in_gover
     Q.bruning_time += 1;
     Q.total_bruning_time += 1;
     Q.bruning_coalition = Q.neo_weimar_coalition;
+    if (Q.kvp_formed) Q.bruning_coalition += Q.kvp_r;
     if (Q.dnvp_ideology == "Moderate") Q.bruning_coalition = Q.cordon_sanitaire;
     Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;
 } else {

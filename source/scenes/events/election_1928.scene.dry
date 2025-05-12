@@ -348,36 +348,49 @@ on-arrival: {!
             Q[party + '_r'] = Math.round(Q[party + '_votes'] * factor * 10) / 10;
         }
         
-        if (factor !== 1.0) { // Only apply to parties with adjustment factors
-            // Calculate the Reichstag without the current party's share
-            Q['reichstag_without_' + party] = 100 - Q['original_' + party + '_r'];
-            total_reichstag_without += Q['reichstag_without_' + party];  // Accumulate the total of 'reichstag_without_' values
-            
-            // Calculate the sum of the remaining parties
-            Q[party + '_other_party_sum'] = Q['reichstag_without_' + party] - (Q[party + '_votes'] - Q[party + '_r']);
-            total_other_party_sum += Q[party + '_other_party_sum'];  // Accumulate the total of '_other_party_sum' values
-        } else {
-            // For non-adjusted parties, accumulate their r value for the redistribution
-            new_party_sum += Q[party + '_r'];
+        if (Q[party + '_r'] > 0) {
+            if (factor !== 1.0) { // Only apply to parties with adjustment factors
+                // Calculate the Reichstag without the current party's share
+                Q['reichstag_without_' + party] = 100 - Q['original_' + party + '_r'];
+                total_reichstag_without += Q['reichstag_without_' + party]; // Accumulate the total of 'reichstag_without_' values
+
+                // Calculate the sum of the remaining parties
+                Q[party + '_other_party_sum'] = Q['reichstag_without_' + party] - (Q[party + '_votes'] - Q[party + '_r']);
+                total_other_party_sum += Q[party + '_other_party_sum']; // Accumulate the total of '_other_party_sum' values
+            } else {
+                // For non-adjusted parties, accumulate their r value for the redistribution
+                new_party_sum += Q[party + '_r'];
+            }
         }
     }
     
+console.log(Q.spd_r)
+
 // Step 2: Redistribute results among non-adjusted parties to ensure the total is 100%
 if (new_party_sum > 0) {
     for (var party of Q.parties) {
         let factor = Q['adjustmentFactors_' + party] || 1.0;
 
+        if (Q[party + '_r'] === 0) continue;
+
         var total_reichstag_without_party = total_reichstag_without - (100 - Q['original_' + party + '_r']);
         var total_other_party_sum_party = total_other_party_sum - (Q['reichstag_without_' + party] - (Q[party + '_votes'] - Q[party + '_r']));
 
+        console.log(Q.spd_r)
+
         if (factor === 1.0) {
-            // Calculate the new `r` value for non-adjusted parties
-            Q[party + '_r'] = Math.round((Q[party + '_r'] * total_reichstag_without) / total_other_party_sum * 10) / 10;
+            if (total_other_party_sum > 0) {
+                Q[party + '_r'] = Math.round((Q[party + '_r'] * total_reichstag_without) / total_other_party_sum * 10) / 10;
+            } else {
+                Q[party + '_r'] = Q[party + '_r'];
+            }
         } else if (factor !== 1.0 && total_reichstag_without_party > 0 && total_other_party_sum_party > 0) {
             let scaling_factor = total_reichstag_without_party / total_other_party_sum_party;
             Q[party + '_r'] = Math.round(Q[party + '_r'] * scaling_factor * 10) / 10;
         }
     }
+
+    console.log(Q.spd_r)
 
     // Step 3: Normalize to ensure the total sums to exactly 100%
     let total_r_sum = 0;
@@ -389,11 +402,14 @@ if (new_party_sum > 0) {
 
     // Adjust each party's `r` value proportionally if the total isn't 100
     if (total_r_sum !== 100) {
-        let normalization_factor = 100 / total_r_sum; // Scale to match 100%
+        let normalization_factor = 100 / total_r_sum;
         for (var party of Q.parties) {
-            Q[party + '_r'] = Math.round(Q[party + '_r'] * normalization_factor * 10) / 10;
+            if (Q[party + '_r'] > 0) {
+                Q[party + '_r'] = Math.round(Q[party + '_r'] * normalization_factor * 10) / 10;
+            }
         }
     }
+    console.log(Q.spd_r)
 }
 if (Q.election_boycott) {
     Q.dnef_votes += Q.spd_votes;

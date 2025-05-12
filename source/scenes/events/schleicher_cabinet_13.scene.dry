@@ -31,6 +31,7 @@ if (Q.libs_against_schleicher && Q.dvp_relation >= 40 && Q.dvp_leader != "Dingel
 if (Q.z_against_schleicher) Q.z_r_alt = Q.z_r_pre - Q.bvp_r;
 
 Q.total_r_alt = Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt;
+Q.total_r_alt_2 = Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt;
 
 if (Q.total_r_alt < 100) {
     let scale = 100 / Q.total_r_alt;
@@ -282,7 +283,7 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 [? if nvf_exist and nvf_r_alt and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div></td><td>!} NVF: {!</td><td>!} [+ nvf_r_alt +]% {!</td></tr>!} ?]
 {!</table>!}
 
-Total: [+ total_r_alt +]% of the original Reichstag involved.
+Total: [+ total_r_alt_2 +]% of the original Reichstag involved.
 
 We have leverage, and we should use it to extract concessions. No one wants civil war.
 
@@ -344,7 +345,7 @@ The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichst
 @rights
 title: Demand the above, and [? if not reichstag_fire_decree_schleicher: also guarantees for democratic rights?][? if reichstag_fire_decree_schleicher: a repeal of the Reichstag Fire Decree?].
 unavailable-subtitle: Not enough leverage.
-choose-if: spd_win and total_r_alt >= 50
+choose-if: spd_win and total_r_alt_2 >= 50
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
@@ -411,9 +412,9 @@ The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichst
 @schemes
 title: Demand the above, and also guarantees for the continued independence of political organizations.
 subtitle: Including the <span style="color: #700000;">**KPD**</span>.
-unavailable-subtitle: [? if not spd_win or total_r_alt < 66: Not enough leverage. ?][? if pro_republic < 50 and weimar_votes < 45 or reichstag_fire_decree_schleicher: Schleicher is dead-set on banning the <span style="color: #700000;">Communists</span>. ?]
+unavailable-subtitle: [? if not spd_win or total_r_alt_2 < 66: Not enough leverage. ?][? if pro_republic < 50 and weimar_votes < 45 or reichstag_fire_decree_schleicher: Schleicher is dead-set on banning the <span style="color: #700000;">Communists</span>. ?]
 view-if: dnef_formed
-choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt >= 66 and not reichstag_fire_decree_schleicher
+choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt_2 >= 66 and not reichstag_fire_decree_schleicher
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
