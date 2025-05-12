@@ -1,10 +1,31 @@
-title: Saxony Landtag Election
-view-if: year == 1929 and month == 6 and kpo_formed == 1
+title: Aftermath of Saxony
+view-if: year == 1929 and month == 6 and kpo_formed == 1 and kpo_saxon_victory > 0 
 new-page: true
 tags: event
-on-arrival: 
+on-arrival: {!
+if (Q.kpo_saxon_victory == 2) {
+Q.workers_kpo += Q.workers_kpd*0.25;
+Q.workers_kpd -= Q.workers_kpd*0.25;
+Q.unemployed_kpo += Q.unemployed_kpd*0.2;
+Q.unemployed_kpd -= Q.unemployed_kpd*0.2;
+Q.new_middle_kpo += Q.new_middle_kpd*0.7;
+Q.new_middle_kpd -= Q.new_middle_kpd*0.7;
+Q.new_middle_kpo += Q.new_middle_spd*0.2;
+Q.new_middle_spd -= Q.new_middle_spd*0.2;
+}
+if (Q.kpo_saxon_victory == 1) {
+Q.workers_kpo += Q.workers_kpd*0.2;
+Q.workers_kpd -= Q.workers_kpd*0.2;
+Q.unemployed_kpo += Q.unemployed_kpd*0.1;
+Q.unemployed_kpd -= Q.unemployed_kpd*0.1;
+Q.new_middle_kpo += Q.new_middle_kpd*0.5;
+Q.new_middle_kpd -= Q.new_middle_kpd*0.5;
+Q.new_middle_kpo += Q.new_middle_spd*0.1;
+Q.new_middle_spd -= Q.new_middle_spd*0.1;
+}
+!}
 priority: 1
 max-visits: 1
 
 With the results of the Saxon Elections, the KPO has found itself entrenched in the Weimar Party system. By taking votes from the KPD, it has legitimized itself as a competitor on the Left, for those alienated by the uncompromising and radical image of the KPD. 
-(still very wip dont shoot me)
+More and more voters are being pulled away from the KPD, and to its new alternative. Safe to say, the left will never be the same again.
