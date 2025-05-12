@@ -1,7 +1,75 @@
-title: The SPD leadership meets to discuss future plans.
+title: The <span style="color: #c00000;">**SPD**</span> leadership meets to discuss the future of the Party.
 new-page: true
 subtitle: TEST
 tags: event
 priority: -1
 view-if: year = 1929 and month = 5
+on-arrival: {!
+const contentElement = document.getElementById('content');
+contentElement.style.backgroundColor = '#4B2E2E';
+
+const header = document.querySelector('header');
+header.style.color = '#0077FF';
+contentElement.style.color = '#FFFFFF';
+
+const isMobile = window.innerWidth <= 768;
+const toolsElements = document.querySelectorAll('.tools');
+
+toolsElements.forEach(tool => {
+    if (isMobile) {
+        tool.style.marginLeft = '';
+        tool.style.padding = '0.6em';
+        tool.style.width = '';
+        tool.style.color = '#FFFFFF';
+        tool.style.backgroundColor = '#4B2E2E';
+        tool.style.boxShadow = '4px 4px 16px rgba(255, 255, 255, 0.4)';
+    } else {
+        tool.style.marginLeft = '-6em';
+        tool.style.padding = '0.6em';
+        tool.style.width = '20rem';
+        tool.style.color = '#FFFFFF';
+        tool.style.backgroundColor = '#4B2E2E';
+        tool.style.boxShadow = '4px 4px 16px rgba(255, 255, 255, 0.4)';
+    }
+});
+!}
+
 max-visits: 1
+
+= May 1929 Party Congress
+
+The <span style="color: #c00000;">**SPD**</span>, as a <span style="color: #c00000;">Socialist</span> Party, is highly committed to democratic and transparent policymaking. Of course, this also extends to our internal party structure. The representatives of local branches meet recurringly to elect the party leadership, and vote on important policy proposals.
+
+Following the [? if blutmai == 1:bloody ?] affairs that occured on May Day, our party is meeting to discuss contentious issues, and (likely) re-elect <span style="color: #CE2D2D;">Wels</span> and Crispin as party Chairmen. 
+
+The Party Congress also exists as an enviroment to allow the multiple diverse factions argue and compromise over their different ideas. #800000
+
+- @marxists: And what are these different factions within our party?
+
+@marxists
+on-display: {!  
+var imageFiles = [
+  "WelsOtto.jpg",
+  "MüllerHermann.jpg",
+  "HilferdingRudolf.jpg"
+];
+var contentDiv = document.querySelector("#page #mid_panel #content");
+imageFiles.forEach(function(fileName) {
+  var cardEl = document.createElement('div');  
+  cardEl.className = "face-figure2";  
+  var image = new Image();  
+  image.className = "face-img";  
+  image.src = "img/portraits/" + fileName;
+  cardEl.appendChild(image);  
+  contentDiv.appendChild(cardEl);
+});
+!}
+
+= The <span style="color: #CE2D2D;">**Centrist Marxists**</span>
+
+By far the largest faction within our party, The <span style="color: #CE2D2D;">Centrist Marxists</span> embody the concept of Social Democracy. 
+
+They stand at a midpoint between reform and revolution, advocating for the interests of the proletariat in government, while slowly building up the means and the resources to prepare for a Socialist Revolution.
+
+A majority of our party leadership originates from this faction, and since our merger with the <span style="color: #D47B9B;">**USPD**</span>, they have been the primary influence on the direction of our party. Their aim at the moment, is to contain dissent within the right and the left wings of the party, and to seek comprimise. Important party figures from this faction include <span style="color: #CE2D2D;">Otto Wels</span>, our longtime Party Chairman, and a bastion of stability to the party, <span style="color: #CE2D2D;">Hermann Müller</span>, the [? if not chancellor == "Müller":former ?]Chancellor of Germany, and <span style="color: #CE2D2D;">Rudolf Hilferding</span>, our primary economist, and a firm proponent of Governmental Participation.
+
