@@ -125,12 +125,11 @@ In addition, our increased support among the <span style="color: #a0a0a0;">**Mid
 
 @start
 on-arrival: {!
-/*
 Q.1929leftstrength = 18 + (Q.left_strength/10);
 Q.1929centerstrength = 18 + (Q.center_strength/10);
 Q.1929reformstrength = 18 + (Q.reformist_strength/10);
-Q.1929llaborstrength = 9 + ((Q.labor_strength/20)*(left_strength/reformist_strength));
-Q.1929rlaborstrength = 9 + ((Q.labor_strength/20)*(reformist_strength/left_strength));
+Q.1929llaborstrength = 9 + ((Q.labor_strength/20)*(Q.left_strength/Q.reformist_strength));
+Q.1929rlaborstrength = 9 + ((Q.labor_strength/20)*(Q.reformist_strength/Q.left_strength));
 if (Q.rural_spd_normalized >= 12) {
 Q.1929ruralstrength = Q.rural_spd_normalized/2;
 }
@@ -168,7 +167,6 @@ Q.1929rlaborstrength = floored[4];
 Q.1929ruralstrength = floored[5];
 Q.1929middlestrength = floored[6];
 Q.1929neorevstrength = floored[7];
-*/
 !}
 on-display: {!
 data.push({
