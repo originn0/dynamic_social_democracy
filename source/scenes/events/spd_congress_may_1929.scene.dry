@@ -109,7 +109,7 @@ Within our party, Labor itself can be split into two groups. Those more idealogi
 
 @others
 face-image: img/portraits/BaadeFritz.jpg if (rural_spd_normalized >= 12); img/portraits/SchumacherKurt.jpg if (rural_spd_normalized < 12)
-on-arrival: mr_skibidi = new_middle_normalized + old_middle_normalized
+on-arrival: mr_skibidi = 1 if (new_middle_normalized + old_middle_normalized >= 22)
 
 = Minor Factions
 
@@ -119,7 +119,7 @@ As the <span style="color: #c00000;">**SPD**</span> is a diverse party, there ar
 
 As radicalism is on the rise in Germany, there exists a small <span style="color: #800020;">Neorevisionist wing</span>. Only time will tell where this will go from here.
 
-[? if mr_skibidi > 22 : In addition, our increased support among the <span style="color: #a0a0a0;">**Middle Class**</span> has resulted in the creation of an interest group to push for moderation and progressive reforms within the <span style="color: #c00000;">**SPD**</span>. ?]
+[? if mr_skibidi : In addition, our increased support among the <span style="color: #a0a0a0;">**Middle Class**</span> has resulted in the creation of an interest group to push for moderation and progressive reforms within the <span style="color: #c00000;">**SPD**</span>. ?]
 
 - @start: Let the Congress Begin!
 
