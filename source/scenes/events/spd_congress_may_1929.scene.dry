@@ -109,6 +109,7 @@ Within our party, Labor itself can be split into two groups. Those more idealogi
 
 @others
 face-image: img/portraits/BaadeFritz.jpg if (rural_spd_normalized >= 12); img/portraits/SchumacherKurt.jpg if (rural_spd_normalized < 12)
+on-arrival: Q.mr_skibidi = new_middle_normalized + old_middle_normalized
 
 = Minor Factions
 
@@ -118,35 +119,36 @@ As the <span style="color: #c00000;">**SPD**</span> is a diverse party, there ar
 
 As radicalism is on the rise in Germany, there exists a small <span style="color: #800020;">Neorevisionist wing</span>. Only time will tell where this will go from here.
 
+[? if mr_skibidi >= 22 : In addition, our increased support among the <span style="color: #a0a0a0;">**Middle Class**</span> has resulted in the creation of an interest group to push for moderation and progressive reforms within the <span style="color: #c00000;">**SPD**</span>. ?]
 
 - @start: Let the Congress Begin!
 
 @start
 on-arrival: {!
-Q.1929_left_strength = 18 + (Q.left_strength/10);
-Q.1929_center_strength = 18 + (Q.center_strength/10);
-Q.1929_reform_strength = 18 + (Q.reformist_strength/10);
-Q.1929_llabor_strength = 9 + ((Q.labor_strength/20)*(left_strength/reformist_strength);
-Q.1929_rlabor_strength = 9 + ((Q.labor_strength/20)*(reformist_strength/left_strength);
+Q.1929leftstrength = 18 + (Q.left_strength/10);
+Q.1929centerstrength = 18 + (Q.center_strength/10);
+Q.1929reformstrength = 18 + (Q.reformist_strength/10);
+Q.1929llaborstrength = 9 + ((Q.labor_strength/20)*(left_strength/reformist_strength);
+Q.1929rlaborstrength = 9 + ((Q.labor_strength/20)*(reformist_strength/left_strength);
 if (Q.rural_spd_normalized >= 12) {
-Q.1929_rural_strength = Q.rural_spd_normalized/2
+Q.1929ruralstrength = Q.rural_spd_normalized/2
 }
 if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
-Q.1929_middle_strength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized)/2.5;
+Q.1929middlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized)/2.5;
 }
 if (Q.neorevisionism == 1) {
-Q.1929_neorev_strength = 4 + (Q.neorevisionist_strength/10);
+Q.1929neorevstrength = 4 + (Q.neorevisionist_strength/10);
 }
 
 let variables = [
-Q.1929_left_strength, 
-Q.1929_center_strength,
-Q.1929_reform_strength,
-Q.1929_llabor_strength,
-Q.1929_rlabor_strength,
-Q.1929_rural_strength,
-Q.1929_middle_strength,
-Q.1929_neorev_strength
+Q.1929leftstrength, 
+Q.1929centerstrength,
+Q.1929reformstrength,
+Q.1929llaborstrength,
+Q.1929rlaborstrength,
+Q.1929ruralstrength,
+Q.1929middlestrength,
+Q.1929neorevstrength
 ];
 let total = variables.reduce((sum, val) => sum + val, 0);
 let scaled = variables.map(v => (v / total) * 100);
@@ -157,42 +159,42 @@ decimalParts.sort((a, b) => b.decimal - a.decimal);
 for (let i = 0; i < remainder; i++) {
     floored[decimalParts[i].index]++;
 }
-Q.1929_left_strength = floored[1];
-Q.1929_center_strength = floored[2];
-Q.1929_reform_strength = floored[3];
-Q.1929_llabor_strength = floored[4];
-Q.1929_rlabor_strength = floored[5];
-Q.1929_rural_strength = floored[6];
-Q.1929_middle_strength = floored[7];
-Q.1929_neorev_strength = floored[8];
+Q.1929leftstrength = floored[1];
+Q.1929centerstrength = floored[2];
+Q.1929reformstrength = floored[3];
+Q.1929llaborstrength = floored[4];
+Q.1929rlaborstrength = floored[5];
+Q.1929ruralstrength = floored[6];
+Q.1929middlestrength = floored[7];
+Q.1929neorevstrength = floored[8];
 !}
 on-display: {!
 data.push({
         "id": "left",
         "legend": "Left Marxists",
         "name": "Left Marxists",
-        "seats": Math.round(Q.1929_left_strength * 3.97),
+        "seats": Math.round(Q.1929leftstrength * 3.97),
     });
 
 data.push({
         "id": "llab",
         "legend": "Left Labor",
         "name": "Left Labor",
-        "seats": Math.round(Q.1929_llabor_strength * 3.97),
+        "seats": Math.round(Q.1929llaborstrength * 3.97),
     });
 
 data.push({
         "id": "centr",
         "legend": "Center Marxists",
         "name": "Center Marxists",
-        "seats": Math.round(Q.1929_center_strength * 3.97),
+        "seats": Math.round(Q.1929centerstrength * 3.97),
     });
 
 data.push({
         "id": "rlab",
         "legend": "Right Labor",
         "name": "Right Labor",
-        "seats": Math.round(Q.1929_rlabor_strength * 3.97),
+        "seats": Math.round(Q.1929rlaborstrength * 3.97),
     });
 
 if (Q.rural_spd_normalized >= 12) {
@@ -200,7 +202,7 @@ if (Q.rural_spd_normalized >= 12) {
             "id": "farm",
             "legend": "Agrarians",
             "name": "Agrarians",
-            "seats": Math.round(Q.1929_rural_strength * 3.97),
+            "seats": Math.round(Q.1929ruralstrength * 3.97),
         });
 }
 
@@ -208,7 +210,7 @@ data.push({
         "id": "refrm",
         "legend": "Reformists",
         "name": "Reformists",
-        "seats": Math.round(Q.1929_reform_strength * 3.97),
+        "seats": Math.round(Q.1929reformstrength * 3.97),
     });
 
 if (Q.neorevisionism == 1) {
@@ -216,7 +218,7 @@ if (Q.neorevisionism == 1) {
             "id": "neorev",
             "legend": "Neo-Revisionists",
             "name": "Neo-Revisionists",
-            "seats": Math.round(Q.1929_neorev_strength * 3.97),
+            "seats": Math.round(Q.1929neorevstrength * 3.97),
         });
 }
 
@@ -225,7 +227,7 @@ if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
             "id": "other",
             "legend": "Middle Class",
             "name": "Middle Class",
-            "seats": Math.round(Q.1929_middle_strength * 3.97),
+            "seats": Math.round(Q.1929middlestrength * 3.97),
         });
 }
 
