@@ -124,5 +124,127 @@ As radicalism is on the rise in Germany, there exists a small <span style="color
 
 @start
 on-arrival: {!
+Q.1929_left_strength = 18 + (Q.left_strength/10);
+Q.1929_center_strength = 18 + (Q.center_strength/10);
+Q.1929_reform_strength = 18 + (Q.reformist_strength/10);
+Q.1929_llabor_strength = 9 + ((Q.labor_strength/20)*(left_strength/reformist_strength);
+Q.1929_rlabor_strength = 9 + ((Q.labor_strength/20)*(reformist_strength/left_strength);
+if (Q.rural_spd_normalized >= 12) {
+Q.1929_rural_strength = Q.rural_spd_normalized/2
+}
+if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
+Q.1929_middle_strength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized)/2.5;
+}
+if (Q.neorevisionism == 1) {
+Q.1929_neorev_strength = 4 + (Q.neorevisionist_strength/10);
+}
 
+let variables = [
+Q.1929_left_strength, 
+Q.1929_center_strength,
+Q.1929_reform_strength,
+Q.1929_llabor_strength,
+Q.1929_rlabor_strength,
+Q.1929_rural_strength,
+Q.1929_middle_strength,
+Q.1929_neorev_strength
+];
+let total = variables.reduce((sum, val) => sum + val, 0);
+let scaled = variables.map(v => (v / total) * 100);
+let floored = scaled.map(Math.floor);
+let remainder = 100 - floored.reduce((sum, val) => sum + val, 0);
+let decimalParts = scaled.map((v, i) => ({ index: i, decimal: v - floored[i] }));
+decimalParts.sort((a, b) => b.decimal - a.decimal);
+for (let i = 0; i < remainder; i++) {
+    floored[decimalParts[i].index]++;
+}
+Q.1929_left_strength = floored[1];
+Q.1929_center_strength = floored[2];
+Q.1929_reform_strength = floored[3];
+Q.1929_llabor_strength = floored[4];
+Q.1929_rlabor_strength = floored[5];
+Q.1929_rural_strength = floored[6];
+Q.1929_middle_strength = floored[7];
+Q.1929_neorev_strength = floored[8];
 !}
+on-display: {!
+data.push({
+        "id": "left",
+        "legend": "Left Marxists",
+        "name": "Left Marxists",
+        "seats": Math.round(Q.1929_left_strength * 3.97),
+    });
+
+data.push({
+        "id": "llab",
+        "legend": "Left Labor",
+        "name": "Left Labor",
+        "seats": Math.round(Q.1929_llabor_strength * 3.97),
+    });
+
+data.push({
+        "id": "centr",
+        "legend": "Center Marxists",
+        "name": "Center Marxists",
+        "seats": Math.round(Q.1929_center_strength * 3.97),
+    });
+
+data.push({
+        "id": "rlab",
+        "legend": "Right Labor",
+        "name": "Right Labor",
+        "seats": Math.round(Q.1929_rlabor_strength * 3.97),
+    });
+
+if (Q.rural_spd_normalized >= 12) {
+    data.push({
+            "id": "farm",
+            "legend": "Agrarians",
+            "name": "Agrarians",
+            "seats": Math.round(Q.1929_rural_strength * 3.97),
+        });
+}
+
+data.push({
+        "id": "refrm",
+        "legend": "Reformists",
+        "name": "Reformists",
+        "seats": Math.round(Q.1929_reform_strength * 3.97),
+    });
+
+if (Q.neorevisionism == 1) {
+    data.push({
+            "id": "neorev",
+            "legend": "Neo-Revisionists",
+            "name": "Neo-Revisionists",
+            "seats": Math.round(Q.1929_neorev_strength * 3.97),
+        });
+}
+
+if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
+    data.push({
+            "id": "other",
+            "legend": "Middle Class",
+            "name": "Middle Class",
+            "seats": Math.round(Q.1929_middle_strength * 3.97),
+        });
+}
+
+if (window && d3) {
+    var width = 500;
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50;
+        height = width;
+        document.getElementById("1929_congress").style.height = screenWidth/2 + "px";
+    }
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#1929_congress").datum(data).call(parliament);
+}
+!}
+
+**Seat Distribution:**
