@@ -125,6 +125,7 @@ In addition, our increased support among the <span style="color: #a0a0a0;">**Mid
 
 @start
 on-arrival: {!
+/*
 Q.1929leftstrength = 18 + (Q.left_strength/10);
 Q.1929centerstrength = 18 + (Q.center_strength/10);
 Q.1929reformstrength = 18 + (Q.reformist_strength/10);
@@ -150,7 +151,6 @@ Q.1929ruralstrength,
 Q.1929middlestrength,
 Q.1929neorevstrength
 ];
-
 let total = variables.reduce((sum, val) => sum + val, 0);
 let scaled = variables.map(v => (v / total) * 100);
 let floored = scaled.map(Math.floor);
@@ -160,7 +160,6 @@ decimalParts.sort((a, b) => b.decimal - a.decimal);
 for (let i = 0; i < remainder; i++) {
     floored[decimalParts[i].index]++;
 }
-/*
 Q.1929leftstrength = floored[0];
 Q.1929centerstrength = floored[1];
 Q.1929reformstrength = floored[2];
