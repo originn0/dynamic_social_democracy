@@ -46,30 +46,7 @@ The Party Congress also exists as an enviroment to allow the multiple diverse fa
 - @marxists: And what are these different factions within our party?
 
 @marxists
-on-display: {!  
-var imageFiles = [
-  "WelsOtto.jpg",
-  "MüllerHermann.jpg",
-  "HilferdingRudolf.jpg"
-];
-
-var contentDiv = document.querySelector("#page #mid_panel #content");
-
-imageFiles.forEach(function(fileName, index) {
-  var cardEl = document.createElement('div');  
-  cardEl.className = "face-figure2";
-
-  // Add alternating float classes
-  cardEl.classList.add(index % 2 === 0 ? "float-left" : "float-right");
-
-  var image = new Image();  
-  image.className = "face-img";  
-  image.src = "img/portraits/" + fileName;
-  cardEl.appendChild(image);
-
-  contentDiv.appendChild(cardEl);
-});
-!}
+face-image: img/portraits/WelsOtto.jpg
 
 = The <span style="color: #CE2D2D;">**Centrist Marxists**</span>
 
