@@ -125,30 +125,29 @@ In addition, our increased support among the <span style="color: #a0a0a0;">**Mid
 
 @start
 on-arrival: {!
-Q.1929leftstrength = 18 + (Q.left_strength / 10);
-Q.1929centerstrength = 18 + (Q.center_strength / 10);
-Q.1929reformstrength = 18 + (Q.reformist_strength / 10);
-Q.1929llaborstrength = 9 + ((Q.labor_strength / 20) * (Q.left_strength / Q.reformist_strength));
-Q.1929rlaborstrength = 9 + ((Q.labor_strength / 20) * (Q.reformist_strength / Q.left_strength));
+Q.con_left_strength = 18 + (Q.left_strength / 10);
+Q.con_center_strength = 18 + (Q.center_strength / 10);
+Q.con_reform_strength = 18 + (Q.reformist_strength / 10);
+Q.con_llabor_strength = 9 + ((Q.labor_strength / 20) * (Q.left_strength / Q.reformist_strength));
+Q.con_rlabor_strength = 9 + ((Q.labor_strength / 20) * (Q.reformist_strength / Q.left_strength));
 if (Q.rural_spd_normalized >= 12) {
-Q.1929ruralstrength = Q.rural_spd_normalized/2;
+Q.con_rural_strength = Q.rural_spd_normalized/2;
 }
 if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
-Q.1929middlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 2.5;
+Q.conmiddlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 2.5;
 }
 if (Q.neorevisionism == 1) {
-Q.1929neorevstrength = 4 + (Q.neorevisionist_strength/10);
+Q.con_neorev_strength = 4 + (Q.neorevisionist_strength/10);
 }
-
 let variables = [
-Q.1929leftstrength, 
-Q.1929centerstrength,
-Q.1929reformstrength,
-Q.1929llaborstrength,
-Q.1929rlaborstrength,
-Q.1929ruralstrength,
-Q.1929middlestrength,
-Q.1929neorevstrength
+Q.con_left_strength, 
+Q.con_center_strength,
+Q.con_reform_strength,
+Q.con_llabor_strength,
+Q.con_rlabor_strength,
+Q.con_rural_strength,
+Q.con_middle_strength,
+Q.con_neorev_strength
 ];
 let total = variables.reduce((sum, val) => sum + val, 0);
 let scaled = variables.map(v => (v / total) * 100);
@@ -159,44 +158,42 @@ decimalParts.sort((a, b) => b.decimal - a.decimal);
 for (let i = 0; i < remainder; i++) {
     floored[decimalParts[i].index]++;
 }
-/*
-Q.1929leftstrength = floored[0];
-Q.1929centerstrength = floored[1];
-Q.1929reformstrength = floored[2];
-Q.1929llaborstrength = floored[3];
-Q.1929rlaborstrength = floored[4];
-Q.1929ruralstrength = floored[5];
-Q.1929middlestrength = floored[6];
-Q.1929neorevstrength = floored[7];
-*/
+Q.con_left_strength = floored[0];
+Q.con_center_strength = floored[1];
+Q.con_reform_strength = floored[2];
+Q.con_llabor_strength = floored[3];
+Q.con_rlabor_strength = floored[4];
+Q.con_rural_strength = floored[5];
+Q.con_middle_strength = floored[6];
+Q.con_neorev_strength = floored[7];
 !}
 on-display: {!
 data.push({
         "id": "left",
         "legend": "Left Marxists",
         "name": "Left Marxists",
-        "seats": Math.round(Q.1929leftstrength * 3.97),
+        "seats": Math.round(Q.con_left_strength * 3.97),
     });
 
 data.push({
         "id": "llab",
         "legend": "Left Labor",
         "name": "Left Labor",
-        "seats": Math.round(Q.1929llaborstrength * 3.97),
+        "seats": Math.round(Q.con_llabor_strength * 3.97),
     });
 
 data.push({
         "id": "centr",
         "legend": "Center Marxists",
         "name": "Center Marxists",
-        "seats": Math.round(Q.1929centerstrength * 3.97),
+        "seats": Math.round(Q.con_center_strength * 3.97),
     });
 
 data.push({
         "id": "rlab",
         "legend": "Right Labor",
         "name": "Right Labor",
-        "seats": Math.round(Q.1929rlaborstrength * 3.97),
+        "seats": Math.round(Q.con_rlabor_strength * 3.97),
     });
 
 if (Q.rural_spd_normalized >= 12) {
@@ -204,7 +201,7 @@ if (Q.rural_spd_normalized >= 12) {
             "id": "farm",
             "legend": "Agrarians",
             "name": "Agrarians",
-            "seats": Math.round(Q.1929ruralstrength * 3.97),
+            "seats": Math.round(Q.con_rural_strength * 3.97),
         });
 }
 
@@ -212,7 +209,7 @@ data.push({
         "id": "refrm",
         "legend": "Reformists",
         "name": "Reformists",
-        "seats": Math.round(Q.1929reformstrength * 3.97),
+        "seats": Math.round(Q.con_reform_strength * 3.97),
     });
 
 if (Q.neorevisionism == 1) {
@@ -220,7 +217,7 @@ if (Q.neorevisionism == 1) {
             "id": "neorev",
             "legend": "Neo-Revisionists",
             "name": "Neo-Revisionists",
-            "seats": Math.round(Q.1929neorevstrength * 3.97),
+            "seats": Math.round(Q.con_neorev_strength * 3.97),
         });
 }
 
@@ -229,7 +226,7 @@ if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
             "id": "other",
             "legend": "Middle Class",
             "name": "Middle Class",
-            "seats": Math.round(Q.1929middlestrength * 3.97),
+            "seats": Math.round(Q.con_middle_strength * 3.97),
         });
 }
 
