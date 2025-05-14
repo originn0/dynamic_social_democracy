@@ -139,7 +139,7 @@ Q.conmiddlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized
 if (Q.neorevisionism == 1) {
 Q.con_neorev_strength = 4 + (Q.neorevisionist_strength/10);
 }
-/*
+
 let variables = [
 Q.con_left_strength, 
 Q.con_center_strength,
@@ -159,15 +159,17 @@ decimalParts.sort((a, b) => b.decimal - a.decimal);
 for (let i = 0; i < remainder; i++) {
     floored[decimalParts[i].index]++;
 }
-Q.con_left_strength = floored[0];
-Q.con_center_strength = floored[1];
-Q.con_reform_strength = floored[2];
-Q.con_llabor_strength = floored[3];
-Q.con_rlabor_strength = floored[4];
-Q.con_rural_strength = floored[5];
-Q.con_middle_strength = floored[6];
-Q.con_neorev_strength = floored[7];
-*/
+[
+    Q.con_left_strength,
+    Q.con_center_strength,
+    Q.con_reform_strength,
+    Q.con_llabor_strength,
+    Q.con_rlabor_strength,
+    Q.con_rural_strength,
+    Q.con_middle_strength,
+    Q.con_neorev_strength
+] = floored;
+
 !}
 on-display: {!
 data = [{
