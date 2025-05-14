@@ -115,11 +115,11 @@ on-arrival: mr_skibidi = 1 if (new_middle_normalized + old_middle_normalized >= 
 
 As the <span style="color: #c00000;">**SPD**</span> is a diverse party, there are also many minor groups all pushing for their voices to be heard.
 
-Thanks to our efforts to gain support in Rural Germany, Fritz Baade has arrived to the congress, as the new head of an <span style="color: #38C538;">**Agrarian Wing</span> of our party. Not much is known about what he aims to propose, we will have to wait until the congress starts.
+[? if mr_gyatt:Thanks to our efforts to gain support in Rural Germany, Fritz Baade has arrived to the congress, as the new head of an <span style="color: #38C538;">**Agrarian Wing**</span> of our party. Not much is known about what he aims to propose, we will have to wait until the congress starts. ?]
 
 As radicalism is on the rise in Germany, there exists a small <span style="color: #800020;">Neorevisionist wing</span>. Only time will tell where this will go from here.
 
-In addition, our increased support among the <span style="color: #a0a0a0;">**Middle Class**</span> has resulted in the creation of an interest group to push for moderation and progressive reforms within the <span style="color: #c00000;">**SPD**</span>.
+[? if mr_skibidi:In addition, our increased support among the <span style="color: #a0a0a0;">**Middle Class**</span> has resulted in the creation of an interest group to push for moderation and progressive reforms within the <span style="color: #c00000;">**SPD**</span>. ?]
 
 - @start: Let the Congress Begin!
 
@@ -168,12 +168,12 @@ Q.con_middle_strength = floored[6];
 Q.con_neorev_strength = floored[7];
 !}
 on-display: {!
-data.push({
+data = [{
         "id": "left",
         "legend": "Left Marxists",
         "name": "Left Marxists",
         "seats": Math.round(Q.con_left_strength * 3.97),
-    });
+    }];
 
 data.push({
         "id": "llab",
