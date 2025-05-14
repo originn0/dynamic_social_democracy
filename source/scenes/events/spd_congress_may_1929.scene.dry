@@ -253,7 +253,6 @@ if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
         });
 }
 
-if (window && d3) {
     var width = 500;
     var height = 500;
     var screenWidth = document.getElementById('content').offsetWidth;
@@ -262,13 +261,20 @@ if (window && d3) {
         height = width;
         document.getElementById("spd_congress_may").style.height = screenWidth/2 + "px";
     }
-    var parliament = d3.parliament();
-    parliament.width(width).height(height).innerRadiusCoef(0.4);
+
+    var parliament = d3.parliament()
+        .width(width)
+        .height(height)
+        .innerRadiusCoef(0.4);
     parliament.enter.fromCenter(true).smallToBig(true);
     parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#spd_congress_may").datum(data).call(parliament);
-}
+
+    d3.select("#spd_congress_may")
+        .data([data])
+        .call(parliament);
 !}
+
+<div id="spd_congress_may"></div>
 
 **Seat Distribution:**
 Left: [+ con_left_strength +]
