@@ -143,25 +143,41 @@ if (Q.neorevisionism == 1) {
 Q.con_neorev_strength = 4 + (Q.neorevisionist_strength/10);
 }
 
-let variables = [
-Q.con_left_strength, 
-Q.con_center_strength,
-Q.con_reform_strength,
-Q.con_llabor_strength,
-Q.con_rlabor_strength,
-Q.con_rural_strength,
-Q.con_middle_strength,
-Q.con_neorev_strength
+let keys = [
+    "con_left_strength",
+    "con_center_strength",
+    "con_reform_strength",
+    "con_llabor_strength",
+    "con_rlabor_strength",
+    "con_rural_strength",
+    "con_middle_strength",
+    "con_neorev_strength"
 ];
+
+let variables = keys.map(k => Q[k] ?? 0);
+
 let total = variables.reduce((sum, val) => sum + val, 0);
-let scaled = variables.map(v => (v / total) * 100);
-let floored = scaled.map(Math.floor);
-let remainder = 100 - floored.reduce((sum, val) => sum + val, 0);
-let decimalParts = scaled.map((v, i) => ({ index: i, decimal: v - floored[i] }));
-decimalParts.sort((a, b) => b.decimal - a.decimal);
-for (let i = 0; i < remainder; i++) {
-    floored[decimalParts[i].index]++;
+
+let floored;
+
+if (total === 0) {
+    floored = Array(8).fill(Math.floor(100 / 8));
+    let remainder = 100 - floored.reduce((a, b) => a + b, 0);
+    for (let i = 0; i < remainder; i++) {
+        floored[i]++;
+    }
+} else {
+    let scaled = variables.map(v => (v / total) * 100);
+    floored = scaled.map(Math.floor);
+    let remainder = 100 - floored.reduce((sum, val) => sum + val, 0);
+    let decimalParts = scaled.map((v, i) => ({ index: i, decimal: v - floored[i] }));
+    decimalParts.sort((a, b) => b.decimal - a.decimal);
+    for (let i = 0; i < remainder; i++) {
+        floored[decimalParts[i].index]++;
+    }
 }
+
+keys.forEach((k, i) => Q[k] = floored[i]);
 [
     Q.con_left_strength,
     Q.con_center_strength,
