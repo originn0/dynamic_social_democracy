@@ -41,7 +41,7 @@ if (Q.dnvp_ideology == "Moderate") Q.schleicher_votes += Q.dnvp_r;
 Q.schleicher_votes += Q.kvp_r;
 if (Q.dsu_exist && Q.dsu_r) Q.schleicher_votes += Q.dsu_r;
 
-Q.schleicher_votes = Math.round((Q.other_r + Q.dvp_r) * 10) / 10;
+Q.schleicher_votes = Math.round(Q.schleicher_votes * 10) / 10;
 Q.anti_schleicher_votes = Math.round((100 - Q.schleicher_votes) * 10) / 10;
 
 Q.nazi_funds -= 1;

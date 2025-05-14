@@ -1,0 +1,81 @@
+title: "Social Patriotism" Emerges
+subtitle: A new faction takes shape within the <span style="color: #c00000;">**SPD**</span>...
+view-if: chancellor = "Schleicher" and dnef_total_votes >= 20 and schleicher_spd_influence >= 6
+new-page: true
+priority: 1
+tags: event
+max-visits: 1
+face-image: img/portraits/erdmann.jpg
+
+= Social Patriotism Emerges
+
+A newer faction of young and old <span style="color: #f0456a;">socialists</span>, led by ADGB unionist Lothar Erdmann, is rallying under the banner of "Social Patriotism." This group calls for a renewed bond between the workers, <span style="color: #c00000;">socialism</span>, and the nation. Erdmann is the architect of the ADGB's nationalist shift in recent years, including its sharpened rhetoric against the Treaty of Versailles.
+
+This is plainly Schleicher’s handiwork—yet this emerging faction now holds real sway within our party, given the Chancellor’s grip on our more "patriotic" and loosely <span style="color: #9B0000;">Marxist</span> trade unions.
+
+- @socpat_pro: Who said patriotism and <span style="color: #c00000;">socialism</span> aren't compatible?
+- @socpat_against: There's no war but the class war.
+
+@socpat_pro
+on-arrival: {!
+Q.social_patriot = 1;
+Q.social_patriot_strength = 15;
+Q.social_patriot_dissent = 25;
+
+Q.left_dissent += 10;
+Q.center_dissent += 10;
+Q.labor_dissent -= 5;
+Q.reformist_dissent -= 5;
+
+Q.schleicher_spd_r += 1;
+Q.schleicher_spd_influence += 1;
+Q.schleicher_spd_support += 2;
+!}
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/workers_2.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+The Social Patriots advocate full support for Schleicher’s chancellorship and his rearmament program, believing that only through strength can Germany break free from the chains of Versailles and reclaim its rightful lands.
+
+Schleicher, predictably, is pleased with our acceptance of this new political current—but his influence within our party is growing alarmingly fast. Perhaps too fast.
+
+@socpat_against
+on-arrival: {!
+Q.social_patriot = 1;
+Q.social_patriot_strength = 10;
+Q.social_patriot_dissent = 40;
+
+Q.left_dissent -= 10;
+Q.center_dissent -= 10;
+Q.labor_dissent += 5;
+Q.reformist_dissent += 5;
+
+Q.schleicher_spd_r -= 1;
+Q.schleicher_spd_influence -= 1;
+Q.schleicher_spd_support -= 2;
+!}
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/workers_2.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+The Social Patriots advocate full support for Schleicher’s chancellorship and his rearmament program, believing that only through strength can Germany break free from the chains of Versailles and reclaim its rightful lands.
+
+Schleicher is displeased with our moves to curb the influence of his loyalists within the <span style="color: #c00000;">**SPD**</span> — but for now, this ideology remains far from our party’s leadership. For now.

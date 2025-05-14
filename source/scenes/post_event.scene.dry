@@ -191,8 +191,17 @@ if (Q.unemployed <= 1) {
 }
 
 // re-calculate dissent.
-var total_strength = Q.left_strength + Q.center_strength + Q.labor_strength + Q.reformist_strength + Q.neorevisionist_strength;
-
+var total_strength = Q.left_strength + Q.center_strength + Q.labor_strength + Q.reformist_strength;
+if (Q.neorevisionism) {
+    total_strength += Q.neorevisionist_strength;
+} else {
+    Q.neorevisionist_strength = 0;
+}
+if (Q.social_patriot) {
+    total_strength += Q.social_patriot_strength;
+} else {
+    Q.social_patriot_strength = 0;
+}
 // normalize strength for the different factions
 Q.left_strength = 100*Q.left_strength/total_strength;
 Q.center_strength = 100*Q.center_strength/total_strength;
@@ -200,9 +209,18 @@ Q.labor_strength = 100*Q.labor_strength/total_strength;
 Q.reformist_strength = 100*Q.reformist_strength/total_strength;
 Q.neorevisionist_strength = 100*Q.neorevisionist_strength/total_strength;
 
-var total_dissent = Q.left_strength*Q.left_dissent + Q.center_strength*Q.center_dissent + Q.labor_strength*Q.labor_dissent + Q.reformist_strength*Q.reformist_dissent + Q.neorevisionist_strength*Q.neorevisionist_dissent;
-
-
+var total_dissent = Q.left_strength*Q.left_dissent + Q.center_strength*Q.center_dissent + Q.labor_strength*Q.labor_dissent + Q.reformist_strength*Q.reformist_dissent;
+if (Q.neorevisionism) {
+    total_dissent += Q.neorevisionist_strength*Q.neorevisionist_dissent;
+} else {
+    Q.neorevisionist_dissent = 0;
+}
+if (Q.social_patriot) {
+    total_dissent += Q.social_patriot_strength*Q.social_patriot_dissent;
+}
+else {
+    Q.social_patriot_dissent = 0;
+}
 Q.dissent = 0.01*total_dissent/total_strength;
 Q.dissent_percent = Q.dissent*100;
 console.log('new dissent: ' + Q.dissent);
@@ -303,6 +321,16 @@ Q.dnvp_r = Math.round(Q.dnvp_r * 10) / 10;
 Q.kvp_r = Math.round(Q.kvp_r * 10) / 10;
 Q.nsdap_r = Math.round(Q.nsdap_r * 10) / 10;
 
+if (Q.ddp_r) Q.ddp_r_last = Q.ddp_r;
+if (Q.lvp_r) Q.lvp_r_last = Q.lvp_r;
+if (Q.kvp_r) Q.kvp_r_last = Q.kvp_r;
+if (Q.dvp_r) Q.dvp_r_last = Q.dvp_r;
+if (Q.z_r) Q.z_r_last = Q.z_r;
+if (Q.bvp_r) Q.z_r_last = Q.bvp_r;
+if (Q.dnvp_r) Q.dnvp_r_last = Q.dnvp_r;
+if (Q.other_r) Q.other_r_last = Q.other_r;
+if (Q.nvf_r) Q.nvf_r_last = Q.nvf_r;
+
 if (Q.dstp_dnef) {
     Q.ddp_relation = Q.dnef_relation;
 
@@ -359,7 +387,7 @@ if (Q.dnvp_dnef) {
 }
 
 if (Q.other_dnef) {
-    if (Q.z_r) {
+    if (Q.other_r) {
         Q.dnef_r += Q.other_r;
         Q.other_r = 0;
     }
@@ -439,6 +467,18 @@ if (Q.dnef_formed) {
         Q.republicans_schleicher -= 2;
         Q.nationalists_schleicher -= 3;
     }
+    if (Q.chancellor == "Goerdeler") {
+        Q.workers_schleicher -= 6;
+        Q.republicans_schleicher -= 4;
+    } else if (Q.chancellor == "Bredow") {
+        Q.workers_schleicher -= 4;
+        Q.republicans_schleicher -= 2;
+        Q.nationalists_schleicher -= 2;
+        Q.industrialists_schleicher -= 2;
+    } else if (Q.chancellor == "Treviranus") {
+        Q.workers_schleicher -= 5;
+        Q.republicans_schleicher -= 3;
+    }
 
     if (Q.schleicher_spd_influence) Q.workers_schleicher += Q.schleicher_spd_influence / 2;
     if (Q.schleicher_spd_support) Q.workers_schleicher += Q.schleicher_spd_support / 4;
@@ -516,34 +556,34 @@ if (Q.dnef_formed) {
 
     if (Q.republicans_schleicher < 6) {
         Q.schleicher_approval_decay += 0.05;
-        if (Q.weimar_votes < 20) Q.schleicher_approval_decay += 0.01;
-        if (Q.weimar_votes < 30) Q.schleicher_approval_decay += 0.01;
-        if (Q.weimar_votes < 40) Q.schleicher_approval_decay += 0.01;
+        if (Q.weimar_votes < 20) Q.schleicher_approval_decay -= 0.01;
+        if (Q.weimar_votes < 30) Q.schleicher_approval_decay -= 0.01;
+        if (Q.weimar_votes < 40) Q.schleicher_approval_decay -= 0.01;
     }
     if (Q.republicans_schleicher < 4) {
         Q.schleicher_approval_decay += 0.05;
-        if (Q.weimar_votes < 20) Q.schleicher_approval_decay += 0.01;
-        if (Q.weimar_votes < 30) Q.schleicher_approval_decay += 0.01;
-        if (Q.weimar_votes < 40) Q.schleicher_approval_decay += 0.01;
+        if (Q.weimar_votes < 20) Q.schleicher_approval_decay -= 0.01;
+        if (Q.weimar_votes < 30) Q.schleicher_approval_decay -= 0.01;
+        if (Q.weimar_votes < 40) Q.schleicher_approval_decay -= 0.01;
     }
     if (Q.republicans_schleicher < 2) {
         Q.schleicher_approval_decay += 0.1;
-        if (Q.weimar_votes < 20) Q.schleicher_approval_decay += 0.02;
-        if (Q.weimar_votes < 30) Q.schleicher_approval_decay += 0.02;
-        if (Q.weimar_votes < 40) Q.schleicher_approval_decay += 0.02;
+        if (Q.weimar_votes < 20) Q.schleicher_approval_decay -= 0.02;
+        if (Q.weimar_votes < 30) Q.schleicher_approval_decay -= 0.02;
+        if (Q.weimar_votes < 40) Q.schleicher_approval_decay -= 0.02;
     }
 
     if (Q.nationalists_schleicher < 6) {
         Q.schleicher_approval_decay += 0.05;
-        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay += 0.025;
+        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay -= 0.025;
     }
     if (Q.nationalists_schleicher < 4) {
         Q.schleicher_approval_decay += 0.05;
-        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay += 0.025;
+        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay -= 0.025;
     }
     if (Q.nationalists_schleicher < 2) {
         Q.schleicher_approval_decay += 0.05;
-        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay += 0.025;
+        if (Q.nationalist_votes < 15) Q.schleicher_approval_decay -= 0.025;
     }
     Q.schleicher_approval -= Q.schleicher_approval_decay;
 }
@@ -589,6 +629,12 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
         }
         if (Q.z_leader == "Bracht") Q.bracht_time += 1;
         if (Q.reichstag_joever) Q.reichstag_joever_time += 1;
+    } else if (Q.chancellor == "Bredow") {
+        Q.bredow_time += 1;
+    } else if (Q.chancellor == "Goerdeler") {
+        Q.goerdeler_time += 1;
+    } else if (Q.chancellor == "Treviranus") {
+        Q.treviranus_time += 1;
     }
     if (Q.state_paramilitary && Q.dnef_formed && !Q.streetfighting_joever) {
         if (Q.state_paramilitary_highest) {

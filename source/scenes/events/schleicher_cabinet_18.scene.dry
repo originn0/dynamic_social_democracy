@@ -1,0 +1,40 @@
+title: Schleicher's Health Deteriorates
+subtitle: The chancellor only has a few months left.
+view-if: year >= 1934 and month >= 2 and chancellor == "Schleicher" and schleicher_post
+on-arrival: schleicher_dead = 1; schleicher_successor_time = rubicon_time + 1
+max-visits: 1
+new-page: true
+tags: event
+face-image: img/portraits/schleicher_stare.jpg
+
+= Schleicher's Health Deteriorates
+
+Unbeknownst to the public, Schleicher has been suffering from pernicious anemia for several years. As early as 1930, his family doctor warned him that, given the stress and heavy responsibilities of his career, he likely had no more than six years to live. Now, with the added strain of the chancellorship, those who interact with him have begun to notice his steady decline into lethargy. He may only have a few months left.
+
+In a public announcement, Schleicher announces his resignation, stating that he will soon handpick a successor to be appointed by Hindenburg. He never truly enjoyed the role, and in recent months has quietly delegated his duties to trusted allies in the Reichswehr, grooming them to take his place.
+
+The question now: who will carry forward Schleicher's legacy?
+
+- @schleicher_dead
+
+@schleicher_dead
+title: Schleicher isn't the only one in bad health.
+subtitle: President Hindenburg will not survive the year as well.
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/portraits/hindenburg_dead.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+President Hindenburg, now 86, is reportedly stricken with numerous ailments—bladder cancer, heart disease, and other suspected conditions kept from the public eye. Bedridden at his Neudeck estate, he requires constant care.
+
+Two men of a fading generation are nearing their end.
+
+- @root: Hooray...?

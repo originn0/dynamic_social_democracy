@@ -1,0 +1,44 @@
+title: Schleicher Resigns!
+subtitle: Hindenburg is dissatisfied with the chancellor.
+view-if: chancellor == "Schleicher" and schleicher_post and schleicher_pause
+face-image: img/portraits/schleicher_stare.jpg
+max-visits: 1
+new-page: true
+tags: event
+
+= Schleicher Resigns!
+
+Hindenburg is beyond furious that Schleicher—head of the Reichswehr and the man who repeatedly assured the President of the army's power to crush any threat from the <span style="color: #700000;">**Communists**</span>—has now capitulated to our demands to lift the ban on the <span style="color: #700000;">**KPD**</span>.
+
+With his faith in the Reichswehr shattered, he has turned back to his old allies among the <span style="color: #3E88B3;">nationalists</span>. And with the bar set so low, perhaps this is a blessing to us. Though they remain our enemies, as they were in the days of normalcy, whoever Hindenburg selects now is likely to be preferable to Schleicher’s continued hold on office.
+
+- @treviranus
+
+@treviranus
+title: Kuno von Westarp -[? if dnvp_ideology == "Radical":&nbsp;Former?] <span style="color: #3E88B3;">**DNVP**</span>
+subtitle: Hindenburg's preferred choice once again, and [? if dnvp_leader != "Westarp":former?] <span style="color: #3E88B3;">**DNVP**</span> party leader.
+face-image: img/portraits/Treviranus.jpg
+on-arrival: {!
+Q.chancellor = "Treviranus";
+Q.schleicher_approval -= 4;
+
+if (Q.dnvp_ideology == "Radical" && !Q.kvp_formed) {
+    Q.treviranus_party = "DNEF";
+} else if (Q.dnvp_ideology == "Radical" && Q.kvp_formed) {
+    Q.treviranus_party = "KVP";
+} else if (Q.dnvp_ideology == "Moderate") {
+    Q.treviranus_party = "DNVP";
+}
+
+Q.chancellor_party = Q.treviranus_party;
+
+Q.schleicher_spd_r -= 3;
+Q.schleicher_spd_influence -= 4;
+Q.schleicher_spd_support -= 5;
+!}
+
+Westarp, despite being once again begged by an older and increasingly sick Hindenburg, has declined the offer. Instead, he recommends the appointment of rising star and <span style="color: #0087DC;">Volkskonservativ</span> leader Gottfried Treviranus. With deep ties to German industry, the Right, and a pseudo-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> veneer, Treviranus is a candidate aimed at stabilizing Germany’s worsening crisis.
+
+Much like Papen’s dismissal in favor of Schleicher, the political class breathes yet another sigh of relief. Even within the <span style="color: #c00000;">**SPD**</span>, many find it easier to confront the devil they know rather than face Schleicher’s dynamic and unpredictable rule.
+
+Treviranus will seek to construct a working majority via parliament.

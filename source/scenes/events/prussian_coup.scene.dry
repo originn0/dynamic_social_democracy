@@ -33,7 +33,7 @@ The Reichswehr are already on the streets of Berlin, with a national force of a 
 - @surrender
 
 @defend_2
-view-if: nsdap_votes >= 25 and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and spd_votes < 26 and rb_militancy < 0.3
+view-if: (nsdap_votes >= 25 or rb_militancy < 0.2) and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and (spd_votes < 26 or rb_militancy < 0.2) and rb_militancy < 0.3
 on-arrival: {!
 
 Q.sa_force_prussia = Q.sa_strength*Q.sa_militancy;
@@ -85,7 +85,7 @@ Our forces confront the government troops and their supporters on the streets of
 - @civil_war: It is a civil war.
 
 @defend_3
-view-if: not (nsdap_votes >= 25 and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and spd_votes < 26 and rb_militancy < 0.3)
+view-if: not ((nsdap_votes >= 25 or rb_militancy < 0.2) and ((reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)) < rb_strength*rb_militancy) and (spd_votes < 26 or rb_militancy < 0.2) and rb_militancy < 0.3)
 on-arrival: papen_strength -= 1; hindenburg_papen_r -= 1; pro_republic += 5
 
 Papen has backed down without a fight! With Severing and the Prussian government standing firm, declaring they would only respond to force, Papen has refused to press ahead with his plan, unwilling to risk civil war. Hindenburg is reportedly displeased with Papen's weakness but believes another opportunity will come soon.

@@ -74,6 +74,7 @@ Yet only a handful of fanatics remain in this rump organization, while the "tame
 on-arrival: {!
 Q.z_minus_bvp_votes = parseFloat((Q.z_votes - Q.bvp_votes).toFixed(1));
 Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
+if (Q.bvp_r == Q.z_r) Q.z_minus_bvp_r = 0;
 !}
 on-display: {!
 data = [{
@@ -128,13 +129,16 @@ if (Q.lvp_r && Q.lvp_formed) {
     });
 }
 
-if (Q.z_r) {
+if (Q.z_minus_bvp_r) {
     data.push({
         "id": "z",
         "legend": "Center",
         "name": "Center",
         "seats": Math.round(Q.z_minus_bvp_r * 5),
     });
+}
+
+if (Q.bvp_r) {
     data.push({
         "id": "bvp",
         "legend": "BVP",

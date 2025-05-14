@@ -345,7 +345,7 @@ The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichst
 @rights
 title: Demand the above, and [? if not reichstag_fire_decree_schleicher: also guarantees for democratic rights?][? if reichstag_fire_decree_schleicher: a repeal of the Reichstag Fire Decree?].
 unavailable-subtitle: Not enough leverage.
-choose-if: spd_win and total_r_alt_2 >= 50
+choose-if: spd_win and total_r_alt_2 >= 35
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
@@ -412,9 +412,9 @@ The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichst
 @schemes
 title: Demand the above, and also guarantees for the continued independence of political organizations.
 subtitle: Including the <span style="color: #700000;">**KPD**</span>.
-unavailable-subtitle: [? if not spd_win or total_r_alt_2 < 66: Not enough leverage. ?][? if pro_republic < 50 and weimar_votes < 45 or reichstag_fire_decree_schleicher: Schleicher is dead-set on banning the <span style="color: #700000;">Communists</span>. ?]
+unavailable-subtitle: [? if not spd_win or total_r_alt_2 < 50: Not enough leverage. ?][? if pro_republic < 50 and weimar_votes < 45 or reichstag_fire_decree_schleicher: Schleicher is dead-set on banning the <span style="color: #700000;">Communists</span>. ?]
 view-if: dnef_formed
-choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt_2 >= 66 and not reichstag_fire_decree_schleicher
+choose-if: spd_win and (pro_republic >= 50 or weimar_votes >= 45) and total_r_alt_2 >= 50 and not reichstag_fire_decree_schleicher
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;

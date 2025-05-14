@@ -1,0 +1,65 @@
+title: Schleicher's Announces His Successor
+view-if: year >= 1934 and month >= 2 and chancellor == "Schleicher" and schleicher_post and schleicher_successor_time == rubicon_time
+on-arrival: {!
+Q.schleicher_resign = 1;
+Q.goerdeler_dnef_unlock = 0;
+Q.bredow_unlock = 0;
+
+if (Q.nationalists_schleicher >= 10 || Q.nationalists_schleicher >= 8 && Q.schleicher_spd_influence < 5 && Q.schleicher_spd_r < 5) Q.goerdeler_dnef_unlock = 1;
+if (!Q.goerdeler_dnef_unlock) Q.bredow_unlock = 1;
+!}
+max-visits: 1
+new-page: true
+tags: event
+
+= Schleicher's Successor
+
+With his resignation announced last week, speculation over who will succeed the monumental leader now dominates the minds of citizens across the nation. Some believe he is prepared to pass power to a civilian, while others expect another military man to take the helm. In the end, it hardly matters—Germany has been changed forever.
+
+- @goerdeler
+- @bredow
+
+@goerdeler
+title: Carl Friedrich Goerdeler - <span style="color: #BFC8CC;">**DNEF**</span>
+subtitle: Former <span style="color: #3E88B3;">nationalist</span> mayor of Leipzig. Strong conservative.
+face-image: img/portraits/goerdeler.jpg
+choose-if: goerdeler_dnef_unlock
+on-arrival: {!
+Q.chancellor = "Goerdeler";
+Q.dnef_leader = "Goerdeler";
+Q.dnef_right += 5;
+Q.schleicher_approval -= 5;
+
+Q.schleicher_spd_r -= 5;
+Q.schleicher_spd_influence -= 5;
+Q.schleicher_spd_support -= 6; 
+!}
+
+Goerdeler, an outspoken conservative on the German Right, with personal authoritarian and monarchist leanings, represents Schleicher’s signal of a return to partisan rule in essence. Despite breaking with his former party to join the <span style="color: #BFC8CC;">**DNEF**</span>, his appointment is seen by workers and <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> as little different from naming a <span style="color: #3E88B3;">**DNVP**</span> man.
+
+Yet, the fact that he is not a military figure like Schleicher or his circle has brought some measure of relief. Though a long-time opponent of Alfred Hugenberg and his faction, Goerdeler remains a conservative at heart and is expected to continue the dismantling of the despised <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> order.
+
+But Goerdeler is no Schleicher. He lacks the vast network of political ties that his patron carefully cultivated across German society, and Schleicher’s personal popularity has failed to pass to his chosen successor. Moreover, Goerdeler is known for his hardline fiscal conservatism and anti-<span style="color: #c00000;">social</span> stance, having once called for the abolition of unemployment insurance during the Papen era.
+
+Perhaps the house of cards Schleicher so carefully built is already beginning to wobble.
+
+@bredow
+title: Ferdinand von Bredow - <span style="color: #BFC8CC;">**DNEF**</span>
+subtitle: Deputy Defense Minister. Ideology suspected to be similar to Schleicher's.
+face-image: img/portraits/bredow.jpg
+choose-if: bredow_unlock
+on-arrival: {!
+Q.chancellor = "Bredow";
+Q.dnef_leader = "Bredow";
+Q.schleicher_approval -= 4;
+
+Q.schleicher_spd_r -= 3;
+Q.schleicher_spd_influence -= 4;
+Q.schleicher_spd_support -= 5; 
+!}
+
+Presenting himself as a continuation of Schleicher and as another non-partisan military man, von Bredow has won his close friend Schleicher's favor. Although former chancellor Schleicher is officially retired, he still pulls many strings behind the scenes, unwilling to give up that scheming of his. 
+
+However, von Bredow is certainly no Schleicher, he possesses no vast network of political connections throughout all walks of life, and Schleicher's personal popularity has largely failed to transfer over to his hand picked successor.
+
+Perhaps the house of cards Schleicher has carefully built will come tumbling down?

@@ -1,165 +1,261 @@
+title: The <span style="color: #BFC8CC;">**DNEF**</span> Falls Apart!
+subtitle: Without Schleicher, the <span style="color: #BFC8CC;">**DNEF**</span> is nothing.
+view-if: chancellor == "Treviranus" and dnef_formed
+max-visits: 1
+new-page: true
+tags: event
+
+= The <span style="color: #BFC8CC;">**DNEF**</span> Falls Apart!
+
+With Schleicher resigning in shame, the <span style="color: #BFC8CC;">**DNEF**</span> no longer has a god-like figure to rally around. The factions and politicians once held together by his influence have now decided it is best to go their separate ways.
+
+The <i>Blocparteis</i> are freed, and the bulk of the organization — those not drawn from their ranks — has splintered off in different directions. The right-wing, more nationalist section has salvaged the party's national structures and will continue on by merging into the [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?], now rallying behind Treviranus.
+
+The more left-leaning—and quite frankly, eccentric—elements of the movement have formed a new <span style="color: #fe9e00;">Old Social Democratic Party</span> (<span style="color: #fe9e00;">**ASPD**</span>), grounded in class collaboration, nationalism, and laborism. They call for a "Volksocialism", whatever that means.
+
+We cannot expect much cooperation from this group. Yet, oddly enough, the two splinter factions have found common ground—agreeing to tolerate, and even participate in, the Treviranus cabinet.
+
+- @dnef_collapse
+
+@dnef_collapse
+title: This calls for celebration!
 on-arrival: {!
+Q.dnef_collapse = 1;
+Q.dnef_formed = 0;
 
-Q.dnef_formed = 1;
-Q.dnef_existed = 1;
-Q.parties.push('dnef');
-Q.parties_graph.push('dnef');
+Q.parties = Q.parties.filter(party => party !== 'dnef');
 
-Q.workers_dnef = 7;
-Q.workers_dnef += ((100 - Q.pro_republic) / 10);
-Q.workers_dnef += (Q.nationalism / 10);
-if (!Q.unions_independent) {
-    Q.workers_dnef += Q.labor_dissent / 5;
-    Q.workers_spd -= Q.labor_dissent / 5;
-} else {
-    Q.workers_dnef += 6;
-}
-Q.workers_dnvp -= 2;
-Q.workers_dnef += Q.workers_dnef_bonus;
+if (!Q.kvp_formed && Q.dnvp_ideology == "Radical") {
+    Q.kvp_formed = 1;
+    Q.parties.push('kvp');
+    Q.parties_graph.push('kvp');
 
-Q.new_middle_dnef = 20;
-Q.new_middle_dnvp -= 6;
-Q.new_middle_dvp -= 2;
-Q.new_middle_lvp -= 2;
-Q.new_middle_kvp -= 2;
-Q.new_middle_dnf -= 2;
-Q.new_middle_dnef += Q.reformist_dissent / 10;
-Q.new_middle_z -= 2;
-Q.new_middle_spd -= Q.reformist_dissent / 10;
-Q.new_middle_dnef += Q.new_middle_dnef_bonus;
+    Q.workers_kvp = 5;
+    Q.workers_dnvp -= 3
+    Q.workers_other -= 2
 
-Q.old_middle_dnef = 25;
-Q.old_middle_dnvp -= 14;
-Q.old_middle_dnf -= 6;
-Q.old_middle_dvp -= 4;
-Q.old_middle_lvp -= 4;
-Q.old_middle_z -= 2;
-Q.old_middle_spd -= 4;
-Q.old_middle_dnef += Q.old_middle_dnef_bonus;
+    Q.new_middle_kvp = 10;
+    Q.new_middle_dnvp -= 4;
+    Q.new_middle_other -= 6;
 
-Q.rural_dnef = 12;
-Q.rural_dnvp -= 6;
-Q.rural_dnf -= 2;
-Q.rural_dvp -= 2;
-Q.rural_lvp -= 2;
-Q.rural_z -= 2;
-Q.rural_spd -= 2;
-Q.rural_dnef += Q.rural_dnef_bonus;
+    Q.old_middle_kvp = 12;
+    Q.old_middle_dnvp -= 4;
+    Q.old_middle_other -= 8;
 
-Q.unemployed_dnef = 14;
-Q.unemployed_nsdap -= 4;
-Q.unemployed_dnvp -= 2;
-Q.unemployed_dnf -= 2;
-if (!Q.unions_independent) {
-    Q.unemployed_dnef += Q.labor_dissent / 4;
-    Q.unemployed_spd -= Q.labor_dissent / 4;
-} else {
-    Q.unemployed_dnef += 4;
-}
-Q.unemployed_dnef += Q.unemployed_dnef_bonus;
+    Q.rural_kvp = 15;
+    Q.rural_dnvp -= 5;
+    Q.rural_other -= 10;
 
-Q.catholics_dnef = 8;
-Q.catholics_z -= 4;
-Q.catholics_nsdap -= 2;
-Q.catholics_spd -= 2;
-Q.catholics_dnef += Q.catholics_dnef_bonus;
+    Q.unemployed_kvp = 0;
 
-if (Q.dnvp_ideology == "Radical") {
-    Q.new_middle_dnvp *= 0.8;
-    Q.old_middle_dnvp *= 0.8;
-    Q.rural_dnvp *= 0.9;
-    Q.new_middle_dnef += 4;
-    Q.old_middle_dnef += 6;
-    Q.rural_dnef += 4;
+    Q.catholics_kvp = 4;
+    Q.catholics_dnvp -= 2;
+    Q.catholics_other -= 2;
+
+    Q.kvp_r = Math.round((Q.dnvp_r / 2 + 1) * 10) / 10;
+    Q.dnvp_r = Math.round((Q.dnvp_r - Q.kvp_r) * 10) / 10;
+    Q.kvp_r_prussia = Math.round((Q.dnvp_r_prussia / 2 + 2) * 10) / 10;
+    Q.dnvp_r_prussia = Math.round((Q.dnvp_r_prussia - Q.kvp_r_prussia) * 10) / 10;
+    Q.kvp_relation = 10;
+
+    Q.old_workers_kvp_display = 0;
+    Q.old_new_middle_kvp_display = 0;
+    Q.old_old_middle_kvp_display = 0;
+    Q.old_rural_kvp_display = 0;
+    Q.old_unemployed_kvp_display = 0;
+    Q.old_catholics_kvp_display = 0;
+
+    for (var record of Q.election_records) {
+        record['kvp'] = 0;
+    }
+    for (var record of Q.party_support_records) {
+        record['kvp'] = 0;
+    }
 }
 
-if (Q.total_dnef_bonus) {
-    Q.workers_dnef -= Q.total_dnef_bonus;
-    Q.new_middle_dnef -= Q.total_dnef_bonus;
-    Q.old_middle_dnef -= Q.total_dnef_bonus;
-    Q.rural_dnef -= Q.total_dnef_bonus;
-    Q.unemployed_dnef -= Q.total_dnef_bonus;
-    Q.catholics_dnef -= Q.total_dnef_bonus;
+Q.workers_spd += 6;
+Q.workers_nsdap += 4;
+Q.workers_z += 2;
+Q.unemployed_spd += 6;
+Q.unemployed_nsdap += 4;
+
+Q.new_middle_ddp += 2;
+Q.new_middle_dvp += 2;
+Q.new_middle_lvp += 4;
+
+Q.workers_other += 2;
+Q.new_middle_other += 2;
+Q.old_middle_other += 2;
+Q.rural_other += 2;
+Q.catholics_other += 2;
+
+if (Q.dnvp_ideology == "Moderate") {
+    Q.workers_dnvp += 4;
+    Q.new_middle_dnvp += 6;
+    Q.old_middle_dnvp += 6;
+    Q.rural_dnvp += 4;
+    Q.unemployed_dnvp += 2;
+    Q.catholics_dnvp += 4;
+    Q.aspd_other = 1;
+    Q.workers_other += 10;
+    Q.unemployed_other += 6;
+} else if (Q.dnvp_ideology == "Radical") {
+    Q.workers_kvp += 4;
+    Q.new_middle_kvp += 8;
+    Q.old_middle_kvp += 8;
+    Q.rural_kvp += 4;
+    Q.unemployed_kvp += 2;
+    Q.catholics_kvp += 4;
+    Q.aspd_kvp = 1;
+    Q.workers_kvp += 10;
+    Q.unemployed_kvp += 6;
 }
 
-Q.workers_other *= 0.8;
-Q.workers_dnef += Q.workers_other*0.2;
-if (Q.csvd_formed) {
-    Q.workers_dnef += Q.workers_other*0.6;
-    Q.workers_other *= 0.4;
+Q.catholics_z += 4;
+
+Q.pro_republic += 15;
+
+if (Q.dstp_dnef) {
+    Q.ddp_r = Q.ddp_r_last;
+    Q.ddp_relation = Q.pro_republic;
+    if (Q.ddp_ideology == "Left" || Q.ddp_ideology == "Moderate") Q.ddp_relation += 20;
+    if (Q.ddp_relation < 30) Q.ddp_relation = 30;
+    Q.dstp_dnef = 0;
 }
-Q.new_middle_dnef += Q.new_middle_other*0.8;
-Q.new_middle_other *= 0.2;
-Q.old_middle_dnef += Q.old_middle_other*0.8;
-Q.old_middle_other *= 0.2;
-Q.rural_dnef += Q.rural_other*0.6;
-Q.rural_other *= 0.4;
+if (Q.lvp_dnef) {
+    Q.lvp_r = Q.lvp_r_last;
+    Q.lvp_relation = Q.pro_republic - 10;
+    if (Q.lvp_ideology == "Left" || Q.lvp_ideology == "Moderate") Q.lvp_relation += 10;
+    if (Q.lvp_relation < 30) Q.lvp_relation = 30;
+    Q.lvp_dnef = 0;
+}
+if (Q.kvp_dnef) {
+    Q.kvp_r = Q.kvp_r_last;
+    Q.kvp_relation = 10;
+    Q.kvp_dnef = 0;
+}
+if (Q.dvp_dnef) {
+    Q.dvp_r = Q.dvp_r_last;
+    Q.dvp_relation = 20;
+    Q.dvp_dnef = 0;
+}
+if (Q.z_dnef) {
+    Q.z_r = Q.z_r_last;
+    Q.bvp_r = Q.bvp_r_last;
+    Q.pro_republic = 30;
+    Q.z_dnef = 0;
+}
+if (Q.other_dnef) {
+    Q.other_r = Q.other_r_last;
+    Q.other_dnef = 0;
+}
+if (Q.dnvp_dnef) {
+    Q.dnvp_r = Q.dnvp_r_last;
+    Q.dnvp_dnef = 0;
+}
+if (Q.nvf_dnef) {
+    Q.nvf_r = Q.nvf_r_last;
+    Q.nvf_dnef = 0;
+}
+
+if (Q.dnef_r) {
+    if (Q.dnvp_ideology == "Radical") {
+        Q.kvp_r += Q.dnef_r;
+    } else if (Q.dnvp_ideology == "Moderate") {
+        Q.dnvp_r += Q.dnef_r*0.6;
+        Q.other_r += Q.dnef_r*0.4;
+    }
+}
+Math.round(Q.kvp_r * 10) / 10;
+Math.round(Q.dnvp_r * 10) / 10;
+Math.round(Q.aspd_r * 10) / 10;
+Math.round(Q.other_r * 10) / 10;
 
 Q.dnef_r = 0;
-Q.dnef_r_prussia = 0;
-Q.dnef_relation = Q.schleicher_spd_r*5
-if (Q.dnef_relation > 50) Q.dnef_relation = 50;
 
-Q.dnef_ideology = "Moderate";
-Q.dnef_left = 0;
-Q.dnef_right = 0;
-Q.dnef_leader = "Schleicher";
+Q.previous_aspd_last_election_votes = 0;
+Q.old_aspd_r = 0;
 
-if (Q.dnef_right > (Q.dnef_left + 3)) {
-    Q.dnef_ideology = "Right"
-} else if (Q.dnef_left > (Q.dnef_right + 3)) {
-    Q.dnef_ideology = "Left"
-} else {
-    Q.dnef_ideology = "Moderate"
-}
 
-if (Q.dstp_maintained) {
-    Q.dstp_dnef = 1;
-
-    Q.pro_republic -= Q.ddp_votes;
-
-    Q.ddp_relation = Q.dnef_relation;
-
-    Q.dnef_r += Q.ddp_r;
-    Q.ddp_r = 0;
-
-    Q.ddp_leader = "Mahraun";
-}
-
-if (Q.kvp_formed && Q.schleicher_kvp) {
-    Q.kvp_dnef = 1;
-
-    Q.pro_republic -= Q.kvp_votes;
-
-    Q.kvp_relation = (Q.dnef_relation/2);
-
-    Q.dnef_r += Q.kvp_r;
-    Q.kvp_r = 0;
-}
-
-Q.other_dnef = 1;
-
-Q.pro_republic -= Q.other_votes;
-
-Q.dnef_r += Q.other_r;
-Q.other_r = 0;
-
-if (Q.dnef_formed) {
-    if (Q.dnef_ideology != "Left") {
-        Q.industrial_dnef_backing = 4;
-    } else {
-        Q.industrial_dnef_backing = 3;
+for (var c of Q.classes) {
+    var class_votes = 0;
+    for (var party of Q.parties) {
+        if (Q[c+'_'+party] < 0) {
+            Q[c+'_'+party] = 0;
+        }
+        class_votes += Q[c+'_'+party];
     }
-} else {
-    Q.industrial_dnef_backing = 0;
+    for (var party of Q.parties) {
+        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
+        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+    }
+}
+// calculate support for each of the parties
+var total_support = 0; 
+for (var party of Q.parties) {
+    var party_support = 0;
+    for (var c of Q.classes) {
+        if (Q.old_demographics) { 
+            party_support += Q[c]*Q[c+'_'+party];
+        } else  { 
+            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
+        } 
+    }
+    Q[party + '_support'] = party_support;
+    total_support += party_support; 
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_normalized = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_normalized += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_normalized += Q.catholics_nsdap_normalized*Q.catholics;
+
+        if (Q.dsu_exist && !Q.nvf_exist) {
+            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+        } else if (!Q.dsu_exist && Q.nvf_exist) {
+            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_normalized += Q.new_middle_nsdap*Q.new_middle;
+        } else if (Q.dsu_exist && Q.nvf_exist) {
+            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+
+            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+        } else {
+            Q.nsdap_hitler_normalized += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_normalized += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_normalized += Q.new_middle_nsdap*Q.new_middle;
+        }
+    }
+}
+// 2. normalize support (fraction)
+for (var party of Q.parties) {
+    Q[party+'_normalized'] = Q[party + '_support']/total_support;
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_votes = Math.round((Q.nsdap_hitler_normalized / total_support) * 1000 / 10);
+        Q.dsu_votes = Math.round((Q.dsu_normalized / total_support) * 1000 / 10);
+        Q.nvf_votes = Math.round((Q.nvf_normalized / total_support) * 1000 / 10);
+    }
+    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
 }
 
-Q.old_workers_dnef_display = 0
-Q.old_new_middle_dnef_display = 0
-Q.old_old_middle_dnef_display = 0
-Q.old_rural_dnef_display = 0
-Q.old_unemployed_dnef_display = 0
-Q.old_catholics_dnef_display = 0
+if (Q.z_leader == "Bracht") {
+    Q.old_z_leader = Q.z_leader;
+    Q.z_leader = "Stegerwald";
+    Q.workers_z += 6;
+    Q.unemployed_z += 4; 
+    Q.new_middle_z += 4;
+    Q.old_middle_z -= 2; 
+    Q.rural_z -= 2; 
+    Q.catholics_z -= 8;
+    Q.catholics_spd += 2;
+    if (Q.dnvp_ideology == "Moderate") Q.catholics_dnvp += 2;
+    if (Q.dnvp_ideology == "Radical") Q.catholics_kvp += 2;
+    Q.catholics -= 5;
+    Q.z_relation += 30;
+}
 
 if (Q.lvp_formed) {
     Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
@@ -359,11 +455,10 @@ if (Q.dnef_formed) {
 if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
     Q.weimar_coalition_prussia += Q.sapd_r_prussia;
 }
-
-for (var record of Q.election_records) {
-    record['dnef'] = 0;
-}
-for (var record of Q.party_support_records) {
-    record['dnef'] = 0;
-}
 !}
+
+Westarp, despite being once again begged by an older and increasingly sick Hindenburg, has declined the offer. Instead, he recommends the appointment of rising star and <span style="color: #0087DC;">Volkskonservativ</span> leader Gottfried Treviranus. With deep ties to German industry, the Right, and a pseudo-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> veneer, Treviranus is a candidate aimed at stabilizing Germany’s worsening crisis.
+
+Much like Papen’s dismissal in favor of Schleicher, the political class breathes yet another sigh of relief. Even within the <span style="color: #c00000;">**SPD**</span>, many find it easier to confront the devil they know rather than face Schleicher’s dynamic and unpredictable rule.
+
+[? if old_z_leader == "Bracht": Bracht has also been ousted, his benefactor now gone from politics. Stegerwald has taken his place, but with few resources, he has little ability to expand the party beyond its Catholic base. ?] Treviranus will seek to construct a working majority via parliament.

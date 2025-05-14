@@ -106,6 +106,7 @@ title: We should be grateful that nothing happened to us!
 on-arrival: {!
 Q.z_minus_bvp_votes = parseFloat((Q.z_votes - Q.bvp_votes).toFixed(1));
 Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
+if (Q.bvp_r == Q.z_r) Q.z_minus_bvp_r = 0;
 !}
 on-display: {!
 data = [{
@@ -160,19 +161,23 @@ if (Q.lvp_r && Q.lvp_formed) {
     });
 }
 
-data = data.concat([{
+if (Q.z_minus_bvp_r) {
+    data.push({
         "id": "z",
         "legend": "Center",
         "name": "Center",
         "seats": Math.round(Q.z_minus_bvp_r * 5),
-    },
-    {
+    });
+}
+
+if (Q.bvp_r) {
+    data.push({
         "id": "bvp",
         "legend": "BVP",
         "name": "BVP",
         "seats": Math.round(Q.bvp_r * 5),
-    }
-]);
+    });
+}
 
 if (Q.dvp_r && !Q.lvp_formed && Q.dvp_exist) {
     data.push({
@@ -504,6 +509,7 @@ Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span
 The next few days will be chaotic—and decisive for Germany as a whole.
 
 - @z_break
+- @schleicher_cabinet_13_pre_pre
 
 @spd_med
 title: Schleicher attempts to negotiate with us.
@@ -549,6 +555,7 @@ Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span
 However, perhaps we have overestimated our strength—strikes rarely last with unemployment so high, especially with Schleicher’s sympathizers embedded within the unions themselves.
 
 - @z_break
+- @schleicher_cabinet_13_pre_pre
 
 @spd_lose
 title: Our protests are ineffective.
@@ -592,6 +599,13 @@ The ongoing negotiations to bring the <span style="color: #000000;">Center Party
 @schleicher_cabinet_13_pre
 title: Schleicher's Turn to Play
 subtitle: Will the general hold firm?
+go-to: schleicher_cabinet_13
+
+
+@schleicher_cabinet_13_pre_pre
+title: Schleicher's Turn to Play
+subtitle: Will the general hold firm?
+view-if: not z_against_schleicher
 go-to: schleicher_cabinet_13
 
 

@@ -1,6 +1,6 @@
 title: Relations with the Red General
 on-arrival: month_actions += 1; red_general_timer += 4 if not schleicher_spd_adopted; red_general_timer += 6 if schleicher_spd_adopted; red_general_timer -= 2 if chancellor == "Schleicher"
-view-if: rubicon and red_general_unlock and red_general_timer <= 0 and not schleicher_fight
+view-if: (rubicon and red_general_unlock and red_general_timer <= 0 and not schleicher_fight) and not schleicher_dead
 card-image: img/portraits/schleicher.jpg
 is-card: true
 new-page: true
@@ -23,7 +23,7 @@ While the <span style="color: #c00000;">**SPD**</span> remains steadfast in its 
 subtitle: The unions have firmly decided, but convincing the party is a whole another matter.
 unavailable-subtitle: The pro-Schleicher factions aren't strong enough to have an impact on ADGB policy.
 view-if: schleicher_spd_support >= 10
-choose-if: labor_strength + reformist_strength >= (center_strength*1.5) + left_strength
+choose-if: labor_strength + reformist_strength + social_patriot_strength >= (center_strength*1.5) + left_strength
 on-arrival: schleicher_spd_adopted = 1; schleicher_spd_r += 1 if schleicher_spd_r < 5; center_dissent += 5; left_dissent += 10; labor_strength += 10; reformist_strength += 5; schleicher_approval += 2
 max-visits: 1
 
@@ -35,7 +35,7 @@ Gradually, a shift in opinion is becoming visible within the party. Otto Braun h
 subtitle: [? if chancellor == "Papen": It's almost impossible to argue to the party to pursue this line, at least with Papen as chancellor. ?][? if chancellor == "Schleicher": Cooperation with the General himself is not unthinkable, with his concessions made toward the unions. ?]
 unavailable-subtitle: The pro-Schleicher factions aren't strong enough to have an impact on ADGB policy.
 view-if: schleicher_spd_support < 10
-choose-if: labor_strength + reformist_strength >= (center_strength*1.5) + left_strength
+choose-if: labor_strength + reformist_strength + social_patriot_strength >= (center_strength*1.5) + left_strength
 on-arrival: schleicher_spd_support += 3; schleicher_spd_support += 1 if wtb_adopted; schleicher_spd_support -= 1 if chancellor == "Papen"; schleicher_spd_support -= 1 if otl_prussian_coup_seen; workers_spd -= 1; unemployed_spd -= 1; workers_kpd += 1; unemployed_kpd += 1; center_dissent += 5; left_dissent += 5
 
 Slowly but surely, the ADGB leadership is beginning to warm to the idea of constructive cooperation with the so-called "Red General." However, much work remains to be done—many within the union, and the overwhelming majority of the <span style="color: #c00000;">**SPD**</span>, remain firmly opposed to cooperating with the man [? if chancellor == "Papen": propping up the widely despised Papen cabinet?][? if chancellor == "Schleicher": who now heads a widely unpopular government?]. [? if wtb_adopted: Our adoption of the WTB Plan—and Schleicher’s public support for similar public works initiatives—has modestly increased the party’s willingness to consider cooperation. ?]
@@ -63,7 +63,7 @@ Regular secret meetings between the ADGB, the <span style="color: #c00000;">**SP
 
 @schleicher_distance
 subtitle: We will sideline his sympathizers.
-on-arrival: schleicher_spd_r -= 1; schleicher_spd_support -= 2; schleicher_spd_influence -= 1; labor_dissent += 8; reformist_dissent += 8; center_dissent -= 5; left_dissent -= 5; neorevisionist_dissent -= 5; reformist_strength -= 4; labor_strength -= 4
+on-arrival: schleicher_spd_r -= 1; schleicher_spd_support -= 2; schleicher_spd_influence -= 1; labor_dissent += 8; reformist_dissent += 8; social_patriot_dissent += 8; center_dissent -= 5; left_dissent -= 5; neorevisionist_dissent -= 5; reformist_strength -= 4; labor_strength -= 4; social_patriot_strength -= 4
 
 In recent months, Schleicher has gained significant sympathizers within the Reformist and Labor factions of the <span style="color: #c00000;">**SPD**</span>. Sidelining them would provoke Schleicher’s distrust and stir dissent within their factions affected.
 
@@ -104,7 +104,7 @@ subtitle: Push for higher wages, the repeal of Papen’s decrees, and the restor
 unavailable-subtitle: [? if schleicher_spd_r < 5: We must improve our relations with Schleicher first. ?][? if hindenburg_schleicher_r < 3: Schleicher insists Hindenburg would block such a decree, unwilling to undo Papen’s measures. ?]
 choose-if: schleicher_spd_r >= 5 and hindenburg_schleicher_r >= 3
 view-if: not schleicher_labor
-on-arrival: schleicher_spd_concession = 1; schleicher_labor = 1; schleicher_spd_influence += 4; schleicher_spd_support += 2; schleicher_spd_r -= 2; hindenburg_schleicher_r -= 1; unemployed -= 1.8; economic_growth += 0.8; inflation += 1.4; budget -= 1; workers_kpd -= 6; unemployed_kpd -= 6; workers_nsdap -= 2; unemployed_nsdap -= 2; workers_spd += 6; unemployed_spd += 6; workers_z += 2; unemployed_z += 2; workers_dnef += 4; unemployed_dnef += 2; workers_dnef_bonus += 4; unemployed_dnef_bonus += 2; pro_republic += 5; labor_dissent -= 40; labor_strength += 15; schleicher_approval += 2; industrialists_schleicher_bonus -= 1
+on-arrival: schleicher_spd_concession = 1; schleicher_labor = 1; schleicher_spd_influence += 4; schleicher_spd_support += 2; schleicher_spd_r -= 2; hindenburg_schleicher_r -= 1; unemployed -= 1.8; economic_growth += 0.8; inflation += 1.4; budget -= 1; workers_kpd -= 6; unemployed_kpd -= 6; workers_nsdap -= 2; unemployed_nsdap -= 2; workers_spd += 6; unemployed_spd += 6; workers_z += 2; unemployed_z += 2; workers_dnef += 4; unemployed_dnef += 2; workers_dnef_bonus += 4; unemployed_dnef_bonus += 2; pro_republic += 5; labor_dissent -= 40; labor_strength += 15; social_patriot_strength += 10; schleicher_approval += 2; industrialists_schleicher_bonus -= 1
 
 The <span style="color: #c00000;">Social</span> General has lived up to his nickname: the means test for unemployment insurance has been abolished, and an eight-hour workday has been reinstated in select industries to "spread out" the work among more people. Funding for the Labor Ministry, gutted under Papen, has been restored, and welfare levels are climbing back from their absolute lows.
 
