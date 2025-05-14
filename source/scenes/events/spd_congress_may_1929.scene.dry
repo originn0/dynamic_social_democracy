@@ -161,15 +161,15 @@ let total = variables.reduce((sum, val) => sum + val, 0);
 let floored;
 
 if (total === 0) {
-    floored = Array(8).fill(Math.floor(100 / 8));
+    floored = Array(8).fill(Math.floor(397 / 8));
     let remainder = 100 - floored.reduce((a, b) => a + b, 0);
     for (let i = 0; i < remainder; i++) {
         floored[i]++;
     }
 } else {
-    let scaled = variables.map(v => (v / total) * 100);
+    let scaled = variables.map(v => (v / total) * 397);
     floored = scaled.map(Math.floor);
-    let remainder = 100 - floored.reduce((sum, val) => sum + val, 0);
+    let remainder = 397 - floored.reduce((sum, val) => sum + val, 0);
     let decimalParts = scaled.map((v, i) => ({ index: i, decimal: v - floored[i] }));
     decimalParts.sort((a, b) => b.decimal - a.decimal);
     for (let i = 0; i < remainder; i++) {
@@ -195,28 +195,28 @@ data = [{
         "id": "left",
         "legend": "Left Marxists",
         "name": "Left Marxists",
-        "seats": Math.round(Q.con_left_strength * 3.97),
+        "seats": Math.round(Q.con_left_strength),
     }];
 
 data.push({
         "id": "llab",
         "legend": "Left Labor",
         "name": "Left Labor",
-        "seats": Math.round(Q.con_llabor_strength * 3.97),
+        "seats": Math.round(Q.con_llabor_strength),
     });
 
 data.push({
         "id": "centr",
         "legend": "Center Marxists",
         "name": "Center Marxists",
-        "seats": Math.round(Q.con_center_strength * 3.97),
+        "seats": Math.round(Q.con_center_strength),
     });
 
 data.push({
         "id": "rlab",
         "legend": "Right Labor",
         "name": "Right Labor",
-        "seats": Math.round(Q.con_rlabor_strength * 3.97),
+        "seats": Math.round(Q.con_rlabor_strength),
     });
 
 if (Q.rural_spd_normalized >= 12) {
@@ -224,7 +224,7 @@ if (Q.rural_spd_normalized >= 12) {
             "id": "farm",
             "legend": "Agrarians",
             "name": "Agrarians",
-            "seats": Math.round(Q.con_rural_strength * 3.97),
+            "seats": Math.round(Q.con_rural_strength),
         });
 }
 
@@ -232,7 +232,7 @@ data.push({
         "id": "refrm",
         "legend": "Reformists",
         "name": "Reformists",
-        "seats": Math.round(Q.con_reform_strength * 3.97),
+        "seats": Math.round(Q.con_reform_strength),
     });
 
 if (Q.neorevisionism == 1) {
@@ -240,7 +240,7 @@ if (Q.neorevisionism == 1) {
             "id": "neorev",
             "legend": "Neo-Revisionists",
             "name": "Neo-Revisionists",
-            "seats": Math.round(Q.con_neorev_strength * 3.97),
+            "seats": Math.round(Q.con_neorev_strength),
         });
 }
 
@@ -249,7 +249,7 @@ if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
             "id": "other",
             "legend": "Middle Class",
             "name": "Middle Class",
-            "seats": Math.round(Q.con_middle_strength * 3.97),
+            "seats": Math.round(Q.con_middle_strength),
         });
 }
 
@@ -260,13 +260,13 @@ if (window && d3) {
     if (screenWidth < width - 50) {
         width = screenWidth - 50;
         height = width;
-        document.getElementById("1929_congress").style.height = screenWidth/2 + "px";
+        document.getElementById("spd_congress_may").style.height = screenWidth/2 + "px";
     }
     var parliament = d3.parliament();
     parliament.width(width).height(height).innerRadiusCoef(0.4);
     parliament.enter.fromCenter(true).smallToBig(true);
     parliament.exit.toCenter(false).bigToSmall(true);
-    d3.select("#1929_congress").datum(data).call(parliament);
+    d3.select("#spd_congress_may").datum(data).call(parliament);
 }
 !}
 
