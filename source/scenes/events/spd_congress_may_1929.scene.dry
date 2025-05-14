@@ -139,7 +139,7 @@ Q.1929middlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalize
 if (Q.neorevisionism == 1) {
 Q.1929neorevstrength = 4 + (Q.neorevisionist_strength/10);
 }
-
+/*
 let variables = [
 Q.1929leftstrength, 
 Q.1929centerstrength,
@@ -150,6 +150,7 @@ Q.1929ruralstrength,
 Q.1929middlestrength,
 Q.1929neorevstrength
 ];
+*/
 let total = variables.reduce((sum, val) => sum + val, 0);
 let scaled = variables.map(v => (v / total) * 100);
 let floored = scaled.map(Math.floor);
