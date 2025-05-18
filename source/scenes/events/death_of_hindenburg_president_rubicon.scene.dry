@@ -377,18 +377,19 @@ set-jump: post_election
 @post_election
 on-arrival: {!
 var candidate_descs = {
-Strasser: "Otto Strasser of the <span style="color: #6A1E1E font-weight: bold;">DSU</span>",
-Frick: "Wilhelm Frick of the <span style="color: #6A1E1E; font-weight: bold;">DSU</span>",
-Goring: "Hermann Göring of the <span style="color: #7A3C00; font-weight: bold;">NSDAP</span>",
-Adenauer: "Konrad Adenauer of the <span style="color: #000000; font-weight: bold;">Center Party</span>",
-Heuss: "Theodor Heuss of the <span style="color: #D3C24D; font-weight: bold;">[+ ddp_name +]</span>",
-Schumacher: "Kurt Schumacher of the <span style="color: #c00000; font-weight: bold;">SPD</span>",
-}
+  Strasser: "Otto Strasser of the <span style='color: #6A1E1E; font-weight: bold;'>DSU</span>",
+  Frick: "Wilhelm Frick of the <span style='color: #6A1E1E; font-weight: bold;'>DSU</span>",
+  Goring: "Hermann Göring of the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span>",
+  Adenauer: "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>Center Party</span>",
+  Heuss: "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>[+ ddp_name +]</span>",
+  Schumacher: "Kurt Schumacher of the <span style='color: #c00000; font-weight: bold;'>SPD</span>"
+};
+
 if (Q.lvp_formed) {
-    candidate_descs.Heuss = "Theodor Heuss of the <span style="color: #FFCC00; font-weight: bold;">LVP</span>";
+    candidate_descs.Heuss = "Theodor Heuss of the <span style='color: #FFCC00; font-weight: bold;'>LVP</span>";
 }
 if (Q.z_party_name == "CVP") {
-    candidate_descs.Adenauer = "Konrad Adenauer of the <span style="color: #000000; font-weight: bold;">CVP</span>";
+    candidate_descs.Adenauer = "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>CVP</span>";
 }
 for (var k in candidate_descs) {
     Q[k + '_running'] = 0;
