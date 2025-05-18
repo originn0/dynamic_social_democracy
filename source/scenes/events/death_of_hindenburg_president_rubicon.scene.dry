@@ -409,15 +409,13 @@ if (Q.center_bvp_votes) {
     Q.bvp_candidate = Q.dnef_candidate;
 }
 for (var party of Q.parties_election) {
-    var party = Q.parties_election[i];
     var supported_candidate = Q[party + '_candidate'];
-    //console.log(party, supported_candidate);
     supported_candidate = supported_candidate.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     Q[supported_candidate + '_running'] = 1;
     if (supported_candidate in candidate_votes) {
-        candidate_votes[supported_candidate] += Q[party+'_normalized'];
+        candidate_votes[supported_candidate] += Q[party + '_normalized'];
     } else {
-        candidate_votes[supported_candidate] = Q[party+'_normalized'];
+        candidate_votes[supported_candidate] = Q[party + '_normalized'];
     }
 }
 var total_votes = 0;
