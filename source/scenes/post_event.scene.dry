@@ -255,6 +255,7 @@ Q.state_force = 0;
 if (Q.reichswehr_street) Q.state_force += Q.reichswehr_force;
 if (Q.prussia_leader == "Strasser" || Q.prussia_leader == "Schleicher" || Q.prussia_leader == "Papen") {
     Q.state_force += Q.prussia_force;
+    Q.democracy_force -= Q.prussia_force;
 }
 if (Q.kpd_truce) Q.democracy_force += Q.rfb_force;
 
@@ -429,10 +430,10 @@ if (Q.dnef_formed) {
 }
 
 if (Q.dnef_formed) {
-    Q.workers_schleicher = -2;
-    Q.industrialists_schleicher = -2;
-    Q.republicans_schleicher = -2;
-    Q.nationalists_schleicher = -2;
+    Q.workers_schleicher = 0;
+    Q.industrialists_schleicher = 0;
+    Q.republicans_schleicher = 0;
+    Q.nationalists_schleicher = 0;
 
     if (Q.schleicher_rig && !Q.schleicher_rig_exposed) {
         Q.workers_schleicher += 1;

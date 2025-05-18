@@ -120,6 +120,7 @@ if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_l
 @eg_menu
 
 - #endings
+- @ending_slides: View ending slides.
 - @modinfo.paths: View completed paths.
 - @end_game: End game.
 
@@ -327,11 +328,54 @@ We have helped to form a <span style="color: #001489;">European</span> <span sty
 @achievements
 title: Achievements
 view-if: achievement_game_completed == 1
+on-arrival: {!
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'none';
+}
+const elements = document.querySelectorAll('header, #content, footer');
+elements.forEach(el => {
+  el.style.maxWidth = '800px';
+});
+!}
 tags: endings
 go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 = Completed Achievements in this Playthrough
 
+{!<table style="width: 100%; border-collapse: collapse; background-color: #f4f4f4;">!}
+
+[? if game_achievement_eiserne_front: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/iron_front.png" alt="Iron Front Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Eiserne Front</div>
+      <div style="font-size: 90%; color: #444;"> - [+ schleicher_dnef_votes +]% support</div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_schwarz_rot_gold: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/weimar_flag_small.png" alt="Weimar Flag"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;"><span style="color: #000000;">Schwarz</span>-<span style="color: #DD0000;">Rot</span>-<span style="color: #FFCC00;">Gold</span></div>
+      <div style="font-size: 90%; color: #444;"> - [+ weimar_victory_condition +]</div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+{!</table>!}
 
 [? if game_achievement_eiserne_front : **Eiserne Front** - form the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span>. ?]
 

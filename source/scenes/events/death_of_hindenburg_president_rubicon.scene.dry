@@ -1,0 +1,614 @@
+title: The Death of Hindenburg
+subtitle: The President has died...
+new-page: true
+view-if: year = 1934 and month >= 7 and president = "Hindenburg" and dnef_formed
+on-arrival: {!
+for (var c of Q.classes) {
+    var class_votes = 0;
+    for (var party of Q.parties) {
+        if (Q[c+'_'+party] < 0) {
+            Q[c+'_'+party] = 0;
+        }
+        class_votes += Q[c+'_'+party];
+    }
+    for (var party of Q.parties) {
+        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
+        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+    }
+}
+// calculate support for each of the parties
+var total_support = 0; 
+for (var party of Q.parties) {
+    var party_support = 0;
+    for (var c of Q.classes) {
+        if (Q.old_demographics) { 
+            party_support += Q[c]*Q[c+'_'+party];
+        } else  { 
+            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
+        } 
+    }
+    Q[party + '_support'] = party_support;
+    total_support += party_support; 
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_normalized = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_normalized += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_normalized += Q.catholics_nsdap_normalized*Q.catholics;
+
+        if (Q.dsu_exist && !Q.nvf_exist) {
+            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+        } else if (!Q.dsu_exist && Q.nvf_exist) {
+            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_normalized += Q.new_middle_nsdap*Q.new_middle;
+        } else if (Q.dsu_exist && Q.nvf_exist) {
+            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+
+            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+        } else {
+            Q.nsdap_hitler_normalized += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_normalized += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_normalized += Q.new_middle_nsdap*Q.new_middle;
+        }
+    }
+}
+// 2. normalize support (fraction)
+for (var party of Q.parties) {
+    Q[party+'_normalized'] = Q[party + '_support']/total_support;
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_votes = Math.round((Q.nsdap_hitler_normalized / total_support) * 1000 / 10);
+        Q.dsu_votes = Math.round((Q.dsu_normalized / total_support) * 1000 / 10);
+        Q.nvf_votes = Math.round((Q.nvf_normalized / total_support) * 1000 / 10);
+    }
+    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
+}
+
+Q.round = 0;
+hindenburg_dead = 1;
+Q.president = "Bumke (acting)";
+if (Q.judicial_reform >= 4) Q.president = "Großmann (acting)"
+
+Q.Heuss_votes_pre = 0;
+
+Q.dnef_candidate = "Hammerstein";
+Q.spd_candidate = "Schumacher";
+Q.kpd_candidate = Q.spd_candidate;
+Q.z_candidate = "Adenauer";
+if (Q.z_leader == "Bracht") Q.z_candidate = Q.dnef_candidate;
+Q.ddp_candidate = "Heuss";
+Q.lvp_candidate = "Heuss";
+Q.dvp_candidate = "Heuss";
+if (Q.dstp_dnef) Q.ddp_candidate = Q.dnef_candidate;
+if (Q.lvp_dnef) Q.lvp_candidate = Q.dnef_candidate;
+if (Q.dvp_dnef) Q.dvp_candidate = Q.dnef_candidate;
+Q.heuss_run = 1;
+if (Q.ddp_candidate == "Heuss") Q.Heuss_votes_pre += Q.ddp_votes;
+if (Q.lvp_candidate == "Heuss") Q.Heuss_votes_pre += Q.lvp_votes;
+if (Q.dvp_candidate == "Heuss") Q.Heuss_votes_pre += Q.dvp_votes;
+if (Q.Heuss_votes_pre < 8) {
+    if (Q.z_candidate != Q.dnef_candidate) Q.ddp_candidate = Q.z_candidate;
+    if (Q.z_candidate != Q.dnef_candidate) Q.lvp_candidate = Q.z_candidate;
+    if (Q.z_candidate != Q.dnef_candidate) Q.dvp_candidate = Q.z_candidate;
+    if (Q.z_candidate == Q.dnef_candidate) Q.ddp_candidate = Q.dnef_candidate;
+    if (Q.z_candidate == Q.dnef_candidate) Q.lvp_candidate = Q.dnef_candidate;
+    if (Q.z_candidate == Q.dnef_candidate) Q.dvp_candidate = Q.dnef_candidate;
+    if (Q.dstp_dnef) Q.ddp_candidate = Q.dnef_candidate;
+    if (Q.lvp_dnef) Q.lvp_candidate = Q.dnef_candidate;
+    if (Q.dvp_dnef) Q.dvp_candidate = Q.dnef_candidate;
+    Q.heuss_run = 0;
+}
+Q.nsdap_candidate = "Göring";
+Q.nsdap_hitler = "Göring";
+if (Q.dsu_leader != "Otto Strasser") Q.dsu_candidate = "Frick";
+if (Q.dsu_leader == "Otto Strasser") Q.dsu_candidate = "Strasser";
+Q.nvf_candidate = "Boycott";
+if (Q.nvf_dnef) Q.nvf_candidate = "Hammerstein";
+Q.dnvp_candidate = "Hammerstein";
+Q.other_candidate = "Hammerstein";
+Q.is_unity_candidate = 0;
+Q.sapd_candidate = Q.kpd_candidate;
+Q.kvp_candidate = Q.dnvp_candidate;
+Q.dnf_candidate = Q.dnvp_candidate;
+!}
+max-visits: 1
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/Hindenburg_head.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+tags: event
+
+= The Death of Hindenburg
+
+President Paul von Hindenburg has passed away at age 86. An era of history is closing, and the future remains to be seen.
+
+The nation erupts in grief over the death of its war hero and president—though this mourning is confined largely to the political right. With Schleicher not expected to live much longer, the era of Germany's two strongmen nears its end. Now, the country must determine who will author the next chapter of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic—if it will still be called that.
+
+New presidential elections are to be held as soon as possible. The <span style="color: #BFC8CC;">**DNEF**</span> is expected to field a single candidate, and their victory would guarantee a total consolidation of power for the foreseeable future—an outcome that must be prevented at all costs. In the meantime, Supreme Court chief justice [? if judicial_reform < 4 : Erwin Bumke ?][? if judicial_reform >= 4 : Hermann Großmann ?] serves as the acting president.
+
+- @candidates: Who are the candidates so far?
+
+@candidates
+
+The <span style="color: #BFC8CC;">**DNEF**</span> has nominated Kurt von Hammerstein-Equord—a Reichswehr general, long-time friend of Schleicher, and the current Chief of the Army. He considers himself a servant of the state rather than of any political party, and served as Schleicher’s liaison to the trade unions in recent months. He has also been responsible for overseeing the expansion of the Reichswehr during this time. Little else is known about his ideological convictions; like Schleicher, he is flexible.
+
+- @candidates_nazis
+
+@candidates_nazis
+title: The <span style="color: #7A3C00;">Nazi</span>'s last hurrah?
+
+With Hitler gone from the political scene, the <span style="color: #7A3C00;">Nazis</span> will be fielding Hermann Göring as their candidate.
+
+The <span style="color: #6A1E1E;">**DSU**</span> will be running [? if dsu_candidate == "Strasser": their party leader, Otto Strasser, as a separate candidate. ?][? if dsu_candidate == "Frick": Wilhelm Frick as a separate candidate. ?]
+
+[? if nvf_candidate == dnef_candidate: The remnants of the <span style="color: #142e20;">**NVF**</span> will be backing [+ dnef_candidate +], as they remain within the <span style="color: #BFC8CC;">**DNEF**</span> umbrella. ?][? if nvf_candidate != dnef_candidate: The remnants of the <span style="color: #142e20;">**NVF**</span> will be boycotting the election entirely—continuing their deluded course of waiting for the "right moment" to spark an armed rebellion. ?]
+
+With the <span style="color: #7A3C00;">Nazis</span> movement remaining divided, none of their candidates have any remote chance to winning.
+
+- @candidates_nats
+
+@candidates_nats
+title: Moving on to the <span style="color: #3E88B3;">nationalists</span>.
+
+The <span style="color: #3E88B3;">nationalists</span> are unified in their support for [+ dnef_candidate +], joined by the various splinter factions and the minor bourgeois parties. Although Hugenberg is—somehow—still contemplating a presidential run, a strongly worded threat has convinced him to remain silent.
+
+@candidates_dems
+title: The <span style="color: #700000;">**Communists**</span>? The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Parties? Who will they support?
+
+With the <span style="color: #700000;">**Communists**</span> having been heavily suppressed during Schleicher’s tenure, they are no longer a significant political force. [? if kpd_banned: They are even banned outright, preventing them from endorsing their own candidate. With boycotting rendered pointless, they have no choice but to support whoever we put forward. ?][? if not kpd_banned: Grateful for our role in sparing them from Schleicher’s crackdown months ago, they are fully backing whoever we choose to nominate. ?]
+
+[? if z_candidate == "Adenauer": The <span style="color: #000000;">Center</span> is not fully convinced to back [+ dnef_candidate +] and has chosen to run its own candidate: Konrad Adenauer. The Mayor of Cologne since the Republic's inception, and a member of the Prussian legislature, he's an advocate for the <span style="color: #000000;">Center Party</span> "leaving the tower" to broaden its appeal among Protestants, Adenauer was first proposed by Stegerwald himself. Though situated on the right wing of his party, he remains firmly committed to the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic and opposes Schleicher’s threats against it. ?]
+
+[? if heuss_run: The <span style="color: #FFCC00;">liberals</span> are running Theodor Heuss—a journalist and vocal supporter of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic, and a staunch anti-Schleicherist within his own party. This stance has put him at odds with more pro-Schleicher elements in the German middle class. While unlikely to secure significant support, Heuss has positioned himself as a "<span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>" unity candidate in opposition to [+ dnef_candidate +]. ?][? if not heuss_run and ddp_candidate == z_candidate: The <span style="color: #FFCC00;">liberals</span>, mired in electoral ruin, lack the resources or energy to field a candidate of their own. Instead, they have thrown their support behind [+ z_candidate +] as the bourgeois alternative to Schleicher. However, their backing is far from solid—pro-Schleicher elements remain rogue, as his message of national solidarity continues to resonate with the historically nationalist German liberal movement. ?][? if not heuss_run and ddp_candidate == dnef_candidate: The <span style="color: #FFCC00;">liberals</span>, mired in electoral ruin, lack the resources or energy to field a candidate of their own. They have thrown their support behind [+ dnef_candidate +], heavily influenced by pro-Schleicher elements and propaganda that has resonated especially strongly with their rank-and-file. Many within the party now see it as their national duty to support Schleicher and his successor, believing this to be the only path toward restoring Germany’s great power status abroad and securing concessions at home. ?]
+
+- @candidates_spd
+
+@candidates_spd
+title: Finally, what about us?
+
+As for the <span style="color: #c00000;">**SPD**</span>, we could support a joint <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition candidate or run our own. The viability of a united front, however, depends entirely on our relations with former coalition partners—and whether they’ve fallen under Schleicher’s influence.
+
+Otto Braun is tired. He ran and failed in the previous two presidential elections, and no longer wishes to run. His wife is ill enough that he wishes to stay by her side.  More importantly, he is deeply pessimistic about the situation we now face.
+
+Kurt Schumacher is an ambitious rising star in the party, and would be all too willing to run. He was a hero in the Great War, but his relatively young age might be relevant.
+
+@candidate_menu
+
+- @hammerstein_r1: Support the <span style="color: #BFC8CC;">**DNEF**</span>'s [+ dnef_candidate +].
+- @adenauer_r1: Support Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+- @heuss_r1: Support Theodor Heuss of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+- @schumacher_r1: Run Kurt Schumacher.
+
+@hammerstein_r1
+unavailable-subtitle: We are a democratic party. 
+choose-if: schleicher_spd_influence >= 8
+on-arrival: spd_candidate = dnef_candidate; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"
+go-to: r1_menu
+
+I hope you had a reason in mind.
+
+- @round_1: Let the voting begin.
+
+@adenauer_r1
+on-arrival: spd_candidate = "Adenauer"; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; z_relation += 5; center_bvp_votes = 1 if z_relation < 50; is_unity_candidate = 1
+go-to: r1_menu
+
+We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. Perhaps we can form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Bloc against Schleicher.
+
+[? if z_relation < 50 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to [+ dnef_candidate +]. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
+
+@heuss_r1
+on-arrival: spd_candidate = "Heuss"; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; ddp_relation += 8; lvp_relation += 5; dvp_candidate = dnef_candidate if dvp_relation < 60 and dvp_candidate == spd_candidate and dvp_exist and not lvp_formed; is_unity_candidate = 1
+go-to: r1_menu
+
+We have endorsed Theodor Heuss, journalist of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: 
+<span style="color: #FFCC00;">**LVP**</span>?]. Perhaps we can form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Bloc against Schleicher.
+
+[? if dvp_relation < 60 and dvp_candidate == spd_candidate and dvp_exist and not lvp_formed: With our support of Heuss, the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now supporting [+ dnef_candidate +] if they haven't already. ?]
+
+@schumacher_r1
+subtitle: -2 resources.
+unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?]
+choose-if: resources >= 2
+on-arrival: spd_candidate = "Schumacher"; resources -= 2; is_unity_candidate = 0
+go-to: r1_menu
+
+We have nominated Kurt Schumacher to be our presidential candidate. However, convincing the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> parties—many of which have shifted significantly to the right—to openly support a <span style="color: #c00000;">socialist</span> will be no easy task.
+
+@r1_menu
+view-if: round = 0
+
+- @convince_z_unity
+- @convince_z_spd
+- @convince_lvp_spd
+- @convince_lvp_unity
+- @convince_ddp_spd
+- @convince_ddp_unity
+- @convince_dvp_unity
+- @round_1: Let the voting begin.
+
+
+# convincing Z to support a unity candidate
+@convince_z_unity
+title: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +].
+view-if: spd_candidate = "Heuss" and z_candidate != spd_candidate
+on-arrival: {!
+Q.z_support_braun = 0;
+if (Q.z_relation >= 60 || (Q.z_relation > 50 && Q.z_ideology == "Left")) {
+    Q.z_support_braun = 1;
+} else if (Q.z_relation < 35) {
+    Q.z_support_braun = 0;
+} else {
+    Q.z_support_braun = 2;
+}
+if (Q.z_candidate == Q.dnef_candidate) Q.z_support_braun = 0;
+!}
+max-visits: 1
+go-to: z_failed if z_support_braun = 0 or (z_support_braun == 2 and historical_mode); z_success if z_support_braun = 1; z_partial if z_support_braun = 2 and not historical_mode
+
+We implore the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +] as a unity candidate against Schleicher, arguing that together, the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition can defeat the <span style="color: #BFC8CC;">**DNEF**</span>. [? if z_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
+
+@convince_z_spd
+title: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +].
+choose-if: spd_votes >= z_votes
+unavailable-subtitle: [? if spd_votes < z_votes: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate. ?]
+view-if: spd_candidate == "Schumacher" and z_candidate != spd_candidate
+on-arrival: {!
+Q.z_support_braun = 0;
+if (Q.z_relation >= 75 || (Q.z_relation > 65 && Q.z_ideology == "Left")) {
+    Q.z_support_braun = 1;
+} else if (Q.z_relation < 55) {
+    Q.z_support_braun = 0;
+} else {
+    Q.z_support_braun = 2;
+}
+if (Q.z_candidate == Q.dnef_candidate) Q.z_support_braun = 0;
+!}
+max-visits: 1
+go-to: z_failed if z_support_braun = 0 or (z_support_braun == 2 and historical_mode); z_success if z_support_braun = 1; z_partial if z_support_braun = 2 and not historical_mode
+
+We implore the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +]. We attempt to convince them of the necessity for unity in the face of Schleicher's dictatorial aspirations: that if we were divided, we would fall under influence of the <span style="color: #BFC8CC;">**DNEF**</span>. [? if z_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
+
+@z_failed
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+
+Unfortunately, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is not convinced. [? if z_candidate == dnef_candidate : This is hardly surprising—they’ve become a <i>Blocpartei</i> at this point.  ?]
+
+@z_success
+on-arrival: z_candidate = spd_candidate; center_bvp_votes = 1 if z_relation < 50; dvp_candidate_switch = 1 if dvp_candidate != dnef_candidate and dvp_candidate == spd_candidate; dvp_candidate = dnef_candidate if dvp_candidate == spd_candidate
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+
+The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is convinced! They will be supporting [+ spd_candidate +] for the election.
+
+[? if z_relation < 50 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to [+ dnef_candidate +]. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
+
+[? if dvp_candidate_switch: The <span style="color: #C0A054;">**DVP**</span> have also switched to supporting [+ dnef_candidate +] as they're heavily uncomfortable with being on the same side as us. ?]
+
+@z_partial
+
+The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
+
+- @pay_z: Give them the resources they need.
+- @r1_menu: Forget about the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+- @r2_campaigning: Forget about the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+
+@pay_z
+choose-if: resources >= 2
+subtitle: -2 resources
+on-arrival: resources -= 2; z_candidate = spd_candidate; center_bvp_votes = 1 if z_relation < 50
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+
+With our resources, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are convinced to support [+ spd_candidate +]. Konrad Adenauer will drop out of the race.
+
+[? if z_relation < 50 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to [+ dnef_candidate +]. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
+
+
+@convince_ddp_unity
+title: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to support [+ spd_candidate +].
+view-if: spd_candidate = "Adenauer" and ddp_candidate != spd_candidate and not lvp_formed
+on-arrival: ddp_candidate = spd_candidate if ddp_relation >= 40 and not dstp_dnef
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+max-visits: 1
+
+[? if ddp_candidate = spd_candidate: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is easily persuaded to support [+ spd_candidate +]! This is largely because [+ spd_candidate +] is the candidate of the <span style="color: #000000;">Center Party</span>, not of the <span style="color: #c00000;">**SPD**</span>. ?]
+[? if ddp_candidate != spd_candidate: Unfortunately, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is unwilling to support [+ spd_candidate +]. The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition seems to be fracturing with Schleicher undoubtedly playing a role. ?]
+
+
+@convince_ddp_spd
+title: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to support [+ spd_candidate +].
+view-if: spd_candidate = "Schumacher" and ddp_candidate != spd_candidate and not lvp_formed
+on-arrival: ddp_candidate = spd_candidate if ((ddp_relation >= 50 and z_relation >= 60) or (ddp_relation >= 60 and z_relation < 60)) and not dstp_dnef
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+max-visits: 1
+
+[? if ddp_candidate = spd_candidate: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is easily persuaded to support [+ spd_candidate +], convinced by our argument that his election is the last line of defense for democracy against Schleicher. ?]
+[? if ddp_candidate != spd_candidate: Unfortunately, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is unwilling to support [+ spd_candidate +]. Somewhat expectedly considering he's a <span style="color: #c00000;">socialist</span>. ?]
+
+@convince_lvp_spd
+title: Convince the <span style="color: #FFCC00;">**LVP**</span> to support [+ spd_candidate +].
+view-if: spd_candidate = "Schumacher" and lvp_candidate != spd_candidate and lvp_formed
+on-arrival: lvp_candidate = spd_candidate if ((lvp_relation >= 55 and z_relation >= 60) or (lvp_relation >= 65 and z_relation < 60)) and not lvp_dnef
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+max-visits: 1
+
+[? if lvp_candidate = spd_candidate: The <span style="color: #FFCC00;">**LVP**</span> is reluctantly persuaded to support [+ spd_candidate +], convinced by our argument that his election is the last line of defense for democracy against Schleicher. ?]
+[? if lvp_candidate != spd_candidate: Unfortunately, the <span style="color: #FFCC00;">**LVP**</span> is unwilling to support [+ spd_candidate +]—expected, given he's a <span style="color: #c00000;">socialist</span>, and that we're asking the <span style="color: #FFCC00;">**LVP**</span> in the first place. ?]
+
+@convince_lvp_unity
+title: Convince the <span style="color: #FFCC00;">**LVP**</span> to support [+ spd_candidate +].
+view-if: spd_candidate = "Adenauer" and lvp_candidate != spd_candidate and lvp_formed
+on-arrival: lvp_candidate = spd_candidate if lvp_relation >= 45 and not lvp_dnef
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+max-visits: 1
+
+[? if lvp_candidate = spd_candidate:  The <span style="color: #FFCC00;">**LVP**</span> is reluctantly persuaded to support [+ spd_candidate +]! This is largely because [+ spd_candidate +] is the candidate of the <span style="color: #000000;">Center Party</span>, not of the <span style="color: #c00000;">**SPD**</span>. ?]
+[? if lvp_candidate != spd_candidate: Unfortunately, the <span style="color: #FFCC00;">**LVP**</span> is unwilling to support [+ spd_candidate +]. The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition seems to be fracturing with Schleicher undoubtedly playing a role. ?]
+
+@convince_dvp_unity
+title: Convince the <span style="color: #C0A054;">**DVP**</span> to support [+ spd_candidate +].
+subtitle: [? if spd_candidate = ddp_candidate and not dvp_dnef: The <span style="color: #C0A054;">**DVP**</span> are uncomfortable in participating on the same side as the <span style="color: #c00000;">socialists</span>. ?]
+unavailable-subtitle: The <span style="color: #C0A054;">DVP</span> is not willing to support our candidate.
+view-if: (spd_candidate = "Adenauer" or spd_candidate = "Heuss") and dvp_candidate != spd_candidate and not dvp_dnef and not lvp_formed
+choose-if: dvp_relation >= 60 and dvp_leader != "Dingeldey" and dvp_ideology != "Right"
+on-arrival: dvp_candidate = spd_candidate; dvp_relation += 5; dvp_left += 1; dvp_candidate_switch = 1 if dvp_candidate != dnef_candidate and dvp_candidate == spd_candidate; dvp_candidate = dnef_candidate if dvp_candidate == spd_candidate
+go-to: r1_menu if round = 0; r2_campaigning if round > 0
+max-visits: 1
+
+[? if dvp_candidate = spd_candidate: Thanks to our good relations, and the fact that our candidate is a unity candidate not affiliated with the <span style="color: #c00000;">**SPD**</span>, the <span style="color: #C0A054;">**DVP**</span> is persuaded to support [+ spd_candidate +]. ?]
+
+[? if dvp_candidate_switch: The <span style="color: #C0A054;">**DVP**</span> have also switched to supporting [+ dnef_candidate +] as they're heavily uncomfortable with being on the same side as us. ?]
+
+@round_1
+go-to: election_algorithm
+set-jump: post_election
+
+
+@post_election
+on-arrival: {!
+var candidate_descs = {
+Strasser: "Otto Strasser of the <span style="color: #6A1E1E font-weight: bold;">DSU</span>",
+Frick: "Wilhelm Frick of the <span style="color: #6A1E1E; font-weight: bold;">DSU</span>",
+Goring: "Hermann Göring of the <span style="color: #7A3C00; font-weight: bold;">NSDAP</span>",
+Adenauer: "Konrad Adenauer of the <span style="color: #000000; font-weight: bold;">Center Party</span>",
+Heuss: "Theodor Heuss of the <span style="color: #D3C24D; font-weight: bold;">[+ ddp_name +]</span>",
+Schumacher: "Kurt Schumacher of the <span style="color: #c00000; font-weight: bold;">SPD</span>",
+}
+if (Q.lvp_formed) {
+    candidate_descs.Heuss = "Theodor Heuss of the <span style="color: #FFCC00; font-weight: bold;">LVP</span>";
+}
+if (Q.z_party_name == "CVP") {
+    candidate_descs.Adenauer = "Konrad Adenauer of the <span style="color: #000000; font-weight: bold;">CVP</span>";
+}
+for (var k in candidate_descs) {
+    Q[k + '_running'] = 0;
+}
+var candidate_votes = {};
+Q.parties_election = Q.parties;
+if (Q.dsu_exist) {
+    Q.parties_election.push('dsu');
+    Q.nsdap_votes -= Q.dsu_votes;
+}
+if (Q.nvf_exist) {
+    Q.parties_election.push('nvf');
+    Q.nsdap_votes -= Q.nvf_votes;
+}
+if (Q.center_bvp_votes) {
+    Q.z_votes -= Q.bvp_votes;
+    Q.parties_election.push('bvp')
+    Q.bvp_candidate = Q.dnef_candidate;
+}
+for (var party of Q.parties_election) {
+    var party = Q.parties_election[i];
+    var supported_candidate = Q[party + '_candidate'];
+    //console.log(party, supported_candidate);
+    supported_candidate = supported_candidate.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    Q[supported_candidate + '_running'] = 1;
+    if (supported_candidate in candidate_votes) {
+        candidate_votes[supported_candidate] += Q[party+'_normalized'];
+    } else {
+        candidate_votes[supported_candidate] = Q[party+'_normalized'];
+    }
+}
+var total_votes = 0;
+Q.winner = "";  
+Q.winner_votes = 0;
+Q.has_majority = 0;
+for (var k in candidate_votes) {
+    total_votes += candidate_votes[k];
+    if (candidate_votes[k] > Q.winner_votes) {
+        Q.winner = k;
+        Q.winner_votes = candidate_votes[k];
+    }
+    if (candidate_votes[k] >= 0.5) {
+        Q.has_majority = 1;
+    }
+}
+for (var k in candidate_votes) {
+    Q[k + '_votes'] = Math.round(1000*candidate_votes[k]/total_votes)/10;
+    Q[k + '_votes_disp'] = Q[k + '_votes'].toFixed(1);
+}
+Q.winner_votes = Math.round(1000*Q.winner_votes/total_votes)/10;
+Q.winner_votes_disp = Q.winner_votes.toFixed(1);
+Q.winner_desc = candidate_descs[Q.winner];
+
+Q.round += 1
+!}
+go-to: r2_start if round = 1 and not has_majority; election_end if round > 1; r1_winner if has_majority
+
+Election results:
+
+[? if Goring_running : <span style="color: #7A3C00;">**Göring**</span> - [+ Goring_votes_disp +]% ?]
+[? if Strasser_running : <span style="color: #7A3C00;">**Strasser**</span> - [+ Strasser_votes_disp +]% ?]
+[? if Frick_running : <span style="color: #7A3C00;">**Frick**</span> - [+ Frick_votes_disp +]% ?]
+
+[? if Hammerstein_running : <span style="color: #BFC8CC;">**Hammerstein**</span> - [+ Hammerstein_votes_disp +]% ?]
+
+[? if Adenauer_running : <span style="color: #000000;">**Adenauer**</span> - [+ Adenauer_votes_disp +]% ?]
+
+[? if Heuss_running : [? if not lvp_formed: <span style="color: #D3C24D;">**Heuss**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Heuss**</span>?] - [+ Heuss_votes_disp +]% ?]
+
+[? if Schumacher_running : <span style="color: #c00000;">**Schumacher**</span> - [+ Schumacher_votes_disp +]% ?]
+
+@r2_start
+on-arrival: {!
+Q.adenauer_drops_out = 0;
+Q.heuss_drops_out = 0;
+if (Q.z_candidate == "Adenauer" && (Q.ddp_candidate == "Heuss" || Q.dvp_candidate == "Heuss" || Q.lvp_candidate == "Heuss") && Q.z_candidate != Q.spd_candidate && (Q.ddp_candidate != Q.spd_candidate || Q.dvp_candidate != Q.spd_candidate || Q.lvp_candidate != Q.spd_candidate)) {
+    if (Q.Adenauer_votes > Q.Heuss_votes) {
+        Q.heuss_drops_out = 1;
+        if (Q.ddp_candidate != Q.spd_candidate && Q.ddp_candidate != Q.dnef_candidate) {
+            Q.ddp_candidate = "Adenauer";
+        }
+        if (Q.dvp_candidate != Q.spd_candidate && Q.dvp_candidate != Q.dnef_candidate) {
+            Q.dvp_candidate = "Adenauer";
+        }
+        if (Q.lvp_candidate != Q.spd_candidate && Q.lvp_candidate != Q.dnef_candidate) {
+            Q.lvp_candidate = "Adenauer";
+        }
+    } else {
+        Q.adenauer_drops_out = 1;
+        Q.z_candidate = "Heuss";
+    }
+}
+!}
+go-to: r2_menu
+
+In the lead is [+ winner_desc +]. There is no majority in the first round. In the second round, any candidate who wins a plurality will win overall.
+
+The <span style="color: #7A3C00;">Nazis</span> and their splinter parties remain divided, locked in a permanent grudge. As a result, [+ dsu_candidate +] and [+ nsdap_candidate +] will continue to run separately. Their inability to set aside mutual animosities signals the effective death of the movement, which spends more time quarreling internally than opposing the regime.
+
+[? if heuss_drops_out : The liberal candidate Theodor Heuss has dropped out in favor of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s Konrad Adenauer. This consolidates the votes of the moderate <i>Bürgerblock</i>, and they're expected to put up a decent fight against [+ dnef_candidate +]. ?]
+[? if adenauer_drops_out : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Konrad Adenauer has dropped out in favor of the liberal candidate Theodor Heuss. This consolidates the votes of the moderate <i>Bürgerblock</i>, and they're expected to put up a decent fight against [+ dnef_candidate +]. ?]
+
+What should we do?
+
+@r2_menu
+
+- @r2_endorse_hammerstein: Support the <span style="color: #BFC8CC;">**DNEF**</span>'s [+ dnef_candidate +].
+- @r2_endorse_adenauer
+- @r2_endorse_heuss
+- @r2_campaigning: Can we convince any of the parties to change their endorsements?
+- @r2_vote: Let the voting begin.
+
+@r2_endorse_hammerstein
+view-if: spd_candidate != dnef_candidate and dnef_candidate == "Hammerstein"
+unavailable-subtitle: We are a democratic party. 
+choose-if: schleicher_spd_influence >= 8
+on-arrival: spd_candidate = dnef_candidate; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"
+go-to: r1_menu
+
+I hope you had a reason in mind.
+
+@r2_endorse_adenauer
+title: Switch our support to Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+view-if: z_candidate = "Adenauer" and spd_candidate != z_candidate
+on-departure: kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; z_relation += 5; center_bvp_votes = 1 if z_relation < 50; is_unity_candidate = 1
+go-to: r2_campaigning
+
+We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. Perhaps we can form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Bloc against Schleicher.
+
+[? if z_relation < 50 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to [+ dnef_candidate +]. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
+
+[? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and boycotting the election instead. ?]
+
+@r2_endorse_heuss
+title: Switch our support to Theodor Heuss.
+view-if: (ddp_candidate = "Heuss" or lvp_candidate == "Heuss" or dvp_candidate == "Heuss") and spd_candidate != "Heuss"
+on-departure: kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; spd_candidate = "Heuss"; ddp_relation += 8; lvp_relation += 5; dvp_candidate = dnef_candidate if dvp_relation < 60 and dvp_candidate == spd_candidate and dvp_exist and not lvp_formed; is_unity_candidate = 1
+go-to: r2_campaigning
+
+We have endorsed Theodor Heuss of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+
+[? if dvp_relation < 60 and dvp_candidate == spd_candidate and dvp_exist and not lvp_formed: With our support of Heuss, the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now supporting [+ dnef_candidate +] if they haven't already. ?]
+
+[? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and boycotting the election instead. ?]
+
+@r2_campaigning
+view-if: round = 1
+
+- @convince_z_unity
+- @convince_z_spd
+- @convince_lvp_spd
+- @convince_lvp_unity
+- @convince_ddp_spd
+- @convince_ddp_unity
+- @convince_dvp_unity
+- @r2_vote: Let the voting begin.
+
+
+
+@r2_vote
+go-to: election_algorithm
+set-jump: post_election
+
+
+
+@r1_winner
+go-to: election_end
+
+# TODO: different paths for the different outcomes...
+
+
+@hammerstein_win
+on-arrival: hammerstein_win = 1
+
+With [+ dnef_candidate +]'s victory, the <span style="color: #BFC8CC;">**DNEF**</span>'s can finally consolidate power with the Chancellorship and Presidency in their hands. [? if prussia_leader == "Braun": His first action is to depose Otto Braun from Prussia, and to install Chancellor [+ chancellor +] as a *Reichskommissar*. ?]
+
+- @game_over: Game over.
+
+@heuss_win
+on-arrival: {!
+Q.republic_win_rubicon = 1
+
+const rightTools = document.querySelector('.tools.right');
+if (rightTools) {
+    rightTools.style.display = 'none';
+}
+!}
+
+Theodor Heuss has unexpectedly won the presidency! With a committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">can</span> at the helm of Germany, the threat to the Republic has, for the most part, subsided.
+
+- @game_over: Game over.
+
+@adenauer_win
+on-arrival: {!
+Q.republic_win_rubicon = 1
+
+const rightTools = document.querySelector('.tools.right');
+if (rightTools) {
+    rightTools.style.display = 'none';
+}
+!}
+
+Konrad Adenauer has won the presidency! With a committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">can</span> at the helm of Germany, the threat to the Republic has, for the most part, subsided.
+
+@schumacher_win
+on-arrival: {!
+Q.republic_win_rubicon = 1
+
+const rightTools = document.querySelector('.tools.right');
+if (rightTools) {
+    rightTools.style.display = 'none';
+}
+!}
+
+Kurt Schumacher has won the presidency! This is a historic victory—how far we’ve come from the Hindenburg-backed Papen and Schleicher cabinets, all the way to a <span style="color: #c00000;">socialist</span> president. Perhaps now, at last, we can begin to reform Germany, set it back on the right track, and undo the damage Schleicher inflicted during his year in office.
+
+- @game_over: Game over.
+
+@election_end
+go-to: hammerstein_win if winner == "Hammerstein" or winner == "Strasser" or winner == "Goring" or winner == "Göring" or winner == "Frick"; heuss_win if winner == "Heuss"; adenauer_win if winner == "Adenauer"; schumacher_win if winner == "Schumacher"
+on-arrival: president = winner; president = "Hammerstein" if (winner == "Strasser" or winner == "Goring" or winner == "Göring" or winner == "Frick")
+
+The election has been won by [+ winner_desc +].
