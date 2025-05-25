@@ -128,16 +128,16 @@ on-arrival: {!
 Q.con_rural_strength = 0;
 Q.conmiddlestrength = 0;
 Q.con_neorev_strength = 0;
-Q.con_left_strength = 18 + (Q.left_strength / 10);
-Q.con_center_strength = 18 + (Q.center_strength / 10);
-Q.con_reform_strength = 18 + (Q.reformist_strength / 10);
-Q.con_llabor_strength = 9 + ((Q.labor_strength / 20) * (Q.left_strength / Q.reformist_strength));
-Q.con_rlabor_strength = 9 + ((Q.labor_strength / 20) * (Q.reformist_strength / Q.left_strength));
+Q.con_left_strength = 10 + (Q.left_strength / 8);
+Q.con_center_strength = 10 + (Q.center_strength / 8);
+Q.con_reform_strength = 10 + (Q.reformist_strength / 8);
+Q.con_llabor_strength = 5 + ((Q.labor_strength / 16) * (Q.left_strength / Q.reformist_strength));
+Q.con_rlabor_strength = 5 + ((Q.labor_strength / 16) * (Q.reformist_strength / Q.left_strength));
 if (Q.rural_spd_normalized >= 12) {
-Q.con_rural_strength = Q.rural_spd_normalized/2;
+Q.con_rural_strength = Q.rural_spd_normalized/1.5;
 }
 if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
-Q.conmiddlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 2.5;
+Q.conmiddlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 2;
 }
 if (Q.neorevisionism == 1) {
 Q.con_neorev_strength = 4 + (Q.neorevisionist_strength/10);
@@ -320,6 +320,7 @@ What does the congress decide?
 title: We shall comrpomise with the bourgiousie, in order to keep Democracy strong, and keep Radicals out of the government.
 subtitle: The Reformists, with the support of the other moderate elements in the party, manage to pass this resolution.
 unavailable-subtitle: The Reformists simply do not have a majority at the congress.
+choose-if: {! Math.round(Q.con_middle_strength) + Math.round(Q.con_rural_strength) + Math.round(Q.con_neorev_strength) + Math.round(Q.con_reform_strength) >= 199 !}
 on-arrival: {! Q.cum_meter = 1; !}
 
 Surprisingly, the Reformists and their allies have succeeded in blocking any restrictions on our dealings with coalition partners. This represents a notable shift in the Party’s internal balance of power, highlighting how much influence the Reformist wing has gained since we were last in government. Unsurprisingly, the bourgeois parties have welcomed the decision, interpreting it as a sign that the SPD is moderating its stance and moving closer to the political center of the Republic.
@@ -333,6 +334,7 @@ The Left, however, are furious. They view the absence of any limitations as the 
 title: We shall not compromise with the bourgiousie! The rights of the workers must be upheld.
 subtitle: With the majority of the congress controlled by the factions of the left, the resolution is passed.
 unavailable-subtitle: The Left does not have enough power.
+choose-if: {! Math.round(Q.con_llabor_strength) + Math.round(Q.con_left_strength) >= 199 !}
 on arrival: {! Q.cum_meter = 2; !}
 
 Surprisingly, the Left has prevailed in securing a no-compromise resolution, meaning SPD ministers must refuse any concessions to bourgeois parties and protect public welfare at all costs. This victory reflects the Left’s strengthened position, bolstered by Paul Levi’s successful mobilization of rank‑and‑file activists in industrial districts and by growing disenchantment with the parliamentary leadership.
@@ -345,6 +347,7 @@ The Center expressed deep unease. While acknowledging the moral clarity of the r
 title: We will be open to some compromise with the parties of the republic, but we will limit how many concessions we are willing to give up to the Bourgiousie.
 subtitle: The Center manages to convice the dissendent factions to accept this resolution. 
 unavailable-subtitle: A compromise agreement is not needed, as either the Left or Right holds a majority in the Congress.
+choose-if: {! (Math.round(Q.con_middle_strength) + Math.round(Q.con_rural_strength) + Math.round(Q.con_neorev_strength) + Math.round(Q.con_reform_strength) <= 199) && (
 on-arrival: {! Q.cum_meter = 3; !}
 
 The Center faction has secured approval for a compromise framework guiding our coalition strategy. By a comfortable margin, delegates endorsed a resolution that sets clear boundaries on concessions to bourgeois parties, while granting SPD ministers the flexibility to negotiate policies essential for stable governance.
@@ -354,7 +357,7 @@ The Left reacted with disappointment. Though frustrated that stricter no-comprom
 
 
 @military
-title: Something?
+title: What is next on the agenda?
 
 The Left, led by Paul Levi, have used the conference to bring forward a proposal that the SPD categorically reject the Reichswehr, call for its abolition, and advocate replacing it with workers’ militias under direct proletarian control. They argue that any cooperation with the existing army would only serve to legitimise an instrument of bourgeois repression and betray the interests of the working class. However, if we were to accept such an agreement, it would almost certainly alienate moderate and liberal partners in any prospective coalition, making stable government virtually impossible.
 The Reformists and Centrist elements, led by Carl Severing, are firmly against the Left’s abolitionist motion. In a time of crisis, they maintain, the party must retain a professional military force, albeit one fully subordinated to strict parliamentary and civilian oversight, to safeguard democratic institutions. Severing’s amendment proposes a modified draft defence programme that “republicanises” the officer corps rather than dismantling it, balancing the need for robust national defence with the SPD’s commitment to democracy. Severing’s address emphasized that only by acknowledging the positive aspects of the Reichswehr could it be truly republicanized, framing his amendment as the blueprint for a democratic defense policy.
