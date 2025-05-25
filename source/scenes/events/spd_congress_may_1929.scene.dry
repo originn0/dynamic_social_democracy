@@ -311,8 +311,8 @@ The Center and both Labor Wings favor a more flexible strategy, which will try t
 
 What does the congress decide?
 
-[+ Math.round(con_middle_strength) + Math.round(con_rural_strength) + Math.round(con_neorev_strength) + Math.round(con_reform_strength) +]
-[+ Math.round(con_llabor_strength) + Math.round(con_left_strength) +]
+[+ con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength +]
+[+ con_llabor_strength + con_left_strength +]
 
 
 - @compromise
@@ -324,7 +324,7 @@ What does the congress decide?
 title: We shall comrpomise with the bourgiousie, in order to keep Democracy strong, and keep Radicals out of the government.
 subtitle: The Reformists, with the support of the other moderate elements in the party, manage to pass this resolution.
 unavailable-subtitle: The Reformists simply do not have a majority at the congress.
-choose-if: {! Math.round(Q.con_middle_strength) + Math.round(Q.con_rural_strength) + Math.round(Q.con_neorev_strength) + Math.round(Q.con_reform_strength) >= 199 !}
+choose-if: {! Q.con_middle_strength + Q.con_rural_strength + Q.con_neorev_strength + Q.con_reform_strength >= 199 !}
 on-arrival: {! Q.cum_meter = 1; !}
 
 Surprisingly, the Reformists and their allies have succeeded in blocking any restrictions on our dealings with coalition partners. This represents a notable shift in the Party’s internal balance of power, highlighting how much influence the Reformist wing has gained since we were last in government. Unsurprisingly, the bourgeois parties have welcomed the decision, interpreting it as a sign that the SPD is moderating its stance and moving closer to the political center of the Republic.
@@ -338,7 +338,7 @@ The Left, however, are furious. They view the absence of any limitations as the 
 title: We shall not compromise with the bourgiousie! The rights of the workers must be upheld.
 subtitle: With the majority of the congress controlled by the factions of the left, the resolution is passed.
 unavailable-subtitle: The Left does not have enough power.
-choose-if: {! Math.round(Q.con_llabor_strength) + Math.round(Q.con_left_strength) >= 199 !}
+choose-if: {! Q.con_llabor_strength + Q.con_left_strength >= 199 !}
 on-arrival: {! Q.cum_meter = 2; !}
 
 Surprisingly, the Left has prevailed in securing a no-compromise resolution, meaning SPD ministers must refuse any concessions to bourgeois parties and protect public welfare at all costs. This victory reflects the Left’s strengthened position, bolstered by Paul Levi’s successful mobilization of rank‑and‑file activists in industrial districts and by growing disenchantment with the parliamentary leadership.
@@ -351,7 +351,7 @@ The Center expressed deep unease. While acknowledging the moral clarity of the r
 title: We will be open to some compromise with the parties of the republic, but we will limit how many concessions we are willing to give up to the Bourgiousie.
 subtitle: The Center manages to convice the dissendent factions to accept this resolution. 
 unavailable-subtitle: A compromise agreement is not needed, as either the Left or Right holds a majority in the Congress.
-choose-if: {! (Math.round(Q.con_middle_strength) + Math.round(Q.con_rural_strength) + Math.round(Q.con_neorev_strength) + Math.round(Q.con_reform_strength) <= 198) && (Math.round(Q.con_llabor_strength) + Math.round(Q.con_left_strength) <= 198) !}
+choose-if: {! (Q.con_middle_strength + Q.con_rural_strength + Q.con_neorev_strength + Q.con_reform_strength <= 198) && (Q.con_llabor_strength + Q.con_left_strength <= 198) !}
 on-arrival: {! Q.cum_meter = 3; !}
 
 The Center faction has secured approval for a compromise framework guiding our coalition strategy. By a comfortable margin, delegates endorsed a resolution that sets clear boundaries on concessions to bourgeois parties, while granting SPD ministers the flexibility to negotiate policies essential for stable governance.
