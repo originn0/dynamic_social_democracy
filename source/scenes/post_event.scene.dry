@@ -166,11 +166,16 @@ for (var party of Q.parties) {
 for (var party of Q.parties) {
     Q[party+'_normalized'] = Q[party + '_support']/total_support;
     if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_votes = Math.round((Q.nsdap_hitler_normalized / total_support) * 1000 / 10);
-        Q.dsu_votes = Math.round((Q.dsu_normalized / total_support) * 1000 / 10);
-        Q.nvf_votes = Math.round((Q.nvf_normalized / total_support) * 1000 / 10);
+        Q.nsdap_hitler_normalized = Math.round(Q.nsdap_hitler_normalized / total_support);
+        Q.dsu_normalized = Math.round(Q.dsu_normalized / total_support);
+        Q.nvf_normalized = Math.round(Q.nvf_normalized / total_support);
     }
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized * 1000) / 10;
+        Q.dsu_votes = Math.round(Q.dsu_normalized * 1000) / 10;
+        Q.nvf_votes = Math.round(Q.nvf_normalized * 1000) / 10;
+    }
 }
 
 
@@ -481,9 +486,28 @@ if (Q.dnef_formed) {
         Q.republicans_schleicher -= 3;
     }
 
+    if (Q.dnef_total_votes) {
+        Q.workers_schleicher_pre = Q.workers_schleicher;
+        Q.republicans_schleicher_pre = Q.republicans_schleicher;
+        Q.nationalists_schleicher_pre = Q.nationalists_schleicher;
+        Q.industrialists_schleicher_pre = Q.industrialists_schleicher;
+    
+        const scale = 5; 
+        const vote_thresholds = [20, 25, 30, 35, 40];
+    
+        for (const threshold of vote_thresholds) {
+            if (Q.dnef_total_votes >= threshold) {
+                Q.workers_schleicher += 1 / (1 + Q.workers_schleicher / scale);
+                Q.republicans_schleicher += 1 / (1 + Q.republicans_schleicher / scale);
+                Q.nationalists_schleicher += 1 / (1 + Q.nationalists_schleicher / scale);
+                Q.industrialists_schleicher += 1 / (1 + Q.industrialists_schleicher / scale);
+            }
+        }
+    }
     if (Q.schleicher_spd_influence) Q.workers_schleicher += Q.schleicher_spd_influence / 2;
     if (Q.schleicher_spd_support) Q.workers_schleicher += Q.schleicher_spd_support / 4;
     if (Q.schleicher_spd_r < 2) Q.workers_schleicher -= (Q.workers_spd_normalized / 25);
+    if (Q.spd_votes < 30) Q.workers_schleicher -= 1;
     if (Q.labor_dissent) Q.workers_schleicher += Q.labor_dissent / 20;
     if (Q.z_in_gov) Q.workers_schleicher += Q.workers_z_normalized / 5;
     if (Q.schleicher_labor) Q.workers_schleicher += 2;
@@ -493,6 +517,7 @@ if (Q.dnef_formed) {
     if (Q.workers_dnef_normalized) Q.workers_schleicher += (Q.workers_dnef_normalized / 25);
     if (Q.industrialists_dnef) Q.workers_schleicher -= 3;
     if (Q.united_labor) Q.workers_schleicher -= 3;
+    if (Q.schleicher_economy_time) Q.workers_schleicher += ((Q.economic_growth + 10) / 5);
     if (Q.workers_schleicher_bonus) Q.workers_schleicher += Q.workers_schleicher_bonus;
     if (Q.workers_schleicher > 12) Q.workers_schleicher = 12;
 
@@ -545,7 +570,7 @@ if (Q.dnef_formed) {
     if (Q.nationalists_schleicher_bonus) Q.nationalists_schleicher += Q.nationalists_schleicher_bonus;
     if (Q.nationalists_schleicher > 12) Q.nationalists_schleicher = 12;
 
-    Q.schleicher_approval_decay = 0.05;
+    Q.schleicher_approval_decay = 0.0;
 
     if (Q.workers_schleicher < 6) Q.schleicher_approval_decay += 0.05;
     if (Q.workers_schleicher < 4) Q.schleicher_approval_decay += 0.05;
@@ -2470,7 +2495,7 @@ if (
     Q.dvp_relation -= 5;
 }
 
-Q.liberal_vote = (Q.ddp_votes + Q.dvp_votes)
+Q.liberal_vote = (Q.ddp_votes + Q.dvp_votes + Q.lvp_votes)
 
 if (
     Q.year === 1928 && Q.month >= 6 && ((Q.in_grand_coalition && (Q.liberal_vote < 12.5 || Q.peoples_party_support >= 2) && !(Q.in_right_coalition || Q.in_weimar_coalition) && Q.next_election_time - Q.time >= 3)) || Q.year === 1928 && Q.month >= 6 && ((Q.next_election_time - Q.time == 2) && Q.n_elections == 1)

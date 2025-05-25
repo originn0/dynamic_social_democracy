@@ -74,6 +74,15 @@ Chancellor [+ chancellor +] has condemned the <span style="color: #7A3C00;">Nazi
 Ultimately, the strike fizzles out after just a few days—unsustainable in a time of mass unemployment.
 
 @nay_strike_3
-on-arrival: workers_kpd -= 2; unemployed_kpd -= 2; workers_nsdap -= 2; unemployed_nsdap -= 2; pro_republic += 3; labor_dissent -= 5; reformist_dissent -= 5; transport_strike_vote = 100 - pro_republic
+on-arrival: {!
+Q.workers_kpd -= 2;
+Q.unemployed_kpd -= 2;
+Q.workers_nsdap -= 2;
+Q.unemployed_nsdap -= 2;
+Q.pro_republic += 3;
+Q.labor_dissent -= 5;
+Q.reformist_dissent -= 5;
+Q.transport_strike_vote = Math.round((100 - Q.pro_republic) * 10) / 10;
+!}
 
 Only 76% of the workforce participates in the vote, and of those, [+ transport_strike_vote +]% vote in favor of a strike—falling short of the required three-fourths of all employees. Regardless, the <span style="color: #700000;">**RGO**</span> and <span style="color: #7A3C00;">**NSBO**</span> form their own unauthorized strike committee. Their attempted strike collapses almost immediately, without Gesamtverband participation and as strikebreakers are swiftly brought in.

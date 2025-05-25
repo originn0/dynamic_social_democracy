@@ -559,14 +559,18 @@ Q.aspd_r = 0;
 if (Q.cnblp_votes) Q.cnblp_r = Math.round(Q.cnblp_votes * Q.adjustmentFactors_other * 10) / 10;
 if (Q.wp_votes) Q.wp_r = Math.round(Q.wp_votes * Q.adjustmentFactors_other * 10) / 10;
 if (Q.csvd_votes) Q.csvd_r = Math.round(Q.csvd_votes * Q.adjustmentFactors_other * 10) / 10;
-if (Q.aspd_votes)Q.aspd_r = Math.round(Q.aspd_votes * Q.adjustmentFactors_other * 10) / 10;
+if (Q.aspd_votes) Q.aspd_r = Math.round(Q.aspd_votes * Q.adjustmentFactors_other * 10) / 10;
 
 if (Q.dnef_formed) {
     Q.cnblp_r = 0;
     Q.wp_r = 0;
     Q.csvd_r = 0;
 }
-
+if (Q.electoral_threshold > 1) {
+    Q.cnblp_r = 0;
+    Q.wp_r = 0;
+    Q.csvd_r = 0;
+}
 Q.true_other_r = Q.other_r - Q.cnblp_r - Q.wp_r - Q.csvd_r - Q.aspd_r;
 if (!Q.csvd_formed && !Q.aspd_other) Q.true_other_r += Q.csvd_r;
 if (!Q.aspd_other) Q.true_other_r += Q.aspd_r;

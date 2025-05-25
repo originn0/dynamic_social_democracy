@@ -163,6 +163,8 @@ title: Moving on to the <span style="color: #3E88B3;">nationalists</span>.
 
 The <span style="color: #3E88B3;">nationalists</span> are unified in their support for [+ dnef_candidate +], joined by the various splinter factions and the minor bourgeois parties. Although Hugenberg is—somehow—still contemplating a presidential run, a strongly worded threat has convinced him to remain silent.
 
+- @candidates_dems
+
 @candidates_dems
 title: The <span style="color: #700000;">**Communists**</span>? The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Parties? Who will they support?
 
@@ -170,12 +172,13 @@ With the <span style="color: #700000;">**Communists**</span> having been heavily
 
 [? if z_candidate == "Adenauer": The <span style="color: #000000;">Center</span> is not fully convinced to back [+ dnef_candidate +] and has chosen to run its own candidate: Konrad Adenauer. The Mayor of Cologne since the Republic's inception, and a member of the Prussian legislature, he's an advocate for the <span style="color: #000000;">Center Party</span> "leaving the tower" to broaden its appeal among Protestants, Adenauer was first proposed by Stegerwald himself. Though situated on the right wing of his party, he remains firmly committed to the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic and opposes Schleicher’s threats against it. ?]
 
-[? if heuss_run: The <span style="color: #FFCC00;">liberals</span> are running Theodor Heuss—a journalist and vocal supporter of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic, and a staunch anti-Schleicherist within his own party. This stance has put him at odds with more pro-Schleicher elements in the German middle class. While unlikely to secure significant support, Heuss has positioned himself as a "<span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>" unity candidate in opposition to [+ dnef_candidate +]. ?][? if not heuss_run and ddp_candidate == z_candidate: The <span style="color: #FFCC00;">liberals</span>, mired in electoral ruin, lack the resources or energy to field a candidate of their own. Instead, they have thrown their support behind [+ z_candidate +] as the bourgeois alternative to Schleicher. However, their backing is far from solid—pro-Schleicher elements remain rogue, as his message of national solidarity continues to resonate with the historically nationalist German liberal movement. ?][? if not heuss_run and ddp_candidate == dnef_candidate: The <span style="color: #FFCC00;">liberals</span>, mired in electoral ruin, lack the resources or energy to field a candidate of their own. They have thrown their support behind [+ dnef_candidate +], heavily influenced by pro-Schleicher elements and propaganda that has resonated especially strongly with their rank-and-file. Many within the party now see it as their national duty to support Schleicher and his successor, believing this to be the only path toward restoring Germany’s great power status abroad and securing concessions at home. ?]
+[? if heuss_run: The <span style="color: #FFCC00;">liberals</span> are running Theodor Heuss—a journalist and vocal supporter of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic, and a staunch anti-Schleicherist within his own party. This stance has put him at odds with more pro-Schleicher elements in the German middle class. While unlikely to secure significant support, Heuss has positioned himself as a "<span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>" unity candidate in opposition to [+ dnef_candidate +]. ?][? if not heuss_run and ddp_candidate == z_candidate and z_candidate != dnef_candidate: The <span style="color: #FFCC00;">liberals</span>, mired in electoral ruin, lack the resources or energy to field a candidate of their own. Instead, they have thrown their support behind [+ z_candidate +] as the bourgeois alternative to Schleicher. However, their backing is far from solid—pro-Schleicher elements remain rogue, as his message of national solidarity continues to resonate with the historically nationalist German liberal movement. ?][? if not heuss_run and ddp_candidate == dnef_candidate: The <span style="color: #FFCC00;">liberals</span>, mired in electoral ruin, lack the resources or energy to field a candidate of their own. They have thrown their support behind [+ dnef_candidate +], heavily influenced by pro-Schleicher elements and propaganda that has resonated especially strongly with their rank-and-file. Many within the party now see it as their national duty to support Schleicher and his successor, believing this to be the only path toward restoring Germany’s great power status abroad and securing concessions at home. ?]
 
 - @candidates_spd
 
 @candidates_spd
 title: Finally, what about us?
+go-to: candidate_menu
 
 As for the <span style="color: #c00000;">**SPD**</span>, we could support a joint <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition candidate or run our own. The viability of a united front, however, depends entirely on our relations with former coalition partners—and whether they’ve fallen under Schleicher’s influence.
 
@@ -201,6 +204,7 @@ I hope you had a reason in mind.
 - @round_1: Let the voting begin.
 
 @adenauer_r1
+view-if: z_candidate == "Adenauer"
 on-arrival: spd_candidate = "Adenauer"; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; z_relation += 5; center_bvp_votes = 1 if z_relation < 50; is_unity_candidate = 1
 go-to: r1_menu
 
@@ -209,6 +213,7 @@ We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style
 [? if z_relation < 50 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to [+ dnef_candidate +]. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
 
 @heuss_r1
+view-if: heuss_run
 on-arrival: spd_candidate = "Heuss"; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; ddp_relation += 8; lvp_relation += 5; dvp_candidate = dnef_candidate if dvp_relation < 60 and dvp_candidate == spd_candidate and dvp_exist and not lvp_formed; is_unity_candidate = 1
 go-to: r1_menu
 
@@ -448,7 +453,9 @@ go-to: r2_start if round = 1 and not has_majority; election_end if round > 1; r1
 Election results:
 
 [? if Goring_running : <span style="color: #7A3C00;">**Göring**</span> - [+ Goring_votes_disp +]% ?]
+
 [? if Strasser_running : <span style="color: #7A3C00;">**Strasser**</span> - [+ Strasser_votes_disp +]% ?]
+
 [? if Frick_running : <span style="color: #7A3C00;">**Frick**</span> - [+ Frick_votes_disp +]% ?]
 
 [? if Hammerstein_running : <span style="color: #BFC8CC;">**Hammerstein**</span> - [+ Hammerstein_votes_disp +]% ?]
@@ -569,6 +576,7 @@ With [+ dnef_candidate +]'s victory, the <span style="color: #BFC8CC;">**DNEF**<
 @heuss_win
 on-arrival: {!
 Q.republic_win_rubicon = 1
+Q.president_ideology = "Moderate";
 
 const rightTools = document.querySelector('.tools.right');
 if (rightTools) {
@@ -583,6 +591,7 @@ Theodor Heuss has unexpectedly won the presidency! With a committed <span style=
 @adenauer_win
 on-arrival: {!
 Q.republic_win_rubicon = 1
+Q.president_ideology = "Moderate";
 
 const rightTools = document.querySelector('.tools.right');
 if (rightTools) {
@@ -595,6 +604,7 @@ Konrad Adenauer has won the presidency! With a committed <span style="color: #00
 @schumacher_win
 on-arrival: {!
 Q.republic_win_rubicon = 1
+Q.president_ideology = "Left";
 
 const rightTools = document.querySelector('.tools.right');
 if (rightTools) {

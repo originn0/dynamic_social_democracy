@@ -339,7 +339,6 @@ elements.forEach(el => {
 });
 !}
 tags: endings
-go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 = Completed Achievements in this Playthrough
 
@@ -691,6 +690,21 @@ go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 [? if not achievement_stolperstein: **Stolperstein** - we lost, but history might memorialize us... ?]
 
+- @go_back
+
+@go_back
+title: Go back.
+on-arrival: {!
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'block';
+}
+const elements = document.querySelectorAll('header, #content, footer');
+elements.forEach(el => {
+  el.style.maxWidth = '540px';
+});
+!}
+go-to: eg_menu if started == 1; root.start_menu_2 if started == 0
 
 @end_game
 game-over: true

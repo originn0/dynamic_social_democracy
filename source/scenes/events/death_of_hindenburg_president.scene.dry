@@ -1,8 +1,8 @@
 title: The Death of Hindenburg
 subtitle: The President has died...
 new-page: true
-view-if: year = 1934 and month >= 7 and president = "Hindenburg" and not rubicon
-on-arrival: round = 0; hindenburg_dead = 1; president = "Bumke (acting)"; president = "Großmann (acting)" if judicial_reform >= 4; spd_candidate = "Eckener"; kpd_candidate = "Thälmann"; kpd_candidate = "Münzenberg" if kpd_leader = "Conciliators"; z_candidate = "Adenauer"; ddp_candidate = "Gessler"; lvp_candidate = "Gessler"; nsdap_candidate = "Hitler"; nsdap_candidate = "Göring" if hitler_deported; dnvp_candidate = "Seldte"; dvp_candidate = "Gessler"; other_candidate = "Seldte"; is_unity_candidate = 0; sapd_candidate = kpd_candidate; kvp_candidate = dnvp_candidate; dnf_candidate = dnvp_candidate
+view-if: year = 1934 and month >= 7 and president = "Hindenburg" and not dnef_formed
+on-arrival: round = 0; hindenburg_dead = 1; president = "Bumke (acting)"; president = "Großmann (acting)" if judicial_reform >= 4; spd_candidate = "Eckener"; kpd_candidate = "Thälmann"; kpd_candidate = "Münzenberg" if kpd_leader = "Conciliators"; z_candidate = "Adenauer"; ddp_candidate = "Gessler"; lvp_candidate = "Gessler"; nsdap_candidate = "Hitler"; nsdap_candidate = "Göring" if hitler_deported or not hitler_citizen or hitler_dead; dnvp_candidate = "Seldte"; dvp_candidate = "Gessler"; other_candidate = "Seldte"; is_unity_candidate = 0; sapd_candidate = kpd_candidate; kvp_candidate = dnvp_candidate; dnf_candidate = dnvp_candidate
 max-visits: 1
 on-display: {!  
     var cardEl = document.createElement('div');  
@@ -33,8 +33,9 @@ New presidential elections are to be held as soon as possible. The German politi
 @candidates
 go-to: candidate_menu
 
-[? if not hitler_deported : Of course, Adolf Hitler will be running for the <span style="color: #7A3C00;">Nazis</span>, in his third run. We have kept him out of power so far, but nothing is certain. ?]
-[? if hitler_deported : With Hitler deported, the <span style="color: #7A3C00;">Nazis</span> will be running Hermann Göring as their candidate. ?]
+[? if not hitler_deported and hitler_citizen and not hitler_dead : Of course, Adolf Hitler will be running for the <span style="color: #7A3C00;">Nazis</span>, in his third run. We have kept him out of power so far, but nothing is certain. ?]
+
+[? if hitler_deported or hitler_dead or (not hitler_citizen and not hitler_deported and not hitler_dead) : With Hitler out of the picture, the <span style="color: #7A3C00;">Nazis</span> will be running Hermann Göring as their candidate. ?]
 This might be the <span style="color: #7A3C00;">Nazis</span>' last hurrah; the party's internal contradictions are heightening, and it is in desperate shortage of funds.
 
 The <span style="color: #3E88B3;">**DNVP**</span> will nominate Franz Seldte, leader of the <span style="color: #3E88B3;">**Stahlhelm**</span> paramilitary group. He will be endorsed by many of Hindenburg's most right-wing supporters. They are working more closely with the <span style="color: #7A3C00;">Nazis</span> than before, and in the second round, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties are expected to consolidate into a single anti-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> front.
@@ -654,7 +655,7 @@ With [+ nsdap_candidate +]'s victory, the <span style="color: #7A3C00;">Nazis</s
 @seldte_victory
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
 
-With Seldte's victory, the balance of power passes to the <span style="color: #7A3C00;">Nazis</span>. [? if hitler_deported: His first act is to depose the current chancellor and appoint Adolf Hitler as chancellor, first undoing his deportation. ?][? if not hitler_deported: His first act is to depose the current chancellor and appoint Adolf Hitler as chancellor. ?]
+With Seldte's victory, the balance of power passes to the <span style="color: #7A3C00;">Nazis</span>. [? if hitler_deported: His first act is to depose the current chancellor and appoint Adolf Hitler as chancellor, first undoing his deportation. ?][? if not hitler_deported: His first act is to depose the current chancellor and appoint Adolf Hitler as chancellor. ?] [? if hitler_dead: It turns out Hitler never actually died—he faked his suicide. With no body ever recovered, allegedly cremated beyond recognition, he instead fled to America and lived under the alias "Adam Hilt," working as a painter. Now, he is being called back. ?]
 
 - @hitler_takes_power: What next?
 - @hitler_constitutional: This is blatantly unconstitutional!
@@ -699,7 +700,20 @@ Despite the <span style="color: #7A3C00;">Nazi</span> threats, supporters of the
 
 @election_end
 go-to: eckener_win if winner = "Eckener"; juchacz_win if winner = "Juchacz"; bundesrepublik_win if winner = "Schumacher" or winner = "Adenauer"; hitler_victory if winner = "Hitler" or winner = "Göring" or winner = "Goring"; seldte_victory if winner = "Seldte"; munzenberg_victory if winner = "Munzenberg" or winner = "Münzenberg"; thalmann_victory if winner = "Thalmann" or winner = "Thälmann"; nazis_lose if winner = "Braun" or winner = "Gessler"; cultural_victory if winner = "Ossietzky" or winner = "Mann"; einstein_victory if winner = "Einstein"
-on-arrival: president = winner; president = "Thälmann" if president == "Thalmann"; president = "Münzenberg" if president = "Munzenberg"; president = "Göring" if president = "Goring"
+on-arrival: {!
+Q.president = Q.winner;
+if (Q.president == "Thalmann") Q.president = "Thälmann";
+if (Q.president == "Munzenberg") Q.president = "Münzenberg";
+if (Q.president == "Goring") Q.president = "Göring";
+
+if (Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Schumacher" || Q.president == "Juchacz" || Q.president == "Braun" || Q.president == "Ossietzky" || Q.president == "Mann" || Q.president == "Einstein") {
+    Q.president_ideology = "Left";
+} else if (Q.president == "Eckener" || Q.president == "Adenauer" || Q.president == "Gessler") {
+    Q.president_ideology = "Moderate";
+} else {
+    Q.president_ideology = "Right";
+}
+!}
 
 The election has been won by [+ winner_desc +].
 
@@ -717,7 +731,7 @@ Thälmann wastes no time in consolidating power, using all means available to re
 
 @thalmann_democrat
 
-Despite the victory of the anti-constitutionalist Thälmann, he appears to be respecting the constitutional constraints on presidential power, at least for now. There is no appetite on the right for a coup at this moment. The bourgeoisie have to live with a communist president, at least for now.
+Despite the victory of the anti-constitutionalist Thälmann, he appears to be respecting the constitutional constraints on presidential power, at least for now. There is no appetite on the right for a coup at this moment. The bourgeoisie have to live with a <span style="color: #700000;">communist</span> president, at least for now.
 
 
 @munzenberg_victory

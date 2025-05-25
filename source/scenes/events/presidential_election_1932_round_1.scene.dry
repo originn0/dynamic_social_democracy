@@ -1,5 +1,5 @@
 title: Presidential Election
-subtitle: Hindenburg runs for re-election...
+subtitle: [? if hindenburg_run: Hindenburg runs for re-election... ?][? if not hindenburg_run: The first round results have come in... ?]
 view-if: year = 1932 and month == 3 and presidential_election_seen = 0 and not hindenburg_term_extended
 frequency: 1000
 max-visits: 1
@@ -7,13 +7,7 @@ new-page: true
 on-arrival: {!
 Q.hitler_support_hindenburg = 0;
 Q.presidential_election_seen = 1;
-if (!Q.hitler_deported && Q.hitler_citizen) {
-    Q.nsdap_candidate_1932 = "Hitler";
-    Q.nsdap_candidate_1932_disp = "Adolf Hitler";
-    Q.nazi_funds -= 1;
-} else {
-    Q.nsdap_candidate_1932 = "Göring";
-    Q.nsdap_candidate_1932_disp = "Hermann Göring";
+if (Q.nsdap_candidate_1932) {
     Q.nazi_funds -= 1;
 }
 !}
@@ -39,6 +33,9 @@ set-jump: post_election
 on-arrival: {!
 Q.spd_president_votes = 0;
 Q.hindenburg_votes = 0;
+Q.reactionary_candidate_1_votes = 0;
+Q.reactionary_candidate_2_votes = 0;
+Q.reactionary_votes = 0;
 Q.nsdap_presidential_votes = 0;
 Q.thalmann_votes = 0;
 Q.dnvp_presidential_votes = 0;
@@ -50,81 +47,249 @@ Q.nsdap_presidential_votes += Q.nsdap_normalized;
 Q.hindenburg_votes += Q.other_normalized / 2;
 if (Q.kvp_formed) Q.hindenburg_votes += Q.kvp_normalized;
 Q.hindenburg_votes += (Q.dnvp_normalized*0.2);
+if (!Q.hindenburg_run) {
+    let parties = ['z', 'ddp', 'dvp', 'other'];
 
-Q.dnvp_presidential_votes += (Q.dnvp_normalized*0.8);
-Q.dnvp_presidential_votes += Q.other_normalized / 2;
+    if (Q.kvp_formed) {
+        parties.push('kvp');
+    }
+    if (Q.dnvp_ideology == "Moderate") {
+        parties.push('dnvp');
+    }
+    if (Q.lvp_formed) {
+        parties.push('lvp');
+    }
+
+    Q.reactionary_candidate_1_votes = 0;
+    Q.reactionary_candidate_2_votes = 0;
+
+for (const party of parties) {
+        const choice = Q[`${party}_choice`];
+        const support = Q[`${party}_normalized`];
+        Q['choice_pre_'+party] = choice;
+
+        if (choice === Q.reactionary_candidate_1932) {
+            Q.reactionary_candidate_1_votes += support;
+        } else if (choice === Q.secondary_reactionary_candidate_1932) {
+            Q.reactionary_candidate_2_votes += support;
+        }
+    }
+}
+if (Q.dnvp_candidate_1932 == "Duesterberg") {
+    Q.dnvp_presidential_votes += (Q.dnvp_normalized*0.8);
+    Q.dnvp_presidential_votes += Q.other_normalized / 2;
+} else if (Q.dnvp_candidate_1932 == "Hugenberg") {
+    if (Q.dnvp_ideology == "Radical") {
+        Q.dnvp_presidential_votes += (Q.dnvp_normalized*0.7);
+        Q.dnvp_presidential_votes += Q.other_normalized / 4;
+        Q.hindenburg_votes += Q.other_normalized / 4;
+    } else {
+        Q.dnvp_presidential_votes += Q.dnf_normalized;
+    }
+} else {
+    Q.hindenburg_votes += (Q.dnvp_normalized*0.8);
+}
+
+Q.ddp_president_crossover = 0;
+Q.dvp_president_crossover = 0; 
+Q.lvp_president_crossover = 0;
+Q.center_president_crossover = 0;
 
 if (Q.spd_campaign) {
     Q.spd_president_votes += Q.spd_normalized;
+    if (!Q.media_rosenfeld_seen) {
+        Q.spd_president_votes -= (Q.new_middle_spd_normalized / 1500);
+        Q.spd_president_votes -= (Q.old_middle_spd_normalized / 1000);
+    } else if (Q.media_rosenfeld_seen) {
+        Q.spd_president_votes -= (Q.new_middle_spd_normalized / 2000);
+        Q.spd_president_votes -= (Q.old_middle_spd_normalized / 2000);
+    }
+    if (!Q.party_rosenfeld_seen) {
+        Q.spd_president_votes -= (Q.new_middle_spd_normalized / 1500);
+        Q.spd_president_votes -= (Q.old_middle_spd_normalized / 1500);
+        Q.spd_president_votes -= (Q.rural_spd_normalized / 1500);
+    } else if (Q.party_rosenfeld_seen) {
+        Q.spd_president_votes -= (Q.new_middle_spd_normalized / 1000);
+        Q.spd_president_votes -= (Q.old_middle_spd_normalized / 1000);
+        Q.spd_president_votes -= (Q.rural_spd_normalized / 1000);
+    }
+
     if (Q.ddp_support_spd) {
-        if (Q.ddp_ideology == "Left") Q.spd_president_votes += Q.ddp_normalized;
+        if (Q.ddp_ideology == "Left") {
+            Q.spd_president_votes += Q.ddp_normalized;
+        }
         if (Q.ddp_ideology == "Moderate") {
-            Q.spd_president_votes += Q.ddp_normalized*0.8;
-            Q.hindenburg_votes += Q.ddp_normalized*0.2;
+            Q.spd_president_votes += Q.ddp_normalized * 0.8;
+            Q.hindenburg_votes += Q.ddp_normalized * 0.2;
+            Q.ddp_president_crossover += Q.ddp_normalized * 0.2;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.ddp_normalized * 0.2;
+                Q.hindenburg_votes -= Q.ddp_normalized * 0.2;
+                Q.ddp_president_crossover -= Q.ddp_normalized * 0.2;
+            }
         }
         if (Q.ddp_ideology == "Right") {
-            Q.spd_president_votes += Q.ddp_normalized*0.6;
-            Q.hindenburg_votes += Q.ddp_normalized*0.4;
+            Q.spd_president_votes += Q.ddp_normalized * 0.6;
+            Q.hindenburg_votes += Q.ddp_normalized * 0.4;
+            Q.ddp_president_crossover += Q.ddp_normalized * 0.4;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.ddp_normalized * 0.2;
+                Q.hindenburg_votes -= Q.ddp_normalized * 0.2;
+                Q.ddp_president_crossover -= Q.ddp_normalized * 0.2;
+            }
         }
     } else {
         Q.hindenburg_votes += Q.ddp_normalized;
     }
-    if (Q.prussia_leader == "Braun" && Q.braun_campaign) Q.spd_president_votes += (Q.pro_republic/2000);
-    if (Q.z_support_spd && Q.z_support_spd == 1) {
-        if (Q.z_ideology == "Left") { 
-            Q.spd_president_votes += (Q.z_normalized - 0.03);
-            Q.hindenburg_votes += 0.03;
-        }
-        if (Q.z_ideology == "Right" && !Q.z_glaze_spd) {
-            Q.spd_president_votes += (Q.z_normalized - 0.03)*0.8;
-            Q.hindenburg_votes += (Q.z_normalized - 0.03)*0.2;
-            Q.hindenburg_votes += 0.03;
-        } else if (Q.z_ideology == "Right" && Q.z_glaze_spd) {
-            Q.spd_president_votes += (Q.z_normalized - 0.03)*0.9;
-            Q.hindenburg_votes += (Q.z_normalized - 0.03)*0.1;
-            Q.hindenburg_votes += 0.03;
-        }
-    } else {
-        Q.hindenburg_votes += Q.z_normalized;
-    }
-    if (Q.kpd_support_spd) {
-        if (!Q.kpd_glaze_spd) {
-            Q.spd_president_votes += Q.kpd_normalized*0.8;
-            if (!Q.hitler_support_hindenburg && Q.nsdap_candidate_1932 == "Hitler") Q.nsdap_presidential_votes += Q.kpd_normalized*0.1;
-        } else if (Q.kpd_glaze_spd) {
-            Q.spd_president_votes += Q.kpd_normalized*0.95;
-            if (!Q.hitler_support_hindenburg && Q.nsdap_candidate_1932 == "Hitler") Q.nsdap_presidential_votes += Q.kpd_normalized*0.05;
-        }
-        if (Q.sapd_formed && Q.sapd_votes) {
-            Q.spd_president_votes += Q.sapd_normalized;
-        }
-    } else {
-        Q.thalmann_votes += Q.kpd_normalized*0.95;
-        if (!Q.hitler_support_hindenburg && Q.nsdap_candidate_1932 == "Hitler") Q.nsdap_presidential_votes += Q.kpd_normalized*0.05;
-        if (Q.sapd_formed && Q.sapd_votes) {
-            Q.thalmann_votes += Q.sapd_normalized;
-        }
-    }
+
     if (Q.lvp_support_spd) {
         if (Q.lvp_ideology == "Left") {
-            Q.spd_president_votes += Q.lvp_normalized*0.8;
-            Q.hindenburg_votes += Q.lvp_normalized*0.2;
+            Q.spd_president_votes += Q.lvp_normalized * 0.8;
+            Q.hindenburg_votes += Q.lvp_normalized * 0.2;
+            Q.lvp_president_crossover += Q.lvp_normalized * 0.2;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.lvp_normalized * 0.1;
+                Q.hindenburg_votes -= Q.lvp_normalized * 0.1;
+                Q.lvp_president_crossover -= Q.lvp_normalized * 0.1;
+            }
         }
         if (Q.lvp_ideology == "Moderate") {
-            Q.spd_president_votes += Q.lvp_normalized*0.6;
-            Q.hindenburg_votes += Q.lvp_normalized*0.4;
+            Q.spd_president_votes += Q.lvp_normalized * 0.6;
+            Q.hindenburg_votes += Q.lvp_normalized * 0.4;
+            Q.lvp_president_crossover += Q.lvp_normalized * 0.4;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.lvp_normalized * 0.2;
+                Q.hindenburg_votes -= Q.lvp_normalized * 0.2;
+                Q.lvp_president_crossover -= Q.lvp_normalized * 0.2;
+            }
         }
         if (Q.lvp_ideology == "Right") {
-            Q.spd_president_votes += Q.lvp_normalized*0.4;
-            Q.hindenburg_votes += Q.lvp_normalized*0.6;
+            Q.spd_president_votes += Q.lvp_normalized * 0.4;
+            Q.hindenburg_votes += Q.lvp_normalized * 0.6;
+            Q.lvp_president_crossover += Q.lvp_normalized * 0.6;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.lvp_normalized * 0.2;
+                Q.hindenburg_votes -= Q.lvp_normalized * 0.2;
+                Q.lvp_president_crossover -= Q.lvp_normalized * 0.2;
+            }
         }
     } else {
         Q.hindenburg_votes += Q.lvp_normalized;
     }
-    Q.hindenburg_votes += Q.dvp_normalized;
+
+    if (Q.dvp_support_spd) {
+        if (Q.dvp_ideology == "Left") {
+            Q.spd_president_votes += Q.dvp_normalized * 0.6;
+            Q.hindenburg_votes += Q.dvp_normalized * 0.4;
+            Q.dvp_president_crossover += Q.dvp_normalized * 0.4;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.dvp_normalized * 0.2;
+                Q.hindenburg_votes -= Q.dvp_normalized * 0.2;
+                Q.dvp_president_crossover -= Q.dvp_normalized * 0.2;
+            }
+        }
+        if (Q.dvp_ideology == "Moderate") {
+            Q.spd_president_votes += Q.dvp_normalized * 0.5;
+            Q.hindenburg_votes += Q.dvp_normalized * 0.5;
+            Q.dvp_president_crossover += Q.dvp_normalized * 0.5;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.dvp_normalized * 0.3;
+                Q.hindenburg_votes -= Q.dvp_normalized * 0.3;
+                Q.dvp_president_crossover -= Q.dvp_normalized * 0.3;
+            }
+        }
+        if (Q.dvp_ideology == "Right") {
+            Q.spd_president_votes += Q.dvp_normalized * 0.4;
+            Q.hindenburg_votes += Q.dvp_normalized * 0.6;
+            Q.dvp_president_crossover += Q.dvp_normalized * 0.6;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += Q.dvp_normalized * 0.3;
+                Q.hindenburg_votes -= Q.dvp_normalized * 0.3;
+                Q.dvp_president_crossover -= Q.dvp_normalized * 0.3;
+            }
+        }
+    } else {
+        Q.hindenburg_votes += Q.dvp_normalized;
+    }
+
+    if (Q.z_support_spd && Q.z_support_spd == 1) {
+        if (Q.z_ideology == "Left") {
+            Q.spd_president_votes += (Q.z_normalized - 0.03);
+            Q.hindenburg_votes += 0.03;
+            Q.center_president_crossover += 0.03;
+        }
+        if (Q.z_ideology == "Right" && !Q.z_glaze_spd) {
+            Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.8;
+            Q.hindenburg_votes += (Q.z_normalized - 0.03) * 0.2;
+            Q.center_president_crossover += (Q.z_normalized - 0.03) * 0.2;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.1;
+                Q.hindenburg_votes -= (Q.z_normalized - 0.03) * 0.1;
+                Q.center_president_crossover -= (Q.z_normalized - 0.03) * 0.1;
+            }
+            Q.hindenburg_votes += 0.03;
+            Q.center_president_crossover += 0.03;
+        } else if (Q.z_ideology == "Right" && Q.z_glaze_spd) {
+            Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.9;
+            Q.hindenburg_votes += (Q.z_normalized - 0.03) * 0.1;
+            Q.center_president_crossover += (Q.z_normalized - 0.03) * 0.1;
+            if (Q.eckener_campaign) {
+                Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.1;
+                Q.hindenburg_votes -= (Q.z_normalized - 0.03) * 0.1;
+                Q.center_president_crossover -= (Q.z_normalized - 0.03) * 0.1;
+            }
+            Q.hindenburg_votes += 0.03;
+            Q.center_president_crossover += 0.03;
+        }
+        if (Q.bvp_support_spd) {
+            Q.spd_president_votes += 0.03;
+            Q.hindenburg_votes -= 0.03;
+            Q.center_president_crossover -= 0.03;
+        }
+    } else {
+        Q.hindenburg_votes += Q.z_normalized;
+    }
+    
+    if (Q.kpd_support_spd) {
+        if (!Q.kpd_glaze_spd) {
+            Q.spd_president_votes += Q.kpd_normalized * 0.8;
+            if (!Q.hitler_support_hindenburg && Q.nsdap_candidate_1932 == "Hitler" && Q.spd_candidate_1932 != "Rosenfeld") {
+                Q.nsdap_presidential_votes += Q.kpd_normalized * 0.1;
+            }
+            if (Q.spd_candidate_1932 == "Rosenfeld") {
+                Q.nsdap_presidential_votes += Q.kpd_normalized * 0.1;
+            }
+        } else if (Q.kpd_glaze_spd) {
+            Q.spd_president_votes += Q.kpd_normalized * 0.95;
+            if (!Q.hitler_support_hindenburg && Q.nsdap_candidate_1932 == "Hitler" && Q.spd_candidate_1932 != "Rosenfeld") {
+                Q.nsdap_presidential_votes += Q.kpd_normalized * 0.05;
+            }
+            if (Q.spd_candidate_1932 == "Rosenfeld") {
+                Q.nsdap_presidential_votes += Q.kpd_normalized * 0.05;
+            }
+        }
+
+        if (Q.sapd_formed && Q.sapd_votes) {
+            Q.spd_president_votes += Q.sapd_normalized;
+        }
+    } else {
+        Q.thalmann_votes += Q.kpd_normalized * 0.95;
+        if (!Q.hitler_support_hindenburg && Q.nsdap_candidate_1932 == "Hitler") {
+            Q.nsdap_presidential_votes += Q.kpd_normalized * 0.05;
+        }
+        if (Q.sapd_formed && Q.sapd_votes) {
+            Q.thalmann_votes += Q.sapd_normalized;
+        }
+    }
+
+    if (Q.prussia_leader == "Braun" && Q.braun_campaign) {
+        Q.spd_president_votes += (Q.pro_republic / 2000);
+    }
+
 } else if (Q.spd_support_thalmann) {
     Q.thalmann_votes += Q.kpd_normalized;
     Q.thalmann_votes += Q.spd_normalized;
+
     if (!Q.media_communist_seen) {
         Q.thalmann_votes -= (Q.new_middle_spd_normalized / 1000);
         Q.thalmann_votes -= (Q.old_middle_spd_normalized / 1000);
@@ -132,47 +297,118 @@ if (Q.spd_campaign) {
         Q.thalmann_votes -= (Q.new_middle_spd_normalized / 1500);
         Q.thalmann_votes -= (Q.old_middle_spd_normalized / 1500);
     }
+
     Q.thalmann_votes -= (Q.rural_spd_normalized / 500);
     Q.thalmann_votes -= (Q.catholics_spd_normalized / 500);
+
     if (!Q.spd_glaze_thalmann) {
         Q.thalmann_votes -= (Q.workers_spd_normalized / 2000);
         Q.hindenburg_votes += (Q.workers_spd_normalized / 2000);
     }
+
     Q.hindenburg_votes += Q.z_normalized;
     Q.hindenburg_votes += Q.ddp_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
     Q.hindenburg_votes += Q.lvp_normalized;
+
 } else {
-    if (!Q.hindenburg_democracy_bonus && !Q.spd_abstain_1932) Q.hindenburg_votes += Q.spd_normalized*0.9;
-    if (Q.hindenburg_democracy_bonus && !Q.spd_abstain_1932) Q.hindenburg_votes += Q.spd_normalized;
+    if (!Q.hindenburg_democracy_bonus && Q.hindenburg_run && !Q.spd_abstain_1932) {
+        Q.hindenburg_votes += Q.spd_normalized * 0.9;
+    }
+
+    if (Q.hindenburg_democracy_bonus && Q.hindenburg_run && !Q.spd_abstain_1932) {
+        Q.hindenburg_votes += Q.spd_normalized;
+    }
+
+    if (Q.reactionary_democracy_bonus && !Q.hindenburg_run && !Q.spd_abstain_1932) {
+        Q.reactionary_votes += Q.spd_normalized;
+    }
+
+    if (!Q.reactionary_democracy_bonus && !Q.hindenburg_run && !Q.spd_abstain_1932) {
+        Q.reactionary_votes += Q.spd_normalized;
+    }
+
     Q.hindenburg_votes += Q.z_normalized;
     Q.hindenburg_votes += Q.ddp_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
     Q.hindenburg_votes += Q.lvp_normalized;
+
     Q.thalmann_votes += Q.kpd_normalized;
-    if (!Q.hindenburg_democracy_bonus) Q.thalmann_votes += Q.spd_normalized*0.05;
-    if (Q.spd_abstain_1932) Q.thalmann_votes += Q.spd_normalized*0.3;
-    if (Q.spd_abstain_1932) Q.hindenburg_votes += Q.spd_normalized*0.5;
+
+    if (!Q.hindenburg_democracy_bonus && Q.hindenburg_run) {
+        Q.thalmann_votes += Q.spd_normalized * 0.05;
+    }
+    if (!Q.reactionary_democracy_bonus && !Q.hindenburg_run) {
+        Q.thalmann_votes += Q.spd_normalized * 0.05;
+    }
+
+    if (Q.spd_abstain_1932) {
+        Q.thalmann_votes += Q.spd_normalized * 0.3;
+        Q.hindenburg_votes += Q.spd_normalized * 0.5;
+        Q.reactionary_votes += Q.spd_normalized * 0.5;
+    }
 }
 if (Q.hitler_support_hindenburg) {
     Q.nsdap_presidential_votes -= Q.nsdap_normalized;
     Q.hindenburg_votes += Q.nsdap_normalized;
 }
+if (!Q.hindenburg_run) {
+    let parties = ['z', 'ddp', 'dvp', 'other'];
 
-if (Q.hindenburg_to_spd_bonus) {
-    Q.hindenburg_votes -= Q.hindenburg_to_spd_bonus;
-    Q.spd_president_votes += Q.hindenburg_to_spd_bonus;
+    if (Q.kvp_formed) {
+        parties.push('kvp');
+    }
+    if (Q.dnvp_ideology == "Moderate") {
+        parties.push('dnvp');
+    }
+    if (Q.lvp_formed) {
+        parties.push('lvp');
+    }
+
+    if (Q.dvp_support_spd) {
+        Q.dvp_choice = Q.spd_candidate_1932;
+    }
+    if (Q.ddp_support_spd) {
+        Q.ddp_choice = Q.spd_candidate_1932;
+    }
+    if (Q.z_support_spd) {
+        Q.z_choice = Q.spd_candidate_1932;
+    }
+    if (Q.lvp_support_spd) {
+        Q.lvp_choice = Q.spd_candidate_1932;
+    }
+
+    if ((Q.reactionary_candidate_1932_ideology == "Liberal" && Q.secondary_reactionary_candidate_1932_ideology == "Centrist" || Q.reactionary_candidate_1932_ideology == "Centrist" && Q.secondary_reactionary_candidate_1932_ideology == "Liberal" || Q.reactionary_candidate_1932_ideology == "Centrist" && Q.secondary_reactionary_candidate_1932_ideology == "Centrist" || Q.reactionary_candidate_1932_ideology == "Liberal" && Q.secondary_reactionary_candidate_1932_ideology == "Liberal") && Q.spd_abstain_1932) {
+        Q.reactionary_candidate_1_votes += Q.reactionary_votes*0.5;
+        Q.reactionary_candidate_2_votes += Q.reactionary_votes*0.5;
+    }
+    for (const party of parties) {
+        const new_choice = Q[`${party}_choice`];
+        const support = Q[`${party}_normalized`];
+
+        if (Q['choice_pre_'+party] === new_choice) continue;
+
+        if (Q['choice_pre_'+party] === Q.reactionary_candidate_1932) {
+            Q.reactionary_candidate_1_votes -= support;
+        } else if (Q['choice_pre_'+party] === Q.secondary_reactionary_candidate_1932) {
+            Q.reactionary_candidate_2_votes -= support;
+        }
+    }
 }
-if (Q.thalmann_to_spd_bonus) {
-    Q.thalmann_votes -= Q.thalmann_to_spd_bonus;
-    Q.spd_president_votes += Q.thalmann_to_spd_bonus;
-}
+
+if (!Q.hindenburg_run) Q.hindenburg_votes = 0;
 
 Q.vrp_presidential_votes = 0.003;
 if (Q.inflation >= 4) Q.vrp_presidential_votes += (Q.inflation / 1000);
 
-Q.total_votes_pres = Q.hindenburg_votes + Q.nsdap_presidential_votes + Q.thalmann_votes + Q.spd_president_votes + Q.dnvp_presidential_votes + Q.vrp_presidential_votes;
+Q.total_votes_pres = Q.hindenburg_votes + Q.nsdap_presidential_votes + Q.thalmann_votes + Q.spd_president_votes + Q.dnvp_presidential_votes + Q.vrp_presidential_votes + Q.reactionary_candidate_1_votes + Q.reactionary_candidate_2_votes;
+if (!Q.hindenburg_run) {
+    Q.total_votes_pres -= Q.hindenburg_votes;
+    Q.hindenburg_votes = 0;
+}
 Q.hindenburg_votes_normalized = (Q.hindenburg_votes/Q.total_votes_pres);
+Q.reactionary_candidate_1_votes_normalized = (Q.reactionary_candidate_1_votes/Q.total_votes_pres);
+Q.reactionary_candidate_2_votes_normalized = (Q.reactionary_candidate_2_votes/Q.total_votes_pres);
 Q.nsdap_presidential_votes_normalized = (Q.nsdap_presidential_votes/Q.total_votes_pres);
 Q.spd_president_votes_normalized = (Q.spd_president_votes/Q.total_votes_pres);
 Q.thalmann_votes_normalized = (Q.thalmann_votes/Q.total_votes_pres);
@@ -181,6 +417,8 @@ Q.vrp_presidential_votes_normalized = (Q.vrp_presidential_votes/Q.total_votes_pr
 
 // check for majority
 Q.hindenburg_votes = Math.round(Q.hindenburg_votes_normalized*1000)/10;
+Q.reactionary_candidate_1_votes = Math.round(Q.reactionary_candidate_1_votes_normalized*1000)/10;
+Q.reactionary_candidate_2_votes = Math.round(Q.reactionary_candidate_2_votes_normalized*1000)/10;
 Q.spd_president_votes = Math.round(Q.spd_president_votes_normalized*1000)/10;
 Q.nsdap_presidential_votes = Math.round(Q.nsdap_presidential_votes_normalized*1000)/10;
 Q.thalmann_votes = Math.round(Q.thalmann_votes_normalized*1000)/10;
@@ -188,39 +426,64 @@ Q.dnvp_presidential_votes = Math.round(Q.dnvp_presidential_votes_normalized*1000
 Q.vrp_presidential_votes = (Q.vrp_presidential_votes_normalized*1000)/10;
 
 Q.hindenburg_majority = (Q.hindenburg_votes >= 50);
+Q.reactionary_candidate_1_majority = Math.round(Q.reactionary_candidate_1_votes >= 50);
+Q.reactionary_candidate_2_majority = Math.round(Q.reactionary_candidate_2_votes >= 50);
 Q.thalmann_majority = (Q.thalmann_votes >= 50);
 Q.nsdap_president_majority = (Q.nsdap_presidential_votes >= 50);
 Q.spd_president_majority = (Q.spd_president_votes >= 50);
 Q.dnvp_presidential_majority = (Q.dnvp_presidential_votes >= 50);
 Q.vrp_presidential_majority = (Q.vrp_presidential_votes >= 50);
-Q.any_majority = Q.hindenburg_majority | Q.thalmann_majority | Q.nsdap_president_majority | Q.spd_president_majority | Q.dnvp_presidential_majority | Q.vrp_presidential_majority
+Q.any_majority = Q.hindenburg_majority | Q.reactionary_candidate_1_majority | Q.reactionary_candidate_2_majority | Q.thalmann_majority | Q.nsdap_president_majority | Q.spd_president_majority | Q.dnvp_presidential_majority | Q.vrp_presidential_majority
 
-// check for plurality
-Q.hindenburg_plurality = (Q.hindenburg_votes >= Q.nsdap_presidential_votes && Q.hindenburg_votes >= Q.spd_president_votes && Q.hindenburg_votes >= Q.thalmann_votes && Q.hindenburg_votes >= Q.dnvp_presidential_votes && Q.hindenburg_votes >= Q.vrp_presidential_votes);
-Q.thalmann_plurality = (Q.thalmann_votes >= Q.hindenburg_votes && Q.thalmann_votes >= Q.spd_president_votes && Q.thalmann_votes >= Q.nsdap_presidential_votes && Q.thalmann_votes >= Q.dnvp_presidential_votes && Q.thalmann_votes >= Q.vrp_presidential_votes);
-Q.nsdap_president_plurality = (Q.nsdap_presidential_votes >= Q.hindenburg_votes && Q.nsdap_presidential_votes >= Q.spd_president_votes && Q.nsdap_presidential_votes >= Q.thalmann_votes && Q.nsdap_presidential_votes >= Q.dnvp_presidential_votes && Q.nsdap_presidential_votes >= Q.vrp_presidential_votes);
-Q.spd_plurality = (Q.spd_president_votes >= Q.hindenburg_votes && Q.spd_president_votes >= Q.nsdap_presidential_votes && Q.spd_president_votes >= Q.thalmann_votes && Q.spd_president_votes >= Q.dnvp_presidential_votes && Q.spd_president_votes >= Q.vrp_presidential_votes);
-Q.dnvp_presidential_plurality = (Q.dnvp_presidential_votes >= Q.thalmann_votes && Q.dnvp_presidential_votes >= Q.nsdap_presidential_votes && Q.dnvp_presidential_votes >= Q.hindenburg_votes && Q.dnvp_presidential_votes >= Q.spd_president_votes && Q.dnvp_presidential_votes >= Q.vrp_presidential_votes);
-Q.vrp_presidential_plurality = (Q.vrp_presidential_votes >= Q.thalmann_votes && Q.vrp_presidential_votes >= Q.nsdap_presidential_votes && Q.vrp_presidential_votes >= Q.hindenburg_votes && Q.vrp_presidential_votes >= Q.spd_president_votes && Q.vrp_presidential_votes >= Q.dnvp_presidential_votes);
-// If no candidate gets above 50%, then there's a second round. In the second round, a plurality wins. 
+const candidate_votes = [
+  "hindenburg_votes",
+  "reactionary_candidate_1_votes",
+  "reactionary_candidate_2_votes",
+  "thalmann_votes",
+  "nsdap_presidential_votes",
+  "spd_president_votes",
+  "dnvp_presidential_votes",
+  "vrp_presidential_votes"
+];
+
+let maxVotes = 0;
+for (const key of candidate_votes) {
+  if (Q[key] > maxVotes) {
+    maxVotes = Q[key];
+  }
+}
+
+Q.hindenburg_plurality = Q.hindenburg_votes === maxVotes;
+Q.reactionary_candidate_1_plurality = Q.reactionary_candidate_1_votes === maxVotes;
+Q.reactionary_candidate_2_plurality = Q.reactionary_candidate_2_votes === maxVotes;
+Q.thalmann_plurality = Q.thalmann_votes === maxVotes;
+Q.nsdap_president_plurality = Q.nsdap_presidential_votes === maxVotes;
+Q.spd_plurality = Q.spd_president_votes === maxVotes;
+Q.dnvp_presidential_plurality = Q.dnvp_presidential_votes === maxVotes;
+Q.vrp_presidential_plurality = Q.vrp_presidential_votes === maxVotes;
+
 Q.election_round += 1;
 
 // making the vote numbers nicer for the display
 Q.hindenburg_votes_disp = Q.hindenburg_votes.toFixed(1);
+Q.reactionary_candidate_1_votes_disp = Q.reactionary_candidate_1_votes.toFixed(1);
+Q.reactionary_candidate_2_votes_disp = Q.reactionary_candidate_2_votes.toFixed(1);
 Q.spd_president_votes_disp = Q.spd_president_votes.toFixed(1);
 Q.nsdap_presidential_votes_disp = Q.nsdap_presidential_votes.toFixed(1);
 Q.thalmann_votes_disp = Q.thalmann_votes.toFixed(1);
 Q.dnvp_presidential_votes_disp = Q.dnvp_presidential_votes.toFixed(1);
 Q.vrp_presidential_votes_disp = Q.vrp_presidential_votes.toFixed(1);
 
-Q.hindenburg_votes_rnd_1 = Q.hindenburg_votes.toFixed(1);
-Q.spd_president_votes_rnd_1 = Q.spd_president_votes.toFixed(1);
-Q.nsdap_presidential_votes_rnd_1 = Q.nsdap_presidential_votes.toFixed(1);
-Q.thalmann_votes_rnd_1 = Q.thalmann_votes.toFixed(1);
-Q.dnvp_presidential_votes_rnd_1 = Q.dnvp_presidential_votes.toFixed(1);
-Q.vrp_presidential_votes_rnd_1 = Q.vrp_presidential_votes.toFixed(1);
+Q.hindenburg_votes_rnd_1 = Q.hindenburg_votes;
+Q.reactionary_candidate_1_votes_rnd_1 = Q.reactionary_candidate_1_votes;
+Q.reactionary_candidate_2_votes_rnd_1 = Q.reactionary_candidate_2_votes;
+Q.spd_president_votes_rnd_1 = Q.spd_president_votes;
+Q.nsdap_presidential_votes_rnd_1 = Q.nsdap_presidential_votes;
+Q.thalmann_votes_rnd_1 = Q.thalmann_votes;
+Q.dnvp_presidential_votes_rnd_1 = Q.dnvp_presidential_votes;
+Q.vrp_presidential_votes_rnd_1 = Q.vrp_presidential_votes;
 
-if (Q.thalmann_votes_disp < 15 && Q.thalmann_votes_disp) {
+if (Q.thalmann_votes < 15 && Q.thalmann_votes) {
     Q.workers_kpd *= 0.85;
     Q.unemployed_kpd *= 0.85;
     if (!Q.spd_campaign) {
@@ -246,7 +509,7 @@ if (Q.hindenburg_votes_disp >= 45 && Q.nsdap_presidential_votes_disp < 36 && Q.s
 }
 // deusterberg effects should depend on endorsements of rlb and stuff
 !}
-go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if nsdap_president_majority == 1; braun_wins if spd_president_majority == 1; duesterburg_wins if duesterburg_majority == 1; no_majority_round1 if any_majority == 0
+go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if nsdap_president_majority == 1; braun_wins if spd_president_majority == 1 and spd_candidate_1932 == "Braun"; duesterburg_wins if duesterburg_majority == 1; rosenfeld_wins if spd_president_majority == 1 and spd_candidate_1932 == "Rosenfeld"; eckener_wins if spd_president_majority == 1 and spd_candidate_1932 == "Eckener"; reactionary_candidate_wins if (reactionary_candidate_1_majority or reactionary_candidate_2_majority); no_majority_round1 if any_majority == 0
 
 Results:
 
@@ -256,38 +519,148 @@ Results:
 
 <span style="color: #0075EB;">**Winter**</span> - [+ vrp_presidential_votes_disp +]%
 
-<span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> - [+ hindenburg_votes_disp +]%
+[? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> - [+ hindenburg_votes_disp +]% ?][? if not hindenburg_run: [? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Vorbeck" or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Vorbeck" or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning": <span style="color: #000000;">**[+ reactionary_candidate_1932 +]**</span>?] - [+ reactionary_candidate_1_votes_disp +]% ?]
 
-<span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span> - [+ dnvp_presidential_votes_disp +]%
+[? if not hindenburg_run and secondary_reactionary_candidate_1932: [? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932 +]**</span>?]  - [+ reactionary_candidate_2_votes_disp +]% ?]
+
+[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span> ?][? if dnvp_ideology == "Moderate": <span style="color: #142e20;">**[+ dnvp_candidate_1932 +]**</span> ?] - [+ dnvp_presidential_votes_disp +]%
 
 <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span> - [+ nsdap_presidential_votes_disp +]%
 
 @no_majority_round1
-on-arrival: hitler_support_hindenburg = 1 if (spd_plurality or thalmann_plurality)
+on-arrival: hitler_support_hindenburg = 1 if (spd_plurality or thalmann_plurality) and hindenburg_run
 go-to: round2_menu
 
 There is no majority in this round. In the second round, any candidate who wins a plurality will win overall. What should we do?
 
-[? if dnvp_candidate_1932 == "Duesterberg": Due to [+ dnvp_candidate_1932 +]'s poor performance, he has withdrawn from the race and personally endorsed Hindenburg—despite widespread dislike of him among his supporters. Meanwhile, Hugenberg has urged his followers to abstain from the second round, drawing intense criticism from within his own party. How this will impact the runoff remains uncertain, but [+ nsdap_candidate_1932 +] is likely to capture a sizable share of these voters. ?]
+[? if dnvp_candidate_1932 == "Duesterberg": Due to [+ dnvp_candidate_1932 +]'s poor performance, he has withdrawn from the race and personally endorsed Hindenburg—despite widespread dislike of him among his supporters. Meanwhile, Hugenberg has urged his followers to abstain from the second round, drawing intense criticism from within his own party. How this will impact the runoff remains uncertain, but [+ nsdap_candidate_1932 +] is likely to capture a sizable share of these voters. ?][? if dnvp_candidate_1932 == "Hugenberg": Due to [+ dnvp_candidate_1932 +]'s poor performance, he has withdrawn from the race and urged his followers to abstain from the second round, drawing intense criticism from within his own party. How this will impact the runoff remains uncertain, but [+ nsdap_candidate_1932 +] is likely to capture a sizable share of these voters. ?]
 
 [? if hindenburg_confidence: Hindenburg has narrowly missed securing the required majority for a first-round victory, making his success in the runoff highly probable. With state and local elections just a month away, the industrialists and parties backing him have redirected their remaining campaign funds to those contests, confident that his victory is all but assured. This, however, presents a valuable opportunity for [+ nsdap_candidate_1932 +] to gain support among [+ dnvp_candidate_1932 +] voters and leverage their dominance in the presidential campaign to coincide with their local efforts. ?]
 
-[? if thalmann_votes_disp < 15 and thalmann_votes_disp: The <span style="color: #700000;">**Communists**</span> have suffered a demoralizing defeat, leaving many of their supporters disillusioned about the prospects of revolution—a future they once saw as inevitable given Germany’s current state. In the second round, many will abstain from voting altogether, while others may even cast their ballots for [? if not spd_campaign: [+ nsdap_candidate_1932 +] ?][? if spd_campaign: [+ spd_candidate_1932 +] ?]in an effort to make their vote count. ?]
+[? if thalmann_votes < 15 and thalmann_votes: The <span style="color: #700000;">**Communists**</span> have suffered a demoralizing defeat, leaving many of their supporters disillusioned about the prospects of revolution—a future they once saw as inevitable given Germany’s current state. In the second round, many will abstain from voting altogether, while a small minority may even cast their ballots for [? if not spd_campaign: [+ nsdap_candidate_1932 +] ?][? if spd_campaign: [+ spd_candidate_1932 +] ?]in an effort to make their vote count. ?]
 
 [? if dnvp_candidate_1932: There had been discussions of Crown Prince Wilhelm running as a Harzburg unity candidate, a prospect the <span style="color: #7A3C00;">**NSDAP**</span> showed interest in supporting. However, the <span style="color: #3E88B3;">**DNVP**</span> and the <span style="color: #3E88B3;">**Stahlhelm**</span> rejected the idea due to their hostility toward an accommodation with the <span style="color: #7A3C00;">**NSDAP**</span>. The nail in the coffin was that his own father threatened to disinherit him if he stood for the "<span style="color: #c00000;">red</span> <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">ican</span> presidential seat of an Ebert". He has since endorsed [+ nsdap_candidate_1932 +]. ?]
 
-[? if spd_plurality or thalmann_plurality : In order to consolidate the vote for the <span style="color: #808080;">right</span>, and to prevent a <span style="color: #c00000;">socialist</span> from becoming president, <span style="color: #7A3C00;">[+ nsdap_candidate_1932 +]</span> is no longer running in the second round, and has switched his endorsement to <span style="color: #808080;">Hindenburg</span>. ?]
+[? if hitler_support_hindenburg : In order to consolidate the vote for the <span style="color: #808080;">right</span>, and to prevent a <span style="color: #c00000;">socialist</span> from becoming president, <span style="color: #7A3C00;">[+ nsdap_candidate_1932 +]</span> is no longer running in the second round, and has switched his endorsement to <span style="color: #808080;">Hindenburg</span>. ?]
 
 @round2_menu
+on-arrival: z_support_spd = 0 if z_support_spd == 2
 
 - @round2_convince_z: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to switch their support to us.
 - @round2_convince_kpd: Convince the <span style="color: #700000;">**KPD**</span> to switch their support to us. 
 - @round2_convince_ddp: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to switch their support to us.
 - @round2_convince_lvp: Convince the <span style="color: #FFCC00;">**LVP**</span> to switch their support to us.
+- @convince_z_eckener: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to switch their support to <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>.
+- @convince_ddp_eckener: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to switch their support to <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>.
+- @convince_lvp_eckener: Convince the <span style="color: #FFCC00;">**LVP**</span> to switch their support to <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>.
+- @convince_dvp_eckener: Convince the <span style="color: #C0A054;">**DVP**</span> to switch their support to <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>.
 - @round2_hindenburg: Switch our support to Hindenburg.
 - @round2_thalmann: Switch our support to <span style="color: #700000;">**Thälmann**</span> of the <span style="color: #700000;">**KPD**</span>.
 - @round2_organizational_endorsement
 - @round2_vote: We've done enough, second round voting begins next month.
+
+@convince_ddp_eckener
+view-if: not lvp_formed and eckener_campaign
+max-visits: 1
+go-to: convince_ddp_success_eckener if (ddp_relation >= 40 and (ddp_ideology == "Right" or dstp_maintained)) or (ddp_relation >= 30 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 20 and ddp_ideology == "Left" and not dstp_maintained); convince_ddp_fail_eckener if not ((ddp_relation >= 40 and (ddp_ideology == "Right" or dstp_maintained)) or (ddp_relation >= 30 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 20 and ddp_ideology == "Left" and not dstp_maintained))
+
+The <span style="color: #FFCC00;">liberal</span> vote has been falling over time, especially during the current economic depression, so they will probably be of minimal help. Still, every little bit counts.
+
+@convince_ddp_success_eckener
+on-arrival: ddp_support_spd = 1; ddp_left += 1; ddp_cohesion -= 1; ddp_relation += 3
+go-to: round2_menu
+
+Thanks to our friendly relations, connections with their left wing, and Eckener's non-partisanship, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Eckener in the election.
+
+@convince_ddp_fail_eckener
+on-arrival: ddp_support_spd = 0; ddp_right += 1; ddp_cohesion -= 1; ddp_relation -= 3
+go-to: round2_menu
+
+Unfortunately, under the influence of its business wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has refused to support a <span style="color: #c00000;">socialist</span>-backed candidate for the presidency. This is a major blow—Eckener was meant to be a unity candidate, and we've clearly failed in that objective.
+
+@convince_lvp_eckener
+view-if: lvp_formed and eckener_campaign
+max-visits: 1
+go-to: convince_lvp_success_eckener if ((lvp_relation >= 50 and lvp_ideology == "Right") or (lvp_relation >= 40 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and (lvp_leader != "Dingeldey" or lvp_ideology != "Right"); convince_lvp_fail_eckener if not (((lvp_relation >= 50 and lvp_ideology == "Right") or (lvp_relation >= 40 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and (lvp_leader != "Dingeldey" or lvp_ideology != "Right"))
+
+The <span style="color: #FFCC00;">liberal</span> vote has been falling over time, especially during the current economic depression, so they will probably be of minimal help to us. Still, every little bit counts. They will certainly be a hard party to convince, with vehemently anti-<span style="color: #c00000;">socialist</span> industrialists influencing the party away from Eckener.
+
+@convince_lvp_success_eckener
+on-arrival: lvp_support_spd = 1; lvp_left += 3; lvp_relation += 4; old_middle_lvp -= 2; rural_lvp -= 2; old_middle_kvp += 2; rural_kvp += 2; old_middle_kvp += 2 if not kvp_formed; rural_kvp += 2 if not kvp_formed
+go-to: round2_menu
+
+We have convinced the <span style="color: #FFCC00;">**LVP**</span> to give Eckener an official endorsement, to the displeasure of the party's industrial backers. In response, they begin to withdraw their support from the party, and a notable portion of right-wing voters are opting to abstain.
+
+@convince_lvp_fail_eckener
+on-arrival: lvp_support_spd = 0; lvp_right += 3; lvp_relation -= 5
+go-to: round2_menu
+
+We have failed to persuade the <span style="color: #FFCC00;">**LVP**</span> to back <span style="color: #c00000;">Braun</span>, due to their deep antipathy toward cooperating with the <span style="color: #c00000;">socialists</span>—even with Eckener at the head of the ticket. This is a major blow—Eckener was meant to be a unity candidate, and we've clearly failed in that objective.
+
+@convince_z_eckener
+view-if: eckener_campaign
+choose-if: spd_votes >= z_votes and not cvp_formed
+unavailable-subtitle: [? if spd_votes < z_votes: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate. ?][? if cvp_formed: The <span style="color: #000000;">CVP</span> can never be convinced. ?]
+on-arrival: {!
+Q.z_support_spd = 0;
+if (Q.z_relation >= 45 || (Q.z_relation > 35 && Q.z_ideology == "Left")) {
+    Q.z_support_spd = 1;
+} else if (Q.z_relation >= 30) {
+    Q.z_support_spd = 2;
+} else {
+    Q.z_support_spd = 0;
+}
+if (Q.z_relation >= 65) Q.bvp_support_spd = 1;
+!}
+go-to: z_failed_eckener if z_support_spd = 0; z_success_eckener if z_support_spd = 1; z_partial_eckener if z_support_spd = 2
+max-visits: 1
+
+We remind the <span style="color: #000000;">Center Party</span> of our past friendships, our support of Wilhelm Marx in 1925, and promote Eckener as a non-partisan unity candidate that can stop the <span style="color: #7A3C00;">Nazis</span>.
+
+@z_success_eckener
+go-to: round2_menu
+
+The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is convinced! They will be part of the Eckener coalition. [? if bvp_support_spd: The <span style="color: #A2D8E0;">**BVP**</span> has also, surprisingly, joined the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in endorsing Eckener. ?][? if not bvp_support_spd: However, the <span style="color: #A2D8E0;">**BVP**</span> has split from the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and refuses to back Eckener. ?]
+
+@z_failed_eckener
+go-to: round2_menu
+
+Unfortunately, we are unable to convince the <span style="color: #000000;">Center Party</span> for some reason. 
+
+@z_partial_eckener
+
+The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is not satisfied with our arguments, but they are open to being convinced if we front the resources.
+
+- @pay_z_eckener: Give them the resources they need.
+- @round2_menu: Forget about the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+
+@pay_z_eckener
+choose-if: resources >= 1
+subtitle: -1 resource
+unavailable-subtitle: Not enough resources
+on-arrival: resources -= 1; z_support_spd = 1; bvp_support_spd = 1 if z_relation >= 65
+go-to: round2_menu
+
+With our resources, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are convinced to support Eckener. [? if bvp_support_spd: The <span style="color: #A2D8E0;">**BVP**</span> has also, surprisingly, joined the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in endorsing Eckener. ?][? if not bvp_support_spd: However, the <span style="color: #A2D8E0;">**BVP**</span> has split from the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and refuses to back Eckener. ?]
+
+@convince_dvp_eckener
+view-if: not lvp_formed and dvp_exist and eckener_campaign
+max-visits: 1
+go-to: convince_dvp_success_eckener if (dvp_relation >= 70 and dvp_ideology == "Right") or (dvp_relation >= 60 and dvp_ideology == "Moderate") or (dvp_relation >= 50 and dvp_ideology == "Left"); convince_dvp_fail_eckener if not ((dvp_relation >= 70 and dvp_ideology == "Right") or (dvp_relation >= 60 and dvp_ideology == "Moderate") or (dvp_relation >= 50 and dvp_ideology == "Left"))
+
+The <span style="color: #C0A054;">**DVP**</span> will be the most difficult of the bourgeois parties to convince, given their preference to keep their distance from us. However, Eckener’s status as a non-partisan conservative presents a unique opportunity to win them over.
+
+@convince_dvp_success_eckener
+on-arrival: dvp_support_spd = 1; dvp_left += 3; dvp_relation += 5
+go-to: round2_menu
+
+Thanks to our friendly relations and Eckener's non-partisanship, the <span style="color: #C0A054;">**DVP**</span> is now campaigning for Eckener in the election. However, they refuse to join <span style="color: #c00000;">socialist</span>-led campaign committees and emphasize their independence from us.
+
+@convince_dvp_fail_eckener
+on-arrival: dvp_support_spd = 0; dvp_right += 1; dvp_relation -= 3
+go-to: round2_menu
+
+Unfortunately, under the influence of their industrialist wing, the <span style="color: #C0A054;">**DVP**</span> has rejected our overtures and will continue on their own path.
 
 @round2_organizational_endorsement
 title: What about the endorsements of the non-partisan organizations?
@@ -313,6 +686,7 @@ Q.old_middle_nsdap += 4;
 Q.old_middle_dnvp -= 4;
 
 !}
+view-if: hindenburg_run
 max-visits: 1
 go-to: round2_menu
 
@@ -335,7 +709,7 @@ The shift of many right-wing organizations toward [+ nsdap_candidate_1932 +]’s
 [? if not rlb_hindenburg: The RLB’s decision to endorse <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span> rather than abstain has triggered a sharp break with the organization’s moderate affiliates. Their Württemberg branch, the <span style="color: #006400;">**WBWB**</span>, has been especially vocal, campaigning hard against the endorsement and in favor of [+ reactionary_candidate_1932 +]. Neither this backlash nor Hugenberg’s push for abstention has convinced the RLB to reverse course, and millions of rural voters are now expected to turn out for [+ nsdap_candidate_1932 +] in the next election. ?]
 
 @round2_convince_z
-view-if: braun_campaign > 0 and z_support_spd != 1 
+view-if: braun_campaign > 0 and z_support_spd != 1 and not eckener_campaign and not rosenfeld_campaign
 choose-if: spd_votes >= z_votes
 unavailable-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate.
 on-arrival: {!
@@ -415,7 +789,7 @@ Unfortunately, we fail to turn them away from Hindenburg. [? if hindenburg_votes
 @round2_convince_kpd
 choose-if: spd_votes >= kpd_votes
 unavailable-subtitle: The <span style="color: #700000;">**KPD**</span> knows that they are more popular than us; they do not see a reason to support our candidate.
-view-if: spd_campaign > 0 and kpd_support_spd == 0 
+view-if: spd_campaign > 0 and kpd_support_spd == 0 and not eckener_campaign
 max-visits: 1
 
 The <span style="color: #700000;">**KPD**</span> is committed to supporting Ernst Thälmann. [? if (kpd_relation >= 55 and kpd_leader != "Conciliators" or kpd_relation >= 40 and kpd_leader == "Conciliators") : However, the <span style="color: #7A3C00;">Nazi</span>-Hindenburg coalition worries them enough that they are willing to be convinced to drop their campaign and support Braun. ?][? if (kpd_relation < 55 and kpd_leader != "Conciliators" or kpd_relation < 40 and kpd_leader == "Conciliators") : They do not seem willing to be convinced. ?]
@@ -443,7 +817,7 @@ go-to: round2_menu
 The <span style="color: #700000;">**KPD**</span> now endorses Braun in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters. 
 
 @round2_convince_ddp
-view-if: not lvp_formed and spd_campaign > 0 and ddp_support_spd != 1 
+view-if: not lvp_formed and spd_campaign > 0 and ddp_support_spd != 1 and not eckener_campaign and not rosenfeld_campaign
 max-visits: 1
 go-to: convince_ddp_success if (((ddp_relation >= 55 and ddp_ideology == "Right" or dstp_maintained) or (ddp_relation >= 45 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 35 and ddp_ideology == "Left" and not dstp_maintained)) and not hitler_support_hindenburg) or (((ddp_relation >= 50 and ddp_ideology == "Right" or dstp_maintained) or (ddp_relation >= 40 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 30 and ddp_ideology == "Left" and not dstp_maintained)) and hitler_support_hindenburg); convince_ddp_fail if not ((((ddp_relation >= 55 and ddp_ideology == "Right" or dstp_maintained) or (ddp_relation >= 45 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 35 and ddp_ideology == "Left" and not dstp_maintained)) and not hitler_support_hindenburg) or (((ddp_relation >= 50 and ddp_ideology == "Right" or dstp_maintained) or (ddp_relation >= 40 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 30 and ddp_ideology == "Left" and not dstp_maintained)) and hitler_support_hindenburg))
 
@@ -462,7 +836,7 @@ go-to: round2_menu
 Unfortunately, under the influence of their business wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has refused to support a <span style="color: #c00000;">socialist</span> for the presidency. 
 
 @round2_convince_lvp
-view-if: lvp_formed and spd_campaign > 0 and lvp_support_spd != 1 
+view-if: lvp_formed and spd_campaign > 0 and lvp_support_spd != 1 and not eckener_campaign and not rosenfeld_campaign
 max-visits: 1
 on-arrival: {!
 if ((Q.lvp_relation >= 65 && Q.lvp_ideology == "Right" || Q.lvp_relation >= 55 && Q.lvp_ideology == "Moderate" || Q.lvp_relation >= 40 && Q.lvp_ideology == "Left") && Q.lvp_leader != "Dingeldey") {
@@ -531,14 +905,14 @@ Fine. We have thrown our support to Chairman Thälmann of the <span style="color
 
 @round2_hindenburg
 view-if: (spd_campaign > 0 or spd_support_thalmann > 0) and organizational_endorsements_seen
-on-arrival: spd_campaign = 0; spd_support_thalmann = 0; spd_support_hindenburg = 1; left_dissent += 10; hindenburg_angry_bruning += 25; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
+on-arrival: spd_campaign = 0; spd_support_thalmann = 0; spd_support_reactionary = 1; left_dissent += 10; hindenburg_angry_bruning += 25; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
 
 We have switched our support to Hindenburg. [? if bruning_time: Hindenburg is reportedly dissatisfied with having been elected with the support of <span style="color: #c00000;">socialists</span>, blaming Brüning and his unpopular cabinet for this outcome. ?]
 
 - @round2_vote: Second round voting begins next month.
 
 @round2_vote
-view-if: organizational_endorsements_seen
+view-if: (organizational_endorsements_seen or not hindenburg_run)
 on-arrival: presidential_election_r2_trigger = 1
 
 Hopefully Germany makes the right choice. [? if hindenburg_confidence: With Hindenburg’s campaign losing strength now that his victory seems assured, [+ nsdap_candidate_1932 +]’s effort remains in full swing. The lack of activity from Hindenburg’s camp is likely to fuel a resurgence for the <span style="color: #7A3C00;">Nazis</span>. ?]
@@ -565,11 +939,61 @@ on-arrival: president = nsdap_candidate_1932; chancellor = "Hitler"; chancellor_
 
 
 @braun_wins
-on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 6*(1-dissent); old_middle_spd += 4*(1-dissent); new_middle_spd += 4*(1-dissent); rural_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent);
+on-arrival: president = "Braun"; president_ideology = "Left"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 6*(1-dissent); old_middle_spd += 4*(1-dissent); new_middle_spd += 4*(1-dissent); rural_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent);
 
 Otto Braun of the <span style="color: #c00000;">**SPD**</span> has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
 
+@rosenfeld_wins
+on-arrival: president = "Rosenfeld"; president_ideology = "Left"; center_dissent -= 5; labor_dissent -= 5; left_dissent -= 15; left_strength += 20; workers_spd += 9*(1-dissent); unemployed_spd += 6*(1-dissent); coup_progress += 4; capital_strike_progress += 4
+
+Kurt Rosenfeld of the [? if not left_split: <span style="color: #c00000;">**SPD**</span>?][? if left_split: <span style="color: #9B0000;">**SAPD**</span>?] has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+
+However, his leftism has sparked rumors of a planned "March on Berlin" by the <span style="color: #7A3C00;">**SA**</span> and <span style="color: #3E88B3;">**Stahlhelm**</span>, who see his election as tantamount to electing a <span style="color: #700000;">**Communist**</span>. Industrialists, equally displeased, may resort to protest through their own means.
+
+@eckener_wins
+on-arrival: president = "Eckener"; president_ideology = "Moderate"; reformist_dissent -= 20; center_dissent -= 5; labor_dissent -= 5; reformist_strength += 20; workers_spd += 4*(1-dissent); unemployed_spd += 2*(1-dissent); old_middle_spd += 2*(1-dissent); new_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent)
+
+Nationally renown Zeppelin pilot and independent Hugo Eckener has won the presidency! This is a moment of celebration for our party, as his victory helps keep the <span style="color: #7A3C00;">Nazis</span> at bay.
+
 @duesterburg_wins
-on-arrival: president = "Braun"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
+on-arrival: president = "Braun"; president_ideology = "Left"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
 
 Duesterberg is too ashamed to accept the Presidency, and out of the kindness of his heart, has given it to Otto Braun. 
+
+@reactionary_candidate_wins
+go-to: jarres_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Jarres") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Jarres"); gessler_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Gessler") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Gessler"); luther_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Luther") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Luther"); adenauer_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Adenauer") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Adenauer"); bruning_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Brüning") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Brüning"); vorbeck_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Vorbeck") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Vorbeck"); westarp_win if (reactionary_candidate_1_majority and reactionary_candidate_1932 == "Westarp") or (reactionary_candidate_2_majority and secondary_reactionary_candidate_1932 == "Westarp")
+
+@jarres_win
+on-arrival: president = "Jarres"; president_ideology = "Right"; new_middle_dvp += 4; old_middle_dvp += 4; rural_dvp += 4; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp += 4
+
+Perhaps surprisingly, Karl Jarres has made an unforeseen comeback and won the presidency. We hope that his governance will be an improvement over that of Hindenburg, and that he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power. 
+
+@gessler_win
+on-arrival: president = "Gessler"; president_ideology = "Moderate"; new_middle_ddp += 2; old_middle_ddp += 2; rural_ddp += 2; new_middle_dvp += 2; old_middle_dvp += 2; rural_dvp += 2; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp += 4
+
+Otto Gessler has made a comeback and won the presidency. Despite his[? if lvp_formed: &nbsp;former?] affiliation with the <span style="color: #D3C24D;">**DDP**</span>, he isn’t as friendly as his colleagues. However, he is a significant step up from Hindenburg. Let’s hope he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power.
+
+@luther_win
+on-arrival: president = "Luther"; president_ideology = "Moderate"; new_middle_dvp += 4; old_middle_dvp += 4; rural_dvp += 4; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp += 4
+
+From former Chancellor to President, Hans Luther has secured the presidency. Known for his technocratic beliefs, he's unlikely to rock the boat in either political direction. Let’s hope he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power.
+
+@adenauer_win
+on-arrival: president = "Adenauer"; president_ideology = "Moderate"; workers_z += 4; new_middle_z += 6; old_middle_z += 6; rural_z += 4; catholics_z += 4
+
+Konrad Adenauer has risen from Mayor to President and is expected to pursue friendlier policies toward the <span style="color: #c00000;">**SPD**</span> than Hindenburg. Still, let's hope he remains firm in keeping the <span style="color: #7A3C00;">Nazis</span> out of power.
+
+@bruning_win
+on-arrival: president = "Brüning"; president_ideology = "Moderate"; new_middle_z += 4; old_middle_z += 4; rural_z += 2; catholics_z += 2
+
+Heinrich Brüning may be an advocate of economic austerity, but as president, he’s a clear step up from Hindenburg in both his <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> convictions and his stance toward the <span style="color: #c00000;">**SPD**</span>. Let’s hope he stands firm and keeps the <span style="color: #7A3C00;">Nazis</span> out of power.
+
+@vorbeck_win
+on-arrival: president = "Vorbeck"; president_ideology = "Right"; vorbeck_party = "DNVP"; vorbeck_party = "KVP" if kvp_formed; vorbeck_party = "Other" if dnvp_ideology == "Radical" and not kvp_formed; workers_dnvp += 4 if vorbeck_party == "DNVP"; new_middle_dnvp += 4 if vorbeck_party == "DNVP"; old_middle_dnvp += 6 if vorbeck_party == "DNVP"; rural_dnvp += 6 if vorbeck_party == "DNVP"; catholics_dnvp += 4 if vorbeck_party == "DNVP"; workers_kvp += 4 if vorbeck_party == "KVP"; new_middle_kvp += 4 if vorbeck_party == "KVP"; old_middle_kvp += 6 if vorbeck_party == "KVP"; rural_kvp += 6 if vorbeck_party == "KVP"; catholics_kvp += 4 if vorbeck_party == "KVP"; workers_other += 4 if vorbeck_party == "Other"; new_middle_other += 4 if vorbeck_party == "Other"; old_middle_other += 6 if vorbeck_party == "Other"; rural_other += 6 if vorbeck_party == "Other"; catholics_other += 4 if vorbeck_party == "Other"; 
+
+Unfortunately, Paul von Lettow-Vorbeck, a <span style="color: #3E88B3;">nationalist</span> not far different from Hindenburg, has been elected president. A return to government under his leadership—his Camarilla certainly won’t allow it. Let’s hope he holds the line against the <span style="color: #7A3C00;">Nazis</span> and abandons the dangerous taming strategy.
+
+@westarp_win
+on-arrival: president = "Westarp"; president_ideology = "Right"; westarp_party = "DNVP"; westarp_party = "KVP" if kvp_formed; westarp_party = "Other" if dnvp_ideology == "Radical" and not kvp_formed; workers_dnvp += 2 if westarp_party == "DNVP"; new_middle_dnvp += 4 if westarp_party == "DNVP"; old_middle_dnvp += 6 if westarp_party == "DNVP"; rural_dnvp += 6 if westarp_party == "DNVP"; catholics_dnvp += 2 if westarp_party == "DNVP"; workers_kvp += 2 if westarp_party == "KVP"; new_middle_kvp += 4 if westarp_party == "KVP"; old_middle_kvp += 6 if westarp_party == "KVP"; rural_kvp += 6 if westarp_party == "KVP"; catholics_kvp += 2 if westarp_party == "KVP"; workers_other += 2 if westarp_party == "Other"; new_middle_other += 4 if westarp_party == "Other"; old_middle_other += 6 if westarp_party == "Other"; rural_other += 6 if westarp_party == "Other"; catholics_other += 2 if westarp_party == "Other"; 
+
+Unfortunately, Kuno von Westarp, a known <span style="color: #808080;">reactionary</span> and <span style="color: #3E88B3;">nationalist</span>, has been elected president. It’s unlikely we’ll return to government under his leadership. Let’s hope he holds the line against the <span style="color: #7A3C00;">Nazis</span>—and abandons his dangerous taming strategy.
