@@ -323,7 +323,7 @@ What does the congress decide?
 @compromise
 title: We shall comrpomise with the bourgiousie, in order to keep Democracy strong, and keep Radicals out of the government.
 subtitle: The Reformists, with the support of the other moderate elements in the party, manage to pass this resolution.
-choose-if: {! Q.con_middle_strength + Q.con_rural_strength + Q.con_neorev_strength + Q.con_reform_strength >= 199 !}
+choose-if: con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength >= 199
 unavailable-subtitle: The Reformists simply do not have a majority at the congress.
 on-arrival: {! Q.cum_meter = 1; !}
 
@@ -337,7 +337,7 @@ The Left, however, are furious. They view the absence of any limitations as the 
 @no_compromise
 title: We shall not compromise with the bourgiousie! The rights of the workers must be upheld.
 subtitle: With the majority of the congress controlled by the factions of the left, the resolution is passed.
-choose-if: {! Q.con_llabor_strength + Q.con_left_strength >= 199 !}
+choose-if: con_llabor_strength + con_left_strength >= 199
 unavailable-subtitle: The Left does not have enough power.
 on-arrival: {! Q.cum_meter = 2; !}
 
@@ -350,10 +350,7 @@ The Center expressed deep unease. While acknowledging the moral clarity of the r
 @middle_compromise
 title: We will be open to some compromise with the parties of the republic, but we will limit how many concessions we are willing to give up to the Bourgiousie.
 subtitle: The Center manages to convice the dissendent factions to accept this resolution.
-choose-if: {! 
-  (Q.con_middle_strength + Q.con_rural_strength + Q.con_neorev_strength + Q.con_reform_strength <= 198) &&
-  (Q.con_llabor_strength + Q.con_left_strength <= 198)
-!}
+choose-if:  con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength <= 198 and con_llabor_strength + con_left_strength <= 198
 unavailable-subtitle: A compromise agreement is not needed, as either the Left or Right holds a majority in the Congress.
 on-arrival: {! Q.cum_meter = 3; !}
 
