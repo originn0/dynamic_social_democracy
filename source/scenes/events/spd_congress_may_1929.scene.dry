@@ -126,7 +126,7 @@ As radicalism is on the rise in Germany, there exists a small <span style="color
 @start
 on-arrival: {!
 Q.con_rural_strength = 0;
-Q.conmiddlestrength = 0;
+Q.con_middle_strength = 0;
 Q.con_neorev_strength = 0;
 Q.con_left_strength = 10 + (Q.left_strength / 8);
 Q.con_center_strength = 10 + (Q.center_strength / 8);
@@ -137,7 +137,7 @@ if (Q.rural_spd_normalized >= 12) {
 Q.con_rural_strength = Q.rural_spd_normalized/1.5;
 }
 if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
-Q.conmiddlestrength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 2;
+Q.con_middle_strength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 2;
 }
 if (Q.neorevisionism == 1) {
 Q.con_neorev_strength = 4 + (Q.neorevisionist_strength/10);
@@ -299,20 +299,19 @@ var width = 500;
 - @coalition_grand: Now, to the first order of buisness.
 
 @coalition_grand 
-face-image: img/Bruning.jpg
+face-image: img/portraits/Bruning.jpg
 
 = Governmental Participation
 
-The Left, led by Paul Levi, have used the conference to introduce a proposal concerning our future in coalition governments. They seek confirmation that the governing ministers of the SPD will not compromise with the bourgeoisie parties, and will avoid any reductions in public welfare spending. They argue that to do otherwise would be a betrayal of our working class base and our Marxist values.
+The <span style="color: #AF0202;">Left Socialists</span>, led by <span style="color: #AF0202;">Kurt Rosenfeld</span>, have used the conference to introduce a proposal concerning our future in coalition governments. They seek confirmation that the governing ministers of the <span style="color: #c00000;">**SPD**</span> will not compromise with the bourgeoisie parties, and will avoid any reductions in public welfare spending. They argue that to do otherwise would be a betrayal of our working class base and our Marxist values.
 
-The Reformists and other moderate elements have pushed back against the proposal, warning that if we were to accept such an agreement it would likely make maintaining any coalition government virtually impossible. They warn that these inflexible demands may risk returning to the instability that plagued the early years of the Republic.
+The <span style="color: #F99E9E;">Reformists</span> and other moderate elements have pushed back against the proposal, warning that if we were to accept such an agreement it would likely make maintaining any coalition government virtually impossible. They warn that these inflexible demands may risk returning to the instability that plagued the early years of the Republic.
 
-The Center and both Labor Wings favor a more flexible strategy, which will try to balance protecting democracy with maintaining our commitments to the workers. They support setting boundaries on how far the SPD should go in compromising with bourgeois parties, while still allowing for some accommodation in order to preserve parliamentary stability.
+The <span style="color: #CE2D2D;">Centrist Marxists</span> and <span style="color: #DC5454;">Right Labor</span> favor a more flexible strategy, which will try to balance protecting democracy with maintaining our commitments to the workers. They support setting boundaries on how far the <span style="color: #c00000;">**SPD**</span> should go in compromising with bourgeois parties, while still allowing for some accommodation in order to preserve parliamentary stability.
 
 What does the congress decide?
 
-[+ con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength +]
-[+ con_llabor_strength + con_left_strength +]
+
 
 
 - @compromise
