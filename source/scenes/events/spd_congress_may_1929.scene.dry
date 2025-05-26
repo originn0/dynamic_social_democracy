@@ -421,31 +421,22 @@ Q.second_conference == 1;
 !}
 on-departure: {! 
 const contentElement = document.getElementById('content');
-contentElement.style.backgroundColor = '#f3f3f3';
+contentElement.style.backgroundColor = '';
+contentElement.style.color = '';
 
 const header = document.querySelector('header');
-header.style.color = '#431';
-contentElement.style.color = '#431';
+header.style.color = '';
 
-const isMobile = window.innerWidth <= 768;
 const toolsElements = document.querySelectorAll('.tools');
 
 toolsElements.forEach(tool => {
-    if (isMobile) {
-        tool.style.marginLeft = '';
-        tool.style.padding = '0.6em';
-        tool.style.width = '';
-        tool.style.color = '#f3f3e3';
-        tool.style.backgroundColor = '#dedede';
-        tool.style.boxShadow = '4px 4px 16px rgba(0, 0, 0, 0.2)';
-    } else {
-        tool.style.marginLeft = '-6em';
-        tool.style.padding = '0.6em';
-        tool.style.width = '20rem';
-        tool.style.color = '#f3f3e3';
-        tool.style.backgroundColor = '#dedede';
-        tool.style.boxShadow = '4px 4px 16px rgba(0, 0, 0, 0.2)';
-    }
+    tool.style.marginLeft = '';
+    tool.style.padding = '';
+    tool.style.width = '';
+    tool.style.color = '';
+    tool.style.backgroundColor = '';
+    tool.style.boxShadow = '';
+});
 !}
 new-page: true
 face-image: img/SPD_logo.jpg
