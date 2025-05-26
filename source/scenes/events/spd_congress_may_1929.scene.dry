@@ -411,7 +411,7 @@ The Left has responded bitterly, warning that the decision marks a retreat from 
 @wrapper
 Title: Continue...
 on-arrival: {! 
-if (Q.con_rural_strength/397 >= 0.12) {
+if (rural_spd_normalized >= 12) {
 Q.ag_soc == 1;
 Q.rural_spd += 6;
 }
@@ -443,6 +443,6 @@ face-image: img/SPD_logo.jpg
 
 With the conference coming to a close, the final arguements are made.
 
-[? if con_rural_strength/397 >= 0.12: The relative success of the <span style="color: #38C538;">**Agrarian Socialists**</span> at increasing SPD support among the rural populace has cemented it's place as a wing of our party. ?]
+[? if rural_spd_normalized >= 12: The relative success of the <span style="color: #38C538;">**Agrarian Socialists**</span> at increasing SPD support among the rural populace has cemented it's place as a wing of our party. ?]
 
 [? if left_dissent + center_dissent >= 60: The relative dissatisfaction of the Left has created tensions in our party. We have scheduled an emergency meeting for January 1930 to resolve this issue. ?]
