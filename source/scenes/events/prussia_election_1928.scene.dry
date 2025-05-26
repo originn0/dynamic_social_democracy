@@ -1018,7 +1018,7 @@ In response to the <span style="color: #700000;">**KPD**</span>'s entrance into 
 title: What about a left wing coalition, excluding the anti-democratic span style="color: #700000;">**KPD**</span>?
 subtitle: <span style="color: #c00000;">**SPD**</span> + [? if sapd_formed: + <span style="color: #9B0000;">**SAPD**</span> ?][? if kpo_formed: + <<span style="color: #C43988;">**KPD(O)**</span> ?]([+ socialist_coalition_prussia +]%)
 unavailable-subtitle: <span style="color: #c00000;">**SPD**</span> + [? if sapd_formed: + <span style="color: #9B0000;">**SAPD**</span> ?] + [? if kpo_formed: + <span style="color: #C43988;">**KPD(O)**</span> ?] + <span style="color: #700000;">**KPD**</span> ([+ left_coalition_prussia +]%) ([+ left_coalition_prussia +]%).
-view-if: left_coalition_prussia >= 50; sapd_formed == 1 or kpo_formed == 1;
+view-if: left_coalition_prussia >= 50 and (sapd_formed == 1 or kpo_formed == 1)
 choose-if: (kpo_relation >= 40 or not kpo_formed) and (sapd_relation >= 35 or not sapd_formed)
 on-arrival: in_left_front_prussia = 1; prussia_leader = "Rosenfeld"; reichswehr_loyalty -= 0.05; dvp_right += 2; ddp_right += 1; lvp_right += 1; spd_prussia = 1;
 
