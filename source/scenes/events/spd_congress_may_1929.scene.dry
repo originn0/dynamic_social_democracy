@@ -385,7 +385,7 @@ The <span style="color: #F99E9E;">Reformists</span> and <span style="color: #CE2
 
 
 @left_mil
-title: We shall accept the motion of the span style="color: #AF0202;">Left</span> Wing!
+title: We shall accept the motion of the <span style="color: #AF0202;">Left</span> Wing!
 choose-if: con_llabor_strength + con_left_strength >= 199
 unavailable-subtitle: The Left does not have enough power.
 on-arrival: reformist_dissent += 10; center_dissent += 5;
@@ -443,6 +443,6 @@ face-image: img/SPD_logo.jpg
 
 With the conference coming to a close, the final arguements are made.
 
-[? if ag_soc = 1: The relative success of the <span style="color: #38C538;">**Agrarian Socialists**</span> at increasing SPD support among the rural populace has cemented it's place as a wing of our party. ?]
+[? if con_rural_strength/397 >= 0.12: The relative success of the <span style="color: #38C538;">**Agrarian Socialists**</span> at increasing SPD support among the rural populace has cemented it's place as a wing of our party. ?]
 
-[? if second_conference = 1: The relative dissatisfaction of the Left has created tensions in our party. We have scheduled an emergency meeting for January 1930 to resolve this issue. ?]
+[? if left_dissent + center_dissent >= 60: The relative dissatisfaction of the Left has created tensions in our party. We have scheduled an emergency meeting for January 1930 to resolve this issue. ?]
