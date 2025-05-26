@@ -324,9 +324,9 @@ title: We shall comrpomise with the bourgiousie, in order to keep Democracy stro
 subtitle: The Reformists, with the support of the other moderate elements in the party, manage to pass this resolution.
 choose-if: con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength >= 199
 unavailable-subtitle: The Reformists simply do not have a majority at the congress.
-on-arrival: {! Q.cum_meter = 1; !}
+on-arrival: {! Q.comp_meter = 1; Q.left_dissent += 25; Q.center_dissent += 15; !}
 
-Surprisingly, the Reformists and their allies have succeeded in blocking any restrictions on our dealings with coalition partners. This represents a notable shift in the Party’s internal balance of power, highlighting how much influence the Reformist wing has gained since we were last in government. Unsurprisingly, the bourgeois parties have welcomed the decision, interpreting it as a sign that the SPD is moderating its stance and moving closer to the political center of the Republic.
+Surprisingly, the <span style="color: #F99E9E;">Reformists</span> and their allies have succeeded in blocking any restrictions on our dealings with coalition partners. This represents a notable shift in the Party’s internal balance of power, highlighting how much influence the Reformist wing has gained since we were last in government. Unsurprisingly, the bourgeois parties have welcomed the decision, interpreting it as a sign that the <span style="color: #c00000;">**SPD**</span> is moderating its stance and moving closer to the political center of the Republic.
 The <span style="color: #AF0202;">Left Socialists</span>, however, are furious. They view the absence of any limitations as the Party capitulating entirely to bourgeois interests. Even the Center has expressed unease about the outcome, with some members warning that such a blank cheque could erode our core commitments to the workers. There are even whispers of another party split, reminiscent of the USPD’s departure a decade ago. 
 
 
@@ -338,7 +338,7 @@ title: We shall not compromise with the bourgiousie! The rights of the workers m
 subtitle: With the majority of the congress controlled by the factions of the left, the resolution is passed.
 choose-if: con_llabor_strength + con_left_strength >= 199
 unavailable-subtitle: The Left does not have enough power.
-on-arrival: {! Q.cum_meter = 2; !}
+on-arrival: {! Q.comp_meter = 2; Q.reformist_dissent += 25; Q.center_dissent += 15; !}
 
 Surprisingly, the <span style="color: #AF0202;">Left Socialists</span> has prevailed in securing a no-compromise resolution, meaning <span style="color: #c00000;">**SPD**</span> ministers must refuse any concessions to bourgeois parties and protect public welfare at all costs. This victory reflects the Left’s strengthened position, bolstered by Paul Levi’s successful mobilization of rank‑and‑file activists in industrial districts and by growing disenchantment with the parliamentary leadership.
 The <span style="color: #CE2D2D;">Centrist Marxists</span> expressed deep unease. While acknowledging the moral clarity of the resolution, they warn that such an uncompromising stance risks isolating the <span style="color: #c00000;">**SPD**</span> and jeopardizing its ability to influence policy from within government. The Reformists are dismayed by the outcome. They fear that zero‑tolerance red lines will alienate potential partners and make effective governance nearly impossible. Similarly, the bourgeois parties view the Left’s victory as a sign that the SPD is returning to hard‑line positions, making the government's survival far less likely.
@@ -351,7 +351,7 @@ title: We will be open to some compromise with the parties of the republic, but 
 subtitle: The Center manages to convice the dissendent factions to accept this resolution.
 choose-if:  con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength <= 198 and con_llabor_strength + con_left_strength <= 198
 unavailable-subtitle: A compromise agreement is not needed, as either the Left or Right holds a majority in the Congress.
-on-arrival: {! Q.cum_meter = 3; !}
+on-arrival: {! Q.comp_meter = 3; Q.left_dissent += 15; !}
 
 The <span style="color: #CE2D2D;">Centrist Marxists</span> have secured approval for a compromise framework guiding our coalition strategy. By a comfortable margin, delegates endorsed a resolution that sets clear boundaries on concessions to bourgeois parties, while granting <span style="color: #c00000;">**SPD**</span> ministers the flexibility to negotiate policies essential for stable governance.
 The <span style="color: #AF0202;">Left Socialists</span> reacted with disappointment. Though frustrated that stricter no-compromise pledges were rejected, they nevertheless see an opening to hold Center leaders to account should any red lines be crossed. In contrast, the Reformists are relieved about the outcome. While they would have preferred no red lines at all, they welcome the pragmatic spirit of the resolution. The bourgeois parties are content that the Left’s proposal was rejected, but remain wary about our newly adopted red lines.
@@ -362,14 +362,96 @@ The <span style="color: #AF0202;">Left Socialists</span> reacted with disappoint
 @military
 title: What is next on the agenda?
 new-page: true
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/large_000000.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 
 = Military Policy
 
-The Left, led by Paul Levi, have used the conference to bring forward a proposal that the SPD categorically reject the Reichswehr, call for its abolition, and advocate replacing it with workers’ militias under direct proletarian control. They argue that any cooperation with the existing army would only serve to legitimise an instrument of bourgeois repression and betray the interests of the working class. However, if we were to accept such an agreement, it would almost certainly alienate moderate and liberal partners in any prospective coalition, making stable government virtually impossible.
-The Reformists and Centrist elements, led by Carl Severing, are firmly against the Left’s abolitionist motion. In a time of crisis, they maintain, the party must retain a professional military force, albeit one fully subordinated to strict parliamentary and civilian oversight, to safeguard democratic institutions. Severing’s amendment proposes a modified draft defence programme that “republicanises” the officer corps rather than dismantling it, balancing the need for robust national defence with the SPD’s commitment to democracy. Severing’s address emphasized that only by acknowledging the positive aspects of the Reichswehr could it be truly republicanized, framing his amendment as the blueprint for a democratic defense policy.
+The <span style="color: #AF0202;">Left Socialists</span>, led by Paul Levi, have used the conference to bring forward a proposal that the SPD categorically reject the Reichswehr, call for its abolition, and advocate replacing it with workers’ militias under direct proletarian control. They argue that any cooperation with the existing army would only serve to legitimise an instrument of bourgeois repression and betray the interests of the working class. However, if we were to accept such an agreement, it would almost certainly alienate moderate and liberal partners in any prospective coalition, making stable government virtually impossible.
+The <span style="color: #F99E9E;">Reformists</span> and <span style="color: #CE2D2D;">Centrist</span> elements, led by <span style="color: #F99E9E;">Carl Severing</span>, are firmly against the <span style="color: #AF0202;">Left’s</span> abolitionist motion. In a time of crisis, they maintain, the party must retain a professional military force, albeit one fully subordinated to strict parliamentary and civilian oversight, to safeguard democratic institutions. Severing’s amendment proposes a modified draft defence programme that “republicanises” the officer corps rather than dismantling it, balancing the need for robust national defence with the <span style="color: #c00000;">**SPD**</span>’s commitment to democracy. Severing’s address emphasized that only by acknowledging the positive aspects of the Reichswehr could it be truly republicanized, framing his amendment as the blueprint for a democratic defense policy.
+
+- @left_mil
+- @reformists_mil
 
 
+@left_mil
+title: We shall accept the motion of the span style="color: #AF0202;">Left</span> Wing!
+choose-if: con_llabor_strength + con_left_strength >= 199
+unavailable-subtitle: The Left does not have enough power.
+on-arrival: reformist_dissent += 10; center_dissent += 5;
 
+With the Left’s abolitionist motion just carried at the party conference, SPD ministers and deputies are now formally instructed to press for the Reichswehr’s dissolution and its replacement by workers’ militias. Yet this decision remains a party position rather than law. It must still be debated, amended, and approved in the Reichstag. The Left leadership, riding this wave of triumph, has issued an impassioned call to “reclaim the republic in the name of the working class,” pledging swift action to dismantle existing military structures. In the days ahead, Paul Levi’s faction will be racing to draft concrete legislation and whip SPD Reichstag delegates into line, even as moderate parliamentarians signal they’ll seek major changes once the bill hits the floor.
 
+The Reformists are watching anxiously, seeing the Left’s success at the conference as a clear sign of their own waning influence within the party; many fear it marks the beginning of a broader shift away from their pragmatic approach. With the SPD lacking a parliamentary majority to carry the proposal through the Reichstag, Reformists are preparing to argue in committee for a more cautious, limited position—hoping to avoid a public rupture while slowing the momentum behind the Left. Outside the party, the reaction is swift and hostile: conservative parties have condemned the decision as a direct threat to the state, and Hindenburg is reported to be furious at the SPD’s ‘stab in the back’. Right-wing paramilitary groups have issued warnings and are calling for mass mobilization, stoking fears that the SPD’s internal debate could now spill into the streets.
 
+- @wrapper
 
+@reformists
+title: The Moderates prevail.
+choose-if: con_llabor_strength + con_left_strength < 199
+unavailable-subtitle: Uh oh.
+on-arrival: left_dissent += 5; 
+
+With the Reformists’ amended proposal carried at the party conference, the SPD has reaffirmed its commitment to a professional army under civilian and parliamentary control. The Left’s call for the abolition of the Reichswehr has been decisively rejected, signaling that the party will continue working within the existing state framework to gradually reform the officer corps and “republicanize” the military. Carl Severing and his allies have emerged strengthened, their vision of pragmatic governance endorsed by the majority of delegates.
+ 
+The Left has responded bitterly, warning that the decision marks a retreat from socialist principles and leaves the Republic in the hands of a reactionary military elite. While some on the party’s radical wing are calling for continued agitation in local branches, their influence within the national leadership has clearly diminished. Outside the SPD, the response is calmer: the party’s moderate coalition partners have responded with cautious approval, relieved that the SPD rejected the more radical path. For leaders in the Centre Party and the liberals, the outcome is seen as a sign that the Social Democrats remain committed to stability and parliamentary cooperation.
+
+- @wrapper
+
+@wrapper
+Title: Continue...
+on-arrival: {! 
+if (Q.con_rural_strength/397 >= 0.12) {
+Q.ag_soc == 1;
+Q.rural_spd += 6;
+}
+if (Q.left_dissent + Q.center_dissent >= 60) {
+Q.second_conference == 1;
+}
+!}
+on-exit: {! 
+const contentElement = document.getElementById('content');
+contentElement.style.backgroundColor = '#f3f3f3';
+
+const header = document.querySelector('header');
+header.style.color = '#431';
+contentElement.style.color = '#431';
+
+const isMobile = window.innerWidth <= 768;
+const toolsElements = document.querySelectorAll('.tools');
+
+toolsElements.forEach(tool => {
+    if (isMobile) {
+        tool.style.marginLeft = '';
+        tool.style.padding = '0.6em';
+        tool.style.width = '';
+        tool.style.color = '#f3f3e3';
+        tool.style.backgroundColor = '#dedede';
+        tool.style.boxShadow = '4px 4px 16px rgba(0, 0, 0, 0.2)';
+    } else {
+        tool.style.marginLeft = '-6em';
+        tool.style.padding = '0.6em';
+        tool.style.width = '20rem';
+        tool.style.color = '#f3f3e3';
+        tool.style.backgroundColor = '#dedede';
+        tool.style.boxShadow = '4px 4px 16px rgba(0, 0, 0, 0.2)';
+    }
+!}
+new-page: true
+face-img: img/SPD_logo.jpg
+
+With the conference coming to a close, the final arguements are made.
+
+[? if ag_soc = 1: The relative success of the <span style="color: #38C538;">**Agrarian Socialists**</span> at increasing SPD support among the rural populace has cemented it's place as a wing of our party. ?]
+
+[? if second_conference = 1: The relative dissatisfaction of the Left has created tensions in our party. We have scheduled an emergency meeting for January 1930 to resolve this issue. ?]
