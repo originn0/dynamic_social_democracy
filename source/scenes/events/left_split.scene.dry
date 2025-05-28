@@ -2,8 +2,8 @@ title: Left-wing Split
 new-page: true 
 subtitle: The Left's disagreements with our policies have grown too severe.
 tags: event
-view-if: left_dissent >= 60
-on-arrival: left_split = 1; left_strength = left_strength/2; workers_spd -= 4; unemployed_spd -= 4; workers_other += 4; workers_kpd += 1; kpd_r += 1; spd_r -= 1; n_advisors -= 1 if levi_advisor == 1; levi_advisor = 0; rb_strength -= 300; kpd_relation -= 5; rb_militancy -= 0.05 if rb_militancy >= 0.1; n_advisors -= 1 if seydewitz_advisor == 1; seydewitz_advisor = 0; n_advisors -= 1 if rosenfeld_advisor == 1; rosenfeld_advisor = 0; n_advisors -= 1 if siemsen_advisor == 1; siemsen_advisor = 0
+view-if: left_dissent >= 50 and left_split != 1
+on-arrival: center_dissent += 15; left_split = 1; workers_spd -= 4; unemployed_spd -= 4; workers_other += 4; workers_kpd += 1; kpd_r += 1; spd_r -= 1; n_advisors -= 1 if levi_advisor == 1; levi_advisor = 0; rb_strength -= 300; kpd_relation -= 5; rb_militancy -= 0.05 if rb_militancy >= 0.1; n_advisors -= 1 if seydewitz_advisor == 1; seydewitz_advisor = 0; n_advisors -= 1 if rosenfeld_advisor == 1; rosenfeld_advisor = 0; n_advisors -= 1 if siemsen_advisor == 1; siemsen_advisor = 0; breitscheid_advisor = 0 if centrists_resign == 1; n_advisors -= 1 if breitscheid_advisor == 1  and centrists_resign == 1; sapd_election_trigger = time + 2 if centrists_resign == 1; old_sapd_relation = 120 - left_dissent;
 go-to: sapd_formed if centrists_resign = 1 and not sapd_formed
 max-visits: 1
 

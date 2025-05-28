@@ -52,9 +52,21 @@ The programs of the Nordic <span style="color: #D70926;">socialists</span> invol
 subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
-on-arrival: resources -= 1; kpd_relation += 5*(1-dissent); communist_coalition += 1 if comintern_seen == 0; comintern_seen += 1
+on-arrival: resources -= 1; kpd_relation += 5*(1-dissent); communist_coalition += 1 if comintern_seen == 0; comintern_seen += 1; 
 
 The <span style="color: #8B0000;">Stalinists</span> of the <span style="color: #700000;">**KPD**</span> insists on calling us "<span style="color: #c00000;">social</span> <span style="color: #7A3C00;">fascists</span>", suggesting that we <span style="color: #c00000;">social democrats</span> are as bad or worse than actual <span style="color: #7A3C00;">fascists</span>. Needless to say, this is not good for our relationship with the <span style="color: #700000;">communists</span>. By observing the <span style="color: #D50000;">Comintern</span>, we can better understand the <span style="color: #700000;">**KPD**</span>, enabling us to potentially improve relations, or counter the <span style="color: #700000;">**KPD**</span> if it may come to that.
+
+- @stalin
+
+@stalin
+title: We have further expanded our network within the Comintern, and are able to reach out to the Soviet Union. 
+subtitle: -3 resources; Maybe we can discuss the Wittoff affair with them?
+view-if: comintern_seen == 2 and wittorf_secret == 1
+choose-if: resources >= 3
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 3; wittorf_soviet_union = 1
+
+By reaching out to the Soviet Union, we may be able to persude Stalin to allow the Concilators to take power from Thalmann, in order to allow the KPD to work more closely with us. Doing so would likely require concessions.
 
 @america
 subtitle: -1 resources

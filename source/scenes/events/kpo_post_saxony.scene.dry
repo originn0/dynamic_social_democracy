@@ -1,0 +1,34 @@
+title: Aftermath of Saxony
+view-if: year == 1929 and month == 6 and kpo_formed == 1 and kpo_saxon_victory > 0 
+new-page: true
+tags: event
+on-arrival: {!
+if (Q.kpo_saxon_victory == 2) {
+Q.workers_kpo += Q.workers_kpd*0.25;
+Q.workers_kpd -= Q.workers_kpd*0.25;
+Q.unemployed_kpo += Q.unemployed_kpd*0.2;
+Q.unemployed_kpd -= Q.unemployed_kpd*0.2;
+Q.new_middle_kpo += Q.new_middle_kpd*0.7;
+Q.new_middle_kpd -= Q.new_middle_kpd*0.7;
+Q.new_middle_kpo += Q.new_middle_spd*0.2;
+Q.new_middle_spd -= Q.new_middle_spd*0.2;
+}
+if (Q.kpo_saxon_victory == 1) {
+Q.workers_kpo += Q.workers_kpd*0.2;
+Q.workers_kpd -= Q.workers_kpd*0.2;
+Q.unemployed_kpo += Q.unemployed_kpd*0.1;
+Q.unemployed_kpd -= Q.unemployed_kpd*0.1;
+Q.new_middle_kpo += Q.new_middle_kpd*0.5;
+Q.new_middle_kpd -= Q.new_middle_kpd*0.5;
+Q.new_middle_kpo += Q.new_middle_spd*0.1;
+Q.new_middle_spd -= Q.new_middle_spd*0.1;
+}
+Q.brandler_meeting = 1;
+!}
+priority: 1
+face-image: img/portraits/brandler.jpg
+max-visits: 1
+
+With the results of the Saxon Landtag Elections, the <span style="color: #C43988;">**KPD(O)**</span> has sprouted roots in the weimar system and will not be going away so soon. By siphoning votes from the KPD, it has legitimized itself as a competitor on the Left, for those alienated by the uncompromising attitude and radical image of the <span style="color: #700000;">**KPD**</span, but are dissatisfied with our gradualist approach.
+
+More and more voters are being pulled away from the <span style="color: #700000;">**KPD**</span>, to this new more sane alternative. It is safe to say that the German Left will never be the same again. Brandler has called a Party conference in the <span style="color: #C43988;">**KPD(O)**</span>, to determine the future course of this party. They are expected to release a manifesto at the coming conference!
