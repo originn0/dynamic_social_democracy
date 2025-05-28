@@ -30,29 +30,29 @@ for (var party of Q.parties) {
     Q[party + '_support'] = party_support;
     total_support += party_support; 
     if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_normalized = Q.rural_nsdap_normalized*Q.rural;
-        Q.nsdap_hitler_normalized += Q.old_middle_nsdap_normalized*Q.old_middle;
-        Q.nsdap_hitler_normalized += Q.catholics_nsdap_normalized*Q.catholics;
+        Q.nsdap_hitler_support = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_support += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_support += Q.catholics_nsdap_normalized*Q.catholics;
 
         if (Q.dsu_exist && !Q.nvf_exist) {
-            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
         } else if (!Q.dsu_exist && Q.nvf_exist) {
-            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
-            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
-            Q.nvf_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_support += Q.new_middle_nsdap*Q.new_middle;
         } else if (Q.dsu_exist && Q.nvf_exist) {
-            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
 
-            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
-            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
         } else {
-            Q.nsdap_hitler_normalized += Q.workers_nsdap*Q.workers;
-            Q.nsdap_hitler_normalized += Q.unemployed_nsdap*Q.unemployed;
-            Q.nsdap_hitler_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.nsdap_hitler_support += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_support += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_support += Q.new_middle_nsdap*Q.new_middle;
         }
     }
 }
@@ -60,9 +60,12 @@ for (var party of Q.parties) {
 for (var party of Q.parties) {
     Q[party+'_normalized'] = Q[party + '_support']/total_support;
     if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_votes = Math.round((Q.nsdap_hitler_normalized / total_support) * 1000 / 10);
-        Q.dsu_votes = Math.round((Q.dsu_normalized / total_support) * 1000 / 10);
-        Q.nvf_votes = Math.round((Q.nvf_normalized / total_support) * 1000 / 10);
+        Q.nsdap_hitler_normalized = Q.nsdap_hitler_support / total_support;
+        Q.dsu_normalized = Q.dsu_support / total_support;
+        Q.nvf_normalized = Q.nvf_support / total_support;
+        Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized*1000) / 10;
+        Q.dsu_votes = Math.round(Q.dsu_normalized*1000) / 10;
+        Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
     }
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
 }
@@ -192,6 +195,16 @@ Kurt Schumacher is an ambitious rising star in the party, and would be all too w
 - @adenauer_r1: Support Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 - @heuss_r1: Support Theodor Heuss of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
 - @schumacher_r1: Run Kurt Schumacher.
+- @abstain: Do nothing.
+
+@abstain
+view-if: resources < 2
+on-arrival: spd_candidate = "Boycott"; kpd_candidate = "Boycott"; sapd_candidate = "Boycott"
+go-to: r1_menu
+
+What an anticlimactic way to go.
+
+- @round_1: Let the voting begin.
 
 @hammerstein_r1
 unavailable-subtitle: We are a democratic party. 
@@ -385,6 +398,7 @@ var candidate_descs = {
   Strasser: "Otto Strasser of the <span style='color: #6A1E1E; font-weight: bold;'>DSU</span>",
   Frick: "Wilhelm Frick of the <span style='color: #6A1E1E; font-weight: bold;'>DSU</span>",
   Goring: "Hermann Göring of the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span>",
+  Hammerstein: "Kurt von Hammerstein-Equord of the <span style='color: #BFC8CC; font-weight: bold;'>DNEF</span>",
   Adenauer: "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>Center Party</span>",
   Heuss: "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>[+ ddp_name +]</span>",
   Schumacher: "Kurt Schumacher of the <span style='color: #c00000; font-weight: bold;'>SPD</span>"
@@ -403,11 +417,11 @@ var candidate_votes = {};
 Q.parties_election = Q.parties;
 if (Q.dsu_exist) {
     Q.parties_election.push('dsu');
-    Q.nsdap_votes -= Q.dsu_votes;
+    Q.nsdap_normalized -= Q.dsu_normalized;
 }
 if (Q.nvf_exist) {
     Q.parties_election.push('nvf');
-    Q.nsdap_votes -= Q.nvf_votes;
+    Q.nsdap_normalized -= Q.nvf_normalized;
 }
 if (Q.center_bvp_votes) {
     Q.z_votes -= Q.bvp_votes;
@@ -447,6 +461,13 @@ Q.winner_votes_disp = Q.winner_votes.toFixed(1);
 Q.winner_desc = candidate_descs[Q.winner];
 
 Q.round += 1
+
+if (Q.spd_candidate == "Boycott" || Q.sapd_candidate == "Boycott" || Q.kpd_candidate == "Boycott"){
+    Q.boycott_votes = 0;
+    if (Q.kpd_candidate == "Boycott") Q.boycott_votes += Q.kpd_votes;
+    if (Q.sapd_candidate == "Boycott") Q.boycott_votes += Q.sapd_votes;
+    if (Q.spd_candidate == "Boycott") Q.boycott_votes += Q.spd_votes;
+}
 !}
 go-to: r2_start if round = 1 and not has_majority; election_end if round > 1; r1_winner if has_majority
 
@@ -454,9 +475,9 @@ Election results:
 
 [? if Goring_running : <span style="color: #7A3C00;">**Göring**</span> - [+ Goring_votes_disp +]% ?]
 
-[? if Strasser_running : <span style="color: #7A3C00;">**Strasser**</span> - [+ Strasser_votes_disp +]% ?]
+[? if Strasser_running : <span style="color: #6A1E1E;">**Strasser**</span> - [+ Strasser_votes_disp +]% ?]
 
-[? if Frick_running : <span style="color: #7A3C00;">**Frick**</span> - [+ Frick_votes_disp +]% ?]
+[? if Frick_running : <span style="color: #6A1E1E;">**Frick**</span> - [+ Frick_votes_disp +]% ?]
 
 [? if Hammerstein_running : <span style="color: #BFC8CC;">**Hammerstein**</span> - [+ Hammerstein_votes_disp +]% ?]
 
@@ -465,6 +486,8 @@ Election results:
 [? if Heuss_running : [? if not lvp_formed: <span style="color: #D3C24D;">**Heuss**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Heuss**</span>?] - [+ Heuss_votes_disp +]% ?]
 
 [? if Schumacher_running : <span style="color: #c00000;">**Schumacher**</span> - [+ Schumacher_votes_disp +]% ?]
+
+[? if spd_candidate == "Boycott" or sapd_candidate == "Boycott" or kpd_candidate == "Boycott" : None of the Above - [+ boycott_votes +]% ?]
 
 @r2_start
 on-arrival: {!
@@ -519,7 +542,7 @@ I hope you had a reason in mind.
 @r2_endorse_adenauer
 title: Switch our support to Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 view-if: z_candidate = "Adenauer" and spd_candidate != z_candidate
-on-departure: kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; z_relation += 5; center_bvp_votes = 1 if z_relation < 50; is_unity_candidate = 1
+on-departure: kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; spd_candidate = "Adenauer"; z_relation += 5; center_bvp_votes = 1 if z_relation < 50; is_unity_candidate = 1
 go-to: r2_campaigning
 
 We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. Perhaps we can form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Bloc against Schleicher.
@@ -555,8 +578,7 @@ view-if: round = 1
 
 
 @r2_vote
-go-to: election_algorithm
-set-jump: post_election
+go-to: post_election
 
 
 

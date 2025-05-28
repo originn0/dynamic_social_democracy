@@ -748,7 +748,7 @@ if (Q.rdp_list) {
     if (Q.pro_republic >= 15) Q.rdp_votes *= (Q.pro_republic / 100);
     if (Q.pro_republic < 15) Q.rdp_votes *= 0.15;
     if (Q.rdp_votes < 0.5) Q.rdp_votes = 0.5;
-    Q.true_rdp_r = Q.rdp_votes*(Q.spd_r / Q.spd_votes);
+    Q.rdp_r = Q.rdp_votes*(Q.spd_r / Q.spd_votes);
 
     Q.rdp_votes = Math.round(Q.rdp_votes * 10) / 10;
 
@@ -1350,12 +1350,15 @@ Q.election_records.push(election_result);
 !}
 on-departure: nazi_urgency = 1 if (nazi_urgency == 0 and nsdap_r >= 15)
 on-display: {!
-data = [{
+const data = [];
+if (Q.kpd_r) {
+  data.push({
     "id": "kpd",
     "legend": "KPD",
     "name": "KPD",
     "seats": Math.round(Q.kpd_r * 5),
-}];
+  });
+}
 
 if (Q.kpo_formed && Q.kpo_r) {
     data.push({
@@ -1375,21 +1378,28 @@ if (Q.sapd_formed && Q.sapd_r) {
     });
 }
 
-if (Q.spd_r) {
+if (Q.spd_r && !Q.rdp_r) {
     data.push({
         "id": "spd",
         "legend": "SPD",
         "name": "SPD",
         "seats": Math.round(Q.spd_r * 5),
     });
+} else if (Q.spd_r && Q.rdp_r) {
+    data.push({
+        "id": "spd",
+        "legend": "SPD",
+        "name": "SPD",
+        "seats": Math.round((Q.spd_r - Q.rdp_r) * 5),
+    });
 }
 
-if (Q.true_rdp_r) {
+if (Q.rdp_r) {
     data.push({
         "id": "rdp",
         "legend": "RDP",
         "name": "RDP",
-        "seats": Math.round(Q.true_rdp_r * 5),
+        "seats": Math.round(Q.rdp_r * 5),
     });
 }
 

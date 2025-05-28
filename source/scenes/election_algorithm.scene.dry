@@ -44,29 +44,29 @@ for (var party of Q.parties) {
         if (Q.left_dnef) Q.left_dnef_normalized = ((Q.new_middle_dnef_normalized / 2)*Q.new_middle) + (Q.workers_dnef_normalized*Q.workers) + (Q.unemployed_dnef_normalized*Q.unemployed) + ((Q.catholics_dnef_normalized / 2)*Q.catholics);
     }
     if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_normalized = Q.rural_nsdap_normalized*Q.rural;
-        Q.nsdap_hitler_normalized += Q.old_middle_nsdap_normalized*Q.old_middle;
-        Q.nsdap_hitler_normalized += Q.catholics_nsdap_normalized*Q.catholics;
+        Q.nsdap_hitler_support = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_support += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_support += Q.catholics_nsdap_normalized*Q.catholics;
 
         if (Q.dsu_exist && !Q.nvf_exist) {
-            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
         } else if (!Q.dsu_exist && Q.nvf_exist) {
-            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
-            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
-            Q.nvf_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_support += Q.new_middle_nsdap*Q.new_middle;
         } else if (Q.dsu_exist && Q.nvf_exist) {
-            Q.dsu_normalized = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
-            Q.dsu_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
 
-            Q.nvf_normalized = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
-            Q.nvf_normalized += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
         } else {
-            Q.nsdap_hitler_normalized += Q.workers_nsdap*Q.workers;
-            Q.nsdap_hitler_normalized += Q.unemployed_nsdap*Q.unemployed;
-            Q.nsdap_hitler_normalized += Q.new_middle_nsdap*Q.new_middle;
+            Q.nsdap_hitler_support += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_support += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_support += Q.new_middle_nsdap*Q.new_middle;
         }
     }
 }
@@ -83,9 +83,12 @@ for (var party of Q.parties) {
         if (Q.left_dnef) Q.left_dnef_votes = (Q.left_dnef_normalized/total_support);
     }
     if (party == "nsdap" && Q.nsdap_split) {
-        Q.nsdap_hitler_votes = Math.round((Q.nsdap_hitler_normalized / total_support) * 1000 / 10);
-        Q.dsu_votes = Math.round((Q.dsu_normalized / total_support) * 1000 / 10);
-        Q.nvf_votes = Math.round((Q.nvf_normalized / total_support) * 1000 / 10);
+        Q.nsdap_hitler_normalized = Q.nsdap_hitler_support / total_support;
+        Q.dsu_normalized = Q.dsu_support / total_support;
+        Q.nvf_normalized = Q.nvf_support / total_support;
+        Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized*1000) / 10;
+        Q.dsu_votes = Math.round(Q.dsu_normalized*1000) / 10;
+        Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
     }
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
     if (party == "other") {

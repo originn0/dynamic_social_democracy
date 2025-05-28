@@ -635,13 +635,17 @@ Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
 if (Q.bvp_r == Q.z_r) Q.z_minus_bvp_r = 0;
 !}
 on-display: {!
-data = [{
+
+const data = [];
+
+if (Q.kpd_r) {
+data.push({
     "id": "kpd",
     "legend": "KPD",
     "name": "KPD",
     "seats": Math.round(Q.kpd_r * 5),
-}];
-
+  });
+}
 if (Q.kpo_formed && Q.kpo_r) {
     data.push({
         "id": "kpo",
@@ -660,21 +664,28 @@ if (Q.sapd_formed && Q.sapd_r) {
     });
 }
 
-if (Q.spd_r) {
+if (Q.spd_r && !Q.rdp_r) {
     data.push({
         "id": "spd",
         "legend": "SPD",
         "name": "SPD",
         "seats": Math.round(Q.spd_r * 5),
     });
+} else if (Q.spd_r && Q.rdp_r) {
+    data.push({
+        "id": "spd",
+        "legend": "SPD",
+        "name": "SPD",
+        "seats": Math.round((Q.spd_r - Q.rdp_r) * 5),
+    });
 }
 
-if (Q.true_rdp_r) {
+if (Q.rdp_r) {
     data.push({
         "id": "rdp",
         "legend": "RDP",
         "name": "RDP",
-        "seats": Math.round(Q.true_rdp_r * 5),
+        "seats": Math.round(Q.rdp_r * 5),
     });
 }
 

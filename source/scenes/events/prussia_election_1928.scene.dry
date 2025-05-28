@@ -641,13 +641,14 @@ if (Q.lvp_r_prussia && Q.lvp_formed) {
     });
 }
 
-data = data.concat([{
+if (Q.z_r_prussia) {
+    data.push({
         "id": "z",
         "legend": "Center",
         "name": "Center",
-        "seats": Math.round((Q.z_r_prussia) * 4.5),
+        "seats": Math.round(Q.z_r_prussia * 4.5),
+    });
 }
-]);
 
 if (Q.dvp_r_prussia && !Q.lvp_formed && Q.dvp_exist) {
     data.push({
@@ -655,6 +656,15 @@ if (Q.dvp_r_prussia && !Q.lvp_formed && Q.dvp_exist) {
         "legend": "DVP",
         "name": "DVP",
         "seats": Math.round(Q.dvp_r_prussia * 4.5),
+    });
+}
+
+if (Q.dnef_r_prussia && Q.dnef_formed) {
+    data.push({
+        "id": "dnef",
+        "legend": "DNEF",
+        "name": "DNEF",
+        "seats": Math.round(Q.dnef_r_prussia * 4.5),
     });
 }
 
@@ -692,12 +702,41 @@ if (Q.dnf_formed && Q.dnf_r_prussia) {
         "seats": Math.round(Q.dnf_r_prussia * 4.5),
     });
 }
-data = data.concat([{
-    "id": "nsdap",
-    "legend": "NSDAP",
-    "name": "NSDAP",
-    "seats": Math.round(Q.nsdap_r_prussia * 4.5),
-}, ]);
+if (Q.dsu_exist && Q.dsu_r_prussia) {
+    data.push({
+        "id": "dsu",
+        "legend": "DSU",
+        "name": "DSU",
+        "seats": Math.round(Q.dsu_r_prussia * 4.5),
+    });
+}
+
+if (Q.nsdap_split && Q.nsdap_hitler_r_prussia) {
+    data.push({
+        "id": "nsdap",
+        "legend": "NSDAP",
+        "name": "NSDAP",
+        "seats": Math.round(Q.nsdap_hitler_r_prussia * 4.5),
+    });
+}
+
+if (!Q.nsdap_split && Q.nsdap_r_prussia) {
+    data.push({
+        "id": "nsdap",
+        "legend": "NSDAP",
+        "name": "NSDAP",
+        "seats": Math.round(Q.nsdap_r_prussia * 4.5),
+    });
+}
+
+if (Q.nvf_exist && Q.nvf_r_prussia) {
+    data.push({
+        "id": "nvf",
+        "legend": "NVF",
+        "name": "NVF",
+        "seats": Math.round(Q.nvf_r_prussia * 4.5),
+    });
+}
 
 if (window && d3) {
     var width = 500;

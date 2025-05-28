@@ -31,6 +31,8 @@ set-jump: post_election
 
 @post_election
 on-arrival: {!
+Q.bvp_votes = Q.bvp_votes / 100;
+
 Q.spd_president_votes = 0;
 Q.hindenburg_votes = 0;
 Q.reactionary_candidate_1_votes = 0;
@@ -214,37 +216,39 @@ if (Q.spd_campaign) {
 
     if (Q.z_support_spd && Q.z_support_spd == 1) {
         if (Q.z_ideology == "Left") {
-            Q.spd_president_votes += (Q.z_normalized - 0.03);
-            Q.hindenburg_votes += 0.03;
-            Q.center_president_crossover += 0.03;
+            Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes);
+            Q.hindenburg_votes += Q.bvp_votes;
+            Q.center_president_crossover += Q.bvp_votes;
         }
         if (Q.z_ideology == "Right" && !Q.z_glaze_spd) {
-            Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.8;
-            Q.hindenburg_votes += (Q.z_normalized - 0.03) * 0.2;
-            Q.center_president_crossover += (Q.z_normalized - 0.03) * 0.2;
+            Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.8;
+            Q.hindenburg_votes += (Q.z_normalized - Q.bvp_votes) * 0.2;
+            Q.center_president_crossover += (Q.z_normalized - Q.bvp_votes) * 0.2;
             if (Q.eckener_campaign) {
-                Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.1;
-                Q.hindenburg_votes -= (Q.z_normalized - 0.03) * 0.1;
-                Q.center_president_crossover -= (Q.z_normalized - 0.03) * 0.1;
+                Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.hindenburg_votes -= (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.center_president_crossover -= (Q.z_normalized - Q.bvp_votes) * 0.1;
             }
-            Q.hindenburg_votes += 0.03;
-            Q.center_president_crossover += 0.03;
+            Q.hindenburg_votes += Q.bvp_votes;
+            Q.center_president_crossover += Q.bvp_votes;
         } else if (Q.z_ideology == "Right" && Q.z_glaze_spd) {
-            Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.9;
-            Q.hindenburg_votes += (Q.z_normalized - 0.03) * 0.1;
-            Q.center_president_crossover += (Q.z_normalized - 0.03) * 0.1;
+            Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.9;
+            Q.hindenburg_votes += (Q.z_normalized - Q.bvp_votes) * 0.1;
+            Q.center_president_crossover += (Q.z_normalized - Q.bvp_votes) * 0.1;
             if (Q.eckener_campaign) {
-                Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.1;
-                Q.hindenburg_votes -= (Q.z_normalized - 0.03) * 0.1;
-                Q.center_president_crossover -= (Q.z_normalized - 0.03) * 0.1;
+                Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.hindenburg_votes -= (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.center_president_crossover -= (Q.z_normalized - Q.bvp_votes) * 0.1;
             }
-            Q.hindenburg_votes += 0.03;
-            Q.center_president_crossover += 0.03;
+            Q.hindenburg_votes += Q.bvp_votes;
+            Q.center_president_crossover += Q.bvp_votes;
         }
         if (Q.bvp_support_spd) {
-            Q.spd_president_votes += 0.03;
-            Q.hindenburg_votes -= 0.03;
-            Q.center_president_crossover -= 0.03;
+            Q.spd_president_votes += Q.bvp_votes;
+            Q.hindenburg_votes -= Q.bvp_votes;
+            Q.center_president_crossover -= Q.bvp_votes;
+        } else if (!Q.bvp_support_spd && !Q.hindenburg_run) {
+            Q.other_normalized += Q.bvp_votes;
         }
     } else {
         Q.hindenburg_votes += Q.z_normalized;
@@ -515,7 +519,7 @@ Results:
 
 [? if kpd_support_spd == 0 : <span style="color: #700000;">**[+ communist_candidate_1932 +]**</span> - [+ thalmann_votes_disp +]% ?]
 
-[? if spd_campaign > 0 : <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span> - [+ spd_president_votes_disp +]% ?]
+[? if spd_campaign > 0 : [? if spd_candidate != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span>?][? if spd_candidate == "Eckener": <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>?] - [+ spd_president_votes_disp +]% ?]
 
 <span style="color: #0075EB;">**Winter**</span> - [+ vrp_presidential_votes_disp +]%
 
@@ -560,7 +564,7 @@ on-arrival: z_support_spd = 0 if z_support_spd == 2
 - @round2_vote: We've done enough, second round voting begins next month.
 
 @convince_ddp_eckener
-view-if: not lvp_formed and eckener_campaign
+view-if: not lvp_formed and eckener_campaign and not ddp_support_spd
 max-visits: 1
 go-to: convince_ddp_success_eckener if (ddp_relation >= 40 and (ddp_ideology == "Right" or dstp_maintained)) or (ddp_relation >= 30 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 20 and ddp_ideology == "Left" and not dstp_maintained); convince_ddp_fail_eckener if not ((ddp_relation >= 40 and (ddp_ideology == "Right" or dstp_maintained)) or (ddp_relation >= 30 and ddp_ideology == "Moderate" and not dstp_maintained) or (ddp_relation >= 20 and ddp_ideology == "Left" and not dstp_maintained))
 
@@ -579,7 +583,7 @@ go-to: round2_menu
 Unfortunately, under the influence of its business wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has refused to support a <span style="color: #c00000;">socialist</span>-backed candidate for the presidency. This is a major blow—Eckener was meant to be a unity candidate, and we've clearly failed in that objective.
 
 @convince_lvp_eckener
-view-if: lvp_formed and eckener_campaign
+view-if: lvp_formed and eckener_campaign and not lvp_support_spd
 max-visits: 1
 go-to: convince_lvp_success_eckener if ((lvp_relation >= 50 and lvp_ideology == "Right") or (lvp_relation >= 40 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and (lvp_leader != "Dingeldey" or lvp_ideology != "Right"); convince_lvp_fail_eckener if not (((lvp_relation >= 50 and lvp_ideology == "Right") or (lvp_relation >= 40 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and (lvp_leader != "Dingeldey" or lvp_ideology != "Right"))
 
@@ -598,7 +602,7 @@ go-to: round2_menu
 We have failed to persuade the <span style="color: #FFCC00;">**LVP**</span> to back <span style="color: #c00000;">Braun</span>, due to their deep antipathy toward cooperating with the <span style="color: #c00000;">socialists</span>—even with Eckener at the head of the ticket. This is a major blow—Eckener was meant to be a unity candidate, and we've clearly failed in that objective.
 
 @convince_z_eckener
-view-if: eckener_campaign
+view-if: eckener_campaign and not z_support_spd
 choose-if: spd_votes >= z_votes and not cvp_formed
 unavailable-subtitle: [? if spd_votes < z_votes: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate. ?][? if cvp_formed: The <span style="color: #000000;">CVP</span> can never be convinced. ?]
 on-arrival: {!
@@ -644,7 +648,7 @@ go-to: round2_menu
 With our resources, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are convinced to support Eckener. [? if bvp_support_spd: The <span style="color: #A2D8E0;">**BVP**</span> has also, surprisingly, joined the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in endorsing Eckener. ?][? if not bvp_support_spd: However, the <span style="color: #A2D8E0;">**BVP**</span> has split from the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and refuses to back Eckener. ?]
 
 @convince_dvp_eckener
-view-if: not lvp_formed and dvp_exist and eckener_campaign
+view-if: not lvp_formed and dvp_exist and eckener_campaign and not dvp_support_spd
 max-visits: 1
 go-to: convince_dvp_success_eckener if (dvp_relation >= 70 and dvp_ideology == "Right") or (dvp_relation >= 60 and dvp_ideology == "Moderate") or (dvp_relation >= 50 and dvp_ideology == "Left"); convince_dvp_fail_eckener if not ((dvp_relation >= 70 and dvp_ideology == "Right") or (dvp_relation >= 60 and dvp_ideology == "Moderate") or (dvp_relation >= 50 and dvp_ideology == "Left"))
 

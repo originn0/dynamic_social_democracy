@@ -25,6 +25,8 @@ set-jump: post_election
 
 @post_election
 on-arrival: {!
+Q.bvp_votes = Q.bvp_votes / 100;
+
 Q.spd_president_votes = 0;
 Q.hindenburg_votes = 0;
 Q.reactionary_candidate_1_votes = 0;
@@ -216,37 +218,39 @@ if (Q.spd_campaign) {
 
     if (Q.z_support_spd && Q.z_support_spd == 1) {
         if (Q.z_ideology == "Left") {
-            Q.spd_president_votes += (Q.z_normalized - 0.03);
-            Q.hindenburg_votes += 0.03;
-            Q.center_president_crossover += 0.03;
+            Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes);
+            Q.hindenburg_votes += Q.bvp_votes;
+            Q.center_president_crossover += Q.bvp_votes;
         }
         if (Q.z_ideology == "Right" && !Q.z_glaze_spd) {
-            Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.8;
-            Q.hindenburg_votes += (Q.z_normalized - 0.03) * 0.2;
-            Q.center_president_crossover += (Q.z_normalized - 0.03) * 0.2;
+            Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.8;
+            Q.hindenburg_votes += (Q.z_normalized - Q.bvp_votes) * 0.2;
+            Q.center_president_crossover += (Q.z_normalized - Q.bvp_votes) * 0.2;
             if (Q.eckener_campaign) {
-                Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.1;
-                Q.hindenburg_votes -= (Q.z_normalized - 0.03) * 0.1;
-                Q.center_president_crossover -= (Q.z_normalized - 0.03) * 0.1;
+                Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.hindenburg_votes -= (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.center_president_crossover -= (Q.z_normalized - Q.bvp_votes) * 0.1;
             }
-            Q.hindenburg_votes += 0.03;
-            Q.center_president_crossover += 0.03;
+            Q.hindenburg_votes += Q.bvp_votes;
+            Q.center_president_crossover += Q.bvp_votes;
         } else if (Q.z_ideology == "Right" && Q.z_glaze_spd) {
-            Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.9;
-            Q.hindenburg_votes += (Q.z_normalized - 0.03) * 0.1;
-            Q.center_president_crossover += (Q.z_normalized - 0.03) * 0.1;
+            Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.9;
+            Q.hindenburg_votes += (Q.z_normalized - Q.bvp_votes) * 0.1;
+            Q.center_president_crossover += (Q.z_normalized - Q.bvp_votes) * 0.1;
             if (Q.eckener_campaign) {
-                Q.spd_president_votes += (Q.z_normalized - 0.03) * 0.1;
-                Q.hindenburg_votes -= (Q.z_normalized - 0.03) * 0.1;
-                Q.center_president_crossover -= (Q.z_normalized - 0.03) * 0.1;
+                Q.spd_president_votes += (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.hindenburg_votes -= (Q.z_normalized - Q.bvp_votes) * 0.1;
+                Q.center_president_crossover -= (Q.z_normalized - Q.bvp_votes) * 0.1;
             }
-            Q.hindenburg_votes += 0.03;
-            Q.center_president_crossover += 0.03;
+            Q.hindenburg_votes += Q.bvp_votes;
+            Q.center_president_crossover += Q.bvp_votes;
         }
         if (Q.bvp_support_spd) {
-            Q.spd_president_votes += 0.03;
-            Q.hindenburg_votes -= 0.03;
-            Q.center_president_crossover -= 0.03;
+            Q.spd_president_votes += Q.bvp_votes;
+            Q.hindenburg_votes -= Q.bvp_votes;
+            Q.center_president_crossover -= Q.bvp_votes;
+        } else if (!Q.bvp_support_spd && !Q.hindenburg_run) {
+            Q.other_normalized += Q.bvp_votes;
         }
     } else {
         Q.hindenburg_votes += Q.z_normalized;
@@ -492,7 +496,7 @@ Results:
 
 [? if kpd_support_spd == 0 : <span style="color: #700000;">**[+ communist_candidate_1932 +]**</span> - [+ thalmann_votes_disp +]% ?]
 
-[? if spd_campaign > 0 : <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span> - [+ spd_president_votes_disp +]% ?]
+[? if spd_campaign > 0 : [? if spd_candidate != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span>?][? if spd_candidate == "Eckener": <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>?] - [+ spd_president_votes_disp +]% ?]
 
 [? if thalmann_votes_rnd_1 > thalmann_votes + 2: The decline of [+ communist_candidate_1932 +]'s vote share is largely attributed to the futility of his campaign, with estimates suggesting that a significant portion of his former voters have either defected to Hitler or abstained from the second round. The <span style="color: #700000;">**Communist**</span> camp is overcome with resignation, as this outcome suggests that the German masses are still far from ready for the revolutionary assault against capitalism that he and his party’s leadership had been preparing for. ?]
 
