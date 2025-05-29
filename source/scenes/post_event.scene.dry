@@ -1071,7 +1071,6 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     } else if (Q.economic_growth > 0 && Q.spd_in_government) {
         Q.economic_expansion += Q.economic_growth/2;
     }
-    //////////////////////////////////////////////////////////PARTY SUPPORT STARTS
     /////////////////////////////// update opinions based on economy
     if (Q.unemployed > 15 && Q.pro_republic > 50) {
         Q.pro_republic -= 1;
@@ -4371,7 +4370,6 @@ Q.bvp_votes = Q.z_votes*0.2;
 if (Q.stegerwald_path && Q.bvp_votes >= 4) {
     Q.bvp_votes = 4;
 }
-   //////////////////////////////////////////////////////////PARTY SUPPORT ENDS
 
 if (Q.lvp_formed) {
     Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
