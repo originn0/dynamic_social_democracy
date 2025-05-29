@@ -2,8 +2,8 @@ title: The <span style="color: #c00000;">**SPD**</span> leadership meets to disc
 new-page: true
 subtitle: TEST
 tags: event
-priority: -1
-view-if: year = 1929 and month = 5
+priority: 1
+view-if: year == 1929 and month == 5
 on-arrival: {!
 const contentElement = document.getElementById('content');
 contentElement.style.backgroundColor = '#4B2E2E';
@@ -324,7 +324,7 @@ title: We shall compromise with the bourgiousie, in order to keep Democracy stro
 subtitle: The Reformists, with the support of the other moderate elements in the party, manage to pass this resolution.
 choose-if: con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength >= 199
 unavailable-subtitle: The Reformists simply do not have a majority at the congress.
-on-arrival: {! Q.comp_meter = 1; Q.left_dissent += 25; Q.center_dissent += 15; !}
+on-arrival: {! Q.comp_meter = 1; Q.left_dissent += 25; Q.center_dissent += 15; Q.lvp_relations += 10; Q.dvp_relations += 5; Q.z_relations += 10; Q.ddp_relations += 10; Q.kpo_relations -= 10; Q.kpd_relations -= 10; !}
 
 Surprisingly, the <span style="color: #F99E9E;">Reformists</span> and their allies have succeeded in blocking any restrictions on our dealings with coalition partners. This represents a notable shift in the Party’s internal balance of power, highlighting how much influence the Reformist wing has gained since we were last in government. Unsurprisingly, the bourgeois parties have welcomed the decision, interpreting it as a sign that the <span style="color: #c00000;">**SPD**</span> is moderating its stance and moving closer to the political center of the Republic.
 The <span style="color: #AF0202;">Left Socialists</span>, however, are furious. They view the absence of any limitations as the Party capitulating entirely to bourgeois interests. Even the Center has expressed unease about the outcome, with some members warning that such a blank cheque could erode our core commitments to the workers. There are even whispers of another party split, reminiscent of the USPD’s departure a decade ago. 
@@ -338,7 +338,7 @@ title: We shall not compromise with the bourgiousie! The rights of the workers m
 subtitle: With the majority of the congress controlled by the factions of the left, the resolution is passed.
 choose-if: con_llabor_strength + con_left_strength >= 199
 unavailable-subtitle: The Left does not have enough power.
-on-arrival: {! Q.comp_meter = 2; Q.reformist_dissent += 25; Q.center_dissent += 15; !}
+on-arrival: {! Q.comp_meter = 2; Q.reformist_dissent += 25; Q.center_dissent += 15; Q.lvp_relations -= 10; Q.dvp_relations -= 5; Q.z_relations -= 10; Q.ddp_relations -= 10; Q.kpo_relations += 10; Q.kpd_relations += 10; !}
 
 Surprisingly, the <span style="color: #AF0202;">Left Socialists</span> has prevailed in securing a no-compromise resolution, meaning <span style="color: #c00000;">**SPD**</span> ministers must refuse any concessions to bourgeois parties and protect public welfare at all costs. This victory reflects the Left’s strengthened position, bolstered by Paul Levi’s successful mobilization of rank‑and‑file activists in industrial districts and by growing disenchantment with the parliamentary leadership.
 The <span style="color: #CE2D2D;">Centrist Marxists</span> expressed deep unease. While acknowledging the moral clarity of the resolution, they warn that such an uncompromising stance risks isolating the <span style="color: #c00000;">**SPD**</span> and jeopardizing its ability to influence policy from within government. The Reformists are dismayed by the outcome. They fear that zero‑tolerance red lines will alienate potential partners and make effective governance nearly impossible. Similarly, the bourgeois parties view the Left’s victory as a sign that the SPD is returning to hard‑line positions, making the government's survival far less likely.
@@ -351,7 +351,7 @@ title: We will be open to some compromise with the parties of the republic, but 
 subtitle: The Center manages to convice the dissendent factions to accept this resolution.
 choose-if:  con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength <= 198 and con_llabor_strength + con_left_strength <= 198
 unavailable-subtitle: A compromise agreement is not needed, as either the Left or Right holds a majority in the Congress.
-on-arrival: {! Q.comp_meter = 3; Q.left_dissent += 15; !}
+on-arrival: {! Q.comp_meter = 3; Q.left_dissent += 15; lvp_relations += 5; Q.dvp_relations += 2.5; Q.z_relations += 5; Q.ddp_relations += 5; Q.kpo_relations -= 5; Q.kpd_relations -= 5; !}
 
 The <span style="color: #CE2D2D;">Centrist Marxists</span> have secured approval for a compromise framework guiding our coalition strategy. By a comfortable margin, delegates endorsed a resolution that sets clear boundaries on concessions to bourgeois parties, while granting <span style="color: #c00000;">**SPD**</span> ministers the flexibility to negotiate policies essential for stable governance.
 The <span style="color: #AF0202;">Left Socialists</span> reacted with disappointment. Though frustrated that stricter no-compromise pledges were rejected, they nevertheless see an opening to hold Center leaders to account should any red lines be crossed. In contrast, the Reformists are relieved about the outcome. While they would have preferred no red lines at all, they welcome the pragmatic spirit of the resolution. The bourgeois parties are content that the Left’s proposal was rejected, but remain wary about our newly adopted red lines.
@@ -389,7 +389,7 @@ The <span style="color: #F99E9E;">Reformists</span> and <span style="color: #CE2
 title: We shall accept the motion of the <span style="color: #AF0202;">Left</span> Wing!
 choose-if: con_llabor_strength + con_left_strength >= 199
 unavailable-subtitle: The Left does not have enough power.
-on-arrival: reformist_dissent += 10; center_dissent += 5;
+on-arrival: reformist_dissent += 10; center_dissent += 5; z_relations -= 5; dvp_relations -= 15; lvp_relations -= 5; kpd_relations += 15; kpo_relations += 5;
 
 With the Left’s abolitionist motion just carried at the party conference, SPD ministers and deputies are now formally instructed to press for the Reichswehr’s dissolution and its replacement by workers’ militias. Yet this decision remains a party position rather than law. It must still be debated, amended, and approved in the Reichstag. The Left leadership, riding this wave of triumph, has issued an impassioned call to “reclaim the republic in the name of the working class,” pledging swift action to dismantle existing military structures. In the days ahead, Paul Levi’s faction will be racing to draft concrete legislation and whip SPD Reichstag delegates into line, even as moderate parliamentarians signal they’ll seek major changes once the bill hits the floor.
 
@@ -401,7 +401,7 @@ The Reformists are watching anxiously, seeing the Left’s success at the confer
 title: The Moderates prevail.
 choose-if: con_llabor_strength + con_left_strength < 199
 unavailable-subtitle: Uh oh.
-on-arrival: left_dissent += 5; 
+on-arrival: left_dissent += 5; z_relations += 5; dvp_relations += 10; lvp_relations += 5; kpd_relations -= 15; kpo_relations -= 5;
 
 With the Reformists’ amended proposal carried at the party conference, the SPD has reaffirmed its commitment to a professional army under civilian and parliamentary control. The Left’s call for the abolition of the Reichswehr has been decisively rejected, signaling that the party will continue working within the existing state framework to gradually reform the officer corps and “republicanize” the military. Carl Severing and his allies have emerged strengthened, their vision of pragmatic governance endorsed by the majority of delegates.
  
@@ -413,11 +413,11 @@ The Left has responded bitterly, warning that the decision marks a retreat from 
 Title: Continue...
 on-arrival: {! 
 if (rural_spd_normalized >= 12) {
-Q.ag_soc == 1;
+Q.ag_soc = 1;
 Q.rural_spd += 6;
 }
 if (Q.left_dissent + Q.center_dissent >= 60) {
-Q.second_conference == 1;
+Q.second_conference = 1;
 }
 !}
 on-departure: {! 
