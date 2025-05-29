@@ -13,6 +13,7 @@ Rosenfeld works as a lawyer in Berlin who defends left-wing individuals and caus
 - @kpd_cooperation
 - @prussian_bulwark
 - @against_toleration
+- @snap_election
 - @root: Return to main
 
 @building_the_left
@@ -70,3 +71,12 @@ on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 
 The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
 
 [? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+
+@snap_election
+title: Snap Election
+subtitle: Call a snap election.
+unavailable-subtitle: [? if chancellor != "Rosenfeld" and president != "Rosenfeld" : Rosenfeld must be Chancellor or President. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if president = "Rosenfeld" and presidential_powers : We have removed this power from the president with a constitutional reform. ?]
+choose-if: advisor_action_timer == 0 and (chancellor == "Rosenfeld" or (president == "Rosenfeld" and not presidential_powers))
+on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
+
+We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].

@@ -268,7 +268,7 @@ if (Q.secondary_reactionary_candidate_1932) {
     }
 }
 
-if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler") {
+if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
     Q.reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Vorbeck") {
     Q.reactionary_candidate_1932_ideology = "Conservative";
@@ -276,7 +276,7 @@ if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == 
     Q.reactionary_candidate_1932_ideology = "Centrist";
 }
 
-if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler") {
+if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
     Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Vorbeck") {
     Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
@@ -286,8 +286,6 @@ if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionar
 
 Q.reactionary_candidate_1932_count_2 = 1;
 if (Q.secondary_reactionary_candidate_1932) Q.reactionary_candidate_1932_count_2 = 2;
-
-// screw jarres...
 !}
 view-if: not hindenburg_run
 go-to: reactionary_candidates
@@ -524,7 +522,7 @@ So, what's our choice?
 @view_candidates
 go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_campaign; endorsements_rosenfeld if rosenfeld_campaign
 
-[? if spd_campaign: [? if spd_candidate != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932_disp +]**</span>?][? if spd_candidate == "Eckener": <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span> ?] - supported by: ?]
+[? if spd_campaign: [? if spd_candidate_1932 != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932_disp +]**</span>?][? if spd_candidate_1932 == "Eckener": Hugo <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span> ?] - supported by: ?]
 
 [? if spd_campaign: - <span style="color: #c00000;">**SPD**</span> ?]
 
@@ -578,7 +576,7 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 
 [? if (kvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and kvp_formed and secondary_reactionary_candidate_1932: - <span style="color: #0087DC;">**KVP**</span> ?]
 
-[? if (dnvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate": - <span style="color: #3E88B3;">**DNVP**</span> ?]
+[? if (dnvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate" and secondary_reactionary_candidate_1932: - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
 [? if (other_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - **Others** ?]
 
@@ -852,34 +850,13 @@ We can't win this election alone, we need support from other parties. [? if spd_
 @hope
 on-arrival: {!
 if (Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) Q.lib_drop_out = 1;
-if (Q.lib_drop_out) {
-    if (Q.reactionary_candidate_1932 == "Luther") {
-        Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-        Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    } else if (Q.secondary_reactionary_candidate_1932 == "Luther") {
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    }
-    if (Q.reactionary_candidate_1932 == "Gessler") {
-        Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-        Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    }
-    if (Q.reactionary_candidate_1932 == "Jarres") {
-        Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-        Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    } else if (Q.secondary_reactionary_candidate_1932 == "Jarres") {
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    }
+if (Q.lib_drop_out && Q.z_drop_out) {
+    Q.vorbeck_run = 1; 
+    Q.vorbeck_fallback = 1;
+    Q.reactionary_candidate_1932 = "Lettow-Vorbeck";
+    Q.reactionary_candidate_1932_disp = "Paul von Lettow-Vorbeck";
+    Q.secondary_reactionary_candidate_1932 = 0;
+    Q.secondary_reactionary_candidate_1932_disp = 0;
     Q.z_choice = Q.reactionary_candidate_1932;
     Q.ddp_choice = Q.reactionary_candidate_1932;
     Q.dvp_choice = Q.reactionary_candidate_1932;
@@ -887,41 +864,97 @@ if (Q.lib_drop_out) {
     Q.other_choice = Q.reactionary_candidate_1932;
     Q.kvp_choice = Q.reactionary_candidate_1932;
     Q.dnvp_choice = Q.reactionary_candidate_1932;
-}
-if (Q.z_support_spd == 1) Q.z_drop_out = 1;
+} else {
+    if (Q.lib_drop_out) {
+        if (Q.reactionary_candidate_1932 == "Luther") {
+            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+            Q.reactionary_candidate_1932_disp = Q.  secondary_reactionary_candidate_1932_disp;
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        } else if (Q.secondary_reactionary_candidate_1932 == "Luther") {
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        }
+        if (Q.reactionary_candidate_1932 == "Gessler") {
+            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+            Q.reactionary_candidate_1932_disp = Q.  secondary_reactionary_candidate_1932_disp;
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        }
+        if (Q.reactionary_candidate_1932 == "Jarres") {
+            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+            Q.reactionary_candidate_1932_disp = Q.  secondary_reactionary_candidate_1932_disp;
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        } else if (Q.secondary_reactionary_candidate_1932 == "Jarres") {
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        }
+        Q.z_choice = Q.reactionary_candidate_1932;
+        Q.ddp_choice = Q.reactionary_candidate_1932;
+        Q.dvp_choice = Q.reactionary_candidate_1932;
+        Q.lvp_choice = Q.reactionary_candidate_1932;
+        Q.other_choice = Q.reactionary_candidate_1932;
+        Q.kvp_choice = Q.reactionary_candidate_1932;
+        Q.dnvp_choice = Q.reactionary_candidate_1932;
+    }
+    if (Q.z_support_spd == 1) Q.z_drop_out = 1;
 
-if (Q.z_drop_out) {
-    if (Q.reactionary_candidate_1932 == "Brüning") {
-        Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-        Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
+    if (Q.z_drop_out) {
+        if (Q.reactionary_candidate_1932 == "Brüning") {
+            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+            Q.reactionary_candidate_1932_disp = Q.  secondary_reactionary_candidate_1932_disp;
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        }
+        if (Q.reactionary_candidate_1932 == "Adenauer") {
+            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+            Q.reactionary_candidate_1932_disp = Q.  secondary_reactionary_candidate_1932_disp;
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        }
+        Q.z_choice = Q.reactionary_candidate_1932;
+        Q.ddp_choice = Q.reactionary_candidate_1932;
+        Q.dvp_choice = Q.reactionary_candidate_1932;
+        Q.lvp_choice = Q.reactionary_candidate_1932;
+        Q.other_choice = Q.reactionary_candidate_1932;
+        Q.kvp_choice = Q.reactionary_candidate_1932;
+        Q.dnvp_choice = Q.reactionary_candidate_1932;
     }
-    if (Q.reactionary_candidate_1932 == "Adenauer") {
-        Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-        Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
-        Q.secondary_reactionary_candidate_1932 = 0;
-        Q.secondary_reactionary_candidate_1932_disp = 0;
-    }
-    Q.z_choice = Q.reactionary_candidate_1932;
-    Q.ddp_choice = Q.reactionary_candidate_1932;
-    Q.dvp_choice = Q.reactionary_candidate_1932;
-    Q.lvp_choice = Q.reactionary_candidate_1932;
-    Q.other_choice = Q.reactionary_candidate_1932;
-    Q.kvp_choice = Q.reactionary_candidate_1932;
-    Q.dnvp_choice = Q.reactionary_candidate_1932;
 }
+
+if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
+    Q.reactionary_candidate_1932_ideology = "Liberal";
+} else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Vorbeck") {
+    Q.reactionary_candidate_1932_ideology = "Conservative";
+} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning") {
+    Q.reactionary_candidate_1932_ideology = "Centrist";
+}
+
+if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
+    Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
+} else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Vorbeck") {
+    Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
+} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning") {
+    Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
+}
+
 !}
 
 Hopefully, the <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span> coalition is strong enough to rival [+ reactionary_candidate_1932 +][? if secondary_reactionary_candidate_1932:&nbsp;and [+ secondary_reactionary_candidate_1932 +]?].
 
-[? if lib_drop_out: Fortunately for us, [+ liberal_reactionary_candidate_1932 +] has dropped out due to our courting of the <span style="color: #FFCC00;">liberals</span>. ?][? if z_drop_out: Fortunately for us, [+ center_reactionary_candidate_1932 +] has dropped out due to our courting of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?]
+[? if lib_drop_out: Fortunately for us, [+ liberal_reactionary_candidate_1932_name +] has dropped out due to our courting of the <span style="color: #FFCC00;">liberals</span>. ?][? if z_drop_out: Fortunately for us, [+ center_reactionary_candidate_1932_name +] has dropped out due to our courting of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?]
+
+[? if lib_drop_out and z_drop_out: However, the withdrawal of [+ liberal_reactionary_candidate_1932_name +] and [+ center_reactionary_candidate_1932_name +] has forced the entry of [+ reactionary_candidate_1932 +] into the race, serving as a candidate for the moderate right. ?]
 
 @convince_ddp
 view-if: not lvp_formed
@@ -1099,10 +1132,10 @@ It's a long shot, but some in our party believed we could convince the <span sty
 
 Eckener can't win this election alone, he needs support from other parties.
 
-- @convince_z_eckener: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to back <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>[? if center_reactionary_candidate_1932:&nbsp;and withdraw support from [+ center_reactionary_candidate_1932_name +]?].
-- @convince_ddp_eckener: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to back <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
-- @convince_lvp_eckener: Convince the <span style="color: #FFCC00;">**LVP**</span> to back <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
-- @convince_dvp_eckener: Convince the <span style="color: #C0A054;">**DVP**</span> to back <span style="color: #000000;">Ec</span><span style="color: #DD0000;">ken</span><span style="color: #FFCC00;">er</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
+- @convince_z_eckener: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if center_reactionary_candidate_1932:&nbsp;and withdraw support from [+ center_reactionary_candidate_1932_name +]?].
+- @convince_ddp_eckener: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
+- @convince_lvp_eckener: Convince the <span style="color: #FFCC00;">**LVP**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
+- @convince_dvp_eckener: Convince the <span style="color: #C0A054;">**DVP**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @view_candidates: View party endorsements.
 - @hope: We have concluded negotiations with other parties.
 
