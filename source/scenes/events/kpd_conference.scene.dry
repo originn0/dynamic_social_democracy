@@ -1,7 +1,7 @@
 title: <span style="color: #700000;">**KPD**</span> Party Conference
 subtitle: The <span style="color: #700000;">**KPD**</span> chooses their new central committee - will the Wittorf Affair have an influence on their choice?
 new-page: true
-view-if: wittorf_soviet_union = 1 and year = 1929 and month = 2
+view-if: wittorf_soviet_union == 1 and year == 1929 and month == 2
 max-visits: 1
 on-arrival: kpd_party_conference_seen = 1
 tags: event
@@ -18,7 +18,7 @@ After our discussion with the <span style="color: #940000;">Soviets</span>, we a
 
 @conciliator_success
 title: The Conciliators are the new leadership of the <span style="color: #700000;">**KPD**</span>.
-view-if: (kpd_relation >= 39) 
+view-if: kpd_relation >= 39
 unavailable-subtitle: Our relations with the <span style="color: #700000;">**KPD**</span> are not good enough.
 on-arrival: communist_coalition += 3; kpd_relation += 10*(1-dissent); left_strength += 5; left_dissent -= 8; pro_republic += (kpd_votes / 2); kpd_leader = "Meyer"; kpd_idealogy = "Concilatory Stalinism"; comintern_talk = 1; soviet_relations = 35;
 face-image: img/portraits/Ernst_Meyer_1921.jpg
@@ -30,6 +30,6 @@ However. <span style="color: #8B0000;">Stalin</span>'s paranoia escapes no one. 
 
 @conciliator_fail
 title: Thälmann retains his leadership position.
-view-if: (kpd_relation < 39) 
+view-if: kpd_relation < 39
 
 Unfortunately, we could not influence the <span style="color: #700000;">**KPD**</span> leadership election against the hardliners. Thälmann quickly moves to consolidate absolute leadership, expelling or exiling his opponents.
