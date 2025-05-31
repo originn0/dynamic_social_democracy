@@ -4,13 +4,124 @@ view-if: chancellor == "Treviranus" and treviranus_post and next_reichstag_time 
 max-visits: 1
 new-page: true
 tags: event
+go-to: treviranus_menu
 
 = Constitutional Coalition
 
 Treviranus, having failed to win over the <span style="color: #6A1E1E;">**DSU**</span>, has now turned to us for support. We find ourselves in the role of kingmaker, while the Chancellor grows increasingly desperate to piece together a parliamentary majority—the only way to avoid being dismissed by Hindenburg for failing to deliver on the President’s central demand.
 
+But perhaps we can bypass this deadlock by targeting Hindenburg himself. With a two-thirds majority in the Reichstag, we could initiate impeachment proceedings under Article 59 or trigger a recall election under Article 43. If the recall election were to fail, the Reichstag would be dissolved for new elections.
+
+Yet the <span style="color: #808080;">reactionary</span> nature of the courts renders impeachment unlikely to succeed. Recall, however, remains a narrow possibility—it requires only a majority of those who vote, not of all eligible voters. Still, to make either path viable, we must secure the backing of other parties.
+
+@treviranus_menu
+
 - @reichstag_yay
 - @reichstag_nay
+- @reichstag_impeach
+
+@reichstag_impeach
+title: Put forth a motion to remove President Hindenburg from office.
+subtitle: A two-thirds majority in the Reichstag is required to succeed.
+on-arrival: {!
+Q.impeachment_votes = 0;
+
+Q.impeachment_votes += Q.spd_r;
+Q.impeachment_votes += Q.kpd_r;
+if (Q.sapd_r) Q.impeachment_votes += Q.sapd_r;
+if (!Q.dstp_maintained && !Q.lvp_formed) {
+  Q.impeachment_votes += Q.ddp_r;
+  Q.impeachment_ddp = 1;
+}
+if (Q.dvp_ideology != "Right" && Q.dvp_exist && !Q.lvp_formed) { 
+  Q.impeachment_votes += Q.dvp_r;
+  Q.impeachment_dvp = 1;
+}
+if (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" && Q.lvp_formed) { 
+  Q.impeachment_votes += Q.lvp_r;
+  Q.impeachment_z = 1;
+}
+if (Q.z_relation >= 35) {
+  Q.impeachment_votes += Q.z_r - Q.bvp_r;
+  Q.impeachment_z = 1;
+}
+if (Q.z_relation >= 60) {
+  Q.impeachment_votes += Q.bvp_r;
+  Q.impeachment_bvp = 1;
+}
+Q.impeachment_votes += Q.nsdap_hitler_r;
+if (Q.nvf_exist) Q.impeachment_votes += Q.nvf_r;
+
+Q.impeachment_votes = parseFloat(Q.impeachment_votes.toFixed(1));
+!}
+max-visits: 1
+
+We are able to gather the support of [+ spd_r + kpd_r + sapd_r +]% of the Reichstag, with all <span style="color: #c00000;">**SPD**</span>, <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?] deputies expected to vote in favor.
+
+[? if impeachment_ddp: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has been one of the only bourgeois parties standing up for the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic and the constitution the party's founders drafted. We are expected to see their deputies vote with us. ?][? if not impeachment_ddp and not lvp_formed: Unfortunately, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has strayed too far from its former <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> ideals, and now sees support for Hindenburg as a hard but necessary choice in the national interest. ?]
+
+[? if impeachment_dvp: The <span style="color: #C0A054;">**DVP**</span> were once staunch supporters of Hindenburg, but even the industrialists have grown tired of his antics and have lobbied the party to vote against the president. ?][? if not impeachment_dvp and not lvp_formed and dvp_exist: The <span style="color: #C0A054;">**DVP**</span> remains trapped in its <span style="color: #808080;">reactionary</span> spiral and will not support our motion. ?]
+
+[? if impeachment_lvp: The <span style="color: #FFCC00;">**LVP**</span>, nominally a <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> party, has remained faithful to its democratic convictions and will vote against President Hindenburg. ?][? if not impeachment_lvp and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> has drifted far from its professed <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> and democratic principles. Swayed by its <span style="color: #808080;">reactionary</span> right wing, it will reluctantly remain aligned with Hindenburg. ?]
+
+[? if impeachment_z: The <span style="color: #000000;">Center Party</span>, our ally since the Republic’s founding, stands with us to defend it. ?][? if not impeachment_z: The <span style="color: #000000;">Center Party</span>, our ally since the Republic’s founding, has unexpectedly sided with Hindenburg. Strained relations are to blame, as they now prioritize the survival of Treviranus’s government over principle. ?]
+
+[? if impeachment_bvp: Even the <span style="color: #A2D8E0;">**BVP**</span>—once deeply loyal to Hindenburg—has grown disillusioned with his anti-constitutionalist and erratic behavior, and now supports our effort. ?][? if not impeachment_bvp: The <span style="color: #A2D8E0;">**BVP**</span> has, as expected, remained loyal to President Hindenburg, despite their reported discontent over his anti-constitutional conduct. ?]
+
+The right-wing parties and <span style="color: #3E88B3;">nationalists</span> remain Hindenburg’s most loyal supporters. Even Hugenberg recognizes the danger of a potential <span style="color: #c00000;">socialist</span> president should Hindenburg be removed from office.
+
+The <span style="color: #7A3C00;">**NSDAP**</span>[? if nvf_exist:&nbsp;and <span style="color: #142e20;">**NVF**</span>?] will break with the <span style="color: #6A1E1E;">**DSU**</span> on the vote, and vote to impeach the president that has impeded their progress over and over again.
+
+- @reichstag_impeach_2
+- @reichstag_impeach_fail
+
+@reichstag_impeach_2
+title: The moment of truth...
+unavailable-subtitle: The Reichstag can simply relegate our motion down the agenda.
+choose-if: impeachment_votes >= 50
+go-to: reichstag_impeach_3 if impeachment_votes >= 66.7; reichstag_impeach_fail_2 if impeachment_votes < 66.7
+
+With a simple majority, the Reichstag has chosen to set aside our motion and instead proceed with a vote of no confidence in Treviranus first. Should the motion pass—as is likely—his government will collapse, and the Reichstag will likely be either adjourned or dissolved in the aftermath.
+
+@reichstag_impeach_3
+on-arrival: {!
+Q.reichstag_break = 1;
+Q.hindenburg_explode = 1;
+
+Q.impeachment_ref_week = Q.week + 4;
+Q.impeachment_ref_month = Q.month;
+Q.impeachment_ref_year = Q.year;
+Q.impeachment_ref_time = Q.rubicon_time + 4;
+
+let added_months = Math.floor(Q.impeachment_ref_week / 4);
+Q.impeachment_ref_month += added_months;
+Q.impeachment_ref_week = Q.impeachment_ref_week % 4;
+if (Q.impeachment_ref_week === 0) Q.impeachment_ref_week = 1;
+
+if (Q.impeachment_ref_month > 12) {
+    Q.impeachment_ref_month -= 12;
+    Q.impeachment_ref_year += 1;
+}
+!}
+
+[+ impeachment_votes +]% of the Reichstag has voted to recall President Hindenburg! But our fight is not over yet. A popular referendum is scheduled exactly one month from now to confirm the Reichstag’s decision.
+
+If the referendum succeeds, a new presidential election will be held to determine Hindenburg’s successor. But if it fails, the constitution mandates that the Reichstag be dissolved and fresh elections called once again.
+
+The referendum is scheduled for [+ impeachment_ref_month : month +] [+ impeachment_ref_year +], Week [+ impeachment_ref_week +].
+
+@reichstag_impeach_fail
+title: The Reichstag shoots down our motion.
+subtitle: An anti-climatic end.
+view-if: impeachment_votes < 50
+go-to: treviranus_menu
+
+With a simple majority, the Reichstag has chosen to set aside our motion and instead proceed with a vote of no confidence in Treviranus first. Should the motion pass—as is likely—his government will collapse, and the Reichstag will likely be either adjourned or dissolved in the aftermath.
+
+@reichstag_impeach_fail_2
+go-to: treviranus_menu
+
+Despite our best efforts, we manage to rally only [+ impeachment_votes +]% of the Reichstag to our cause. A vote of no confidence in Treviranus is now set to follow.
 
 @reichstag_yay
 title: Vote for the motion of no confidence, forcing new elections to be called.

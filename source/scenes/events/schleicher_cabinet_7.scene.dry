@@ -1,6 +1,6 @@
 title: Reichswehr Militia Deployed!
 subtitle: Schleicher moves to end streetfighting.
-view-if: chancellor == "Schleicher" and schleicher_time == 11 and prussia_leader == "Schleicher"
+view-if: chancellor == "Schleicher" and (schleicher_time == 11 and prussia_leader == "Schleicher") or (schleicher_post_time >= 4 and prussia_leader != "Braun" and prussia_leader != "Rosenfeld")
 on-arrival: {!
 Q.reichsbanner_disarm_cost = Math.round(Q.rb_militancy * 15);
 Q.reichswehr_strength += 25;

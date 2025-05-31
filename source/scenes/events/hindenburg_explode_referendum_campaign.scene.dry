@@ -1,0 +1,89 @@
+title: Hindenburg Referendum campaign
+subtitle: How should we campaign for the referendum?
+new-page: true
+tags: event
+view-if: (impeachment_ref_time - 2) == rubicon_time
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/hindenburg_glaze_squadron.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+max-visits: 1
+
+= Hindenburg Referendum campaign
+
+With the referendum fast approaching, we have a chance to intensify our campaign and tip the scales in our favor. President Hindenburg’s health has deteriorated significantly since the last election, leaving him unable to participate—delegating the campaign effort to Treviranus and the <span style="color: #3E88B3;">nationalists</span>. The <span style="color: #fe9e00;">**ASPD**</span> have declared their full support for Hindenburg, while the <span style="color: #6A1E1E;">**DSU**</span> backs him more quietly.
+
+This fragmented and feeble campaign on the Right may offer us a chance to win through sheer voter turnout. That said, we must not grow complacent.
+
+- @do_campaign: Let’s review our campaign options.
+- @no_campaign: We shouldn't allocate resources to this.
+
+@do_campaign
+
+We have a variety of options to choose from.
+
+- @bourgeois
+- @prussia
+- @reichsbanner
+- @hope: We have done enough.
+- @no_campaign_2: We shouldn't allocate resources to this.
+
+@bourgeois
+title: Set up an inter-party campaign committee with the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
+view-if: not reichsbanner_campaign_hindenburg
+choose-if: impeachment_z and ((impeachment_ddp and not lvp_formed) or (impeachment_lvp and lvp_formed)) and z_relation >= 50 and ((ddp_relation >= 50 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))
+unavailable-subtitle: [? if not impeachment_z: The <span style="color: #000000;">Center Party</span> is not on our side. ?][? if not impeachment_ddp and not lvp_formed: The <span style="color: #D3C24D;">[+ ddp_name +]</span> is not on our side. ?][? if not impeachment_lvp and lvp_formed: The <span style="color: #FFCC00;">LVP</span> is not on our side. ?][? if z_relation < 50 and impeachment_z: We need higher relations with the <span style="color: #000000;">Center Party</span>. ?][? if ddp_relation < 50 and impeachment_ddp: We need higher relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?][? if lvp_relation < 50 and impeachment_lvp: We need higher relations with the <span style="color: #FFCC00;">LVP</span>. ?]
+on-arrival: pro_republic += 3; catholics_nsdap -= 4; catholics_z += 3; catholics_spd += 1; z_relation += 3; dvp_relation += 3; ddp_relation += 3; ddp_left += 2; ddp_cohesion += 2; dvp_left += 3; bourgeois_campaign_hindenburg = 1
+face-image: img/weimar_coalition.jpg
+go-to: do_campaign
+max-visits: 1
+
+The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition has reunited to defend the very constitution we forged together—holding joint rallies and coordinating their messaging in a show of unity. This helps dismantle the Right’s narrative that the referendum is a <span style="color: #c00000;">socialist</span> power grab.
+
+@prussia
+title: We will utilize the Prussian government to discretely fund the campaign.
+choose-if: spd_prussia and (prussia_leader == "Rosenfeld" or prussia_leader == "Braun")
+unavailable-subtitle: We are not in full control of Prussia.
+on-arrival: workers_spd += 4; new_middle_spd += 2; old_middle_spd += 2; rural_spd += 2; new_middle_ddp += 2 if impeachment_ddp; old_middle_ddp += 2 if impeachment_ddp; new_middle_dvp += 2 if impeachment_dvp; old_middle_dvp += 2 if impeachment_dvp; new_middle_lvp += 4 if impeachment_lvp; old_middle_lvp += 4 if impeachment_lvp; workers_z += 2 if impeachment_z; new_middle_z += 2 if impeachment_z; old_middle_z += 2 if impeachment_z; catholics_z += 2 if impeachment_z; pro_republic += 5; ddp_relation += 5; lvp_relation += 5; dvp_relation += 5; z_relation += 5; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; prussia_campaign_hindenburg = 1; rb_militancy += 0.03; rb_strength += 100
+face-image: img/weimar_coalition_3.jpg
+go-to: do_campaign
+max-visits: 1
+
+We manage to funnel state funds into the coffers of the Reichsbanner and various supporting <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties and organizations. Still, it pales in comparison to the mountains of silver and gold flowing to Hindenburg from the Reichswehr.
+
+@reichsbanner
+title: It’s time for the Reichsbanner to get a little more <i>active</i>.
+subtitle: -2 resource
+view-if: not bourgeois_campaign_hindenburg
+choose-if: resources >= 2 and neorevisionist_strength >= reformist_strength
+unavailable-subtitle: [? if resources < 2: Not enough resources. ?][? if neorevisionist_strength < reformist_strength: The Neorevisionist faction needs to be more powerful than the Reformists. ?]
+on-arrival: resources -= 2; rb_strength += 150; rb_militancy += 0.1; sa_strength *= 0.9; sh_strength *= 0.9; workers_nsdap -= 2; workers_spd += 4; unemployed_nsdap -= 4; unemployed_spd += 6; new_middle_spd += 2; old_middle_spd -= 4; rural_spd -= 4; catholics_spd -= 4; pro_republic -= 5; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; lvp_relation -= 10; dvp_right += 3; ddp_right += 3; ddp_cohesion -= 3; reichsbanner_campaign_hindenburg = 1
+face-image: img/reichsbanner_2.jpg
+go-to: do_campaign
+max-visits: 1
+
+The <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">**SA**</span> have harassed us long enough—it’s time to strike back. The bourgeois parties are criticizing us turning the Reichsbanner into a <span style="color: #c00000;">socialist</span> militia.
+
+@hope
+view-if: bourgeois_campaign_hindenburg or prussia_campaign_hindenburg or bourgeois_campaign_hindenburg
+
+We can only hope for the best.
+
+@no_campaign_2
+view-if: not bourgeois_campaign_hindenburg and not prussia_campaign_hindenburg and not bourgeois_campaign_hindenburg
+on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3
+
+With or without a strong campaign, we believe the wave of support we gained after toppling Schleicher’s regime will be enough to carry us to victory in the referendum. The Right remains too fractured to fully exploit our relative absence from the field—though we’ve begun to notice a troubling uptick in opposition activity, with expenses being covered by an unknown source.
+
+@no_campaign
+on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3
+
+With or without a strong campaign, we believe the wave of support we gained after toppling Schleicher’s regime will be enough to carry us to victory in the referendum. The Right remains too fractured to fully exploit our relative absence from the field—though we’ve begun to notice a troubling uptick in opposition activity, with expenses being covered by an unknown source.

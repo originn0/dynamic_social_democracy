@@ -105,7 +105,7 @@ if (Q.Heuss_votes_pre < 8) {
     Q.heuss_run = 0;
 }
 Q.nsdap_candidate = "Göring";
-Q.nsdap_hitler = "Göring";
+Q.nsdap_hitler_candidate = "Göring";
 if (Q.dsu_leader != "Otto Strasser") Q.dsu_candidate = "Frick";
 if (Q.dsu_leader == "Otto Strasser") Q.dsu_candidate = "Strasser";
 Q.nvf_candidate = "Boycott";
@@ -400,10 +400,13 @@ var candidate_descs = {
   Goring: "Hermann Göring of the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span>",
   Hammerstein: "Kurt von Hammerstein-Equord of the <span style='color: #BFC8CC; font-weight: bold;'>DNEF</span>",
   Adenauer: "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>Center Party</span>",
-  Heuss: "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>[+ ddp_name +]</span>",
+  Heuss: "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>DDP</span>",
   Schumacher: "Kurt Schumacher of the <span style='color: #c00000; font-weight: bold;'>SPD</span>"
 };
 
+if (Q.dstp_formed) {
+    candidate_descs.Heuss = "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>DStP</span>";
+}
 if (Q.lvp_formed) {
     candidate_descs.Heuss = "Theodor Heuss of the <span style='color: #FFCC00; font-weight: bold;'>LVP</span>";
 }
@@ -416,12 +419,14 @@ for (var k in candidate_descs) {
 var candidate_votes = {};
 Q.parties_election = Q.parties;
 if (Q.dsu_exist) {
+    Q.parties_election.push('nsdap_hitler');
     Q.parties_election.push('dsu');
-    Q.nsdap_normalized -= Q.dsu_normalized;
+    Q.nsdap_normalized = 0;
 }
 if (Q.nvf_exist) {
     Q.parties_election.push('nvf');
     Q.nsdap_normalized -= Q.nvf_normalized;
+    Q.nsdap_normalized = 0;
 }
 if (Q.center_bvp_votes) {
     Q.z_votes -= Q.bvp_votes;
@@ -487,7 +492,7 @@ Election results:
 
 [? if Schumacher_running : <span style="color: #c00000;">**Schumacher**</span> - [+ Schumacher_votes_disp +]% ?]
 
-[? if spd_candidate == "Boycott" or sapd_candidate == "Boycott" or kpd_candidate == "Boycott" : None of the Above - [+ boycott_votes +]% ?]
+[? if spd_candidate == "Boycott" or sapd_candidate == "Boycott" or kpd_candidate == "Boycott" : Spoiled Ballots - [+ boycott_votes +]% ?]
 
 @r2_start
 on-arrival: {!
@@ -605,6 +610,7 @@ if (rightTools) {
     rightTools.style.display = 'none';
 }
 !}
+achievement: bundesrepublik
 
 Theodor Heuss has unexpectedly won the presidency! With a committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">can</span> at the helm of Germany, the threat to the Republic has, for the most part, subsided.
 
@@ -620,6 +626,7 @@ if (rightTools) {
     rightTools.style.display = 'none';
 }
 !}
+achievement: bundesrepublik
 
 Konrad Adenauer has won the presidency! With a committed <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">can</span> at the helm of Germany, the threat to the Republic has, for the most part, subsided.
 

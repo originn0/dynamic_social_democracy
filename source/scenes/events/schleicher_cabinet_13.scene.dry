@@ -27,11 +27,11 @@ if (Q.sapd_formed && Q.sapd_r_pre) Q.sapd_r_alt = Q.sapd_r_pre;
 Q.spd_r_alt = Q.spd_r_pre;
 if (!Q.dstp_maintained && Q.libs_against_schleicher && !Q.lvp_formed) Q.ddp_r_alt = Q.ddp_r_pre;
 if (Q.libs_against_schleicher && Q.lvp_formed) Q.lvp_r_alt = Q.lvp_r_pre;
-if (Q.libs_against_schleicher && Q.dvp_relation >= 40 && Q.dvp_leader != "Dingeldey" && (Q.industrialists_schleicher < 4 || Q.republicans_schleicher <= 0) && Q.dvp_exist) Q.dvp_r_alt = Q.dvp_r_pre;
+if (Q.libs_against_schleicher && Q.dvp_relation >= 40 && Q.dvp_leader != "Dingeldey" && (Q.industrialists_schleicher < 4 || Q.republicans_schleicher <= 0) && Q.dvp_exist && !Q.lvp_formed) Q.dvp_r_alt = Q.dvp_r_pre;
 if (Q.z_against_schleicher) Q.z_r_alt = Q.z_r_pre - Q.bvp_r;
 
-Q.total_r_alt = Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt;
-Q.total_r_alt_2 = Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt;
+Q.total_r_alt = parseFloat(Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt).toFixed(1);
+Q.total_r_alt_2 = parseFloat(Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt).toFixed(1);
 
 if (Q.total_r_alt < 100) {
     let scale = 100 / Q.total_r_alt;
@@ -351,6 +351,8 @@ Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
 Q.reichstag_break = 0;
 
+Q.reichswehr_strength -= 50;
+
 Q.workers_schleicher_bonus -= 2;
 Q.republicans_schleicher_bonus -= 2;
 
@@ -420,6 +422,8 @@ Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
 Q.schleicher_pause = 1;
 Q.reichstag_break = 0;
+
+Q.reichswehr_strength -= 100;
 
 Q.workers_schleicher_bonus -= 3;
 Q.republicans_schleicher_bonus -= 3;

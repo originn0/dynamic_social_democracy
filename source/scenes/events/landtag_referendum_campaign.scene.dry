@@ -4,7 +4,18 @@ new-page: true
 tags: event
 view-if: year = 1931 and month >= 7 and landtag_ref_signatures_passed
 on-arrival: landtag_ref_kpd = 1 if kpd_relation < 40 and not kpd_leader == "Conciliators"; landtag_ref_kpd = 0 if kpd_relation >= 40 or kpd_leader == "Conciliators"; pro_republic += 3 if not landtag_ref_kpd; pro_republic -= 3 if landtag_ref_kpd
-face-image: img/social_fascist.jpg
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/social_fascist.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 max-visits: 1
 
 = Prussian Landtag referendum
@@ -98,7 +109,7 @@ view-if: kpd_campaign_landtag or political_decree_landtag_2 or radio_campaign_la
 We can only hope for the best.
 
 @no_campaign_2
-view-if: kpd_campaign_landtag and not political_decree_landtag_2 and not radio_campaign_landtag and not communist_campaign_landtag and not bourgeois_campaign_landtag
+view-if: not kpd_campaign_landtag and not political_decree_landtag_2 and not radio_campaign_landtag and not communist_campaign_landtag and not bourgeois_campaign_landtag
 on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3;
 
 The referendum is likely going to fail with or without our presence in the campaign. However, anti-democratic sentiment is inflamed, and the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> is using our silence to spread their radicalizing propaganda to the people.

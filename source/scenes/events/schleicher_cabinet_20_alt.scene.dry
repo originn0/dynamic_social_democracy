@@ -27,7 +27,7 @@ Q.parties = Q.parties.filter(party => party !== 'dnef');
 
 if (!Q.kvp_formed && Q.dnvp_ideology == "Radical") {
     Q.kvp_formed = 1;
-    Q.parties.push('kvp');
+    Q.parties.push('kvp');  
     Q.parties_graph.push('kvp');
 
     Q.workers_kvp = 5;
@@ -259,6 +259,14 @@ if (Q.z_leader == "Bracht") {
     Q.catholics -= 5;
     Q.z_relation += 30;
 }
+
+if (Q.kvp_formed) {
+    Q.treviranus_party = "KVP";
+} else {
+    Q.treviranus_party = "DNVP";
+}
+
+Q.chancellor_party = Q.treviranus_party;
 
 if (Q.lvp_formed) {
     Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));

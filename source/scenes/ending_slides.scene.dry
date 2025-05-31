@@ -54,7 +54,7 @@ Today, the <span style="color: #BFC8CC;">**DNEF**</span> operates as a conventio
 @weimar_win
 title: The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic Limps Forward
 subtitle: Ending 2
-view-if: weimar_win and not return_to_normalcy and spd_votes < 50 and spd_r < 50 and pro_republic < 80 and nsdap_votes >= 8 and not civil_war_seen
+view-if: (weimar_win and not return_to_normalcy and spd_votes < 50 and spd_r < 50 and pro_republic < 80 and nsdap_votes >= 8 and not civil_war_seen) or (weimar_win and (return_to_normalcy or spd_votes >= 50 or spd_r >= 50 or pro_republic >= 80 or nsdap_votes < 8) and not civil_war_seen and rubicon)
 new-page: true
 
 Following the scarring experience of the <span style="color: #7A3C00;">Nazi</span> movement’s rapid rise and implosion, the flaws of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> system became impossible to ignore. But in the end, the <span style="color: #7A3C00;">fascists</span> and <span style="color: #700000;">communists</span> who once battled in the streets now stand together in soup lines. Though a number of neo-<span style="color: #7A3C00;">Nazi</span> movements would emerge after [+ nsdap_leader +]’s mask of sanity slipped, the ideology itself remains irrevocably discredited.
@@ -66,6 +66,7 @@ Africa remains colonized until the 1970s and 80s. Independence, when it comes, i
 [? if not (pro_republic < 50 and spd_votes < 25 and z_ideology == "Right" and z_relation < 35 and dnvp_ideology == "Radical"): Today, Germany is governed by a stable two-and-a-half party system, rotating power between a non-<span style="color: #9B0000;">Marxist</span> <span style="color: #c00000;">**SPD**</span>, the centrist <span style="color: #000000;">**CVP**</span>, and the liberal <span style="color: #FFCC00;">**LDPD**</span>. However, a surging <span style="color: #D79E2A;">**NDPD**</span> has emerged on the far right, capitalizing on public discontent over a refugee crisis driven by wars in an impoverished and unstable Africa. ?]
 
 - @weimar_win_a
+- @go_back_2
 
 @weimar_win_a
 Title: Subending A - The World's Most Unstable Republic
@@ -82,7 +83,7 @@ Though real democracy was formally restored in the 1960s following massive publi
 @weimar_mega_win
 title: The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic Marches On
 subtitle: Ending 3
-view-if: weimar_win and (return_to_normalcy or spd_votes >= 50 or spd_r >= 50 or pro_republic >= 80 or nsdap_votes < 8) and not civil_war_seen
+view-if: weimar_win and (return_to_normalcy or spd_votes >= 50 or spd_r >= 50 or pro_republic >= 80 or nsdap_votes < 8) and not civil_war_seen and not rubicon
 new-page: true
 
 At the turn of the decade, the Great Depression and widespread disillusionment with the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> system left few optimists in Germany. Yet, the Republic—forged by the will of the people all those years ago—has weathered a crisis of unprecedented proportions. <span style="color: #c00000;">Social Democracy</span> endures, as do its detractors.
@@ -202,6 +203,22 @@ Today, Germany remains a pillar of a federal <span style="color: #001489;">Europ
 
 @go_back
 title: Go back.
+on-arrival: {!
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'block';
+}
+const elements = document.querySelectorAll('header, #content, footer');
+elements.forEach(el => {
+  el.style.maxWidth = '540px';
+});
+!}
+set-bg: img/map_2.jpg
+go-to: game_over.eg_menu
+
+@go_back_2
+title: Go back.
+view-if: not (pro_republic < 50 and spd_votes < 25 and z_ideology == "Right" and z_relation < 35 and dnvp_ideology == "Radical")
 on-arrival: {!
 const toolsWrapper = document.getElementById('tools_wrapper');
 if (toolsWrapper) {

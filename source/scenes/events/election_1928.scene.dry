@@ -1953,6 +1953,8 @@ There are some potential coalition arrangements.
 - @unity_government
 - @far_right_coalition
 - @no_majority
+- @no_majority_moderate
+- @no_majority_right
 - @brauns_dilemma
 - @left_coalition
 - @popular_front_coalition
@@ -2547,7 +2549,7 @@ if (Q.next_reichstag_month > 12) {
 face-image: img/portraits/PapenFranz.jpg
 go-to: no_majority_papen_plus
 
-With the <span style="color: #7A3C00;">**NSDAP**</span> commanding a strong position in parliament, it can decide the fate of the independent Papen cabinet, as only the <span style="color: #3E88B3;">**DNVP**</span> and <span style="color: #C0A054;">**DVP**</span> are the only other parties willing to tie themselves to the unpopular chancellor. 
+With the <span style="color: #7A3C00;">**NSDAP**</span> commanding a strong position in parliament, it can decide the fate of the independent Papen cabinet, as only the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?][? if dvp_exist and hugenberg_dvp:&nbsp;and <span style="color: #C0A054;">**DVP**</span>?] are the only other parties willing to tie themselves to the unpopular chancellor. 
 # TODO
 @no_majority_papen_plus
 
@@ -2868,7 +2870,7 @@ Otto Wels has become chancellor of the <span style="color: #c00000;">**SPD**</sp
 @brauns_dilemma
 title: There is no clear governing majority.
 subtitle: President Braun faces a dilemma.
-view-if: president == "Braun" and ((grand_coalition < 50 or grand_coalition_failed == 1) or weimar_coalition_failed or (weimar_coalition >= 49.9 and z_relation < 35 or ddp_relation < 35) or ((grand_coalition >= 50 and black_thursday_seen and dvp_ideology == "Right" and weimar_coalition < 50) or not dvp_exist))
+view-if: president == "Braun" and ((grand_coalition < 50 or grand_coalition_failed == 1) or weimar_coalition_failed or (weimar_coalition >= 49.9 and z_relation < 40 or ddp_relation < 40) or ((grand_coalition >= 50 and black_thursday_seen and dvp_ideology == "Right" and weimar_coalition < 50) or not dvp_exist))
 
 President Braun faces a dilemma. He desperately desires a <span style="color: #c00000;">socialist</span> or at least <span style="color: #D3C24D;">democratic</span> government, but the electoral results are not there for such. Article 48 has been used by Hindenburg to promulgate anti-<span style="color: #D3C24D;">democratic</span> and anti-<span style="color: #c00000;">worker</span> policies; can Article 48 be used for good as well as evil?
 
@@ -2971,7 +2973,7 @@ Q.no_confidence_succeeds = (Q.no_confidence_votes > 50) ? 1 : 0;
 Q.no_confidence_votes = parseFloat(Q.no_confidence_votes.toFixed(1));
 !}
 
-The <span style="color: #7A3C00;">**NSDAP**</span>[? if dnf_formed: <span style="color: #003755;">, **DNF**</span>?][? if kvp_formed: <span style="color: #0087DC;">, **KVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> will vote against us, of course. The other parties vote their conscience. [? if z_no_confidence: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is voting against us. ?] [? if lvp_no_confidence and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will vote against us. ?] [? if kpd_no_confidence: The <span style="color: #700000;">**KPD**</span> votes against us. ?] [? if other_no_confidence: The assortment of minor parties are voting against us. ?]
+The <span style="color: #7A3C00;">**NSDAP**</span>[? if dnf_formed:, <span style="color: #003755;">**DNF**</span>?][? if kvp_formed:, <span style="color: #0087DC;">**KVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> will vote against us, of course. The other parties vote their conscience. [? if z_no_confidence: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is voting against us. ?] [? if lvp_no_confidence and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will vote against us. ?] [? if kpd_no_confidence: The <span style="color: #700000;">**KPD**</span> votes against us. ?] [? if other_no_confidence: The assortment of minor parties are voting against us. ?]
 
 In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_confidence_succeeds : We have lost the vote of no confidence. ?]
 

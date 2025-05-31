@@ -1,0 +1,111 @@
+title: Referendum to Recall President Hindenburg
+subtitle: The results have come in.
+new-page: true
+tags: event
+view-if: impeachment_ref_week == week and impeachment_ref_month == month and impeachment_ref_year == year
+on-arrival: {!
+Q.hindenburg_ref_votes = 0;
+
+Q.hindenburg_ref_votes += Q.spd_votes;
+Q.hindenburg_ref_votes += Q.kpd_votes;
+if (Q.sapd_formed) Q.hindenburg_ref_votes += Q.sapd_votes;
+
+if (Q.impeachment_ddp) Q.hindenburg_ref_votes += Q.ddp_votes;
+if (Q.impeachment_dvp) Q.hindenburg_ref_votes += Q.dvp_votes;
+if (Q.impeachment_lvp) Q.hindenburg_ref_votes += Q.lvp_votes;
+if (Q.impeachment_z) Q.hindenburg_ref_votes += Q.z_votes - Q.bvp_votes;
+if (Q.impeachment_bvp) Q.hindenburg_ref_votes += Q.bvp_votes;
+Q.hindenburg_ref_votes += Q.nsdap_hitler_votes;
+if (Q.nvf_exist) Q.hindenburg_ref_votes += Q.nvf_votes;
+
+Q.hindenburg_ref_votes -= (100 - Q.pro_republic) / 5;
+
+Q.hindenburg_ref_votes = parseFloat(Q.hindenburg_ref_votes.toFixed(1));
+!}
+max-visits: 1
+
+= Referendum to Recall President Hindenburg
+
+After a month of intense, violence-filled campaigning and relentless propaganda from both sides, the German people now vote on Hindenburg’s fate—a decision that may determine the future of the Republic itself.
+
+Unlike previous referendums, this one requires only a majority of those voting—not of all eligible voters—to succeed.
+
+- @results: The nation votes...
+
+@results
+go-to: hindenburg_ref_win if hindenburg_ref_votes >= 50; hindenburg_ref_lose if hindenburg_ref_votes < 50
+
+
+@hindenburg_ref_win
+on-arrival: {!
+Q.hindenburg_gone = 1;
+
+Q.rubicon_president_week = Q.week + 4;
+Q.rubicon_president_month = Q.month;
+Q.rubicon_president_year = Q.year;
+Q.rubicon_president_time = Q.rubicon_time + 4;
+
+let added_months = Math.floor(Q.rubicon_president_week / 4);
+Q.rubicon_president_month += added_months;
+Q.rubicon_president_week = Q.rubicon_president_week % 4;
+if (Q.rubicon_president_week === 0) Q.rubicon_president_week = 1;
+
+if (Q.rubicon_president_month > 12) {
+    Q.rubicon_president_month -= 12;
+    Q.rubicon_president_year += 1;
+}
+
+Q.president = "Bumke (acting)";
+if (Q.judicial_reform >= 4) Q.president = "Großmann (acting)"
+
+Q.pro_republic += 10;
+Q.workers_kvp -= 4; 
+Q.unemployed_kvp -= 4;
+Q.new_middle_kvp -= 2;
+
+if (Q.aspd_other) {
+    Q.workers_other -= 4; 
+    Q.unemployed_other -= 4;
+    Q.new_middle_other -= 2;
+}
+!}
+
+The referendum succeeds with [+ hindenburg_ref_votes +]% of the vote—Germany is saved! If the current coalition holds, we may finally elect a democratic president capable of guiding the nation out of the chaos left by Hindenburg and Schleicher.
+
+Disgraced and isolated, Hindenburg is forced to resign from the presidency. In his place, [? if president == "Bumke (acting)": Erwin Bumke?][? if president == "Großmann (acting)": Hermann Großmann?], President of the Reich Court, has been elevated to acting president until new elections are held.
+
+Presidential elections are scheduled for Week [+ rubicon_president_week +] of [+ rubicon_president_month : month +], [+ rubicon_president_year +].
+
+@hindenburg_ref_lose
+
+Unfortunately, the referendum has failed with [+ hindenburg_ref_votes +]% of the vote. So much for nothing.
+
+Hindenburg has been agitated by the weakness of the incumbent government and, under the influence of his Camarilla, will decide on Treviranus's successor himself, as he considers another set of Reichstag elections unacceptable.
+
+- @schizo
+
+@schizo
+title: Crown Prince Wilhelm...?
+on-arrival: {!
+Q.chancellor = "Wilhelm III";
+Q.vice_chancellor = "Papen";
+
+const contentElement = document.getElementById('content');
+contentElement.style.backgroundColor = '#312115';
+
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'none';
+}
+
+const header = document.querySelector('header');
+header.style.color = '#ffffff';
+!}
+
+Under the influence of Franz von Papen—and apparently Schleicher as well—Hindenburg has appointed Wilhelm III, eldest son of the last German Emperor, as Chancellor, reportedly with his father’s blessing.
+
+It is clear the chaos of the past year has taken its toll. In the end, Hindenburg now trusts no one but his dearest friend, Papen. It's unknown of the former chancellor's reasoning behind such a pick, but perhaps he would've hoped that reinstating a monarchy, the people can rally around him as they once rallied around Hindenburg. 
+
+A bloody three-way civil war is evitable.
+
+- @papen_civil_war

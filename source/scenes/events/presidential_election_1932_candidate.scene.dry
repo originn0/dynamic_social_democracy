@@ -227,6 +227,14 @@ if (Q.reactionary_candidate_1932_count > 0) {
 
 }
 
+Q.z_choice = Q.reactionary_candidate_1932;
+Q.ddp_choice = Q.reactionary_candidate_1932;
+Q.dvp_choice = Q.reactionary_candidate_1932;
+Q.lvp_choice = Q.reactionary_candidate_1932;
+Q.other_choice = Q.reactionary_candidate_1932;
+Q.kvp_choice = Q.reactionary_candidate_1932;
+Q.dnvp_choice = Q.reactionary_candidate_1932;
+
 if (Q.secondary_reactionary_candidate_1932) {
     if (Q.secondary_reactionary_candidate_1932 == "Westarp") {
         Q.dnvp_choice = Q.secondary_reactionary_candidate_1932;
@@ -774,7 +782,7 @@ on-arrival: resources -= 2; spd_campaign = 1; rosenfeld_campaign = 1; reformist_
 
 It takes effort to run a somewhat unexpected campaign. First, Rosenfeld has to be convinced to run. He isn't particularly eager to be promoted to the presidency from his lowly position in the party.
 
-His candidacy has severely limited our options for endorsements, but we can likely count on the support of the <span style="color: #700000;">**KPD**</span>[? if left_split:&nbsp;<span style="color: #9B0000;">**SAPD**</span>?]. But who else? The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is likely hostile, and the <span style="color: #FFCC00;">liberals</span> are irreconcilably opposed. Furthermore, many of our voters outside the working class have voiced objections to his candidacy and will not support him with much enthusiasm. Perhaps this will become the ultimate battle between the <span style="color: #9B0000;">Marxist</span> and bourgeois halves of the country.
+His candidacy has severely limited our options for endorsements, but we can likely count on the support of the <span style="color: #700000;">**KPD**</span>[? if left_split:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?]. But who else? The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is likely hostile, and the <span style="color: #FFCC00;">liberals</span> are irreconcilably opposed. Furthermore, many of our voters outside the working class have voiced objections to his candidacy and will not support him with much enthusiasm. Perhaps this will become the ultimate battle between the <span style="color: #9B0000;">Marxist</span> and bourgeois halves of the country.
 
 - @endorsements_rosenfeld: Scout out potential endorsements. 
 
@@ -786,7 +794,7 @@ on-arrival: resources -= 1; spd_campaign = 1; eckener_campaign = 1; reformist_di
 
 It takes effort to launch a somewhat unexpected campaign. First, Eckener must be convinced to run. He isn't particularly eager to be the candidate of the <span style="color: #c00000;">socialists</span>, as it would invite slander from the German Right—whom he feels a greater affinity with.
 
-With his status as a non-<span style="color: #c00000;">socialist</span>—and even conservative—unity candidate, and his non-partisanship, Eckener is positioned to attract endorsements from a wide range of parties. However, much of this depends on their relationship with us, as our backing alone is enough to disgust many otherwise eager supporters. The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and <span style="color: #C0A054;">**DVP**</span> are likely to back Eckener, although the <span style="color: #C0A054;">**DVP**</span> requires convincing. ?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span> is likely to back Eckener, although their industrial-right elements object to the arrangement. ?] The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is nominally supportive, although the <span style="color: #A2D8E0;">**BVP**</span> remains another problem. Finally, the <span style="color: #700000;">**Communists**</span>[? if left_split:&nbsp;<span style="color: #9B0000;">**SAPD**</span>?] are firmly opposed to supporting a bourgeois conservative—for obvious reasons.
+With his status as a non-<span style="color: #c00000;">socialist</span>—and even conservative—unity candidate, and his non-partisanship, Eckener is positioned to attract endorsements from a wide range of parties. However, much of this depends on their relationship with us, as our backing alone is enough to disgust many otherwise eager supporters. The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and <span style="color: #C0A054;">**DVP**</span> are likely to back Eckener, although the <span style="color: #C0A054;">**DVP**</span> requires convincing. ?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span> is likely to back Eckener, although their industrial-right elements object to the arrangement. ?] The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is nominally supportive, although the <span style="color: #A2D8E0;">**BVP**</span> remains another problem. Finally, the <span style="color: #700000;">**Communists**</span>[? if left_split:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?] are firmly opposed to supporting a bourgeois conservative—for obvious reasons.
 
 - @endorsements_eckener: Scout out potential endorsements. 
 
@@ -843,8 +851,8 @@ We can't win this election alone, we need support from other parties. [? if spd_
 
 @hope
 on-arrival: {!
-if (Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) Q.lib_drop_out = 1;
-if (Q.z_support_spd == 1) Q.z_drop_out = 1;
+if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.liberal_reactionary_candidate_1932) Q.lib_drop_out = 1;
+if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932) Q.z_drop_out = 1;
 if (Q.lib_drop_out && Q.z_drop_out && (Q.dnvp_ideology == "Moderate" || Q.kvp_formed)) {
     Q.vorbeck_run = 1;
     Q.vorbeck_fallback = 1;
