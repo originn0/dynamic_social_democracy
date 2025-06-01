@@ -1,0 +1,36 @@
+title: <span style="color: #C43988;">**KPD(O)**</span> Party Conference
+view-if: year == 1929 and month == 11 and kpo_formed == 1
+new-page: true
+tags: event
+on-arrival: {!
+Q.brandler_left_support = 0;
+Q.brandler_support = 0;
+Q.walcher_support = 0;
+if (Q.kpo_saxon_victory == 2) {
+  Q.brandler_support += 10;
+  Q.walcher_support += 12;
+}
+if (Q.kpo_saxon_victory == 1) {
+  Q.brandler_support += 8;
+  Q.walcher_support += 8;
+}
+if (Q.brandler_meeting != 1;) {
+  Q.brandler_left_support += 8;
+}
+if (Q.kpo_votes > Q.kpd_votes*0.6) {
+  if (Q.kpo_votes > Q.kpd_votes*1.2) {
+    Q.brandler_support += 8;
+  } else {
+    Q.walcher_support += 4;
+  }
+} else {
+  Q.brandler_left_support += 8;
+}
+Q.brandler_left_support -= (republic_support-0.5) * 10;
+Q.walcher_support += (republic_support-0.5) * 10;
+!}
+
+= <span style="color: #C43988;">**KPD(O)**</span> Party Conference
+
+  Heinrich Brandler has called a party conference in the KPD(O), to discuss the future direction of the Party. With the Saxon Elections over, and the Thuringian State Elections fast approaching
+Will the New Communists prevail? Will the old guard win over? Such questions, and more, are set to be answered at this conference. 
