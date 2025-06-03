@@ -3200,7 +3200,10 @@ if (Q.bourgeois_negotiations_1930_timer == 5 && Q.bourgeois_negotiations_electio
     Q.rural_other += 1;
     Q.bourgeois_cooperation += 1;
 }
-
+if (Q.left_split == 1 && Q.centrists_resign == 1 && Q.breitscheid_advisor == 1) {
+    Q.n_advisors -= 1; 
+    Q.breitscheid_advisor = 0;
+}
 // everything changes with dstp formation
 if (Q.bourgeois_negotiations_1930_timer == 4 && Q.dstp_formed && Q.bourgeois_cooperation >= 8 && !Q.bourgeois_negotiations_election_soon && !Q.lvp_formed) {
     Q.bourgeois_parliament_trigger_4 = 1;
