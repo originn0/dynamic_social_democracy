@@ -21,7 +21,7 @@ The Reichswehr remains widely respected across the political spectrum—except a
 title: Perhaps another battleship will keep them happy?
 subtitle: Conceding to the Reichswehr is viewed as a betrayal of our core values.
 choose-if: reformist_strength >= labor_strength and reformist_strength >= left_strength and budget >= 1
-unavailable-subtitle: [? if (labor_strength > labor_strength) or (left_strength > left_strength): Our party refuses to tolerate concessions to the Reichswehr. ?][? if budget < 1: We lack the necessary budget. ?]
+unavailable-subtitle: [? if (labor_strength > reformist_strength) or (left_strength > reformist_strength): Our party refuses to tolerate concessions to the Reichswehr. ?][? if budget < 1: We lack the necessary budget. ?]
 on-arrival: reichswehr_loyalty += 0.2; reichswehr_militancy += 1; left_dissent += 30; labor_dissent += 25; center_dissent += 20; reformist_dissent += 10; budget -= 1; workers_spd -= 6; unemployed_spd -= 6; new_middle_spd -= 2; catholics_spd -= 2; old_middle_spd += 2; nationalism += 8; pacifism -= 3; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 1; hindenburg_angry -= 25
 
 We have accepted Schleicher’s demands for increased funding toward the army’s modernization program, securing the purchase of new equipment for the small force. This decision has drawn intense criticism from the <span style="color: #700000;">**Communists**</span> and many within our own party, who condemn the diversion of funds into the black hole of the defense budget instead of toward welfare for women and children.
