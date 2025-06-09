@@ -131,13 +131,13 @@ Q.con_neorev_strength = 0;
 Q.con_left_strength = 4 + (Q.left_strength / 8);
 Q.con_center_strength = 4 + (Q.center_strength / 8);
 Q.con_reform_strength = 4 + (Q.reformist_strength / 8);
-Q.con_llabor_strength = 2 + ((Q.labor_strength / 16) * (Q.left_strength / Q.reformist_strength));
-Q.con_rlabor_strength = 2 + ((Q.labor_strength / 16) * (Q.reformist_strength / Q.left_strength));
+Q.con_llabor_strength = 1 + ((Q.labor_strength / 18) * (Q.left_strength / Q.reformist_strength));
+Q.con_rlabor_strength = 2 + ((Q.labor_strength / 14) * (Q.reformist_strength / Q.left_strength));
 if (Q.rural_spd_normalized >= 12) {
 Q.con_rural_strength = Q.rural_spd_normalized/3;
 }
 if (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized >= 22) {
-Q.con_middle_strength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 4;
+Q.con_middle_strength = (Q.old_middle_spd_normalized + Q.new_middle_spd_normalized) / 10;
 }
 if (Q.neorevisionism == 1) {
 Q.con_neorev_strength = 2 + (Q.neorevisionist_strength/10);
