@@ -3,6 +3,18 @@ subtitle: With the election in Saxony fast approaching, they are likely to coope
 view-if: kpo_formed == 1 and year == 1929 and month == 4
 max-visits: 1
 tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/redfront.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 
 = Saxony Campaign
 
