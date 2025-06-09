@@ -30,10 +30,16 @@ if (Q.kpo_votes > Q.kpd_votes*0.6) {
 } else {
   Q.brandler_left_support += 8;
 }
-Q.brandler_left_support -= (republic_support-0.5) * 10;
-Q.walcher_support += (republic_support-0.5) * 8;
+if (Q.republic_support > 70) {
+Q.walcher_support += 6;
+} else {
+  if (Q.republic_support > 55) {
+    Q.brandler_support += 6;
+  } else { 
+    Q/left_brandler_support += 6;
+  }
+}
 !}
-
 = <span style="color: #C43988;">**KPD(O)**</span> Party Conference
 
   Heinrich Brandler has called a party conference in the <span style="color: #C43988;">**KPD(O)**</span>, to discuss the future direction of the Party. With the Saxon Elections over, and the Thuringian State Elections fast approaching
