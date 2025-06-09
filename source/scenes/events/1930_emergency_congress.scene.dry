@@ -1,10 +1,13 @@
-title: January 1930 Emergency <span style="color: #c00000;">**SPD**</span> Congress
+title: Emergency <span style="color: #c00000;">**SPD**</span> Congress
 subtitle: The disagreements with the <span style="color: #AF0202;">Left</span> of the Party have reached a climax....
 new-page: true
 tags: event
 priority: -1
-view-if: year = 1930 and month = 1 and second_conference = 1
+view-if: year = 1930 and month = 1 and second_conference = 1 and left_dissent + labor_dissent > reformist_strength / 0.9
 max-visits: 1
+on-arrival: {!
+    Q.big_split = 0;
+!}
 on-display: {!  
     var cardEl = document.createElement('div');  
     cardEl.className = "face-figure2";  
@@ -80,7 +83,7 @@ German Democracy is shaken by this affair. The <span style="color: #c00000;">**S
 
 
 @oppose
-on-arrival: kpd_relations -= 15; kpo_relations -= 15; ddp_relations += 15; dvp_relations += 15; z_relations += 15; lvp_relations += 15; kvp_relations += 20; dnvp_relations += 20;
+on-arrival: kpd_relations -= 15; kpo_relations -= 15; ddp_relations += 15; dvp_relations += 15; z_relations += 15; lvp_relations += 15; kvp_relations += 20; dnvp_relations += 20; big_split = 1;
 go-to: sapd_formed
 
 We have denied the ultimatum by the <span style="color: #AF0202;">Left</span> faction, and expelled them from the party. They immediately move to form a new party, the <span style="color: #9B0000;">Socialist Workers' Party of Germany</span>, or the <span style="color: #9B0000;">**SAPD**</span>. A large portion of our union elements, as well as prominent <span style="color: #CE2D2D;">Centrist Marxists</span> members have followed the <span style="color: #AF0202;">Left</span>. Paul Levi has been chosen as it's interim leader. We will see what will come of this in future months. 
