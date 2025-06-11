@@ -5,8 +5,27 @@ on-arrival: sapd_relations -= 10; unemployed_sapd += 3; unemployed_kpd -= 1.5; u
 new-page: true
 max-views: 1
 
-The newly formed SAPD has made its first action. Their deputies have raised a no confidence motion against the government. 
+As one of its first actions, the SAPD has decided to abandon their support for the government. Their deputies have raised a no confidence motion against the government. 
 
+- @pass_bruning: The Reichstag Votes...
 - @pass: The Reichstag Votes...
 - @fail: The Reichstag Votes...
 
+@pass_bruning
+view-if: bruning_coalition < 50
+
+With the SAPD voting against the government, the Bruning Cabinet falls.
+
+New elections are scheduled for May. The SAPD is expected to gain, as are the party of the extremes.
+
+@pass
+view-if:
+
+The SAPD has voted against our government, bringing it down. While they are open to extending the Weimar Coalition left, they desire new elections, where they expect to make gains.
+
+
+
+@fail
+view-if:
+
+Thankfully, the vote of no confidence fails. The government is secure. For now.
