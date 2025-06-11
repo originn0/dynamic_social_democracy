@@ -124,6 +124,17 @@ window.enableDarkMode = function() {
     window.dendryUI.saveSettings();
 };
 
+window.enableGrayMode = function() {
+    window.dendryUI.gray_mode = true;
+    document.body.classList.add('gray-mode');
+    window.dendryUI.saveSettings();
+};
+window.disableGrayMode = function() {
+    window.dendryUI.gray_mode = false;
+    document.body.classList.remove('gray-mode');
+    window.dendryUI.saveSettings();
+};
+
   // populates the checkboxes in the options view
   window.populateOptions = function() {
     var disable_bg = window.dendryUI.disable_bg;
@@ -154,6 +165,11 @@ window.enableDarkMode = function() {
         $('#dark_mode')[0].checked = true;
     } else {
         $('#light_mode')[0].checked = true;
+    }
+    if (window.dendryUI.gray_mode) {
+        $('#gray_on')[0].checked = true;
+    } else {
+        $('#gray_no')[0].checked = true;
     }
   };
 
@@ -319,6 +335,9 @@ window.enableDarkMode = function() {
     window.dendryUI.loadSettings({show_portraits: true});
     if (window.dendryUI.dark_mode) {
         document.body.classList.add('dark-mode');
+    }
+    if (window.dendryUI.gray_mode) {
+        document.body.classList.add('gray-mode');
     }
     window.pinnedCardsDescription = "Advisor cards - actions are only usable once per 6 months.";
     window.statusTab = "status";

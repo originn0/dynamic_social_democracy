@@ -103,7 +103,7 @@ if (Q.spd_local_elections_vote >= 30) {
     Q.hindenburg_angry += 30;
 }
 
-if (Q.kpd_local_elections_vote + sapd_local_elections_vote >= 16) {
+if (Q.kpd_local_elections_vote + Q.sapd_local_elections_vote >= 16) {
     Q.kpd_relation += 20;
     Q.communist_coalition += 1;
     Q.workers_kpd += 3;
@@ -1069,7 +1069,7 @@ subtitle: We have somehow convinced the [? if z_party_name != "CVP": <span style
 unavailable-subtitle: [? if z_relation < 60: We need higher relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if (ddp_relation < 40 and not lvp_formed) or (lvp_relation < 40 and lvp_formed): We need higher relations with the [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?]
 view-if: spd_coalition_wurttemberg >= 50 and not cvp_formed
 choose-if: z_relation >= 60 and ((ddp_relation >= 40 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed))
-on-arrival: wurttemberg_spd = 1; rural_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; rural_other += 4; z_relation += 3; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; catholics_nsdap -= 2; catholics_spd += 2; catholics_z += 1; catholics_other += 1; sa_strength -= 25
+on-arrival: wurttemberg_spd = 1; wurttemberg_weimar = 1; rural_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; rural_other += 4; z_relation += 3; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; catholics_nsdap -= 2; catholics_spd += 2; catholics_z += 1; catholics_other += 1; sa_strength -= 25
 go-to: election_menu
 
 Despite the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in Württemberg being historically hostile, we've managed to convince them to form a majority <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition. We will now focus on eliminating the <span style="color: #3E88B3;">nationalist</span> and anti-democratic biases in the police force.
@@ -1082,7 +1082,7 @@ subtitle: We have bypassed the <span style="color: #000000;">**[+ z_party_name +
 unavailable-subtitle:[? if (ddp_relation < 55 and not lvp_formed) or (lvp_relation < 65 and lvp_formed): We need higher relations with the [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?]
 view-if: spd_coalition_wurttemberg >= 50 and cvp_formed
 choose-if: (ddp_relation >= 55 and not lvp_formed) or (lvp_relation >= 65 and lvp_formed)
-on-arrival: wurttemberg_spd = 1; rural_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; new_middle_ddp += 2; old_middle_ddp += 2; new_middle_lvp += 2; old_middle_lvp += 2; rural_other += 4; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; sa_strength -= 25
+on-arrival: wurttemberg_spd = 1; wurttemberg_weimar = 1; rural_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; new_middle_ddp += 2; old_middle_ddp += 2; new_middle_lvp += 2; old_middle_lvp += 2; rural_other += 4; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; sa_strength -= 25
 go-to: election_menu
 
 With the formation of the <span style="color: #000000;">**[+ z_party_name +]**</span>, combined with the state <span style="color: #000000;">Center Party</span>'s longstanding hostility toward our participation in government, a coalition with them is entirely out of the question. The trend of <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] coalitions has thus continued—for now, it remains the only viable path for us to enter government without relying on the <span style="color: #700000;">**Communists**</span>.

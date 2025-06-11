@@ -3,21 +3,40 @@ is-hand: true
 on-arrival: {!
 if (!Q.rubicon) {
     if (Q.advisor_action_timer <= 0) {
-        Q.pinnedCardsDescription = 'Advisors - an action is available.';
+        Q.pinnedCardsDescription = 'Advisors - an action is available';
     } else if (Q.advisor_action_timer == 1) {
-        Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in 1 month';
     } else {
-        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months';
     }
 } else {
     if (Q.advisor_action_timer <= 0) {
-        Q.pinnedCardsDescription = 'Advisors - an action is available.';
+        Q.pinnedCardsDescription = 'Advisors - an action is available';
     } else if (Q.advisor_action_timer == 1) {
-        Q.pinnedCardsDescription = 'Advisors - next action available in 1 week.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in 1 week';
     } else {
-        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' weeks.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' weeks';
     }
 }
+
+if (!Q.rubicon) {
+    if (Q.shuffle_leadership_timer <= 0) {
+        Q.pinnedCardsDescription += '\n- a reshuffle is available.';
+    } else if (Q.shuffle_leadership_timer == 1) {
+        Q.pinnedCardsDescription += '\n- next reshuffle in 1 month';
+    } else {
+        Q.pinnedCardsDescription += '\n- next reshuffle in ' + Q.    shuffle_leadership_timer + ' months.';
+    }
+} else if (Q.rubicon) {
+    if (Q.shuffle_leadership_timer <= 0) {
+        Q.pinnedCardsDescription += '\n- a reshuffle is available.';
+    } else if (Q.shuffle_leadership_timer == 1) {
+        Q.pinnedCardsDescription += '\n- next reshuffle in 1 week';
+    } else {
+        Q.pinnedCardsDescription += '\n- next reshuffle in ' + Q.    shuffle_leadership_timer + ' weeks.';
+    }
+}
+
 if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time < 4 && Q.dnvp_ideology == "Radical" && Q.time !== Q.last_time_updated) {
     Q.flavour_0_trigger += 1;
     if (Q.flavour_0_trigger && !Q.flavour_0_trigger_shown) {
@@ -1239,21 +1258,40 @@ is-hand: true
 on-arrival: {!
 if (!Q.rubicon) {
     if (Q.advisor_action_timer <= 0) {
-        Q.pinnedCardsDescription = 'Advisors - an action is available.';
+        Q.pinnedCardsDescription = 'Advisors - an action is available';
     } else if (Q.advisor_action_timer == 1) {
-        Q.pinnedCardsDescription = 'Advisors - next action available in 1 month.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in 1 month';
     } else {
-        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' months';
     }
 } else {
     if (Q.advisor_action_timer <= 0) {
-        Q.pinnedCardsDescription = 'Advisors - an action is available.';
+        Q.pinnedCardsDescription = 'Advisors - an action is available';
     } else if (Q.advisor_action_timer == 1) {
-        Q.pinnedCardsDescription = 'Advisors - next action available in 1 week.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in 1 week';
     } else {
-        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' weeks.';
+        Q.pinnedCardsDescription = 'Advisors - next action available in ' + Q.advisor_action_timer + ' weeks';
     }
 }
+
+if (!Q.rubicon) {
+    if (Q.shuffle_leadership_timer <= 0) {
+        Q.pinnedCardsDescription += '\n- a reshuffle is available.';
+    } else if (Q.shuffle_leadership_timer == 1) {
+        Q.pinnedCardsDescription += '\n- next reshuffle in 1 month';
+    } else {
+        Q.pinnedCardsDescription += '\n- next reshuffle in ' + Q.    shuffle_leadership_timer + ' months.';
+    }
+} else if (Q.rubicon) {
+    if (Q.shuffle_leadership_timer <= 0) {
+        Q.pinnedCardsDescription += '\n- a reshuffle is available.';
+    } else if (Q.shuffle_leadership_timer == 1) {
+        Q.pinnedCardsDescription += '\n- next reshuffle in 1 week';
+    } else {
+        Q.pinnedCardsDescription += '\n- next reshuffle in ' + Q.    shuffle_leadership_timer + ' weeks.';
+    }
+}
+
 if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time < 4 && Q.dnvp_ideology == "Radical" && Q.time !== Q.last_time_updated) {
     Q.flavour_0_trigger += 1;
     if (Q.flavour_0_trigger && !Q.flavour_0_trigger_shown) {

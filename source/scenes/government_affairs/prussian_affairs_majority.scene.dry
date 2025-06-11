@@ -1,0 +1,111 @@
+title: The Prussian Bulwark
+new-page: true
+is-card: true
+view-if: in_spd_majority_prussia and (prussian_affairs_timer <= 0 or (prussian_affairs_timer <= 3 and rubicon))
+on-arrival: prussian_affairs_timer += 6; prussian_affairs_timer += 6 if prussia_leader != "Braun"; month_actions += 1
+tags: govt_affairs
+card-image: img/braun.jpg
+#subtitle: The state government of Prussia is a bulwark of democracy...
+
+= Prussian Affairs
+
+Prussia, by far the largest and most important state in Germany, is governed solely by our party, free from the compromises demanded by the bourgeois parties. This grants us the opportunity to pursue meaningful reforms. Under the capable leadership of Otto Braun, Prussia stands as the most stable and democratic government in the Republic.
+
+All our actions have increased effectiveness. 
+
+We can enact policies in Prussia.
+
+- @police_loyalty: Bolster the loyalty of the police.
+- @police_strength: Recruit additional police.
+- @bureaucracy: Purge the bureaucracy of <span style="color: #808080;">reactionary</span> elements.
+- @ban_sa: Ban the <span style="color: #7A3C00;">**SA**</span>, the <span style="color: #7A3C00;">Nazi</span> paramilitary group.
+- @prosecute_sa: Target the <span style="color: #7A3C00;">**SA**</span>, and minimize their disruptions.
+- @unban_sa: Reverse the <span style="color: #7A3C00;">**SA**</span> ban.
+- @ban_rfb: Ban the <span style="color: #8B0000;">**RFB**</span>, the <span style="color: #700000;">Communist</span> paramilitary.
+- @unban_rfb: Reverse the <span style="color: #8B0000;">**RFB**</span> ban.
+- @ban_sh: Ban the <span style="color: #3E88B3;">**Stahlhelm**</span>, the Nationalist paramilitary.
+- @unban_sh: Reverse the <span style="color: #3E88B3;">**Stahlhelm**</span> ban.
+- @negotiate_concordat: Negotiate a concordat with the Vatican.
+- @sign_concordat: Sign a concordat with the Vatican.
+- @root: No new policies are needed.
+- @easy_discard
+- @cancel_advisor_action
+
+@police_loyalty
+view-if: prussian_police_loyalty < 1
+on-arrival: prussian_police_loyalty += 0.15
+
+The police have historically been overrun with <span style="color: #808080;">reactionaries</span>, and we are trying to change this, little by little. We have improved the training and recruitment process to select for a broader demographic than the traditional <span style="color: #3E88B3;">conservatives</span>, and to put a tighter leash on their political activity. In addition, we set up committees to investigate the ranks of the police and remove those with <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> sympathies. It is a slow and arduous work.
+
+Current police loyalty: [+ prussian_police_loyalty : loyalty +].
+
+@police_strength
+on-arrival: prussian_police_strength += 35
+
+We have increased the size of the Prussian police.
+
+@bureaucracy
+on-arrival: prussian_police_loyalty += 0.08; nationalism -= 4; pacifism += 1; democratization += 1; pro_republic += 4*(1-dissent); new_middle_spd += 3*(1-dissent) if democratization >= 3
+
+The bureaucracy is deeply <span style="color: #808080;">reactionary</span>, and many abuse their power to favor the <span style="color: #3E88B3;">political right</span>. By removing the <span style="color: #3E88B3;">pro-monarchy</span> and <span style="color: #7A3C00;">pro-dictatorship</span> elements, we can democratize it. Some of our opponents claim that we are infringing on individual freedoms, but perhaps the security of the republic requires it.
+
+@ban_sa
+view-if: nazi_urgency >= 3 and sa_banned == 0
+choose-if: not sa_ban_repealed and (prussia_coup_win or not otl_prussian_coup_seen)
+unavailable-subtitle: [+ chancellor +] has threatened a <i>Reichsexekution</i>, if we don't follow the orders of his decree.
+on-arrival: sa_strength *= 0.85; sa_strength *= 0.75 if prussian_police_loyalty >= 0.75; sa_banned_pro = 1 if prussian_police_loyalty >= 0.75; sa_banned_pro = 0 if prussian_police_loyalty < 0.75; sa_banned = 1; dvp_relation -= 3; prussian_police_loyalty -= 0.05; sa_militancy -= 0.05; sa_ban_timer = 6; coup_progress -= 2 if coup_progress >= 6
+
+As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has many allies in the police and bureaucracy. Our relationship with the police weakens, and the <span style="color: #7A3C00;">**SA**</span> can still organize illegally, right under the police's noses. [? if sa_banned_pro : Nevertheless, the <span style="color: #7A3C00;">**SA**</span> is substantially weakened by our ban. ?] 
+
+[? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have disrupted some of these plans, but the threat is still present. ?]
+
+@prosecute_sa
+view-if: nazi_urgency >= 3 and not sa_banned and (chancellor == "Papen" or chancellor == "Schleicher")
+on-arrival: sa_strength *= 0.95; sa_militancy -= 0.02; prussian_police_loyalty -= 0.02; sa_strength *= 0.98 if prussian_police_loyalty >= 0.75
+
+While an outright ban on the <span style="color: #7A3C00;">**SA**</span> may be out of reach, we can make life as difficult as possible for the <span style="color: #7A3C00;">Storm Troopers</span>. The most reckless among them can be prosecuted on charges of murder and related crimes, and we can ensure legal public demonstrations and meetings are protected from their unlawful disruptions.
+
+@unban_sa
+view-if: sa_banned = 1
+on-arrival: sa_banned = 0; sa_strength += 100; sa_militancy += 0.05; coup_progress += 2 if sa_coup_progress >= 6
+
+The <span style="color: #7A3C00;">**SA**</span> is no longer banned. They immediately go on a recruiting spree.
+
+@ban_sh
+on-arrival: sh_strength *= 0.8; sh_strength *= 0.7 if prussian_police_loyalty >= 0.75; sh_banned = 1; dvp_relation -= 5; lvp_relation -= 2; prussian_police_loyalty -= 0.1; coalition_dissent += 1 if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg"; coalition_dissent += 1 if in_social_catholic_coalition_prussia and cvp_formed; sh_ban_timer = 6; sh_coup_progress = coup_progress; coup_progress -= 1 if coup_progress >= 6; hindenburg_angry += 5
+view-if: sh_banned == 0 and not in_social_catholic_coalition_prussia
+
+[? if president == "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with President Hindenburg, as well as the political <span style="color: #3E88B3;">right</span> and the police. ?][? if president != "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with the political <span style="color: #3E88B3;">right</span> and the police. ?] [? if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg" : It also weakens our coalition due to the influence of Hindenburg on the <span style="color: #C0A054;">right</span> wing of our coalition. ?] In addition, the <span style="color: #3E88B3;">**Stahlhelm**</span> still operates out of public sight. 
+
+@unban_sh
+view-if: sh_banned = 1
+on-arrival: sh_banned = 0; sh_strength += 100; coup_progress += 2 if sh_coup_progress >= 6; hindenburg_angry -= 5
+
+The <span style="color: #3E88B3;">**Stahlhelm**</span> is no longer banned.
+
+
+@ban_rfb
+view-if: communist_coalition < 3 and rfb_banned = 0
+on-arrival: kpd_relation -= 15; rfb_strength -= 50; rfb_banned = 1; communist_coalition -= 1; z_relation += 5; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; prussian_police_loyalty += 0.1; dvp_left += 1; ddp_left += 0.5; lvp_left += 1; hindenburg_angry -= 8
+
+The ban is enthusiastically carried out by the police, perhaps too enthusiastically. The <span style="color: #700000;">Communists</span> take this as one more reason why the <span style="color: #c00000;">Socialists</span> are traitors to the <span style="color: #9B0000;">left</span>. However, the <span style="color: #000000;">moderate</span> and <span style="color: #C0A054;">center-right</span> parties approve, as do the police.
+
+@unban_rfb
+view-if: rfb_banned = 1 and not in_social_catholic_coalition_prussia
+on-arrival: rfb_banned = 0; rfb_strength += 50; prussian_police_loyalty -= 0.1; hindenburg_angry += 8
+
+The <span style="color: #700000;">Communist</span> <span style="color: #700000;">**RFB**</span> is no longer banned.
+
+@negotiate_concordat
+view-if: (prussian_concordat_progress < 2 and z_leader != "Kaas") or (prussian_concordat_progress < 1 and z_leader = "Kaas") and prussian_concordat = 0
+on-arrival: prussian_concordat_progress += 1; z_relation += 2*(1-dissent);
+
+We are making progress towards negotiating a concordat between Prussia and the Catholic church. [? if z_leader = "Kaas": Ludwig Kaas of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Party uses his connections to speed up negotiations. ?]
+
+@sign_concordat
+view-if: (prussian_concordat_progress >= 2 and not z_leader = "Kaas") or (prussian_concordat_progress >= 1 and z_leader = "Kaas") and prussian_concordat = 0
+on-arrival: prussian_concordat = 1; z_relation += 8; catholics_spd += 3*(1-dissent); catholics_dnvp -= 2 if dnvp_ideology == "Radical"; ddp_relation -= 2; ddp_cohesion -= 0.5; lvp_relation -= 2
+
+We have signed a Concordat between the Free State of Prussia and the Roman Catholic Church, guaranteeing religious freedom for Catholics in Prussia. This sets the stage for the negotiation of a national Concordat covering all of Germany.
+
+[? if dnvp_ideology == "Radical": The Catholic members of the <span style="color: #3E88B3;">**DNVP**</span> in Prussia are in open conflict with their leadership over the vote, with many leaving the party. ?]

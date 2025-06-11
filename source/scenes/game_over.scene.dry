@@ -105,7 +105,7 @@ if (Q.factory_takeovers >= 2) {
     this.achieve("syndikalismus");
 }
 // Stolperstein - lose the civil war against Hitler.
-if ((Q.chancellor_party == "NSDAP" || Q.chancellor == "Hitler" || Q.president == "Hitler") && Q.total_defeat) {
+if ((Q.chancellor_party == "NSDAP" || Q.chancellor == "Hitler" || Q.president == "Göring" || Q.president == "Frick" || Q.president == "Hitler") && Q.total_defeat) {
     this.achieve('stolperstein');
 }
 // Heidelberger Programm - fulfill the goals of the Heidelberg programm - increase welfare, reform justice, support women's rights, progressive taxation, works councils, build a European Union.
@@ -116,6 +116,7 @@ if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_l
 
 = End
 
+[? if chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring" or president == "Frick": <iframe src="https://en.wikipedia.org/wiki/The_Holocaust" height="800 " width="545" style=" margin-left: -20px; border: 1px solid #000; "></iframe> ?]
 
 @eg_menu
 
@@ -126,7 +127,7 @@ if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_l
 
 
 @hitler_wins
-view-if: (chancellor == "Hitler" or president == "Hitler") and (total_defeat==1 or civil_war_seen == 0)
+view-if: (chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring" or president == "Frick") and (total_defeat==1 or civil_war_seen == 0)
 title: Adolf Hitler is in undisputed control over Germany.
 tags: endings
 go-to: eg_menu
@@ -136,7 +137,7 @@ Adolf Hitler is in undisputed control over Germany. The <span style="color: #c00
 [? if civil_war_seen == 1 : At the very least, we fought back. Perhaps our resistance will be celebrated in an impossible-to-forsee future. ?]
 
 @war_against_hitler
-view-if: (chancellor == "Hitler" or president == "Hitler") and (long_war == 1)
+view-if: (chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring" or president == "Frick") and (long_war == 1)
 title: Adolf Hitler is in power, but we are fighting to stop him.
 tags: endings
 go-to: eg_menu
@@ -155,7 +156,7 @@ Hitler does not yet control Germany. [? if chancellor == "Papen" : However, Chan
 [? if hitler_deported == 1 : We have deported Hitler back to Austria. Hopefully he will never return. ?]
 
 @nsdap_win
-view-if: chancellor == "Goebbels" or president == "Göring"
+view-if: chancellor == "Goebbels" or chancellor == "Göring" or president == "Göring" or president == "Frick"
 title: Despite the deportation of Hitler, the <span style="color: #7A3C00;">Nazis</span> have still taken power...
 tags: endings
 go-to: eg_menu

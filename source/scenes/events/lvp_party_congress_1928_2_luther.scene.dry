@@ -1,0 +1,210 @@
+title: <span style="color: #FFCC00;">**LVP**</span> Congress
+subtitle: Luther resigns from his party positions to accept the presidency.
+view-if: president == "Luther" and lvp_leader == "Luther" and lvp_formed
+on-arrival: {!
+Q.heuss_points = 0;
+Q.maier_points = 0;
+Q.dieckmann_points = 0;
+Q.dingeldey_points = 0;
+
+// luther being elected president makes people happy with his moderate course
+
+if (Q.lvp_ideology == "Right") {
+    Q.lvp_left += 3;
+} else if (Q.lvp_ideology == "Left") {
+    Q.lvp_right += 3;
+}
+
+if (Q.in_grand_coalition || Q.in_weimar_coalition) {
+    Q.lvp_relation += 3;
+    Q.lvp_left += 1;
+} else if (Q.in_popular_front || Q.in_left_front) {
+    Q.lvp_right += 3;
+    Q.lvp_relation -= 5;
+}
+
+if (Q.bourgeois_coalition_wurttemberg >= 50 || Q.wurttemberg_weimar) {
+    Q.maier_points += 3;
+}
+
+if (Q.saxony_right_2) {
+    Q.dieckmann_points += 3;
+} else if (Q.saxony_toleration) {
+    Q.dieckmann_points += 1;
+}
+
+if (Q.spd_votes >= 30) {
+    Q.dingeldey_points += 1;
+}
+
+if (Q.chancellor == "Brüning" && Q.spd_toleration) {
+    Q.dingeldey_points += 1;
+    Q.lvp_right += 3;
+}
+
+if (Q.lvp_relation >= 50) {
+    Q.lvp_left += 3;
+    Q.heuss_points += 1;
+} else if (Q.lvp_relation < 50) {
+    Q.lvp_right += 3;
+    Q.dingeldey_points += 1;
+}
+
+if (Q.nationalism >= 50) {
+    Q.dingeldey_points += 1;
+    Q.lvp_right += 1;
+}
+
+if (Q.pro_republic >= 65) {
+    Q.heuss_points += 1;
+    Q.lvp_left += 2;
+} else if (Q.pro_republic < 65) {
+    Q.dingeldey_points += 1;
+    Q.lvp_right += 2;
+}
+
+if (Q.lvp_votes >= 11.5) {
+    if (Q.lvp_ideology == "Right") {
+        Q.lvp_left += 3;
+    } else if (Q.lvp_ideology == "Left") {
+        Q.lvp_right += 3;
+    }
+    Q.maier_points += 1;
+    Q.dieckmann_points += 1;
+}
+
+if (Q.lvp_right > (Q.lvp_left*1.5) || (Q.lvp_right > (Q.lvp_left + 5))) {
+    Q.lvp_ideology = "Right"
+} else if (Q.lvp_left > (Q.lvp_right*1.5) || (Q.lvp_left > (Q.lvp_right + 5))) {
+    Q.lvp_ideology = "Left"
+} else {
+    Q.lvp_ideology = "Moderate"
+}
+
+if (Q.lvp_ideology == "Right") {
+   Q.dingeldey_points += 3;
+   Q.maier_points += 1;
+}
+if (Q.lvp_ideology == "Moderate") {
+    Q.maier_points += 1;
+    Q.dieckmann_points += 1;
+}
+if (Q.lvp_ideology == "Left") {
+    Q.heuss_points += 3;
+    Q.dieckmann_points += 1;
+}
+
+if (Q.heuss_points > Q.maier_points && Q.heuss_points > Q.dieckmann_points && Q.heuss_points > Q.dingeldey_points) {
+    Q.heuss_lead = 1;
+} else {
+    Q.heuss_lead = 0;
+}
+
+if (Q.maier_points > Q.heuss_points && Q.maier_points > Q.dieckmann_points && Q.maier_points > Q.dingeldey_points) {
+    Q.maier_lead = 1;
+} else {
+    Q.maier_lead = 0;
+}
+
+if (Q.dieckmann_points > Q.heuss_points && Q.dieckmann_points > Q.maier_points && Q.dieckmann_points > Q.dingeldey_points) {
+    Q.dieckmann_lead = 1;
+} else {
+    Q.dieckmann_lead = 0;
+}
+
+if (Q.dingeldey_points > Q.heuss_points && Q.dingeldey_points > Q.maier_points && Q.dingeldey_points > Q.dieckmann_points) {
+    Q.dingeldey_lead = 1;
+} else {
+    Q.dingeldey_lead = 0;
+}
+
+if (!Q.maier_lead && !Q.heuss_lead && !Q.dingeldey_lead && !Q.dieckmann_lead) {
+    Q.lvp_deadlock = 1;
+} else {
+    Q.lvp_deadlock = 0;
+}
+
+!}
+max-visits: 1
+tags: event
+face-image: img/weimar_coalition_3.jpg
+new-page: true
+
+= <span style="color: #FFCC00;">**LVP**</span> Party Congress
+
+With Luther elected president, he naturally cannot continue serving as the <span style="color: #FFCC00;">**LVP**</span>'s chairman. A party congress is convened to select his successor. This marks the first time Germany has elected a president from the political middle, and optimism within the party is running high.
+
+The candidates in the running belong to the younger generation, as the party looks to carry forward the momentum gained from Luther’s presidential victory.
+
+- @heuss
+- @maier
+- @dieckmann
+- @dingeldey
+- @deadlock
+
+@heuss
+title: Theodor Heuss is elected!
+subtitle: Heuss is a <span style="color: #c00000;">Social</span> <span style="color: #000000;">Rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>, and a member of the former <span style="color: #D3C24D;">**[+ ddp_name +]**</span>.
+unavailable-subtitle: The wider <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, despite his previous affiliation with the <span style="color: #D3C24D;">[+ ddp_name +]</span>'s business wing.
+choose-if: heuss_lead
+on-arrival: lvp_relation += 10; lvp_left += 7; lvp_leader = "Heuss"; pro_republic += (lvp_votes / 2); workers_lvp += 2; workers_spd -= 2; new_middle_lvp += 2; old_middle_lvp -= 4; old_middle_other += 4 if (dnvp_ideology == "Radical"); old_middle_dnvp += 4 if dnvp_ideology == "Moderate"; old_middle_kvp += 4; rural_lvp -= 4; rural_other += 4 if (dnvp_ideology == "Radical" and not kvp_formed); rural_dnvp += 4 if dnvp_ideology == "Moderate"; rural_kvp += 4; catholics_lvp += 2; catholics_spd -= 2; coalition_dissent -= 1; heuss_explode_time = time + 8; heuss_election_time = time
+face-image: img/portraits/heuss.jpg
+
+Theodor Heuss, a rising star and former member of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, has been elected chairman of the <span style="color: #FFCC00;">Liberal People's Party</span>. Backed primarily by the 'Social Republican Circle,' composed of former <span style="color: #D3C24D;">**[+ ddp_name +]**</span> members and liberal intellectuals and newspapers, Heuss has also garnered support from the broader party due to his decently conservative stances on economic and national issues.
+
+Heuss's victory empowers the '<span style="color: #c00000;">Social</span> <span style="color: #000000;">Rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>' wing, strengthening our cooperation. Despite his personal leanings toward the right, Heuss remains one of the most committed and genuine supporters for <span style="color: #FFCC00;">liberal</span> <span style="color: #586593;">democracy</span> within the <span style="color: #FFCC00;">**LVP**</span>.
+
+@maier
+title: Reinhold Maier is elected!
+subtitle: A major player in Württemberg politics, and a former <span style="color: #D3C24D;">**[+ ddp_name +]**</span> member. 
+unavailable-subtitle: [? if not heuss_lead: The wider <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, despite his previous affiliation with the <span style="color: #D3C24D;">[+ ddp_name +]</span>'s business wing. ?][? if heuss_lead: Surprisingly, Maier is seen as too conservative by the party. ?]
+choose-if: maier_lead
+on-arrival:  lvp_leader = "Maier"; lvp_relation += 3; lvp_left += 1; pro_republic += 5; new_middle_lvp += 6; old_middle_lvp += 2; rural_lvp += 4; catholics_lvp += 8
+face-image: img/portraits/maier.jpg
+
+Reinhold Maier, a major figure in Württemberg politics and a rising star in the struggling party, has been elected chairman of the <span style="color: #FFCC00;">**LVP**</span>. Youthful and energetic, he is less bound by dogma than many veteran members, making him a strong choice for a party plagued by defeatism and internal strife.
+
+His association with the former <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s business wing isn't the best news for future cooperation. While still an improvement over Luther’s policies, it is only a slight one.
+
+@dieckmann
+title: Johannes Dieckmann is elected!
+subtitle: Dieckmann is a member of the Saxon Landtag and a former member of the <span style="color: #C0A054;">**DVP**</span>, being a committed follower of Stresemann.
+unavailable-subtitle: [? if dingeldey_lead: The <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, and too unknown. ?][? if maier_lead or heuss_lead: The left wing of the <span style="color: #FFCC00;">LVP</span> wants to elect a former <span style="color: #D3C24D;">[+ ddp_name +]</span> member, to replace Luther. ?][? if lvp_deadlock: The left wing of the <span style="color: #FFCC00;">LVP</span> wants to elect a former <span style="color: #D3C24D;">[+ ddp_name +]</span> member, while the right wing of the party prefers a more right-wing former <span style="color: #C0A054;">DVP</span> member. ?]
+choose-if: dieckmann_lead
+on-arrival: lvp_relation += 5; lvp_left += 2; lvp_leader = "Dieckmann"; pro_republic += 3; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp -= 2
+face-image: img/portraits/dieckmann.jpg
+
+(If you can find an image of him taken around this period of time, please message the modman.)
+
+Johannes Dieckmann, a relatively minor figure who only recently became president of the <span style="color: #FFCC00;">**LVP**</span>'s parliamentary group in the Saxon Landtag, has been elected party chairman. A longtime associate of Stresemann and a member of the <span style="color: #C0A054;">**DVP**</span>'s left wing, Dieckmann even chaired a revolutionary soldiers' council in 1918.
+
+His youth and low profile have left him with few enemies—unlike Curtius—making him a palatable compromise. While he represents an improvement over Luther’s policies, it is a slight one.
+
+@dingeldey
+title: Eduard Dingeldey is elected.
+subtitle: Dingeldey was a member of the former <span style="color: #C0A054;">**DVP**</span>, and commonly associated with the industrial-right of the party.
+unavailable-subtitle: The right-industrial faction of the <span style="color: #FFCC00;">LVP</span> lack the power necessary to install their candidate.
+choose-if: dingeldey_lead
+on-arrival: lvp_relation -= 5; lvp_right += 3; lvp_leader = "Dingeldey"; new_middle_lvp -= 4; workers_lvp -= 2; old_middle_lvp += 2; coalition_dissent += 1; dingeldey_explode_time = time + 8; dingeldey_election_time = time
+face-image: img/portraits/dingeldey.jpg
+
+Eduard Dingeldey, previously part of the movement for bourgeois unity, has now been elected chairman of the <span style="color: #FFCC00;">**LVP**</span>. Dingeldey is backed by the industrial forces on the right of the party, alongside former <span style="color: #C0A054;">**DVP**</span> members. He appears to be focused on fostering closer cooperation with the array of parties between the <span style="color: #FFCC00;">**LVP**</span> and the <span style="color: #3E88B3;">**DNVP**</span>.
+
+However, Dingeldey has thus far proven to be an ineffectual leader, often capitulating to the right wing of the <span style="color: #FFCC00;">**LVP**</span>. Recently, we’ve observed a deterioration in relations with his party, alongside a noticeable rightward shift in the <span style="color: #FFCC00;">**LVP**</span>'s internal politics.
+
+@deadlock
+title: The vote has been deadlocked!
+subtitle: No candidate is able to gather a sufficient amount of votes.
+view-if: lvp_deadlock
+
+The vote has been deadlocked, with no candidate ahead by enough to constitute a majority. You, the player, now has free will to choose a compromise candidate. Spend it wisely.
+
+- @maier_compromise: Reinhold Maier.
+- @dieckmann_compromise: Johannes Dieckmann.
+
+@maier_compromise
+go-to: maier
+
+@dieckmann_compromise
+go-to: dieckmann
+

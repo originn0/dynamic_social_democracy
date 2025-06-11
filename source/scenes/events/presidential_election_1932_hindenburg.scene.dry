@@ -30,7 +30,9 @@ if (Q.coup_progress >= 5) Q.hindenburg_run_points += 1;
 if (Q.pro_republic >= 70) Q.hindenburg_run_points -= 1;
 if (Q.unemployed < 15) Q.hindenburg_run_points -= 1;
 if (Q.unemployed >= 30) Q.hindenburg_run_points += 1;
+if (Q.rubicon_mini) Q.hindenburg_run_points = 8;
 if (Q.hindenburg_run_points >= 7) Q.hindenburg_run = 1;
+
 Q.hindenburg_signatures = Math.round(Q.hindenburg_run_points * 0.445 * 100) / 100;
 !}
 on-display: {!  

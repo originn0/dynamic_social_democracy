@@ -1,33 +1,45 @@
-title: Military Angry
-new-page: true
+title: Discontent in the Reichswehr
+subtitle:  The <span style="color: #808080;">reactionary</span> nest begins to voice its discontent aloud.
+view-if: reichswehr_loyalty <= 0 and spd_in_government and not rubicon and reichswehr_minister_party != "SPD"
+on-arrival: reichswehr_angry = 1
 tags: event
-on-arrival: skibidi = 1
-view-if: reichswehr_loyalty <= 0
-face-image: img/portraits/SchleicherKurt.jpg
-subtitle: Grrrr....
+new-page: true
 max-visits: 1
+face-image: img/portraits/SchleicherKurt.jpg
 
-= Military Angry
+= Discontent in the Reichswehr
 
-Military is mad at us because we were being bad and stuff or that you probably have braun as chancellor
+The Reichswehr, despite its evident bias toward right-wing <span style="color: #808080;">reactionary</span> politics, has long portrayed itself as a non-partisan, neutral force in German affairs. Throughout most of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic’s history, it has largely refrained from overt political interference. However, Defense Minister Groener—alongside his longtime ally Kurt von Schleicher and Chief of the Army Kurt von Hammerstein-Equord—has now made public the military’s growing disagreements and concerns with the <span style="color: #c00000;">**SPD**</span>.
 
-UNFINISHED
+The Reichswehr remains widely respected across the political spectrum—except among the left-wing parties. Schleicher, long known as a political schemer, may attempt to exploit this to undermine our standing among our allies. We can either offer concessions to placate the military, or hold firm and do nothing at all.
 
-- @concessions: damn
-- @idc: that's
-- @reform: crazy
+- @concessions
+- @idc
+- @reform
 
 @concessions
-subtitle: ok
+title: Perhaps another battleship will keep them happy?
+subtitle: Conceding to the Reichswehr is viewed as a betrayal of our core values.
+choose-if: reformist_strength >= labor_strength and reformist_strength >= left_strength and budget >= 1
+unavailable-subtitle: [? if (labor_strength > reformist_strength) or (left_strength > reformist_strength): Our party refuses to tolerate concessions to the Reichswehr. ?][? if budget < 1: We lack the necessary budget. ?]
+on-arrival: reichswehr_loyalty += 0.2; reichswehr_militancy += 1; left_dissent += 30; labor_dissent += 25; center_dissent += 20; reformist_dissent += 10; budget -= 1; workers_spd -= 6; unemployed_spd -= 6; new_middle_spd -= 2; catholics_spd -= 2; old_middle_spd += 2; nationalism += 8; pacifism -= 3; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 1; hindenburg_angry -= 25
 
-words here
-
-@idc
-subtitle: ok
-
-words here
+We have accepted Schleicher’s demands for increased funding toward the army’s modernization program, securing the purchase of new equipment for the small force. This decision has drawn intense criticism from the <span style="color: #700000;">**Communists**</span> and many within our own party, who condemn the diversion of funds into the black hole of the defense budget instead of toward welfare for women and children.
 
 @reform
-subtitle: ok
+title: Fire these rabble rousers immediately!
+subtitle: The bourgeois parties will not be pleased.
+choose-if: (coalition_dissent <= 0 and (z_relation >= 60 or (not in_grand_coalition and not in_weimar_coalition))) or in_left_front
+unavailable-subtitle: We lack the leverage—or sympathy—among our coalition partners.
+on-arrival: coalition_dissent += 1 if in_weimar_coalition or in_grand_coalition; new_middle_spd -= 2; old_middle_spd -= 2; rural_spd -= 2; z_relation -= 5; ddp_relation -= 5 if ddp_ideology != "Left"; dvp_relation -= 8; lvp_relation -= 5; lvp_right += 2; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; hindenburg_angry += 25; reichswehr_minister = "Oster"; groener_explode = 1; reichswehr_loyalty += 0.2; coup_progress += 3; capital_strike_progress += 1
+face-image: img/portraits/oster.jpg
 
-words here
+Our request to dismiss Wilhelm Groener has been approved by our coalition partners. He is replaced by Hans Oster, a relatively minor officer in the German Army. While Oster shares the nationalist leanings common within the military and is conservative enough to be accepted as Groener’s successor, our lack of control over the Reichswehr Ministry limits us—we can only remove a handful of officials involved in political interference.
+
+Schleicher has been dismissed from the Office for Ministerial Affairs, and von Hammerstein, for now, has remained notably quiet.
+
+@idc
+title: What are they going to do? Coup us?
+on-arrival: coalition_dissent += 2 if in_weimar_coalition or in_grand_coalition; workers_spd -= 2 if pacifism < 5; new_middle_spd -= 2; new_middle_spd -= 2 if pacifism < 5; old_middle_spd -= 4; old_middle_spd -= 2 if pacifism < 5; rural_spd -= 4; rural_spd -= 2 if pacifism < 5; z_relation -= 10; ddp_relation -= 10 if ddp_ideology != "Left"; dvp_relation -= 15; lvp_relation -= 15; lvp_right += 6; dvp_right += 6; ddp_right += 2; ddp_cohesion -= 2; hindenburg_angry += 100; coup_progress += 5; capital_strike_progress += 3
+
+The Reichswehr won’t go so far as to overthrow us, but Schleicher’s decade-long web of connections is proving effective. We are also the victim of a renewed propaganda campaign by the nationalist parties[? if pacifism >= 5:, which has fortunately failed to gain traction?]. [? if president == "Hindenburg": As a key figure in President Hindenburg’s camarilla, he has played a major role in stoking the old man’s growing hostility toward us. ?]

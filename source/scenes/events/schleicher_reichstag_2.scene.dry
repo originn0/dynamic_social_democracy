@@ -22,7 +22,7 @@ on-display: {!
 
 Behind closed doors, the Reichstag’s agenda committee convenes to decide when to reconvene the chamber after the holiday break—and with our position on it, our spokesmen have a say. Representing the cabinet, Schleicher’s aide strikes a confident tone, declaring the government ready to face the chamber at any time—and even opposing any adjournment until no-confidence motions are dealt with.
 
-In response, the <span style="color: #700000;">**Communists**</span> table a motion to resume sessions early next week. But the <span style="color: #7A3C00;">Nazi</span> spokesmen show no interest, suggesting the decision be left to the Reichstag’s president, Göring—who, in the end, fails to gain backing from any other party.
+In response, the <span style="color: #700000;">**Communists**</span> table a motion to resume sessions early next week. [? if reichstag_president == "Göring": But the <span style="color: #7A3C00;">Nazi</span> spokesmen show no interest, suggesting the decision be left to the Reichstag’s president, Göring—who, in the end, fails to gain backing from any other party. ?][? if reichstag_president != "Göring": But the <span style="color: #7A3C00;">Nazi</span> spokesmen show no interest, and would rather back the <span style="color: #000000;">Center Party</span>'s compromise motion. ?]
 
 The question is, how should our representatives vote?
 
@@ -65,6 +65,7 @@ This is accepted by all parties.
 
 @reichstag_2
 title: Vote for the <span style="color: #7A3C00;">Nazi</span> motion to grant responsibility to Göring.
+view-if: reichstag_president == "Göring"
 unavailable-subtitle: Why the hell would we do this?
 choose-if: nsdap_relation >= 100
 on-arrival: {!

@@ -4,7 +4,7 @@ view-if: ((spd_in_government = 1 and coup_progress >= 10 and year >= 1930 and (s
 new-page: true
 max-visits: 4
 on-arrival: march_on_berlin_seen += 1; sa_strength += 80; sh_strength += 80; strife += 2; march_on_berlin_timer += 8
-go-to: ask_resign if spd_in_government and president != "Braun"; govt_menu if president_ideology == "left"; non_govt_menu if spd_in_government = 0 and president != "Braun"
+go-to: ask_resign if spd_in_government and (president_ideology == "Right" or president == "Hindenburg"); govt_menu if president_ideology == "Left"; presidential_glaze if president_ideology == "Moderate"; non_govt_menu if spd_in_government = 0 and (president_ideology == "Right" or president == "Hindenburg")
 tags: event
 
 = March on Berlin
@@ -45,10 +45,6 @@ President [+ president +] has asked our government to resign.
 - @fight_constitution
 - @resign
 
-# TODO: if Hindenburg is president, he will always ask the govt to resign. If the SPD refuses, this causes a constitutional crisis. If there is a constitutional crisis, then if judicial reform >= 4, then the courts intervene against Hindenburg and preserves the government.
-
-# if Reichsbanner + Prussian Police >= <span style="color: #7A3C00;">**SA**</span> + <span style="color: #3E88B3;">**Stahlhelm**</span>, then the <span style="color: #7A3C00;">fascists</span> retreat.
-
 @govt_menu
 
 - @fight
@@ -56,7 +52,7 @@ President [+ president +] has asked our government to resign.
 
 @fight
 title: Deploy the Reichsbanner and call a general strike to resist the <span style="color: #7A3C00;">fascists</span>!
-on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if spd_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; defense_strength += workers_spd_normalized*(2 - dissent)*(2 - unemployed/100); defense_strength += reichswehr_strength*reichswehr_loyalty*reichswehr_militancy if president=="Braun" and spd_in_government
+on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if spd_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; defense_strength += workers_spd_normalized*(2 - dissent)*(2 - unemployed/100); defense_strength += reichswehr_strength*reichswehr_loyalty*reichswehr_militancy if president_ideology == "Left" and spd_in_government
 go-to: fight_2_win if defense_strength >= enemy_strength and march_on_berlin_seen <= 1; fight_2_win_2 if defense_strength >= enemy_strength and march_on_berlin_seen > 1; fight_2_pre_civil_war if defense_strength < enemy_strength
 
 The Reichsbanner number at [+ rb_strength +] thousand; many are in Berlin to counter the <span style="color: #7A3C00;">fascist</span> demonstration.
@@ -65,7 +61,7 @@ The Reichsbanner number at [+ rb_strength +] thousand; many are in Berlin to cou
 
 
 @fight_2_win
-on-arrival: coup_progress = 0; sa_strength *= 0.7; sh_strength *= 0.7; rb_strength *= 0.9; workers_nsdap -= 12*(1-dissent); unemployed_nsdap -= 10*(1-dissent); new_middle_nsdap -= 6*(1-dissent); workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); pro_republic += 15
+on-arrival: coup_progress = 0; sa_strength *= 0.7; sh_strength *= 0.7; rb_strength *= 0.9; workers_nsdap -= 12*(1-dissent); unemployed_nsdap -= 10*(1-dissent); new_middle_nsdap -= 6*(1-dissent); workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); workers_dnvp -= 2; new_middle_dnvp -= 2; old_middle_dnvp -= 2; catholics_dnvp -= 2; pro_republic += 15
 achievement: drei_pfeile
 
 Our forces confront the <span style="color: #7A3C00;">fascists</span>, and somehow, the <span style="color: #7A3C00;">fascists</span> retreat! They were overwhelmed by our display of strength, and have chosen to slink away. The attempted coup is over, at least for now.
@@ -74,8 +70,6 @@ The show of force has reinvigorated support for the republic and for the <span s
 
 @fight_2_win_2
 on-arrival: coup_progress = 0; pro_republic += 5; workers_nsdap -= 2*(1-dissent); unemployed_nsdap -= 2*(1-dissent); new_middle_nsdap -= 2*(1-dissent); rb_strength *= 0.9; sa_strength *= 0.9; sh_strength *= 0.9
-
-# if march on Berlin has already been seen
 
 Our forces confront the <span style="color: #7A3C00;">fascists</span>, and somehow, the <span style="color: #7A3C00;">fascists</span> retreat! They were overwhelmed by our display of strength, and have chosen to slink away. The attempted coup is over, at least for now.
 
@@ -103,19 +97,19 @@ The courts agree that President [+ president +] is wrong to dismiss us, and that
 @new_elections
 title: Call for new snap elections.
 subtitle: We will not resign at gunpoint, and we will attempt to maintain the integrity of the elections.
-go-to: new_elections_braun if president == "Braun"; new_elections_hindenburg if president != "Braun" and z_relation >= 40 and far_right_coalition < 50; new_elections_hindenburg_reject if president != "Braun" and (z_relation < 40 or far_right_coalition >= 50)
+go-to: new_elections_braun if president_ideology == "Left"; new_elections_hindenburg if ((president_ideology != "Left" and president_ideology == "Right") or president == "Hindenburg") and z_relation >= 40 and far_right_coalition < 50; new_elections_hindenburg_reject if ((president_ideology != "Left" and president_ideology == "Right") or president == "Hindenburg") and (z_relation < 40 or far_right_coalition >= 50); new_elections_moderate if president_ideology == "Moderate"
 
 
 @new_elections_braun
 go-to: new_elections_braun_2 if nsdap_normalized + dnvp_normalized >= 0.5 and far_right_coalition < 50; new_elections_braun_reject if (nsdap_normalized + dnvp_normalized < 0.5 or far_right_coalition >= 50)
 
-# if the Nazis + DNVP have a current majority in the Reichstag, then they'll instantly launch the coup
 
 @new_elections_braun_reject
 
 The <span style="color: #7A3C00;">fascists</span> reject our offer of free and fair elections. They are demanding that President [+ president +] dismisses the current government and appoints Hitler chancellor. [? if far_right_coalition >= 50 : They claim that since the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> coalition has the majority in the Reichstag, they are constitutionally justified in appointing the chancellor. Unfortunately, their argument is not exactly wrong. ?]
 
 - @braun_appoints_hitler
+- @rosenfeld_appoints_strasser
 - @fight
 
 @new_elections_braun_2
@@ -127,7 +121,7 @@ The <span style="color: #7A3C00;">fascists</span> seem to believe that they woul
 @new_elections_hindenburg
 go-to: new_elections_2
 
-With the mediation of various establishment figures, new elections are called for next month, without the use of <span style="color: #7A3C00;">fascists</span> "electoral monitors".
+With the mediation of various establishment figures, new elections are called for next month, without the use of <span style="color: #7A3C00;">fascist</span> "electoral monitors".
 
 
 @new_elections_2
@@ -136,31 +130,70 @@ on-arrival: next_election_time = time + 1 if next_election_time > time+1; next_e
 
 @new_elections_hindenburg_reject
 
-Influenced by his inner circle and by the <span style="color: #7A3C00;">fascists</span> in the streets, President Hindenburg rejects our offer of new free and fair elections, and again demands that we resign. There is no arguing.
+[? if president == "Hindenburg": Influenced by his inner circle and by the <span style="color: #7A3C00;">fascists</span> in the streets, President Hindenburg rejects our offer of new free and fair elections, and again demands that we resign. ?][? if president != "Hindenburg": Influenced by the <span style="color: #7A3C00;">fascists</span> in the streets—and his own sympathies, as the <span style="color: #3E88B3;">**Stahlhelm**</span> is also taking part—President [+ president +] rejects our proposal for new free and fair elections, and once again demands our resignation. ?] There is no arguing.
 
 - @resign
 - @fight
 
+@new_elections_moderate
 
+Despite President [+ president +] standing with us against the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> marchers, he remains under pressure from the <span style="color: #7A3C00;">fascists</span> in the streets and prioritizes a peaceful resolution above all else.
+
+Still, [+ president +] refuses to accept any new election that is not truly free and fair.
+
+- @new_elections_moderate_2
+- @new_elections_moderate_2_alt
+
+@new_elections_moderate_2
+title: Free and fair elections it is!
+choose-if: far_right_coalition < 50 and nsdap_normalized + dnvp_normalized >= 0.5
+unavailable-subtitle: The <span style="color: #7A3C00;">fascists</span> want nothing less than a rigged ballot.
+go-to: new_elections_2
+
+The <span style="color: #7A3C00;">fascists</span>, confident in their chances, agree to [+ president +]’s proposal to hold elections next month.
+
+@new_elections_moderate_2_alt
+title: Any chance of a peaceful resolution is thrown out.
+choose-if: far_right_coalition >= 50 and nsdap_normalized + dnvp_normalized < 0.5
+unavailable-subtitle: The <span style="color: #7A3C00;">fascists</span> are confident in their chances.
+
+[+ president +] cannot bring himself to violate German democracy—or appoint a <span style="color: #7A3C00;">Nazi</span> as Chancellor. Our only option now is to confront the <span style="color: #7A3C00;">fascists</span> head-on, with the support of loyal government forces.
+
+- @fight
 
 @resign
 title: Resign our positions in the government.
 choose-if: president != "Braun"
 unavailable-subtitle: President Braun cannot resign.
-on-arrival: chancellor = "Papen"; chancellor_party = "I"; spd_in_government = 0;
+on-arrival: chancellor = "Goerdeler"; chancellor_party = "I"; spd_in_government = 0;
 go-to: accept
 
-We have resigned our positions in the government.
-
-
+We have resigned our positions in the government. We are replaced by the <span style="color: #808080;">reactionary</span> Goerdeler, who aims to bring the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> into government.
 
 @braun_appoints_hitler
 title: We cannot do anything but appoint Hitler chancellor.
-view-if: president == "Braun"
-choose-if: nsdap_normalized >= 0.5 or largest_party == "NSDAP"
-unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act.
+view-if: president_ideology == "Left"
+choose-if: (nsdap_normalized >= 0.5 or largest_party == "NSDAP") and president != "Rosenfeld"
+unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act. [? if president == "Rosenfeld": Rosenfeld would never do this, no matter the circumstances. ?]
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; spd_in_government = 0
 
 Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Hitler of the <span style="color: #7A3C00;">**NSDAP**</span> as chancellor.
 
+@rosenfeld_appoints_strasser
+title: We cannot do anything but appoint Strasser chancellor.
+view-if: president_ideology == "Left" and president == "Rosenfeld"
+choose-if: time >= hitler_explode and hitler_explode
+unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act.
+on-arrival: chancellor = "Strasser"; chancellor_party = "NSDAP"; spd_in_government = 0
+
+Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Strasser of the <span style="color: #7A3C00;">**NSDAP**</span> as chancellor.
+
 - @hitler_takes_power
+
+@presidential_glaze
+on-arrival: reichswehr_loyalty += 0.1; reichswehr_loyalty += 0.1 if president == "Gessler"
+
+Luckily, President [+ president +] is on our side in this crisis. He has recognized the coup for what it is, and is prepared to stand by the government if we resist.
+
+- @fight
+- @new_elections

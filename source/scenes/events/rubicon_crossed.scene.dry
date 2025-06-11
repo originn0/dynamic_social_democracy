@@ -95,6 +95,8 @@ if (rightTools) {
 
 window.changeTab('status.emergency', 'emergency_tab')
 
+dendryUI.audioPlaylist = []
+
 !}
 on-display: {!  
     var cardEl = document.createElement('div');  
@@ -109,7 +111,8 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 set-bg: img/street.jpg
-audio: music/1930_1933/Backroom_Deal.ogg music/1930_1933/Ugly_American.mp3
+audio: music/1930_1933/Backroom_Deal.ogg
+go-to: rubicon_crossing
 
 = The Rubicon is Crossed
 
@@ -118,3 +121,14 @@ With the dismissal of Brüning’s government—despite its parliamentary majori
 Whatever path Hindenburg takes now will be chosen not by the people, but by those who whisper in his ear.
 
 Time slows. We enter the week-by-week struggle.
+
+@rubicon_crossing
+audio: shuffle music/1930_1933/Nation_building.mp3 music/1930_1933/Ugly_American.mp3 music/1930_1933/Exhausted.ogg
+go-to: rubicon_crossing_2
+
+@rubicon_crossing_2
+on-arrival: {!
+
+dendryUI.audioQueue = []
+
+!}

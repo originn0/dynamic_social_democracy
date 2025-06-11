@@ -1,0 +1,45 @@
+title: Goerdeler I Survives?
+subtitle: Hugenberg saves the cabinet?
+view-if: chancellor = "Goerdeler" and goerdeler_pre_time >= 2 and goerdeler_right_coalition >= 50
+on-arrival: finance_minister_party = "I"; finance_minister_party = "DNVP"; agriculture_minister_party = "DNVP"
+new-page: true
+tags: event
+max-visits: 1
+face-image: img/portraits/AlfredHugenberg.jpg
+
+= Goerdeler I Survives
+
+A parliamentary coalition composed of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and all parties to its right—excluding the <span style="color: #7A3C00;">**NSDAP**</span>—somehow holds a majority. Hugenberg, emboldened by an electoral boost from an influx of more "reactionary" <span style="color: #7A3C00;">Nazi</span> voters, has once again grown overconfident, now believing he no longer needs the <span style="color: #7A3C00;">**NSDAP**</span> to enter government.
+
+He assumes that [+ nsdap_leader +], increasingly pressured by senior figures like Strasser and Frick, will eventually cave to preserve party unity and join the government on his terms. In the meantime, Hugenberg has taken the first step—accepting appointments as Vice-Chancellor and Finance Minister. Martin Schiele has been removed, replaced by the more conservative Kalckreuth.
+
+- @goerdeler
+
+@goerdeler
+title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] refuses to work with Hugenberg!
+face-image: img/portraits/BrüningHeinrich.jpg
+
+As expected, the majority of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] refuses to entertain the idea of governing alongside a figure like Hugenberg—especially after his remarks on <span class="tooltip-text" title="good game">the campaign trail</span> calling for the outright abolition of welfare. Furthermore, it is unlikely that Goerdeler would stop this, as he himself has proposed gutting unemployment insurance to cut costs.
+
+Even Brüning, the de-facto leader of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s parliamentary delegation believes that their planned austerity has gone too far. 
+
+Yet Hugenberg and Goerdeler refuse to accept the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s demands for economic policy guarantees. Once again, a deadlock has taken hold.
+
+- @goerdeler_2
+
+@goerdeler_2
+title: The Reichstag is dissolved.
+on-arrival: {!
+Q.next_election_month = Q.month + 2;
+Q.next_election_time = Q.time + 2;
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year = Q.year + 1;
+} else {
+    Q.next_election_year = Q.year;
+}
+!}
+
+Before the Reichstag was to convene, Goerdeler presents a decree to dissolve it. He expects that, with the exodus of voters from the <span style="color: #7A3C00;">**NSDAP**</span> and the certainty of their collapse next election, they will be forced to become more sensible. 
+
+New elections have been set for [+ next_election_month : month +] [+ next_election_year +].

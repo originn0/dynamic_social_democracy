@@ -17,8 +17,11 @@ if (Q.difficulty >= 0) {
 if (Q[card.id + "_timer"]) {
     Q[card.id + "_timer"] = 0;
 }
-if (card.id == "prussian_affairs_dvp" || card.id == "prussian_affairs_left") {
+if (card.id == "prussian_affairs_dvp" || card.id == "prussian_affairs_left" || card.id == "prussian_affairs_majority") {
     Q.prussian_affairs_timer = 0;
+}
+if (card.id == "dealing_with_toleration_right" || card.id == "dealing_with_toleration_cvp") {
+    Q.dealing_with_toleration_timer = 0;
 }
 // reduce visit count
 if (this.state.visits[card.id]) {

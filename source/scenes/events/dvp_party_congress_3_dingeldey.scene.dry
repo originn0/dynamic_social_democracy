@@ -1,0 +1,29 @@
+title: <span style="color: #C0A054;">**DVP**</span> Party Vote
+subtitle: The Kunz-Dohna group ousts Dingeldey!
+view-if: ((year == 1931 and month == 12) or year >= 1932) and dvp_leader == "Dingeldey" and (dvp_ideology == "Left" or (dvp_ideology == "Moderate" and pro_republic >= 60)) and dvp_exist and (dnvp_ideology == "Radical" or dnvp_leader == "Lambach") and not lvp_formed and not (lvp_timer_1_trigger and (lvp_merger_1_timer or lvp_trigger_1_time))
+on-arrival: dvp_right += 3 if dvp_relation < 30; dvp_left += 2 if dvp_relation >= 50; dvp_right += 2 if not in_grand_coalition
+max-visits: 1
+tags: event
+face-image: img/dvp.jpg
+new-page: true
+
+= <span style="color: #C0A054;">**DVP**</span> Party Vote
+
+The non-industrialist and Stresemannite elements of the <span style="color: #C0A054;">**DVP**</span> have revolted, angered by their marginalization at the hands of the industrialists, who have pushed to realign Stresemann’s former party with the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>.
+
+Led by Wilhelm Kunz, a Berlin lawyer, and Count Alexander zu Dohna, a legal expert and widely respected figure on the party’s left wing, they aim to publicly challenge Dingeldey and the industrialist faction that has effectively puppeteered him.
+
+They both advocate for cooperation with the minor bourgeois parties and the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, and firmly reject what they call the “psychosis of <span style="color: #7A3C00;">National Socialism</span>.”
+
+- @dingeldey_explode
+
+@dingeldey_explode
+title: Dingeldey loses the vote of no confidence!
+on-arrival: dvp_leader = "zu Dohna-Schlodien"; dvp_left += 5; liberal_cooperation += 5; bourgeois_cooperation += 5; dvp_relation += 15; dvp_relation = 25 if dvp_relation < 25; new_middle_dvp += 4; old_middle_dvp += 4; rural_dvp += 2; pro_republic += dvp_votes*2; ddp_right += 2; ddp_cohesion += 2
+face-image: img/portraits/dohna.jpg
+
+At a divisive party congress, prominent figures from the party’s left wing—such as Thiel, Glatzel, and Curtius—force a vote on Dingeldey’s leadership of the <span style="color: #C0A054;">**DVP**</span>. Dingeldey is ousted, replaced by zu Dohna, prompting the industrialist faction to withdraw its support and shift its funds to the right.
+
+However, the <span style="color: #C0A054;">**DVP**</span>’s move to distance itself from its former industrial backers—and its renewed campaign to revive Stresemann’s legacy—has done much to restore some of its lost electoral strength.
+
+Our relationship with the <span style="color: #C0A054;">**DVP**</span> has improved. Still, Dingeldey’s tenure radicalized the party toward the right, and the damage cannot be undone overnight.

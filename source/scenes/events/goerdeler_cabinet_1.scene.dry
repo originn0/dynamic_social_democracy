@@ -1,0 +1,113 @@
+title: Goerdeler Unveils His Cabinet
+subtitle: A purely "temporary arrangement" until the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> can be brought into government.
+view-if: chancellor = "Goerdeler" and goerdeler_pre_time == 1
+on-arrival: finance_minister_party = "I"; interior_minister_party = "DNVP"; economic_minister_party = "I"; labor_minister_party = "I"; justice_minister_party = "I"; foreign_minister_party = "I"; agriculture_minister_party = "DNVP"; reichswehr_minister = "I"
+new-page: true
+tags: event
+max-visits: 1
+face-image: img/portraits/goerdeler.jpg
+
+= Goerdeler I
+
+The country still needs to be governed, and Goerdeler is forced to announce new cabinet picks, who he stresses as purely caretaker until an agreement can be struck with the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. This has resulted in a cabinet dominated by independents, who sit in the seats of posts that Goerdeler intends to give up in a potential future government.
+
+The <span style="color: #D3C24D;">left-liberal</span> ministers are sacked, signalling a break by Goerdeler. The <span style="color: #3E88B3;">**DNVP**</span> is given a sizable role in the government, with Wilhelm von Gayl holding the Interior Ministry, and Treviranus taking the Transport Ministry. Martin Schiele, who served under Marx, will serve as Agricultural minister once more. 
+
+The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has grown increasingly apprehensive about its role in the Goerdeler cabinet, refusing to commit ministers like Adam Stegerwald and Brüning to the Labor and Foreign Ministries, respectively. Their refusal to serve alongside the anti-social Hugenberg has thrown a wrench into ongoing negotiations.
+
+- @goerdeler
+
+@goerdeler
+title: Schleicher will negotiate with Hugenberg.
+face-image: img/portraits/AlfredHugenberg.jpg
+
+General Kurt von Schleicher, now the most influential member of the Camarilla and increasingly entangled in political scheming, begins courting the intractable Hugenberg. With the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> divided, Schleicher concludes that the <span style="color: #7A3C00;">**NSDAP**</span> would have no choice but to fall in line.
+
+Hugenberg makes his demands clear: he wants the Vice-Chancellorship, control of the Economic Ministry, and sole authority over economic policy. This suits Goerdeler, a fellow fiscal conservative—but Hugenberg, emboldened by his leverage, overreaches. He adds that his former party rival, Martin Schiele, should resign in favor of Count Eberhard von Kalckreuth, a Hugenberg supporter within the National Rural League (RLB).
+
+An impasse forms, prompting Schleicher to turn to [+ nsdap_leader +], whose party is—surprisingly—now seen as more reasonable than Hugenberg’s.
+
+> *"I do not understand, Herr Geheimrat, how you cannot be satisfied with Schleicher’s concessions. You simply cannot demand a hundred percent change in the political system. A complete change in the political system cannot occur all at once but only gradually."*
+
+ - Theodor Duesterberg, to Hugenberg
+
+- @goerdeler_2
+
+@goerdeler_2
+title: Schleicher will negotiate with [+ nsdap_leader +].
+face-image: img/portraits/hitler2.jpg
+
+With Brüning out of the way, Schleicher has vastly overestimated his ability to "tame" the <span style="color: #7A3C00;">Nazis</span>. [+ nsdap_leader +] has flatly rejected any government that includes Groener or Brüning, and has demanded that his party receive either the Chancellorship or the Defense Ministry—along with several other cabinet posts—arguing that only such control can guarantee the mass support the new government requires to function.
+
+This is, however, entirely unacceptable to Goerdeler—and even more so to President Hindenburg, who categorically refuses to grant either the Chancellorship or the Defense Ministry to a member of [+ nsdap_leader +]’s party. Moreover, Hindenburg insists that Brüning and Groener remain in the cabinet, as Foreign and Defense Minister respectively, still valuing Brüning’s diplomatic expertise.
+
+- @goerdeler_3
+
+@goerdeler_3
+title: What a mess.
+subtitle: No agreement is able to be reached.
+on-arrival: {!
+Q.nazi_peak_triggered = 1;
+Q.nazi_peak_votes = Q.nsdap_votes;
+Q.nazi_decay_timer = 24;
+Q.coup_progress += 4;
+
+Q.new_middle_nsdap -= 10;
+Q.old_middle_nsdap -= 10;
+Q.rural_nsdap -= 10;
+Q.catholics_nsdap -= 6;
+
+Q.new_middle_dnvp += 4;
+Q.old_middle_dnvp += 4;
+Q.rural_dnvp += 4;
+
+Q.new_middle_kvp += 4;
+Q.old_middle_kvp += 4;
+Q.rural_kvp += 4;
+
+Q.new_middle_other += 4;
+Q.old_middle_other += 4;
+Q.rural_other += 4;
+
+Q.new_middle_dvp += 4;
+Q.old_middle_dvp += 4;
+Q.rural_dvp += 2;
+
+Q.new_middle_lvp += 6;
+Q.old_middle_lvp += 6;
+Q.rural_lvp += 2;
+
+Q.new_middle_dnf += 6;
+Q.old_middle_dnf += 6;
+Q.rural_dnf += 6;
+
+Q.catholics_z += 6;
+if (Q.stegerwald_path) {
+    Q.workers_z += 2;
+    Q.new_middle_z += 4;
+    Q.old_middle_z += 4;
+    Q.rural_z += 4;
+}
+
+if (Q.dnvp_ideology === "Radical") {
+    Q.new_middle_dnvp += 6;
+    Q.old_middle_dnvp += 6;
+    Q.rural_dnvp += 6;
+}
+!}
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "https://en.meming.world/images/en/4/4b/Shocked_Black_Guy.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+Brüning's point is proven: the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> is not sincere in their intentions of entering government and governing responsibly. 
+
+Perhaps an agreement can still be reached, but time is running out before the Reichstag reconvenes. The immediate fallout from the collapse in negotiations has led many <span style="color: #7A3C00;">Nazi</span> protest voters and disillusioned conservatives to abandon ship, convinced that the <span style="color: #7A3C00;">**NSDAP**</span> is incapable of actually governing.

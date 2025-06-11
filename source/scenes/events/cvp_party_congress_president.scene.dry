@@ -1,0 +1,538 @@
+title: Second <span style="color: #000000;">**[+ z_party_name +]**</span> Congress
+subtitle: [+ cvp_leader +] will be resigning his positions to accept the presidency.
+view-if: cvp_formed and cvp_leader == president
+on-arrival: {!
+
+if (Q.president == "Adenauer" || Q.president == "Stegerwald") Q.cvp_left += 10;
+if (Q.president == "Westarp" || Q.president == "Lettow-Vorbeck") Q.cvp_right += 10;
+
+if (Q.in_social_catholic_coalition) Q.cvp_left += 5;
+if (Q.peoples_party) Q.cvp_left += 3;
+if (Q.left_split) Q.cvp_left += 1;
+if (Q.sapd_formed) Q.cvp_left += 2;
+if (Q.reformist_strength >= Q.left_strength + Q.center_strength) {
+    Q.cvp_left += 2;
+} else {
+    Q.cvp_right += 2;
+}
+if (Q.nationalization_adopted || Q.economic_democracy) {
+    Q.cvp_right += 3;
+    Q.cvp_right += Q.economic_democracy*2;
+}
+
+Q.labor_right_points = 0;
+Q.conservative_right_points = 0;
+Q.catholic_center_points = 0;
+Q.agrarian_right_points = 0;
+Q.tory_democratic_points = 0;
+Q.labor_left_points = 0;
+
+Q.labor_points_lead = 0; 
+Q.democratic_points_lead = 0;
+Q.presidential_points_lead = 0;
+Q.cvp_deadlock = 0;
+Q.labor_right_points_lead = 0;
+Q.conservative_right_points_lead = 0;
+Q.catholic_center_points_lead = 0;
+Q.agrarian_right_points_lead = 0;
+Q.tory_democratic_points_lead = 0;
+Q.labor_left_points_lead = 0;
+
+Q.treviranus_unlock = 0;
+Q.adenauer_unlock = 0;
+Q.lambach_unlock = 0;
+Q.stegerwald_unlock = 0;
+Q.gereke_unlock = 0;
+
+if (Q.dnvp_leader == "Lambach") {
+    Q.cvp_right += 10;
+}
+
+if (Q.cvp_right >= (Q.cvp_left + 5)) {
+    Q.cvp_ideology = "Right"
+} else if (Q.cvp_left >= (Q.cvp_right + 5)) {
+    Q.cvp_ideology = "Left"
+} else {
+    Q.cvp_ideology = "Moderate"
+}
+
+if (Q.cvp_ideology == "Right") {
+    Q.labor_right_points += 3;
+    Q.conservative_right_points += 5;
+    Q.agrarian_right_points += 3;
+} else if (Q.cvp_ideology == "Moderate") {
+    Q.tory_democratic_points += 3;
+    Q.catholic_center_points += 1;
+    Q.labor_right_points += 1;
+    Q.labor_left_points += 1;
+    Q.agrarian_right_points += 1;
+    Q.conservative_right_points += 1;
+} else if (Q.cvp_ideology == "Left") {
+    Q.catholic_center_points += 5;
+    Q.tory_democratic_points += 3;
+    Q.labor_left_points += 5;
+}
+
+if (Q.dnvp_dvp_formed || Q.cvp_dvp_formed) {
+    Q.dvp_in_cvp = 1;
+    Q.tory_democratic_points += 4;
+}
+
+
+if (Q.dnvp_leader == "Lambach" && !Q.lambach_bonus) {
+    Q.labor_right_points += 6;
+    Q.lambach_bonus = 1;
+}
+
+if (Q.z_leader == "Stegerwald" && !Q.stegerwald_bonus) {
+    Q.labor_left_points += 8;
+    Q.stegerwald_bonus = 1;
+}
+
+if (Q.z_leader == "Adenauer" && !Q.adenauer_bonus) {
+    Q.catholic_center_points += 6;
+    Q.adenauer_bonus = 1;
+}
+
+if (Q.welfare <= 0) {
+    Q.labor_left_points += 3;
+    Q.labor_right_points += 3;
+}
+
+if (Q.unions_independent) {
+    Q.labor_right_points += 5;
+    Q.labor_left_points += 5;
+}
+
+if (Q.workers_z_normalized) {
+    Q.labor_right_points += Q.workers_z_normalized * ((100 - Q.pro_republic) / 200);
+    Q.labor_left_points += Q.workers_z_normalized * (Q.pro_republic / 200);
+    if (Q.dnvp_leader == "Lambach") {
+        Q.labor_right_points += Q.workers_z_normalized * ((100 - Q.pro_republic) / 200);
+    }
+}
+
+if (Q.new_middle_z_normalized || Q.old_middle_z_normalized) {
+    Q.conservative_right_points += (Q.new_middle_z_normalized + Q.old_middle_z_normalized) * ((100 - Q.pro_republic) / 200);
+    Q.tory_democratic_points += (Q.new_middle_z_normalized + Q.old_middle_z_normalized) * (Q.pro_republic / 200);
+}
+
+if (Q.rural_z_normalized) {
+    Q.agrarian_right_points += Q.rural_z_normalized * ((100 - Q.pro_republic) / 200);
+}
+
+if (Q.catholics_z_normalized) {
+    Q.catholic_center_points += Q.catholics_z_normalized * (Q.pro_republic / 400);
+    Q.conservative_right_points += Q.catholics_z_normalized * ((100 - Q.pro_republic) / 400);
+}
+
+if (Q.z_relation >= 20) {
+    Q.labor_left_points += (Q.z_relation / 10);
+    Q.catholic_center_points += (Q.z_relation / 10);
+    Q.tory_democratic_points += (Q.z_relation / 20);
+} else {
+    Q.labor_right_points += ((20 - Q.z_relation) / 5);
+    Q.conservative_right_points += ((20 - Q.z_relation) / 5);
+    Q.agrarian_right_points += ((20 - Q.z_relation) / 5);
+}
+
+if (Q.land_reform || Q.tariffs < 0) {
+    Q.agrarian_right_points += Q.land_reform*5;
+    Q.agrarian_right_points += (Q.tariffs*-1)*5;
+}
+
+if (Q.dvp_reform && !Q.lvp_formed && Q.dvp_exist) {
+    Q.tory_democratic_points += Q.dvp_votes;
+} else if (Q.dvp_reform && Q.lvp_formed && Q.dvp_exist) {
+    Q.tory_democratic_points += Q.lvp_votes / 2;
+}
+
+Q.labor_points = Q.labor_right_points + Q.labor_left_points;
+if (Q.labor_points) {
+    Q.labor_right_points *= 0.5;
+    Q.labor_left_points *= 0.5;
+}
+Q.labor_points = Q.labor_right_points + Q.labor_left_points;
+Q.z_points = Q.labor_left_points + Q.catholic_center_points;
+Q.democratic_points = Q.labor_left_points + Q.catholic_center_points + Q.tory_democratic_points;
+Q.presidential_points = Q.labor_right_points + Q.conservative_right_points + Q.agrarian_right_points;
+Q.dnvp_points = Q.conservative_right_points + Q.agrarian_right_points + Q.tory_democratic_points + Q.labor_right_points;
+
+if ((Q.labor_points - 3) > Q.conservative_right_points && (Q.labor_points - 3) > Q.catholic_center_points && (Q.labor_points - 3) > Q.agrarian_right_points && (Q.labor_points - 3) > Q.tory_democratic_points) {
+    Q.labor_points_lead = 1;
+    if (Q.labor_left_points >= Q.labor_right_points) {
+        Q.labor_left_points_lead = 1;
+        Q.labor_right_points_lead = 0;
+    } else if (Q.labor_right_points > Q.labor_left_points) {
+        Q.labor_left_points_lead = 0;
+        Q.labor_right_points_lead = 1;
+    }
+} else {
+    Q.labor_points_lead = 0;
+}
+
+if ((Q.democratic_points - 5) > Q.presidential_points) {
+    Q.democratic_points_lead = 1;
+    if (Q.tory_democratic_points >= Q.z_points) {
+        Q.tory_democratic_points_lead = 1;
+        Q.catholic_center_points_lead = 0;
+    } else if (Q.z_points > Q.tory_democratic_points) {
+        Q.tory_democratic_points_lead = 0;
+        Q.catholic_center_points_lead = 1;
+    }
+} else {
+    Q.democratic_points_lead = 0;
+}
+
+if ((Q.presidential_points - 5) > Q.democratic_points) {
+    Q.presidential_points_lead = 1;
+    if (!Q.labor_right_points_lead) {
+        if (Q.conservative_right_points >= Q.labor_right_points && Q.conservative_right_points >= Q.agrarian_right_points) {
+            Q.conservative_right_points_lead = 1;
+            Q.agrarian_right_points_lead = 0;
+            Q.labor_right_points_lead = 0;
+        } else if (Q.labor_right_points >= Q.conservative_right_points && Q.labor_right_points >= Q.agrarian_right_points) {
+            Q.conservative_right_points_lead = 0;
+            Q.labor_right_points_lead = 1;
+            Q.agrarian_right_points_lead = 0;
+        } else if (Q.agrarian_right_points >= Q.conservative_right_points && Q.agrarian_right_points >= Q.labor_right_points) {
+            Q.conservative_right_points_lead = 0;
+            Q.labor_right_points_lead = 0;
+            Q.agrarian_right_points_lead = 1;
+        }
+    }
+} else {
+    Q.presidential_points_lead = 0;
+}
+
+if (Q.democratic_points_lead && Q.tory_democratic_points_lead) {
+    Q.treviranus_unlock = 1;
+} else if (Q.democratic_points_lead && Q.catholic_center_points_lead) {
+    Q.adenauer_unlock = 1;
+    if (Q.president == "Adenauer") {
+        Q.adenauer_unlock = 0;
+        Q.stegerwald_unlock = 1;
+    }
+} else if (Q.presidential_points_lead) {
+    Q.gereke_unlock = 1;
+}
+
+if (Q.labor_left_points_lead) {
+    Q.stegerwald_unlock = 1;
+    if (Q.president == "Stegerwald") {
+        Q.adenauer_unlock = 1;
+        Q.stegerwald_unlock = 0;
+    }
+    Q.treviranus_unlock = 0;
+    Q.adenauer_unlock = 0;
+    Q.gereke_unlock = 0;
+    Q.lambach_unlock = 0;
+} else if (Q.labor_right_points_lead) {
+    Q.stegerwald_unlock = 0;
+    Q.treviranus_unlock = 0;
+    Q.adenauer_unlock = 0;
+    Q.gereke_unlock = 0;
+    Q.lambach_unlock = 1;
+}
+
+if (!Q.treviranus_unlock && !Q.adenauer_unlock && !Q.gereke_unlock && !Q.lambach_unlock && !Q.stegerwald_unlock) {
+    Q.cvp_deadlock = 1;
+} else {
+    Q.cvp_deadlock = 0;
+}
+
+
+!}
+max-visits: 1
+tags: event
+face-image: img/cvp.jpg
+new-page: true
+
+= Second <span style="color: #000000;">**[+ z_party_name +]**</span> Congress
+
+With the election of [+ president +]—the party chairman—as president, he naturally cannot retain both roles. He has since resigned, prompting a new party congress to select his successor. The party’s various factions are eager to assert themselves and steer its future direction. The outgoing chairman, now president, continues to wield considerable influence and is expected to endorse a candidate from his own faction.
+
+- @cvp_factions
+
+@cvp_factions
+title: The party congress is held.
+
+The faction strengths are as follows.
+
+<span style="color: #003755;">Far-Right Protestants</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): Marginal ?]
+
+<span style="color: #3E3B2D;">Far-Right Catholics</span> (<span style="color: #000000;">**Z**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): Marginal ?]
+
+<span style="color: #3E88B3;">National Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Gereke - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead and not conservative_right_points_lead: Influential?][? if cvp_ideology != "Left" and conservative_right_points_lead: Powerful?]
+
+<span style="color: #385A38;">Agrarians</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Gereke - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead: Relevant?][? if cvp_ideology != "Left" and agrarian_right_points_lead: Influential?]
+
+<hr id="read-marker">
+<span style="color: #6D5298;">Christian Socialists</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Lambach - [? if cvp_ideology == "Left" and not labor_points_lead: Marginal?][? if ((cvp_ideology != "Left" and not presidential_points_lead and not labor_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): Limited?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and labor_points_lead and not labor_right_points_lead: Influential?][? if cvp_ideology != "Left" and labor_right_points_lead: Powerful?]
+
+<span style="color: #330000;">Catholic Labor</span> (<span style="color: #000000;">**Z**</span>) - Stegerwald - [? if cvp_ideology == "Left" and labor_left_points_lead: Powerful?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: Influential?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: Limited?]
+<hr id="read-marker">
+<span style="color: #0087DC;">People's Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Treviranus - [? if cvp_ideology == "Left" and democratic_points_lead: Dominant?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+
+<span style="color: #000099;">Catholic Right</span> (<span style="color: #000000;">**Z**</span>) - Treviranus - [? if cvp_ideology == "Left" and democratic_points_lead: Influential?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Relevant?][? if cvp_ideology != "Left" and not democratic_points_lead: Limited?]
+
+[? if cvp_dvp_formed: <span style="color: #D8B868;">Stresemannites</span> (<span style="color: #C0A054;">**DVP**</span>) - Treviranus - [? if cvp_ideology == "Left" and democratic_points_lead: Relevant?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Limited?][? if cvp_ideology != "Left" and not democratic_points_lead: Marginal?]?]
+
+[? if cvp_dvp_formed: <span style="color: #8C7A3C;">Industrialists</span> (<span style="color: #C0A054;">**DVP**</span>) - Treviranus - [? if cvp_ideology != "Left" and not labor_points_lead: Influential?][? if not (cvp_ideology != "Left" and not labor_points_lead): Relevant?]?]
+<hr id="read-marker">
+<span style="color: #000000;">Catholic Center</span> (<span style="color: #000000;">**Z**</span>) - Adenauer - [? if cvp_ideology == "Left" and democratic_points_lead: Powerful?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+
+<span style="color: #FF7F00;">Christian Left</span> (<span style="color: #000000;">**Z**</span>) - Adenauer / Stegerwald - [? if cvp_ideology == "Left" and labor_left_points_lead: Relevant?][? if cvp_ideology == "Left" and not labor_left_points_lead: Limited?][? if cvp_ideology != "Left": Marginal?]
+<hr id="read-marker">
+[? if labor_points_lead: The Christian trade unions have found themselves at an advantageous position going into the congress. ?][? if democratic_points_lead: The pro-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> forces have found themselves at an advantageous position going into the congress. ?][? if presidential_points_lead: The <span style="color: #3E88B3;">nationalist</span> forces have found themselves at an advantageous position going into the congress. ?][? if cvp_deadlock: No faction seems able to secure a significant plurality of support within the party, so a compromise candidate is expected to emerge. ?]
+
+The vote for the party's leadership has begun.
+
+- @stegerwald
+- @lambach
+- @adenauer
+- @gereke
+- @treviranus
+- @compromise
+
+@stegerwald
+title: Adam Stegerwald, formerly of the <span style="color: #000000;">Center</span>, is elected, no longer an interim leader.
+subtitle: Stegerwald is relatively moderate, and his trade union roots are good news for our cooperation. - <span style="color: #000000;">Catholic Labor</span> Wing
+unavailable-subtitle: Stegerwald is seen as too friendly toward us, and the party needs a new face. - <span style="color: #000000;">Catholic Labor</span> Wing
+view-if: president != "Stegerwald"
+choose-if: stegerwald_unlock
+on-arrival: z_relation += 15; pro_republic += 5; ddp_relation += 5; dvp_relation += 5; lvp_relation += 5; workers_z += 5; unemployed_z += 3; workers_spd -= 3; workers_kpd -= 2; unemployed_spd -= 3; rural_z -= 4; old_middle_z -= 4; rural_dnf += 4; old_middle_dnf += 4; catholics_z += 8; cvp_leader = "Stegerwald"; cvp_left += 5; cvp_ideology = "Left"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/stegerwald.jpg
+
+Somewhat surprisingly, <span style="color: #000000;">Center</span> leader Adam Stegerwald is elected as the chairman of its successor party. This is largely attributed to the unified support from the various Christian labor unions and backing from former <span style="color: #000000;">Center</span> and Catholic politicians. However, he remains largely opposed by former <span style="color: #3E88B3;">**DNVP**</span> members due to his willingness to cooperate constructively with the <span style="color: #c00000;">**SPD**</span>.
+
+It was widely expected that, with the merger of the two parties, politicians like Stegerwald would shift to the left wing of the newly created party—and this has indeed proven true. His strongest supporters, aside from the trade unions, include the now strengthened <span style="color: #FF7F00;">Christian Left</span> faction, which will push for a paternalistic economic policy and greater cooperation with the <span style="color: #c00000;">socialists</span>. Stegerwald is also a committed <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>, a stance that has pushed some ardent monarchists over to the <span style="color: #003755;">**DNF**</span>.
+
+@lambach
+title: Walther Lambach, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: Lambach was apart of the <span style="color: #6D5298;">Christian Socialist</span> wing in the former <span style="color: #3E88B3;">DNVP</span>. - <span style="color: #6D5298;">Christian Socialist</span> Wing
+unavailable-subtitle: Lambach and his trade unions face significant animosity from the broader party, particularly the industrialist backers - <span style="color: #6D5298;">Christian Socialist</span> Wing.
+choose-if: lambach_unlock
+on-arrival: z_relation -= 5; pro_republic -= 5; ddp_relation += 8; dvp_relation += 8; lvp_relation += 8; workers_z += 10; unemployed_z += 5; workers_dnf -= 3; workers_nsdap -= 3; workers_spd -= 3; workers_kpd -= 2; unemployed_spd -= 3; unemployed_dnf -= 3; unemployed_nsdap -= 3; rural_z -= 10; new_middle_z += 4; new_middle_spd -= 4; old_middle_z -= 10; rural_dnf += 4; old_middle_dnf += 4; rural_dvp += 6; rural_lvp += 8; rural_ddp += 2; old_middle_dvp += 6; old_middle_ddp += 2; old_middle_lvp += 8; catholics_z -= 6; catholics_spd += 4; catholics_dvp += 2; catholics_lvp += 4; catholics_ddp += 2; cvp_leader = "Lambach"; cvp_right += 5; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/LambachWalther.jpg
+
+Somehow, the <span style="color: #6D5298;">Christian Socialist</span> wing, now diluted within a much larger party, has managed to elect one of their own as the leader of the <span style="color: #000000;">**[+ z_party_name +]**</span>. Walther Lambach, the writer of the Lambach article years ago[? if dnvp_leader == "Lambach":, and the most recent leader of the <span style="color: #3E88B3;">**DNVP**</span>?], has won the vote largely due to the unified support of the Christian labor unions, who strongly back his vision for a *Volksgemeinschaft*.
+
+More <span style="color: #c00000;">worker-friendly</span> policies have been added to the platform, such as expanding social welfare, increasing pensions, and implementing more progressive income taxes. They've even rejected austerity as a solution to Germany's current economic crisis, instead voicing support for public works. However, this has significantly strained industrial enthusiasm for the formation of the new party, and they have begun redirecting funds toward the <span style="color: #FFCC00;">liberals</span>.
+
+This, however, is not good news for us. <span style="color: #6D5298;">Christian Socialist</span> ideology is deeply rooted in antisemitism, racism, nationalism, and religiosity. If anything, we've noticed worsening relations with the <span style="color: #000000;">**[+ z_party_name +]**</span>, as they attempt to present a non-<span style="color: #9B0000;">Marxist</span> alternative to the workers.
+
+@adenauer
+title: Konrad Adenauer, formerly of the <span style="color: #000000;">Center</span>, is elected as their new leader.
+subtitle: Adenauer, a long-time advocate for 'leaving the tower' and Mayor of Cologne since the Republic's inception - <span style="color: #000000;">Catholic Center</span> Wing
+unavailable-subtitle: [? if stegerwald_unlock or lambach_unlock: Adenauer lacks the broad appeal needed, and the party prefers to back a Labor candidate instead. ?][? if not stegerwald_unlock and not lambach_unlock: Adenauer lacks the popular appeal needed for leadership, and the party prefers to back a more right-wing candidate instead. ?] - <span style="color: #000000;">Catholic Center</span> Wing
+view-if: president != "Adenauer"
+choose-if: adenauer_unlock
+on-arrival: pro_republic += 5; z_relation += 5; ddp_relation += 3; dvp_relation += 3; lvp_relation += 3; workers_z += 3; unemployed_z += 3; workers_dnf -= 1; workers_nsdap -= 2; unemployed_dnf -= 2; unemployed_nsdap -= 2; rural_z -= 3; new_middle_z += 3; new_middle_other -= 3; old_middle_z -= 5; rural_dnf += 3; old_middle_dnf += 3; catholics_z += 5; catholics_nsdap -= 3; catholics_dnf -= 2; cvp_leader = "Adenauer"; cvp_left += 3; cvp_ideology = "Left"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/adenauer.jpg
+
+# support losses are because he is a c*tholic
+
+Konrad Adenauer, the long-time Mayor of Cologne, has been elevated to the leadership of one of Germany's largest parties, which he strongly supported the formation of. Adenauer is committed to democratic principles and sits on the right wing of the former <span style="color: #000000;">Center</span>, without being tied to Christian labor. This has granted him the ability to rally a broad coalition of party leaders around his calm and stabilizing leadership against the more fringe politicians of the party.
+
+With his slogan 'No Experiments!', we do not expect any major changes to the party program under his leadership, fostering a sense among the people that the <span style="color: #000000;">**[+ z_party_name +]**</span> is a pole of stability that the German people can rally behind. In terms of our relationship with the <span style="color: #000000;">Christians</span>, Adenauer, being a former <span style="color: #000000;">Center</span> member, is relatively more friendly toward us than many others to his right. We can also count on the pressure from the <span style="color: #FF7F00;">Christian Left</span>, who, similar to the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s left wing historically, are powerless to enact changes to the left but are influential in preventing changes to the right.
+
+@gereke
+title: Günther Gereke, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: Gereke has significant influence over the agricultural and industrial establishment, being a key member of the RLB and a founder of another rural association. - <span style="color: #3E88B3;">National Conservative</span> and <span style="color: #385A38;">Agrarian</span> Wing
+unavailable-subtitle: A new face, but associated too much with the Westarp elements on the right-wing. - <span style="color: #3E88B3;">National Conservative</span> and <span style="color: #385A38;">Agrarian</span> Wing
+choose-if: gereke_unlock
+on-arrival: z_relation -= 15; cvp_right += 5; nationalism += 5; pro_republic -= 5; new_middle_z += 3; old_middle_z += 6; rural_z += 12; rural_other *= 0.3; rural_dnf -= 3; old_middle_dnf -= 5; new_middle_dnf -= 3; catholics_z -= 6; catholics_spd += 6; z_r += other_r*0.3; other_r = other_r*0.7; cvp_leader = "Gereke"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/gereke.jpg
+
+Günther Gereke, a lawyer and prominent politician from rural Germany, has been elected as the new leader of the <span style="color: #000000;">**[+ z_party_name +]**</span>. What makes him notable is that he is an <span style="color: #385A38;">agrarian</span> politician from west of the Elbe River, a leading reformist economic theorist, and someone with close ties to General Kurt von Schleicher. He bears similarities to Treviranus, though he is far less dogmatic in his beliefs.
+
+Thanks to Gereke’s strong relationship with the <span style="color: #7FCEB1;">**CNBLP**</span>, a rural special-interest party, he has successfully negotiated a merger of the declining party into the <span style="color: #000000;">**[+ z_party_name +]**</span>, though only a few officials remain in the effectively dead party. His support for a public works program has stemmed criticism from the labor factions, and his ability to unite the key interest groups on which the German Right depends on will help secure strong <span style="color: #3E88B3;">nationalist</span> backing for the party.
+
+Needless to say, this has not sat well with the <span style="color: #000000;">**[+ z_party_name +]**</span>’s Catholic wing, and has made cooperation within the party impossible for the foreseeable future.
+
+@treviranus
+title: Gottfried Treviranus, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: The leader of the <span style="color: #0087DC;">Volkskonservativ</span> movement, and an advocate for democratic principles. - <span style="color: #0087DC;">People's Conservatives</span> and <span style="color: #000099;">Catholic Right</span> Wing
+unavailable-subtitle: Treviranus has earned himself enemies to the right, and the Catholic portion of the party is reluctant to back him. - <span style="color: #0087DC;">People's Conservatives</span> and <span style="color: #000099;">Catholic Right</span> Wing
+choose-if: treviranus_unlock
+on-arrival: z_relation = 0 if z_relation < 0; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; nationalism += 3; pro_republic += 5; new_middle_z += 6; old_middle_z += 4; rural_z -= 4; rural_dnf += 4; new_middle_dvp -= 4; new_middle_lvp -= 4; new_middle_ddp -= 2; old_middle_dvp -= 4; old_middle_lvp -= 4; old_middle_ddp -= 2; new_middle_dnf += 2; old_middle_dnf += 4; catholics_z += 2; cvp_leader = "Treviranus"; cvp_ideology = "Moderate"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/Treviranus.jpg
+
+Gottfried Treviranus[? if dnvp_leader == "Treviranus":, the most recent leader of the <span style="color: #3E88B3;">**DNVP**</span>?], leader of the thriving <span style="color: #0087DC;">People's Conservative</span> movement, is seen as the ideal candidate for the first chairman of the <span style="color: #000000;">**[+ z_party_name +]**</span>. His <span style="color: #3E88B3;">nationalist</span> <span class="tooltip-text" title="that's me! the modman!">origin</span>, strong ties to key figures like Westarp on the right, and his careful cultivation of relations with the <span style="color: #000000;">Catholics</span> have earned him broad support for his leadership.
+
+With his control of the colossally sized <span style="color: #000000;">**[+ z_party_name +]**</span>, Treviranus has finally been able to mold it into the <span style="color: #0087DC;">Tory Democratic</span> party he has long envisioned. His extensive connections with Schleicher, German industry[? if president == "Hindenburg":, President Hindenburg?], and the bourgeois elite are expected to greatly aid his leadership ambitions.
+
+Despite his democratic leanings, the <span style="color: #000000;">[+ z_party_name +]</span> remains firmly opposed to <span style="color: #9B0000;">Marxism</span>, effectively ruling out any prospects of coalition with us.
+
+@compromise
+title: The vote has been deadlocked!
+subtitle: No candidate is able to gather a sufficient amount of votes.
+view-if: cvp_deadlock
+on-arrival: {!
+if (Q.democratic_points > Q.presidential_points) {
+    Q.democratic_points_lead = 1;
+    if (Q.tory_democratic_points >= Q.z_points) {
+        Q.tory_democratic_points_lead = 1;
+        Q.catholic_center_points_lead = 0;
+    } else if (Q.z_points > Q.tory_democratic_points) {
+        Q.tory_democratic_points_lead = 0;
+        Q.catholic_center_points_lead = 1;
+    }
+} else {
+    Q.democratic_points_lead = 0;
+}
+
+if (Q.presidential_points > Q.democratic_points) {
+    Q.presidential_points_lead = 1;
+    if (!Q.labor_right_points_lead) {
+        if (Q.conservative_right_points >= Q.labor_right_points && Q.conservative_right_points >= Q.agrarian_right_points) {
+            Q.conservative_right_points_lead = 1;
+            Q.agrarian_right_points_lead = 0;
+            Q.labor_right_points_lead = 0;
+        } else if (Q.labor_right_points >= Q.conservative_right_points && Q.labor_right_points >= Q.agrarian_right_points) {
+            Q.conservative_right_points_lead = 0;
+            Q.labor_right_points_lead = 1;
+            Q.agrarian_right_points_lead = 0;
+        } else if (Q.agrarian_right_points >= Q.conservative_right_points && Q.agrarian_right_points >= Q.labor_right_points) {
+            Q.conservative_right_points_lead = 0;
+            Q.labor_right_points_lead = 0;
+            Q.agrarian_right_points_lead = 1;
+        }
+    }
+} else {
+    Q.presidential_points_lead = 0;
+}
+
+if (Q.democratic_points_lead && Q.tory_democratic_points_lead) {
+    Q.goerdeler_unlock = 1;
+} else if (Q.democratic_points_lead && Q.catholic_center_points_lead) {
+    Q.bolz_unlock = 1;
+} else if (Q.presidential_points_lead && Q.conservative_right_points_lead) {
+    Q.westarp_unlock = 1;
+    if (Q.president == "Westarp") {
+        Q.westarp_unlock = 0;
+        Q.lejeune_jung_unlock = 1;
+    }
+} else if (Q.presidential_points_lead && !Q.conservative_right_points_lead) {
+    Q.lejeune_jung_unlock = 1;
+}
+
+if ((!Q.goerdeler_unlock && !Q.bolz_unlock && !Q.westarp_unlock && !Q.lejeune_jung_unlock || Q.z_votes - Q.bvp_votes < 20 || ((Q.year == 1931 && Q.month >= 11) && (Q.year == 1932 && Q.month == 1))) && Q.president != "Lettow-Vorbeck") {
+    if (!Q.goerdeler_unlock && !Q.bolz_unlock && !Q.westarp_unlock && !Q.lejeune_jung_unlock) {
+        Q.vorbeck_deadlock = 1;
+    } else if (Q.z_votes - Q.bvp_votes < 20) {
+        Q.vorbeck_decline = 1;
+    } else {
+        Q.vorbeck_presidential = 1;
+    }
+    Q.vorbeck_unlock = 1;
+    Q.westarp_unlock = 0;
+    Q.lejeune_jung_unlock = 0;
+    Q.bolz_unlock = 0;
+    Q.goerdeler_unlock = 0;
+}
+
+!}
+
+In the first few rounds of balloting, no candidate is able to rally a majority of the party behind themselves. With an impasse having settled, new compromise candidates have been proposed.
+
+<span style="color: #003755;">Far-Right Protestants</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): Marginal ?]
+
+<span style="color: #3E3B2D;">Far-Right Catholics</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 25): Marginal ?]
+
+<span style="color: #3E88B3;">National Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Westarp / Lejeune-Jung / Goerdeler - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead: Influential?][? if cvp_ideology != "Left" and conservative_right_points_lead: Powerful?]
+
+<span style="color: #385A38;">Agrarians</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Westarp - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead: Relevant?][? if cvp_ideology != "Left" and agrarian_right_points_lead: Influential?]
+<hr id="read-marker">
+<span style="color: #6D5298;">Christian Socialists</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Lettow-Vorbeck - [? if cvp_ideology == "Left" and not labor_points_lead: Marginal?][? if ((cvp_ideology != "Left" and not presidential_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): Limited?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and labor_points_lead: Influential?][? if cvp_ideology != "Left" and labor_right_points_lead: Powerful?]
+
+<span style="color: #330000;">Catholic Labor</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Bolz - [? if cvp_ideology == "Left" and labor_left_points_lead: Powerful?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: Influential?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: Limited?]
+<hr id="read-marker">
+<span style="color: #0087DC;">People's Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Goerdeler / Lettow-Vorbeck - [? if cvp_ideology == "Left" and democratic_points_lead: Dominant?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+
+<span style="color: #000099;">Catholic Right</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Lejeune-Jung / Bolz - [? if cvp_ideology == "Left" and democratic_points_lead: Influential?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Relevant?][? if cvp_ideology == "Right" and not democratic_points_lead: Limited?]
+<hr id="read-marker">
+<span style="color: #000000;">Catholic Center</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Bolz / Lejeune-Jung - [? if cvp_ideology == "Left" and democratic_points_lead: Powerful?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+
+<span style="color: #FF7F00;">Christian Left</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Bolz - [? if cvp_ideology == "Left" and labor_left_points_lead: Relevant?][? if cvp_ideology == "Left" and not labor_left_points_lead: Limited?][? if cvp_ideology != "Left": Marginal?]
+<hr id="read-marker">
+All the compromise candidates that have emerged are broadly acceptable to the majority of the party, but a final decision on which to elect has yet to be made. Retired war hero and Reichstag member Lettow-Vorbeck has been suggested as a unity candidate, but persuading the reluctant Lettow-Vorbeck to lead a political party would require far more than just factional support.
+
+- @bolz
+- @lejeune_jung
+- @goerdeler
+- @westarp
+- @vorbeck
+
+@bolz
+title: Eugen Bolz, formerly of the <span style="color: #000000;">Center</span>, is elected as their new leader.
+subtitle: Bolz is the current Minister-President of Württemberg, having governed harmoniously with Bazille's state <span style="color: #3E88B3;">**DNVP**</span> for the entire duration - <span style="color: #000099;">Catholic Right</span> Wing
+unavailable-subtitle: Bolz is already reluctant to give up his job, and without unified support behind him, he will stay out of national politics. - <span style="color: #000099;">Catholic Right</span> Wing
+choose-if: bolz_unlock
+on-arrival: z_relation = 0 if z_relation < 0; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; new_middle_z += 3; old_middle_z += 3; rural_z += 4; catholics_z += 5; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Bolz"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/bolz.jpg
+
+Minister-President of Württemberg Eugen Bolz has been promoted to the leadership of the national <span style="color: #000000;">**[+ z_party_name +]**</span>. Bolz has worked harmoniously with the respected Wilhelm Bazille, a conservative leader of the moderate Württemberg <span style="color: #3E88B3;">**DNVP**</span> since 1924, making him a natural choice as a compromise candidate. This has earned him nearly universal support within the party.
+
+However, Bolz's role as a compromise candidate has hindered his ability to effect significant change, as he must tread carefully to avoid alienating the factions that helped bring him to power. Bolz will attempt to bridge the confessional divides between Catholic and Protestant conservatives, with the party still divided along the lines of their party of <span class="tooltip-text" title="that's me! the modman!">origin</span>.
+
+Given Bolz's refusal to enter a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition in Württemberg back in 1928, viewing the <span style="color: #c00000;">**SPD**</span> as 'incapable of governing,' we do not expect much improvement in our relationship moving forward.
+
+@lejeune_jung
+title: Paul Lejeune-Jung, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: Major member of the former <span style="color: #3E88B3;">DNVP</span>'s Catholic wing, and aligned with Westarp's group. - <span style="color: #3E88B3;">National Conservative</span> Wing
+unavailable-subtitle: Despite his Catholic faith, he is unable to garner the expected support from <span style="color: #000000;">Center</span> and <span style="color: #3E88B3;">nationalist</span> politicians - <span style="color: #3E88B3;">National Conservative</span> Wing
+choose-if: lejeune_jung_unlock
+on-arrival: z_relation -= 5; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; new_middle_z += 3; old_middle_z += 3; rural_z += 3; catholics_z += 5; catholics_dnf -= 3; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Lejeune-Jung"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/lejeune_jung.jpg
+
+Paul Lejeune-Jung, leader of the <span style="color: #3E88B3;">**DNVP**</span>'s Catholic wing, and an advocate for closer ties to the <span style="color: #000000;">Center</span> has been elected as leader of a merger between the two. His Catholic faith has made him acceptable to former <span style="color: #000000;">Center</span> members, and his alignment with Westarp's faction has solidified <span style="color: #3E88B3;">nationalist</span> support.
+
+However, Lejeune-Jung's role as a compromise candidate has hindered his ability to effect significant change, as he must tread carefully to avoid alienating the factions that helped bring him to power. Lejeune-Jung will attempt to bridge the confessional divides between Catholic and Protestant conservatives, with the party still divided along the lines of their party of <span class="tooltip-text" title="that's me! the modman!">origin</span>.
+
+It goes without saying, this will make cooperation within the party impossible for the foreseeable future.
+
+@goerdeler
+title: Carl Goerdeler, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: Goerdeler is the Mayor of Leipzig, harbouring fiscally conservative views and a support of <span style="color: #808080;">monarchism</span>. - <span style="color: #0087DC;">People's Conservatives</span>
+unavailable-subtitle: Goerdeler is seen as too right-wing for the <span style="color: #0087DC;">Volkskonservativ</span> movement, who only begrudgingly supports his candidacy. - <span style="color: #0087DC;">People's Conservatives</span>
+choose-if: goerdeler_unlock
+on-arrival: z_relation -= 5; cvp_right += 3; z_relation -= 5; nationalism += 5; pro_republic -= 3; new_middle_z += 6; new_middle_dnf -= 4; old_middle_z += 6; old_middle_dnf -= 4; catholics_z -= 4; catholics_spd += 2; workers_z -= 4; unemployed_z -= 4; cvp_leader = "Goerdeler"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/goerdeler.jpg
+
+The Mayor of Leipzig Carl Goerdeler has been promoted to the leadership of the <span style="color: #000000;">**[+ z_party_name +]**</span>. Goerdeler is aligned more with Westarp than anything, but Treviranus is willing to give the mayor a go. Goerdeler is known for his strong support and position in Brüning's cabinet, and his fiscal conservatism has attracted support of key industrial backers.
+
+Goerdeler's role as a compromise candidate has hindered his ability to effect significant change, as he must tread carefully to avoid alienating the factions that helped bring him to power. I actually don't know what to write for this guy, his WW2 anti-Nazi plots aren't relevant at this time since he viewed Hitler as an enlightened dictator at this time. I guess he supports taming the Nazis I guess?
+
+It goes without saying, this will make cooperation within the party impossible for the foreseeable future.
+
+@westarp
+title: Kuno von Westarp, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: A long-time <span style="color: #3E88B3;">DNVP</span> stalwart, having prevented Hugenberg's takeover of the party in the past. - <span style="color: #3E88B3;">National Conservative</span> Wing
+unavailable-subtitle: Westarp is reluctant, and the party needs a new face. - <span style="color: #3E88B3;">National Conservative</span> Wing
+view-if: president != "Westarp"
+choose-if: westarp_unlock
+on-arrival: z_relation -= 10; cvp_right += 3; new_middle_z += 4; new_middle_dnf -= 4; old_middle_z += 4; old_middle_dnf -= 4; rural_z += 2; rural_dnf -= 2; catholics_z -= 2; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Westarp"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/Kuno_von_Westarp.jpg
+
+A key figure of the German Right since the Republic's inception, Kuno von Westarp has ascended to the leadership role of the colossal <span style="color: #000000;">Christian People's Party</span>—certainly a significant step up. His election was primarily driven by the unified support of the entire former <span style="color: #3E88B3;">nationalist</span> faction within the party.
+
+Westarp is highly experienced in managing internal dissent and is careful not to lean too heavily into any one particular wing of the party, aiming to avoid fracturing the organization. While the party program remains largely unchanged, there has been a noticeable increase in antisemitic and pro-monarchist rhetoric, as Westarp seeks to preserve the character of the now-defunct <span style="color: #3E88B3;">**DNVP**</span> within this new entity.
+
+It goes without saying, Westarp's leadership will make cooperation within the party impossible for the foreseeable future.
+
+@vorbeck
+title: War Hero Paul von Lettow-Vorbeck, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
+subtitle: Lettow-Vorbeck is reluctant to lead, but perhaps his war hero status can serve as a unifying force? - <span style="color: #3E88B3;">National Conservative</span> Wing
+unavailable-subtitle: Lettow-Vorbeck is reluctant to lead, and prefers his unglamorous life in the Reichstag. Unless he is convinced, of course. - <span style="color: #3E88B3;">National Conservative</span> Wing
+view-if: president != "Lettow-Vorbeck"
+choose-if: vorbeck_unlock
+on-arrival: z_relation -= 10; cvp_right += 3; pro_republic -= 6; nationalism += 8; new_middle_z += 12; new_middle_dnf -= 6; new_middle_nsdap -= 3; old_middle_z += 12; old_middle_dnf -= 6; old_middle_nsdap -= 3; rural_z += 6; rural_dnf -= 4; rural_nsdap -= 2; catholics_z += 4; catholics_dnf -= 2; workers_z += 3; workers_dnf -= 3; cvp_leader = "Lettow-Vorbeck"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
+face-image: img/portraits/lettowvorbeck.jpg
+
+Paul von Lettow-Vorbeck is a war hero renowned for his undefeated record and his successful guerrilla campaign in German East Africa, with victories that rival those of Hindenburg. Despite multiple attempts to involve him in German politics, he has remained largely inactive, serving as a member of the Reichstag elected under the <span style="color: #3E88B3;">**DNVP**</span>. However, the [? if vorbeck_deadlock: unending deadlock at the congress?][? if not vorbeck_deadlock and vorbeck_decline: drastic decline in the moderate right's vote share?][? if not vorbeck_deadlock and not vorbeck_decline and vorbeck_presidential: desire to utilize his character for a potential future election run?] has led to a growing number of factions rallying around his candidacy. The widespread popular support for him draws strong parallels to Hindenburg's own presidential candidacy declaration in 1925.
+
+Reluctantly, Lettow-Vorbeck has accepted the <span style="color: #000000;">**[+ z_party_name +]**</span>'s nomination as their next leader. However, he has little interest in managing the party’s internal affairs and has quietly delegated this responsibility to fellow conservatives like Westarp. Nonetheless, he remains the public face of the <span style="color: #000000;">**[+ z_party_name +]**</span> as chairman. The most crucial aspect of his election is his ability to inspire the German people to rally behind a Great War war hero once again, someone who embodies the image of stability and unity. Time will tell how long this popularity will last.
+
+It goes without saying, his election will make cooperation within the party impossible for the foreseeable future.

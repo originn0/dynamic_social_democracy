@@ -1,4 +1,5 @@
 title: Ending Slides
+view-if: (chancellor != "Hitler" and president != "Hitler" and president != "Göring") or rubicon_mini
 on-arrival: {!
 const toolsWrapper = document.getElementById('tools_wrapper');
 if (toolsWrapper) {
@@ -20,18 +21,31 @@ new-page: true
 
 A chapter in history closes.
 
+- @taming_lose
 - @dnef_win
 - @weimar_win
 - @weimar_mega_win
 - @civil_war_win
 - @civil_war_long
 
+@taming_lose
+title: The <span style="color: #7A3C00;">Nazi</span> Beast Tamed?
+subtitle: Ending 0.5
+view-if: rubicon_mini and not civil_war_seen and (chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring")
+new-page: true
+
+With the appointment of [+ chancellor +] and the passage of the Enabling Act, Germany is lost. Schleicher, increasingly sidelined by health issues, fades into irrelevance. Following[? if president == "Hindenburg":&nbsp;President Hindenburg's and?] his[? if president == "Hindenburg":&nbsp;own?] death, General Werner von Blomberg assumes the presidency, marking the end of the failed taming experiment.
+
+The bourgeois establishment that once collaborated with the <span style="color: #7A3C00;">Nazis</span> is purged en masse during the Night of the Long Knives and offer no serious resistance thereafter, aside from the failed Oster conspiracy in 1938 by former Schleicher loyalists.
+
+- @go_back
+
 @dnef_win
 title: The Perfect Dictatorship
 subtitle: Ending 1
 view-if: hammerstein_win and not civil_war_seen
-tags: event
 new-page: true
+audio: music/1930_1933/anthem.mp3
 
 During [+ president +]’s term as President, the hated <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> system is dismantled, and a new March Constitution is passed near-unanimously. The Reichstag is reduced to a rubber stamp for the regime. Germany formally adopts a presidential system, with both the Presidency and Chancellorship held by various <span style="color: #BFC8CC;">**DNEF**</span> members, who rise through bribes, patronage, and backroom deals. Corruption is endemic. Elections are stage-managed, dominated by fraud and manipulation.
 

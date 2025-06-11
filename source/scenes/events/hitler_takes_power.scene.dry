@@ -1,6 +1,6 @@
 title: Hitler takes power.
 subtitle: The beginning of the end.
-view-if: chancellor == "Hitler" or president == "Hitler" or chancellor_party == "NSDAP"
+view-if: (chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring" or president == "Frick" or chancellor_party == "NSDAP") and (not rubicon_mini or president == "Hitler" or president == "Göring" or president == "Frick")
 on-arrival: spd_in_government = 0
 tags: event
 new-page: true
@@ -12,7 +12,7 @@ Hitler has promised a campaign of revenge against the <span style="color: #c0000
 What are we to do now?
 
 - @fight: We will fight on the streets to prevent Hitler from taking power.
-- @give_up: We will vote against the nazis in the Reichstag.
+- @give_up: We will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
 
 
 @fight
@@ -20,7 +20,7 @@ What are we to do now?
 Do we realize that this means civil war, against the full force of the state?
 
 - @civil_war: Yes.
-- @give_up: We are not ready for war. Instead, we will vote against the nazis in the Reichstag.
+- @give_up: We are not ready for war. Instead, we will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
 
 @give_up
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 1; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; prussia_leader = "Papen" if president != "Hitler"; prussia_leader = "Goring" if president = "Hitler"

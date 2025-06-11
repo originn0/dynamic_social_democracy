@@ -1179,6 +1179,8 @@ if (Q.kvp_formed && Q.lvp_formed) {
 
 Q.hitler_right_coalition = parseFloat((Q.z_r + Q.nsdap_r).toFixed(1));
 
+Q.goerdeler_right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.lvp_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r).toFixed(1));
+
 if (Q.lvp_formed) {
     Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + (Q.lvp_r / 3) + Q.sapd_r).toFixed(1));
 } else {
@@ -1370,6 +1372,15 @@ if (Q.kpo_formed && Q.kpo_r) {
 }
 
 if (Q.sapd_formed && Q.sapd_r) {
+    data.push({
+        "id": "sapd",
+        "legend": "SAPD",
+        "name": "SAPD",
+        "seats": Math.round(Q.sapd_r * 5),
+    });
+}
+
+if (Q.sapd_r && Q.sapd_formed) {
     data.push({
         "id": "sapd",
         "legend": "SAPD",
@@ -2134,13 +2145,15 @@ The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][?
 title: <span style="color: #7A3C00;">Far</span>-[? if not dnf_formed:<span style="color: #3E88B3;">right</span>?][? if dnf_formed:<span style="color: #003755;">right</span>?] Coalition
 subtitle: <span style="color: #7A3C00;">**NSDAP**</span> + [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span> ?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span> ?] ([+ far_right_coalition +]%)
 view-if: far_right_coalition >= 50
+unavailable-subtitle: Rosenfeld would never allow this.
+choose-if: president != "Rosenfeld"
 go-to: far_right_win if (year >= 1932 or nsdap_r >= 44) and president != "Braun"; far_right_fail if (year < 1932 and nsdap_r < 44) and president != "Braun"; far_right_braun if president == "Braun"
 priority: 2
 
 There are enough votes for the <span style="color: #7A3C00;">Nazis</span> and the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span> ?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span> ?] to form a coalition. [+ nsdap_leader +] has made his participation in government contingent on being appointed chancellor. It is up to President [+ president +] to decide. As this is a parliamentary cabinet, [+ president +] is more likely to appoint [+ nsdap_chancellor +].
 
 @far_right_win
-on-arrival: chancellor = nsdap_leader; chancellor_party = "NSDAP"
+on-arrival: chancellor = nsdap_chancellor; chancellor_party = "NSDAP"
 
 [? if president == "Hindenburg" : President Hindenburg's camarilla ?][? if president == "Braun" : President Braun somehow ?] has decided that [+ nsdap_leader +] must be chancellor [? if president == "Hindenburg": , and the aging president accepts their recommendations. ?][? if president == "Braun" : because it is what the constitution would stipulate. ?]
 
@@ -2437,7 +2450,7 @@ go-to: no_majority_bruning_toleration
 title: There is no clear governing majority.
 view-if: (((weimar_coalition < 50 or weimar_coalition_failed == 1 or ddp_relation < 30 or z_relation < 30 or lvp_relation < 30) and (grand_coalition < 50 or grand_coalition_failed == 1) or (grand_coalition >= 50 and ((dvp_ideology == "Right" and black_thursday_seen == 1) or not dvp_exist)) and president == "Hindenburg" and far_right_coalition < 50 and ((right_coalition < 50) or (right_coalition >= 50 and dnvp_ideology == "Radical") and center_right_coalition < 50 or (center_right_coalition >= 50 and ((dnvp_ideology == "Radical") or (year = 1929 and month >= 7))))) or rubicon or cvp_formed) and dnef_r < 50
 on-arrival: no_majority_elections += 1
-go-to: no_majority_bruning if (chancellor = "Brüning" or chancellor = "Wirth") and president == "Hindenburg"; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher" and not schleicher_post; no_majority_schleicher_2 if chancellor = "Schleicher" and schleicher_post; no_majority_trev if chancellor == "Treviranus"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
+go-to: no_majority_bruning if (chancellor = "Brüning" or chancellor = "Wirth") and president == "Hindenburg"; no_majority_goerdeler_2 if chancellor == "Goerdeler" and not rubicon_mini_trigger; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher" and not schleicher_post; no_majority_schleicher_2 if chancellor = "Schleicher" and schleicher_post; no_majority_trev if chancellor == "Treviranus"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
 
 
 # either new elections, or Hindenburg appoints either Brüning, Papen, Schleicher, or Hitler.
@@ -3431,6 +3444,9 @@ By refusing to join the grand coalition or tolerating it, we essentially throw t
 
 
 @new_elections
+go-to: new_elections_2 if bruning_coalition >= 50 or year < 1930 or president != "Hindenburg" or rubicon_mini_leave; no_majority_goerdeler if bruning_coalition < 50 and year >= 1930 and president == "Hindenburg" and chancellor != "Goerdeler" and not rubicon_mini_leave; no_majority_goerdeler_2 if bruning_coalition < 50 and year >= 1930 and president == "Hindenburg" and chancellor == "Goerdeler" and not rubicon_mini_leave
+
+@new_elections_2
 on-arrival: {!
 Q.next_election_month = Q.month + 3;
 Q.next_election_time = Q.time + 3;
@@ -3478,6 +3494,54 @@ There is no path to a workable Reichstag majority or minority government. The ne
 
 The people's faith in democracy is shaken by this ordeal. Of course, the <span style="color: #7A3C00;">Nazis</span> are exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
 
+@no_majority_goerdeler
+on-arrival: {!
+Q.chancellor = "Goerdeler";
+Q.chancellor_party = "I";
+Q.dvp_right += 3;
+Q.lvp_right += 3;
+Q.ddp_right += 1;
+Q.ddp_cohesion -= 2;
+Q.pro_republic -= 5;
+!}
+face-image: img/portraits/goerdeler.jpg
+
+The prospect of new elections has proved daunting for the bourgeois parties—and for President Hindenburg himself. Disillusioned with Brüning, Hindenburg and his Camarilla have cast him aside and appointed Carl Friedrich Goerdeler, the Mayor of Leipzig, as Chancellor.
+
+With [+ nsdap_leader +] and Hugenberg refusing to join any reformed Brüning cabinet, Hindenburg has sidestepped the issue by turning to the staunchly conservative Goerdeler, who renounced his affiliation with the <span style="color: #3E88B3;">**DNVP**</span> to accept the post.
+
+Upon taking office, however, Goerdeler has yet to secure formal support from the <span style="color: #7A3C00;">**NSDAP**</span> or [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?]—support he needs, given that the <span style="color: #c00000;">**SPD**</span>[? if not lvp_formed:&nbsp;and likely the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?] will not back his government.
+
+The coming months will reveal whether Goerdeler can govern—and if the <span style="color: #7A3C00;">**NSDAP**</span> is truly serious about entering government.
+
+@no_majority_goerdeler_2
+on-arrival: {!
+Q.chancellor = Q.nsdap_chancellor;
+Q.chancellor_party = "NSDAP";
+
+Q.rubicon_mini = 1;
+Q.rubicon_mini_trigger = 1;
+!}
+face-image: img/portraits/hitler2.jpg
+go-to: no_majority_goerdeler_3 if z_ideology == "Right"; no_majority_goerdeler_3_alt if z_ideology == "Left"
+
+@no_majority_goerdeler_3
+on-arrival: {!
+Q.z_in_gov_mini = 1;
+!}
+
+Despite the prevailing belief that the <span style="color: #7A3C00;">Nazis</span> have peaked, they remain a dominant force in the Reichstag. Under Schleicher’s influence—having now betrayed Goerdeler—President Hindenburg has appointed [+ nsdap_chancellor +] as Chancellor. The cabinet remains mostly unchanged, save for Wilhelm Frick taking over the Interior Ministry.
+
+Schleicher sees this as the only viable path forward. [+ nsdap_leader +] continues to pursue an all-or-nothing strategy, even after the election setback. Schleicher also believes he can shape cabinet policy from within, having already "convinced" Groener to resign and cleared the way for his own appointment as Defense Minister.
+
+@no_majority_goerdeler_3_alt
+on-arrival: {!
+Q.z_in_gov_mini = 0;
+!}
+
+Despite the prevailing belief that the <span style="color: #7A3C00;">Nazis</span> have peaked, they remain a dominant force in the Reichstag. Under Schleicher’s influence—having now betrayed Goerdeler—President Hindenburg has appointed [+ nsdap_chancellor +] as Chancellor. However, [+ z_leader +], staunchly opposed to serving under [+ nsdap_chancellor +] as Chancellor, has withdrawn from the government and will vote against it in any confidence motion.
+
+Schleicher sees this as the only viable path forward. [+ nsdap_leader +] continues to pursue an all-or-nothing strategy, even after the election setback. Schleicher also believes he can shape cabinet policy from within, having already "convinced" Groener to resign and cleared the way for his own appointment as Defense Minister.
 
 @toleration_bruning
 view-if: dnvp_ideology == "Radical" or dnvp_defect or cvp_formed or (year = 1929 and month >= 7)

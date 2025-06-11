@@ -1,0 +1,99 @@
+title: <span style="color: #C0A054;">**DVP**</span> Party Congress
+subtitle: Luther resigns from his party positions to accept the presidency.
+view-if: president == "Luther" and dvp_leader == "Luther" and not lvp_formed and dvp_exist
+on-arrival: {!
+if (Q.dvp_relation < 35) Q.dvp_right += 3;
+if (Q.dvp_relation >= 60) Q.dvp_left += 3;
+if (Q.in_grand_coalition) Q.dvp_left += 2;
+if (Q.liberal_parliament) Q.dvp_left += 2;
+Q.dvp_right += 4;
+
+if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 4))) {
+    Q.dvp_ideology = "Right"
+} else if (Q.dvp_left > (Q.dvp_right*1.5) || (Q.dvp_left > (Q.dvp_right + 4))) {
+    Q.dvp_ideology = "Left"
+} else {
+    Q.dvp_ideology = "Moderate"
+}
+
+if ((Q.pro_republic >= 80 && Q.dvp_ideology == "Left") && Q.dvp_reform && Q.dnvp_leader != "Lambach") Q.thiel_unlock = 1;
+if ((Q.pro_republic < 80 || Q.dvp_ideology != "Left") && Q.dvp_reform && Q.dnvp_leader != "Lambach") Q.glatzel_unlock = 1;
+if (!Q.glatzel_unlock && !Q.thiel_unlock && Q.dvp_ideology == "Right") Q.hugo_unlock = 1;
+if ((Q.dvp_ideology == "Moderate" || Q.dvp_ideology == "Left") && !Q.thiel_unlock && !Q.glatzel_unlock) Q.kardorff_unlock = 1;
+
+if (!Q.kardorff_unlock && !Q.thiel_unlock && !Q.glatzel_unlock && !Q.hugo_unlock) Q.kardorff_unlock = 1;
+!}
+max-visits: 1
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/dvp_poster.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+new-page: true
+
+= <span style="color: #C0A054;">**DVP**</span> Party Congress
+
+With Luther elected president, he naturally cannot continue serving as the <span style="color: #C0A054;">**DVP**</span>'s chairman. A party congress is convened to select his successor. This marks the first time Germany has elected a president from the political middle, and optimism within the party is running high.
+
+In contention is <span style="color: #C0A054;">**DVP**</span> veteran and parliamentarian Siegfried von Kardorff—a conventional politician endorsed by Luther and expected to continue his moderate course of supporting Bürgerblocks while keeping the door open to cooperation with the <span style="color: #c00000;">**SPD**</span>. Also in the running are Otto Thiel and Frank Glatzel, both prominent figures within the DHV, a white-collar union that has long played a role in shaping <span style="color: #C0A054;">**DVP**</span> policy—though they likely lack the influence to carry one of their own to the chairmanship.
+
+Meanwhile, the <span style="color: #C0A054;">**DVP**</span>'s right wing—despite previous setbacks—remains very much alive. Their candidate is Otto Hugo, a co-founder of the party and a lobbyist for Ruhr heavy industry. Ideologically, he closely aligns with Scholz, maintaining a staunch and irreconcilable opposition to any cooperation with the <span style="color: #c00000;">**SPD**</span>.
+
+- @thiel: Otto Thiel is elected!
+- @glatzel: Frank Glatzel is elected!
+- @kardorff: Siegfried von Kardorff is elected!
+- @hugo: Otto Hugo is elected.
+
+@thiel
+subtitle: Thiel is a controversial unionist within the party, being more left wing than Glatzel.
+unavailable-subtitle: [? if not glatzel_unlock: The workers have no power within the <span style="color: #C0A054;">DVP</span>, and the wider party won't back a trade unionist. ?][? if glatzel_unlock: Thiel is still considered too left-wing for the party, and many prefer to back his colleague Glatzel instead. ?]
+choose-if: thiel_unlock
+on-arrival: dvp_leader = "Thiel"; bourgeois_cooperation -= 3; dvp_left += 10; coalition_dissent -= 1 if in_grand_coalition; dvp_relation += 15; workers_dvp += 6; workers_dnvp -= 2; workers_other -= 2; workers_spd -= 2; new_middle_dvp += 6; new_middle_nsdap -= 3; new_middle_other -= 3; catholics_dvp += 3; catholics_other -= 3; old_middle_dvp -= 4; old_middle_dnvp += 2; old_middle_kvp += 2 if kvp_formed; rural_dvp -= 4; rural_dnvp += 2; rural_dnvp += 2 if dnvp_ideology == "Moderate"; rural_kvp += 2 if kvp_formed; pro_republic += 5; ddp_left += 3; ddp_relation += 5
+face-image: img/portraits/thiel.jpg
+
+Surprisingly, Otto Thiel has been elected as the new leader of the <span style="color: #C0A054;">**DVP**</span>! Compared to his colleague Glatzel, Thiel leans further left within the party’s unionist faction. He has even voiced support for increased welfare spending, arguing that austerity measures would only deepen the hardships faced by the people. In his push for *Volksgemeinschaft*, he has begun introducing more labor-friendly policies into the party’s platform, backing collective bargaining rights and worker protections.
+
+As expected, the remaining industrialists within the <span style="color: #C0A054;">**DVP**</span> are outraged—even those with sympathies toward the late Stresemann. This has led to a dramatic shift in the party’s financial backing, as funding from big business dwindles and is replaced by donations and dues from the DHV and its affiliated members. [? if in_grand_coalition: We have noticed a significant decrease in coalition tensions. ?]
+
+@glatzel
+subtitle: Glatzel, being a former member of the <span style="color: #3E88B3;">**DNVP**</span> as well, has shown nationalist sympathies.
+unavailable-subtitle: [? if not thiel_unlock: The workers have no power within the <span style="color: #C0A054;">DVP</span>, and the wider party won't back a trade unionist. ?][? if thiel_unlock: Glatzel's views are too right-wing and nationalistic for the party, particularly given the current national mood. ?]
+choose-if: glatzel_unlock
+on-arrival: dvp_leader = "Glatzel"; bourgeois_cooperation += 1; dvp_right += 3; dvp_relation -= 5; workers_dvp += 6; workers_dnvp -= 2; workers_other -= 2; workers_nsdap -= 2; new_middle_dvp += 6; new_middle_nsdap -= 4; new_middle_other -= 2; catholics_dvp += 4; catholics_other -= 2; catholics_dnvp -= 2; old_middle_dvp += 2; old_middle_dnvp -= 2; rural_dvp -= 4; rural_dnvp += 2; rural_dnvp += 2 if dnvp_ideology == "Moderate"; rural_kvp += 2 if kvp_formed
+face-image: img/portraits/glatzel.jpg
+
+Frank Glatzel is elected to become the new leader of the <span style="color: #C0A054;">**DVP**</span>, being more nationalist and right-wing than his colleague Thiel. He stands for a "New Nationalism," a solidarity among all classes, to defend the country's "<span class="tooltip-text" title="Lebensraum">living space</span>" and to create freedom for the people. In his push for *Volksgemeinschaft*, to reduce the conflict between the classes, he has begun including more nationalistic and corporatist elements into the party platform.
+
+As expected, the remaining industrialists within the <span style="color: #C0A054;">**DVP**</span> are worried, as the party begins to shift towards including the demands of the worker. This has led to a dramatic shift in the party’s financial backing, as funding from big business dwindles and is replaced by donations and dues from the DHV and its affiliated members. His <span class="tooltip-text" title="good mod">dynamic</span> leadership should be closely watched.
+
+@kardorff
+subtitle: Kardorff is able to secure the continuation of Luther's leadership.
+unavailable-subtitle: [? if hugo_unlock: The right-industrial faction blocks Kardorff’s ascension, ensuring the party veers further to the right. ?][? if thiel_unlock or glatzel_unlock: The party prefers a new and dynamic leader, preferably not one with closeness to Luther. ?]
+choose-if: kardorff_unlock
+on-arrival: dvp_leader = "Kardorff"; dvp_left += 3 if in_grand_coalition; liberal_cooperation += 3; bourgeois_cooperation += 3; dvp_relation += 5 if in_grand_coalition; new_middle_dvp += 4; catholics_dvp += 2; rural_dvp += 2; old_middle_dvp += 2; pro_republic += 3
+face-image: img/portraits/kardorff.jpg
+
+Kardorff is elected to succeed Luther as the leader of the <span style="color: #C0A054;">**DVP**</span>. He is expected to be a continuation of Luther's leadership, being another Stresemann follower and supporter of constructive cooperation with the <span style="color: #c00000;">**SPD**</span>. [? if ui0_seen: He even rallied his parliamentary faction to save our Grand Coalition back in 1929.?]
+
+[? if bruning_time: He is also one of the strongest supporters of the Brüning government, frequently coming into conflict with the right of the party over support for it. ?]
+
+@hugo
+subtitle: Otto Hugo aims to consolidate party control in the hands of the industrialists.
+unavailable-subtitle: The right-industrial faction of <span style='color: #C0A054;'>DVP</span> lacks the required influence.
+choose-if: hugo_unlock
+on-arrival: old_dvp_leader = dvp_leader; dvp_leader = "Hugo"; dvp_right += 10; dvp_relation -= 25; old_middle_ddp += 2; new_middle_ddp += 6; rural_ddp += 4; old_middle_dvp -= 2; new_middle_dvp -= 6; rural_dvp -= 4; pro_republic -= 5; ddp_cohesion -= 1; liberal_cooperation -= 5; bourgeois_cooperation -= 5; ddp_right += 5; ddp_cohesion -= 3; ddp_relation -= 10
+face-image: img/portraits/hugo.jpg
+
+Otto Hugo has unexpectedly won the vote to replace [+ old_dvp_leader +] as chairman of the <span style="color: #C0A054;">DVP</span>. Backed by unified support from the party’s right wing and endorsed by Ernst Scholz, he narrowly defeated Kardorff.
+
+His election marks a decisive and likely irreversible shift to the right[? if dvp_reform:, even repealing Stresemann’s reforms to the party’s internal structure?], as Hugo moves to ensure industrialist dominance over the <span style="color: #C0A054;">**DVP**</span>’s decision-making apparatus. He holds openly hostile views toward parties to the left of the <span style="color: #C0A054;">**DVP**</span>, and prefers alignment with the <span style="color: #3E88B3;">**DNVP**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span> over cooperation with us.
+
+Unsurprisingly, Hugo’s industrial ties and lack of public appeal—especially in contrast to Luther—have caused the <span style="color: #C0A054;">**DVP**</span> to suffer in the polls. The primary beneficiary is the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, which is shifting rightward to capture the disaffected middle-class vote.

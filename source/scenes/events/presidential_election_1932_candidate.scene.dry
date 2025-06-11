@@ -74,16 +74,25 @@ if ((Q.dvp_leader == "Luther" || Q.lvp_leader == "Luther") && Q.pro_republic >= 
 if (((Q.dstp_formed || Q.ddp_relation < 40 || Q.pro_republic < 40) && Q.ddp_ideology != "Left" && !Q.lvp_formed || Q.lvp_formed && Q.lvp_ideology != "Left" && Q.pro_republic < 50) && Q.liberal_vote >= 8 && Q.bourgeois_votes >= 35) Q.gessler_unlock_pres = 1;
 if (Q.stegerwald_path) Q.adenauer_unlock_pres = 1;
 if (!Q.stegerwald_path && Q.z_relation >= 30 && Q.chancellor != "Brüning" && Q.bourgeois_votes >= 40) Q.bruning_unlock_pres = 1;
-if (Q.dnvp_ideology == "Moderate" && Q.bourgeois_votes < 35 || Q.kvp_formed && Q.bourgeois_votes < 35) Q.vorbeck_unlock_pres = 1;
+if (!Q.stegerwald_path && !Q.bruning_unlock_pres && !Q.adenauer_unlock_pres) Q.stegerwald_unlock_pres = 1;
+if (Q.dnvp_ideology == "Moderate" && Q.bourgeois_votes < 35 || Q.kvp_formed && Q.bourgeois_votes < 35 || Q.cvp_formed && Q.cvp_ideology == "Right") Q.vorbeck_unlock_pres = 1;
 if (Q.dnvp_ideology == "Moderate" && Q.bourgeois_votes >= 35) Q.westarp_unlock_pres = 1;
 
-if (!Q.jarres_unlock_pres && !Q.gessler_unlock_pres && !Q.adenauer_unlock_pres && !Q.bruning_unlock_pres && !Q.vorbeck_unlock_pres && !Q.westarp_unlock_pres) {
+if (!Q.jarres_unlock_pres && !Q.gessler_unlock_pres && !Q.adenauer_unlock_pres && !Q.bruning_unlock_pres && !Q.stegerwald_unlock_pres && !Q.vorbeck_unlock_pres && !Q.westarp_unlock_pres) {
     Q.vorbeck_unlock_pres = 1;
     Q.vorbeck_fallback = 1;
 }
 
 if (Q.westarp_unlock_pres && Q.vorbeck_unlock_pres) {
     Q.westarp_unlock_pres = 0;
+}
+
+if (Q.vorbeck_unlock_pres && Q.cvp_formed) {
+    Q.westarp_unlock_pres = 0;
+    Q.jarres_unlock_pres = 0;
+    Q.adenauer_unlock_pres = 0;
+    Q.bruning_unlock_pres = 0;
+    Q.stegerwald_unlock_pres = 0;
 }
 
 let count = 0;
@@ -107,6 +116,7 @@ if (Q.luther_unlock_pres) count2++;
 if (Q.gessler_unlock_pres) count2++;
 if (Q.adenauer_unlock_pres) count2++;
 if (Q.bruning_unlock_pres) count2++;
+if (Q.stegerwald_unlock_pres) count2++;
 if (Q.vorbeck_unlock_pres) count2++;
 if (Q.westarp_unlock_pres) count2++;
 
@@ -181,6 +191,19 @@ if (Q.reactionary_candidate_1932_count > 0) {
         Q.reactionary_candidate_1932_count -= 1;
     }
 
+    if (Q.stegerwald_unlock_pres) {
+        Q.stegerwald_run = 1; 
+        if (Q.reactionary_candidate_1932) {
+            Q.secondary_reactionary_candidate_1932 = "Stegerwald";
+            Q.secondary_reactionary_candidate_1932_disp = "Adam Stegerwald";
+        }
+        if (!Q.reactionary_candidate_1932) {
+            Q.reactionary_candidate_1932 = "Stegerwald";
+            Q.reactionary_candidate_1932_disp = "Adam Stegerwald";
+        }
+        Q.reactionary_candidate_1932_count -= 1;
+    }
+
     if (Q.vorbeck_unlock_pres) {
         Q.vorbeck_run = 1; 
         if (Q.reactionary_candidate_1932) {
@@ -211,7 +234,7 @@ if (Q.reactionary_candidate_1932_count > 0) {
         Q.liberal_reactionary_candidate_1932 = 1;
         Q.liberal_reactionary_candidate_1932_name = Q.reactionary_candidate_1932;
     }
-    if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning") {
+    if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
         Q.center_reactionary_candidate_1932 = 1;
         Q.center_reactionary_candidate_1932_name = Q.reactionary_candidate_1932;
     }
@@ -220,7 +243,7 @@ if (Q.reactionary_candidate_1932_count > 0) {
         Q.liberal_reactionary_candidate_1932 = 1;
         Q.liberal_reactionary_candidate_1932_name = Q.secondary_reactionary_candidate_1932;
     }
-    if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning") {
+    if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
         Q.center_reactionary_candidate_1932 = 1;
         Q.center_reactionary_candidate_1932_name = Q.secondary_reactionary_candidate_1932;
     }
@@ -241,18 +264,26 @@ if (Q.secondary_reactionary_candidate_1932) {
         Q.kvp_choice = Q.secondary_reactionary_candidate_1932;
         Q.other_choice = Q.secondary_reactionary_candidate_1932;
     } else if (Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
+        if (Q.cvp_formed) Q.z_choice = Q.reactionary_candidate_1932;
         Q.dnvp_choice = Q.secondary_reactionary_candidate_1932;
         Q.kvp_choice = Q.secondary_reactionary_candidate_1932;
         if (!Q.liberal_reactionary_candidate_1932) Q.dvp_choice = Q.secondary_reactionary_candidate_1932;
         Q.other_choice = Q.secondary_reactionary_candidate_1932;
     } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
         Q.z_choice = Q.secondary_reactionary_candidate_1932;
-        Q.ddp_choice = Q.secondary_reactionary_candidate_1932;
+        if (!Q.liberal_reactionary_candidate_1932) Q.ddp_choice = Q.secondary_reactionary_candidate_1932;
         if (!Q.lvp_defect && !Q.liberal_reactionary_candidate_1932) Q.lvp_choice = Q.secondary_reactionary_candidate_1932;
         if (!Q.dvp_defect && !Q.liberal_reactionary_candidate_1932) Q.dvp_choice = Q.secondary_reactionary_candidate_1932;
         if (Q.reactionary_candidate_1932_ideology = "Liberal") Q.other_choice = Q.secondary_reactionary_candidate_1932;
     } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
         Q.z_choice = Q.secondary_reactionary_candidate_1932;
+        if (Q.liberal_reactionary_candidate_1932) Q.kvp_choice = Q.secondary_reactionary_candidate_1932;
+        if (Q.liberal_reactionary_candidate_1932) Q.dnvp_choice = Q.secondary_reactionary_candidate_1932;
+    } else if (Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
+        Q.z_choice = Q.secondary_reactionary_candidate_1932;
+        if (Q.liberal_reactionary_candidate_1932) Q.other_choice = Q.secondary_reactionary_candidate_1932;
+        if (Q.liberal_reactionary_candidate_1932) Q.kvp_choice = Q.secondary_reactionary_candidate_1932;
+        if (Q.liberal_reactionary_candidate_1932) Q.dnvp_choice = Q.secondary_reactionary_candidate_1932;
     } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
         Q.ddp_choice = Q.secondary_reactionary_candidate_1932;
         Q.lvp_choice = Q.secondary_reactionary_candidate_1932;
@@ -274,7 +305,7 @@ if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == 
     Q.reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
     Q.reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning") {
+} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
     Q.reactionary_candidate_1932_ideology = "Centrist";
 }
 
@@ -282,7 +313,7 @@ if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionar
     Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
     Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning") {
+} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
     Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
 }
 
@@ -301,6 +332,7 @@ With local elections fast approaching, many parties have opted not to field thei
 - @gessler
 - @adenauer
 - @bruning
+- @stegerwald
 - @vorbeck
 - @westarp
 
@@ -376,12 +408,28 @@ go-to: reactionary_candidates if reactionary_candidate_1932_count_2 > 0
 
 Heinrich Brüning, a politician we know all too well, is running for the most powerful position in the Reich. He has a long history, tracing back to the Christian Trade Unions and his mentorship under Stegerwald, eventually rising to become the leader of the party's parliamentary group and its candidate for Chancellor. Despite his record of favoring austerity and deflationary policies in response to the Great Depression, he is a flexible figure—intelligent enough to recognize the dangers of the "taming strategy," and not entirely opposed to governing alongside the <span style="color: #c00000;">**SPD**</span>.
 
-His candidacy is supported by the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+His candidacy is supported by the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. 
+
+- @harzburg: We await the decision of the Harzburg Front.
+
+@stegerwald
+title: Adam Stegerwald, on the [? if not cvp_formed: right wing?][? if cvp_formed: left wing?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and a prominent Christian trade unionist.
+view-if: stegerwald_unlock_pres
+subtitle: Witty subtitle here.
+on-arrival: reactionary_candidate_1932_count_2 -= 1
+unavailable-subtitle: Words.
+face-image: img/portraits/stegerwald.jpg
+max-visits: 1
+go-to: reactionary_candidates if reactionary_candidate_1932_count_2 > 0
+
+Adam Stegerwald, situated on the right wing of the <span style="color: #000000;">Center Party</span>, and having advocated for it to "leave the tower" and open up the party to Protestants, has made himself a controversial figure among many. However, perhaps a man with his ideals—of a <span style="color: #000000;">Christian</span>, <span style="color: #586593;">democratic</span>, <span style="color: #000000;">German</span>, and <span style="color: #c00000;">social</span> Germany—can be the one to unite it. Despite his background as a unionist, he would rather work with the political Right than the <span style="color: #c00000;">**SPD**</span> if possible.
+
+His candidacy is supported by the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. [? if kvp_formed or dnvp_ideology == "Moderate": He may attract some crossover support from the <span style="color: #3E88B3;">nationalists</span>. ?]
 
 - @harzburg: We await the decision of the Harzburg Front.
 
 @vorbeck
-title: Paul von Lettow-Vorbeck, war hero of the Great War and [? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?] member.
+title: Paul von Lettow-Vorbeck, war hero of the Great War and [? if not cvp_formed: [? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?]?][? if cvp_formed: <span style="color: #000000;">**CVP**</span>?] member.
 view-if: vorbeck_unlock_pres
 subtitle: Lettow-Vorbeck is reluctant to lead, but perhaps his war hero status can unite the nation once more?
 on-arrival: reactionary_candidate_1932_count_2 -= 1
@@ -394,7 +442,7 @@ By some miracle for the German Right, they have managed to persuade Paul von Let
 
 How Lettow-Vorbeck would govern remains uncertain. It is highly likely that, much like Hindenburg, a camarilla of close advisors would shape his decisions from behind the scenes.
 
-His candidacy is backed by the [? if not vorbeck_fallback: [? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?], along with a disparate coalition of minor bourgeois parties. ?][? if vorbeck_fallback: entirety of the Bürgerblock parties, who view him as their collective last hope at retaining power. ?]
+His candidacy is backed by the [? if not vorbeck_fallback: [? if not cvp_formed: [? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?]?][? if cvp_formed: <span style="color: #000000;">**CVP**</span>?], along with a disparate coalition of minor bourgeois parties. ?][? if vorbeck_fallback: entirety of the Bürgerblock parties, who view him as their collective last hope at retaining power. ?]
 
 - @harzburg: We await the decision of the Harzburg Front.
 
@@ -516,8 +564,8 @@ So, what's our choice?
 - @run_rosenfeld: Run Kurt Rosenfeld of the [? if not left_split: <span style="color: #c00000;">**SPD**</span>?][? if left_split: <span style="color: #9B0000;">**SAPD**</span>?].
 - @run_eckener: Run Hugo Eckener as a unity candidate.
 - @support_hindenburg: Support <span style="color: #808080;">Hindenburg</span>.
-- @support_reactionary: Support [? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Lettow-Vorbeck" or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Lettow-Vorbeck" or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning": <span style="color: #000000;">**[+ reactionary_candidate_1932 +]**</span>?].
-- @support_reactionary_2: Support [? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932 +]**</span>?].
+- @support_reactionary: Support [? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932 +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932 +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932 +]**</span>?].
+- @support_reactionary_2: Support [? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932 +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald" or (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932 +]**</span>?].
 - @support_thalmann: Support [+ communist_candidate_1932_disp +] of the <span style="color: #700000;">**KPD**</span>.
 - @abstain: Abstain from endorsing any candidate.
 
@@ -542,7 +590,7 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 
 [? if dvp_support_spd == 1 and spd_campaign: - <span style="color: #C0A054;">**DVP**</span> ?]
 
-[? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Lettow-Vorbeck" or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Lettow-Vorbeck" or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning": <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
+[? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
 
 [? if spd_support_reactionary and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
 
@@ -558,11 +606,11 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 
 [? if (kvp_choice == reactionary_candidate_1932 or hindenburg_run) and kvp_formed and reactionary_candidate_1932: - <span style="color: #0087DC;">**KVP**</span> ?]
 
-[? if (dnvp_choice == reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate": - <span style="color: #3E88B3;">**DNVP**</span> ?]
+[? if (dnvp_choice == reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate" and not cvp_formed: - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
 [? if (other_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - **Others** ?]
 
-[? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
+[? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald" or (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
 
 [? if spd_support_reactionary_2 and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
 
@@ -578,7 +626,7 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 
 [? if (kvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and kvp_formed and secondary_reactionary_candidate_1932: - <span style="color: #0087DC;">**KVP**</span> ?]
 
-[? if (dnvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate" and secondary_reactionary_candidate_1932: - <span style="color: #3E88B3;">**DNVP**</span> ?]
+[? if (dnvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate" and not cvp_formed and secondary_reactionary_candidate_1932: - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
 [? if (other_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - **Others** ?]
 
@@ -922,6 +970,15 @@ if (Q.lib_drop_out && Q.z_drop_out && (Q.dnvp_ideology == "Moderate" || Q.kvp_fo
             Q.secondary_reactionary_candidate_1932 = 0;
             Q.secondary_reactionary_candidate_1932_disp = 0;
         }
+        if (Q.reactionary_candidate_1932 == "Stegerwald") {
+            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        } else if (Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
+            Q.secondary_reactionary_candidate_1932 = 0;
+            Q.secondary_reactionary_candidate_1932_disp = 0;
+        }
         Q.z_choice = Q.reactionary_candidate_1932;
         Q.ddp_choice = Q.reactionary_candidate_1932;
         Q.dvp_choice = Q.reactionary_candidate_1932;
@@ -936,7 +993,7 @@ if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == 
     Q.reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
     Q.reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning") {
+} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
     Q.reactionary_candidate_1932_ideology = "Centrist";
 }
 
@@ -944,7 +1001,7 @@ if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionar
     Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
 } else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
     Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning") {
+} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
     Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
 }
 
@@ -1021,7 +1078,7 @@ if (Q.bruning_time) {
 go-to: z_failed if z_support_spd = 0 or (z_support_spd == 2 and historical_mode); z_success if z_support_spd = 1; z_partial if z_support_spd = 2 and not historical_mode
 max-visits: 1
 
-We remind the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] leaders of <span style="color: #808080;">Hindenburg</span>'s anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. [? if in_weimar_coalition_prussia: We also remind them of the successes they've had as part of our <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition in Prussia with [+ spd_candidate_1932_disp +], and our support for the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Wilhelm Marx in the 1925 presidential election?][? if not in_weimar_coalition_prussia: We also remind them of our support for the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Wilhelm Marx in the 1925 presidential election?]. [? if bruning_time: Unfortunately, Hindenburg's support for Brüning's government has left them with little room to oppose the very president sustaining his cabinet. ?]
+We remind the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] leaders of [? if hindenburg_run: <span style="color: #808080;">Hindenburg</span>'s anti-Catholicism, and try to convince them that Hindenburg's path will eventually lead to Hitler. ?][? if not hindenburg_run: our genuine <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> and democratic credentials. ?] [? if in_weimar_coalition_prussia: We also remind them of the successes they've had as part of our <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition in Prussia with [+ spd_candidate_1932_disp +], and our support for the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Wilhelm Marx in the 1925 presidential election?][? if not in_weimar_coalition_prussia: We also remind them of our support for the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Wilhelm Marx in the 1925 presidential election?]. [? if bruning_time: Unfortunately, Hindenburg's support for Brüning's government has left them with little room to oppose the very president sustaining his cabinet. ?]
 
 @z_success
 on-arrival: hindenburg_angry_bruning += 50 if bruning_time
@@ -1038,7 +1095,7 @@ The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][?
 
 @give_up_prussia
 subtitle: Braun will resign.
-on-arrival: z_support_spd = 1; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; reformist_dissent += 10; centrist_dissent += 10; labor_dissent += 10; left_dissent += 5; workers_spd -= 5; new_middle_spd -= 5; rural_spd -= 3; braun_resign = 1; hindenburg_angry_bruning += 30 if bruning_time
+on-arrival: z_support_spd = 1; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; reformist_dissent += 10; center_dissent += 10; labor_dissent += 10; left_dissent += 5; workers_spd -= 5; new_middle_spd -= 5; rural_spd -= 3; braun_resign = 1; hindenburg_angry_bruning += 30 if bruning_time
 go-to: endorsements_braun
 
 Ironic, considering that seven years ago, we brokered a deal for Wilhelm Marx to resign in favor of Braun in exchange for our support for him in the presidential elections. Anyhow, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is now convinced to support Braun over Hindenburg.

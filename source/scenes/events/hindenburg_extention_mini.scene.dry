@@ -1,0 +1,35 @@
+title: Resolution to Extend Hindenburg's Term
+subtitle: The [+ chancellor +] cabinet attempts to push through an extension...
+new-page: true
+on-arrival: {!
+Q.hindenburg_extension_seen = 1;
+if (!Q.z_in_gov_mini) Q.goerdeler_right_coalition -= (Q.z_r - Q.bvp_r);
+!}
+tags: event
+view-if: year = 1932 and (month == 1 or month == 2) and rubicon_mini
+priority: 10
+face-image: img/portraits/Hindenburg.jpg
+max-visits: 1
+
+= Resolution to Extend Hindenburg's Term
+
+The <span style="color: #7A3C00;">**NSDAP**</span> seeks to amend the constitution to extend Hindenburg’s term by two years. But with a two-thirds majority required, they may need our votes to pull it off.
+
+After witnessing Hindenburg try to appoint [+ chancellor +] of all people, why in hell would we lift a finger to help him? The choice is obvious.
+
+- @oppose_resolution: We will vote against the resolution, insisting that an election be held in accordance with the constitution.
+
+@oppose_resolution
+go-to: hindenburg_extended if goerdeler_right_coalition + nsdap_r >= 66.6; hindenburg_failed if goerdeler_right_coalition + nsdap_r < 66.6
+
+Of course, we will oppose this undemocratic act—the people should decide whether Hindenburg receives another term or not. 
+
+@hindenburg_extended
+on-arrival: hindenburg_term_extended = 1
+
+Despite opposition from the <span style="color: #c00000;">left-wing</span> parties, the resolution passes with the support of all parties to our right[? if not lvp_formed:, except for the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if not z_in_gov_mini: and <span style="color: #000000;">Center Party</span>?]?][? if lvp_formed and not z_in_gov_mini: except for the <span style="color: #000000;">Center Party</span>?].
+
+@hindenburg_failed
+on-arrival: hindenburg_term_extended = 0
+
+We’ve successfully defeated the motion in the Reichstag—elections will be held! The result has also sown dissent within the governing coalition.

@@ -1,0 +1,32 @@
+title: <span style="color: #3E88B3;">**DNVP**</span> Congress
+subtitle: Westarp has resigned from his position to accept the presidency.
+view-if: president == "Westarp" and dnvp_leader == "Westarp"
+max-visits: 1
+tags: event
+face-image: img/dnvp_poster_2.jpg
+new-page: true
+
+= <span style="color: #3E88B3;">**DNVP**</span> Congress
+
+With Westarp elected president, he can no longer serve as party chairman. An emergency party congress is therefore convened to choose his successor. Optimism runs high within the party—one of their own now holds the presidency, and they possess the power to exclude the <span style="color: #c00000;">**SPD**</span> from government positions entirely.
+
+Paul Lejeune-Jung, leader of the <span style="color: #3E88B3;">**DNVP**</span>’s small Catholic wing, is Westarp’s chosen successor. His main rival is Walter von Keudell, with links to <span style="color: #0087DC;">People's Conservative</span> faction and a former Interior Minister under Marx. Both are widely regarded as unifying figures and share a similar ideological outlook; the outcome of the vote is unlikely to significantly alter the party’s overall direction.
+
+- @lejeune_jung: Paul Lejeune-Jung is elected.
+- @keudell: Walter von Keudell is elected.
+
+@lejeune_jung
+choose-if: stegerwald_path or dnvp_votes < 10 or pro_republic < 60
+unavailable-subtitle: The <span style="color: #3E88B3;">DNVP</span> believes it is time for younger blood to take the helm.
+on-arrival: dnvp_leader = "Lejeune-Jung"; catholics_dnvp += 6; catholics_z -= 4; old_middle_dnvp -= 2; rural_dnvp -= 2
+face-image: img/portraits/lejeune_jung.jpg
+
+Lejeune-Jung has, as expected, won the election with Westarp’s blessing, securing a comfortable majority. He is anticipated to continue Westarp’s decision-making style while working to broaden the <span style="color: #3E88B3;">**DNVP**</span>’s appeal among conservative Catholics of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]. Their first high-profile defector is Franz von Papen, an agrarian noble from the far right of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?], who brings a cohort of allies with him.
+
+@keudell
+choose-if: not (stegerwald_path or dnvp_votes < 10 or pro_republic < 60)
+unavailable-subtitle: The <span style="color: #3E88B3;">DNVP</span> believes that electing a conservative Catholic will strengthen their electoral prospects.
+on-arrival: dnvp_leader = "Keudell"; new_middle_dnvp += 6; new_middle_dvp -= 4; new_middle_lvp -= 4; old_middle_dnvp -= 2; rural_dnvp -= 2
+face-image: img/portraits/keudell.jpg
+
+Von Keudell, long considered the underdog, has won the election for the <span style="color: #3E88B3;">**DNVP**</span> chairmanship. Branding himself as the voice of the "young generation," he criticized the party's entrenched ties to Ruhr industrialists and elites as liabilities that alienate younger voters. While his ascent irritates some within the party establishment, he is nonetheless expected to continue Westarp’s general decision-making style—albeit with a stronger focus on broadening support among the emerging urban middle class.

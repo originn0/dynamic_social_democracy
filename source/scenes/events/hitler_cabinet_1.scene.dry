@@ -1,0 +1,143 @@
+title: The Enabling Act
+view-if: chancellor_party == "NSDAP" and rubicon_mini_time == 2
+new-page: true
+tags: event
+max-visits: 1
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/reichstag.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+= The Enabling Act
+
+As the Reichstag gets back to business once again, the bill on debate is not one of no-confidence, but rather an "Enabling Act" proposed by [+ nsdap_chancellor +] and the <span style="color: #7A3C00;">**NSDAP**</span>. With Schleicher's blessing, the cabinet believes that certain elements of the constitution will have to suspended in order to crush the <span style="color: #700000;">**Communists**</span> and Reichsbanner. 
+
+However, this is not something the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] can easily swallow...
+
+- @hitler
+- @hitler_2
+
+@hitler
+title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] votes in favor.
+view-if: (z_in_gov_mini and pro_republic < 30) or far_right_coalition >= 50
+
+[+ z_leader +] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. It proves meaningless—[+ chancellor +] never intended to honor them.
+
+Hitler has promised a campaign of revenge against the <span style="color: #c00000;">socialists</span>, and the <span style="color: #7A3C00;">Nazis</span> have already spilled much blood on the streets. In his published manifesto, he promises a campaign of <span style="color: #7e0000;">**unspeakable**</span> <span style="color: #3f0000;">**horror**</span> against our <span style="color: #005EB8;">Jews</span>, and endless wars of violent expansion that will ruin all of Europe.
+
+What are we to do now?
+
+- @fight: We will fight on the streets to prevent Hitler from taking power.
+- @give_up: We will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+
+@fight
+
+Do we realize that this means civil war, against the full force of the state?
+
+- @civil_war: Yes.
+- @give_up: We are not ready for war. Instead, we will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+
+@give_up
+
+Speeches are made. Votes are held. Bullets fly in the streets. Some <span style="color: #c00000;">socialists</span> are killed or jailed. Others flee the country. What can votes even do at this juncture?
+
+The Reichstag is burned, ostensibly by a foreign <span style="color: #700000;">communist</span>. In the wake, the <span style="color: #7A3C00;">Nazis</span> pass decrees giving them unlimited power. They, combined with the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>?], will win a majority at the next elections.
+
+Germany is lost.
+
+- @game_over: Game over.
+
+@hitler_2
+title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] votes against!
+view-if: (not z_in_gov_mini or pro_republic >= 30) and far_right_coalition < 50
+on-arrival: rubicon_mini = 0; rubicon_mini_leave = 1
+
+[+ z_leader +] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. [+ z_leader +] is able to see through these lies, and whips the party's parliamentary delegation to vote against the Enabling Act. 
+
+Schleicher and [+ chancellor +] sees this as a betrayal, but what are going to do about it? Hindenburg is the real one in charge here. And speaking of him, he now believes that the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]’s refusal to support [+ chancellor +] has only deepened his impatience. Disillusioned, Hindenburg no longer sees [+ chancellor +]'s supposed ambition of becoming a parliamentary chancellor as credible.
+
+- @hitler_3
+
+@hitler_3
+title: [+ chancellor +] refuses to resign!
+
+In an act of defiance to President Hindenburg, Chancellor [+ chancellor +] has simply refused to acknowledge the president's power to dismiss the incumbent chancellor. The <span style="color: #7A3C00;">**SA**</span> mobilize on the streets, and things could get bloody.
+
+What are we to do now?
+
+- @fight: We will fight on the streets to prevent Hitler from retaining power.
+- @give_up_2: We will trust in the president's abilities.
+
+@give_up_2
+go-to: give_up_3 if sa_force < 50; give_up_4 if sa_force >= 50
+
+The President may be on our side, but the <span style="color: #7A3C00;">**SA**</span> can simply intimidate their way around him.
+
+@give_up_3
+on-arrival: {!
+Q.next_election_month = Q.month + 3;
+Q.next_election_time = Q.time + 3;
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year = Q.year + 1;
+} else {
+    Q.next_election_year = Q.year;
+}
+
+Q.pro_republic += 15;
+
+Q.workers_nsdap -= 6;
+Q.unemployed_nsdap -= 6;
+Q.workers_kpd += 3;
+Q.unemployed_kpd += 3;
+Q.workers_spd += 3;
+Q.unemployed_spd += 3;
+
+Q.sa_strength *= 0.8;
+
+Q.chancellor = "Brüning";
+Q.chancellor_party = "Z";
+
+Q.foreign_minister_party = "DVP";
+if (Q.lvp_formed) Q.foreign_minister_party = "LVP";
+Q.interior_minister_party = "Z";
+Q.justice_minister_party = "I";
+Q.labor_minister_party = "Z";
+Q.reichswehr_minister_party = "I";
+Q.economic_minister_party = Q.ddp_name;
+if (Q.lvp_formed) Q.economic_minister_party = "LVP";
+Q.finance_minister_party = "DVP";
+if (Q.lvp_formed) Q.finance_minister_party = "LVP";
+Q.agriculture_minister_party = "Z";
+
+Q.dvp_left += 4;
+Q.ddp_left += 2;
+Q.lvp_left += 4;
+Q.bourgeois_cooperation += 3;
+Q.liberal_cooperation += 5;
+
+Q.rubicon_mini = 0;
+Q.rubicon_mini_leave = 1;
+!}
+
+The Reichswehr has placed more trust in [+ president +] than in Chancellor [+ chancellor +], and under this influence, [+ chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
+
+Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected as interim chancellor. The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+
+@give_up_4
+
+Unfortunately, President Hindenburg is forced to concede defeat after a war game orchestrated by Schleicher reveals that the Reichswehr and Police cannot prevail in a civil war against the <span style="color: #7A3C00;">**SA**</span> and other paramilitary forces.
+
+Reduced to little more than a figurehead, Hindenburg remains in office—signing off on every decree, fully aware that any resistance would plunge his beloved nation into civil war.
+
+Germany is lost.
+
+- @game_over: Game over.

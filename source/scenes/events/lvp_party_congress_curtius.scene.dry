@@ -164,7 +164,7 @@ title: The vote has been deadlocked!
 subtitle: No candidate is able to gather a sufficient amount of votes.
 view-if: lvp_deadlock
 on-arrival: {!
-if ((Q.dnvp_leader == "Lambach" || Q.workers_spd_normalized < 40 || Q.unions_independent) || Q.new_middle_lvp_normalized >= 50 || Q.nationalism >= 55) Q.glatzel_lvp_unlock = 1;
+if (((Q.workers_spd_normalized < 40 || Q.unions_independent) || Q.new_middle_lvp_normalized >= 50 || Q.nationalism >= 55) && Q.dnvp_leader != "Lambach") Q.glatzel_lvp_unlock = 1;
 if ((Q.nationalism >= 60) && Q.womens_rights >= 4) Q.baumer_lvp_unlock = 1;
 if (((Q.lvp_ideology == "Left" || Q.lvp_relation >= 50) || (Q.new_middle_lvp_normalized + Q.old_middle_lvp_normalized >= 65)) && Q.confronting_antisemitism >= 1 && Q.stolper_program_adopted) Q.stolper_lvp_unlock = 1;
 if (Q.baumer_lvp_unlock) {
@@ -198,7 +198,7 @@ face-image: img/portraits/glatzel.jpg
 
 Frank Glatzel, a trade unionist affiliated with the conservative white-collar union, the DHV, has been elected the new leader of the <span style="color: #FFCC00;">**LVP**</span>. He advocates for a "New Nationalism," emphasizing solidarity among all classes to defend the country's "<span class="tooltip-text" title="Lebensraum">living space</span>" and to foster freedom for the people. In his push for *Volksgemeinschaft*, aimed at reducing class conflict, he has incorporated more nationalistic and corporatist elements into the party platform. This vision gained him the support of nationalists and Stresemannites within the <span style="color: #FFCC00;">**LVP**</span>, with the paramilitary group "Young German Order" even backing his leadership bid.
 
-As expected, this shift has caused concern among the remaining industrialists in the <span style="color: #FFCC00;">**LVP**</span>, as the party moves away from its traditional sole focus on middle-class interests. This has resulted in a significant change in the party’s financial backing, with funding from big business dwindling and being replaced by donations and newly established dues. His <span class="tooltip-text" title="good mod">dynamic</span> leadership should be closely watched. [? if dnvp_leader == "Lambach": Interestingly, alongside Lambach, yet another party traditionally aligned with heavy industry and big business has now elected a DHV unionist as its leader. ?]
+As expected, this shift has caused concern among the remaining industrialists in the <span style="color: #FFCC00;">**LVP**</span>, as the party moves away from its traditional sole focus on middle-class interests. This has resulted in a significant change in the party’s financial backing, with funding from big business dwindling and being replaced by donations and newly established dues. His <span class="tooltip-text" title="good mod">dynamic</span> leadership should be closely watched.
 
 @kardorff
 title: Siegfried von Kardorff is elected!

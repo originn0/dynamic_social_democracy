@@ -1,0 +1,103 @@
+title: [+ chancellor +] is Sacked!
+view-if: chancellor_party == "NSDAP" and rubicon_mini and president != "Hindenburg" and president != "Hitler" and president != "Göring" and president != "Frick"
+new-page: true
+tags: event
+max-visits: 1
+
+= [+ chancellor +] is Sacked
+
+The newly elected president, [+ president +], holds little sympathy for [+ chancellor +] or his party, and has compelled his resignation as Chancellor. The <span style="color: #7A3C00;">**NSDAP**</span>, however, refuses to yield—denouncing the move as “anti-democratic,” insisting that [+ chancellor +] is still the head of government, and openly threatening armed resistance.
+
+What are we to do now?
+
+- @fight: We will fight on the streets to prevent Hitler from retaining power.
+- @give_up: We will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+
+@fight
+
+Do we realize that this means civil war, against the full force of the state?
+
+- @civil_war: Yes.
+- @give_up: We are not ready for war. Instead, we will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+
+@give_up
+go-to: give_up_1 if president_ideology != "Left" or reichswehr_loyalty > 0.2; give_up_2 if (president_ideology == "Left" and reichswehr_loyalty <= 0.2)
+
+The President is on our side, but the Reichswehr remains divided.
+
+@give_up_1
+on-arrival: {!
+Q.next_election_month = Q.month + 3;
+Q.next_election_time = Q.time + 3;
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year = Q.year + 1;
+} else {
+    Q.next_election_year = Q.year;
+}
+
+Q.pro_republic += 15;
+
+Q.workers_nsdap -= 6;
+Q.unemployed_nsdap -= 6;
+Q.workers_kpd += 3;
+Q.unemployed_kpd += 3;
+Q.workers_spd += 3;
+Q.unemployed_spd += 3;
+
+Q.sa_strength *= 0.8;
+
+Q.chancellor = "Brüning";
+Q.chancellor_party = "Z";
+
+Q.foreign_minister_party = "DVP";
+if (Q.lvp_formed) Q.foreign_minister_party = "LVP";
+Q.interior_minister_party = "Z";
+Q.justice_minister_party = "I";
+Q.labor_minister_party = "Z";
+Q.reichswehr_minister_party = "I";
+Q.economic_minister_party = Q.ddp_name;
+if (Q.lvp_formed) Q.economic_minister_party = "LVP";
+Q.finance_minister_party = "DVP";
+if (Q.lvp_formed) Q.finance_minister_party = "LVP";
+Q.agriculture_minister_party = "Z";
+
+if (Q.president_ideology == "Left") {
+    Q.chancellor = "Wels"; 
+    Q.chancellor_party = "SPD";
+    Q.spd_caretaker = 1;
+    Q.foreign_minister_party = "I"; 
+    Q.interior_minister_party = "I"; 
+    Q.justice_minister_party = "I"; 
+    Q.labor_minister_party = "I"; 
+    Q.reichswehr_minister_party = "I"; 
+    Q.economic_minister_party = "I"; 
+    Q.finance_minister_party = "I"; 
+    Q.agriculture_minister_party = "I";
+}
+
+Q.dvp_left += 4;
+Q.ddp_left += 2;
+Q.lvp_left += 4;
+Q.bourgeois_cooperation += 3;
+Q.liberal_cooperation += 5;
+
+Q.rubicon_mini = 0;
+Q.rubicon_mini_leave = 1;
+!}
+
+Still, they place more trust in [+ president +] than in Chancellor [+ chancellor +], and under this influence, [+ chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
+
+[? if chancellor == "Brüning": Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is appointed as interim chancellor. ?][? if chancellor == "Wels": Otto Wels of the <span style="color: #c00000;">**SPD**</span> is selected as appointed chancellor. ?]
+
+The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+
+@give_up_2
+
+Unfortunately, the President’s left-wing leanings make him an unacceptable figure to the <span style="color: #808080;">reactionary</span> strongholds of the state. The Reichswehr refuses to take his side over that of [+ chancellor +]. Despite holding the highest office in the land, the President finds himself powerless, outmaneuvered by [+ chancellor +].
+
+Eventually, he is ousted through legally questionable means, and new elections are held under the watchful eye of <span style="color: #7A3C00;">**SA**</span> troopers—securing Hitler’s rise to absolute power.
+
+Germany is lost.
+
+- @game_over: Game over.
