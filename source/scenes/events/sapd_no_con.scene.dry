@@ -1,0 +1,62 @@
+title: The SAPD raises a vote of no confidence!
+subtitle: The SAPD moves to bring down the government.
+view-if: ((spd_in_government == 1 and in_pop_front != 1) or spd_toleration == 1) and sapd_formed == 1 and month == 3 and year == 1930
+on-arrival: {!
+Q.sapd_relations -= 10; 
+Q.unemployed_sapd += 3; 
+Q.unemployed_kpd -= 1.5; 
+Q.unemployed_nsdap -= 1.5;
+Q.bruning_coalition -= Q.sapd_r;
+Q.weimar_majority = 0;
+Q.grand_majority = 0;
+Q.neo_weimar_majority = 0;
+if (Q.lvp_formed == 1) {
+  if (Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r >= 49.5) {
+    Q.weimar_majority = 1;
+  }
+  if (Q.spd_r + Q.lvp_r + Q.z_r >= 49.5) {
+    Q.grand_majority = 1;
+  }
+  if (Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r >= 50) {
+    Q.neo_weimar_majority = 1;
+  }
+} else {
+  if (Q.spd_r + Q.ddp_r + Q.z_r - Q.bvp_r >= 49.5) {
+    Q.weimar_majority = 1;
+  }
+  if (Q.spd_r + Q.ddp_r + Q.dvp_r + Q.z_r >= 49.5) {
+    Q.grand_majority = 1;
+  }
+  if (Q.spd_r + Q.ddp_r + Q.dvp_r + Q.z_r + Q.other_r >= 50) {
+    Q.neo_weimar_majority = 1;
+  }
+}
+!}
+new-page: true
+max-visits: 1
+
+As one of its first actions, the SAPD has decided to abandon their support for the government. Their deputies have raised a no confidence motion against the government. 
+
+- @pass_bruning: The Reichstag Votes...
+- @pass: The Reichstag Votes...
+- @fail: The Reichstag Votes...
+
+@pass_bruning
+view-if: bruning_coalition < 50
+
+
+With the SAPD voting against the government, the [+ chancellor +] Cabinet falls.
+
+New elections are scheduled for May. The SAPD is expected to gain, as are the party of the extremes.
+
+@pass
+view-if: (in_weimar_coalition and weimar_majority == 0) or (in_grand_coalition and grand_majority == 0) or (in_neo_weimar and neo_weimar == 0)
+go-to: election_1928.coalition_menu
+
+The SAPD has voted against our government, bringing it down. Hindenburg will attempt to find a new governing coalition. If one is not found, he is likely to call new elections.
+
+
+@fail
+view-if: (in_weimar_coalition and weimar_majority == 1) or (in_grand_coalition and grand_majority == 1) or (in_neo_weimar and neo_weimar == 1)
+
+Thankfully, the vote of no confidence fails. The government is secure. For now.

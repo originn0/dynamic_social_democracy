@@ -28,7 +28,7 @@ Meanwhile, moderates and reformists draw up proposals for a limited plan of job 
 
 @support_centrist
 subtitle: Let the depression play itself out.
-on-arrival: center_strength += 5; center_dissent -= 5; labor_dissent += 10; wtb_support -= 1; left_dissent += 10;
+on-arrival: center_strength += 5; center_dissent -= 5; labor_dissent += 10; wtb_support -= 1; left_dissent += 10; soviet_relations += 20;
 
 Woytinsky and the trade unions vehemently criticize the centrists for their policy. The workers are starving; are we going to callously abandon them and side with bourgeois austerity? On the other hand, the centrists criticize Woytinsky for promising the workers false hope; their position is that nothing can be done to alleviate the depression. They also speak of the fear of another round of hyperinflation that may result from deficit spending.
 
@@ -39,7 +39,7 @@ subtitle: Call for increased public works and fiscal stimulus.
 unavailable-subtitle: The Labor faction is not strong enough.
 choose-if: labor_strength >= left_strength and labor_strength >= center_strength
 view-if: wtb_concept
-on-arrival: center_dissent += 10; left_dissent += 5; labor_strength += 5; wtb_support += 1; wtb_points += 10
+on-arrival: center_dissent += 10; left_dissent += 5; labor_strength += 5; wtb_support += 1; wtb_points += 10; soviet_relations += 25;
 
 Our support of the WTB plan alienates the orthodox Marxists of the Centrist faction, and faces both opposition and support from a variety of sources across the spectrum. Leftists argue that the plan is flawed because it leaves capitalism intact, while some reformists are cautiously optimistic.
 
@@ -48,7 +48,7 @@ We have not yet convinced the party to formally adopt the plan. More work needs 
 @support_labor_pre
 subtitle: Call for welfare spending and emergency relief for the workers.
 view-if: not wtb_concept
-on-arrival: center_dissent += 5; left_dissent += 5; labor_strength += 5; labor_dissent -= 5; wtb_support += 1
+on-arrival: center_dissent += 5; left_dissent += 5; labor_strength += 5; labor_dissent -= 5; wtb_support += 1; soviet_relations += 25;
 
 The Labor faction hasn't come up with a concrete solution to our economic woes yet, but has called for increased welfare spending in light of the rise in unemployment. Perhaps supporting their efforts will encourage a real solution to the crisis to be introduced.
 
@@ -74,7 +74,7 @@ With our hard work, we have convinced the majority of the party to adopt the <sp
 subtitle: Call for a limited program of job creation without deficit spending.
 unavailable-subtitle: The Reformist faction is not strong enough.
 choose-if: reformist_strength >= left_strength and reformist_strength >= center_strength
-on-arrival: moderate_plan_support += 1; reformist_strength += 8; reformist_dissent -= 5; left_dissent += 6; labor_dissent += 5
+on-arrival: moderate_plan_support += 1; reformist_strength += 8; reformist_dissent -= 5; left_dissent += 6; labor_dissent += 5; soviet_relations += 20;
 go-to: adopt_moderate if moderate_plan_support >= 3; support_moderate_progress if moderate_plan_support < 3
 
 @support_moderate_progress
@@ -84,7 +84,7 @@ We attempt to convince the party to support a moderate program of job creation w
 We have not yet adopted the plan. More work needs to be done.
 
 @adopt_moderate
-on-arrival: reformist_strength += 10; reformist_dissent -= 10; left_dissent += 8; labor_dissent += 6; moderate_plan_adopted = 1; economic_plan = 2; coalition_dissent -= 1 if unemployed > 15; z_relation += 5;
+on-arrival: reformist_strength += 10; reformist_dissent -= 10; left_dissent += 8; labor_dissent += 6; moderate_plan_adopted = 1; economic_plan = 2; coalition_dissent -= 1 if unemployed > 15; z_relation += 5; soviet_relations += 20;
 
 With our hard work, we have convinced the majority of the party to adopt the moderate job creation plan! [? if spd_in_government == 1 : We can begin implementing the plan as soon as possible, as long as we have the Economic or Finance ministries. ?]
 
