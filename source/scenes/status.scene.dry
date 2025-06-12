@@ -65,7 +65,7 @@ Reichstag composition:
 [? if z_party_name != "CVP": <span class="tooltip-text" title="Center Party + Bavarian People's Party"><span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span></span>?][? if z_party_name == "CVP": <span class="tooltip-text" title="Christian People's Party + Bavarian People's Party"><span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span></span>?]: [+ z_r +]%
 # 1928: 10, 1930: 13
 <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>: [+ kpd_r +]%
-[? if kpo_formed and sapd_r > 0: <span class="tooltip-text" title="Communist Party of Germany (Opposition)" style="color: #C43988;">**KPD(O)**</span>: [+ sapd_r +]% ?]
+[? if kpo_formed and kpo_r > 0: <span class="tooltip-text" title="Communist Party of Germany (Opposition)" style="color: #C43988;">**KPD(O)**</span>: [+ kpo_r +]% ?]
 # 1928: 5, 1930: 4 (as DStP)
 [? if lvp_formed: <span class="tooltip-text" title="Liberal People's Party" style="color: #FFCC00;">**LVP**</span>: [+ lvp_r +]% ?]
 [? if (not lvp_formed or not ddp_name) : [? if not ddp_name:<span class="tooltip-text" title="German Democratic Party" style="color: #D3C24D;">**DDP**</span>?][? if ddp_name = "DDP":<span class="tooltip-text" title="German Democratic Party" style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if ddp_name = "DStP":<span class="tooltip-text" title="German State Party" style="color: #D3C24D;">**[+ ddp_name +]**</span>?]: [+ ddp_r +]% ?]
