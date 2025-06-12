@@ -76,11 +76,12 @@ go-to: center_op if not spd_in_government and chancellor != "Brüning" and ((cha
 
 @sapd
 subtitle: -1 resources
-view-if: sapd_formed
+view-if: sapd_formed or kpo_formed
 choose-if: resources >= 1
-on-arrival: resources -= 1; sapd_relation += 4; kpo_relation += 4;
+on-arrival: resources -= 1; sapd_relation += 8; kpo_relation += 8;
 
 [? if sapd_formed: Relations are improved with the <span style="color: #9B0000;">**SAPD**</span>, the party formed out of our dissendent left. ?]
+
 [? if kpo_formed: We have increased cooperation with the <span style="color: #C43988;">**KPD(O)**</span>, the Concilatory Communist Party. ?]
 
 @center_op
