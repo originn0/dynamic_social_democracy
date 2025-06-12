@@ -3,7 +3,49 @@ new-page: true
 subtitle: Reformist disagreements with our policies have grown too severe.
 tags: event
 view-if: reformist_dissent >= 60
-on-arrival: reformist_strength *= 0.3; workers_spd -= 5; new_middle_spd -= 3; old_middle_spd -= 3; rural_spd -= 3; n_advisors -= 1 if braun_advisor == 1; n_advisors -= 1 if severing_advisor == 1; braun_advisor = 0; severing_advisor = 0; rb_strength -= 250; reformists_resign = 1
+on-arrival: {!
+if (Q.reformist_strength < 10) {
+    Q.workers_spd -= 4; 
+    Q.new_middle_spd -= 2; 
+    Q.old_middle_spd -= 2; 
+    Q.rural_spd -= 2; 
+    Q.rb_strength -= 200; 
+} else if (Q.reformist_strength < 25) {
+    Q.workers_spd -= 5; 
+    Q.new_middle_spd -= 3; 
+    Q.old_middle_spd -= 3; 
+    Q.rural_spd -= 3; 
+    Q.rb_strength -= 250; 
+} else if (Q.reformist_strength < 40) {
+    Q.workers_spd -= 6; 
+    Q.new_middle_spd -= 4; 
+    Q.old_middle_spd -= 4; 
+    Q.rural_spd -= 4; 
+    Q.rb_strength -= 300; 
+} else if (Q.reformist_strength < 60) {
+    Q.workers_spd -= 8; 
+    Q.new_middle_spd -= 6; 
+    Q.old_middle_spd -= 6; 
+    Q.rural_spd -= 6; 
+    Q.rb_strength -= 350; 
+} else {
+    Q.workers_spd -= 10; 
+    Q.new_middle_spd -= 8; 
+    Q.old_middle_spd -= 8; 
+    Q.rural_spd -= 8; 
+    Q.rb_strength -= 400; 
+}
+
+Q.reformist_strength *= 0.3; 
+
+Q.n_advisors_start = Q.n_advisors; 
+if (Q.braun_advisor == 1) Q.n_advisors -= 1; 
+if (Q.severing_advisor == 1) Q.n_advisors -= 1; 
+Q.braun_advisor = 0; 
+Q.severing_advisor = 0; 
+Q.reformists_resign = 1; 
+if (Q.n_advisors < Q.n_advisors_start) Q.shuffle_leadership_timer = 0;
+!}
 max-visits: 1
 
 = Reformist leaders resign

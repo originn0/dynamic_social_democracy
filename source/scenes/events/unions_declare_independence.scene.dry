@@ -3,7 +3,83 @@ new-page: true
 subtitle: Labor's disagreements with our policies have grown too severe.
 tags: event
 view-if: labor_dissent >= 60 and dnvp_leader != "Lambach" and not unions_independent and chancellor != "Schleicher"
-on-arrival: unions_independent = 1; labor_strength = labor_strength/2; workers_spd -= 20; unemployed_spd -= 10; workers_other += 5 if not sapd_formed; workers_kpd += 5; workers_nsdap += 5; n_advisors -= 1 if woytinsky_advisor == 1; n_advisors -= 1 if leipart_advisor == 1; woytinsky_advisor = 0; leipart_advisor = 0; rb_strength -= 600; workers_sapd += 10 if sapd_formed; unemployed_sapd += 6 if sapd_formed;
+on-arrival: {!
+Q.unions_independent = 1; 
+
+if (Q.labor_strength < 10) {
+    Q.workers_spd -= 16;
+    Q.unemployed_spd -= 8;
+    if (Q.sapd_formed) {
+        Q.workers_sapd += 8;
+        Q.unemployed_sapd += 4;
+    } else {
+        Q.workers_kpd += 4;
+    }
+    Q.workers_kpd += 4;
+    Q.workers_nsdap += 4;
+    Q.rb_strength -= 400;
+} else if (Q.labor_strength < 25) {
+    Q.workers_spd -= 20;
+    Q.unemployed_spd -= 10;
+    if (Q.sapd_formed) {
+        Q.workers_sapd += 10;
+        Q.unemployed_sapd += 6;
+    } else {
+        Q.workers_kpd += 5;
+    }
+    Q.workers_kpd += 5;
+    Q.workers_nsdap += 5;
+    Q.rb_strength -= 500;
+} else if (Q.labor_strength < 40) {
+    Q.workers_spd -= 22;
+    Q.unemployed_spd -= 12;
+    if (Q.sapd_formed) {
+        Q.workers_sapd += 12;
+        Q.unemployed_sapd += 8;
+    } else {
+        Q.workers_kpd += 6;
+    }
+    Q.workers_kpd += 6;
+    Q.workers_nsdap += 6;
+    Q.rb_strength -= 600;
+} else if (Q.labor_strength < 60) {
+    Q.workers_spd -= 24;
+    Q.unemployed_spd -= 14;
+    if (Q.sapd_formed) {
+        Q.workers_sapd += 15;
+        Q.unemployed_sapd += 10;
+    } else {
+        Q.workers_kpd += 7;
+    }
+    Q.workers_kpd += 7;
+    Q.workers_nsdap += 7;
+    Q.rb_strength -= 700;
+} else {
+    Q.workers_spd -= 26;
+    Q.unemployed_spd -= 16;
+    if (Q.sapd_formed) {
+        Q.workers_sapd += 18;
+        Q.unemployed_sapd += 12;
+    } else {
+        Q.workers_kpd += 8;
+    }
+    Q.workers_kpd += 8;
+    Q.workers_nsdap += 8;
+    Q.rb_strength -= 800;
+}
+
+Q.workers_nsdap -= 3;
+Q.workers_kpd -= 3;
+
+Q.labor_strength = Q.labor_strength / 2; 
+
+Q.n_advisors_start = Q.n_advisors; 
+if (Q.woytinsky_advisor == 1) Q.n_advisors -= 1; 
+if (Q.leipart_advisor == 1) Q.n_advisors -= 1; 
+Q.woytinsky_advisor = 0; 
+Q.leipart_advisor = 0; 
+if (Q.n_advisors < Q.n_advisors_start) Q.shuffle_leadership_timer = 0;
+!}
 max-visits: 1
 
 = Unions Declare Independence

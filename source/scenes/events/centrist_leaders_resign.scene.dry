@@ -2,8 +2,40 @@ title: Centrist leaders resign
 new-page: true 
 subtitle: Centrist disagreements with our policies have grown too severe.
 tags: event
-view-if: center_dissent >= 60 and sapd_formed != 1
-on-arrival: center_strength *= 0.3; n_advisors -= 1 if wels_advisor == 1; n_advisors -= 1 if hilferding_advisor == 1; n_advisors -= 1 if muller_advisor == 1; wels_advisor = 0; hilferding_advisor = 0; muller_advisor = 0; rb_strength -= 100; centrists_resign = 1; sapd_election_trigger = time + 2 if left_split == 1;
+view-if: center_dissent >= 60 and year > 1930 and not sapd_formed
+on-arrival: {!
+Q.center_strength *= 0.3; 
+
+if (Q.center_strength < 10) {
+    Q.workers_spd -= 3; 
+    Q.rb_strength -= 50; 
+} else if (Q.center_strength < 25) {
+    Q.workers_spd -= 4; 
+    Q.rb_strength -= 75; 
+} else if (Q.center_strength < 40) {
+    Q.workers_spd -= 5; 
+    Q.rb_strength -= 100; 
+} else if (Q.center_strength < 60) {
+    Q.workers_spd -= 6; 
+    Q.new_middle_spd -= 2; 
+    Q.rb_strength -= 150; 
+} else {
+    Q.workers_spd -= 8; 
+    Q.new_middle_spd -= 4; 
+    Q.unemployed_spd -= 2;
+    Q.rb_strength -= 200; 
+}
+
+Q.n_advisors_start = Q.n_advisors; 
+if (Q.wels_advisor == 1) Q.n_advisors -= 1; 
+if (Q.hilferding_advisor == 1) Q.n_advisors -= 1; 
+if (Q.muller_advisor == 1) Q.n_advisors -= 1; 
+Q.wels_advisor = 0; 
+Q.hilferding_advisor = 0; 
+Q.muller_advisor = 0; 
+Q.centrists_resign = 1; 
+if (Q.n_advisors < Q.n_advisors_start) Q.shuffle_leadership_timer = 0;
+!}
 go-to: sapd_formed if left_split = 1 and not sapd_formed
 max-visits: 1
 

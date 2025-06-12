@@ -246,8 +246,14 @@ Q.workers_dnef += 15;
 Q.unemployed_spd -= 14;
 Q.unemployed_dnef += 10;
 Q.labor_strength *= 0.5;
-if (Q.woytinsky_advisor) Q.n_advisors -= 1
-if (Q.leipart_advisor) Q.n_advisors -= 1
+if (Q.woytinsky_advisor) {
+    Q.n_advisors -= 1
+    Q.shuffle_leadership_timer = 0;
+}
+if (Q.leipart_advisor) {
+    Q.n_advisors -= 1
+    Q.shuffle_leadership_timer = 0;
+}
 Q.woytinsky_advisor = 0;
 Q.leipart_advisor = 0;
 

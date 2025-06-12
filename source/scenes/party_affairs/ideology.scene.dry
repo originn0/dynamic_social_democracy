@@ -18,6 +18,7 @@ The <span style="color: #c00000;">**SPD**</span> is torn between many different 
 - @centrist: The Center <span style="color: #9B0000;">Marxism</span> of Karl Kautsky remains the best way to resolve our internal contradictions.
 - @labor: We should work with the trade unions to improve the lives of workers.
 - @reform: Following Eduard Bernstein, we should work for ethical <span style="color: #c00000;">socialism</span>, strengthen democracy, and expand the party's electorate.
+- @socpat: Pursue the fusion of <span style='color: #c00000;'>socialism</span> and patriotism.
 - @easy_discard
 
 @class_struggle
@@ -63,6 +64,18 @@ go-to: changed if changed = 1
 on-departure: ideology = "reformist"; reformist_strength += 8; soviet_relations += 30; democratization += 1; reformist_dissent -= 5; z_relation += 5; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; kpd_relation -= 8; moderate_plan_support += 1; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
 
 The reformist wing of the party seeks to preserve the Republic and the democratic system of government, and is most supportive of coalitions with the other pro-democracy parties.
+
+@socpat
+view-if: social_patriot
+on-arrival: {!
+if (Q.ideology && Q.ideology != "socpat") {
+    Q.changed = 1;
+}
+!}
+go-to: changed if changed = 1
+on-departure: ideology = "socpat"; social_patriot_strength += 10; left_dissent += 10; center_dissent += 10; reformist_dissent += 5; z_relation += 6; dvp_relation += 6; ddp_relation += 6; lvp_relation += 6; kpd_relation -= 15; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
+
+The social patriot wing of the party, widely regarded as Schleicher's puppets, is the most supportive of the <span style='color: #c00000;'>**SPD**</span> and ADGB adopting a more nationalist stance.
 
 @changed
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; reformist_dissent += 5

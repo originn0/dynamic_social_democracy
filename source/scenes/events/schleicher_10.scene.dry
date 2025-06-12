@@ -1,6 +1,6 @@
 title: The <span style="color: #C0A054;">**DVP**</span> joins the <span style="color: #BFC8CC;">**DNEF**</span>
 subtitle: [? if dvp_votes < 4 and dvp_leader != "Glatzel": Struggling at the polls, the party tries to stay relevant by merging into a larger bloc?][? if dvp_leader == "Glatzel": Glatzel's views align closely with the chancellor's?].
-view-if: chancellor = "Schleicher" and schleicher_time >= 11 and not lvp_formed and dvp_exist and ((dvp_votes < 4 and not bourgeois_list) or dvp_leader == "Glatzel") and dnef_formed and next_election_time - time < 2
+view-if: chancellor = "Schleicher" and schleicher_time >= 11 and not lvp_formed and dvp_exist and ((dvp_votes < 4 and not bourgeois_list) or dvp_leader == "Glatzel") and dnef_formed and next_election_time - time < 2 and dvp_ideology != "Left" and not dvp_r_alt
 new-page: true
 priority: 1
 tags: event

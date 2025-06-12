@@ -32,6 +32,10 @@ on-arrival: {!
 Q.press_censorship = 1;
 Q.schleicher_approval += 2;
 Q.hindenburg_schleicher_r += 1;
+if (Q.stampfer_advisor) {
+    Q.n_advisors -= 1;
+    Q.shuffle_leadership_timer = 0;
+}
 Q.stampfer_advisor = 0;
 Q.stampfer_killed = 1;
 Q.pro_republic -= 10;

@@ -4,7 +4,7 @@ frequency: 1000
 max-visits: 1
 tags: event
 go-to: pm if chancellor = "Müller"; not_pm if chancellor != "Müller"
-on-arrival: muller_dead = 1; n_advisors -= 1 if muller_advisor == 1; muller_advisor = 0;
+on-arrival: muller_dead = 1; n_advisors_start = n_advisors;  n_advisors -= 1 if muller_advisor == 1; muller_advisor = 0; shuffle_leadership_timer = 0 if n_advisors < n_advisors_start
 new-page: true
 face-image: img/portraits/MüllerHermann.jpg
 
