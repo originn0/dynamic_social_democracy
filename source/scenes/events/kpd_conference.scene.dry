@@ -1,7 +1,7 @@
 title: <span style="color: #700000;">**KPD**</span> Party Conference
 subtitle: The <span style="color: #700000;">**KPD**</span> chooses their new central committee - will the Wittorf Affair have an influence on their choice?
 new-page: true
-view-if: kpd_relation >= 50 and wittorf_soviet_union = 1 and year = 1929 and month >= 6 and month <= 8
+view-if: wittorf_soviet_union == 1 and year == 1929 and month == 2
 max-visits: 1
 on-arrival: kpd_party_conference_seen = 1
 tags: event
@@ -18,15 +18,18 @@ After our discussion with the <span style="color: #940000;">Soviets</span>, we a
 
 @conciliator_success
 title: The Conciliators are the new leadership of the <span style="color: #700000;">**KPD**</span>.
-choose-if: (levi_advisor or rosenfeld_advisor) and (left_strength >= reformist_strength) and (kpd_relation >= 50) 
-unavailable-subtitle: [?  if not levi_advisor and not rosenfeld_advisor: Our party leadership is not left-wing enough. ?] [? if left_strength < reformist_strength: The <span style="color: #D50000;">Comintern</span> doubts our commitment to <span style="color: #c00000;">socialism</span>. ?]
-on-arrival: kpd_leader = "Conciliators"; communist_coalition += 3; kpd_relation += 10*(1-dissent); left_strength += 5; left_dissent -= 8; pro_republic += (kpd_votes / 2)
+view-if: kpd_relation >= 39
+unavailable-subtitle: Our relations with the <span style="color: #700000;">**KPD**</span> are not good enough.
+on-arrival: communist_coalition += 3; kpd_relation += 10*(1-dissent); left_strength += 5; left_dissent -= 8; pro_republic += (kpd_votes / 2); kpd_leader = "Meyer"; kpd_idealogy = "Concilatory Stalinism"; comintern_talk = 1; soviet_relations = 35;
+face-image: img/portraits/Ernst_Meyer_1921.jpg
 achievement: versohnler
 
-With our support, the Conciliators have won the leadership contest! The new leadership is a group of Conciliators, including Arthur Ewert, Hugo Eberlein, and Ernst Meyer. Thälmann remains, but largely as a figurehead only, it seems. We hope that the new leadership will be more inclined towards cooperation.
-
+With our support, and Stalin's blind eye, the Conciliators have won the leadership contest! Thalmann has been expelled from the Party Leadership, and takes a more secondary role. 
+For now, Ernst Meyer has been elected leader of the <span style="color: #700000;">**KPD**</span> by the Concilators and the Right Opposition. Relations with the <span style="color: #700000;">**KPD**</span> are likely to improve, as they have recieved permisson from the <span style="color: #940000;">Soviets</span> to take on a more cooperative stance towards us, thanks to our good relations with <span style="color: #8B0000;">Stalin</span>.
+However. <span style="color: #8B0000;">Stalin</span>'s paranoia escapes no one. If we compromise too much with the bourgousie, we may find ourselves on <span style="color: #8B0000;">Stalin</span>'s bad side, and he may return Thälmann to power once more.
 
 @conciliator_fail
 title: Thälmann retains his leadership position.
+view-if: kpd_relation < 39
 
 Unfortunately, we could not influence the <span style="color: #700000;">**KPD**</span> leadership election against the hardliners. Thälmann quickly moves to consolidate absolute leadership, expelling or exiling his opponents.

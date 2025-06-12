@@ -1,0 +1,115 @@
+title: <span style="color: #9B0000;">**SAPD**</span> Congress
+subtitle: The Marxists shape their new party.
+view-if: sapd_election_trigger == time
+on-arrival: {!
+var breitscheid_support = 0;
+var rosenfeld_support = 0;
+var levi_support = 0;
+var frolich_support = 0;
+Q.winner = 0;
+
+if (Q.year < 1930 || (Q.year == 1930 && Q.month == 1)) {
+levi_support = 1000;
+}
+
+frolich_support += 100 - Q.sapd_relation;
+breitscheid_support += Q.sapd_relation;
+
+if (Q.pro_republic >= 65) {
+frolich_support -= 20;
+breitscheid_support += 20;
+}
+
+if (Q.pro_republic <= 35) {
+frolich_support += 20;
+breitscheid_support -= 20;
+}
+
+if (Math.abs(frolich_support - breitscheid_support) <= 10) {
+rosenfeld_support += 300;
+}
+
+if (levi_support == 1000) {
+    Q.winner = "levi";
+    } else if (rosenfeld_support == 300) {
+        Q.winner = "rosenfeld";
+    } else if (frolich_support > breitscheid_support) {
+            Q.winner = "frolich";
+        } else {
+            Q.winner = "breitscheid";
+        }
+
+!}
+max-visits: 1
+tags: event
+face-image: img/SAPD_logo.png
+new-page: true
+
+= Second <span style="color: #9B0000;">**SAPD**</span> Party Congress
+
+The <span style="color: #9B0000;">**Socialist Workers' Party of Germany**</span> is meeting to decide the future of the party.
+
+With the arrival of many important Center Marxists from the <span style="color: #c00000;">**SPD**</span>, the <span style="color: #9B0000;">**SAPD**</span> must find a position to define itself.
+
+The arrival of many former Communists from the <span style="color: #C43988;">**KPD(O)**</span> has bolstered the left wing of the fledgling party.
+
+A leadership election is held to decide who will lead the party, and shape the policies of the new Socialist party. 
+
+- @levi
+- @rosenfeld
+- @breitscheid
+- @frolich
+
+@levi
+title: Paul Levi, formerly of the left wing of the SPD.
+subtitle: His relative popularity across the party secures his candidacy.
+unavailable-subtitle: hes dead? lmao
+view-if: winner == "levi"
+choose-if: winner == "levi"
+on-arrival: sapd_leader = "Levi"; workers_sapd += 5; pro_republic += 8; unemployed_sapd += 3;
+face-image: img/portraits/LeviPaul.jpg
+
+Paul Levi, fomer leader of the <span style="color: #700000;">**KPD**</span>, coming from the left wing of the <span style="color: #c00000;">**SPD**</span>, is elected as the new leader of the <span style="color: #9B0000;">**SAPD**</span>. 
+
+His election as the leader of the SAPD is good news for us. He is likely to be a beneficial ally. While he is less enthusiastic about cooperation with the Weimar Parties, he remains dedicated to keeping the Republic intact. 
+Levi is likely to pursue a policy of reconciliation with the span style="color: #700000;">**KPD**</span>, and create a United Front to counter the reactionary right.
+
+@rosenfeld
+title: Kurt Rosenfeld, the current leader, and prominent USPD member.
+choose-if: winner == "rosenfeld"
+subtitle: No candidate reaches a majority!
+unavailable-subtitle: His lack of a powerful base and connection to the workers leaves him out of the spotlight.
+on-arrival: sapd_leader = "Rosenfeld"; workers_sapd += 6; pro_republic += 5;
+face-image: img/portraits/RosenfeldKurt.jpg
+
+Due to the tensions between the left and right wings of the newly enlarged <span style="color: #9B0000;">**SAPD**</span>, Kurt Rosenfeld, current leader of the <span style="color: #9B0000;">**SAPD**</span>, and former <span style="color: #D47B9B;">**USPD**</span> member, has secured re-election as party leader.
+He is chosen as a compromise candidate, to ensure that both wings of the party remain loyal and committed. 
+
+He led the first members of the <span style="color: #9B0000;">**SAPD**</span> away from the <span style="color: #c00000;">**SPD**</span>, as he disagreed with our policy of cooperation with the more right wing members of the bourgiousie. 
+Thankfully, he is open to cooperation with us, against the threat that is the right. He has plans to create a United Front of the parties, organizations, and workers on the left wing of the political spectrum.
+He remains skeptical of cooperation with the Weimar Parties, and we will have to work hard to convince the SAPD to cooperate in any coalition government. Reguardless, he remains committed to preserving the Republic. 
+
+@breitscheid
+title: Rudolf Breitscheid is elected!
+choose-if: winner == "breitscheid"
+subtitle: He is a foreign expert, and seeks cooperation with us.
+unavailable-subtitle: The party feels that he is too close to the SPD.
+on-arrival: sapd_leader = "Breitscheid"; workers_sapd +=3; pro_republic +=10; new_middle_sapd +=3;
+face-image: img/portraits/BreitscheidRudolf.jpg
+
+Our fairly amicable split with our more Marxist wings has led Rudolf Breitscheid to be elected as leader of the Our fairly amicable split with our more Marxist wings has led Rudolf Breitscheid to be elected as leader of the <span style="color: #9B0000;">**SAPD**</span>. 
+
+He is a committed republican, and is likely to be open to Coalition Governments with the Weimar Parties. Under his leadership, the <span style="color: #9B0000;">**SAPD**</span> is likely to stay away from cooperation with the <span style="color: #700000;">**KPD**</span>. He is also likely to draw in middle class support for his Internationalist and Pacifist opinions. 
+
+@frolich
+title: Paul Frölich is elected!
+choose-if: winner == "frolich"
+subtitle: Hailing from the <span style="color: #C43988;">**KPD(O)**</span>, he is supported by the former communists.
+unavailable-subtitle: The party would rather not elect a Communist.
+on-arrival: sapd_leader = "Frolich"; sapd_idealogy = "Right Communism"; workers_sapd -= 3; workers_spd += 3; unemployed_sapd += 10; pro_republic -= 5;
+face-image: img/Frölich.jpg
+
+Paul Frölich has been elected as leader of the <span style="color: #9B0000;">**SAPD**</span>. This is very bad news. (Its so over babes)
+
+He comes from the <span style="color: #C43988;">**KPD(O)**</span>. Not much is known about him. So far, he has expressed hostility towards us.
+The new <span style="color: #9B0000;">**SAPD**</span> will probably prefer cooperation with the <span style="color: #700000;">**KPD**</span> over us. However, a portion of the right wing of the <span style="color: #9B0000;">**SAPD**</span> has split off and rejoined the SPD, alienated by his anti-republican sentiments.

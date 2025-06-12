@@ -59,7 +59,7 @@ At the start of this government, the <span style="color: #700000;">**KPD**</span
 [? if reichswehr_goal = 1 : - Reduce funding for the Reichswehr. - [? if reichswehr_goal_completed : success ?][? if not reichswehr_goal_completed: failed ?] ?]
 
 @goals_failed
-on-arrival: kpd_relation -= 10; workers_spd -= 8; unemployed_spd -= 8;
+on-arrival: kpd_relation -= 10; workers_spd -= 8; unemployed_spd -= 8; soviet_relations += 35;
 
 Unfortunately, we have failed to accomplish all of the goals the <span style="color: #700000;">**KPD**</span> set out. They plan to call a vote of no confidence against our government, and have already begun mounting a propaganda campaign to delegitimize our government in the eyes of the workers.
 
@@ -71,7 +71,7 @@ Unfortunately, we have failed to accomplish all of the goals the <span style="co
 @appeal
 choose-if: (kpd_score >= 4 and kpd_relation > 50 and kpd_appeal_seen = 0) or kpd_leader = "Conciliators"
 unavailable-subtitle: [? if kpd_score < 4: They do not see us as serious in trying to achieve the goals of the coalition. ?] [? if kpd_relation < 50: Our relations are too poor. ?] [? if kpd_appeal_seen = 1: we do not have any more time. ?]
-on-arrival: kpd_ultimatum_seen = 0; kpd_ultimatum_timer += 6; kpd_appeal_seen = 1
+on-arrival: kpd_ultimatum_seen = 0; kpd_ultimatum_timer += 6; kpd_appeal_seen = 1; soviet_relations -= 25;
 
 We argue that we are working hard to achieve the coalition's goals, and in the name of proletarian solidarity, we must make this coalition function. Surprisingly, the <span style="color: #700000;">**KPD**</span> hears our pleas, and is willing to give us six more months before the coalition goals must be achieved.
 

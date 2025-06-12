@@ -18,7 +18,7 @@ Much of our party is deeply opposed to rearmament, while the center and right pa
 - @ministry: Use the Reichswehr Ministry to prevent the construction.
 
 @vote_yes
-on-arrival: left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5 if not panzerkreuzer_funded; neorevisionist_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 4; dvp_left += 1; hindenburg_angry -= 5
+on-arrival: left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5 if not panzerkreuzer_funded; neorevisionist_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 4; dvp_left += 1; hindenburg_angry -= 5; soviet_relations += 30;
 
 Our grassroots party members are highly critical of our decision. Many party branches have increased their agitation against our parliamentary fraction. [? if panzerkreuzer_funded : However, given the construction of the previous battlecruiser, this seemed to be a foregone conclusion, and the reaction is muted. ?]
 
@@ -31,7 +31,7 @@ go-to: built if spd_r + kpd_r < 50; not_built if spd_r + kpd_r >= 50
 Our vote against the battlecruiser is unpopular among the right-wing parties[? if in_grand_coalition or in_weimar_coalition: , including our coalition partners ?][? if spd_toleration: , including the minority government that we are currently supporting ?].
 
 @abstain
-on-arrival: dvp_relation -= 5; lvp_relation -= 3; z_relation -= 3; left_dissent += 5; labor_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_relation -= 3
+on-arrival: dvp_relation -= 5; lvp_relation -= 3; z_relation -= 3; left_dissent += 5; labor_dissent += 5 if not panzerkreuzer_funded; panzerkreuzer_b_funded = 1; kpd_relation -= 3; soviet_relations += 10;
 
 The center-right parties are critical of our decision to abstain, and the pressure from our left flank is not entirely assuaged. Despite our abstention, the vote in the Reichstag passes, with all parties in favor except the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span>. The ship will be built.
 

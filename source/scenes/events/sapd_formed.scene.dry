@@ -4,31 +4,40 @@ Q.sapd_formed = 1;
 Q.parties.push('sapd');
 Q.parties_graph.push('sapd');
 
-Q.workers_sapd = 10;
-Q.workers_spd -= 3;
-Q.new_middle_sapd = 1;
-Q.old_middle_sapd = 0;
-Q.rural_sapd = 0;
-Q.unemployed_sapd = 2;
-Q.catholics_sapd = 0;
+Q.sapd_leader = "Levi";
+Q.sapd_idealogy = "Centrist Marxism";
 
-Q.workers_other -= 5;
+Q.workers_sapd = Q.workers_spd*0.3;
+Q.workers_spd -= Q.workers_spd*0.3;
+Q.new_middle_sapd = Q.new_middle_spd*0.1;
+Q.new_middle_spd -= Q.new_middle_spd*0.1;
+Q.old_middle_sapd = Q.old_middle_spd*0.05;
+Q.old_middle_spd -= Q.old_middle_spd*0.05;
+Q.rural_sapd = Q.rural_spd*0.2;
+Q.rural_spd -= Q.rural_spd*0.2;
+Q.unemployed_sapd = Q.unemployed_spd*0.55;
+Q.unemployed_spd -= Q.unemployed_spd*0.55;
+Q.catholics_sapd = Q.catholics_spd*0.2;
+Q.catholics_spd -= Q.catholics_spd*0.2;
 
-if (Q.unions_independent) {
-    Q.workers_sapd += 8;
-    Q.unemployed_sapd += 4;
+Q.sapd_relation = 45;
+
+if (Q.kpd_leader == "Thälmann") {
+ Q.workers_kpd -= 5;
+ Q.workers_sapd += 5;
 }
+Q.sapd_r = 0.15*Q.spd_r;
+Q.spd_r = 0.85*Q.spd_r;
 
-Q.old_workers_sapd_display = 0
-Q.old_new_middle_sapd_display = 0
-Q.old_old_middle_sapd_display = 0
-Q.old_rural_sapd_display = 0
-Q.old_unemployed_sapd_display = 0
-Q.old_catholics_sapd_display = 0
+Q.old_workers_sapd_display = 0;
+Q.old_new_middle_sapd_display = 0;
+Q.old_old_middle_sapd_display = 0;
+Q.old_rural_sapd_display = 0;
+Q.old_unemployed_sapd_display = 0;
+Q.old_catholics_sapd_display = 0;
 
 // update all records
-Q.sapd_r = 0;
-Q.old_sapd_r = 0;
+Q.old_sapd_r = Q.sapd_r;
 for (var record of Q.election_records) {
     record['sapd'] = 0;
 }
