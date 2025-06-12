@@ -1,6 +1,6 @@
 title: The SAPD raises a vote of no confidence!
 subtitle: The SAPD moves to bring down the government.
-view-if: spd_in_government = 1 and sapd_formed = 1 and month = 3 and year = 1930
+view-if: (spd_in_government or spd_toleration) and sapd_formed = 1 and month = 3 and year = 1930
 on-arrival: {!
 Q.sapd_relations -= 10; 
 Q.unemployed_sapd += 3; 
