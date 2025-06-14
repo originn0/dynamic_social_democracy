@@ -128,11 +128,11 @@ on-arrival: {!
 Q.con_rural_strength = 0;
 Q.con_middle_strength = 0;
 Q.con_neorev_strength = 0;
-Q.con_left_strength = 4 + (Q.left_strength / 8);
-Q.con_center_strength = 4 + (Q.center_strength / 8);
-Q.con_reform_strength = 4 + (Q.reformist_strength / 8);
-Q.con_llabor_strength = 1 + ((Q.labor_strength / 18) * (Q.left_strength / Q.reformist_strength));
-Q.con_rlabor_strength = 2 + ((Q.labor_strength / 14) * (Q.reformist_strength / Q.left_strength));
+Q.con_left_strength = 2 + (Q.left_strength / 8);
+Q.con_center_strength = 2 + (Q.center_strength / 8);
+Q.con_reform_strength = 2 + (Q.reformist_strength / 8);
+Q.con_llabor_strength = 0.5 + ((Q.labor_strength / 18) * (Q.left_strength / Q.reformist_strength));
+Q.con_rlabor_strength = 1 + ((Q.labor_strength / 14) * (Q.reformist_strength / Q.left_strength));
 if (Q.rural_spd_normalized >= 12) {
 Q.con_rural_strength = Q.rural_spd_normalized/3;
 }
@@ -324,7 +324,7 @@ title: We shall compromise with the bourgiousie, in order to keep Democracy stro
 subtitle: The Reformists, with the support of the other moderate elements in the party, manage to pass this resolution.
 choose-if: con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength + con_rlabor_strength >= 199
 unavailable-subtitle: The Reformists simply do not have a majority at the congress.
-on-arrival: {! Q.comp_meter = 1; Q.left_dissent += 25; Q.center_dissent += 15; Q.lvp_relation += 10; Q.dvp_relation += 5; Q.z_relation += 10; Q.ddp_relation += 10; Q.kpo_relation -= 10; Q.kpd_relation -= 10; !}
+on-arrival: {! Q.comp_meter = 1; Q.left_dissent += 15; Q.center_dissent += 15; Q.lvp_relation += 10; Q.dvp_relation += 5; Q.z_relation += 10; Q.ddp_relation += 10; Q.kpo_relation -= 10; Q.kpd_relation -= 10; !}
 
 Surprisingly, the <span style="color: #F99E9E;">Reformists</span> and their allies have succeeded in blocking any restrictions on our dealings with coalition partners. This represents a notable shift in the Party’s internal balance of power, highlighting how much influence the Reformist wing has gained since we were last in government. Unsurprisingly, the bourgeois parties have welcomed the decision, interpreting it as a sign that the <span style="color: #c00000;">**SPD**</span> is moderating its stance and moving closer to the political center of the Republic.
 The <span style="color: #AF0202;">Left Socialists</span>, however, are furious. They view the absence of any limitations as the Party capitulating entirely to bourgeois interests. Even the Center has expressed unease about the outcome, with some members warning that such a blank cheque could erode our core commitments to the workers. There are even whispers of another party split, reminiscent of the <span style="color: #D47B9B;">**USPD**</span>’s departure a decade ago. 
@@ -338,7 +338,7 @@ title: We shall not compromise with the bourgiousie! The rights of the workers m
 subtitle: With the majority of the congress controlled by the factions of the left, the resolution is passed.
 choose-if: con_llabor_strength + con_left_strength >= 199
 unavailable-subtitle: The Left does not have enough power.
-on-arrival: {! Q.comp_meter = 2; Q.reformist_dissent += 25; Q.center_dissent += 15; Q.lvp_relation -= 10; Q.dvp_relation -= 5; Q.z_relation -= 10; Q.ddp_relation -= 10; Q.kpo_relation += 10; Q.kpd_relation += 10; !}
+on-arrival: {! Q.comp_meter = 2; Q.reformist_dissent += 15; Q.center_dissent += 15; Q.lvp_relation -= 10; Q.dvp_relation -= 5; Q.z_relation -= 10; Q.ddp_relation -= 10; Q.kpo_relation += 10; Q.kpd_relation += 10; !}
 
 Surprisingly, the <span style="color: #AF0202;">Left Socialists</span> has prevailed in securing a no-compromise resolution, meaning <span style="color: #c00000;">**SPD**</span> ministers must refuse any concessions to bourgeois parties and protect public welfare at all costs. This victory reflects the Left’s strengthened position, bolstered by Paul Levi’s successful mobilization of rank‑and‑file activists in industrial districts and by growing disenchantment with the parliamentary leadership.
 The <span style="color: #CE2D2D;">Centrist Marxists</span> expressed deep unease. While acknowledging the moral clarity of the resolution, they warn that such an uncompromising stance risks isolating the <span style="color: #c00000;">**SPD**</span> and jeopardizing its ability to influence policy from within government. The Reformists are dismayed by the outcome. They fear that zero‑tolerance red lines will alienate potential partners and make effective governance nearly impossible. Similarly, the bourgeois parties view the Left’s victory as a sign that the <span style="color: #c00000;">**SPD**</span> is returning to hard‑line positions, making the government's survival far less likely.
@@ -351,7 +351,7 @@ title: We will be open to some compromise with the parties of the republic, but 
 subtitle: The Center manages to convice the dissendent factions to accept this resolution.
 choose-if:  con_middle_strength + con_rural_strength + con_neorev_strength + con_reform_strength + con_rlabor_strength <= 198 and con_llabor_strength + con_left_strength <= 198
 unavailable-subtitle: A compromise agreement is not needed, as either the Left or Right holds a majority in the Congress.
-on-arrival: {! Q.comp_meter = 3; Q.left_dissent += 15; Q.lvp_relation += 5; Q.dvp_relation += 2.5; Q.z_relation += 5; Q.ddp_relation += 5; Q.kpo_relation -= 5; Q.kpd_relation -= 5; !}
+on-arrival: {! Q.comp_meter = 3; Q.left_dissent += 10; Q.lvp_relation += 5; Q.dvp_relation += 2.5; Q.z_relation += 5; Q.ddp_relation += 5; Q.kpo_relation -= 5; Q.kpd_relation -= 5; !}
 
 The <span style="color: #CE2D2D;">Centrist Marxists</span> have secured approval for a compromise framework guiding our coalition strategy. By a comfortable margin, delegates endorsed a resolution that sets clear boundaries on concessions to bourgeois parties, while granting <span style="color: #c00000;">**SPD**</span> ministers the flexibility to negotiate policies essential for stable governance.
 The <span style="color: #AF0202;">Left Socialists</span> reacted with disappointment. Though frustrated that stricter no-compromise pledges were rejected, they nevertheless see an opening to hold Center leaders to account should any red lines be crossed. In contrast, the Reformists are relieved about the outcome. While they would have preferred no red lines at all, they welcome the pragmatic spirit of the resolution. The bourgeois parties are content that the Left’s proposal was rejected, but remain wary about our newly adopted red lines.
