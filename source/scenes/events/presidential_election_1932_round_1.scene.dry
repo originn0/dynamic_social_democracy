@@ -637,6 +637,13 @@ if (Q.liberal_reactionary_candidate_1932 && Q.center_reactionary_candidate_1932)
 
 
 !}
+go-to: braun_koalition if braun_campaign and z_support_spd == 1 and kpd_support_spd == 1 and ((ddp_support_spd == 1 and not lvp_formed) or (lvp_support_spd and lvp_formed)); calculation if not (braun_campaign and z_support_spd == 1 and kpd_support_spd == 1 and ((ddp_support_spd == 1 and not lvp_formed) or (lvp_support_spd and lvp_formed)))
+
+@braun_koalition 
+achievement: braun_koalition
+go-to: calculation
+
+@calculation
 go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if nsdap_president_majority == 1; braun_wins if spd_president_majority == 1 and spd_candidate_1932 == "Braun"; duesterburg_wins if duesterburg_majority == 1; rosenfeld_wins if spd_president_majority == 1 and spd_candidate_1932 == "Rosenfeld"; eckener_wins if spd_president_majority == 1 and spd_candidate_1932 == "Eckener"; reactionary_candidate_wins if (reactionary_candidate_1_majority or reactionary_candidate_2_majority); no_majority_round1 if any_majority == 0
 
 Results:

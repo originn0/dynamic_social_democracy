@@ -620,6 +620,13 @@ Q.nsdap_presidential_votes_disp = Q.nsdap_presidential_votes.toFixed(1);
 Q.thalmann_votes_disp = Q.thalmann_votes.toFixed(1);
 Q.dnvp_presidential_votes_disp = Q.dnvp_presidential_votes.toFixed(1);
 !}
+go-to: braun_koalition if braun_campaign and z_support_spd == 1 and kpd_support_spd == 1 and ((ddp_support_spd == 1 and not lvp_formed) or (lvp_support_spd and lvp_formed)); calculation if not (braun_campaign and z_support_spd == 1 and kpd_support_spd == 1 and ((ddp_support_spd == 1 and not lvp_formed) or (lvp_support_spd and lvp_formed)))
+
+@braun_koalition 
+achievement: braun_koalition
+go-to: calculation
+
+@calculation
 go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_plurality == 1; hitler_wins if nsdap_president_plurality == 1; braun_wins if spd_plurality == 1 and spd_candidate_1932 == "Braun"; rosenfeld_wins if spd_plurality == 1 and spd_candidate_1932 == "Rosenfeld"; eckener_wins if spd_plurality == 1 and spd_candidate_1932 == "Eckener"; reactionary_candidate_majority if (reactionary_candidate_1_plurality or reactionary_candidate_2_plurality)
 
 Results:

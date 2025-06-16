@@ -66,10 +66,14 @@ go-to: ddp_alliance_yay_2 if ddp_alliance_points >= 5; ddp_alliance_nay_2 if ddp
 
 @ddp_alliance_yay_2
 on-arrival: ddp_alliance = 1; ddp_alliance_glaze = 1 if ddp_ideology == "Left" and ddp_leader == "Lemmer"; liberal_cooperation -= 10; bourgeois_cooperation -= 3; ddp_relation += 20; pro_republic += ddp_votes; ddp_left += 6; ddp_cohesion -= 4; rural_ddp *= 0.5; old_middle_ddp *= 0.6; new_middle_ddp *= 0.8; workers_ddp += 3 if ddp_alliance_glaze; new_middle_ddp += 2 if ddp_alliance_glaze; old_middle_ddp -= 1 if ddp_alliance_glaze; rural_ddp -= 1 if ddp_alliance_glaze; pro_republic += 3 if ddp_alliance_glaze
+go-to: liberale_blocpartei if ddp_ideology == "Left" and ddp_leader == "Lemmer"
 
 After their internal vote, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> accepts our offer, despite the opposition from whatever remains of the business wing. The party suffers electorally from their association with us, even if many right-wingers stress it as nothing more than a technical list connection. Anyhow, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will receive more parliamentary seats now.
 
 [? if ddp_ideology == "Left" and ddp_leader == "Lemmer": Lemmer has decided to take things a step further, and has further increased electoral cooperation between our parties. Perhaps this alliance will last more than just one election? ?]
+
+@liberale_blocpartei
+achievement: liberale_blocpartei
 
 @ddp_alliance_nay_2
 on-arrival: ddp_relation -= 3; ddp_right += 3; ddp_cohesion -= 3
