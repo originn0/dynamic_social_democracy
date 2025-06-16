@@ -109,6 +109,9 @@ if (Q.dynamic_mode || Q.historical_mode) {
   if ((Q.welfare > 0 && Q.judicial_reform >= 2 && Q.womens_work >= 1 && Q.family_law >= 1 && Q.upper_tax_rates > Q.lower_tax_rates && Q.works_councils > 0 && Q.eu > 0)) {
       this.achieve('heidelberger_programm');
   }
+  if (Q.chancellor == "Adenauer" && Q.president == "Heuss") {
+      this.achieve('traumteam');
+  }
 }
 !}
 
@@ -512,7 +515,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!<td style="border: 2px solid #c00000; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Große Volksfront</div>
-      <div style="font-size: 90%; color: #444; white-space: normal;"> - With Joos or Kaiser leading the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000; font-weight: bold;">CVP</span>?] and the Conciliators leading the <span style="color: #700000; font-weight: bold;">KPD</span>, form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.
+      <div style="font-size: 90%; color: #444; white-space: normal;"> - With Joos or Kaiser leading the <span style="color: #000000;">Center Party</span> and the Conciliators leading the <span style="color: #700000; font-weight: bold;">KPD</span>, form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.
       </div>
     </div>
   {!</td>!}
@@ -1178,6 +1181,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_christlicher_sozialismus: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/christlicher_sozialismus.png" alt="Christlicher Sozialismus Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Christlicher "Sozialismus"</div>
+      <div style="font-size: 90%; color: #444;"> - Lambach has been elected as the leader of the <span style="color: #3E88B3; font-weight: bold;">DNVP</span>/<span style="color: #000000; font-weight: bold;">CVP</span>, and survived reelection. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_traumteam: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/traumteam.png" alt="Traumteam Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Traumteam</div>
+      <div style="font-size: 90%; color: #444;"> - Heuss must be President and Adenauer as Chancellor. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_sozialliberale_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialliberale_koalition.png" alt="Sozialliberale Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialliberale Koalition</div>
+      <div style="font-size: 90%; color: #444;"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_sozialchristliche_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialchristliche_koalition.png" alt="Sozialchristliche Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialchristliche Koalition</div>
+      <div style="font-size: 90%; color: #444;"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -1327,7 +1390,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!<td style="border: 2px solid #c00000; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Große Volksfront</div>
-      <div style="font-size: 90%; color: #444; white-space: normal;"> - With Joos or Kaiser leading the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000; font-weight: bold;">CVP</span>?] and the Conciliators leading the <span style="color: #700000; font-weight: bold;">KPD</span>, form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.
+      <div style="font-size: 90%; color: #444; white-space: normal;"> - With Joos or Kaiser leading the <span style="color: #000000;">Center Party</span> and the Conciliators leading the <span style="color: #700000; font-weight: bold;">KPD</span>, form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.
       </div>
     </div>
   {!</td>!}
@@ -1993,6 +2056,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_christlicher_sozialismus: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/christlicher_sozialismus.png" alt="Christlicher Sozialismus Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Christlicher "Sozialismus"</div>
+      <div style="font-size: 90%; color: #444;"> - Lambach has been elected as the leader of the <span style="color: #3E88B3; font-weight: bold;">DNVP</span>/<span style="color: #000000; font-weight: bold;">CVP</span>, and survived reelection. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_traumteam: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/traumteam.png" alt="Traumteam Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Traumteam</div>
+      <div style="font-size: 90%; color: #444;"> - Heuss must be President and Adenauer as Chancellor. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_sozialliberale_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialliberale_koalition.png" alt="Sozialliberale Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialliberale Koalition</div>
+      <div style="font-size: 90%; color: #444;"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_sozialchristliche_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialchristliche_koalition.png" alt="Sozialchristliche Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialchristliche Koalition</div>
+      <div style="font-size: 90%; color: #444;"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -2142,7 +2265,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!<td style="border: 2px solid #c00000; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Große Volksfront</div>
-      <div style="font-size: 90%; color: #444; white-space: normal;"> - With Joos or Kaiser leading the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000; font-weight: bold;">CVP</span>?] and the Conciliators leading the <span style="color: #700000; font-weight: bold;">KPD</span>, form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.
+      <div style="font-size: 90%; color: #444; white-space: normal;"> - With Joos or Kaiser leading the <span style="color: #000000;">Center Party</span> and the Conciliators leading the <span style="color: #700000; font-weight: bold;">KPD</span>, form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.
       </div>
     </div>
   {!</td>!}
@@ -2804,6 +2927,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Liberale Blocpartei</div>
       <div style="font-size: 90%; color: #444;"> - conclude an electoral alliance with Lemmer's <span style="color: #D3C24D; font-weight: bold;">DDP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_christlicher_sozialismus: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/christlicher_sozialismus.png" alt="Christlicher Sozialismus Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Christlicher "Sozialismus"</div>
+      <div style="font-size: 90%; color: #444;"> - Lambach has been elected as the leader of the <span style="color: #3E88B3; font-weight: bold;">DNVP</span>/<span style="color: #000000; font-weight: bold;">CVP</span>, and survived reelection. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_traumteam: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/traumteam.png" alt="Traumteam Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Traumteam</div>
+      <div style="font-size: 90%; color: #444;"> - Heuss must be President and Adenauer as Chancellor. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_sozialliberale_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialliberale_koalition.png" alt="Sozialliberale Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialliberale Koalition</div>
+      <div style="font-size: 90%; color: #444;"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_sozialchristliche_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialchristliche_koalition.png" alt="Sozialchristliche Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialchristliche Koalition</div>
+      <div style="font-size: 90%; color: #444;"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
