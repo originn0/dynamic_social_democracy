@@ -43,12 +43,12 @@ on-arrival: panzerkreuzer_b_funded = 1
 Chancellor [+ chancellor +] brings the matter to a full Reichstag vote, which passes with all parties in favor except the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span>. The ship will be built.
 
 @not_built
-on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0; hindenburg_angry += 5
+on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0; hindenburg_angry += 5; coup_progress += 1
 
 Our vote against the battlecruiser succeeds, with the support of the <span style="color: #700000;">**KPD**</span>. The ship will not be built!
 
 @ministry
-on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0; hindenburg_angry += 5
+on-arrival: panzerkreuzer_b_funded = 0; budget += 1 if panzerkreuzer_funded = 0; hindenburg_angry += 5; coup_progress += 1
 view-if: reichswehr_minister_party == "SPD"
 
 With our control of the Reichswehr Ministry, we have pressured the Navy to abandon its rearmament plans. The ship will not be built. 

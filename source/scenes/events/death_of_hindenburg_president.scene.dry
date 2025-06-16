@@ -2,7 +2,90 @@ title: The Death of Hindenburg
 subtitle: The President has died...
 new-page: true
 view-if: year = 1934 and month >= 7 and president = "Hindenburg" and not dnef_formed
-on-arrival: round = 0; hindenburg_dead = 1; president = "Bumke (acting)"; president = "Großmann (acting)" if judicial_reform >= 4; spd_candidate = "Eckener"; kpd_candidate = "Thälmann"; kpd_candidate = "Münzenberg" if kpd_leader = "Conciliators"; z_candidate = "Adenauer"; ddp_candidate = "Gessler"; lvp_candidate = "Gessler"; nsdap_candidate = "Hitler"; nsdap_candidate = "Göring" if hitler_deported or not hitler_citizen or hitler_dead; dnvp_candidate = "Seldte"; dvp_candidate = "Gessler"; other_candidate = "Seldte"; is_unity_candidate = 0; sapd_candidate = kpd_candidate; kvp_candidate = dnvp_candidate; dnf_candidate = dnvp_candidate
+on-arrival: {!
+Q.round = 0;
+Q.hindenburg_dead = 1;
+
+Q.lib_running = 1;
+Q.center_running = 1;
+Q.reactionary_running = 1;
+Q.hamster_running = 0;
+
+Q.gessler_run_1934 = 1;
+Q.heuss_run_1934 = 0;
+Q.adenauer_run_1934 = 1;
+Q.bruning_run_1934 = 0;
+Q.seldte_run_1934 = 1;
+Q.hergt_run_1934 = 0;
+Q.hugenberg_run_1934 = 0;
+
+Q.president = "Bumke (acting)";
+if (Q.judicial_reform >= 4) Q.president = "Großmann (acting)";
+
+Q.reactionary_candidate_1934 = "Seldte";
+Q.reactionary_candidate_1934_disp = "Franz Seldte";
+Q.lib_candidate_1934 = "Gessler";
+Q.lib_candidate_1934_disp = "Otto Gessler";
+Q.center_candidate_1934 = "Adenauer";
+Q.center_candidate_1934_disp = "Konrad Adenauer";
+
+Q.spd_candidate = "Eckener";
+Q.kpd_candidate = "Thälmann";
+Q.nsdap_candidate = "Hitler";
+
+if (Q.kpd_leader === "Conciliators") Q.kpd_candidate = "Münzenberg";
+if (Q.hitler_deported || !Q.hitler_citizen || Q.hitler_dead) Q.nsdap_candidate = "Göring";
+if ((Q.ddp_ideology == "Left" || Q.ddp_ideology == "Moderate" && Q.pro_republic >= 75) && !Q.lvp_formed || (Q.lvp_ideology != "Right" && Q.pro_republic >= 75 || Q.lvp_leader == "Heuss") && Q.lvp_formed && Q.lvp_votes >= 10) {
+    Q.heuss_run_1934 = 1;
+    Q.gessler_run_1934 = 0;
+    Q.lib_candidate_1934 = "Heuss";
+    Q.lib_candidate_1934_disp = "Theodor Heuss";
+}
+
+if (Q.dnvp_ideology == "Moderate") {
+    Q.seldte_run_1934 = 0;
+    Q.hergt_run_1934 = 1;
+    if (Q.dnf_votes >= 6) {
+        Q.hugenberg_run_1934 = 1;
+        Q.dnf_candidate = "Hugenberg";
+    } else {
+        Q.dnf_candidate = Q.nsdap_candidate;
+    }
+    Q.reactionary_candidate_1934 = "Hergt";
+    Q.reactionary_candidate_1934_disp = "Oskar Hergt";
+}
+
+if (Q.lautenbach_adopted) {
+    Q.center_candidate_1934 = "Brüning";
+    Q.center_candidate_1934_disp = "Heinrich Brüning";
+    Q.lib_running = 0;
+}
+
+if (Q.lib_running) {
+    Q.ddp_candidate = Q.lib_candidate_1934;
+    Q.lvp_candidate = Q.lib_candidate_1934;
+    Q.dvp_candidate = Q.lib_candidate_1934;
+} else {
+    Q.ddp_candidate = Q.center_candidate_1934;
+    Q.lvp_candidate = Q.center_candidate_1934;
+    Q.dvp_candidate = Q.center_candidate_1934;
+}
+
+Q.z_candidate = Q.center_candidate_1934;
+
+Q.dnvp_candidate = Q.reactionary_candidate_1934;
+Q.other_candidate = Q.reactionary_candidate_1934;
+
+Q.kvp_candidate = Q.reactionary_candidate_1934;
+if (Q.reactionary_candidate_1934 == "Seldte" && (Q.center_candidate_1934 == "Brüning" || Q.pro_republic >= 70)) {
+    Q.kvp_candidate = Q.center_candidate_1934;
+    Q.kvp_wholesome = 1;
+}
+
+Q.sapd_candidate = Q.kpd_candidate;
+
+Q.is_unity_candidate = 0;
+!}
 max-visits: 1
 on-display: {!  
     var cardEl = document.createElement('div');  
@@ -38,14 +121,16 @@ go-to: candidate_menu
 [? if hitler_deported or hitler_dead or (not hitler_citizen and not hitler_deported and not hitler_dead) : With Hitler out of the picture, the <span style="color: #7A3C00;">Nazis</span> will be running Hermann Göring as their candidate. ?]
 This might be the <span style="color: #7A3C00;">Nazis</span>' last hurrah; the party's internal contradictions are heightening, and it is in desperate shortage of funds.
 
-The <span style="color: #3E88B3;">**DNVP**</span> will nominate Franz Seldte, leader of the <span style="color: #3E88B3;">**Stahlhelm**</span> paramilitary group. He will be endorsed by many of Hindenburg's most right-wing supporters. They are working more closely with the <span style="color: #7A3C00;">Nazis</span> than before, and in the second round, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties are expected to consolidate into a single anti-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> front.
+[? if seldte_run_1934: The <span style="color: #3E88B3;">**DNVP**</span> will nominate Franz Seldte, leader of the <span style="color: #3E88B3;">**Stahlhelm**</span> paramilitary group. He will be endorsed by many of Hindenburg's most right-wing supporters. They are working more closely with the <span style="color: #7A3C00;">Nazis</span> than before, and in the second round, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties are expected to consolidate into a single anti-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> front. [? if kvp_formed and kvp_candidate == center_candidate_1934: However, the <span style="color: #0087DC;">**KVP**</span>, feeling alienated by this arrangement, has decided to support whomever the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] puts forth. ?] ?][? if hergt_run_1934: The <span style="color: #3E88B3;">**DNVP**</span> will nominate Oskar Hergt,[? if dnvp_leader != "Hergt":&nbsp;former?] leader of the <span style="color: #3E88B3;">**DNVP**</span> and former vice chancellor. He will be endorsed by many of Hindenburg's most right-wing supporters. They are working more closely with the <span style="color: #7A3C00;">Nazis</span> than before, and in the second round, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties are expected to consolidate into a single anti-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> front. ?]
+
+[? if not seldte_run_1934: Alfred Hugenberg is dissatisfied with endorsing [+ reactionary_candidate_1934 +] and prefers to run himself. However, his finances have been crippled by having solely financed the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?] throughout the economic depression, which has also eroded the income from his media empire. [? if hugenberg_run_1934: Despite this, he has scraped together what remains of his personal fortune to launch a presidential campaign, hoping to leverage a second-round endorsement for concessions from [+ reactionary_candidate_1934 +]. ?][? if not hugenberg_run_1934: In an effort to preserve both his party’s solvency and what remains of his wealth, he has refrained from running or endorsing anyone—much to the frustration of his colleagues. ?] ?]
 
 [? if kpd_leader = "Conciliators" : Given the failure of Thälmann's previous runs for president, and his declining stature in the party, the <span style="color: #700000;">**KPD**</span> will be running Willi Münzenberg, a controversial figure sometimes called the "Red millionaire". He is a media magnate who leads a number of <span style="color: #700000;">**Communist**</span> front organizations. ?]
 [? if kpd_leader != "Conciliators" : This will be Ernst Thälmann's third run for president as leader of the <span style="color: #700000;">**KPD**</span>. Despite his previous electoral defeats, he retains the loyalty of the party as well as <span style="color: #8B0000;">Stalin</span>'s <span style="color: #750e0e;">Soviet Union</span>. ?]
 
 Many <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">icans</span> of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], and <span style="color: #c00000;">**SPD**</span> float the idea of running Hugo Eckener, a nationally renowed Zeppelin captain, as a unity candidate. While he has some nationalistic views, he is also ardently opposed to <span style="color: #7A3C00;">Nazism</span>.
 
-Barring that, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] are planning to run separate candidates in the first round if the <span style="color: #c00000;">**SPD**</span> runs its own candidate. The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is considering nominating Konrad Adenauer, mayor of Köln and member of the Prussian state legislature. He calls for an alliance of conservative Christian democrats that encompasses both Catholics and Protestants. The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] might nominate Otto Gessler, former defense minister, who has crossover appeal to conservatives[? if dvp_exist and not lvp_formed:&nbsp;in the <span style="color: #C0A054;">**DVP**</span>?] and other parties who dislike the <span style="color: #3E88B3;">**DNVP**</span>-<span style="color: #7A3C00;">**NSDAP**</span> front.
+Barring that, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] are planning to run separate candidates in the first round if the <span style="color: #c00000;">**SPD**</span> runs its own candidate. [? if adenauer_run_1934: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is considering nominating Konrad Adenauer, mayor of Köln and member of the Prussian state legislature. He calls for an alliance of conservative Christian democrats that encompasses both Catholics and Protestants.?][? if bruning_run_1934: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is considering nominating Heinrich Brüning, their former Chancellor, known for his popular and successful public works program. Widely credited with reviving Germany’s economy, he is expected to receive broad support from the bourgeois parties that participated in his government should he choose to run. ?] [? if ddp_candidate == "Gessler": The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] might nominate Otto Gessler, former defense minister, who has crossover appeal to conservatives[? if dvp_exist and not lvp_formed:&nbsp;in the <span style="color: #C0A054;">**DVP**</span>?] and other parties who dislike the <span style="color: #3E88B3;">**DNVP**</span>-<span style="color: #7A3C00;">**NSDAP**</span> front. ?][? if ddp_candidate == "Heuss": The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] might nominate Theodor Heuss, a prominent left-liberal journalist, who presents a strong defense of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic and its democratic institutions. He aims to be the candidate for the young generation, and bourgeois <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span>. ?]
 
 As for the <span style="color: #c00000;">**SPD**</span>, we could support a joint <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition candidate or run our own.
 [? if braun_campaign : Otto Braun is tired. He ran and failed in the previous two presidential elections, and no longer wishes to run. His wife is ill enough that he wishes to stay by her side. ?][? if braun_campaign = 0 and not spd_prussia: Otto Braun is tired. After being deposed in Prussia, he has largely retired from politics, and is devoting his time to caring for his dying wife. ?][? if braun_campaign = 0 and spd_prussia : Otto Braun is tired. He does not wish to run, but he is willing to be convinced that he is needed at this moment. His wife is terminally ill, and he does not want more responsibilities. ?]
@@ -53,18 +138,12 @@ Kurt Schumacher is an ambitious rising star in the party, and would be all too w
 [? if womens_rights >= 6 and family_law >= 2 and womens_work >= 2 and welfare > 0: Or, perhaps it is time for a woman to become president. Germany and the <span style="color: #c00000;">**SPD**</span> have been leading on women's rights for years, and it is only fitting that we should elect the world's first female president. Perhaps Marie Juchacz could be seen as the "mother of the nation" for her work in social welfare. However, her divorce 28 years ago might make it difficult for the Catholics to support her. ?]
 
 [? if presidential_powers >= 1 and pro_republic >= 60 and pacifism >= 3: Since Germany has been largely democratized and presidential powers reduced, we can also support another non-traditional political figure, someone from the cultural, scientific, or literary spheres. They will perhaps be the symbol of a new Germany that has moved beyond its past. ?]
-# if Otto Braun ran last time: he can only run if he controls Prussia. Otherwise, it's Kurt Schumacher.
-
-# options: 
-# - Otto Braun (only if spd_prussia)
-# - Kurt Schumacher
-# - Marie Juchacz (The mother of the nation, only available if women's rights is full)
 
 @candidate_menu
 
 - @eckener_r1: Support Hugo Eckener as a joint <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition candidate.
-- @adenauer_r1: Support Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
-- @gessler_r1: Support Otto Gessler of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+- @adenauer_r1: Support [+ center_candidate_1934_disp +] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+- @gessler_r1: Support [+ lib_candidate_1934_disp +] of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
 - @thalmann_r1: Support Ernst Thälmann of the <span style="color: #700000;">**KPD**</span>.
 - @munzenberg_r1: Support Willi Münzenberg of the <span style="color: #700000;">**KPD**</span>.
 - @braun_r1: Support Otto Braun.
@@ -83,20 +162,22 @@ We have convinced Hugo Eckener to run on behalf of the <span style="color: #c000
 
 
 @adenauer_r1
-on-arrival: spd_candidate = "Adenauer"; z_relation += 4; Adenauer_bonus -= 2.5 if z_relation < 40; Seldte_bonus += 2.5 if z_relation < 40; is_unity_candidate = 1
+view-if: center_running
+on-arrival: spd_candidate = center_candidate_1934; z_relation += 4; Center_bonus -= 2.5 if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running; Reactionary_bonus += 2.5 if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running; is_unity_candidate = 1; kvp_candidate = dnvp_candidate
 go-to: r1_menu
 
-We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+We have endorsed [+ center_candidate_1934_disp +] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 
-[? if z_relation < 40 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to the <span style="color: #3E88B3;">**Stahlhelm**</span> leader Seldte. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
+[? if z_relation < 40 : With our support of [+ center_candidate_1934 +], some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to the [? if reactionary_candidate_1934 == "Seldte": <span style="color: #3E88B3;">**Stahlhelm**</span> leader?][? if reactionary_candidate_1934 != "Seldte": <span style="color: #3E88B3;">nationalist</span> ?] [+ reactionary_candidate_1934 +]. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?][? if kvp_formed and kvp_wholesome: The <span style="color: #0087DC;">**KVP**</span> will now be supporting [+ kvp_candidate +].  ?]
 
 @gessler_r1
-on-arrival: spd_candidate = "Gessler"; ddp_relation += 4; lvp_relation += 4; dvp_candidate = "Seldte" if dvp_relation < 40 and not lvp_formed and dvp_exist; is_unity_candidate = 1
+view-if: lib_running
+on-arrival: spd_candidate = lib_candidate_1934; ddp_relation += 4; lvp_relation += 4; dvp_candidate = reactionary_candidate_1934 if dvp_relation < 40 and not lvp_formed and dvp_exist; is_unity_candidate = 1
 go-to: r1_menu
 
-We have endorsed Otto Gessler, independent formerly of the <span style="color: #D3C24D;">**DDP**</span>.
+[? if gessler_run_1934: We have endorsed Otto Gessler, independent formerly of the <span style="color: #D3C24D;">**DDP**</span>. ?][? if heuss_run_1934: We have endorsed Theodor Heuss of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]. ?]
 
-[? if dvp_relation < 40 and not lvp_formed and dvp_exist : With our support of Gessler, the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now shifting their support to Seldte. ?]
+[? if dvp_relation < 40 and not lvp_formed and dvp_exist : With our support of [+ lib_candidate_1934 +], the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now shifting their support to [+ reactionary_candidate_1934 +]. ?]
 
 @thalmann_r1
 view-if: kpd_candidate = "Thälmann" 
@@ -221,7 +302,7 @@ view-if: round = 0
 # convincing Z to support a unity candidate
 @convince_z_unity
 title: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +].
-view-if: (spd_candidate = "Eckener" or spd_candidate = "Gessler") and z_candidate != spd_candidate
+view-if: (spd_candidate = "Eckener" or spd_candidate = lib_candidate_1934) and z_candidate != spd_candidate
 on-arrival: {!
 Q.z_support_braun = 0;
 if (Q.z_relation >= 40 || (Q.z_relation > 20 && Q.z_leader == "Joos")) {
@@ -276,12 +357,12 @@ go-to: r1_menu if round = 0; r2_campaigning if round > 0
 Unfortunately, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is not convinced. [? if spd_candidate = "Juchacz" : The Catholics are not impressed with Marie Juchacz. This is in part because she is a woman, in part because she had a divorce. ?]
 
 @z_success
-on-arrival: z_candidate = spd_candidate; Seldte_bonus += 2.5 if z_relation < 40
+on-arrival: z_candidate = spd_candidate; Reactionary_bonus += 2.5 if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running; kvp_candidate = dnvp_candidate
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
 The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is convinced! They will be supporting [+ spd_candidate +] for the election.
 
-[? if z_relation < 40 : Unfortunately, the <span style="color: #A2D8E0;">**BVP**</span> is breaking with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] on this election, supporting Seldte of the <span style="color: #3E88B3;">**DNVP**</span> instead. ?]
+[? if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running : Unfortunately, the <span style="color: #A2D8E0;">**BVP**</span> is breaking with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] on this election, supporting [+ reactionary_candidate_1934 +] of the <span style="color: #3E88B3;">**DNVP**</span> instead. ?][? if kvp_formed and kvp_wholesome: The <span style="color: #0087DC;">**KVP**</span> will now be supporting [+ kvp_candidate +].  ?]
 
 @z_partial
 
@@ -294,17 +375,16 @@ The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][?
 @pay_z
 choose-if: resources >= 2
 subtitle: -2 resources
-on-arrival: resources -= 2; z_candidate = spd_candidate; Seldte_bonus += 2.5 if z_relation < 40 and dnvp_candidate = "Seldte"
+on-arrival: resources -= 2; z_candidate = spd_candidate; Reactionary_bonus += 2.5 if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running; kvp_candidate = dnvp_candidate
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-With our resources, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are convinced to support [+ spd_candidate +]. Konrad Adenauer will drop out of the race.
+With our resources, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are convinced to support [+ spd_candidate +]. [+ center_candidate_1934_disp +] will drop out of the race.
 
-[? if z_relation < 40 and dnvp_candidate = "Seldte" : Unfortunately, the <span style="color: #A2D8E0;">**BVP**</span> is breaking with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] on this election, supporting Seldte of the <span style="color: #3E88B3;">**DNVP**</span> instead.  ?]
-
+[? if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running: Unfortunately, the <span style="color: #A2D8E0;">**BVP**</span> is breaking with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] on this election, supporting [+ reactionary_candidate_1934 +] of the <span style="color: #3E88B3;">**DNVP**</span> instead. ?] [? if kvp_formed and kvp_wholesome: The <span style="color: #0087DC;">**KVP**</span> will now be supporting [+ kvp_candidate +].  ?]
 
 @convince_ddp_unity
 title: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to support [+ spd_candidate +].
-view-if: (spd_candidate = "Eckener" or spd_candidate = "Adenauer") and ddp_candidate != spd_candidate and not lvp_formed
+view-if: (spd_candidate = "Eckener" or spd_candidate = center_candidate_1934) and ddp_candidate != spd_candidate and not lvp_formed
 on-arrival: ddp_candidate = spd_candidate if ddp_relation >= 30
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
@@ -325,7 +405,7 @@ max-visits: 1
 
 @convince_lvp_unity
 title: Convince the <span style="color: #FFCC00;">**LVP**</span> to support [+ spd_candidate +].
-view-if: (spd_candidate = "Eckener" or spd_candidate = "Adenauer") and lvp_candidate != spd_candidate and lvp_formed
+view-if: (spd_candidate = "Eckener" or spd_candidate = center_candidate_1934) and lvp_candidate != spd_candidate and lvp_formed
 on-arrival: lvp_candidate = spd_candidate if lvp_relation >= 50
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
@@ -379,7 +459,7 @@ The <span style="color: #700000;">**KPD**</span> now endorses [+ spd_candidate +
 @convince_dvp_unity
 title: Convince the <span style="color: #C0A054;">**DVP**</span> to support [+ spd_candidate +].
 unavailable-subtitle: The <span style="color: #C0A054;">DVP</span> is not willing to support our candidate.
-view-if: (spd_candidate = "Adenauer" or spd_candidate = "Gessler" or spd_candidate = "Eckener") and dvp_candidate != spd_candidate and not lvp_formed and dvp_exist
+view-if: (spd_candidate = center_candidate_1934 or spd_candidate = lib_candidate_1934 or spd_candidate = "Eckener") and dvp_candidate != spd_candidate and not lvp_formed and dvp_exist
 choose-if: dvp_relation >= 40
 on-arrival: dvp_candidate = spd_candidate
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
@@ -400,9 +480,12 @@ var candidate_descs = {
 Hitler: "Adolf Hitler of the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span>",
 Goring: "Hermann Göring of the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span>",
 Seldte: "Franz Seldte of the <span style='color: #3E88B3; font-weight: bold;'>Stahlhelm</span>/<span style='color: #3E88B3; font-weight: bold;'>DNVP</span>",
+Hergt: "Oskar Hergt of the <span style='color: #3E88B3; font-weight: bold;'>DNVP</span>",
 Eckener: "the independent <span style='color: #000000;'>rep</span><span style='color: #DD0000;'>ubl</span><span style='color: #FFCC00;'>ican</span> candidate Hugo Eckener",
-Adenauer: "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>Center Party</span>",
+Adenauer: "Konrad Adenauer of the <span style='color: #000000;'>Center Party</span>",
+Bruning: "Heinrich Brüning of the <span style='color: #000000;'>Center Party</span>",
 Gessler: "Otto Gessler, independent formerly of the <span style='color: #D3C24D; font-weight: bold;'>DDP</span>",
+Heuss: "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>DDP</span>",
 Thalmann: "Ernst Thälmann of the <span style='color: #700000; font-weight: bold;'>KPD</span>",
 Munzenberg: "Willi Münzenberg of the <span style='color: #700000; font-weight: bold;'>KPD</span>",
 Braun: "Otto Braun of the <span style='color: #c00000; font-weight: bold;'>SPD</span>",
@@ -414,18 +497,31 @@ Ossietzky: "Carl von Ossietzky, journalist"
 }
 if (Q.z_party_name == "CVP") {
     candidate_descs.Adenauer = "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>CVP</span>";
+    candidate_descs.Bruning = "Heinrich Brüning of the <span style='color: #000000; font-weight: bold;'>CVP</span>";
 }
+if (Q.lvp_formed) {
+    candidate_descs.Heuss = "Theodor Heuss of the <span style='color: #D3C24D; font-weight: bold;'>LVP</span>";
+}
+
+if (typeof Q.last_round_candidates === 'undefined') {
+    Q.last_round_candidates = [];
+}
+
+var candidate_votes = {};
+var current_round_candidates = [];
 
 for (var k in candidate_descs) {
     Q[k + '_running'] = 0;
 }
-var candidate_votes = {};
 for (var i = 0; i < Q.parties.length; i++) {
     var party = Q.parties[i];
     var supported_candidate = Q[party + '_candidate'];
     //console.log(party, supported_candidate);
     supported_candidate = supported_candidate.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     Q[supported_candidate + '_running'] = 1;
+    if (!current_round_candidates.includes(supported_candidate)) {
+        current_round_candidates.push(supported_candidate);
+    }
     if (supported_candidate in candidate_votes) {
         candidate_votes[supported_candidate] += Q[party+'_normalized'];
     } else {
@@ -436,6 +532,19 @@ var total_votes = 0;
 Q.winner = "";
 Q.winner_votes = 0;
 Q.has_majority = 0;
+
+if (Q.Center_bonus && Q.center_candidate_1934 in candidate_votes) {
+    Q[Q.center_candidate_1934 + '_bonus'] = Q.Center_bonus;
+}
+
+if (Q.Liberal_bonus && Q.lib_candidate_1934 in candidate_votes) {
+    Q[Q.lib_candidate_1934 + '_bonus'] = Q.Liberal_bonus;
+}
+
+if (Q.Reactionary_bonus && Q.reactionary_candidate_1934 in candidate_votes) {
+    Q[Q.reactionary_candidate_1934 + '_bonus'] = Q.Reactionary_bonus;
+}
+
 for (var k in candidate_votes) {
     if (Q[k + '_bonus']) {
         candidate_votes[k] += Q[k + '_bonus']/100;
@@ -448,14 +557,83 @@ for (var k in candidate_votes) {
     if (candidate_votes[k] >= 0.5) {
         Q.has_majority = 1;
     }
-}
+} 
+
 for (var k in candidate_votes) {
     Q[k + '_votes'] = Math.round(1000*candidate_votes[k]/total_votes)/10;
     Q[k + '_votes_disp'] = Q[k + '_votes'].toFixed(1);
 }
+
+for (var lastCandidate of Q.last_round_candidates) {
+    if (!current_round_candidates.includes(lastCandidate)) {
+        delete Q[lastCandidate + '_votes'];
+        delete Q[lastCandidate + '_votes_disp'];
+    }
+}
+
+Q.last_round_candidates = current_round_candidates;
+
 Q.winner_votes = Math.round(1000*Q.winner_votes/total_votes)/10;
 Q.winner_votes_disp = Q.winner_votes.toFixed(1);
 Q.winner_desc = candidate_descs[Q.winner];
+
+if (Q.Braun_votes || Q.Schumacher_votes || Q.Juchacz_votes) {
+    Q.spd_running = 1;
+    if (Q.Braun_votes_disp) Q.Socialist_votes_disp = Q.Braun_votes_disp;
+    if (Q.Schumacher_votes_disp) Q.Socialist_votes_disp = Q.Schumacher_votes_disp;
+    if (Q.Juchacz_votes_disp) Q.Socialist_votes_disp = Q.Juchacz_votes_disp;
+} else {
+    Q.spd_running = 0;
+}
+
+
+if (Q.Gessler_votes || Q.Heuss_votes) {
+    Q.lib_running = 1;
+    if (Q.Gessler_votes_disp) {
+        Q.Liberal_votes = Q.Gessler_votes;
+        Q.Liberal_votes_disp = Q.Gessler_votes_disp;
+    }
+    if (Q.Heuss_votes_disp) {
+        Q.Liberal_votes = Q.Heuss_votes;
+        Q.Liberal_votes_disp = Q.Heuss_votes_disp;
+    }
+} else {
+    Q.lib_running = 0;
+}
+
+if (Q.Adenauer_votes || Q.Bruning_votes) {
+    Q.center_running = 1;
+    if (Q.Adenauer_votes_disp) {
+        Q.Center_votes = Q.Adenauer_votes;
+        Q.Center_votes_disp = Q.Adenauer_votes_disp;
+    }
+    if (Q.Bruning_votes_disp) {
+        Q.Center_votes = Q.Bruning_votes;
+        Q.Center_votes_disp = Q.Bruning_votes_disp;
+    }
+} else {
+    Q.center_running = 0;
+}
+
+if (Q.Hergt_votes || Q.Seldte_votes) {
+    Q.reactionary_running = 1;
+    if (Q.Hergt_votes_disp) {
+        Q.Reactionary_votes = Q.Hergt_votes;
+        Q.Reactionary_votes_disp = Q.Hergt_votes_disp;
+    }
+    if (Q.Seldte_votes_disp) {
+        Q.Reactionary_votes = Q.Seldte_votes;
+        Q.Reactionary_votes_disp = Q.Seldte_votes_disp;
+    }
+} else {
+    Q.reactionary_running = 0;
+}
+
+if (Q.Hugenberg_votes) {
+    Q.hamster_running = 1;
+} else {
+    Q.hamster_running = 0;
+}
 
 Q.round += 1
 !}
@@ -466,75 +644,84 @@ Election results:
 [? if Hitler_running : <span style="color: #7A3C00;">**Hitler**</span> - [+ Hitler_votes_disp +]% ?]
 [? if Goring_running : <span style="color: #7A3C00;">**Göring**</span> - [+ Goring_votes_disp +]% ?]
 
-[? if Seldte_running : <span style="color: #3E88B3;">**Seldte**</span> - [+ Seldte_votes_disp +]% ?]
+[? if hamster_running : <span style="color: #003755;">**Hugenberg**</span> - [+ Hugenberg_votes_disp +]% ?]
+
+[? if reactionary_running : <span style="color: #3E88B3;">**[+ reactionary_candidate_1934 +]**</span> - [+ Reactionary_votes_disp +]% ?]
 
 [? if Thalmann_running : <span style="color: #700000;">**Thälmann**</span> - [+ Thalmann_votes_disp +]% ?]
 [? if Munzenberg_running : <span style="color: #9B0000;">**Münzenberg**</span> - [+ Munzenberg_votes_disp +]% ?]
 
-[? if Adenauer_running : <span style="color: #000000;">**Adenauer**</span> - [+ Adenauer_votes_disp +]% ?]
+[? if center_running : <span style="color: #000000;">**[+ center_candidate_1934 +]**</span> - [+ Center_votes_disp +]% ?]
 
-[? if Gessler_running : [? if not lvp_formed: <span style="color: #D3C24D;">**Gessler**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Gessler**</span>?] - [+ Gessler_votes_disp +]% ?]
+[? if lib_running : [? if not lvp_formed: <span style="color: #D3C24D;">**[+ lib_candidate_1934 +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**[+ lib_candidate_1934 +]**</span>?] - [+ Liberal_votes_disp +]% ?]
 
 [? if Eckener_running : <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span> - [+ Eckener_votes_disp +]% ?]
 
-[? if Braun_running : <span style="color: #c00000;">**Braun**</span> - [+ Braun_votes_disp +]% ?]
-[? if Schumacher_running : <span style="color: #c00000;">**Schumacher**</span> - [+ Schumacher_votes_disp +]% ?]
-[? if Juchacz_running : <span style="color: #c00000;">**Juchacz**</span> - [+ Juchacz_votes_disp +]% ?]
+[? if spd_running : <span style="color: #c00000;">**[+ spd_candidate +]**</span> - [+ Socialist_votes_disp +]% ?]
 # cultural candidates
-[? if Einstein_running : Einstein - [+ Einstein_votes_disp +]% ?]
-[? if Ossietzky_running : Ossietzky - [+ Ossietzky_votes_disp +]% ?]
-[? if Mann_running : Mann - [+ Mann_votes_disp +]% ?]
+[? if Einstein_running : <span style="color: #CFC88F;">**Einstein**</span> - [+ Einstein_votes_disp +]% ?]
+[? if Ossietzky_running : span style="color: #E0A0A0;">**Ossietzky**</span> - [+ Ossietzky_votes_disp +]% ?]
+[? if Mann_running : span style="color: #E0A0A0;">**Mann**</span> - [+ Mann_votes_disp +]% ?]
 
 @r2_start
 on-arrival: {!
 // 1. coordination between the right/far-right
-if (Q.Hitler_votes && Q.Seldte_votes) {
-    if (Q.Hitler_votes > Q.Seldte_votes) {
+if (Q.Hitler_votes && Q.Reactionary_votes) {
+    if (Q.Hitler_votes > Q.Reactionary_votes) {
         Q.dnvp_candidate = "Hitler";
         Q.other_candidate = "Hitler";
-        Q.kvp_candidate = "Hitler";
+        if (Q.kvp_candidate == Q.reactionary_candidate_1934) Q.kvp_candidate = "Hitler";
         Q.dnf_candidate = "Hitler";
         Q.Hitler_bonus = (Q.Hitler_bonus || 0) - 0.25*Q.other_votes;
-        if (Q.z_candidate == "Adenauer") {
-            Q.Adenauer_bonus = (Q.Adenauer_bonus || 0) + 0.25*Q.other_votes;
+        if (Q.center_running) {
+            Q.Center_bonus = (Q.Center_bonus || 0) + 0.25*Q.other_votes;
+        } else if (Q.lib_running) {
+            Q.Liberal_bonus = (Q.Liberal_bonus || 0) + 0.25*Q.other_votes;
         }
     } else {
-        Q.nsdap_candidate = "Seldte";
+        Q.nsdap_candidate = Q.reactionary_candidate_1934;
+        Q.dnf_candidate = Q.reactionary_candidate_1934;
     }
-} else if (Q.Goring_votes && Q.Seldte_votes) {
-    if (Q.Goring_votes > Q.Seldte_votes) {
+} else if (Q.Goring_votes && Q.Reactionary_votes) {
+    if (Q.Goring_votes > Q.Reactionary_votes) {
         Q.dnvp_candidate = "Göring";
-        Q.other_candidate = "Göring";
-        Q.kvp_candidate = "Göring";
+        if (Q.kvp_candidate == Q.reactionary_candidate_1934) Q.other_candidate = "Göring";
         Q.dnf_candidate = "Göring";
+        Q.Goring_bonus = (Q.Goring_bonus || 0) - 0.25*Q.other_votes;
+        if (Q.center_running) {
+            Q.Center_bonus = (Q.Center_bonus || 0) + 0.25*Q.other_votes;
+        } else if (Q.lib_running) {
+            Q.Liberal_bonus = (Q.Liberal_bonus || 0) + 0.25*Q.other_votes;
+        }
     } else {
-        Q.nsdap_candidate = "Seldte";
+        Q.nsdap_candidate = Q.reactionary_candidate_1934;
+        Q.dnf_candidate = Q.reactionary_candidate_1934;
     }
 }
 // 2. If Adenauer & Gessler are both running and neither are part of the SPD coalition, the smaller of these drops out.
-Q.adenauer_drops_out = 0;
-Q.gessler_drops_out = 0;
-if (Q.z_candidate == "Adenauer" && (Q.ddp_candidate == "Gessler" && !Q.lvp_formed || Q.dvp_candidate == "Gessler" && !Q.lvp_formed && Q.dvp_exist || Q.lvp_candidate == "Gessler" && Q.lvp_formed) && Q.z_candidate != Q.spd_candidate && (Q.ddp_candidate != Q.spd_candidate && !Q.lvp_formed || Q.dvp_candidate != Q.spd_candidate && !Q.lvp_formed && Q.dvp_exist || Q.lvp_candidate != Q.spd_candidate && Q.lvp_exist)) {
-    if (Q.Adenauer_votes > Q.Gessler_votes) {
-        Q.gessler_drops_out = 1;
+Q.center_drops_out = 0;
+Q.lib_drops_out = 0;
+if (Q.z_candidate == Q.center_candidate_1934 && (Q.ddp_candidate == Q.lib_candidate_1934 && !Q.lvp_formed || Q.dvp_candidate == Q.lib_candidate_1934 && !Q.lvp_formed && Q.dvp_exist || Q.lvp_candidate == Q.lib_candidate_1934 && Q.lvp_formed) && Q.z_candidate != Q.spd_candidate && (Q.ddp_candidate != Q.spd_candidate && !Q.lvp_formed || Q.dvp_candidate != Q.spd_candidate && !Q.lvp_formed && Q.dvp_exist || Q.lvp_candidate != Q.spd_candidate && Q.lvp_exist)) {
+    if (Q.Center_votes > Q.Liberal_votes) {
+        Q.lib_drops_out = 1;
         if (Q.ddp_candidate != Q.spd_candidate) {
-            Q.ddp_candidate = "Adenauer";
+            Q.ddp_candidate = Q.center_candidate_1934;
         }
         if (Q.dvp_candidate != Q.spd_candidate) {
-            Q.dvp_candidate = "Adenauer";
+            Q.dvp_candidate = Q.center_candidate_1934;
         }
         if (Q.lvp_candidate != Q.spd_candidate) {
-            Q.lvp_candidate = "Adenauer";
+            Q.lvp_candidate = Q.center_candidate_1934;
         }
-        Q.Adenauer_bonus = (Q.Adenauer_bonus || 0) + 0.25*Q.other_votes;
+        Q.Center_bonus = (Q.Center_bonus || 0) + 0.25*Q.other_votes;
     } else {
-        Q.adenauer_drops_out = 1;
-        Q.z_candidate = "Gessler";
-        Q.Gessler_bonus = 0.25*Q.other_votes;
+        Q.center_drops_out = 1;
+        Q.z_candidate = Q.lib_candidate_1934;
+        Q.Liberal_bonus = 0.25*Q.other_votes;
     }
-    if (Q.nsdap_candidate == 'Seldte') {
-        Q.Seldte_bonus = (Q.Seldte_bonus || 0) - 0.25*Q.other_votes;
-    } else if (Q.nsdap_candidate == "Hitler") {
+    if (Q.nsdap_candidate == Q.reactionary_candidate_1934) {
+        Q.Reactionary_bonus = (Q.Reactionary_bonus || 0) - 0.25*Q.other_votes;
+    } else if (Q.nsdap_candidate == "Hitler" || Q.nsdap_candidate == "Göring") {
         Q.Hitler_bonus = (Q.Hitler_bonus || 0) - 0.25*Q.other_votes;
     }
 }
@@ -548,10 +735,10 @@ In the lead is [+ winner_desc +]. There is no majority in the first round. In th
 
 [? if dnvp_candidate = "Hitler" : The <span style="color: #3E88B3;">**DNVP**</span> and <span style="color: #7A3C00;">**NSDAP**</span> have consolidated their electoral efforts, with the <span style="color: #3E88B3;">**DNVP**</span> now endorsing Hitler for the second round. Some right-wing voters are uncomfortable with this arrangement, and might not vote. ?]
 [? if dnvp_candidate = "Göring" : The <span style="color: #3E88B3;">**DNVP**</span> and <span style="color: #7A3C00;">**NSDAP**</span> have consolidated their electoral efforts, with the <span style="color: #3E88B3;">**DNVP**</span> now endorsing Göring for the second round. ?]
-[? if nsdap_candidate = "Seldte" : The <span style="color: #3E88B3;">**DNVP**</span> and <span style="color: #7A3C00;">**NSDAP**</span> have consolidated their electoral efforts, with the <span style="color: #7A3C00;">**NSDAP**</span> now endorsing Seldte for the second round. ?]
+[? if nsdap_candidate = reactionary_candidate_1934 : The <span style="color: #3E88B3;">**DNVP**</span> and <span style="color: #7A3C00;">**NSDAP**</span> have consolidated their electoral efforts, with the <span style="color: #7A3C00;">**NSDAP**</span> now endorsing [+ reactionary_candidate_1934 +] for the second round. ?]
 
-[? if gessler_drops_out : The liberal candidate Otto Gessler has dropped out in favor of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s Konrad Adenauer. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
-[? if adenauer_drops_out : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Konrad Adenauer has dropped out in favor of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:-<span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span> ?] candidate Otto Gessler. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
+[? if lib_drops_out : The liberal candidate [+ lib_candidate_1934_disp +] has dropped out in favor of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s [+ center_candidate_1934_disp +]. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
+[? if center_drops_out : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate [+ center_candidate_1934_disp +] has dropped out in favor of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:-<span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span> ?] candidate [+ lib_candidate_1934_disp +]. This consolidates the votes of the moderate bürgerblock, and attracts some votes from the right-wing minor parties. ?]
 
 What should we do?
 
@@ -576,10 +763,10 @@ view-if: spd_candidate != "Thälmann" and kpd_candidate = "Thälmann"
 choose-if: kpd_relation >= 50 and left_strength > reformist_strength
 unavailable-subtitle: [? if kpd_relation < 50 : We do not have good enough relations with the <span style="color: #700000;">Communists</span>, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this bizarre arrangement. ?]
 on-arrival: reformist_dissent += 15; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 15; dvp_relation -= 15; lvp_relation -= 15; ddp_relation -= 12
-on-departure: z_candidate = "Adenauer" if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz"; ddp_candidate = z_candidate if ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz"; dvp_candidate = z_candidate if dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz"; spd_candidate = "Thälmann"; lvp_candidate = z_candidate if lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz"; spd_candidate = "Thälmann"
+on-departure: z_candidate = center_candidate_1934 if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz"; ddp_candidate = z_candidate if ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz"; dvp_candidate = z_candidate if dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz"; spd_candidate = "Thälmann"; lvp_candidate = z_candidate if lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz"; spd_candidate = "Thälmann"
 max-visits: 1
 
-We have switched our endorsement to Ernst Thälmann of the <span style="color: #700000;">**KPD**</span>. [? if z_candidate = spd_candidate : Our former allies in the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] see this as a betrayal. ?][? if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz": Now, they will support Konrad Adenauer once again. ?][? if (ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz") and not lvp_formed: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will switch their support to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz") and not lvp_formed and dvp_exist: The <span style="color: #C0A054;">**DVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz") and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?]
+We have switched our endorsement to Ernst Thälmann of the <span style="color: #700000;">**KPD**</span>. [? if z_candidate = spd_candidate : Our former allies in the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] see this as a betrayal. ?][? if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz": Now, they will support [+ center_candidate_1934_disp +] once again. ?][? if (ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz") and not lvp_formed: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will switch their support to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz") and not lvp_formed and dvp_exist: The <span style="color: #C0A054;">**DVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz") and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?]
 
 - @r2_vote: Let the voting begin.
 
@@ -590,35 +777,35 @@ view-if: spd_candidate != "Münzenberg" and kpd_candidate = "Münzenberg"
 choose-if: kpd_relation >= 50 and left_strength > reformist_strength
 unavailable-subtitle: [? if kpd_relation < 50 : We do not have good enough relations with the <span style="color: #700000;">Communists</span>, so they are not even willing to accept our support. ?] [? if reformist_strength >= left_strength : The reformist faction is able to dissuade the party from supporting this bizarre arrangement. ?]
 on-arrival: reformist_dissent += 12; center_dissent += 10; labor_dissent += 5; neorevisionist_dissent += 10; catholics_spd -= 5; workers_spd -= 3; kpd_relation += 10; communist_coalition += 2; z_relation -= 12; ddp_relation -= 10; dvp_relation -= 15; lvp_relation -= 12
-on-departure: z_candidate = "Adenauer" if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz"; ddp_candidate = z_candidate if ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz"; dvp_candidate = z_candidate if dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz"; lvp_candidate = z_candidate if lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz"; spd_candidate = "Münzenberg"; 
+on-departure: z_candidate = center_candidate_1934 if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz"; ddp_candidate = z_candidate if ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz"; dvp_candidate = z_candidate if dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz"; lvp_candidate = z_candidate if lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz"; spd_candidate = "Münzenberg"; 
 max-visits: 1
 
-We have switched our endorsement to Willi Münzenberg of the <span style="color: #700000;">**KPD**</span>. [? if z_candidate = spd_candidate : Our former allies in the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] see this as a betrayal. ?][? if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz": Now, they will support Konrad Adenauer once again. ?][? if (ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz") and not lvp_formed: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will switch their support to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz") and not lvp_formed and dvp_exist: The <span style="color: #C0A054;">**DVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz") and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?]
+We have switched our endorsement to Willi Münzenberg of the <span style="color: #700000;">**KPD**</span>. [? if z_candidate = spd_candidate : Our former allies in the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] see this as a betrayal. ?][? if z_candidate = "Braun" or z_candidate = "Schumacher" or z_candidate = "Juchacz": Now, they will support [+ center_candidate_1934_disp +] once again. ?][? if (ddp_candidate = "Braun" or ddp_candidate = "Schumacher" or ddp_candidate = "Juchacz") and not lvp_formed: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will switch their support to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (dvp_candidate = "Braun" or dvp_candidate = "Schumacher" or dvp_candidate = "Juchacz") and not lvp_formed and dvp_exist: The <span style="color: #C0A054;">**DVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?][? if (lvp_candidate = "Braun" or lvp_candidate = "Schumacher" or lvp_candidate = "Juchacz") and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will also support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate. ?]
 
 - @r2_vote: Let the voting begin.
 
 
 @r2_endorse_adenauer
-title: Switch our support to Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
-view-if: z_candidate = "Adenauer" and spd_candidate != z_candidate
-on-departure: kpd_candidate = "Thälmann" if kpd_candidate == spd_candidate and kpd_leader != "Conciliators"; kpd_candidate = "Münzenberg" if kpd_candidate == spd_candidate and kpd_leader == "Conciliators"; sapd_candidate = kpd_candidate; spd_candidate = "Adenauer"; z_relation += 4; Adenauer_bonus -= 2.5 if z_relation < 40; Seldte_bonus += 2.5 if z_relation < 40; is_unity_candidate = 1
+title: Switch our support to [+ center_candidate_1934_disp +] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+view-if: z_candidate = center_candidate_1934 and spd_candidate != z_candidate
+on-departure: kpd_candidate = "Thälmann" if kpd_candidate == spd_candidate and kpd_leader != "Conciliators"; kpd_candidate = "Münzenberg" if kpd_candidate == spd_candidate and kpd_leader == "Conciliators"; sapd_candidate = kpd_candidate; ddp_candidate = center_candidate_1934 if ddp_candidate == spd_candidate and spd_running; dvp_candidate = center_candidate_1934 if dvp_candidate == spd_candidate and spd_running; lvp_candidate = center_candidate_1934 if lvp_candidate == spd_candidate and spd_running; spd_candidate = center_candidate_1934; z_relation += 4; Center_bonus -= 2.5 if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running; Reactionary_bonus += 2.5 if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running; is_unity_candidate = 1; kvp_candidate = dnvp_candidate
 go-to: r2_campaigning
 
-We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+We have endorsed [+ center_candidate_1934_disp +] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 
-[? if z_relation < 40 : With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to the <span style="color: #3E88B3;">**Stahlhelm**</span> leader Seldte. ?]
+[? if ((z_relation < 40 and reactionary_candidate_1934 == "Seldte") or (z_relation < 55 and reactionary_candidate_1934 != "Seldte")) and reactionary_running : With our support of [+ center_candidate_1934 +], some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to the [? if reactionary_candidate_1934 == "Seldte": <span style="color: #3E88B3;">**Stahlhelm**</span> leader?][? if reactionary_candidate_1934 != "Seldte": <span style="color: #3E88B3;">nationalist</span> ?] [+ reactionary_candidate_1934 +]. ?] [? if kvp_formed and kvp_wholesome: The <span style="color: #0087DC;">**KVP**</span> will now be supporting [+ kvp_candidate +].  ?]
 
-[? if kpd_candidate = spd_candidate: The KPD is now breaking from our previous coalition and supporting their own candidate. ?]
+[? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and supporting their own candidate. ?]
 
 @r2_endorse_gessler
-title: Switch our support to Otto Gessler.
-view-if: ddp_candidate = "Gessler" and spd_candidate != ddp_candidate
-on-departure: kpd_candidate = "Thälmann" if kpd_candidate == spd_candidate and kpd_leader != "Conciliators"; kpd_candidate = "Münzenberg" if kpd_candidate == spd_candidate and kpd_leader == "Conciliators"; sapd_candidate = kpd_candidate; spd_candidate = "Gessler"; ddp_relation += 4; lvp_relation += 4; dvp_candidate = "Seldte" if dvp_relation < 40 and not lvp_formed and dvp_exist; is_unity_candidate = 1
+title: Switch our support to [+ lib_candidate_1934_disp +].
+view-if: ddp_candidate = lib_candidate_1934 and spd_candidate != ddp_candidate
+on-departure: ddp_candidate = lib_candidate_1934 if ddp_candidate == spd_candidate and spd_running; dvp_candidate = lib_candidate_1934 if dvp_candidate == spd_candidate and spd_running; z_candidate = lib_candidate_1934 if z_candidate == spd_candidate and spd_running; kpd_candidate = "Thälmann" if kpd_candidate == spd_candidate and kpd_leader != "Conciliators"; kpd_candidate = "Münzenberg" if kpd_candidate == spd_candidate and kpd_leader == "Conciliators"; sapd_candidate = kpd_candidate; spd_candidate = lib_candidate_1934; ddp_relation += 4; lvp_relation += 4; dvp_candidate = reactionary_candidate_1934 if dvp_relation < 40 and not lvp_formed and dvp_exist; is_unity_candidate = 1
 go-to: r2_campaigning
 
-We have endorsed Otto Gessler, independent formerly of the <span style="color: #D3C24D;">**DDP**</span>.
+[? if gessler_run_1934: We have endorsed Otto Gessler, independent formerly of the <span style="color: #D3C24D;">**DDP**</span>. ?][? if heuss_run_1934: We have endorsed Theodor Heuss of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]. ?]
 
-[? if dvp_relation < 40 and not lvp_formed and dvp_exist: With our support of Gessler, the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now shifting their support to Seldte. ?]
+[? if dvp_relation < 40 and not lvp_formed and dvp_exist: With our support of [+ lib_candidate_1934 +], the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now shifting their support to [+ reactionary_candidate_1934 +]. ?]
 
 [? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and supporting their own candidate. ?]
 
@@ -627,7 +814,7 @@ title: Convince the <span style="color: #000000;">We</span><span style="color: #
 subtitle: -2 resources
 unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?]
 choose-if: resources >= 2 and ((z_relation >= 50 and z_ideology == "Right") or (z_relation >= 30 and z_ideology = "Left")) and ddp_relation >= 40
-view-if: z_candidate = "Adenauer" and ddp_candidate = "Gessler" and spd_candidate != "Eckener"
+view-if: z_candidate = center_candidate_1934 and ddp_candidate = lib_candidate_1934 and spd_candidate != "Eckener"
 on-departure: kpd_candidate = "Thälmann" if kpd_candidate == spd_candidate and kpd_leader != "Conciliators"; kpd_candidate = "Münzenberg" if kpd_candidate == spd_candidate and kpd_leader == "Conciliators"; sapd_candidate = kpd_candidate; spd_candidate = "Eckener"; z_candidate = "Eckener"; ddp_candidate = "Eckener"; resources -= 2; is_unity_candidate = 1
 go-to: r2_campaigning
 
@@ -678,6 +865,27 @@ With Seldte's victory, the balance of power passes to the <span style="color: #7
 - @hitler_takes_power: What next?
 - @hitler_constitutional: This is blatantly unconstitutional!
 
+@hergt_victory_nazi
+on-arrival: chancellor = "Seldte"; chancellor_party = "DNVP"
+
+With Hergt’s victory—secured with the support of the <span style="color: #7A3C00;">Nazis</span>—the balance of power shifts to them under the terms of their deal. However, Hergt remains deeply reluctant to appoint Adolf Hitler as chancellor[? if not hitler_citizen or hitler_deported:—which would require granting him German citizenship?]. Instead, he names <span style="color: #3E88B3;">**Stahlhelm**</span> leader Franz Seldte as a compromise candidate between the two parties. Seldte will govern through presidential decree, leading a <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> cabinet.
+
+- @seldte_takes_power: What next?
+- @seldte_constitutional: This is blatantly unconstitutional!
+
+@hergt_victory_lite
+on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
+
+With Hergt’s victory—and without having relied on <span style="color: #7A3C00;">Nazi</span> support—he is under no obligation to appoint [+ nsdap_candidate +] as chancellor. A committed <span style="color: #808080;">monarchist</span>, Hergt is expected to pursue steps toward restoring the Hohenzollerns. Unlike Hindenburg, he is far more openly partisan and intends to exclude the <span style="color: #c00000;">**SPD**</span> from government throughout his seven-year term.
+
+@seldte_constitutional
+view-if: presidential_powers
+
+We have passed a constitutional amendment preventing the president from having the power to arbitrarily dismiss a government. To undo this, the <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span> has called a plebiscite on a new constitutional amendment. Stormtroopers are in the streets, "convincing" voters to support their proposal. Germany is nearing civil war.
+
+- @fight: We will fight the <span style="color: #7A3C00;">fascists</span> in the streets!
+- @defeat_democratic: We can only defeat the fascists through democratic means!
+
 @hitler_constitutional
 view-if: presidential_powers
 
@@ -713,11 +921,12 @@ Despite the <span style="color: #7A3C00;">Nazi</span> threats, supporters of the
 
 @ref_lose
 
+- @seldte_takes_power: What next?
 - @hitler_takes_power: What next?
 
 
 @election_end
-go-to: eckener_win if winner = "Eckener"; juchacz_win if winner = "Juchacz"; bundesrepublik_win if winner = "Schumacher" or winner = "Adenauer"; hitler_victory if winner = "Hitler" or winner = "Göring" or winner = "Goring"; seldte_victory if winner = "Seldte"; munzenberg_victory if winner = "Munzenberg" or winner = "Münzenberg"; thalmann_victory if winner = "Thalmann" or winner = "Thälmann"; nazis_lose if winner = "Braun" or winner = "Gessler"; cultural_victory if winner = "Ossietzky" or winner = "Mann"; einstein_victory if winner = "Einstein"
+go-to: eckener_win if winner = "Eckener"; juchacz_win if winner = "Juchacz"; bundesrepublik_win if winner = "Schumacher" or winner = "Adenauer"; hitler_victory if winner = "Hitler" or winner = "Göring" or winner = "Goring"; seldte_victory if winner = "Seldte"; hergt_victory_nazi if winner = "Hergt" and nsdap_candidate == "Hergt"; hergt_victory_lite if winner = "Hergt" and nsdap_candidate != "Hergt"; munzenberg_victory if winner = "Munzenberg" or winner = "Münzenberg"; thalmann_victory if winner = "Thalmann" or winner = "Thälmann"; nazis_lose if winner = "Braun" or winner = "Gessler" or winner = "Heuss" or winner = "Bruning"; cultural_victory if winner = "Ossietzky" or winner = "Mann"; einstein_victory if winner = "Einstein"
 on-arrival: {!
 Q.president = Q.winner;
 if (Q.president == "Thalmann") Q.president = "Thälmann";
@@ -726,7 +935,7 @@ if (Q.president == "Goring") Q.president = "Göring";
 
 if (Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Schumacher" || Q.president == "Wels" || Q.president == "Grzesinski" || Q.president == "Juchacz" || Q.president == "Braun" || Q.president == "Ossietzky" || Q.president == "Mann" || Q.president == "Einstein") {
     Q.president_ideology = "Left";
-} else if (Q.president == "Eckener" || Q.president == "Adenauer" || Q.president == "Gessler") {
+} else if (Q.president == "Eckener" || Q.president == "Adenauer" || Q.president == "Brüning" || Q.president == "Gessler" || Q.president == "Heuss") {
     Q.president_ideology = "Moderate";
 } else {
     Q.president_ideology = "Right";

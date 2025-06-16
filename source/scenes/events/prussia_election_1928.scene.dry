@@ -589,6 +589,12 @@ if ((Q.nsdap_votes_prussia + Q.dnf_votes_prussia >= 30 && Q.dnvp_ideology == "Mo
 } else {
     Q.hindenburg_angry_prussia = 0;
 }
+
+if (Q.left_coalition_prussia >= 50) {
+    Q.kpd_relation += 5;
+    Q.left_strength += 5;
+}
+
 !}
 on-display: {!
 data = [{
@@ -825,6 +831,8 @@ go-to: coalition_menu
 [? if anti_democratic_coalition_prussia >= 50 and dnvp_ideology == "Moderate": Together, the anti-democratic <span style="color: #700000;">**KPD**</span>, <span style="color: #003755;">**DNF**</span>, and <span style="color: #7A3C00;">**NSDAP**</span> have a majority in the Landtag. A stable governing majority will be almost impossible. ?]
 
 [? if hindenburg_angry_prussia : The rapid rise of the <span style="color: #7A3C00;">**NSDAP**</span> in Prussia, traditionally a democratic stronghold, has significantly shifted the national mood. To conservative elites, including President Hindenburg, this surge has reinforced the belief that the <span style="color: #7A3C00;">**NSDAP**</span> must be incorporated into the federal government. With [+ nsdap_votes +]% of the population now backing the movement, it cannot be ignored much longer.  ?]
+
+[? if left_coalition_prussia >= 50: The fact that the <span style="color: #9B0000;">Marxist</span> parties now hold a majority in the Landtag by themselves has energized the grassroots of both our parties to push for closer cooperation. ?]
 
 @coalition_menu
 

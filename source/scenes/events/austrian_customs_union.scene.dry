@@ -22,7 +22,7 @@ However, the Allies, especially <span style="color: #002654;">France</span>, are
 - @end_toleration: Attempt to stop this arrangement!
 
 @let_it_happen
-on-arrival: banking_crisis_timer = 4; curtius_banking_crisis = 1 if not in_weimar_coalition; curtius_explosion_timer = time + 7 if (dvp_leader == "Curtius" and not in_weimar_coalition) or lvp_leader == "Curtius"; customs_union = 1; west_relation -= 2; east_relation -= 2
+on-arrival: banking_crisis_timer = 4; curtius_banking_crisis = 1 if not in_weimar_coalition; curtius_explosion_timer = time + 7 if ((dvp_leader == "Curtius" and not in_weimar_coalition) or lvp_leader == "Curtius") and not in_popular_front and not in_left_front; customs_union = 1; west_relation -= 2; east_relation -= 2
 
 The customs union has been formed. Immediately, <span style="color: #002654;">France</span> and other neighboring countries lodge their protests. The longer-term response is yet to be seen.
 
@@ -47,7 +47,7 @@ With the support of the <span style="color: #700000;">**KPD**</span>, we have su
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @new_prussia_election
-on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
+on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
 The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.

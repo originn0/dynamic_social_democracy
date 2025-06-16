@@ -429,7 +429,8 @@ if (Q.nvf_exist) {
     Q.nsdap_normalized = 0;
 }
 if (Q.center_bvp_votes) {
-    Q.z_votes -= Q.bvp_votes;
+    Q.bvp_normalized = Q.bvp_votes / 100;
+    Q.z_normalized -= Q.bvp_normalized;
     Q.parties_election.push('bvp')
     Q.bvp_candidate = Q.dnef_candidate;
 }
@@ -467,7 +468,7 @@ Q.winner_desc = candidate_descs[Q.winner];
 
 Q.round += 1
 
-if (Q.spd_candidate == "Boycott" || Q.sapd_candidate == "Boycott" || Q.kpd_candidate == "Boycott"){
+if (Q.spd_candidate == "Boycott" || Q.sapd_candidate == "Boycott" || Q.kpd_candidate == "Boycott") {
     Q.boycott_votes = 0;
     if (Q.kpd_candidate == "Boycott") Q.boycott_votes += Q.kpd_votes;
     if (Q.sapd_candidate == "Boycott") Q.boycott_votes += Q.sapd_votes;
