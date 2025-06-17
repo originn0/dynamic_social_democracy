@@ -48,13 +48,12 @@ on-arrival: {!
 Q.left_dissent += 20;
 Q.labor_dissent += 5;
 Q.unemployed_nsdap += Q.unemployed_spd*0.05;
-Q.unemployed_sapd += Q.unemployed_spd*0.03;
 Q.unemployed_kpd += Q.unemployed_spd*0.05;
 Q.workers_nsdap += Q.workers_spd*0.05;
-Q.workers_sapd += Q.workers_spd*0.03;
 Q.workers_kpd += Q.workers_spd*0.05;
 Q.workers_spd *= 0.95;
 Q.unemployed_spd *= 0.95;
+Q.kpd_relation -= 5;
 if (Q.bruning_joever) Q.wp_reversal = 0;
 Q.bruning_coalition = Q.neo_weimar_coalition;
 Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;

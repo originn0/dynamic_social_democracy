@@ -16,10 +16,9 @@ Many <span style="color: #000000;">non</span>-<span style="color: #700000;">comm
 - @allow_police: Allow the demonstrations to proceed, but maintain a heavy police presence.
 - @allow: Allow the demonstrations to proceed.
 - @join: Join in the demonstrations ourselves.
-- @alternative: Hold alternative marches in other parts of the city alongside our socialist allies, to take attention away from the marches of the <span style="color: #700000;">**KPD**</span>.
 
 @ban
-on-arrival: blutmai = 1; kpd_relation -= 25; z_relation += 3; dvp_relation += 3; ddp_relation += 3; lvp_relation += 3; workers_spd -= 4; unemployed_spd -= 4; workers_kpd += 2; unemployed_kpd += 3; communist_coalition -= 3; strife += 1; dvp_left += 1; ddp_left += 0.5; lvp_left += 1; hindenburg_angry -= 8; soviet_relations += 30;
+on-arrival: blutmai = 1; kpd_relation -= 25; z_relation += 3; dvp_relation += 3; ddp_relation += 3; lvp_relation += 3; workers_spd -= 4; unemployed_spd -= 4; workers_kpd += 2; unemployed_kpd += 3; communist_coalition -= 3; strife += 1; dvp_left += 1; ddp_left += 0.5; lvp_left += 1; hindenburg_angry -= 8
 on-display: {!  
     var cardEl = document.createElement('div');  
     cardEl.className = "face-figure2";  
@@ -42,14 +41,14 @@ This may end any attempt at reconciliation with the <span style="color: #700000;
 - @no_fault: It is an unfortunate incident that should not have happened, but is no one's fault at all.
 
 @corrupt_police
-on-arrival: kpd_relation += 10; z_relation -= 2; dvp_relation -= 2; lvp_relation -= 2; prussian_police_loyalty += 0.05; hindenburg_angry += 4; soviet_relations -= 10;
+on-arrival: kpd_relation += 10; z_relation -= 2; dvp_relation -= 2; lvp_relation -= 2; prussian_police_loyalty += 0.05; hindenburg_angry += 4
 
 We arrested the police responsible for the killings, and put them on trial. [? if judicial_reform = 0 : Unfortunately, the <span style="color: #808080;">reactionary</span> judiciary let them go free with barely any punishment at all. ?]
 
 This assuages some of the <span style="color: #700000;">**Communists**</span>' outrage, but certainly not all.
 
 @communist_fault
-on-arrival: kpd_relation -= 10; z_relation += 3; dvp_relation += 3; lvp_relation += 2; rfb_strength -= 80; rfb_banned = 1; hindenburg_angry -= 4; soviet_relations += 10;
+on-arrival: kpd_relation -= 10; z_relation += 3; dvp_relation += 3; lvp_relation += 2; rfb_strength -= 80; rfb_banned = 1; hindenburg_angry -= 4
 
 If the <span style="color: #700000;">**KPD**</span> continues to act illegally, they must suffer the consequences. Thus, we have banned the <span style="color: #8B0000;">**RFKB**</span>, their paramilitary group. The bourgeois and right-leaning parties approve.
 
@@ -65,7 +64,7 @@ The demonstration proceeds peacefully under the watchful eyes of the police. Onl
 
 
 @allow
-on-arrival: workers_kpd += 3; unemployed_kpd += 5; kpd_relation += 10; rfb_strength += 50; z_relation -= 3; dvp_relation -= 3; ddp_relation -= 2; lvp_relation -= 3; coalition_dissent += 1; rfb_militancy += 0.1; dvp_right += 1; ddp_right += 0.5; lvp_right += 1; hindenburg_angry += 5; soviet_relations -= 5;
+on-arrival: workers_kpd += 3; unemployed_kpd += 5; kpd_relation += 10; rfb_strength += 50; z_relation -= 3; dvp_relation -= 3; ddp_relation -= 2; lvp_relation -= 3; coalition_dissent += 1; rfb_militancy += 0.1; dvp_right += 1; ddp_right += 0.5; lvp_right += 1; hindenburg_angry += 5
 
 The demonstration proceeds peacefully, with a minimal police presence. Onlookers admire the strength of the <span style="color: #700000;">Communist</span> workers, and perhaps some of our members have been peeled off. The <span style="color: #700000;">**KPD**</span> will never admit it, but they are developing a less hostile view towards us (even if they do not *like* us yet). Our <span style="color: #000000;">cen</span><span style="color: #C0A054;">trist</span> allies denounce the demonstration, but their cries are ineffectual.
 
@@ -73,16 +72,7 @@ The demonstration proceeds peacefully, with a minimal police presence. Onlookers
 @join
 choose-if: kpd_relation >= 45
 unavailable-subtitle: The <span style="color: #700000;">Communists</span> do not trust us enough.
-on-arrival: kpd_relation += 15; workers_kpd += 3; unemployed_kpd += 5; workers_spd += 5; unemployed_spd += 5; new_middle_spd -= 5; old_middle_spd -= 5; z_relation -= 10; dvp_relation -= 10; coalition_dissent += 2; communist_coalition += 2; rb_strength += 100; rfb_strength += 100; rfb_militancy += 0.1; sa_strength += 50; sh_strength += 50; dvp_right += 3; ddp_right += 3; ddp_relation -= 8; ddp_cohesion -= 1; lvp_right += 3; lvp_relation -= 10; hindenburg_angry += 20; soviet_relations -= 10; workers_kpo += 3; unemployed_kpo += 5; kpo_relation += 15;
+on-arrival: kpd_relation += 15; workers_kpd += 3; unemployed_kpd += 5; workers_spd += 5; unemployed_spd += 5; new_middle_spd -= 5; old_middle_spd -= 5; z_relation -= 10; dvp_relation -= 10; coalition_dissent += 2; communist_coalition += 2; rb_strength += 100; rfb_strength += 100; rfb_militancy += 0.1; sa_strength += 50; sh_strength += 50; dvp_right += 3; ddp_right += 3; ddp_relation -= 8; ddp_cohesion -= 1; lvp_right += 3; lvp_relation -= 10; hindenburg_angry += 20
 achievement: die_rote_fahne
 
 It is difficult to persuade the <span style="color: #700000;">**Communists**</span> to let us march with them, given the histories of their party and ours. However, they eventually relent. The display of proletarian unity inspires the workers and terrifies the bourgeoisie and middle class. [? if in_grand_coalition or in_weimar_coalition: Our coalition partners in the government are outraged at our display with the <span style="color: #700000;">communists</span>, and are threatening to break up the government. ?] The <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> paramilitaries increase their recruitment to counter us.
-
-@alternative
-view-if: kpo_formed
-choose-if: kpo_relation >= 35 and not kpd_relation >= 45
-unavailable-subtitle: [? if kpd_relation >= 45: The <span style="color: #C43988;">**KPD(O)**</span> would rather we work alongside the <span style="color: #700000;">**KPD**</span>. ?]
-on-arrival: kpo_relation += 15; kpd_relation -= 5; z_relation -= 2; dvp_relation -= 2; ddp_relation -= 1; lvp_relation -= 2; coalition_dissent += 1; hindenburg_angry += 3; workers_kpo += 4; workers_kpd -= 2; workers_spd += 2; unemployed_kpd -= 7; unemployed_kpo += 7;
-
-Together with our allies in the <span style="color: #C43988;">**KPD(O)**</span>, we are holding joint May Day demonstrations. Our propoganda agitates for socialist unity. This is obviously an attack on the policies of the <span style="color: #700000;">**KPD**</span>, but we avoid saying so directly.
-With a robust police presence, the demonstrations proceed peacefully, and is a success for us and the <span style="color: #C43988;">**KPD(O)**</span>

@@ -62,8 +62,8 @@ We could try to boot the <span style="color: #700000;">**KPD**</span> from our g
 
 @let_it_happen
 view-if: not constructive_vonc
-on-arrival: kpd_relation -= 8; workers_kpd -= 5; workers_spd -= 8; unemployed_spd -= 6; soviet_relations += 35;
-go-to: let_it_happen_braun if president = "Braun"; let_it_happen_hindenburg if president = "Hindenburg"; let_it_happen_other if president_ideology != "Left" and president != "Hindenburg"
+on-arrival: kpd_relation -= 8; workers_kpd -= 5; workers_spd -= 8; unemployed_spd -= 6
+go-to: let_it_happen_braun if president_ideology == "Left"; let_it_happen_hindenburg if president = "Hindenburg"; let_it_happen_other if president_ideology != "Left" and president != "Hindenburg"
 
 # if Braun is president, we are now a caretaker government. If Hindenburg is president, Brüning is a caretaker government
 

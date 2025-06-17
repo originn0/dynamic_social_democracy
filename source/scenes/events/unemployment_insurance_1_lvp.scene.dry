@@ -59,7 +59,7 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 @accept
 unavailable-subtitle: [? if reformist_strength + center_strength < left_strength + labor_strength: The party won't allow this. ?]
 choose-if: reformist_strength + center_strength >= left_strength + labor_strength
-on-arrival: workers_spd -= 0.15*workers_spd; unemployed_spd -= 0.3*unemployed_spd; workers_kpd += 5; workers_nsdap += 5; unemployed_kpd += 5; unemployed_nsdap += 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; reformist_dissent += 5; welfare -= 2; budget += 1; unemployed += 2; pro_republic -= 4; kpd_relation -= 8; inflation -= 2; lvp_left += 1; goal_spd_cancel += 1; economic_growth -= 0.6; soviet_relations += 30; workers_kpo += 4; workers_sapd += 4; unemployed_kpo += 4; unemployed_sapd += 4;
+on-arrival: workers_spd -= 0.15*workers_spd; unemployed_spd -= 0.3*unemployed_spd; workers_kpd += 5; workers_nsdap += 5; unemployed_kpd += 5; unemployed_nsdap += 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; reformist_dissent += 5; welfare -= 2; budget += 1; unemployed += 2; pro_republic -= 4; kpd_relation -= 8; inflation -= 2; lvp_left += 1; goal_spd_cancel += 1; economic_growth -= 0.6
 
 Unfortunately, we must accept this ultimatum if we are to maintain this coalition. The <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span> are waiting in the wings for us to fail, ready to pounce upon the instability that would result from a breakup of the governing coalition.
 
@@ -68,7 +68,7 @@ The workers are furious at our betrayal, as are a good portion of our membership
 @prolong
 unavailable-subtitle: [? if reformist_strength + center_strength < left_strength + labor_strength: The party wants action now. ?][? if unemployment_insurance_crisis > 1: We can't prolong this any longer. ?]
 choose-if: reformist_strength + center_strength >= left_strength + labor_strength / 2 and unemployment_insurance_crisis < 2
-on-arrival: workers_spd -= 0.1*workers_spd; unemployed_spd -= 0.15*unemployed_spd; workers_kpd += 2; workers_nsdap += 5; unemployed_kpd += 4; unemployed_nsdap += 4; left_dissent += 12; center_dissent += 7; labor_dissent += 12; reformist_dissent += 3; welfare -= 1; unemployed += 1; pro_republic -= 2; kpd_relation -= 8; inflation -= 1; lvp_right += 1; prolonged_unemployment_insurance = 1; unemployment_insurance_timer = 6; goal_spd_cancel += 1; economic_growth -= 0.2; soviet_relations += 20; workers_kpo += 4; workers_sapd += 2; unemployed_kpo += 3; unemployed_sapd += 2;
+on-arrival: workers_spd -= 0.1*workers_spd; unemployed_spd -= 0.15*unemployed_spd; workers_kpd += 2; workers_nsdap += 5; unemployed_kpd += 4; unemployed_nsdap += 4; left_dissent += 12; center_dissent += 7; labor_dissent += 12; reformist_dissent += 3; welfare -= 1; unemployed += 1; pro_republic -= 2; kpd_relation -= 8; inflation -= 1; lvp_right += 1; prolonged_unemployment_insurance = 1; unemployment_insurance_timer = 6; goal_spd_cancel += 1; economic_growth -= 0.2
 
 A compromise put forward by Heinrich Brüning is put into place and the issue is delayed until the autumn. A fixed amount is loaned to the program in the meantime, although not nearly enough for the millions of unemployed. The Left and Labor factions view this as a betrayal of our duty to support unemployment insurance during a crisis.
 
@@ -98,7 +98,7 @@ We have accepted the compromise offered by the bourgeoisie. However, German indu
 @compromise_success
 unavailable-subtitle: [? if reformist_strength + center_strength < left_strength + labor_strength: The party won't allow this. ?]
 choose-if: reformist_strength + center_strength >= left_strength + labor_strength
-on-arrival: workers_spd -= 5; unemployed_spd -= 6; workers_kpd += 2; unemployed_kpd += 2; workers_nsdap += 2; unemployed_nsdap += 2; left_dissent += 10; labor_dissent += 8; center_dissent += 5; welfare -= 1; budget += 1; kpd_relation -= 4; inflation -= 1; lvp_left += 3; old_middle_lvp -= 3; new_middle_lvp -= 2; rural_lvp -= 2; old_middle_dnvp += 3 if dnvp_ideology == "Moderate"; new_middle_dnvp += 2 if dnvp_ideology == "Moderate"; rural_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_kvp += 3 if kvp_formed; new_middle_kvp += 2 if kvp_formed; rural_kvp += 2 if kvp_formed; ui1_compromise = 1; economic_growth -= 0.3; soviet_relations += 20; workers_kpo += 4; workers_sapd += 2; unemployed_kpo += 3; unemployed_sapd += 2;
+on-arrival: workers_spd -= 5; unemployed_spd -= 6; workers_kpd += 2; unemployed_kpd += 2; workers_nsdap += 2; unemployed_nsdap += 2; left_dissent += 10; labor_dissent += 8; center_dissent += 5; welfare -= 1; budget += 1; kpd_relation -= 4; inflation -= 1; lvp_left += 3; old_middle_lvp -= 3; new_middle_lvp -= 2; rural_lvp -= 2; old_middle_dnvp += 3 if dnvp_ideology == "Moderate"; new_middle_dnvp += 2 if dnvp_ideology == "Moderate"; rural_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_kvp += 3 if kvp_formed; new_middle_kvp += 2 if kvp_formed; rural_kvp += 2 if kvp_formed; ui1_compromise = 1; economic_growth -= 0.3
 
 We have accepted the compromise offered by the bourgeoisie. Many of the workers and unemployed see this as a betrayal, although we present it as the successful aversion of a much worse alternative.
 
