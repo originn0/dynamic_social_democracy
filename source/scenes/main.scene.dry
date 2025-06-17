@@ -51,14 +51,14 @@ if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time < 5 && Q.ns
         Q.flavour_1_trigger_shown = 1;
     }
 }
-if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.liberal_cooperation < 5 && Q.time !== Q.last_time_updated) {
+if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.dvp_exist && Q.liberal_cooperation < 5 && Q.time !== Q.last_time_updated) {
     Q.flavour_2_trigger += 1;
     if (Q.flavour_2_trigger && !Q.flavour_2_trigger_shown) {
         Q.flavour_2_trigger_time = Q.time;
         Q.flavour_2_trigger_shown = 1;
     }
 }
-if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.liberal_cooperation >= 5 && Q.time !== Q.last_time_updated) {
+if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.dvp_exist && Q.liberal_cooperation >= 5 && Q.time !== Q.last_time_updated) {
     Q.flavour_3_trigger += 1;
     if (Q.flavour_3_trigger && !Q.flavour_3_trigger_shown) {
         Q.flavour_3_trigger_time = Q.time;
@@ -1316,14 +1316,14 @@ if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time < 5 && Q.ns
         Q.flavour_1_trigger_shown = 1;
     }
 }
-if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.liberal_cooperation < 5 && Q.time !== Q.last_time_updated) {
+if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.dvp_exist && Q.liberal_cooperation < 5 && Q.time !== Q.last_time_updated) {
     Q.flavour_2_trigger += 1;
     if (Q.flavour_2_trigger && !Q.flavour_2_trigger_shown) {
         Q.flavour_2_trigger_time = Q.time;
         Q.flavour_2_trigger_shown = 1;
     }
 }
-if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.liberal_cooperation >= 5 && Q.time !== Q.last_time_updated) {
+if (Q.year >= 1930 && Q.year < 1933 && Q.next_election_time - Q.time == 1 && !Q.lvp_formed && Q.dvp_exist && Q.liberal_cooperation >= 5 && Q.time !== Q.last_time_updated) {
     Q.flavour_3_trigger += 1;
     if (Q.flavour_3_trigger && !Q.flavour_3_trigger_shown) {
         Q.flavour_3_trigger_time = Q.time;

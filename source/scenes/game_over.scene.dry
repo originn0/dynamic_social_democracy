@@ -145,6 +145,10 @@ if (Q.dynamic_mode || Q.historical_mode) {
   if (Q.true_christian_democracy && Q.dnvp_leader == "Treviranus" && Q.second_largest_party == "DNVP") {
       this.achieve('deutsche_tory_demokratie');
   }
+
+  if (Q.schwarze_null_unlock && (Q.nationalization_progress >= 4 || Q.wtb_implemented >= 4)) {
+      this.achieve('schwarze_null');
+  }
 }
 !}
 
@@ -1334,6 +1338,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_schwarze_null: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/schwarze_null.png" alt="Deutsche Tory Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Schwarze Null</div>
+      <div class="achievement_subtitle"> - Complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below zero. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_historischer_kompromiss: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/historischer_kompromiss.png" alt="Historischer Kompromiss Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Historischer Kompromiss</div>
+      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -2269,6 +2303,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_schwarze_null: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/schwarze_null.png" alt="Deutsche Tory Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Schwarze Null</div>
+      <div class="achievement_subtitle"> - Complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below zero. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_historischer_kompromiss: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/historischer_kompromiss.png" alt="Historischer Kompromiss Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Historischer Kompromiss</div>
+      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -3200,6 +3264,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
       <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_schwarze_null: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/schwarze_null.png" alt="Deutsche Tory Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Schwarze Null</div>
+      <div class="achievement_subtitle"> - Complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below zero. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_historischer_kompromiss: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/historischer_kompromiss.png" alt="Historischer Kompromiss Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Historischer Kompromiss</div>
+      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
