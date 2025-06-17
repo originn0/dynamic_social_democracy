@@ -2986,6 +2986,13 @@ if (Q.year == 1929 && Q.stolper_program_adopted && Q.dvp_reform && Q.dvp_ideolog
     Q.lvp_merger_1_timer = 4;
 }
 
+if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931) {
+    if (Q.nsdap_votes > 30 || Q.spd_votes + Q.kpd_votes > 45 || (Q.year == 1932 && (Q.month == 4 || Q.month == 5))){
+        Q.dkp_merger_timer = Q.time + 3;
+        Q.dkp_merger_waiting = 1;
+    }
+}
+
 if (Q.year == 1929 && Q.month == 5 && Q.lvp_formed) {
     Q.new_middle_lvp += 3;
     Q.old_middle_lvp += 3;

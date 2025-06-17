@@ -1,0 +1,241 @@
+title: The <span style="color: #C0A054;">**DVP**</span> merges with the [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?]!
+subtitle: [+ dvp_leader +] and [? if dnvp_ideology == "Moderate":[+ dnvp_leader +] ?][? if kvp_formed:[+ kvp_leader +] ?] have reached an agreement.
+view-if: dkp_merger_timer == time
+max-visits: 1
+tags: event
+priority: 3
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/dvpcampaign.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+new-page: true
+
+= The <span style="color: #C0A054;">**DVP**</span> merges with the [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?]
+
+Glatzel has long been a strong advocate for deepening ties between the two right-wing parties, ultimately aiming for a merger. Even before ascending to the leadership of the <span style="color: #C0A054;">**DVP**</span>, he had been cultivating relations with Treviranus’s Young Conservatives[? if dnvp_leader == "Lambach":&nbsp;and Lambach's <span style="color: #6D5298;">Christian Socialists</span>?]. With a friendly leadership now in control of the [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?], the path to unification appears clear.
+
+Most of the <span style="color: #C0A054;">**DVP**</span> backs Glatzel’s merger ambitions, opposed only by a small but vocal left wing around Curtius and Luther, who insist on preserving the <span style="color: #C0A054;">**DVP**</span> as a liberal force. Within the [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?], resistance stems primarily from its <span style="color: #385A38;">agrarian</span> wing, reluctant to unite with the capitalist, and middle-class oriented <span style="color: #C0A054;">**DVP**</span>. The party’s old guard, led by Westarp, also remains skeptical—citing differences over the national questions.
+
+- @dnvp_dvp: Regardless, an agreement has been reached.
+
+@dnvp_dvp
+face-image: img/dvpposter.jpg
+
+With the merger all but finalized, the new party has agreed to call itself the <span style="color: #00C0FF;">**FKP**</span>, or the <span style="color: #00C0FF;">Free Conservative Party</span>, styling itself as the spirital successor to the Empire-era party of the same name.
+
+Many on the <span style="color: #C0A054;">**DVP**</span>'s left have defected to the flourishing <span style="color: #D3C24D;">[+ ddp_name +]</span>, seeing it as the last bastion of liberalism. 
+
+If Stresemann were alive, he would be quite disappointed in what has become of his liberal party.
+
+- @leadership: The party now needs to elect a leader.
+
+@leadership
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/tractors.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+on-arrival: {!
+    Q.dhv_fkp = 0;
+    Q.fkp_leader = 0;
+    Q.fkp_ideology = 0;
+    Q.natcons_fkp = 0;
+    Q.stressmanites_fkp = 0;
+    Q.agrarians_fkp = 0;
+    Q.industrialists_fkp = 0;
+    Q.pp_conservatives_fkp = 0;
+    if (Q.kvp_formed == 0) {
+        Q.dhv_fkp = (Q.workers_dvp_normalized + Q.workers_dnvp_normalized + (Q.new_middle_dnvp_normalized*0.5) + (Q.new_middle_dvp_normalized*0.5)*0.6);
+        Q.natcons_fkp = Q.old_middle_dnvp_normalized*1.5;
+        Q.pp_conservatives_fkp = (Q.new_middle_dnvp_normalized*1.5) + (Q.old_middle_dnvp_normalized*1.5);
+        Q.stressmanites_fkp = Q.new_middle_dvp_normalized*0.5;
+        Q.industrialists_fkp = Q.old_middle_dvp_normalized;
+        Q.agrarians_fkp = Q.rural_dnvp_normalized*0.7;
+    }
+    if (Q.kvp_formed == 1) {
+        Q.dhv_fkp = (Q.workers_dvp_normalized + Q.workers_kvp_normalized + (Q.new_middle_kvp_normalized*0.5) + (Q.new_middle_dvp_normalized*0.5)*0.6);
+        Q.natcons_fkp = Q.old_middle_kvp_normalized*1.5;
+        Q.pp_conservatives_fkp = (Q.new_middle_kvp_normalized*1.5) + (Q.old_middle_kvp_normalized*0.5);
+        Q.stressmanites_fkp = Q.new_middle_dvp_normalized*0.5;
+        Q.industrialists_fkp = Q.old_middle_dvp_normalized;
+        Q.agrarians_fkp = Q.rural_kvp_normalized*0.7;
+    }
+    if (Q.dnvp_leader == "Schiele") {
+        Q.agrarians_fkp = Q.agrarians_fkp*2;
+    }
+    if (Q.dnvp_leader == "Westarp") {
+        Q.natcons_fkp = Q.natcons_fkp*2;
+    }
+    if (Q.dnvp_leader == "Hergt") {
+        Q.natcons_fkp = Q.natcons_fkp*1.5;
+        Q.pp_conservatives_fkp = Q.natcons_fkp*1.5;
+    }
+    if (Q.dnvp_leader == "Treviranus") {
+        Q.natcons_fkp = Q.natcons_fkp*0.7;
+        Q.pp_conservatives_fkp = Q.natcons_fkp*2;
+    }
+    if (Q.dnvp_leader == "Treviranus") {
+        Q.natcons_fkp = Q.natcons_fkp*0.7;
+        Q.pp_conservatives_fkp = Q.pp_conservatives_fkp*2;
+    }
+    if (Q.kvp_formed == 1) {
+        Q.pp_conservatives_fkp = Q.pp_conservatives_fkp*2;
+        Q.agrarians_fkp = Q.agrarians_fkp*0.8;
+        Q.natcons_fkp = Q.natcons_fkp*0.8;
+    }
+    if (Q.dvp_reform == 1) {
+        Q.dhv_fkp = Q.dhv_fkp*1.4;
+    }
+    if (Q.dvp_reform == 2) {
+        Q.dhv_fkp = Q.dhv_fkp*1.5;
+    }
+    if (Q.dvp_leader == "Hugo" || Q.dvp_leader == "Dingeldey") {
+        Q.industrialists_fkp = Q.industrialists_fkp*1.5;
+    }
+    if (Q.pro_republic >= 60) {
+        Q.pp_conservatives_fkp = Q.pp_conservatives_fkp*1.5;
+        Q.stressmanites_fkp = Q.stressmanites_fkp*1.5;
+    } else {
+        Q.natcons_fkp = Q.natcons_fkp*1.5;
+        Q.agrarians_fkp = Q.agrarians_fkp*1.5;
+    }
+    Q.raumer_points_fkp = Q.industrialists_fkp + Q.stressmanites_fkp*0.5;
+    Q.glatzel_points_fkp = Q.dhv_fkp + Q.stressmanites_fkp*0.5;
+    Q.westarp_points_fkp = Q.agrarians_fkp*0.6 + Q.natcons_fkp*0.4;
+    Q.hergt_points_fkp = Q.agrarians_fkp*0.4 + Q.natcons_fkp*0.6;
+    Q.treviranus_points_fkp = Q.pp_conservatives_fkp;
+    Q.winner_fkp = "Hergt";
+    if (Q.glatzel_points_fkp > Q.raumer_points_fkp && Q.pro_republic > 65) {
+        Q.glatzel_points_fkp += Q.raumer_points_fkp;
+        Q.raumer_points_fkp = 0;
+    } else {
+         Q.treviranus_points_fkp += Q.glatzel_points_fkp;
+         Q.glatzel_points_fkp == 0;
+    }
+    if (Q.glatzel_points_fkp + Q.treviranus_points_fkp + Q.raumer_points_fkp > (Q.hergt_points_fkp + Q.westarp_points_fkp)/2) {
+        if (Q.pro_republic > 55) {
+            Q.hergt_points_fkp += Q.westarp_points_fkp;
+            Q.westarp_points_fkp == 0;
+        } else {
+            Q.westarp_points_fkp += Q.hergt_points_fkp;
+            Q.hergt_points_fkp == 0;
+        }
+    }
+    if (Q.raumer_points + Q.treviranus_points_fkp + Q.glatzel_points_fkp > Q.hergt_points_fkp + Q.westarp_points_fkp) {
+        if (Q.dvp_leader == "Glatzel" && Q.raumer_points + Q.glatzel_points_fkp + (Q.treviranus_points_fkp*0.4) > Q.hergt_points_fkp + Q.westarp_points_fkp) {
+            Q.winner_fkp = "Glatzel";
+        } else {
+            if (Q.raumer_points_fkp + Q.glatzel_points_fkp > Q.treviranus_points_fkp) {
+                Q.winner_fkp = "Raumer";
+            } else {
+                Q.winner_fkp = "Treviranus";
+            }
+        }
+    } else {
+        if ((Q.raumer_points + Q.treviranus_points_fkp + Q.glatzel_points_fkp)*1.1 >= Q.hergt_points_fkp + Q.westarp_points_fkp || Q.hergt_points_fkp > Q.westarp_points_fkp) {
+            Q.winner_fkp = "Hergt";
+        } else {
+            Q.winner_fkp = "Westarp";
+        }
+    }
+!}
+go-to: calculations
+
+@calculations
+new-page: true
+
+= <span style="color: #00C0FF;">**FKP**</span> Leadership Election
+
+Now that the <span style="color: #C0A054;">**DVP**</span> and [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?] have merged, the newly formed <span style="color: #00C0FF;">**FKP**</span> must decide who will lead it into this next chapter. Several distinct factions, ranging from industrialists to nationalists to trade unionists, are already vying for influence within the fledgling party. The election of a chairman at the <span style="color: #00C0FF;">**FKP**</span>’s inaugural congress will determine the internal balance of power and shape their future direction. With its future orientation still fluid, the outcome of the leadership vote may define whether the <span style="color: #00C0FF;">**FKP**</span> leans toward tolerance of the republic or if it embraces a more nationalist course.
+
+Major Factions:
+
+<span style="color: #3E88B3;">National Conservatives</span> ([? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?]) [+ natcons_fkp +]
+
+<span style="color: #385A38;">Agrarians</span> ([? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?]) [+ agrarians_fkp +]
+
+<span style="color: #8C7A3C;">Industrialists</span> (<span style="color: #C0A054;">**DVP**</span>) [+ industrialists_fkp +]
+
+<hr id="read-marker">
+
+<span style="color: #D8B868;">Right-wing Unions</span> (<span style="color: #C0A054;">**DVP**</span> and [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?]) [+ dhv_fkp +]
+
+<span style="color: #D8B868;">Stresemannites</span> (<span style="color: #C0A054;">**DVP**</span>) [+ stressmanites_fkp +]
+
+<span style="color: #0087DC;">People's Conservatives</span> ([? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?]) [+ ppconservatives_fkp +]
+
+- @glatzel: Frank Glatzel.
+- @treviranus: Gottfried Treviranus.
+- @raumer: Hans von Raumer.
+- @hergt: Oskar Hergt.
+- @westarp: Kuno von Westarp.
+
+@glatzel
+subtitle: Hailing from the reformist elements of the <span style="color: #C0A054;">**DVP**</span>, he seeks to create a unitary force on the right.
+choose-if: winner_fkp = "Glatzel"
+on-arrival: fkp_leader = "Glatzel"; fkp_ideology = "Paternalistic Conservatism";
+call: dnvp_dvp_formed
+face-image: img/portraits/glatzel.jpg
+
+Against expectations, Frank Glatzel prevailed in a drawn‑out, multi‑round ballot at the <span style="color: #00C0FF;">**FKP**</span>’s inaugural congress. Centrists like Treviranus and von Raumer were the first to fall in the election, ultimately endorsing Glatzel over hard‑line monarchists such as Hergt and Westarp. By the final ballot, Glatzel had assembled a coalition of moderate [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?] holdouts, white-collar union delegates, and the remaining <span style="color: #C0A054;">**DVP**</span> moderates, clinching the chairmanship despite standing on the party’s left.
+
+This outcome represents the best potential scenario for us, as Glatzel remains open to some negotiation with the <span style="color: #c00000;">**SPD**</span>. However, the new <span style="color: #00C0FF;">**FKP**</span> will still be a far more obstinate partner than Stresemann’s <span style="color: #C0A054;">**DVP**</span>, given the enduring influence of agrarian and industrialist factions. Any cooperation will likely be more constrained than in the past. Still, compared to the uncompromising hardliners who nearly won the contest, Glatzel’s victory is a relief. 
+
+@raumer
+subtitle: Backed by manu prominent industrialists from the <span style="color: #C0A054;">**DVP**</span>, von Raumer aims to strengthen the bourgiois.
+choose-if: winner_fkp = "Raumer"
+on-arrival: fkp_leader = "von-Raumer"; fkp_ideology = "Liberal Conservatism";
+call: dnvp_dvp_formed
+face-image: img/portraits/von_raumer.jpg
+
+After several rounds of elimination voting at the <span style="color: #00C0FF;">**FKP**</span>’s inaugural congress, Hans von Raumer secured the chairmanship by consolidating the party’s pro‑business wing. The moderate Frank Glatzel was the first to fall in the competition. In the penultimate round, Gottfried Treviranus withdrew and threw his support behind von Raumer, rather than the hard‑line monarchists. Industrialists and big‑business delegates, long allied with von Raumer, rallied en masse, joined by former <span style="color: #C0A054;">**DVP**</span> deputies and even some trade unionists, giving him a decisive edge over Kuno von Westarp in the final ballot.
+
+This represents an interesting development for us. While von Raumer is firmly linked to the industrialist wing of <span style="color: #00C0FF;">**FKP**</span>, he has demonstrated firm support for Grand Coalitions in previous governments. He even has a good working relationship with Rudolf Hilferding. However, he would still be active in trying to limit our policies in any future government. Additionally, many of his own supporters in the industrialist wing would seek to prevent any coalition with us, so cooperation will still be more difficult than it was with Stresemann's <span style="color: #C0A054;">**DVP**</span>. 
+
+@treviranus
+subtitle: Treviranus, ardent reformer, and member of the [? if dnvp_ideology == "Moderate":<span style="color: #3E88B3;">**DNVP**</span> ?][? if kvp_formed:<span style="color: #0087DC;">**KVP**</span>?], has put himself forwards.
+choose-if: winner_fkp = "Treviranus"
+on-arrival: fkp_leader = "Treviranus"; fkp_ideology = "Liberal Conservatism";
+call: dnvp_dvp_formed
+face-image: img/portraits/Treviranus.jpg
+
+After a protracted, multi‑round ballot at the <span style="color: #00C0FF;">**FKP**</span>’s inaugural congress, Gottfried Treviranus secured the party chairmanship. Building a coalition of moderate <span style="color: #3E88B3;">**DNVP**</span> dissidents, rural‑Chamber delegates, and a sprinkling of pragmatic ex‑<span style="color: #C0A054;">**DVP**</span> members allowed him to do well in the first round. Frank Glatzel, representing the party’s moderates, was the first to be eliminated. Then industrial conservatives around Hans von Raumer, unwilling to back the hard‑line monarchists, shifted en masse to Treviranus by the penultimate ballot, giving him a clear path to the chairmanship against Kuno von Westarp.
+
+Many in our party have signaled their resigned acceptance of Treviranus. While they remain deeply suspicious of his nationalist rhetoric and austere economic agenda, they acknowledge he is less hostile to the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> order than the outright monarchists within his party. Hopefully, he will act as a bulwark against the rising [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">far</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">far</span>?]-<span style="color: #3E88B3;">right</span> in the country.
+
+@hergt
+subtitle: A member of the Old Guard of the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?], backed by rural and conservative elements.
+choose-if: winner_fkp = "Hergt"
+on-arrival: fkp_leader = "Hergt"; fkp_ideology = "Liberal Conservatism"; 
+call: dnvp_dvp_formed
+face-image: img/portraits/OskarHergt.jpg
+
+After several rounds of elimination voting at the <span style="color: #00C0FF;">**FKP**</span>’s inaugural congress, Oskar Hergt secured the chairmanship by uniting the party’s monarchist‑conservative wing. The moderate Frank Glatzel was the first to go, followed by Hans von Raumer, whose industrialist backers then fragmented between Treviranus and Hergt. In the penultimate round, Kuno von Westarp withdrew and threw his delegates behind Hergt rather than the centrist faction led by Gottfried Treviranus. Agrarian conservatives, church‑aligned delegates, and a sizable bloc of <span style="color: #3E88B3;">**DNVP**</span> conservatives gave him the edge over Treviranus in the final ballot.
+
+Hergt’s victory has seen our relations with the <span style="color: #00C0FF;">**FKP**</span> sour. His entrenched monarchism and hostility toward democratic processes have already led him to explore increased cooperation with the far right, including informal contacts with the Stahlhelm. Genuine legislative collaboration now seems all but impossible, making building coalitions in the future increasingly difficult.
+
+@westarp
+subtitle: A radical right-wing member of the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?], seeking to transform the party in a hardline direction.
+choose-if: winner_fkp = "Westarp"
+on-arrival: fkp_leader = "Westarp"; fkp_ideology = "National Conservatism";
+call: dnvp_dvp_formed
+face-image: img/portraits/Kuno_von_Westarp.jpg
+
+After several rounds of elimination voting at the <span style="color: #00C0FF;">**FKP**</span>’s inaugural congress, Kuno von Westarp prevailed to win the chairmanship by rallying the party’s rural and ethno‑nationalist wings. The moderate Frank Glatzel was the first to be eliminated. In subsequent ballots, moderate conservatives around Hans von Raumer and ex‑<span style="color: #C0A054;">**DVP**</span> figures split their votes between Treviranus and Hergt, while Westarp consolidated support from his agrarian‐traditionalist bloc. In the penultimate round, Oskar Hergt withdrew and threw his delegates behind Westarp rather than the centerists led by Gottfried Treviranus.
+
+Westarp’s ascension means that the right is now effectively devoid of democratic parties. His explicit antisemitism and paramilitary sympathies signal a dangerous shift toward radical exclusion and street‑tier violence. This will make stabilizing the republic increasingly difficult, as the right increasingly rejects the republic.
