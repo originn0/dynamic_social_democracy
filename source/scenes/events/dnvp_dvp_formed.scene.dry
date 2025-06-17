@@ -14,19 +14,24 @@ if (Q.kvp_formed) {
     Q.catholics_kvp += Q.catholics_dvp;
     Q.unemployed_kvp += Q.unemployed_dvp;
     Q.kvp_r += Q.dvp_r;
+    Q.dvp_r = 0;
     Q.kvp_r_prussia += Q.dvp_r_prussia;
     Q.kvp_relation = (Q.kvp_relation + Q.dvp_relation) / 2;
 } else {
     Q.kvp_formed = 1;
     Q.dnvp_defunct = 1;
-    Q.workers_kvp += Q.workers_dvp + Q.workers_dnvp;
-    Q.new_middle_kvp += Q.new_middle_dvp + Q.new_middle_dnvp;
-    Q.old_middle_kvp += Q.old_middle_dvp + Q.old_middle_dnvp;
-    Q.rural_kvp += Q.rural_dvp + Q.rural_dnvp;
-    Q.catholics_kvp += Q.catholics_dvp + Q.rural_dnvp;
-    Q.unemployed_kvp += Q.unemployed_dvp + Q.unemployed_dnvp;
-    Q.kvp_r += Q.dvp_r + Q.dnvp_r;
-    Q.kvp_r_prussia += Q.dvp_r_prussia + Q.dnvp_r_prussia;
+    Q.workers_kvp = Q.workers_dvp + Q.workers_dnvp;
+    Q.new_middle_kvp = Q.new_middle_dvp + Q.new_middle_dnvp;
+    Q.old_middle_kvp = Q.old_middle_dvp + Q.old_middle_dnvp;
+    Q.rural_kvp = Q.rural_dvp + Q.rural_dnvp;
+    Q.catholics_kvp = Q.catholics_dvp + Q.rural_dnvp;
+    Q.unemployed_kvp = Q.unemployed_dvp + Q.unemployed_dnvp;
+    Q.kvp_r = Q.dvp_r + Q.dnvp_r;
+    Q.dvp_r = 0;
+    Q.dnvp_r = 0;
+    Q.kvp_r_prussia = Q.dvp_r_prussia + Q.dnvp_r_prussia;
+    Q.dvp_r_prussia = 0;
+    Q.dnvp_r_prussia = 0;
     Q.kvp_relation = (Q.dnvp_relation + Q.dvp_relation) / 2;
 }
 
