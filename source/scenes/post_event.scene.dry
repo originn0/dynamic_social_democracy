@@ -3720,7 +3720,7 @@ if (Q.kpd_relation < 50 && Q.year >= 1930) {
         Q.kpd_wholesome = 1;
     }
 
-    Q.kpd_relation += Q.kpd_relation_gain;
+    if (Q.kpd_relation_gain) Q.kpd_relation += Q.kpd_relation_gain;
 }
 
 if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 5))) {

@@ -4,7 +4,7 @@ new-page: true
 on-arrival: tried_supporting_kpd = 0; z_relation -= 6; dvp_relation -= 6; ddp_relation -= 6; lvp_relation -= 6; lvp_right += 3; dvp_right += 3; ddp_right += 3
 view-if: chancellor_party != "SPD" and chancellor_party != "KPD" and spd_in_government = 1 and ((in_grand_coalition = 1 or in_popular_front = 1 or in_minority_government = 1) and coalition_dissent >= 3) or (in_weimar_coalition = 1 and coalition_dissent >= 4) and spd_r < 50
 tags: event
-go-to: menu if chancellor != "Wirth"; wirth_resign_hindenburg if chancellor == "Wirth" and president == "Hindenburg"; wirth_resign_braun if chancellor == "Wirth" and president_ideology == "Left"
+go-to: menu if chancellor != "Wirth"; wirth_resign_hindenburg if chancellor == "Wirth" and president_ideology != "Left"; wirth_resign_braun if chancellor == "Wirth" and president_ideology == "Left"
 
 = Cabinet Reshuffled
 

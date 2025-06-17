@@ -637,6 +637,13 @@ if (Q.liberal_reactionary_candidate_1932 && Q.center_reactionary_candidate_1932)
 
 
 !}
+go-to: braun_koalition if braun_campaign and z_support_spd == 1 and kpd_support_spd == 1 and ((ddp_support_spd == 1 and not lvp_formed) or (lvp_support_spd and lvp_formed)); calculation if not (braun_campaign and z_support_spd == 1 and kpd_support_spd == 1 and ((ddp_support_spd == 1 and not lvp_formed) or (lvp_support_spd and lvp_formed)))
+
+@braun_koalition 
+achievement: braun_koalition
+go-to: calculation
+
+@calculation
 go-to: hindenburg_wins if hindenburg_majority == 1; thalmann_wins if thalmann_majority == 1; hitler_wins if nsdap_president_majority == 1; braun_wins if spd_president_majority == 1 and spd_candidate_1932 == "Braun"; duesterburg_wins if duesterburg_majority == 1; rosenfeld_wins if spd_president_majority == 1 and spd_candidate_1932 == "Rosenfeld"; eckener_wins if spd_president_majority == 1 and spd_candidate_1932 == "Eckener"; reactionary_candidate_wins if (reactionary_candidate_1_majority or reactionary_candidate_2_majority); no_majority_round1 if any_majority == 0
 
 Results:
@@ -1044,7 +1051,7 @@ We have switched our support to Hindenburg. [? if bruning_time: Hindenburg is re
 - @round2_vote: Second round voting begins next month.
 
 @round2_reactionary
-view-if: not hindenburg_run and reactionary_candidate_1932 and reactionary_candidate_1932 != "Westarp" and reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == reactionary_candidate_1932)
+view-if: not hindenburg_run and reactionary_candidate_1932 and reactionary_candidate_1932 != "Westarp" and reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == reactionary_candidate_1932) and spd_choice != reactionary_candidate_1932
 on-arrival: spd_support_reactionary = 1; spd_support_reactionary_1 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = reactionary_candidate_1932 if spd_campaign; ddp_choice = reactionary_candidate_1932 if spd_campaign; lvp_choice = reactionary_candidate_1932 if spd_campaign; dvp_choice = reactionary_candidate_1932 if spd_campaign; spd_choice = reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
 
 We have switched our support to [+ reactionary_candidate_1932 +].
@@ -1052,7 +1059,7 @@ We have switched our support to [+ reactionary_candidate_1932 +].
 - @round2_vote: Second round voting begins next month.
 
 @round2_reactionary_2
-view-if: not hindenburg_run and secondary_reactionary_candidate_1932 and secondary_reactionary_candidate_1932 != "Westarp" and secondary_reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932)
+view-if: not hindenburg_run and secondary_reactionary_candidate_1932 and secondary_reactionary_candidate_1932 != "Westarp" and secondary_reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and spd_choice != secondary_reactionary_candidate_1932
 on-arrival: spd_support_reactionary = 1; spd_support_reactionary_2 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = secondary_reactionary_candidate_1932 if spd_campaign; ddp_choice = secondary_reactionary_candidate_1932 if spd_campaign; lvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; dvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; spd_choice = secondary_reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
 
 We have switched our support to [+ reactionary_candidate_1932 +].
