@@ -15,7 +15,7 @@ if (Q.kvp_formed) {
     Q.unemployed_kvp += Q.unemployed_dvp;
     Q.kvp_r += Q.dvp_r;
     Q.kvp_r_prussia += Q.dvp_r_prussia;
-    Q.kvp_relation = (Q.kvp_relation + Q.dvp_relation) / 2
+    Q.kvp_relation = (Q.kvp_relation + Q.dvp_relation) / 2;
 } else {
     Q.kvp_formed = 1;
     Q.dnvp_defunct = 1;
@@ -27,7 +27,7 @@ if (Q.kvp_formed) {
     Q.unemployed_kvp += Q.unemployed_dvp + Q.unemployed_dnvp;
     Q.kvp_r += Q.dvp_r + Q.dnvp_r;
     Q.kvp_r_prussia += Q.dvp_r_prussia + Q.dnvp_r_prussia;
-    Q.kvp_relation = (Q.dnvp_relation + Q.dvp_relation) / 2
+    Q.kvp_relation = (Q.dnvp_relation + Q.dvp_relation) / 2;
 }
 
 if (Q.winner_fkp = "Glatzel") {
