@@ -3,7 +3,6 @@ on-arrival: {!
 Q.dnvp_dvp_formed = 1;
 Q.dvp_exist = 0;
 
-Q.parties.push('fkp');
 Q.parties_graph.push('fkp');
 
 if (Q.kvp_formed) {
@@ -19,6 +18,7 @@ if (Q.kvp_formed) {
     Q.dvp_r_prussia = 0;
     Q.kvp_relation = (Q.kvp_relation + Q.dvp_relation) / 2;
 } else {
+    Q.parties.push('kvp');
     Q.kvp_formed = 1;
     Q.dnvp_defunct = 1;
     Q.workers_kvp = Q.workers_dvp + Q.workers_dnvp;
