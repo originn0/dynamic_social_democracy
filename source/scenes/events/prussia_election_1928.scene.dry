@@ -663,11 +663,20 @@ if (Q.other_r_prussia) {
     });
 }
 
-if (Q.kvp_formed && Q.kvp_r_prussia) {
+if (Q.kvp_formed && Q.kvp_r_prussia && !Q.dnvp_dvp_formed) {
     data.push({
         "id": "kvp",
         "legend": "KVP",
         "name": "KVP",
+        "seats": Math.round(Q.kvp_r_prussia * 4.5),
+    });
+}
+
+if (Q.dnvp_dvp_formed) {
+    data.push({
+        "id": "fkp",
+        "legend": "FKP",
+        "name": "FKP",
         "seats": Math.round(Q.kvp_r_prussia * 4.5),
     });
 }
@@ -763,9 +772,11 @@ go-to: coalition_menu
 
 [? if other_dnef: {!<tr><td><div class="box2" style='background-color:#707070'> </div> !} Others: {!</td><td>!} [+ other_votes_prussia +]% {!</td><td>!} [+ str_votes_change_other_prussia +] {!</td><td>!} [+ other_r_prussia +]% {!</td><td>!} [+ str_change_other_prussia +] {!</td></tr>!} ?]
 
-[? if kvp_formed and not cvp_kvp_formed and kvp_dnef: {!<tr><td><div class="box2" style='background-color:#0072C0'> </div> !}KVP: {!</td><td>!} [+ kvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kvp_prussia +] {!</td><td>!} [+ kvp_r_prussia +]% {!</td><td>!} [+ str_change_kvp_prussia +] {!</td></tr>!} ?]
+[? if kvp_formed and not cvp_kvp_formed and not dnvp_dvp_formed and kvp_dnef: {!<tr><td><div class="box2" style='background-color:#0072C0'> </div> !}KVP: {!</td><td>!} [+ kvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kvp_prussia +] {!</td><td>!} [+ kvp_r_prussia +]% {!</td><td>!} [+ str_change_kvp_prussia +] {!</td></tr>!} ?]
 
-[? if not cvp_formed and dnvp_dnef: {!<tr><td><div class="box2" style='background-color:#316B8F'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dnvp_prussia +] {!</td><td>!} [+ dnvp_r_prussia +]% {!</td><td>!} [+ str_change_dnvp_prussia +] {!</td></tr>!}?]
+[? if dnvp_dvp_formed: {!<tr><td><div class="box2" style='background-color:#00C0FF'> </div> !}FKP: {!</td><td>!} [+ kvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_kvp_prussia +] {!</td><td>!} [+ kvp_r_prussia +]% {!</td><td>!} [+ str_change_kvp_prussia +] {!</td></tr>!} ?]
+
+[? if not cvp_formed and not dnvp_defunct and dnvp_dnef: {!<tr><td><div class="box2" style='background-color:#316B8F'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes_prussia +]% {!</td><td>!} [+ str_votes_change_dnvp_prussia +] {!</td><td>!} [+ dnvp_r_prussia +]% {!</td><td>!} [+ str_change_dnvp_prussia +] {!</td></tr>!}?]
 
 [? if nvf_exist and nvf_dnef: {!<tr><td><div class="box2" style='background-color:#0F2116'> </div> !} NVF: {!</td><td>!} [+ nvf_votes_prussia +]% {!</td><td>!} [+ str_votes_change_nvf_prussia +] {!</td><td>!} [+ nvf_r_prussia +]% {!</td><td>!} [+ str_change_nvf_prussia +] {!</td></tr>!} ?]
 

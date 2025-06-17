@@ -66,9 +66,10 @@ Reichstag composition:
 [? if (not lvp_formed or not ddp_name) : [? if not ddp_name:<span class="tooltip-text" title="German Democratic Party" style="color: #D3C24D;">**DDP**</span>?][? if ddp_name = "DDP":<span class="tooltip-text" title="German Democratic Party" style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if ddp_name = "DStP":<span class="tooltip-text" title="German State Party" style="color: #D3C24D;">**[+ ddp_name +]**</span>?]: [+ ddp_r +]% ?]
 # 1928: 9, 1930: 5
 [? if not lvp_formed and dvp_exist : <span class="tooltip-text" title="German People's Party" style="color: #C0A054;">**DVP**</span>: [+ dvp_r +]% ?]
-[? if kvp_formed: <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [+ kvp_r +]% ?]
+[? if kvp_formed and not dnvp_dvp_formed : <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [+ kvp_r +]% ?]
+[? if dnvp_dvp_formed: <span class="tooltip-text" title="Free Conserative Party" style="color: #00C0FF;">**FKP**</span>: [+ kvp_r +]% ?]
 # 1928: 14, 1930: 7
-[? if not cvp_formed: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_r +]%?]
+[? if not cvp_formed and not dnvp_defunct: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_r +]%?]
 [? if dnf_formed: <span class="tooltip-text" title="German National Front" style="color: #003755;">**DNF**</span>: [+ dnf_r +]% ?]
 # 1928: 3, 1930: 18
 [? if dsu_exist: <span class="tooltip-text" title="German Social Union" style="color: #6A1E1E;">**DSU**</span>: [+ dsu_r +]%?]
@@ -165,9 +166,11 @@ Economic growth: [+ economic_growth_2 +]%
 
 <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>: [+ kpd_relation : relationships +]
 
-[? if kvp_formed : <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [+ kvp_relation : relationships +] ?]
+[? if kvp_formed and not dnvp_dvp_formed : <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [+ kvp_relation : relationships +] ?]
 
-[? if not cvp_formed: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_relation : relationships +]?]
+[? if dnvp_dvp_formed: <span class="tooltip-text" title="Free Conserative Party" style="color: #00C0FF;">**FKP**</span>: [+ fkp_relation : relationships +]?]
+
+[? if not cvp_formed and not dnvp_defunct: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_relation : relationships +]?]
 
 [? if dnf_formed : <span class="tooltip-text" title="German National Front" style="color: #003755;">**DNF**</span>: [+ dnf_relation : relationships +] ?]
 
@@ -193,9 +196,11 @@ Economic growth: [+ economic_growth_2 +]%
 
 [? if not ddp_name: UNINITIALIZED ?][? if ddp_name != 0: <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>: [? if kpd_leader = "Conciliators": Luxemburgism?][? if kpd_leader = "Thälmann": Stalinism?] ([+ kpd_leader +])?]
 
-[? if kvp_formed : <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [? if not kvp_dnef: Christian conservatism?][? if kvp_dnef: National conservatism?] ([+ kvp_leader +])?]
+[? if kvp_formed and not dnvp_dvp_formed: <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: [? if not kvp_dnef: Christian conservatism?][? if kvp_dnef: National conservatism?] ([+ kvp_leader +])?]
 
-[? if not ddp_name: UNINITIALIZED ?][? if ddp_name != 0 and not cvp_formed and not dnvp_dnef: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [? if dnvp_leader = "Hugenberg" or dnvp_leader = "Triumvirate": Authoritarian conservatism?][? if dnvp_leader = "Westarp" or dnvp_leader = "Hergt" or dnvp_leader == "Lejeune-Jung" or dnvp_leader == "Keudell": National conservatism?][? if dnvp_leader = "Lambach": Christian socialism?][? if dnvp_leader = "Treviranus" and not true_christian_democracy: National conservatism?][? if dnvp_leader = "Treviranus" and true_christian_democracy: Tory democracy?][? if dnvp_leader = "Schiele": Agrarian conservatism?] ([+ dnvp_leader +])?]
+[? if dnvp_dvp_formed: <span class="tooltip-text" title="Free Conserative Party" style="color: #00C0FF;">**FKP**</span>: [+ fkp_ideology +]: ([+ fkp_leader +])?]
+
+[? if not ddp_name: UNINITIALIZED ?][? if ddp_name != 0 and not cvp_formed and not dnvp_dnef and not dnvp_defunct: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [? if dnvp_leader = "Hugenberg" or dnvp_leader = "Triumvirate": Authoritarian conservatism?][? if dnvp_leader = "Westarp" or dnvp_leader = "Hergt" or dnvp_leader == "Lejeune-Jung" or dnvp_leader == "Keudell": National conservatism?][? if dnvp_leader = "Lambach": Christian socialism?][? if dnvp_leader = "Treviranus" and not true_christian_democracy: National conservatism?][? if dnvp_leader = "Treviranus" and true_christian_democracy: Tory democracy?][? if dnvp_leader = "Schiele": Agrarian conservatism?] ([+ dnvp_leader +])?]
 
 [? if ddp_name != 0 and not cvp_formed and dnvp_dnef: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [? if dnvp_leader == "Lambach": Christian socialism?][? if dnvp_leader == "Treviranus": National conservatism?] ([+ dnvp_leader +])?]
 
@@ -219,11 +224,13 @@ Economic growth: [+ economic_growth_2 +]%
 
 [? if not lvp_formed and dvp_exist: <span class="tooltip-text" title="German People's Party" style="color: #C0A054;">**DVP**</span>: [? if industrial_dvp_backing == 1: low?][? if industrial_dvp_backing == 2: medium?][? if industrial_dvp_backing == 3: high?] ?]
 
-[? if not cvp_formed: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [? if industrial_dnvp_backing == 4: highest?][? if industrial_dnvp_backing == 3: high?][? if industrial_dnvp_backing == 2: medium?][? if industrial_dnvp_backing == 1: low?][? if industrial_dnvp_backing == 0: [? if dnvp_ideology == "Moderate": none?][? if dnvp_ideology == "Radical": Hugenberg funded?]?]?]
+[? if not cvp_formed and not dnvp_defunct: <span class="tooltip-text" title="German National People's Party" style="color: #3E88B3;">**DNVP**</span>: [? if industrial_dnvp_backing == 4: highest?][? if industrial_dnvp_backing == 3: high?][? if industrial_dnvp_backing == 2: medium?][? if industrial_dnvp_backing == 1: low?][? if industrial_dnvp_backing == 0: [? if dnvp_ideology == "Moderate": none?][? if dnvp_ideology == "Radical": Hugenberg funded?]?]?]
 
 [? if dnvp_ideology == "Moderate": <span class="tooltip-text" title="German National Front" style="color: #003755;">**DNF**</span>: Hugenberg funded ?]
 
-[? if kvp_formed: <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: high ?]
+[? if kvp_formed and not dnvp_dvp_formed: <span class="tooltip-text" title="Conservative People's Party" style="color: #0087DC;">**KVP**</span>: high ?]
+
+[? if dnvp_dvp_formed: <span class="tooltip-text" title="Free Conserative Party" style="color: #00C0FF;">**FKP**</span>: high ?] 
 
 [? if dsu_exist: <span class="tooltip-text" title="German Social Union" style="color: #6A1E1E;">**DSU**</span>: none ?]
 
@@ -334,9 +341,11 @@ Q.socialism_disp = Math.round(Q.socialism);
 
 [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>: [+ dvp_votes +]% ?]
 
-[? if kvp_formed: <span style="color: #0087DC;">**KVP**</span>: [+ kvp_votes +]% ?]
+[? if kvp_formed and not dnvp_dvp_formed: <span style="color: #0087DC;">**KVP**</span>: [+ kvp_votes +]% ?]
 
-[? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_votes +]%?]
+[? if dnvp_dvp_formed: <span class="tooltip-text" title="Free Conserative Party" style="color: #00C0FF;">**FKP**</span>: [+ kvp_votes +]% ?]
+
+[? if not cvp_formed and not dnvp_defunct: <span style="color: #3E88B3;">**DNVP**</span>: [+ dnvp_votes +]%?]
 
 [? if dnf_formed: <span style="color: #003755;">**DNF**</span>: [+ dnf_votes +]% ?]
 
