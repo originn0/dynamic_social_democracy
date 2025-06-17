@@ -112,6 +112,39 @@ if (Q.dynamic_mode || Q.historical_mode) {
   if (Q.chancellor == "Adenauer" && Q.president == "Heuss") {
       this.achieve('traumteam');
   }
+  if ((Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president != "Göring" && Q.president != "Seldte" && Q.chancellor != "Hitler" && !Q.hammerstein_win) && (Q.return_to_normalcy || Q.spd_votes >= 50 || Q.spd_r >= 50 && Q.pro_republic >= 80 || Q.nsdap_votes < 8) && (Q.spd_votes >= 50 || Q.spd_r >= 50) && !Q.civil_war_seen && !Q.rubicon) {
+      this.achieve('ldp');
+  }
+  if (Q.civil_war_seen && Q.long_war && Q.west_aid) {
+      this.achieve('der_grosse_neustart');
+  }
+
+  const partySupport = {
+    NSDAP: Q.nsdap_r,
+    SPD: Q.spd_r,
+    KPD: Q.kpd_r,
+    Z: Q.z_r,
+    DNVP: Q.dnvp_r,
+    DDP: Q.ddp_r,
+    DVP: Q.dvp_r,
+    LVP: Q.lvp_r,
+    KVP: Q.kvp_r,
+    DNF: Q.dnf_r,
+    SAPD: Q.sapd_r,
+    Other: Q.other_r,
+  };
+
+  const sortedParties = Object.entries(partySupport).sort((a, b) => b[1] - a[1]);
+
+  const secondLargestParty = sortedParties[1]?.[0] ?? null;
+
+  if (secondLargestParty === 'DNVP') {
+    Q.second_largest_party = 'DNVP';
+  }
+
+  if (Q.true_christian_democracy && Q.dnvp_leader == "Treviranus" && Q.second_largest_party == "DNVP") {
+      this.achieve('deutsche_tory_demokratie');
+  }
 }
 !}
 
@@ -1241,6 +1274,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_fur_gott_und_kaiser: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/fur_gott_und_kaiser.png" alt="Für Gott und Kaiser Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Für Gott und Kaiser</div>
+      <div class="achievement_subtitle"> - Jakob Kaiser leads the <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_ldp: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ldp.png" alt="Dominantes Parteiensystem Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Dominantes Parteiensystem</div>
+      <div class="achievement_subtitle"> - Achieve the "One and a Half Party system" ending. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_der_grosse_neustart: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_grosse_neustart.png" alt="Der Große Neustart Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Große Neustart</div>
+      <div class="achievement_subtitle"> - Achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_deutsche_tory_demokratie: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/deutsche_tory_demokratie.png" alt="Deutsche Tory Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
+      <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -2116,6 +2209,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_fur_gott_und_kaiser: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/fur_gott_und_kaiser.png" alt="Für Gott und Kaiser Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Für Gott und Kaiser</div>
+      <div class="achievement_subtitle"> - Jakob Kaiser leads the <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_ldp: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ldp.png" alt="Dominantes Parteiensystem Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Dominantes Parteiensystem</div>
+      <div class="achievement_subtitle"> - Achieve the "One and a Half Party system" ending. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_der_grosse_neustart: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_grosse_neustart.png" alt="Der Große Neustart Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Große Neustart</div>
+      <div class="achievement_subtitle"> - Achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_deutsche_tory_demokratie: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/deutsche_tory_demokratie.png" alt="Deutsche Tory Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
+      <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -2983,10 +3136,70 @@ All achievements require <span style="color: #0077FF;">dynamic</span> or <span s
     <img src="img/achievement/sozialchristliche_koalition.png" alt="Sozialchristliche Koalition Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialchristliche Koalition</div>
       <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_fur_gott_und_kaiser: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/fur_gott_und_kaiser.png" alt="Für Gott und Kaiser Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Für Gott und Kaiser</div>
+      <div class="achievement_subtitle"> - Jakob Kaiser leads the <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_ldp: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ldp.png" alt="Dominantes Parteiensystem Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Dominantes Parteiensystem</div>
+      <div class="achievement_subtitle"> - Achieve the "One and a Half Party system" ending. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_der_grosse_neustart: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_grosse_neustart.png" alt="Der Große Neustart Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Große Neustart</div>
+      <div class="achievement_subtitle"> - Achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_deutsche_tory_demokratie: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/deutsche_tory_demokratie.png" alt="Deutsche Tory Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
+      <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
     </div>
   {!</td>!}
 {!</tr>!}

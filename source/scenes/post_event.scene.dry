@@ -10,28 +10,26 @@ const newlyAddedAchievements = [];
 
 let initialAchievements = new Set();
 
-if (Q.year == 1928 && Q.month <= 2) {
+if (Q.year == 1928 && Q.month <= 1) {
     const initialAchievements = new Set(
     Object.keys(q).filter(key => key.startsWith("game_achievement") || key.startsWith("achievement"))
     );
 }
 
-for (const key in q) {
-  if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
-    // Check if the key is newly added (not in initial achievements) OR has just been set to 1
-    if (!initialAchievements.has(key)) {
-      newlyAddedAchievements.push(key); // This is a new achievement added
+if (!(Q.year == 1928 && Q.month <= 1)) {
+    for (const key in q) {
+      if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
+        if (!initialAchievements.has(key)) {
+          newlyAddedAchievements.push(key);
+        }
+      }
     }
-  }
 }
 
-// Step 3: If both dynamic and historical modes are off, reset newly added achievements to 0
-if (!dynamicMode && !historicalMode) {
+if (!dynamicMode && !historicalMode || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
   for (const key of newlyAddedAchievements) {
-    q[key] = 0; // Reset the new achievement to 0
+    q[key] = 0;
   }
-
-  console.log("New achievements reset to 0:", newlyAddedAchievements);
 }
 
 if (Q.rubicon && Q.chancellor != Q.nsdap_chancellor) {
