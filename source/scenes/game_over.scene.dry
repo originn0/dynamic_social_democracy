@@ -149,6 +149,14 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.schwarze_null_unlock && (Q.nationalization_progress >= 4 || Q.wtb_implemented >= 4)) {
       this.achieve('schwarze_null');
   }
+
+  if (Q.dnvp_leader == "Lambach" && Q.dnvp_r >= 20 && Q.workers_dnvp_normalized >= Q.workers_spd_normalized && Q.workers_dnvp_normalized >= Q.workers_kpd_normalized && Q.workers_dnvp_normalized >= Q.workers_z_normalized && Q.workers_dnvp_normalized >= Q.workers_nsdap_normalized) {
+      this.achieve('neue_arbeiterpartei');
+  }
+
+  if (Q.ddp_r >= Q.dvp_r && Q.ddp_r >= (Q.dvp_r * 2) && Q.dvp_exist && !Q.lvp_formed) {
+      this.achieve('linksliberale_renaissance');
+  }
 }
 !}
 
@@ -1368,6 +1376,96 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_frahm_und_brandt: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/frahm_und_brandt.png" alt="Historischer Kompromiss Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Frahm und Brandt</div>
+      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_neue_arbeiterpartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/neue_arbeiterpartei.png" alt="Neue Arbeiterpartei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Neue Arbeiterpartei</div>
+      <div class="achievement_subtitle"> - Lambach's <span style="color: #3E88B3; font-weight: bold;">DNVP</span> holds 20% of the Reichstag and a plurality among workers. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_ankurbelung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ankurbelung.png" alt="Ankurbelung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ankurbelung</div>
+      <div class="achievement_subtitle"> - the Lautenbach plan is implemented. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_linksliberale_renaissance: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/linksliberale_renaissance.png" alt="Linksliberale Renaissance Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Linksliberale Renaissance</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DDP</span> controls over 8% of the Reichstag and holds twice as many seats as the <span style="color: #C0A054; font-weight: bold;">DVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_ein_interessantes_experiment: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ein_interessantes_experiment.png" alt="Ein Interessantes Experiment Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ein Interessantes Experiment</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DStP</span> has been formed and has endured. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_das_grosste_aller_zelte: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/das_grosste_aller_zelte.png" alt="Das Größte Aller Zelte Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Das Größte Aller Zelte</div>
+      <div class="achievement_subtitle"> - empower the Neorevisionists and Social Patriot factions, with no splits among the other factions. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -2325,10 +2423,100 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/historischer_kompromiss.png" alt="Historischer Kompromiss Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Historischer Kompromiss</div>
       <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_frahm_und_brandt: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/frahm_und_brandt.png" alt="Historischer Kompromiss Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Frahm und Brandt</div>
+      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_neue_arbeiterpartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/neue_arbeiterpartei.png" alt="Neue Arbeiterpartei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Neue Arbeiterpartei</div>
+      <div class="achievement_subtitle"> - Lambach's <span style="color: #3E88B3; font-weight: bold;">DNVP</span> holds 20% of the Reichstag and a plurality among workers. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_ankurbelung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ankurbelung.png" alt="Ankurbelung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ankurbelung</div>
+      <div class="achievement_subtitle"> - the Lautenbach plan is implemented. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_linksliberale_renaissance: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/linksliberale_renaissance.png" alt="Linksliberale Renaissance Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Linksliberale Renaissance</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DDP</span> controls over 8% of the Reichstag and holds twice as many seats as the <span style="color: #C0A054; font-weight: bold;">DVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_ein_interessantes_experiment: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ein_interessantes_experiment.png" alt="Ein Interessantes Experiment Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ein Interessantes Experiment</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DStP</span> has been formed and has endured. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_das_grosste_aller_zelte: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/das_grosste_aller_zelte.png" alt="Das Größte Aller Zelte Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Das Größte Aller Zelte</div>
+      <div class="achievement_subtitle"> - empower the Neorevisionists and Social Patriot factions, with no splits among the other factions. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3290,10 +3478,100 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/historischer_kompromiss.png" alt="Historischer Kompromiss Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Historischer Kompromiss</div>
       <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_frahm_und_brandt: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/frahm_und_brandt.png" alt="Frahm und Brandt Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Frahm und Brandt</div>
+      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_neue_arbeiterpartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/neue_arbeiterpartei.png" alt="Neue Arbeiterpartei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Neue Arbeiterpartei</div>
+      <div class="achievement_subtitle"> - Lambach's <span style="color: #3E88B3; font-weight: bold;">DNVP</span> holds 20% of the Reichstag and a plurality among workers. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_ankurbelung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ankurbelung.png" alt="Ankurbelung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ankurbelung</div>
+      <div class="achievement_subtitle"> - the Lautenbach plan is implemented. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_linksliberale_renaissance: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/linksliberale_renaissance.png" alt="Linksliberale Renaissance Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Linksliberale Renaissance</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DDP</span> controls over 8% of the Reichstag and holds twice as many seats as the <span style="color: #C0A054; font-weight: bold;">DVP</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_ein_interessantes_experiment: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ein_interessantes_experiment.png" alt="Ein Interessantes Experiment Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ein Interessantes Experiment</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DStP</span> has been formed and has endured. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_das_grosste_aller_zelte: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/das_grosste_aller_zelte.png" alt="Das Größte Aller Zelte Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Das Größte Aller Zelte</div>
+      <div class="achievement_subtitle"> - empower the Neorevisionists and Social Patriot factions, with no splits among the other factions. </div>
     </div>
   {!</td>!}
 {!</tr>!}
