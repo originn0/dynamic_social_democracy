@@ -22,7 +22,7 @@ for (var c of Q.classes) {
     }
 }
 
-if (Q.dynamic_mode || Q.historical_mode) {
+if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   // Roter Zar von Preußen - At the end of the game, Otto Braun is president, chancellor, and minister-president of prussia at the same time.
   if (Q.president == 'Braun' && Q.chancellor == 'Braun' && Q.prussia_leader == "Braun") {
       this.achieve('red_tzar_of_prussia');
@@ -403,7 +403,7 @@ elements.forEach(el => {
 !}
 tags: endings
 
-All achievements require <span style="color: #0077FF;">dynamic</span> or <span style="color: #611813;">historical</span> mode.
+All achievements require <span style="color: #0077FF;">dynamic</span>, <span style="color: #A05252;">hard</span>, or <span style="color: #611813;">historical</span> mode.
 
 = Completed Achievements in this Playthrough
 

@@ -26,7 +26,7 @@ if (!(Q.year == 1928 && Q.month <= 1)) {
     }
 }
 
-if (!dynamicMode && !historicalMode || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
+if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
   for (const key of newlyAddedAchievements) {
     q[key] = 0;
   }
