@@ -18,6 +18,7 @@ if (Q.year == 1928 && Q.month <= 1) {
     const initialAchievements = new Set(
     Object.keys(q).filter(key => key.startsWith("game_achievement") || key.startsWith("achievement"))
     );
+    Q.initialAchievements = initialAchievements;
 }
 
 if (!(Q.year == 1928 && Q.month <= 1)) {
@@ -2988,7 +2989,7 @@ if (Q.year == 1929 && Q.stolper_program_adopted && Q.dvp_reform && Q.dvp_ideolog
     Q.lvp_merger_1_timer = 4;
 }
 
-if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931) {
+if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931 && Q.super_secret_mode) {
     if (Q.nsdap_votes > 30 || Q.spd_votes + Q.kpd_votes > 45 || (Q.year == 1932 && (Q.month == 4 || Q.month == 5))){
         Q.dkp_merger_timer = Q.time + 3;
         Q.dkp_merger_waiting = 1;
@@ -3765,6 +3766,7 @@ if (Q.spd_prussia) {
 
 if (Q.spd_in_government) {
     Q.spd_in_government_time += 1;
+    Q.spd_in_government_total_time += 1;
     if (Q.foreign_minister_party == "SPD") Q.spd_in_foreign_time += 1;
 } else if (!Q.spd_in_government) {
     Q.spd_in_government_time = 0;
@@ -3877,6 +3879,7 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
         Q.new_middle_spd *= 0.95;
         Q.left_dissent += 5;
         Q.labor_dissent += 5;
+        Q.gov_burden_fail += 1;
     }
     Q.welfare_goal_spd = 0;
     Q.economy_goal_spd = 0;
@@ -3924,6 +3927,7 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
         Q.rural_spd *= 0.8;
         Q.catholics_spd *= 0.95;
         Q.reformist_dissent += 5;
+        Q.gov_burden_fail += 1;
     }
     Q.economy_goal_spd_peoples = 0;
     Q.labor_goal_spd_peoples = 0;
