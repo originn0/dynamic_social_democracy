@@ -189,6 +189,10 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.gov_burden_fail >= 10 && Q.in_spd_majority) {
       this.achieve('leere_parolen');
   }
+
+  if (Q.eu && !Q.eu_negotiation) {
+      this.achieve('weltfrieden');
+  }
 }
 !}
 
@@ -1618,6 +1622,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_weltfrieden: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/weltfrieden.png" alt="Weltfrieden Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Weltfrieden</div>
+      <div class="achievement_subtitle"> - sign the treaty to form the <span style='color: #001489;'>European</span> <span style='color: #FFDD00;'>Union</span> without ever negotiating.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_blauer_winter: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blauer_winter.png" alt="Blauer Winter Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blauer Winter</div>
+      <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -2793,6 +2827,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_weltfrieden: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/weltfrieden.png" alt="Weltfrieden Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Weltfrieden</div>
+      <div class="achievement_subtitle"> - sign the treaty to form the <span style='color: #001489;'>European</span> <span style='color: #FFDD00;'>Union</span> without ever negotiating.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_blauer_winter: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blauer_winter.png" alt="Blauer Winter Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blauer Winter</div>
+      <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -3964,6 +4028,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Leere Parolen</div>
       <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority while failing 10 or more government burdens.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_weltfrieden: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/weltfrieden.png" alt="Weltfrieden Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Weltfrieden</div>
+      <div class="achievement_subtitle"> - sign the treaty to form the <span style='color: #001489;'>European</span> <span style='color: #FFDD00;'>Union</span> without ever negotiating.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_blauer_winter: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blauer_winter.png" alt="Blauer Winter Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blauer Winter</div>
+      <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
     </div>
   {!</td>!}
 {!</tr>!}
