@@ -644,7 +644,7 @@ on-arrival: {!
 if (Q.vrp_presidential_votes >= 1) Q.blauer_winter = 1;
 if (Q.braun_campaign && Q.z_support_spd == 1 && Q.kpd_support_spd == 1 && ((Q.ddp_support_spd == 1 && !Q.lvp_formed) || (Q.lvp_support_spd && Q.lvp_formed))) Q.braun_koalition = 1;
 !}
-go-to: blauer_winter_check if blauer_winter; achievement_calculation_2 if not blauer_winter
+go-to: blauer_winter if blauer_winter; achievement_calculation_2 if not blauer_winter
 
 @achievement_calculation_2
 go-to: braun_koalition if braun_koalition; calculation if not braun_koalition
