@@ -2,6 +2,10 @@ title: Post Event
 new-page: true
 on-arrival: {!
 
+if (Q.social_patriot && Q.neorevisionism && !Q.left_split && !Q.centrists_resign && !Q.reformists_resign && !Q.unions_independent) {
+    this.achieve('das_grosste_aller_zelte');
+}
+
 const q = dendryUI.dendryEngine.state.qualities;
 const dynamicMode = q.dynamic_mode;
 const historicalMode = q.historical_mode;
@@ -26,7 +30,7 @@ if (!(Q.year == 1928 && Q.month <= 1)) {
     }
 }
 
-if (!dynamicMode && !historicalMode || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
+if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
   for (const key of newlyAddedAchievements) {
     q[key] = 0;
   }
@@ -2710,16 +2714,16 @@ if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 0) {
 }
 
 if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && Q.dvp_relation_9 >= 40 && Q.dvp_ideology_9 !== "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
-    Q.weimar_ref_signatures = (Q.dnvp_votes + Q.other_votes);
+    Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
 } else if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && (Q.dvp_relation_9 < 40 || Q.dvp_ideology_9 !== "Right") && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
-    Q.weimar_ref_signatures = (Q.dnvp_votes + Q.other_votes + Q.dvp_votes + Q.bvp_votes);
+    Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes + Q.dvp_votes + Q.bvp_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
 } else if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && Q.lvp_relation_9 < 40 && Q.lvp_ideology_9 == "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && Q.lvp_formed) {
-    Q.weimar_ref_signatures = (Q.dnvp_votes + Q.other_votes + (Q.lvp_votes / 2) + Q.bvp_votes);
+    Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes + (Q.lvp_votes / 2) + Q.bvp_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
 } else if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && (Q.lvp_relation_9 >= 40 || Q.lvp_ideology_9 !== "Right") && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && Q.lvp_formed) {
-    Q.weimar_ref_signatures = (Q.dnvp_votes + Q.other_votes + Q.bvp_votes);
+    Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes + Q.bvp_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
 }
 
@@ -2984,7 +2988,7 @@ if (Q.year == 1929 && Q.stolper_program_adopted && Q.dvp_reform && Q.dvp_ideolog
     Q.lvp_merger_1_timer = 4;
 }
 
-if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931 && Q.super_secret_mode) {
+if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931) {
     if (Q.nsdap_votes > 30 || Q.spd_votes + Q.kpd_votes > 45 || (Q.year == 1932 && (Q.month == 4 || Q.month == 5))){
         Q.dkp_merger_timer = Q.time + 3;
         Q.dkp_merger_waiting = 1;
