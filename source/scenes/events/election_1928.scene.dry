@@ -4,7 +4,7 @@ tags: event
 priority: -2
 view-if: (year = next_election_year and month >= next_election_month and (next_election_week == week or not rubicon)) or (year > next_election_year)
 on-arrival: election_boycott = 0
-on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry = hindenburg_angry_old
+on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry_old = hindenburg_angry
 set-jump: post_election_1928
 set-bg: img/map_2.jpg
 #face-image: img/Rothe_Wahlen_1903.jpg
@@ -526,7 +526,6 @@ if (Q.dnef_formed) {
         if (Q['previous_' + party + '_last_election_votes'] === undefined) {
             Q['change_' + party + '_votes'] = Q[party + '_votes'];
         }
-    
         var sign2 = Q['change_' + party + '_votes'] > 0 
                     ? '<img src="img/arrowup.png"> ' 
                     : Q['change_' + party + '_votes'] < 0 
@@ -551,6 +550,8 @@ if (Q.dnef_formed) {
         Q['previous_' + party + '_last_election_votes'] = parseFloat(parseFloat(Q[party + '_last_election_votes']).toFixed(1));
     }    
     
+if (Q.change_spd_votes <= 0) Q.notwendigkeit = 0;
+
 Q.cnblp_r = 0;
 Q.wp_r = 0;
 Q.csvd_r = 0;
