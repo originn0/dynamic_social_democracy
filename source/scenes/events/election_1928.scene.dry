@@ -999,7 +999,7 @@ if (Q.dnef_formed) {
     Q.schleicher_dnef_r = Math.round(Q.schleicher_dnef_r * 10) / 10;
 }
 
-if (Q.time - Q.last_election_time >= 10 && (Q.left_strength >= Q.reformist_strength + Q.labor_strength)) {
+if ((Q.time - Q.marxist_malus_time >= 10 || !Q.marxist_malus_time) && (Q.left_strength >= Q.reformist_strength + Q.labor_strength)) {
     if (Q.spd_votes >= 50) {
         Q.z_relation -= 12;
         Q.ddp_relation -= 12;
@@ -1037,8 +1037,10 @@ if (Q.time - Q.last_election_time >= 10 && (Q.left_strength >= Q.reformist_stren
         Q.ddp_right += 1;
         Q.ddp_cohesion -= 1;
     }
-    Q.last_election_time = Q.time;
+    Q.marxist_malus_time = Q.time;
 }
+
+Q.last_election_time = Q.time;
 
 if (Q.election_boycott && Q.boycott_effect) {
     Q.workers_schleicher_bonus -= 1;
