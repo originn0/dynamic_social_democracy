@@ -197,6 +197,14 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.bavaria_spd && Q.wurttemberg_spd && (Q.thuringia_spd || Q.red_thuringia) && (Q.saxony_spd || Q.red_saxony) && Q.spd_prussia) {
       this.achieve('staatspolitiker');
   }
+
+  if (Q.polizeistaat) {
+      this.achieve('polizeistaat');
+  }
+
+  if (Q.president == "Heuss" && Q.chancellor == "Adenauer" && Q.z_leader == "Adenauer" && Q.z_party_name == "CVP" && Q.lvp_formed && Q.constitutional_reform >= 3 && !Q.nsdap_r && !Q.kpd_r && Q.neorevisionism && Q.reformist_strength >= Q.left_strength && Q.reformist_strength >= Q.center_strength && Q.reformist_strength >= Q.labor_strength) {
+      this.achieve('wahre_bundesrepublik');
+  }
 }
 !}
 
@@ -1666,7 +1674,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Ampelkoalition</div>
-      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #D3C24D;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #FFCC00;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1682,6 +1690,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Staatspolitiker</div>
       <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_soziale_politik_fur_dich: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_politik_fur_dich.png" alt="Soziale Politik für Dich Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Politik für Dich</div>
+      <div class="achievement_subtitle"> - remain in government continuously for four years and never fail a government burden.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_polizeistaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/polizeistaat.png" alt="Polizeistaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Polizeistaat</div>
+      <div class="achievement_subtitle"> - maintain 50% or more Prussian police control over the streets continuously for one full year.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_wahre_bundesrepublik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wahre_bundesrepublik.png" alt="Wahre Bundesrepublik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wahre Bundesrepublik</div>
+      <div class="achievement_subtitle"> - achieve Heuss as President and Adenauer as Chancellor, with the <span style='color: #000000; font-weight: bold;'>CVP</span> led by Adenauer and the <span style='color: #FFCC00; font-weight: bold;'>LVP</span> formed. All constitutional reforms are passed, the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span> and <span style='color: #700000; font-weight: bold;'>KPD</span> are both below the 5% threshold, Schumacher is available as an advisor, and the <span style='color: #c00000; font-weight: bold;'>SPD</span> is dominated by Reformists.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_der_beliebte_prasident: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_beliebte_prasident.png" alt="Der beliebte Präsident Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der beliebte Präsident</div>
+      <div class="achievement_subtitle"> - have Otto Braun receive 60% or more of the vote in the first round of the 1932 presidential election.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2901,7 +2969,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Ampelkoalition</div>
-      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #D3C24D;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #FFCC00;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2917,6 +2985,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Staatspolitiker</div>
       <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_soziale_politik_fur_dich: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_politik_fur_dich.png" alt="Soziale Politik für Dich Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Politik für Dich</div>
+      <div class="achievement_subtitle"> - remain in government continuously for four years and never fail a government burden.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_polizeistaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/polizeistaat.png" alt="Polizeistaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Polizeistaat</div>
+      <div class="achievement_subtitle"> - maintain 50% or more Prussian police control over the streets continuously for one full year.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_wahre_bundesrepublik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wahre_bundesrepublik.png" alt="Wahre Bundesrepublik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wahre Bundesrepublik</div>
+      <div class="achievement_subtitle"> - achieve Heuss as President and Adenauer as Chancellor, with the <span style='color: #000000; font-weight: bold;'>CVP</span> led by Adenauer and the <span style='color: #FFCC00; font-weight: bold;'>LVP</span> formed. All constitutional reforms are passed, the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span> and <span style='color: #700000; font-weight: bold;'>KPD</span> are both below the 5% threshold, Schumacher is available as an advisor, and the <span style='color: #c00000; font-weight: bold;'>SPD</span> is dominated by Reformists.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_der_beliebte_prasident: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_beliebte_prasident.png" alt="Der beliebte Präsident Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der beliebte Präsident</div>
+      <div class="achievement_subtitle"> - have Otto Braun receive 60% or more of the vote in the first round of the 1932 presidential election.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4136,7 +4264,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Ampelkoalition</div>
-      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #D3C24D;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #FFCC00;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4152,6 +4280,66 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Staatspolitiker</div>
       <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_soziale_politik_fur_dich: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_politik_fur_dich.png" alt="Soziale Politik für Dich Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Politik für Dich</div>
+      <div class="achievement_subtitle"> - remain in government continuously for four years and never fail a government burden.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_polizeistaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/polizeistaat.png" alt="Polizeistaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Polizeistaat</div>
+      <div class="achievement_subtitle"> - maintain 50% or more Prussian police control over the streets continuously for one full year.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_wahre_bundesrepublik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wahre_bundesrepublik.png" alt="Wahre Bundesrepublik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wahre Bundesrepublik</div>
+      <div class="achievement_subtitle"> - achieve Heuss as President and Adenauer as Chancellor, with the <span style='color: #000000; font-weight: bold;'>CVP</span> led by Adenauer and the <span style='color: #FFCC00; font-weight: bold;'>LVP</span> formed. All constitutional reforms are passed, the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span> and <span style='color: #700000; font-weight: bold;'>KPD</span> are both below the 5% threshold, Schumacher is available as an advisor, and the <span style='color: #c00000; font-weight: bold;'>SPD</span> is dominated by Reformists.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_der_beliebte_prasident: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_beliebte_prasident.png" alt="Der beliebte Präsident Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der beliebte Präsident</div>
+      <div class="achievement_subtitle"> - have Otto Braun receive 60% or more of the vote in the first round of the 1932 presidential election.
     </div>
   {!</td>!}
 {!</tr>!}

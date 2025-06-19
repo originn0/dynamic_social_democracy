@@ -21,22 +21,6 @@ if (Q.year == 1928 && Q.month <= 1) {
     Q.initialAchievements = initialAchievements;
 }
 
-if (!(Q.year == 1928 && Q.month <= 1)) {
-    for (const key in q) {
-      if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
-        if (!initialAchievements.has(key)) {
-          newlyAddedAchievements.push(key);
-        }
-      }
-    }
-}
-
-if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
-  for (const key of newlyAddedAchievements) {
-    q[key] = 0;
-  }
-}
-
 if (Q.rubicon && Q.chancellor != Q.nsdap_chancellor) {
 const contentElement = document.getElementById('content');
 contentElement.style.backgroundColor = '#645E51';
@@ -2573,6 +2557,13 @@ if (Q.far_right_paramilitary && Q.year >= 1930 && !Q.streetfighting_joever) {
     if (Q.democracy_force >= Q.pro_republic) Q.pro_republic += 1;
 } else if (Q.state_paramilitary) {}
 
+if (Q.prussia_force >= 50 && Q.year >= 1930 && !Q.streetfighting_joever) {
+    Q.prussia_force_timer += 1;
+    if (Q.prussia_force_timer >= 12) Q.polizeistaat = 1;
+} else {
+    Q.prussia_force_timer = 0;
+}
+
 if (!Q.wtb_adopted && Q.black_thursday_seen) {
     Q.wtb_points_gain = 0;
     if (Q.labor_strength >= (Q.center_strength + Q.left_strength)) Q.wtb_points_gain += 3
@@ -3945,6 +3936,10 @@ if (Q.spd_in_government && Q.spd_government_burden_peoples == 0 && (Q.peoples_pa
     Q.spd_government_burden_trigger = 1
 }
 
+if (Q.spd_in_government_time >= 35 && !Q.gov_burden_fail) {
+    this.achieve('soziale_politik_fur_dich');
+}
+
 if (Q.spd_in_government_time >= 6) {
     Q.hindenburg_angry_trigger = 1;
     if (Q.spd_in_government_time >= 36) {
@@ -4996,6 +4991,23 @@ if (Q.budget < 0) {
 }
 
 }
+
+if (!(Q.year == 1928 && Q.month <= 1)) {
+    for (const key in q) {
+      if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
+        if (!initialAchievements.has(key)) {
+          newlyAddedAchievements.push(key);
+        }
+      }
+    }
+}
+
+if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
+  for (const key of newlyAddedAchievements) {
+    q[key] = 0;
+  }
+}
+
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];

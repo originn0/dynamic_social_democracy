@@ -643,11 +643,15 @@ go-to: achievement_calculation
 on-arrival: {!
 if (Q.vrp_presidential_votes >= 1) Q.blauer_winter = 1;
 if (Q.braun_campaign && Q.z_support_spd == 1 && Q.kpd_support_spd == 1 && ((Q.ddp_support_spd == 1 && !Q.lvp_formed) || (Q.lvp_support_spd && Q.lvp_formed))) Q.braun_koalition = 1;
+if (Q.braun_campaign && Q.spd_president_votes >= 60) Q.der_beliebte_prasident = 1;
 !}
 go-to: blauer_winter if blauer_winter; achievement_calculation_2 if not blauer_winter
 
 @achievement_calculation_2
-go-to: braun_koalition if braun_koalition; calculation if not braun_koalition
+go-to: braun_koalition if braun_koalition; achievement_calculation_3 if not braun_koalition
+
+@achievement_calculation_3
+go-to: der_beliebte_prasident if der_beliebte_prasident; calculation if not der_beliebte_prasident
 
 @blauer_winter
 achievement: blauer_winter
@@ -655,6 +659,10 @@ go-to: achievement_calculation_2
 
 @braun_koalition 
 achievement: braun_koalition
+go-to: achievement_calculation_3
+
+@der_beliebte_prasident 
+achievement: der_beliebte_prasident
 go-to: calculation
 
 @calculation
