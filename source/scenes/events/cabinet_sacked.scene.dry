@@ -3,7 +3,7 @@ subtitle: Hindenburg has turned on us...
 view-if: (president == "Hindenburg" and not presidential_powers and spd_in_government and hindenburg_angry >= 115 and hindenburg_angry_trigger) and chancellor != "Brüning" and next_election_time - time > 3 and not in_spd_majority
 priority: -1
 new-page: true
-on-arrival: dvp_relation -= 8; ddp_relation -= 4; lvp_relation -= 4; z_relation -= 4 if chancellor_party != "Z"; pro_republic -= 3; pro_republic -= 1 if spd_r >= 30; pro_republic -= 1 if weimar_coalition >= 50; coup_progress -= 1; hindenburg_sacked = 1
+on-arrival: dvp_relation -= 8; ddp_relation -= 4; lvp_relation -= 4; z_relation -= 4 if chancellor_party != "Z"; pro_republic -= 3; pro_republic -= 1 if spd_r >= 30; pro_republic -= 1 if weimar_coalition >= 50; coup_progress -= 1; hindenburg_sacked = 1; comeback_a = n_elections
 go-to: bruning_right if (bruning_event_seen or year < 1930) and right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7); bruning_center_right if (bruning_event_seen or year < 1930) and (center_right_coalition >= 50 and right_coalition < 50) and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7); bruning_chain if not ((bruning_event_seen or year < 1930) and right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not ((bruning_event_seen or year < 1930) and (center_right_coalition >= 50 and right_coalition < 50) and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7))
 tags: event
 

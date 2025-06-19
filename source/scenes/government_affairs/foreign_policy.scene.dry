@@ -49,7 +49,7 @@ We also aim to improve relations with our eastern neighbors, <span style="color:
 title: Expand our exports to the <span style="color: #750e0e;">**Soviet Union**</span>.
 subtitle: A win for our economy and for our relationship with the <span style="color: #700000;">**KPD**</span>.
 view-if: year >= 1930
-on-arrival: soviet_relation += 1; economic_growth += 0.5; unemployed -= 0.5; foreign_goal_completed += 1; kpd_relation += 6; communist_coalition += 1; hindenburg_angry += 15; z_relation -= 3; ddp_relation -= 3; dvp_relation -= 3; lvp_relation -= 3; dvp_right += 1; lvp_right += 1; ddp_right += 1
+on-arrival: soviet_export = 1; soviet_relation += 1; economic_growth += 0.5; unemployed -= 0.5; foreign_goal_completed += 1; kpd_relation += 6; communist_coalition += 1; hindenburg_angry += 15; z_relation -= 3; ddp_relation -= 3; dvp_relation -= 3; lvp_relation -= 3; dvp_right += 1; lvp_right += 1; ddp_right += 1
 max-visits: 1
 
 The <span style="color: #750e0e;">Soviet Union</span>, with its centrally planned economy and isolation from global markets, has insulated itself from the effects of the Great Depression. They have since been rapidly industrializing in accordance with their Five-Year Plan, making them a prime partner for exports, especially as tariffs from our nominal trading partners in the West have increased, along with their general isolation from international markets.
@@ -71,14 +71,14 @@ The <span style="color: #940000;">Soviets</span> are asking for economic and dev
 @soviet_economic_aid_yes_mil
 choose-if: budget >= 1
 subtitle: -1 budget
-on-arrival: budget -= 1; soviet_relation += 1; reichswehr_militancy += 0.2; reichswehr_loyalty += 0.05; foreign_goal_completed += 1
+on-arrival: soviet_aid_forpol = 1; budget -= 1; soviet_relation += 1; reichswehr_militancy += 0.2; reichswehr_loyalty += 0.05; foreign_goal_completed += 1
 
 The <span style="color: #940000;">Soviets</span> are pleased that we have sent them aid, and have agreed to help train our military. The Reichswehr appreciates our support.
 
 @soviet_economic_aid_yes
 choose-if: budget >= 1
 subtitle: -1 budget
-on-arrival: budget -= 1; soviet_relation += 2; coalition_dissent += 1; foreign_goal_completed += 1
+on-arrival: soviet_aid_forpol = 1; budget -= 1; soviet_relation += 2; coalition_dissent += 1; foreign_goal_completed += 1
 
 The <span style="color: #940000;">Soviets</span> are pleased that we have sent them aid, and have not asked for anything specific in exchange. Our coalition partners are less pleased.
 

@@ -4990,6 +4990,8 @@ if (Q.budget < 0) {
     Q.schwarze_null = 0;
 }
 
+if (Q.spd_toleration || (Q.spd_in_government && !Q.in_spd_majority))
+    Q.catastrophepolitik_cancel = 1;
 }
 
 if (!(Q.year == 1928 && Q.month <= 1)) {

@@ -205,6 +205,22 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.president == "Heuss" && Q.chancellor == "Adenauer" && Q.z_leader == "Adenauer" && Q.z_party_name == "CVP" && Q.lvp_formed && Q.constitutional_reform >= 3 && !Q.nsdap_r && !Q.kpd_r && Q.neorevisionism && Q.reformist_strength >= Q.left_strength && Q.reformist_strength >= Q.center_strength && Q.reformist_strength >= Q.labor_strength) {
       this.achieve('wahre_bundesrepublik');
   }
+
+  if (Q.kvp_r >= Q.dnvp_r && Q.kvp_formed && Q.kvp_r || Q.dnf_r >= Q.dnvp_r && Q.dnvp_ideology == "Moderate" && Q.dnf_r) {
+      this.achieve('das_blatt_hat_sich_gewendet');
+  }
+
+  if ((Q.nsdap_votes < Q.modeerscheinung_check && !Q.rubicon) || (Q.nsdap_hitler_votes < Q.modeerscheinung_check && Q.rubicon)) {
+      this.achieve('modeerscheinung');
+  }
+
+  if (Q.peoples_party && Q.kvp_formed && (Q.lvp_formed || Q.dvp_exist) && Q.z_party_name == "CVP") {
+      this.achieve('volkspartei_fur_das_volk');
+  }
+
+  if (Q.reparations == 0 && !Q.foreign_aid && !Q.eu && !Q.soviet_export && !Q.soviet_aid_forpol && Q.unemployed < 15 && Q.budget > 0) {
+      this.achieve('wir_schaffen_das');
+  }
 }
 !}
 
@@ -1758,13 +1774,134 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 [? if game_achievement_notwendigkeit: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit  Icon"
+    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Notwendigkeit</div>
       <div class="achievement_subtitle"> - gain votes in every election compared to the previous one.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_comeback: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/comeback.png" alt="Comeback Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Comeback</div>
+      <div class="achievement_subtitle"> - get sacked by Hindenburg, then return with an <span style="color: #c00000; font-weight: bold;">SPD</span> majority government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_grosse_weimarer_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/grosse_weimarer_koalition.png" alt="Große Weimarer Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Große Weimarer Koalition</div>
+      <div class="achievement_subtitle"> - form a Weimar coalition with Kaiser at the head of the <span style="color: #000000;">Center</span>/<span style="color: #000000; font-weight: bold;">CVP</span> and Heuss leading the <span style="color: #FFCC00; font-weight: bold;">LVP</span>.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_das_blatt_hat_sich_gewendet: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/das_blatt_hat_sich_gewendet.png" alt="Das Blatt hat sich gewendet Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Das Blatt hat sich gewendet</div>
+      <div class="achievement_subtitle"> - one of the <span style="color: #3E88B3; font-weight: bold;">DNVP</span>'s splinter parties now holds more seats in the Reichstag than the party itself.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_modeerscheinung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/modeerscheinung.png" alt="Modeerscheinung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Modeerscheinung</div>
+      <div class="achievement_subtitle"> - the <span style="color: #7A3C00; font-weight: bold;">NSDAP</span> has fewer votes than it did in May 1928.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_catastrophepolitik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/catastrophepolitik.png" alt="Catastrophepolitik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Catastrophepolitik</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 10 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_volkspartei_fur_das_volk: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/volkspartei_fur_das_volk.png" alt="Volkspartei für das Volk Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Volkspartei für das Volk</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is a people's party, and achieve the maximum number of parties with "People's Party" in their name.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_mit_allen_notwendigen_stimmen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/mit_allen_notwendigen_stimmen.png" alt="Mit allen notwendigen Stimmen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Mit allen notwendigen Stimmen</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority with a completely demilitarized Reichsbanner.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+
+[? if game_achievement_wir_schaffen_das: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wir_schaffen_das.png" alt="Wir schaffen das! Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wir schaffen das!</div>
+      <div class="achievement_subtitle"> - achieve unemployment below 15% and a budgetary surplus with zero help from foreign powers.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3068,13 +3205,134 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 [? if achievement_notwendigkeit: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit  Icon"
+    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Notwendigkeit</div>
       <div class="achievement_subtitle"> - gain votes in every election compared to the previous one.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_comeback: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/comeback.png" alt="Comeback Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Comeback</div>
+      <div class="achievement_subtitle"> - get sacked by Hindenburg, then return with an <span style="color: #c00000; font-weight: bold;">SPD</span> majority government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_grosse_weimarer_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/grosse_weimarer_koalition.png" alt="Große Weimarer Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Große Weimarer Koalition</div>
+      <div class="achievement_subtitle"> - form a Weimar coalition with Kaiser at the head of the <span style="color: #000000;">Center</span>/<span style="color: #000000; font-weight: bold;">CVP</span> and Heuss leading the <span style="color: #FFCC00; font-weight: bold;">LVP</span>.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_das_blatt_hat_sich_gewendet: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/das_blatt_hat_sich_gewendet.png" alt="Das Blatt hat sich gewendet Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Das Blatt hat sich gewendet</div>
+      <div class="achievement_subtitle"> - one of the <span style="color: #3E88B3; font-weight: bold;">DNVP</span>'s splinter parties now holds more seats in the Reichstag than the party itself.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_modeerscheinung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/modeerscheinung.png" alt="Modeerscheinung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Modeerscheinung</div>
+      <div class="achievement_subtitle"> - the <span style="color: #7A3C00; font-weight: bold;">NSDAP</span> has fewer votes than it did in May 1928.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_catastrophepolitik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/catastrophepolitik.png" alt="Catastrophepolitik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Catastrophepolitik</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 10 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_volkspartei_fur_das_volk: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/volkspartei_fur_das_volk.png" alt="Volkspartei für das Volk Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Volkspartei für das Volk</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is a people's party, and achieve the maximum number of parties with "People's Party" in their name.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_mit_allen_notwendigen_stimmen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/mit_allen_notwendigen_stimmen.png" alt="Mit allen notwendigen Stimmen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Mit allen notwendigen Stimmen</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority with a completely demilitarized Reichsbanner.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+
+[? if achievement_wir_schaffen_das: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wir_schaffen_das.png" alt="Wir schaffen das! Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wir schaffen das!</div>
+      <div class="achievement_subtitle"> - achieve unemployment below 15% and a budgetary surplus with zero help from foreign powers.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4378,13 +4636,133 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 [? if not achievement_notwendigkeit: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit  Icon"
+    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Notwendigkeit</div>
       <div class="achievement_subtitle"> - gain votes in every election compared to the previous one.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_comeback: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/comeback.png" alt="Comeback Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Comeback</div>
+      <div class="achievement_subtitle"> - get sacked by Hindenburg, then return with an <span style="color: #c00000; font-weight: bold;">SPD</span> majority government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_grosse_weimarer_koalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/grosse_weimarer_koalition.png" alt="Große Weimarer Koalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Große Weimarer Koalition</div>
+      <div class="achievement_subtitle"> - form a Weimar coalition with Kaiser at the head of the <span style="color: #000000;">Center</span>/<span style="color: #000000; font-weight: bold;">CVP</span> and Heuss leading the <span style="color: #FFCC00; font-weight: bold;">LVP</span>.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_das_blatt_hat_sich_gewendet: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/das_blatt_hat_sich_gewendet.png" alt="Das Blatt hat sich gewendet Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Das Blatt hat sich gewendet</div>
+      <div class="achievement_subtitle"> - one of the <span style="color: #3E88B3; font-weight: bold;">DNVP</span>'s splinter parties now holds more seats in the Reichstag than the party itself.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_modeerscheinung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/modeerscheinung.png" alt="Modeerscheinung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Modeerscheinung</div>
+      <div class="achievement_subtitle"> - the <span style="color: #7A3C00; font-weight: bold;">NSDAP</span> has fewer votes than it did in May 1928.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_catastrophepolitik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/catastrophepolitik.png" alt="Catastrophepolitik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Catastrophepolitik</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 10 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_volkspartei_fur_das_volk: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/volkspartei_fur_das_volk.png" alt="Volkspartei für das Volk Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Volkspartei für das Volk</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is a people's party, and achieve the maximum number of parties with "People's Party" in their name.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_mit_allen_notwendigen_stimmen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/mit_allen_notwendigen_stimmen.png" alt="Mit allen notwendigen Stimmen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Mit allen notwendigen Stimmen</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority with a completely demilitarized Reichsbanner.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_wir_schaffen_das: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 75px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wir_schaffen_das.png" alt="Wir schaffen das! Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wir schaffen das!</div>
+      <div class="achievement_subtitle"> - achieve unemployment below 15% and a budgetary surplus with zero help from foreign powers.
     </div>
   {!</td>!}
 {!</tr>!}
