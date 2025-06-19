@@ -193,6 +193,10 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.eu && !Q.eu_negotiation) {
       this.achieve('weltfrieden');
   }
+
+  if (Q.bavaria_spd && Q.wurttemberg_spd && (Q.thuringia_spd || Q.red_thuringia) && (Q.saxony_spd || Q.red_saxony) && Q.spd_prussia) {
+      this.achieve('staatspolitiker');
+  }
 }
 !}
 
@@ -1652,6 +1656,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_ampelkoalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ampelkoalition.png" alt="Ampelkoalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ampelkoalition</div>
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #D3C24D;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_staatspolitiker: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/staatspolitiker.png" alt="Staatspolitiker Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Staatspolitiker</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -2857,6 +2891,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_ampelkoalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ampelkoalition.png" alt="Ampelkoalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ampelkoalition</div>
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #D3C24D;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_staatspolitiker: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/staatspolitiker.png" alt="Staatspolitiker Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Staatspolitiker</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -4058,6 +4122,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Blauer Winter</div>
       <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_ampelkoalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ampelkoalition.png" alt="Ampelkoalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ampelkoalition</div>
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #D3C24D;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_staatspolitiker: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/staatspolitiker.png" alt="Staatspolitiker Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Staatspolitiker</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
     </div>
   {!</td>!}
 {!</tr>!}
