@@ -498,7 +498,7 @@ The <span style="color: #3E88B3;">**Stahlhelm**</span>, infuriated by Hugenberg'
 - @nsdap_selection: Who will the <span style="color: #7A3C00;">**NSDAP**</span> run?
 
 @nsdap_selection
-go-to: hitler if nsdap_votes >= 15 and hitler_citizen; goring if not hitler_citizen; frick if nsdap_votes < 15 and hitler_citizen
+go-to: hitler if ((nsdap_votes >= 15 and hindenburg_run) or (nsdap_votes >= 10 and not hindenburg_run)) and hitler_citizen; goring if not hitler_citizen; frick if ((nsdap_votes < 15 and hindenburg_run) or (nsdap_votes < 10 and not hindenburg_run)) and hitler_citizen
 
 @hitler
 on-arrival: {!
@@ -508,7 +508,7 @@ Q.nsdap_candidate_1932_disp = "Adolf Hitler";
 view-if: not harzburg_unity
 face-image: img/portraits/hitler2.jpg
 
-The <span style="color: #7A3C00;">**NSDAP**</span> will run Adolf Hitler, who is likely to only receive the backing of his own party. However, there has been some reluctance on Hitler's part to run against President Hindenburg, with his character commanding great respect throughout all corners of Germany. Furthermore, the second most important leader in the <span style="color: #7A3C00;">**NSDAP**</span>, Gregor Strasser, opposes his candidacy as he believes he cannot defeat Hindenburg, but <span style="color: #7A3C00;">Nazi</span> propagandist Joseph Goebbels argues for it. We suspect that the <span style="color: #7A3C00;">Nazis</span> are putting on a show of indecisiveness, and always had Hitler as as candidate in mind.
+The <span style="color: #7A3C00;">**NSDAP**</span> will run Adolf Hitler, who is likely to only receive the backing of his own party. [? if hindenburg_run: However, there has been some reluctance on Hitler's part to run against President Hindenburg, with his character commanding great respect throughout all corners of Germany. Furthermore, the second most important leader in the <span style="color: #7A3C00;">**NSDAP**</span>, Gregor Strasser, opposes his candidacy as he believes he cannot defeat Hindenburg, but <span style="color: #7A3C00;">Nazi</span> propagandist Joseph Goebbels argues for it. We suspect that the <span style="color: #7A3C00;">Nazis</span> are putting on a show of indecisiveness, and always had Hitler as as candidate in mind. ?][? if not hindenburg_run: Hitler is somewhat reluctant to run in the election, believing he cannot win outright. However, the propaganda value of putting the charismatic Hitler forward ahead of the local elections has justified the risk. If he were to win, it would likely mean the swift collapse of the Republic—and possibly civil war. ?]
 
 - @communist: We await the decision the <span style="color: #700000;">Communists</span>.
 
@@ -520,7 +520,7 @@ Q.nsdap_candidate_1932_disp = "Wilhelm Frick";
 view-if: not harzburg_unity
 face-image: img/portraits/frick.jpg
 
-The <span style="color: #7A3C00;">**NSDAP**</span> has nominated Wilhelm Frick, who is expected to receive backing only from his own party. The decision to run Frick instead of the more charismatic and popular Hitler stems from Hitler’s deep reluctance to challenge the universally respected and personally popular President Hindenburg—believing such a move would tarnish his image. Gregor Strasser’s argument ultimately prevailed over Goebbels’, and Hitler has chosen to sit this one out. Should Frick win, he would serve as little more than a proxy for the <span style="color: #7A3C00;">Nazi</span> leader.
+The <span style="color: #7A3C00;">**NSDAP**</span> has nominated Wilhelm Frick, who is expected to receive backing only from his own party. [? if hindenburg_run: The decision to run Frick instead of the more charismatic and popular Hitler stems from Hitler’s deep reluctance to challenge the universally respected and personally popular President Hindenburg—believing such a move would tarnish his image. Gregor Strasser’s argument ultimately prevailed over Goebbels’, and Hitler has chosen to sit this one out. ?][? if not hindenburg_run: The decision to run Frick instead of the more charismatic and popular Hitler stems from Hitler’s reluctance to enter an unwinnable race, fearing it would damage his image. By putting forward the more pragmatic Frick, he hopes to attract some conservative support ahead of the local elections.?] Should Frick win, he would serve as little more than a proxy for the <span style="color: #7A3C00;">Nazi</span> leader. 
 
 - @communist: We await the decision the <span style="color: #700000;">Communists</span>.
 

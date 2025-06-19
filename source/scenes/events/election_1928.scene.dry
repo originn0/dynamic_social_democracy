@@ -4,7 +4,7 @@ tags: event
 priority: -2
 view-if: (year = next_election_year and month >= next_election_month and (next_election_week == week or not rubicon)) or (year > next_election_year)
 on-arrival: election_boycott = 0
-on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry = hindenburg_angry_old
+on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry_old = hindenburg_angry
 set-jump: post_election_1928
 set-bg: img/map_2.jpg
 #face-image: img/Rothe_Wahlen_1903.jpg
@@ -526,7 +526,6 @@ if (Q.dnef_formed) {
         if (Q['previous_' + party + '_last_election_votes'] === undefined) {
             Q['change_' + party + '_votes'] = Q[party + '_votes'];
         }
-    
         var sign2 = Q['change_' + party + '_votes'] > 0 
                     ? '<img src="img/arrowup.png"> ' 
                     : Q['change_' + party + '_votes'] < 0 
@@ -551,6 +550,8 @@ if (Q.dnef_formed) {
         Q['previous_' + party + '_last_election_votes'] = parseFloat(parseFloat(Q[party + '_last_election_votes']).toFixed(1));
     }    
     
+if (Q.change_spd_votes <= 0) Q.notwendigkeit = 0;
+
 Q.cnblp_r = 0;
 Q.wp_r = 0;
 Q.csvd_r = 0;
@@ -998,7 +999,7 @@ if (Q.dnef_formed) {
     Q.schleicher_dnef_r = Math.round(Q.schleicher_dnef_r * 10) / 10;
 }
 
-if (Q.time - Q.last_election_time >= 10 && (Q.left_strength >= Q.reformist_strength + Q.labor_strength)) {
+if ((Q.time - Q.marxist_malus_time >= 10 || !Q.marxist_malus_time) && (Q.left_strength >= Q.reformist_strength + Q.labor_strength)) {
     if (Q.spd_votes >= 50) {
         Q.z_relation -= 12;
         Q.ddp_relation -= 12;
@@ -1036,8 +1037,10 @@ if (Q.time - Q.last_election_time >= 10 && (Q.left_strength >= Q.reformist_stren
         Q.ddp_right += 1;
         Q.ddp_cohesion -= 1;
     }
-    Q.last_election_time = Q.time;
+    Q.marxist_malus_time = Q.time;
 }
+
+Q.last_election_time = Q.time;
 
 if (Q.election_boycott && Q.boycott_effect) {
     Q.workers_schleicher_bonus -= 1;
@@ -2293,7 +2296,7 @@ In response to the <span style="color: #700000;">**KPD**</span>'s entrance into 
 title: Refuse to form a government, so that a right-wing coalition may be formed.
 subtitle: <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>[? if not lvp_formed and dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:&nbsp;+<span style="color: #FFCC00;">**LVP**</span>?] + **Others**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?] ([+ right_coalition +]%)
 unavailable-subtitle: The <span style="color: #3E88B3;">DNVP</span> is not interested in a coalition with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
-view-if: right_coalition >= 50
+view-if: right_coalition >= 50 and not rubicon
 choose-if: (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)
 go-to: right_coalition_2 if grand_coalition < 50 or largest_party != "SPD"
 
@@ -2326,7 +2329,7 @@ on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0;
 title: Refuse to form a government, so that a center-right coalition may be formed.
 unavailable-subtitle: The <span style="color: #3E88B3;">DNVP</span> is not interested in a coalition with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 subtitle: <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?] + **Others** +[? if not cvp_formed:&nbsp;<span style="color: #3E88B3;">**DNVP**</span>?] ([+ center_right_coalition +]%)
-view-if: dnvp_ideology == "Moderate" and not lvp_formed and center_right_coalition >= 50 and dnf_formed and right_coalition < 50
+view-if: dnvp_ideology == "Moderate" and not lvp_formed and center_right_coalition >= 50 and dnf_formed and right_coalition < 50 and not rubicon
 choose-if: not (year = 1929 and month >= 7)
 go-to: center_right_coalition_2 if grand_coalition < 50 or largest_party != "SPD"
 

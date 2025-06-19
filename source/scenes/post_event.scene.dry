@@ -18,22 +18,7 @@ if (Q.year == 1928 && Q.month <= 1) {
     const initialAchievements = new Set(
     Object.keys(q).filter(key => key.startsWith("game_achievement") || key.startsWith("achievement"))
     );
-}
-
-if (!(Q.year == 1928 && Q.month <= 1)) {
-    for (const key in q) {
-      if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
-        if (!initialAchievements.has(key)) {
-          newlyAddedAchievements.push(key);
-        }
-      }
-    }
-}
-
-if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
-  for (const key of newlyAddedAchievements) {
-    q[key] = 0;
-  }
+    Q.initialAchievements = initialAchievements;
 }
 
 if (Q.rubicon && Q.chancellor != Q.nsdap_chancellor) {
@@ -2572,6 +2557,13 @@ if (Q.far_right_paramilitary && Q.year >= 1930 && !Q.streetfighting_joever) {
     if (Q.democracy_force >= Q.pro_republic) Q.pro_republic += 1;
 } else if (Q.state_paramilitary) {}
 
+if (Q.prussia_force >= 50 && Q.year >= 1930 && !Q.streetfighting_joever) {
+    Q.prussia_force_timer += 1;
+    if (Q.prussia_force_timer >= 12) Q.polizeistaat = 1;
+} else {
+    Q.prussia_force_timer = 0;
+}
+
 if (!Q.wtb_adopted && Q.black_thursday_seen) {
     Q.wtb_points_gain = 0;
     if (Q.labor_strength >= (Q.center_strength + Q.left_strength)) Q.wtb_points_gain += 3
@@ -2988,7 +2980,7 @@ if (Q.year == 1929 && Q.stolper_program_adopted && Q.dvp_reform && Q.dvp_ideolog
     Q.lvp_merger_1_timer = 4;
 }
 
-if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931) {
+if ((Q.dnvp_ideology == "Moderate" || Q.kvp_formed == 1) && ["Glatzel", "Hugo", "Dingeldey"].includes(Q.dvp_leader) && Q.lvp_formed != 1 && Q.lvp_merger_2_timer != 1 && Q.dkp_merger_waiting != 1 && Q.in_grand_coalition != 1 && Q.cvp_formed != 1 && Q.year >= 1931 && Q.super_secret_mode) {
     if (Q.nsdap_votes > 30 || Q.spd_votes + Q.kpd_votes > 45 || (Q.year == 1932 && (Q.month == 4 || Q.month == 5))){
         Q.dkp_merger_timer = Q.time + 3;
         Q.dkp_merger_waiting = 1;
@@ -3765,6 +3757,7 @@ if (Q.spd_prussia) {
 
 if (Q.spd_in_government) {
     Q.spd_in_government_time += 1;
+    Q.spd_in_government_total_time += 1;
     if (Q.foreign_minister_party == "SPD") Q.spd_in_foreign_time += 1;
 } else if (!Q.spd_in_government) {
     Q.spd_in_government_time = 0;
@@ -3877,6 +3870,7 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
         Q.new_middle_spd *= 0.95;
         Q.left_dissent += 5;
         Q.labor_dissent += 5;
+        Q.gov_burden_fail += 1;
     }
     Q.welfare_goal_spd = 0;
     Q.economy_goal_spd = 0;
@@ -3924,6 +3918,7 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
         Q.rural_spd *= 0.8;
         Q.catholics_spd *= 0.95;
         Q.reformist_dissent += 5;
+        Q.gov_burden_fail += 1;
     }
     Q.economy_goal_spd_peoples = 0;
     Q.labor_goal_spd_peoples = 0;
@@ -3939,6 +3934,10 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
 
 if (Q.spd_in_government && Q.spd_government_burden_peoples == 0 && (Q.peoples_party == 1 || (Q.new_middle_spd_normalized >= 30 || (Q.new_middle_spd_normalized + Q.old_middle_spd_normalized >= 40) || Q.rural_spd_normalized >= 20 || Q.catholics_spd_normalized >= 40 || Q.spd_votes >= 40))) {
     Q.spd_government_burden_trigger = 1
+}
+
+if (Q.spd_in_government_time >= 35 && !Q.gov_burden_fail) {
+    this.achieve('soziale_politik_fur_dich');
 }
 
 if (Q.spd_in_government_time >= 6) {
@@ -4988,10 +4987,35 @@ if (Q.year == 1930 && Q.month == 11 && Q.dstp_collapsed && !Q.lvp_formed && !Q.l
 }
 
 if (Q.budget < 0) {
-    Q.schwarze_null_unlock = 0;
+    Q.schwarze_null = 0;
 }
 
 }
+
+if (!(Q.year == 1928 && Q.month <= 1)) {
+    for (const key in q) {
+      if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
+        if (!initialAchievements.has(key)) {
+          newlyAddedAchievements.push(key);
+        }
+      }
+    }
+}
+
+if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
+  for (const key of newlyAddedAchievements) {
+    q[key] = 0;
+
+    if (this.state.achievements && this.state.achievements[key]) {
+      delete this.state.achievements[key];
+    }
+  }
+
+  if (typeof localStorage !== 'undefined') {
+    localStorage[this.game.title + '_achievements'] = JSON.stringify(this.state.achievements);
+  }
+}
+
 Q.has_event = 0;
 // check if there are any cards in #event, and then go to main if not.
 var scene = this.game.scenes['post_event.events_choice'];

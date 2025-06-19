@@ -22,6 +22,26 @@ for (var c of Q.classes) {
     }
 }
 
+const q = dendryUI.dendryEngine.state.qualities;
+const dynamicMode = q.dynamic_mode;
+const historicalMode = q.historical_mode;
+
+const newlyAddedAchievements = [];
+
+for (const key in q) {
+  if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
+    if (!Q.initialAchievements.has(key)) {
+      newlyAddedAchievements.push(key);
+    }
+  }
+}
+
+if (!dynamicMode && !historicalMode && Q.difficulty != 1) {
+  for (const key of newlyAddedAchievements) {
+    q[key] = 0;
+  }
+}
+
 if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   // Roter Zar von Preußen - At the end of the game, Otto Braun is president, chancellor, and minister-president of prussia at the same time.
   if (Q.president == 'Braun' && Q.chancellor == 'Braun' && Q.prussia_leader == "Braun") {
@@ -146,7 +166,7 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
       this.achieve('deutsche_tory_demokratie');
   }
 
-  if (Q.schwarze_null_unlock && (Q.nationalization_progress >= 4 || Q.wtb_implemented >= 4)) {
+  if (Q.schwarze_null && (Q.nationalization_progress >= 4 || Q.wtb_implemented >= 4)) {
       this.achieve('schwarze_null');
   }
 
@@ -156,6 +176,34 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
 
   if (Q.ddp_r >= Q.dvp_r && Q.ddp_r >= (Q.dvp_r * 2) && Q.dvp_exist && !Q.lvp_formed) {
       this.achieve('linksliberale_renaissance');
+  }
+
+  if (Q.z_relation <= 5 && ((Q.ddp_relation <= 5 && (Q.dvp_relation <= 5 || !Q.dvp_exist) && !Q.lvp_formed) || Q.lvp_relation <= 5 && Q.lvp_formed) && Q.kpd_relation <= 5 && (Q.kvp_relation <= 5 || !Q.kvp_formed) && Q.dnvp_relation <= 5 && Q.nsdap_relation <= 5 && (Q.dnef_relation <= 5 || !Q.dnef_formed)) {
+      this.achieve('wer_braucht_schon_freunde');
+  }
+
+  if (Q.ddp_ideology == "Right" && !Q.dstp_formed && Q.dvp_ideology == "Left" && Q.dvp_exist && !Q.lvp_formed) {
+      this.achieve('warum_kampfen_wir_immer_noch');
+  }
+
+  if (Q.gov_burden_fail >= 10 && Q.in_spd_majority) {
+      this.achieve('leere_parolen');
+  }
+
+  if (Q.eu && !Q.eu_negotiation) {
+      this.achieve('weltfrieden');
+  }
+
+  if (Q.bavaria_spd && Q.wurttemberg_spd && (Q.thuringia_spd || Q.red_thuringia) && (Q.saxony_spd || Q.red_saxony) && Q.spd_prussia) {
+      this.achieve('staatspolitiker');
+  }
+
+  if (Q.polizeistaat) {
+      this.achieve('polizeistaat');
+  }
+
+  if (Q.president == "Heuss" && Q.chancellor == "Adenauer" && Q.z_leader == "Adenauer" && Q.z_party_name == "CVP" && Q.lvp_formed && Q.constitutional_reform >= 3 && !Q.nsdap_r && !Q.kpd_r && Q.neorevisionism && Q.reformist_strength >= Q.left_strength && Q.reformist_strength >= Q.center_strength && Q.reformist_strength >= Q.labor_strength) {
+      this.achieve('wahre_bundesrepublik');
   }
 }
 !}
@@ -515,7 +563,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Einheitsfront</div>
-      <div class="achievement_subtitle"> - Form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span> and <span style="color: #700000; font-weight: bold;">KPD</span>.</div>
+      <div class="achievement_subtitle"> - form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span> and <span style="color: #700000; font-weight: bold;">KPD</span>.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -530,7 +578,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sieg für die Einheitsfront</div>
-      <div class="achievement_subtitle"> - Form a Left Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
+      <div class="achievement_subtitle"> - form a Left Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -545,7 +593,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Volksfront</div>
-      <div class="achievement_subtitle"> - Form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.</div>
+      <div class="achievement_subtitle"> - form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -576,7 +624,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sieg für die Volksfront</div>
-      <div class="achievement_subtitle"> - Form a Popular Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
+      <div class="achievement_subtitle"> - form a Popular Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1266,7 +1314,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialliberale Koalition</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1281,7 +1329,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialchristliche Koalition</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1311,7 +1359,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Dominantes Parteiensystem</div>
-      <div class="achievement_subtitle"> - Achieve the "One and a Half Party system" ending. </div>
+      <div class="achievement_subtitle"> - achieve the "One and a Half Party system" ending. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1326,7 +1374,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Der Große Neustart</div>
-      <div class="achievement_subtitle"> - Achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
+      <div class="achievement_subtitle"> - achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1341,7 +1389,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
-      <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
+      <div class="achievement_subtitle"> - have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1356,7 +1404,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Schwarze Null</div>
-      <div class="achievement_subtitle"> - Complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below 0. </div>
+      <div class="achievement_subtitle"> - complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below 0. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1371,7 +1419,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Historischer Kompromiss</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1386,7 +1434,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Frahm und Brandt</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1458,10 +1506,265 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/das_grosste_aller_zelte.png" alt="Das Größte Aller Zelte Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Das Größte Aller Zelte</div>
       <div class="achievement_subtitle"> - empower the Neorevisionists and Social Patriot factions, with no splits among the other factions. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_getrennt_marschieren_vereint_schlagen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/getrennt_marschieren_vereint_schlagen.png" alt="Getrennt marschieren, vereint schlagen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Getrennt marschieren, vereint schlagen</div>
+      <div class="achievement_subtitle"> - force Schleicher to unban the <span style="color: #700000; font-weight: bold;">KPD</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_nach_schleicher_wir: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/nach_schleicher_wir.png" alt="Nach Schleicher, wir! Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Nach Schleicher, wir!</div>
+      <div class="achievement_subtitle"> - have the <span style="color: #700000; font-weight: bold;">KPD</span>'s candidate win the 1934 presidential election after crossing the Rubicon. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_sozialdemokratische_blockpartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialdemokratische_blockpartei.png" alt="Sozialdemokratische Blockpartei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialdemokratische Blockpartei</div>
+      <div class="achievement_subtitle"> - lose the <span style="color: #c00000; font-weight: bold">SPD</span> to the <span style="color: #BFC8CC;  font-weight: bold;">DNEF</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_aller_guten_dinge_sind_zwei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/aller_guten_dinge_sind_zwei.png" alt="Aller guten Dinge sind zwei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Aller guten Dinge sind zwei</div>
+      <div class="achievement_subtitle"> - Jarres has been elected president. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_wer_braucht_schon_freunde: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wer_braucht_schon_freunde.png" alt="Wer braucht schon Freunde? Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wer braucht schon Freunde?</div>
+      <div class="achievement_subtitle"> - have hostile relations with all parties. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_heuchelei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/heuchelei.png" alt="Heuchelei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Heuchelei</div>
+      <div class="achievement_subtitle"> - persecute Ernst Röhm for being <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span>, and then legalize it afterwards. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_warum_kampfen_wir_immer_noch: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/warum_kampfen_wir_immer_noch.png" alt="Warum kämpfen wir immer noch? Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Warum kämpfen wir immer noch?</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DDP</span> and <span style="color: #C0A054; font-weight: bold;">DVP</span> share the same ideology, yet the <span style="color: #FFCC00; font-weight: bold;">LVP</span> has not formed.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_leere_parolen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/leere_parolen.png" alt="Leere Parolen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Leere Parolen</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority while failing 10 or more government burdens.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_weltfrieden: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/weltfrieden.png" alt="Weltfrieden Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Weltfrieden</div>
+      <div class="achievement_subtitle"> - sign the treaty to form the <span style='color: #001489;'>European</span> <span style='color: #FFDD00;'>Union</span> without ever negotiating.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_blauer_winter: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blauer_winter.png" alt="Blauer Winter Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blauer Winter</div>
+      <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_ampelkoalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ampelkoalition.png" alt="Ampelkoalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ampelkoalition</div>
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #FFCC00;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_staatspolitiker: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/staatspolitiker.png" alt="Staatspolitiker Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Staatspolitiker</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_soziale_politik_fur_dich: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_politik_fur_dich.png" alt="Soziale Politik für Dich Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Politik für Dich</div>
+      <div class="achievement_subtitle"> - remain in government continuously for four years and never fail a government burden.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_polizeistaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/polizeistaat.png" alt="Polizeistaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Polizeistaat</div>
+      <div class="achievement_subtitle"> - maintain 50% or more Prussian police control over the streets continuously for one full year.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_wahre_bundesrepublik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wahre_bundesrepublik.png" alt="Wahre Bundesrepublik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wahre Bundesrepublik</div>
+      <div class="achievement_subtitle"> - achieve Heuss as President and Adenauer as Chancellor, with the <span style='color: #000000; font-weight: bold;'>CVP</span> led by Adenauer and the <span style='color: #FFCC00; font-weight: bold;'>LVP</span> formed. All constitutional reforms are passed, the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span> and <span style='color: #700000; font-weight: bold;'>KPD</span> are both below the 5% threshold, Schumacher is available as an advisor, and the <span style='color: #c00000; font-weight: bold;'>SPD</span> is dominated by Reformists.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_der_beliebte_prasident: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_beliebte_prasident.png" alt="Der beliebte Präsident Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der beliebte Präsident</div>
+      <div class="achievement_subtitle"> - have Otto Braun receive 60% or more of the vote in the first round of the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_notwendigkeit: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit  Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Notwendigkeit</div>
+      <div class="achievement_subtitle"> - gain votes in every election compared to the previous one.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1570,7 +1873,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Einheitsfront</div>
-      <div class="achievement_subtitle"> - Form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span> and <span style="color: #700000; font-weight: bold;">KPD</span>.</div>
+      <div class="achievement_subtitle"> - form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span> and <span style="color: #700000; font-weight: bold;">KPD</span>.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1585,7 +1888,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sieg für die Einheitsfront</div>
-      <div class="achievement_subtitle"> - Form a Left Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
+      <div class="achievement_subtitle"> - form a Left Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1600,7 +1903,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Volksfront</div>
-      <div class="achievement_subtitle"> - Form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.</div>
+      <div class="achievement_subtitle"> - form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -1631,7 +1934,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sieg für die Volksfront</div>
-      <div class="achievement_subtitle"> - Form a Popular Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
+      <div class="achievement_subtitle"> - form a Popular Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2321,7 +2624,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialliberale Koalition</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2336,7 +2639,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialchristliche Koalition</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2366,7 +2669,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Dominantes Parteiensystem</div>
-      <div class="achievement_subtitle"> - Achieve the "One and a Half Party system" ending. </div>
+      <div class="achievement_subtitle"> - achieve the "One and a Half Party system" ending. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2381,7 +2684,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Der Große Neustart</div>
-      <div class="achievement_subtitle"> - Achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
+      <div class="achievement_subtitle"> - achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2396,7 +2699,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
-      <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
+      <div class="achievement_subtitle"> - have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2411,7 +2714,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Schwarze Null</div>
-      <div class="achievement_subtitle"> - Complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below 0. </div>
+      <div class="achievement_subtitle"> - complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below 0. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2426,7 +2729,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Historischer Kompromiss</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2441,7 +2744,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Frahm und Brandt</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2513,10 +2816,265 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/das_grosste_aller_zelte.png" alt="Das Größte Aller Zelte Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Das Größte Aller Zelte</div>
       <div class="achievement_subtitle"> - empower the Neorevisionists and Social Patriot factions, with no splits among the other factions. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_getrennt_marschieren_vereint_schlagen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/getrennt_marschieren_vereint_schlagen.png" alt="Getrennt marschieren, vereint schlagen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Getrennt marschieren, vereint schlagen</div>
+      <div class="achievement_subtitle"> - force Schleicher to unban the <span style="color: #700000; font-weight: bold;">KPD</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_nach_schleicher_wir: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/nach_schleicher_wir.png" alt="Nach Schleicher, wir! Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Nach Schleicher, wir!</div>
+      <div class="achievement_subtitle"> - have the <span style="color: #700000; font-weight: bold;">KPD</span>'s candidate win the 1934 presidential election after crossing the Rubicon. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_sozialdemokratische_blockpartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialdemokratische_blockpartei.png" alt="Sozialdemokratische Blockpartei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialdemokratische Blockpartei</div>
+      <div class="achievement_subtitle"> - lose the <span style="color: #c00000; font-weight: bold">SPD</span> to the <span style="color: #BFC8CC;  font-weight: bold;">DNEF</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_aller_guten_dinge_sind_zwei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/aller_guten_dinge_sind_zwei.png" alt="Aller guten Dinge sind zwei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Aller guten Dinge sind zwei</div>
+      <div class="achievement_subtitle"> - Jarres has been elected president. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_wer_braucht_schon_freunde: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wer_braucht_schon_freunde.png" alt="Wer braucht schon Freunde? Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wer braucht schon Freunde?</div>
+      <div class="achievement_subtitle"> - have hostile relations with all parties. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_heuchelei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/heuchelei.png" alt="Heuchelei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Heuchelei</div>
+      <div class="achievement_subtitle"> - persecute Ernst Röhm for being <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span>, and then legalize it afterwards. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_warum_kampfen_wir_immer_noch: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/warum_kampfen_wir_immer_noch.png" alt="Warum kämpfen wir immer noch? Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Warum kämpfen wir immer noch?</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DDP</span> and <span style="color: #C0A054; font-weight: bold;">DVP</span> share the same ideology, yet the <span style="color: #FFCC00; font-weight: bold;">LVP</span> has not formed.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_leere_parolen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/leere_parolen.png" alt="Leere Parolen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Leere Parolen</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority while failing 10 or more government burdens.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_weltfrieden: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/weltfrieden.png" alt="Weltfrieden Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Weltfrieden</div>
+      <div class="achievement_subtitle"> - sign the treaty to form the <span style='color: #001489;'>European</span> <span style='color: #FFDD00;'>Union</span> without ever negotiating.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_blauer_winter: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blauer_winter.png" alt="Blauer Winter Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blauer Winter</div>
+      <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_ampelkoalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ampelkoalition.png" alt="Ampelkoalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ampelkoalition</div>
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #FFCC00;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_staatspolitiker: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/staatspolitiker.png" alt="Staatspolitiker Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Staatspolitiker</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_soziale_politik_fur_dich: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_politik_fur_dich.png" alt="Soziale Politik für Dich Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Politik für Dich</div>
+      <div class="achievement_subtitle"> - remain in government continuously for four years and never fail a government burden.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_polizeistaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/polizeistaat.png" alt="Polizeistaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Polizeistaat</div>
+      <div class="achievement_subtitle"> - maintain 50% or more Prussian police control over the streets continuously for one full year.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_wahre_bundesrepublik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wahre_bundesrepublik.png" alt="Wahre Bundesrepublik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wahre Bundesrepublik</div>
+      <div class="achievement_subtitle"> - achieve Heuss as President and Adenauer as Chancellor, with the <span style='color: #000000; font-weight: bold;'>CVP</span> led by Adenauer and the <span style='color: #FFCC00; font-weight: bold;'>LVP</span> formed. All constitutional reforms are passed, the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span> and <span style='color: #700000; font-weight: bold;'>KPD</span> are both below the 5% threshold, Schumacher is available as an advisor, and the <span style='color: #c00000; font-weight: bold;'>SPD</span> is dominated by Reformists.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_der_beliebte_prasident: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_beliebte_prasident.png" alt="Der beliebte Präsident Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der beliebte Präsident</div>
+      <div class="achievement_subtitle"> - have Otto Braun receive 60% or more of the vote in the first round of the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_notwendigkeit: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit  Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Notwendigkeit</div>
+      <div class="achievement_subtitle"> - gain votes in every election compared to the previous one.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2625,7 +3183,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Einheitsfront</div>
-      <div class="achievement_subtitle"> - Form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span> and <span style="color: #700000; font-weight: bold;">KPD</span>.</div>
+      <div class="achievement_subtitle"> - form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span> and <span style="color: #700000; font-weight: bold;">KPD</span>.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2640,7 +3198,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sieg für die Einheitsfront</div>
-      <div class="achievement_subtitle"> - Form a Left Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
+      <div class="achievement_subtitle"> - form a Left Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2655,7 +3213,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Volksfront</div>
-      <div class="achievement_subtitle"> - Form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.</div>
+      <div class="achievement_subtitle"> - form a government consisting of the <span style="color: #c00000; font-weight: bold;">SPD</span>, <span style="color: #700000; font-weight: bold;">KPD</span>, and <span style="color: #000000; font-weight: bold;">Z</span>.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2686,7 +3244,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #c00000; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sieg für die Volksfront</div>
-      <div class="achievement_subtitle"> - Form a Popular Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
+      <div class="achievement_subtitle"> - form a Popular Front that survives the <span style="color: #700000; font-weight: bold;">KPD</span> demands.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3376,7 +3934,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialliberale Koalition</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3391,7 +3949,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Sozialchristliche Koalition</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3421,7 +3979,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Dominantes Parteiensystem</div>
-      <div class="achievement_subtitle"> - Achieve the "One and a Half Party system" ending. </div>
+      <div class="achievement_subtitle"> - achieve the "One and a Half Party system" ending. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3436,7 +3994,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Der Große Neustart</div>
-      <div class="achievement_subtitle"> - Achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
+      <div class="achievement_subtitle"> - achieve the "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Future</span>" ending. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3451,7 +4009,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Deutsche Tory Demokratie</div>
-      <div class="achievement_subtitle"> - Have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
+      <div class="achievement_subtitle"> - have Treviranus's "Tory Democratic" <span style="color: #3E88B3; font-weight: bold;">DNVP</span> become the second-largest party in the Reichstag. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3466,7 +4024,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Schwarze Null</div>
-      <div class="achievement_subtitle"> - Complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below 0. </div>
+      <div class="achievement_subtitle"> - complete 4 nationalizations or fully implement the WTB plan without letting the budget fall below 0. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3481,7 +4039,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Historischer Kompromiss</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3496,7 +4054,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Frahm und Brandt</div>
-      <div class="achievement_subtitle"> - Form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
+      <div class="achievement_subtitle"> - form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with the <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> while the Left remains in the <span style="color: #c00000; font-weight: bold;">SPD</span>. </div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3568,10 +4126,265 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/das_grosste_aller_zelte.png" alt="Das Größte Aller Zelte Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Das Größte Aller Zelte</div>
       <div class="achievement_subtitle"> - empower the Neorevisionists and Social Patriot factions, with no splits among the other factions. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_getrennt_marschieren_vereint_schlagen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/getrennt_marschieren_vereint_schlagen.png" alt="Getrennt marschieren, vereint schlagen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Getrennt marschieren, vereint schlagen</div>
+      <div class="achievement_subtitle"> - force Schleicher to unban the <span style="color: #700000; font-weight: bold;">KPD</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_nach_schleicher_wir: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/nach_schleicher_wir.png" alt="Nach Schleicher, wir! Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Nach Schleicher, wir!</div>
+      <div class="achievement_subtitle"> - have the <span style="color: #700000; font-weight: bold;">KPD</span>'s candidate win the 1934 presidential election after crossing the Rubicon. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_sozialdemokratische_blockpartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sozialdemokratische_blockpartei.png" alt="Sozialdemokratische Blockpartei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sozialdemokratische Blockpartei</div>
+      <div class="achievement_subtitle"> - lose the <span style="color: #c00000; font-weight: bold">SPD</span> to the <span style="color: #BFC8CC;  font-weight: bold;">DNEF</span>. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_aller_guten_dinge_sind_zwei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/aller_guten_dinge_sind_zwei.png" alt="Aller guten Dinge sind zwei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Aller guten Dinge sind zwei</div>
+      <div class="achievement_subtitle"> - Jarres has been elected president. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_wer_braucht_schon_freunde: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wer_braucht_schon_freunde.png" alt="Wer braucht schon Freunde? Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wer braucht schon Freunde?</div>
+      <div class="achievement_subtitle"> - have hostile relations with all parties. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_heuchelei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/heuchelei.png" alt="Heuchelei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Heuchelei</div>
+      <div class="achievement_subtitle"> - persecute Ernst Röhm for being <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span>, and then legalize it afterwards. </div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_warum_kampfen_wir_immer_noch: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/warum_kampfen_wir_immer_noch.png" alt="Warum kämpfen wir immer noch? Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Warum kämpfen wir immer noch?</div>
+      <div class="achievement_subtitle"> - the <span style="color: #D3C24D; font-weight: bold;">DDP</span> and <span style="color: #C0A054; font-weight: bold;">DVP</span> share the same ideology, yet the <span style="color: #FFCC00; font-weight: bold;">LVP</span> has not formed.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_leere_parolen: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/leere_parolen.png" alt="Leere Parolen Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Leere Parolen</div>
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority while failing 10 or more government burdens.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_weltfrieden: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/weltfrieden.png" alt="Weltfrieden Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Weltfrieden</div>
+      <div class="achievement_subtitle"> - sign the treaty to form the <span style='color: #001489;'>European</span> <span style='color: #FFDD00;'>Union</span> without ever negotiating.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_blauer_winter: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blauer_winter.png" alt="Blauer Winter Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blauer Winter</div>
+      <div class="achievement_subtitle"> - Gustav Winter receives 1% or more of the vote in the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_ampelkoalition: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/ampelkoalition.png" alt="Ampelkoalition Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Ampelkoalition</div>
+      <div class="achievement_subtitle"> - a <span style="color: #c00000;">Traf</span><span style="color: #FFCC00;">fic</span> <span style="color: #38C538;">Light</span> coalition has been formed in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_staatspolitiker: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/staatspolitiker.png" alt="Staatspolitiker Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Staatspolitiker</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is represented in every state government.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_soziale_politik_fur_dich: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_politik_fur_dich.png" alt="Soziale Politik für Dich Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Politik für Dich</div>
+      <div class="achievement_subtitle"> - remain in government continuously for four years and never fail a government burden.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_polizeistaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/polizeistaat.png" alt="Polizeistaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Polizeistaat</div>
+      <div class="achievement_subtitle"> - maintain 50% or more Prussian police control over the streets continuously for one full year.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_wahre_bundesrepublik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 100px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wahre_bundesrepublik.png" alt="Wahre Bundesrepublik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wahre Bundesrepublik</div>
+      <div class="achievement_subtitle"> - achieve Heuss as President and Adenauer as Chancellor, with the <span style='color: #000000; font-weight: bold;'>CVP</span> led by Adenauer and the <span style='color: #FFCC00; font-weight: bold;'>LVP</span> formed. All constitutional reforms are passed, the <span style='color: #7A3C00; font-weight: bold;'>NSDAP</span> and <span style='color: #700000; font-weight: bold;'>KPD</span> are both below the 5% threshold, Schumacher is available as an advisor, and the <span style='color: #c00000; font-weight: bold;'>SPD</span> is dominated by Reformists.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_der_beliebte_prasident: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_beliebte_prasident.png" alt="Der beliebte Präsident Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der beliebte Präsident</div>
+      <div class="achievement_subtitle"> - have Otto Braun receive 60% or more of the vote in the first round of the 1932 presidential election.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_notwendigkeit: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/notwendigkeit.png" alt="Notwendigkeit  Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Notwendigkeit</div>
+      <div class="achievement_subtitle"> - gain votes in every election compared to the previous one.
     </div>
   {!</td>!}
 {!</tr>!}
