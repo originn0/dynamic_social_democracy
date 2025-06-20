@@ -4990,6 +4990,18 @@ if (Q.budget < 0) {
     Q.schwarze_null = 0;
 }
 
+if (Q.spd_toleration || (Q.spd_in_government && !Q.in_spd_majority))
+    Q.catastrophepolitik_cancel = 1;
+}
+
+if (Q.chancellor == "Brüning") {
+    if (!Q.soziale_marktwirtschaft_start) Q.soziale_marktwirtschaft_start = Q.unemployed;
+} else {
+    Q.soziale_marktwirtschaft_start = 0;
+}
+
+if (Q.unemployed <= Q.soziale_marktwirtschaft_start - 10) {
+    this.achieve('soziale_marktwirtschaft');
 }
 
 if (!(Q.year == 1928 && Q.month <= 1)) {
@@ -5002,17 +5014,24 @@ if (!(Q.year == 1928 && Q.month <= 1)) {
     }
 }
 
-if (!dynamicMode && !historicalMode && Q.difficulty != 1 || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
-  for (const key of newlyAddedAchievements) {
-    q[key] = 0;
+if ((!dynamicMode && !historicalMode && Q.difficulty != 1) || (Q.year == 1934 && Q.month > 7) || Q.year >= 1935) {
+  const achievementsKey = 'Social Democracy: An Alternate History_achievements';
+  const stored = localStorage[achievementsKey];
 
-    if (this.state.achievements && this.state.achievements[key]) {
-      delete this.state.achievements[key];
+  if (newlyAddedAchievements.length > 0) {
+    newlyAddedAchievements.forEach(key => {
+      q[key] = 0;
+    });
+
+    if (stored) {
+      let parsed = JSON.parse(stored);
+      newlyAddedAchievements.forEach(key => {
+        const strippedKey = key.replace(/^game_achievement_|^achievement_/, '');
+        delete parsed[strippedKey];
+      });
+
+      localStorage[achievementsKey] = JSON.stringify(parsed);
     }
-  }
-
-  if (typeof localStorage !== 'undefined') {
-    localStorage[this.game.title + '_achievements'] = JSON.stringify(this.state.achievements);
   }
 }
 
