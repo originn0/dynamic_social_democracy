@@ -28,6 +28,14 @@ const historicalMode = q.historical_mode;
 
 const newlyAddedAchievements = [];
 
+if (!(Q.initialAchievements instanceof Set)) {
+  if (Q.initialAchievements && typeof Q.initialAchievements === "object") {
+    Q.initialAchievements = new Set(Object.keys(Q.initialAchievements));
+  } else {
+    Q.initialAchievements = new Set();
+  }
+}
+
 for (const key in q) {
   if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
     if (!Q.initialAchievements.has(key)) {
