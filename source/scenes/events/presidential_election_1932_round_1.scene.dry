@@ -847,7 +847,7 @@ Q.old_middle_nsdap += 4;
 Q.old_middle_dnvp -= 4;
 
 !}
-view-if: hindenburg_run
+view-if: hindenburg_run and not hitler_support_hindenburg
 max-visits: 1
 go-to: round2_menu
 
@@ -1089,7 +1089,7 @@ We have switched our support to [+ reactionary_candidate_1932 +].
 - @round2_vote: Second round voting begins next month.
 
 @round2_vote
-view-if: (organizational_endorsements_seen or not hindenburg_run)
+view-if: (organizational_endorsements_seen or not hindenburg_run or hitler_support_hindenburg)
 on-arrival: {!
 Q.presidential_election_r2_trigger = 1;
 
