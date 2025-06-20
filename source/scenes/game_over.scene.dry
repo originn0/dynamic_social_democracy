@@ -221,6 +221,22 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.reparations == 0 && !Q.foreign_aid && !Q.eu && !Q.soviet_export && !Q.soviet_aid_forpol && Q.unemployed < 15 && Q.budget > 0) {
       this.achieve('wir_schaffen_das');
   }
+
+  if (((Q.ddp_leader == "Lemmer" || Q.ddp_leader == "Lüders") && (Q.dvp_leader == "Thiel" && Q.dvp_exist) && !Q.lvp_formed || ((Q.lvp_leader == "Heuss" || Q.lvp_leader == "Bäumer" || Q.lvp_leader == "Stolper") && Q.lvp_formed)) && Q.true_christian_democracy && Q.dnvp_leader == "Treviranus" && Q.kpd_leader == "Conciliators" && (((Q.z_leader == "Kaiser" || Q.z_leader == "Joos" && !Q.fake_joos) && !Q.cvp_formed) || Q.cvp_leader == "Stegerwald" && Q.cvp_formed)) {
+      this.achieve('blockparteien_parade');
+  }
+
+  if ((Q.ddp_leader == "Lemmer" && ((Q.dvp_leader == "Thiel" || Q.dvp_leader == "Glatzel") && Q.dvp_exist) && !Q.lvp_formed || (Q.lvp_leader == "Glatzel" && Q.lvp_formed)) && ((Q.dnvp_leader == "Lambach" && Q.z_leader == "Kaiser") && !Q.cvp_formed || (Q.cvp_leader == "Lambach" || Q.cvp_leader == "Stegerwald") && Q.cvp_formed)) {
+      this.achieve('der_arbeiterstaat');
+  }
+
+  if (Q.papen_republic_victory && Q.kpd_explode && Q.hitler_dead) {
+      this.achieve('gegen_papen_hitler_thalmann');
+  }
+
+  if (Q.president == "Wels") {
+      this.achieve('wels');
+  }
 }
 !}
 
@@ -1789,7 +1805,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 [? if game_achievement_comeback: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/comeback.png" alt="Comeback Icon"
+    <img src="img/achievement/comeback.gif" alt="Comeback Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
@@ -1852,7 +1868,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/catastrophepolitik.png" alt="Catastrophepolitik Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Catastrophepolitik</div>
       <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 10 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
@@ -1902,6 +1918,81 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Wir schaffen das!</div>
       <div class="achievement_subtitle"> - achieve unemployment below 15% and a budgetary surplus with zero help from foreign powers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_blockparteien_parade: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blockparteien_parade.png" alt="Blockparteien-Parade Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blockparteien-Parade</div>
+      <div class="achievement_subtitle"> - every party is led by its most friendly or "democratic" leader.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_der_arbeiterstaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_arbeiterstaat.png" alt="Der Arbeiterstaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Arbeiterstaat</div>
+      <div class="achievement_subtitle"> - every party is led by its most worker-friendly leader.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_soziale_marktwirtschaft: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_marktwirtschaft.png" alt="Soziale Marktwirtschaft Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Marktwirtschaft</div>
+      <div class="achievement_subtitle"> - unemployment has been reduced by 10% or more with Brüning as chancellor.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_gegen_papen_hitler_thalmann: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/gegen_papen_hitler_thalmann.png" alt="Gegen Papen, Hitler, Thälmann Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
+      <div class="achievement_subtitle"> - have Hitler commit suicide, Schleicher imprison Thälmann, and defeat Papen in a civil war.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_wels: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wels.png" alt="Otto Wels Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wels' wilder Ritt</div>
+      <div class="achievement_subtitle"> - elect Otto Wels as president.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3220,7 +3311,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 [? if achievement_comeback: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/comeback.png" alt="Comeback Icon"
+    <img src="img/achievement/comeback.gif" alt="Comeback Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
@@ -3283,7 +3374,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/catastrophepolitik.png" alt="Catastrophepolitik Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Catastrophepolitik</div>
       <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 10 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
@@ -3333,6 +3424,81 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Wir schaffen das!</div>
       <div class="achievement_subtitle"> - achieve unemployment below 15% and a budgetary surplus with zero help from foreign powers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_blockparteien_parade: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blockparteien_parade.png" alt="Blockparteien-Parade Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blockparteien-Parade</div>
+      <div class="achievement_subtitle"> - every party is led by its most friendly or "democratic" leader.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_der_arbeiterstaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_arbeiterstaat.png" alt="Der Arbeiterstaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Arbeiterstaat</div>
+      <div class="achievement_subtitle"> - every party is led by its most worker-friendly leader.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_soziale_marktwirtschaft: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_marktwirtschaft.png" alt="Soziale Marktwirtschaft Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Marktwirtschaft</div>
+      <div class="achievement_subtitle"> - unemployment has been reduced by 10% or more with Brüning as chancellor.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_gegen_papen_hitler_thalmann: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/gegen_papen_hitler_thalmann.png" alt="Gegen Papen, Hitler, Thälmann Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
+      <div class="achievement_subtitle"> - have Hitler commit suicide, Schleicher imprison Thälmann, and defeat Papen in a civil war.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_wels: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wels.png" alt="Otto Wels Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wels' wilder Ritt</div>
+      <div class="achievement_subtitle"> - elect Otto Wels as president.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4651,7 +4817,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 [? if not achievement_comeback: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/comeback.png" alt="Comeback Icon"
+    <img src="img/achievement/comeback.gif" alt="Comeback Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
@@ -4714,7 +4880,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/catastrophepolitik.png" alt="Catastrophepolitik Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Catastrophepolitik</div>
       <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 10 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
@@ -4763,6 +4929,81 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Wir schaffen das!</div>
       <div class="achievement_subtitle"> - achieve unemployment below 15% and a budgetary surplus with zero help from foreign powers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_blockparteien_parade: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/blockparteien_parade.png" alt="Blockparteien-Parade Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Blockparteien-Parade</div>
+      <div class="achievement_subtitle"> - every party is led by its most friendly or "democratic" leader.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_der_arbeiterstaat: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_arbeiterstaat.png" alt="Der Arbeiterstaat Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Arbeiterstaat</div>
+      <div class="achievement_subtitle"> - every party is led by its most worker-friendly leader.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_soziale_marktwirtschaft: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/soziale_marktwirtschaft.png" alt="Soziale Marktwirtschaft Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Soziale Marktwirtschaft</div>
+      <div class="achievement_subtitle"> - unemployment has been reduced by 10% or more with Brüning as chancellor.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_gegen_papen_hitler_thalmann: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/gegen_papen_hitler_thalmann.png" alt="Gegen Papen, Hitler, Thälmann Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
+      <div class="achievement_subtitle"> - have Hitler commit suicide, Schleicher imprison Thälmann, and defeat Papen in a civil war.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_wels: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/wels.png" alt="Otto Wels Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Wels' wilder Ritt</div>
+      <div class="achievement_subtitle"> - elect Otto Wels as president.
     </div>
   {!</td>!}
 {!</tr>!}

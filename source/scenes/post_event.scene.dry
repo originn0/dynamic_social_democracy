@@ -4994,6 +4994,16 @@ if (Q.spd_toleration || (Q.spd_in_government && !Q.in_spd_majority))
     Q.catastrophepolitik_cancel = 1;
 }
 
+if (Q.chancellor == "Brüning") {
+    if (!Q.soziale_marktwirtschaft_start) Q.soziale_marktwirtschaft_start = Q.unemployed;
+} else {
+    Q.soziale_marktwirtschaft_start = 0;
+}
+
+if (Q.unemployed <= Q.soziale_marktwirtschaft_start - 10) {
+    this.achieve('soziale_marktwirtschaft');
+}
+
 if (!(Q.year == 1928 && Q.month <= 1)) {
     for (const key in q) {
       if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
