@@ -249,6 +249,10 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.sapd_votes > Q.kpd_votes) {
       this.achieve('kommunistische_alternative');
   }
+
+  if (Q.labor_minister_party == "SPD" && Q.interior_minister_party == "SPD" && Q.finance_minister_party == "SPD" && Q.economic_minister_party == "SPD" && Q.foreign_minister_party == "SPD" && Q.justice_minister_party == "SPD" && Q.agriculture_minister_party == "SPD" && Q.reichswehr_minister_party == "SPD" && (Q.prussia_leader == "Braun" || Q.prussia_leader == "Rosenfeld") && Q.chancellor_party == "SPD" && (Q.president == "Braun" || Q.president == "Rosenfeld" && !Q.left_split || Q.president == "Schumacher" || Q.president == "Wels" || Q.president == "Grzesinski" || Q.president == "Juchacz" || (Q.president == "Rosenfeld" && !Q.left_split))) {
+      this.achieve('die_rote_republik');
+  }
 }
 !}
 
@@ -2016,10 +2020,25 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/kommunistische_alternative.png" alt="Kommunistische Alternative Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Kommunistische Alternative</div>
       <div class="achievement_subtitle"> - the <span style="color: #9B0000; font-weight: bold;">SAPD</span> is polling higher than the <span style="color: #700000; font-weight: bold;">KPD</span>.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_die_rote_republik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/die_rote_republik.png" alt="Die Rote Republik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Die Rote Republik</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> controls the entire cabinet, the presidency, the chancellery, and the leadership of Prussia.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3537,10 +3556,25 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/kommunistische_alternative.png" alt="Kommunistische Alternative Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Kommunistische Alternative</div>
       <div class="achievement_subtitle"> - the <span style="color: #9B0000; font-weight: bold;">SAPD</span> is polling higher than the <span style="color: #700000; font-weight: bold;">KPD</span>.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_die_rote_republik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/die_rote_republik.png" alt="Die Rote Republik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Die Rote Republik</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> controls the entire cabinet, the presidency, the chancellery, and the leadership of Prussia.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -5057,10 +5091,25 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <img src="img/achievement/kommunistische_alternative.png" alt="Kommunistische Alternative Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
-  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Kommunistische Alternative</div>
       <div class="achievement_subtitle"> - the <span style="color: #9B0000; font-weight: bold;">SAPD</span> is polling higher than the <span style="color: #700000; font-weight: bold;">KPD</span>.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_die_rote_republik: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/die_rote_republik.png" alt="Die Rote Republik Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Die Rote Republik</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> controls the entire cabinet, the presidency, the chancellery, and the leadership of Prussia.
     </div>
   {!</td>!}
 {!</tr>!}
