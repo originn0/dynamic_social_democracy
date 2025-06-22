@@ -5005,7 +5005,7 @@ if (Q.spd_toleration || (Q.spd_in_government && !Q.in_spd_majority))
 }
 
 if (Q.chancellor == "Brüning") {
-    if (!Q.soziale_marktwirtschaft_start) Q.soziale_marktwirtschaft_start = Q.unemployed;
+    if (!Q.soziale_marktwirtschaft_start && Q.unemployed >= 15) Q.soziale_marktwirtschaft_start = Q.unemployed;
 } else {
     Q.soziale_marktwirtschaft_start = 0;
 }
