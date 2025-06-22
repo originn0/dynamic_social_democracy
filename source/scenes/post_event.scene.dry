@@ -5035,14 +5035,17 @@ if ((!dynamicMode && !historicalMode && Q.difficulty != 1) || (Q.year == 1934 &&
     });
 
     if (stored) {
-      let parsed = JSON.parse(stored);
-      console.log(newlyAddedAchievements)
-      newlyAddedAchievements.forEach(key => {
-        const strippedKey = key.replace(/^game_achievement_|^achievement_/, '');
-        delete parsed[strippedKey];
-      });
+        let parsed = JSON.parse(stored);
+        console.log('Before deletion:', parsed);
 
-      localStorage[achievementsKey] = JSON.stringify(parsed);
+        newlyAddedAchievements.forEach(key => {
+            const strippedKey = key.replace(/^game_achievement_|^achievement_/, '');
+        if (parsed[strippedKey] !== undefined) {
+            delete parsed[strippedKey];
+        }
+    });
+    console.log('After deletion:', parsed);
+    localStorage[achievementsKey] = JSON.stringify(parsed);
     }
   }
 }
