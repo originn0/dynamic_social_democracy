@@ -26,7 +26,10 @@ if (Q.year == 1928 && Q.month <= 1) {
     console.log(Q.initialAchievements);
 }
 
-const initialAchievements = Q.initialAchievements || new Set();
+const initialAchievements = (Q.initialAchievements instanceof Set)
+  ? Q.initialAchievements
+  : new Set();
+
 
 if (Q.rubicon && Q.chancellor != Q.nsdap_chancellor) {
 const contentElement = document.getElementById('content');
