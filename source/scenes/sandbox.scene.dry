@@ -1042,8 +1042,7 @@ Lowered Interior Police loyalty.
 - @form_kvp: Form KVP
 - @form_lvp: Form LVP
 - @form_dnef: Form DNEF
-- @form_nvf: Form NVF
-- @form_dsu: Form DSU
+- @nazi_boom: Splinter NSDAP
 - @returnsandbox: Return To Sandbox Menu
 
 @allow_banning
@@ -2393,23 +2392,21 @@ for (var record of Q.party_support_records) {
 
 Formed the DNEF
 
-@form_nvf
-go-to: miscparty
-view-if: nvf_formed == 0
+@nazi_boom
 on-arrival: {!
-Q.nvf_formed = 1;
+Q.nsdap_split = 1;
+Q.dsu_exist = 1;
+Q.dsu_leader = "Strasser";
+Q.nvf_exist = 1;
+
+Q.nazi_funds -= 3;
+
+Q.dsu_r = Math.round(Q.nsdap_r*0.3 * 10) / 10;
+Q.nvf_r = Math.round(Q.nsdap_r*0.15 * 10) / 10;
+Q.nsdap_hitler_r = Math.round((Q.nsdap_r - Q.dsu_r - Q.nvf_r) * 10) / 10;
 !}
 
-Formed the NVF
-
-@form_dsu
-go-to: miscparty
-view-if: dsu_formed == 0
-on-arrival: {!
-Q.dsu_formed = 1;
-!}
-
-Formed the DSU
+These parties are doomed to eternal infighting
 
 @editpartysupport
 
