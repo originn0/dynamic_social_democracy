@@ -15,7 +15,7 @@ const newlyAddedAchievements = [];
 let initialAchievements = new Set();
 
 if (Q.year == 1928 && Q.month <= 1) {
-    const initialAchievements = new Set(
+    initialAchievements = new Set(
     Object.keys(q).filter(key => key.startsWith("game_achievement") || key.startsWith("achievement"))
     );
     console.log(initialAchievements);
