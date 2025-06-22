@@ -18,6 +18,7 @@ if (Q.year == 1928 && Q.month <= 1) {
     const initialAchievements = new Set(
     Object.keys(q).filter(key => key.startsWith("game_achievement") || key.startsWith("achievement"))
     );
+    console.log(initialAchievements);
     Q.initialAchievements = initialAchievements;
 }
 
@@ -5009,6 +5010,7 @@ if (!(Q.year == 1928 && Q.month <= 1)) {
       if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
         if (!initialAchievements.has(key)) {
           newlyAddedAchievements.push(key);
+          console.log(newlyAddedAchievements)
         }
       }
     }
@@ -5025,6 +5027,7 @@ if ((!dynamicMode && !historicalMode && Q.difficulty != 1) || (Q.year == 1934 &&
 
     if (stored) {
       let parsed = JSON.parse(stored);
+      console.log(newlyAddedAchievements)
       newlyAddedAchievements.forEach(key => {
         const strippedKey = key.replace(/^game_achievement_|^achievement_/, '');
         delete parsed[strippedKey];
