@@ -47,6 +47,8 @@ Q.unemployed_spd += 3;
 
 Q.sa_strength *= 0.8;
 
+Q.old_chancellor = Q.chancellor;
+
 Q.chancellor = "Brüning";
 Q.chancellor_party = "Z";
 
@@ -86,7 +88,7 @@ Q.rubicon_mini = 0;
 Q.rubicon_mini_leave = 1;
 !}
 
-Still, they place more trust in [+ president +] than in Chancellor [+ chancellor +], and under this influence, [+ chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
+Still, they place more trust in [+ president +] than in Chancellor [+ old_chancellor +], and under this influence, [+ old_chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
 
 [? if chancellor == "Brüning": Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is appointed as interim chancellor. ?][? if chancellor == "Wels": Otto Wels of the <span style="color: #c00000;">**SPD**</span> is selected as appointed chancellor. ?]
 

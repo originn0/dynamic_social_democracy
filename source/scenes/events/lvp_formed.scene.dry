@@ -16,12 +16,14 @@ Q.unemployed_lvp = Q.unemployed_ddp + Q.unemployed_dvp
 
 Q.catholics_lvp = Q.catholics_ddp + Q.catholics_dvp
 
-Q.new_middle_other -= 4;
-Q.old_middle_other -= 4;
-Q.rural_other -= 2;
-Q.new_middle_lvp += 4
-Q.old_middle_lvp += 4
-Q.rural_lvp += 4
+if (Q.electoral_threshold < 5) {
+    Q.new_middle_other -= 4;
+    Q.old_middle_other -= 4;
+    Q.rural_other -= 2;
+    Q.new_middle_lvp += 4
+    Q.old_middle_lvp += 4
+    Q.rural_lvp += 4
+}
 
 Q.lvp_r = Math.round((Q.ddp_r + Q.dvp_r) * 10) / 10;
 Q.lvp_relation = Math.round((Q.ddp_relation + Q.dvp_relation) / 2)
