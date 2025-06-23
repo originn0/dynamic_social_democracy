@@ -616,7 +616,7 @@ Q.totalAchievements = achievements.length;
 Q.percentComplete = Math.round((Q.unlockedCount / Q.totalAchievements) * 100);
 
 if (Q.percentComplete >= 100) {
-    this.achieve('achievement_schwarz_rot_gold');
+    this.achieve('achievement_holy_moly');
 }
 !}
 on-display: {! 
@@ -664,32 +664,40 @@ on-display: {!
   mode.id = 'germanFlagText';
   mode.style.textAlign = 'center';
   mode.style.display = 'flex';
+  mode.style.justifyContent = 'space-around'; 
+  mode.style.alignItems = 'center';
   mode.style.gap = '10px';
+  mode.style.fontSize = 'clamp(24px, 10vw, 60px)';
+  mode.style.flexWrap = 'wrap';
+
+  var style = document.createElement('style');
+  style.textContent = `
+    #germanFlagText {
+      margin-left: -30px;
+    }
+  
+    @media (max-width: 600px) {
+      #germanFlagText {
+        margin-left: -20px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
 
   function getColor(threshold, progress, color) {
-    if (progress >= threshold) {
-      return color;
-    } else {
-      return '#431';
-    }
+    return progress >= threshold ? color : '#431';
   }
 
   var schwarz = document.createElement('span');
   schwarz.textContent = 'Schwarz';
-  schwarz.style.fontSize = '60px';
-  schwarz.style.marginLeft = '37px';
   schwarz.style.color = getColor(33.33, percentComplete, '#000000');
 
   var rot = document.createElement('span');
   rot.textContent = 'Rot';
-  rot.style.fontSize = '60px';
-  rot.style.marginLeft = '115px';
   rot.style.color = getColor(66.66, percentComplete, '#DD0000');
 
   var gold = document.createElement('span');
   gold.textContent = 'Gold';
-  gold.style.fontSize = '60px';
-  gold.style.marginLeft = '150px';
   gold.style.color = getColor(100, percentComplete, '#FFCC00');
 
   mode.appendChild(schwarz);
