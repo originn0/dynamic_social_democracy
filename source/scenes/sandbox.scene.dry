@@ -1042,6 +1042,7 @@ Lowered Interior Police loyalty.
 - @form_kvp: Form KVP
 - @form_lvp: Form LVP
 - @form_dnef: Form DNEF
+- @form_aspd: Form ASPD
 - @nazi_boom: Splinter NSDAP
 - @returnsandbox: Return To Sandbox Menu
 
@@ -2391,6 +2392,47 @@ for (var record of Q.party_support_records) {
 !}
 
 Formed the DNEF
+
+@form_aspd
+on-arrival: {!
+// set up the infrastructure
+Q.aspd_formed = 1;
+Q.parties.push('aspd');
+Q.parties_graph.push('aspd');
+
+Q.workers_aspd = 5;
+Q.new_middle_aspd = 1;
+Q.old_middle_aspd = 0;
+Q.rural_aspd = 0;
+Q.unemployed_aspd = 2;
+Q.catholics_aspd = 0;
+
+Q.workers_other -= 5;
+
+if (Q.unions_independent) {
+    Q.workers_aspd += 8;
+    Q.unemployed_aspd += 4;
+}
+
+Q.old_workers_aspd_display = 0
+Q.old_new_middle_aspd_display = 0
+Q.old_old_middle_aspd_display = 0
+Q.old_rural_aspd_display = 0
+Q.old_unemployed_aspd_display = 0
+Q.old_catholics_aspd_display = 0
+
+// update all records
+Q.aspd_r = 0;
+Q.old_aspd_r = 0;
+for (var record of Q.election_records) {
+    record['aspd'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['aspd'] = 0;
+}
+!}
+
+Formed the ASPD.
 
 @nazi_boom
 on-arrival: {!
