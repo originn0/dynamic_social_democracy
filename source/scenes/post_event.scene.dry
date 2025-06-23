@@ -878,6 +878,7 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
         } else if (Q.year >= 1934) {
             Q.nazi_peak -= 15;
         }
+        if (Q.hitler_mode) Q.nazi_peak = 100;
     }   
     if (Q.nsdap_votes >= Q.nazi_peak && !Q.nazi_peak_triggered && Q.nsdap_votes >= 22) {
         Q.nazi_peak_triggered = 1;

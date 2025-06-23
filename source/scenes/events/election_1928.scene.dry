@@ -1210,6 +1210,7 @@ if (Q.spd_in_government) Q.hindenburg_angry_old = Q.hindenburg_angry;
 Q.spd_in_government = 0;
 Q.in_weimar_coalition = 0;
 Q.in_grand_coalition = 0;
+Q.in_wholesome_coalition = 0;
 Q.in_social_catholic_coalition = 0;
 Q.in_social_catholic_coalition = 0;
 Q.in_left_front = 0;
@@ -1383,6 +1384,15 @@ if (Q.rdp_r) {
     });
 }
 
+if (Q.dnvp_r && Q.dnvp_wholesome) {
+    data.push({
+        "id": "dnvp_wholesome",
+        "legend": "DNVP",
+        "name": "DNVP",
+        "seats": Math.round(Q.dnvp_r * 5),
+    });
+}
+
 if (Q.ddp_r && !Q.lvp_formed) {
     data.push({
         "id": "ddp",
@@ -1544,7 +1554,7 @@ if (Q.dnvp_dvp_formed) {
     });
 }
 
-if (Q.dnvp_r) {
+if (Q.dnvp_r && !Q.dnvp_wholesome) {
     data.push({
         "id": "dnvp",
         "legend": "DNVP",
@@ -1677,6 +1687,8 @@ go-to: coalition_menu
 
 [? if lvp_formed and rdp_list: {!<tr><td><div class="box2" style='background-color:#E0B0FF'> </div> !} RDP: {!</td><td>!} [+ rdp_votes +]% {!</td><td>!} [+ str_votes_change_rdp +] {!</td><td>!} [+ rdp_r +]% {!</td><td>!} [+ str_change_rdp +] {!</td></tr>!} ?]
 
+[? if not cvp_formed and not dnvp_dnef and not dnvp_defunct and dnvp_wholesome: {!<tr><td><div class="box" style='background-color:#3E88B3'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes +]% {!</td><td>!} [+ str_votes_change_dnvp +] {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}?]
+
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_votes +]% {!</td><td>!} [+ str_votes_change_sapd +] {!</td><td>!} [+ sapd_r +]% {!</td><td>!} [+ str_change_sapd +] {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#700000'> </div> !}KPD: {!</td><td>!} [+ kpd_votes +]% {!</td><td>!} [+ str_votes_change_kpd +] {!</td><td>!} [+ kpd_r +]% {!</td><td>!} [+ str_change_kpd +] {!</td></tr>!}
@@ -1701,7 +1713,7 @@ go-to: coalition_menu
 
 [? if aspd_kvp: {!<tr><td><div class="box2" style='background-color:#fe9e00'> </div> !} ASPD: {!</td><td>!} [+ aspd_votes +]% {!</td><td>!} [+ str_votes_change_aspd +] {!</td><td>!} [+ aspd_r +]% {!</td><td>!} [+ str_change_aspd +] {!</td></tr>!} ?]
 
-[? if not cvp_formed and not dnvp_dnef and not dnvp_defunct: {!<tr><td><div class="box" style='background-color:#3E88B3'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes +]% {!</td><td>!} [+ str_votes_change_dnvp +] {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}?]
+[? if not cvp_formed and not dnvp_dnef and not dnvp_defunct and not dnvp_wholesome: {!<tr><td><div class="box" style='background-color:#3E88B3'> </div> !} DNVP: {!</td><td>!} [+ dnvp_votes +]% {!</td><td>!} [+ str_votes_change_dnvp +] {!</td><td>!} [+ dnvp_r +]% {!</td><td>!} [+ str_change_dnvp +] {!</td></tr>!}?]
 
 [? if dnf_formed : {!<tr><td><div class="box" style='background-color:#003755'> </div> !}DNF: {!</td><td>!} [+ dnf_votes +]% {!</td><td>!} [+ str_votes_change_dnf +] {!</td><td>!} [+ dnf_r +]% {!</td><td>!} [+ str_change_dnf +] {!</td></tr>!} ?]
 
@@ -1928,6 +1940,7 @@ There are some potential coalition arrangements.
 - @spd_majority
 - @weimar_coalition
 - @weimar_coalition_liberal_parliament
+- @wholesome_coalition
 - @schleicher_majority_coalition
 - @schleicher_left_coalition
 - @schleicher_right_coalition
@@ -1947,6 +1960,33 @@ There are some potential coalition arrangements.
 - @right_coalition
 - @center_right_coalition
 - @bourgeois_coalition
+
+@wholesome_coalition
+title: A "wholesome" coalition is formed.
+subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>[? if not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?]+[? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #3E88B3;">**DNVP**</span> + **Others** ([+ cordon_sanitaire +]%)
+view-if: cordon_sanitaire >= 50 and ((dnvp_leader == "Treviranus" and true_christian_democracy) or (dnvp_leader == "Lambach" and lambach_stays)) and wild_weimar
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span>[? if not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">[+ ddp_name +]</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">DVP</span>?]?][? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?]+[? if lvp_formed:&nbsp;+ <span style="color: #FFCC00;">LVP</span>?] + <span style="color: #3E88B3;">DNVP</span> + Others ([+ cordon_sanitaire +]%) [? if dnvp_relation < 50: We need higher relations with the <span style="color: #3E88B3;">DNVP</span>. ?][? if z_relation < 50: We need higher relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]. ?]
+choose-if: dnvp_relation >= 50 and z_relation >= 50
+on-arrival: leverage -= 10; in_wholesome_coalition = 1; in_grand_coalition = 1; spd_in_government = 1; foreign_minister_party = "DNVP"; interior_minister_party = "DNVP"; justice_minister_party = "DNVP"; justice_minister_party = "DNVP"; labor_minister_party = "DNVP"; reichswehr_minister_party = "DNVP"; economic_minister_party = "DNVP"; finance_minister_party = "DNVP"; agriculture_minister_party = "DNVP"; pro_republic += 100; hindenburg_angry = -500; 
+
+We have successfully formed a "wholesome" coalition of all the """constitutional""" parties. Who should be chancellor?
+
+- @treviranus
+- @noske
+
+@noske
+title: Noske for Chancellor.
+on-arrival: chancellor = "Noske"; chancellor_party = "SPD"; left_dissent += 100
+go-to: ministries
+
+We have brought back Noske from retirement to serve as our chancellor. Hooray!
+
+@treviranus
+title: Treviranus for Chancellor.
+on-arrival: chancellor = "Treviranus"; chancellor_party = "DNVP"; leverage += 10; wholesome_point += 1;
+go-to: ministries
+
+Giving Treviranus the chancellorship will lend us more leverage.
 
 @schleicher_majority_coalition
 title: Schleicher forms a majority government with only the <span style="color: #BFC8CC;">**DNEF**</span>.
@@ -4013,6 +4053,15 @@ ministries.forEach(ministry => {
         Q[partyKey] = "Z";
     }
 });
+
+if (Q.in_wholesome_coalition) {
+    ministries.forEach(ministry => {
+    let partyKey = `${ministry}`;
+    if (Q[partyKey] != "SPD") {
+        Q[partyKey] = "DNVP";
+    }
+});
+}
 
 !}
 subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]

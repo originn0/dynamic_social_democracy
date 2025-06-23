@@ -678,6 +678,15 @@ if (Q.rdp_r) {
     });
 }
 
+if (Q.dnvp_r && Q.dnvp_wholesome) {
+    data.push({
+        "id": "dnvp_wholesome",
+        "legend": "DNVP",
+        "name": "DNVP",
+        "seats": Math.round(Q.dnvp_r * 5),
+    });
+}
+
 if (Q.ddp_r && !Q.lvp_formed) {
     data.push({
         "id": "ddp",
@@ -839,7 +848,7 @@ if (Q.dnvp_dvp_formed) {
     });
 }
 
-if (Q.dnvp_r) {
+if (Q.dnvp_r && !Q.dnvp_wholesome) {
     data.push({
         "id": "dnvp",
         "legend": "DNVP",

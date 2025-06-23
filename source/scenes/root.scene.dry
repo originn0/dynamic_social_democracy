@@ -1064,6 +1064,7 @@ For more information on the politics and government of the German Republic, see 
 - @1928_main: Begin (<span style="color: #C4B156;">normal</span> difficulty)
 - @1928_hard: Begin (<span style="color: #A05252;">hard</span> difficulty)
 - @1928_historical: Begin (<span style="color: #611813;">historical</span> mode)
+- @1928_challenge: Custom Modes
 
 @1928_easy
 on-arrival: difficulty = -1; resources = 4; dues = 5; base_dues = 5; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; ddp_relation = 65; budget = 5;
@@ -1111,6 +1112,188 @@ Q.ddp_relation = 55;
 Q.budget = 2;
 !}
 go-to: 1928_main
+
+@1928_challenge
+view-if: achievement_holy
+
+Here, you can test your skills.
+
+- @joever_mode
+- @hitler_mode
+- @wild_weimar
+- @start: Go back.
+
+
+@joever_mode
+title: <div style="text-align: center;"><img src="img/joever.png" alt="Joever"></div>
+subtitle: The <span style="color: #c00000;">**SPD**</span> will start with 0% support.
+on-arrival: {!
+Q.workers_spd = 0;
+Q.new_middle_spd = 0;
+Q.old_middle_spd = 0;
+Q.rural_spd = 0;
+Q.catholics_spd = 0;
+Q.unemployed_spd = 0;
+
+for (var c of Q.classes) {
+    var class_votes = 0;
+    for (var party of Q.parties) {
+        if (Q[c+'_'+party] < 0) {
+            Q[c+'_'+party] = 0;
+        }
+        class_votes += Q[c+'_'+party];
+    }
+    for (var party of Q.parties) {
+        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
+        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+    }
+}
+
+var total_support = 0; 
+
+for (var party of Q.parties) {
+    var party_support = 0;
+    for (var c of Q.classes) {
+        if (Q.old_demographics) { 
+            party_support += Q[c]*Q[c+'_'+party];
+        } else  { 
+            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
+        } 
+    }
+    Q[party + '_support'] = party_support;
+    total_support += party_support; 
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_support = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_support += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_support += Q.catholics_nsdap_normalized*Q.catholics;
+
+        if (Q.dsu_exist && !Q.nvf_exist) {
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
+        } else if (!Q.dsu_exist && Q.nvf_exist) {
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_support += Q.new_middle_nsdap*Q.new_middle;
+        } else if (Q.dsu_exist && Q.nvf_exist) {
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
+
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+        } else {
+            Q.nsdap_hitler_support += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_support += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_support += Q.new_middle_nsdap*Q.new_middle;
+        }
+    }
+}
+for (var party of Q.parties) {
+    Q[party+'_normalized'] = Q[party + '_support']/total_support;
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_normalized = Q.nsdap_hitler_support / total_support;
+        Q.dsu_normalized = Q.dsu_support / total_support;
+        Q.nvf_normalized = Q.nvf_support / total_support;
+        Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized*1000) / 10;
+        Q.dsu_votes = Math.round(Q.dsu_normalized*1000) / 10;
+        Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
+    }
+    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
+}
+!}
+go-to: 1928_mod_mode
+
+@hitler_mode
+title: Democracy Under Siege
+subtitle: The <span style="color: #7A3C00;">**NSDAP**</span> will start with 40% support, and cannot peak.
+on-arrival: {!
+Q.hitler_mode = 1;
+
+Q.workers_nsdap = 30;
+Q.new_middle_nsdap = 100;
+Q.old_middle_nsdap = 100;
+Q.rural_nsdap = 100;
+Q.catholics_nsdap = 30;
+Q.unemployed_nsdap = 80;
+
+for (var c of Q.classes) {
+    var class_votes = 0;
+    for (var party of Q.parties) {
+        if (Q[c+'_'+party] < 0) {
+            Q[c+'_'+party] = 0;
+        }
+        class_votes += Q[c+'_'+party];
+    }
+    for (var party of Q.parties) {
+        Q[c + '_' + party + '_normalized'] = 100*Q[c+'_'+party]/class_votes;
+        Q[c + '_' + party + '_display'] = Math.round(100*Q[c+'_'+party]/class_votes);
+    }
+}
+
+var total_support = 0; 
+
+for (var party of Q.parties) {
+    var party_support = 0;
+    for (var c of Q.classes) {
+        if (Q.old_demographics) { 
+            party_support += Q[c]*Q[c+'_'+party];
+        } else  { 
+            party_support += Q[c]*Q[c+'_'+party+'_normalized'];
+        } 
+    }
+    Q[party + '_support'] = party_support;
+    total_support += party_support; 
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_support = Q.rural_nsdap_normalized*Q.rural;
+        Q.nsdap_hitler_support += Q.old_middle_nsdap_normalized*Q.old_middle;
+        Q.nsdap_hitler_support += Q.catholics_nsdap_normalized*Q.catholics;
+
+        if (Q.dsu_exist && !Q.nvf_exist) {
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
+        } else if (!Q.dsu_exist && Q.nvf_exist) {
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+            Q.nvf_support += Q.new_middle_nsdap*Q.new_middle;
+        } else if (Q.dsu_exist && Q.nvf_exist) {
+            Q.dsu_support = Q.workers_nsdap*Q.workers*((120 - Q.sa_force) / 100);
+            Q.dsu_support += Q.unemployed_nsdap*Q.unemployed*((80 - Q.sa_force) / 100);
+            Q.dsu_support += Q.new_middle_nsdap*Q.new_middle;
+
+            Q.nvf_support = Q.unemployed_nsdap*Q.unemployed*((120 - Q.sa_force) / 100);
+            Q.nvf_support += Q.workers_nsdap*Q.workers*((Q.sa_force - 80) / 100);
+        } else {
+            Q.nsdap_hitler_support += Q.workers_nsdap*Q.workers;
+            Q.nsdap_hitler_support += Q.unemployed_nsdap*Q.unemployed;
+            Q.nsdap_hitler_support += Q.new_middle_nsdap*Q.new_middle;
+        }
+    }
+}
+for (var party of Q.parties) {
+    Q[party+'_normalized'] = Q[party + '_support']/total_support;
+    if (party == "nsdap" && Q.nsdap_split) {
+        Q.nsdap_hitler_normalized = Q.nsdap_hitler_support / total_support;
+        Q.dsu_normalized = Q.dsu_support / total_support;
+        Q.nvf_normalized = Q.nvf_support / total_support;
+        Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized*1000) / 10;
+        Q.dsu_votes = Math.round(Q.dsu_normalized*1000) / 10;
+        Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
+    }
+    Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
+}
+!}
+go-to: 1928_mod_mode
+
+@wild_weimar
+title: Wild Weimar Mode
+subtitle: Various unrealistic easter eggs and features will be unlocked. Bugs are part of the experience.
+on-arrival: {!
+Q.wild_weimar = 1;
+!}
+go-to: 1928_mod_mode
+
 
 @1928_main
 audio: shuffle music/1928_1930/FruhlingsliedMendelssohn.mp3 music/1928_1930/AUF_HOHEN_BERGEN_noise_reduced.mp3 music/1928_1930/MarekWeber.mp3 music/1928_1930/BAUERNKAPELLE.mp3 music/1928_1933/DERLINDENBAUM_normalized.mp3 music/1928_1933/ZurSonne_zurFreiheit.mp3 music/1928_1933/arbeiter_marseille.mp3 music/1928_1933/Wann_wir_schreiten_Seit_an_Seit.mp3 music/1930_1933/Internationale-de_normalized.ogg music/1928_1930/LiedDerPompadour.mp3 music/1928_1933/SozialistenMarsch.mp3

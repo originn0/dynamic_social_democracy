@@ -615,6 +615,12 @@ Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
 Q.totalAchievements = achievements.length;
 Q.percentComplete = Math.round((Q.unlockedCount / Q.totalAchievements) * 100);
 
+if (Q.percentComplete >= 33) {
+    this.achieve('achievement_holy');
+}
+if (Q.percentComplete >= 66) {
+    this.achieve('achievement_moly');
+}
 if (Q.percentComplete >= 100) {
     this.achieve('achievement_holy_moly');
 }
@@ -690,11 +696,11 @@ on-display: {!
 
   var schwarz = document.createElement('span');
   schwarz.textContent = 'Schwarz';
-  schwarz.style.color = getColor(33.33, percentComplete, '#000000');
+  schwarz.style.color = getColor(33, percentComplete, '#000000');
 
   var rot = document.createElement('span');
   rot.textContent = 'Rot';
-  rot.style.color = getColor(66.66, percentComplete, '#DD0000');
+  rot.style.color = getColor(66, percentComplete, '#DD0000');
 
   var gold = document.createElement('span');
   gold.textContent = 'Gold';
@@ -708,6 +714,7 @@ on-display: {!
   
 !}
 tags: endings
+go-to: fun_zone
 
 All achievements require <span style="color: #0077FF;">dynamic</span>, <span style="color: #A05252;">hard</span>, or <span style="color: #611813;">historical</span> mode.
 
@@ -5319,6 +5326,83 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 {!</table>!}
 
 = Total Completion
+
+@fun_zone
+on-display: {! 
+  const style = document.createElement('style');
+  style.textContent = `
+  @media (max-width: 600px) {
+    table.custom-responsive-table {
+      width: 100% !important;
+      font-size: 10px;
+    }
+    table.custom-responsive-table td,
+    table.custom-responsive-table th {
+      padding: 6px !important;
+    }
+    table.custom-responsive-table thead tr {
+      font-size: initial !important;
+    }
+    table.custom-responsive-table tbody tr {
+      font-size: 10px !important;
+    }
+}
+  `;
+  document.head.appendChild(style);
+
+  const content = document.querySelector('#page #mid_panel #content') || document.body;
+
+  const headers = [
+    { text: 'Schwarz', color: '#000000', bgColor: 'rgba(0, 0, 0, 0.2)' },
+    { text: 'Rot', color: '#DD0000', bgColor: 'rgba(221, 0, 0, 0.2)' },
+    { text: 'Gold', color: '#FFCC00', bgColor: 'rgba(255, 204, 0, 0.2)' },
+  ];
+
+  const rows = [
+    ['- Challenge Modes', '- Resource printer', '- Bragging rights'],
+    ['- Full flowchart access', '- Wild Weimar mode', '- A new UI border'],
+  ];
+
+  const wrapper = document.createElement('div');
+  wrapper.style.display = 'flex';
+  wrapper.style.justifyContent = 'center';
+
+  const table = document.createElement('table');
+  table.classList.add('custom-responsive-table');
+
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  headers.forEach(h => {
+    const th = document.createElement('th');
+    th.textContent = h.text;
+    th.style.color = h.color;
+    th.style.border = 'none';
+    th.style.padding = '8px 12px';
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  rows.forEach(row => {
+    const tr = document.createElement('tr');
+    row.forEach((cellText, i) => {
+      const td = document.createElement('td');
+      td.textContent = cellText;
+      td.style.border = 'none';
+      td.style.backgroundColor = headers[i].bgColor;
+      td.style.padding = '10px';
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  wrapper.appendChild(table);
+  content.appendChild(wrapper);
+!}
+
+At the checkpoints of 33%, 66% and 100%, you will receive special rewards for your progress in the game. 
 
 - @go_back
 

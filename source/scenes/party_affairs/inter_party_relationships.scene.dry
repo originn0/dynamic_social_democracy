@@ -17,6 +17,8 @@ The <span style="color: #c00000;">**SPD**</span> cannot govern by itself yet. Be
 - @center: Strengthen our bonds with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 - @cvp: Reconcile with the <span style="color: #000000;">Christian People's Party</span>.
 - @kpd: Work towards repairing relationships with the <span style="color: #700000;">Communist Party</span>.
+- @dnvp: Open dialogue with [? if dnvp_leader != "Lambach": Treviranus and the <span style="color: #0087DC;">People's Conservatives</span>?][? if dnvp_leader == "Lambach": Lambach and the <span style="color: #6D5298;">Christian Socialists</span>?] of the <span style="color: #3E88B3;">**DNVP**</span>.
+- @nsdap: Establish contact with Strasser and the <span style="color: #7A3C00;">Nazi Party</span>'s left wing.
 - @spd_alone: The <span style="color: #c00000;">SPD</span> can stand alone for now.
 - @easy_discard
 
@@ -161,6 +163,269 @@ on-arrival: lvp_relation += 4*(1 - dissent); lvp_left += 1
 With the death of Gustav Stresemann, the right wing of the <span style="color: #FFCC00;">**LVP**</span> is much less likely to be accommodating of us. In addition, the <span style="color: #D3C24D;">liberals</span> are electorally in decline, so perhaps our efforts are best spent elsewhere.
 
 However, given the influence of the <span style="color: #FFCC00;">**LVP**</span> among the other <span style="color: #808080;">right</span>-leaning parties [? if president == "Hindenburg" or president_ideology == "Moderate": and with President [+ president +] ?], it can still be helpful to influence them. 
+
+@dnvp
+view-if: wild_weimar
+choose-if: resources >= 1 and ((dnvp_leader == "Treviranus" and true_christian_democracy) or (dnvp_leader == "Lambach" and lambach_stays))
+unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if dnvp_leader != "Treviranus" and dnvp_leader != "Lambach": Treviranus or Lambach must lead the <span style="color: #3E88B3;">DNVP</span>. ?][? if not true_christian_democracy and dnvp_leader == "Treviranus": Treviranus's wholesomeness is restrained by his own party. ?][? if not lambach_stays and dnvp_leader == "Lambach": Lambach's wholesomeness is restrained by his own party, he must consolidate his position first. ?]
+on-arrival: resources -= 1; dnvp_relation += 10*(1-dissent); pro_republic += 3; left_dissent += 10; center_dissent += 10
+
+We have reached out to [+ dnvp_leader +], who responds warmly to our requests. However, it would take much more convincing to get the evil and unwholesome side of the <span style="color: #3E88B3;">**DNVP**</span> behind closer cooperation. Our Left and Center factions voice their disapproval.
+
+- @dnvp_wholesome
+
+@dnvp_wholesome
+title: Conclude an electoral alliance with the <span style="color: #3E88B3;">**DNVP**</span>.
+choose-if: in_wholesome_coalition and lambach_stays and dnvp_leader == "Lambach"
+unavailable-subtitle: [? if dnvp_leader != "Lambach" or not lambach_stays: Only Lambach can accept this deal after he has consolidated power. ?][? if not in_wholesome_coalition: We must be governing together. ?]
+on-arrival: {!
+Q.dnvp_wholesome = 1; 
+
+Q.wholesome_point += 1;
+
+Q.new_middle_ddp += 20;
+Q.new_middle_lvp += 20;
+
+Q.workers_dnvp = Q.workers_spd;
+Q.workers_spd = Q.workers_dnvp;
+
+Q.new_middle_dnvp = Q.new_middle_spd;
+Q.new_middle_spd = Q.new_middle_dnvp;
+
+Q.old_middle_dnvp = Q.old_middle_spd;
+Q.old_middle_spd = Q.old_middle_dnvp;
+
+Q.rural_dnvp = Q.rural_spd;
+Q.rural_spd = Q.rural_dnvp;
+
+Q.catholics_dnvp = Q.catholics_spd;
+Q.catholics_spd = Q.catholics_dnvp;
+
+Q.unemployed_dnvp = Q.unemployed_spd;
+Q.unemployed_spd = Q.unemployed_dnvp;
+
+Q.z_minus_bvp_votes = parseFloat((Q.z_votes - Q.bvp_votes).toFixed(1));
+Q.z_minus_bvp_r = parseFloat((Q.z_r - Q.bvp_r).toFixed(1));
+if (Q.bvp_r == Q.z_r) Q.z_minus_bvp_r = 0;
+!}
+on-display: {!
+data = [{
+    "id": "kpd",
+    "legend": "KPD",
+    "name": "KPD",
+    "seats": Math.round(Q.kpd_r * 5),
+}];
+
+if (Q.sapd_formed && Q.sapd_r) {
+    data.push({
+        "id": "sapd",
+        "legend": "SAPD",
+        "name": "SAPD",
+        "seats": Math.round(Q.sapd_r * 5),
+    });
+}
+
+if (Q.spd_r) {
+    data.push({
+        "id": "spd",
+        "legend": "SPD",
+        "name": "SPD",
+        "seats": Math.round(Q.spd_r * 5),
+    });
+}
+
+if (Q.rdp_r) {
+    data.push({
+        "id": "rdp",
+        "legend": "RDP",
+        "name": "RDP",
+        "seats": Math.round(Q.rdp_r * 5),
+    });
+}
+
+if (Q.dnvp_r && Q.dnvp_wholesome) {
+    data.push({
+        "id": "dnvp_wholesome",
+        "legend": "DNVP",
+        "name": "DNVP",
+        "seats": Math.round(Q.dnvp_r * 5),
+    });
+}
+
+if (Q.ddp_r && !Q.lvp_formed) {
+    data.push({
+        "id": "ddp",
+        "legend": Q.ddp_name,
+        "name": Q.ddp_name,
+        "seats": Math.round(Q.ddp_r * 5),
+    });
+}
+
+if (Q.lvp_r && Q.lvp_formed) {
+    data.push({
+        "id": "lvp",
+        "legend": "LVP",
+        "name": "LVP",
+        "seats": Math.round(Q.lvp_r * 5),
+    });
+}
+
+if (Q.z_minus_bvp_r) {
+    data.push({
+        "id": "z",
+        "legend": "Center",
+        "name": "Center",
+        "seats": Math.round(Q.z_minus_bvp_r * 5),
+    });
+}
+
+if (Q.bvp_r) {
+    data.push({
+        "id": "bvp",
+        "legend": "BVP",
+        "name": "BVP",
+        "seats": Math.round(Q.bvp_r * 5),
+    });
+}
+
+if (Q.dvp_r && !Q.lvp_formed && Q.dvp_exist) {
+    data.push({
+        "id": "dvp",
+        "legend": "DVP",
+        "name": "DVP",
+        "seats": Math.round(Q.dvp_r * 5),
+    });
+}
+
+if (Q.dnef_r && Q.dnef_formed) {
+    data.push({
+        "id": "dnef",
+        "legend": "DNEF",
+        "name": "DNEF",
+        "seats": Math.round(Q.dnef_r * 5),
+    });
+}
+
+if (Q.other_r) {
+    data.push({
+        "id": "other",
+        "legend": "Other",
+        "name": "Other",
+        "seats": Math.round(Q.other_r * 5),
+    });
+}
+
+if (Q.kvp_formed && Q.kvp_r) {
+    data.push({
+        "id": "kvp",
+        "legend": "KVP",
+        "name": "KVP",
+        "seats": Math.round(Q.kvp_r * 5),
+    });
+}
+
+if (Q.dnvp_r && !Q.dnvp_wholesome) {
+    data.push({
+        "id": "dnvp",
+        "legend": "DNVP",
+        "name": "DNVP",
+        "seats": Math.round(Q.dnvp_r * 5),
+    });
+}
+
+if (Q.dnf_formed && Q.dnf_r) {
+    data.push({
+        "id": "dnf",
+        "legend": "DNF",
+        "name": "DNF",
+        "seats": Math.round(Q.dnf_r * 5),
+    });
+}
+
+if (Q.dsu_exist && Q.dsu_r) {
+    data.push({
+        "id": "dsu",
+        "legend": "DSU",
+        "name": "DSU",
+        "seats": Math.round(Q.dsu_r * 5),
+    });
+}
+
+if (Q.nsdap_split && Q.nsdap_hitler_r) {
+    data.push({
+        "id": "nsdap",
+        "legend": "NSDAP",
+        "name": "NSDAP",
+        "seats": Math.round(Q.nsdap_hitler_r * 5),
+    });
+}
+
+if (!Q.nsdap_split && Q.nsdap_r) {
+    data.push({
+        "id": "nsdap",
+        "legend": "NSDAP",
+        "name": "NSDAP",
+        "seats": Math.round(Q.nsdap_r * 5),
+    });
+}
+
+if (Q.nvf_exist && Q.nvf_r) {
+    data.push({
+        "id": "nvf",
+        "legend": "NVF",
+        "name": "NVF",
+        "seats": Math.round(Q.nvf_r * 5),
+    });
+}
+if (d3 && window) {
+    // get screen width
+    var width = 500;
+    var height = 500;
+    var screenWidth = document.getElementById('content').offsetWidth;
+    if (screenWidth < width - 50) {
+        width = screenWidth - 50;
+        height = width;
+        document.getElementById("reichstag").style.height = screenWidth/2 + "px";
+    }
+    var parliament = d3.parliament();
+    parliament.width(width).height(height).innerRadiusCoef(0.4);
+    parliament.enter.fromCenter(true).smallToBig(true);
+    parliament.exit.toCenter(false).bigToSmall(true);
+    d3.select("#reichstag").datum(data).call(parliament);
+}
+!}
+
+
+Due to our shared values of wholesomeness and love, we have agreed to run a joint list with the <span style="color: #3E88B3;">**DNVP**</span> and welcome them into our parliamentary group. However, because of this deal, we had to expel all our <span style="color: #005EB8;">Jewish</span> members, who join the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+
+{!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
+
+@nsdap
+view-if: wild_weimar
+choose-if: resources >= 1 and nsdap_saxony
+unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if not nsdap_saxony: Gregor Strasser have a position in the Saxon state government in order to wholesomeify him via governmental participation. ?]
+on-arrival: resources -= 1; nsdap_relation += 10*(1-dissent); pro_republic += 3; left_dissent += 10; center_dissent += 10
+
+We have began our work in wholesomeifying Gregor Strasser, who is beginning to form a moderate pro-democratic <span style="color: #7A3C00;">National Social Democratic</span> faction within the <span style="color: #7A3C00;">**NSDAP**</span> under Hitler's nose. Our Left and Center factions voice their disapproval.
+
+- @nsdap_wholesome
+- @nsdap_wholesome_2
+
+@nsdap_wholesome
+title: Create the anti-Liberal Front.
+unavailable-subtitle: [? if nsdap_relation < 50: We need higher relations. ?][? if harzburg_front_seen: The Harzburg Front already exists. ?]
+choose-if: nsdap_relation >= 50 and not harzburg_front_seen
+on-arrival: workers_ddp = 0; new_middle_ddp = 0; old_middle_ddp = 0; rural_ddp = 0; catholics_ddp = 0; unemployed_ddp = 0; workers_dvp = 0; new_middle_dvp = 0; old_middle_dvp = 0; rural_dvp = 0; catholics_dvp = 0; unemployed_dvp = 0; workers_lvp = 0; new_middle_lvp = 0; old_middle_lvp = 0; rural_lvp = 0; catholics_lvp = 0; unemployed_lvp = 0; ddp_relation = 0; lvp_relation = 0; dvp_relation = 0; z_relation += 20; dnvp_relation += 20
+
+We have formed the anti-Liberal front with Strasser's faction within the <span style="color: #7A3C00;">**NSDAP**</span>. The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> also join in.
+
+@nsdap_wholesome_2
+title: Merge the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> and the Harzburg Front.
+unavailable-subtitle: [? if nsdap_relation < 50: We need higher relations. ?][? if not harzburg_front_seen: The Harzburg Front hasn't been invented yet. ?]
+choose-if: nsdap_relation >= 50 and not harzburg_front_seen
+on-arrival: rb_strength += sa_strength; rb_strength += sh_strength; rb_militancy += 0.5; sa_strength = 0; sh_strength = 0
+
+The <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">**SA**</span> has dissolved and joined the Reichsbanner!
 
 @spd_alone
 
