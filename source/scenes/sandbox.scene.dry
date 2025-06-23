@@ -162,6 +162,8 @@ Removed 100 budget from the country's stockpile. This doesn't go to the homeless
 - @decreasekpdrel: Decrease Relations With The KPD
 - @increaseddprel: Increase Relations With The DDP/DStP
 - @decreaseddprel: Decrease Relations With The DDP/DStP
+- @increaselvprel: Increase Relations With The LVP
+- @decreaselvprel: Decrease Relations With The LVP
 - @increasedvprel: Increase Relations With The DVP
 - @decreasedvprel: Decrease Relations With The DVP
 - @increasednvprel: Increase Relations With The DNVP (Doesn't Work)
@@ -217,6 +219,22 @@ Q.ddp_relation -= 15;
 !}
 
 Decreased relations with the DDP.
+
+@increaseddprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation += 15;
+!}
+
+Increased relations with the LVP.
+
+@decreaseddprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation -= 15;
+!}
+
+Decreased relations with the LVP
 
 @increasedvprel
 go-to: editrelations
