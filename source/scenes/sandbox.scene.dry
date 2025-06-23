@@ -2454,7 +2454,6 @@ Formed the ASPD.
 
 @nazi_boom
 on-arrival: {!
-Q.nsdap_split = 1;
 Q.dsu_exist = 1;
 Q.dsu_leader = "Strasser";
 Q.nvf_exist = 1;
@@ -2503,13 +2502,16 @@ for (var record of Q.party_support_records) {
     record['nvf'] = 0;
 }
 !}
-
 // update all records
 Q.dsu_r = 0;
 Q.old_dsu_r = 0;
 for (var record of Q.election_records) {
     record['dsu'] = 0;
 }
+for (var record of Q.party_support_records) {
+    record['dsu'] = 0;
+}
+!}
 
 These parties are doomed to eternal infighting
 
