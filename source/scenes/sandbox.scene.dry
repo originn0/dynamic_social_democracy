@@ -2433,6 +2433,29 @@ Q.old_rural_dsu_display = 0
 Q.old_unemployed_dsu_display = 0
 Q.old_catholics_dsu_display = 0
 
+// update all records
+Q.nvf_r = 0;
+Q.old_nvf_r = 0;
+for (var record of Q.election_records) {
+    record['nvf'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['nvf'] = 0;
+}
+!}
+
+// update all records
+Q.dsu_r = 0;
+Q.old_dsu_r = 0;
+for (var record of Q.election_records) {
+    record['dsu'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['dsu'] = 0;
+}
+!}
+
+
 Q.nazi_funds -= 3;
 
 Q.dsu_r = Math.round(Q.nsdap_r*0.3 * 10) / 10;
