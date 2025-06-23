@@ -31,6 +31,22 @@ const initialAchievements = (Q.initialAchievements instanceof Set)
   : new Set();
 
 
+if (Q.achievement_schwarz_rot_gold) {
+    const content = document.getElementById('content');
+    if (content) {
+      content.style.border = '3px solid black'
+      content.style.boxShadow = '0 0 0 3px red, 0 0 0 6px gold';
+    }
+
+    if (Q.rubicon) {
+        const content = document.getElementById('content');
+        if (content) {
+          content.style.border = ''
+          content.style.boxShadow = '';
+        }
+    }
+}
+
 if (Q.rubicon && Q.chancellor != Q.nsdap_chancellor) {
 const contentElement = document.getElementById('content');
 contentElement.style.backgroundColor = '#645E51';

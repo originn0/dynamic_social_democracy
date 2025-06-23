@@ -613,6 +613,91 @@ const achievements = [
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
 Q.totalAchievements = achievements.length;
+Q.percentComplete = Math.round((Q.unlockedCount / Q.totalAchievements) * 100);
+
+if (Q.percentComplete >= 100) {
+    this.achieve('achievement_schwarz_rot_gold');
+}
+!}
+on-display: {! 
+
+  var content = document.querySelector('#page #mid_panel #content');
+
+  var progressWrapper = document.createElement('div');
+
+  var unlockedCount = Q.unlockedCount || 0;
+  var totalAchievements = Q.totalAchievements || 0;
+  var percentComplete = Q.percentComplete || 0;
+
+  var heading1 = document.createElement('h2');
+  heading1.id = 'achievementStatus';
+  heading1.style.textAlign = 'center';
+  heading1.textContent = `${unlockedCount} / ${totalAchievements} Achievements Unlocked`;
+  progressWrapper.appendChild(heading1);
+
+  var heading2 = document.createElement('h2');
+  heading2.id = 'percentStatus';
+  heading2.style.textAlign = 'center';
+  heading2.textContent = `${percentComplete}% Unlocked`;
+  progressWrapper.appendChild(heading2);
+
+  var container = document.createElement('div');
+  container.className = 'progress-container';
+  container.id = 'progressContainer';
+  progressWrapper.appendChild(container);
+
+  ['black', 'red', 'gold'].forEach(color => {
+    var block = document.createElement('div');
+    block.className = `flag-block ${color}`;
+    container.appendChild(block);
+  });
+
+  var fill = document.createElement('div');
+  fill.id = 'progressFill';
+  fill.className = 'progress-fill';
+  fill.style.width = (100 - percentComplete) + '%';
+  container.appendChild(fill);
+
+  content.appendChild(progressWrapper);
+
+  var mode = document.createElement('h2');
+  mode.id = 'germanFlagText';
+  mode.style.textAlign = 'center';
+  mode.style.display = 'flex';
+  mode.style.gap = '10px';
+
+  function getColor(threshold, progress, color) {
+    if (progress >= threshold) {
+      return color;
+    } else {
+      return '#431';
+    }
+  }
+
+  var schwarz = document.createElement('span');
+  schwarz.textContent = 'Schwarz';
+  schwarz.style.fontSize = '60px';
+  schwarz.style.marginLeft = '37px';
+  schwarz.style.color = getColor(33.33, percentComplete, '#000000');
+
+  var rot = document.createElement('span');
+  rot.textContent = 'Rot';
+  rot.style.fontSize = '60px';
+  rot.style.marginLeft = '115px';
+  rot.style.color = getColor(66.66, percentComplete, '#DD0000');
+
+  var gold = document.createElement('span');
+  gold.textContent = 'Gold';
+  gold.style.fontSize = '60px';
+  gold.style.marginLeft = '150px';
+  gold.style.color = getColor(100, percentComplete, '#FFCC00');
+
+  mode.appendChild(schwarz);
+  mode.appendChild(rot);
+  mode.appendChild(gold);
+
+  progressWrapper.appendChild(mode);
+  
 !}
 tags: endings
 
@@ -2102,7 +2187,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
-      <div class="achievement_subtitle"> - have Hitler commit suicide, Schleicher imprison Thälmann, and defeat Papen in a civil war.
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #7A3C00;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3638,7 +3723,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
-      <div class="achievement_subtitle"> - have Hitler commit suicide, Schleicher imprison Thälmann, and defeat Papen in a civil war.
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #7A3C00;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -5173,7 +5258,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
-      <div class="achievement_subtitle"> - have Hitler commit suicide, Schleicher imprison Thälmann, and defeat Papen in a civil war.
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #7A3C00;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -5226,8 +5311,6 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 {!</table>!}
 
 = Total Completion
-
-[+ unlockedCount +] / [+ totalAchievements +] Achievements Unlocked
 
 - @go_back
 
