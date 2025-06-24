@@ -31,6 +31,22 @@ const initialAchievements = (Q.initialAchievements instanceof Set)
   : new Set();
 
 
+if (Q.achievement_holy_moly) {
+    const content = document.getElementById('content');
+    if (content) {
+      content.style.border = '3px solid black'
+      content.style.boxShadow = '0 0 0 3px red, 0 0 0 6px gold';
+    }
+
+    if (Q.rubicon) {
+        const content = document.getElementById('content');
+        if (content) {
+          content.style.border = ''
+          content.style.boxShadow = '';
+        }
+    }
+}
+
 if (Q.rubicon && Q.chancellor != Q.nsdap_chancellor) {
 const contentElement = document.getElementById('content');
 contentElement.style.backgroundColor = '#645E51';
@@ -862,6 +878,7 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
         } else if (Q.year >= 1934) {
             Q.nazi_peak -= 15;
         }
+        if (Q.hitler_mode) Q.nazi_peak = 100;
     }   
     if (Q.nsdap_votes >= Q.nazi_peak && !Q.nazi_peak_triggered && Q.nsdap_votes >= 22) {
         Q.nazi_peak_triggered = 1;
@@ -5005,7 +5022,7 @@ if (Q.spd_toleration || (Q.spd_in_government && !Q.in_spd_majority))
 }
 
 if (Q.chancellor == "Brüning") {
-    if (!Q.soziale_marktwirtschaft_start) Q.soziale_marktwirtschaft_start = Q.unemployed;
+    if (!Q.soziale_marktwirtschaft_start && Q.unemployed >= 15) Q.soziale_marktwirtschaft_start = Q.unemployed;
 } else {
     Q.soziale_marktwirtschaft_start = 0;
 }

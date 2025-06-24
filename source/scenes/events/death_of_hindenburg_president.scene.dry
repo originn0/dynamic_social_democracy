@@ -963,6 +963,7 @@ Despite the <span style="color: #7A3C00;">Nazi</span> threats, supporters of the
 go-to: eckener_win if winner = "Eckener"; juchacz_win if winner = "Juchacz"; bundesrepublik_win if winner = "Schumacher" or winner = "Adenauer"; hitler_victory if winner = "Hitler" or winner = "Göring" or winner = "Goring"; seldte_victory if winner = "Seldte"; hergt_victory_nazi if winner = "Hergt" and nsdap_candidate == "Hergt"; hergt_victory_lite if winner = "Hergt" and nsdap_candidate != "Hergt"; lettow_vorbeck_victory if winner = "Lettow-Vorbeck"; munzenberg_victory if winner = "Munzenberg" or winner = "Münzenberg"; thalmann_victory if winner = "Thalmann" or winner = "Thälmann"; nazis_lose if winner = "Braun" or winner = "Gessler" or winner = "Heuss" or winner = "Bruning"; cultural_victory if winner = "Ossietzky" or winner = "Mann"; einstein_victory if winner = "Einstein"
 on-arrival: {!
 Q.president = Q.winner;
+if (Q.president == "Bruning") Q.president = "Brüning";
 if (Q.president == "Thalmann") Q.president = "Thälmann";
 if (Q.president == "Munzenberg") Q.president = "Münzenberg";
 if (Q.president == "Goring") Q.president = "Göring";
