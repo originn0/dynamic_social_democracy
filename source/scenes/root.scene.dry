@@ -1192,9 +1192,7 @@ For more information on the politics and government of the German Republic, see 
 - @1928_main: Begin (<span style="color: #C4B156;">normal</span> difficulty)
 - @1928_hard: Begin (<span style="color: #A05252;">hard</span> difficulty)
 - @1928_historical: Begin (<span style="color: #611813;">historical</span> mode)
-
-
-
+- @1928_challenge: Custom Modes
 
 @1928_easy
 on-arrival: difficulty = -1; resources = 4; dues = 5; base_dues = 5; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; ddp_relation = 65; budget = 5;
@@ -1434,35 +1432,3 @@ go-to: main if difficulty >= 0; main.main_easy if difficulty < 0
 
 
 = 1928
-
-@settings
-subtitle: Enable or disable various features
-
-For other, non-difficulty related tweaks.
-
-- @disable_end: Disable end in 1934
-- @enable_end: Enable end in 1934
-- @menu: Back
-
-@disable_end
-view-if: end_disabled != 1
-on-arrival: end_disabled = 1
-go-to: menu
-
-The end date has been disabled.
-
-@enable_end
-view-if: end_disabled = 1
-on-arrival: end_disabled = 0
-go-to: menu
-
-The end date has been disabled.
-
-@menu
-
-- @1928_mod_mode: Begin (<span style="color: #0077FF;">dynamic</span> mode)
-- @1928_easy: Begin (<span style="color: #5B9A8D;">easy</span> difficulty)
-- @1928_main: Begin (<span style="color: #C4B156;">normal</span> difficulty)
-- @1928_hard: Begin (<span style="color: #A05252;">hard</span> difficulty)
-- @1928_historical: Begin (<span style="color: #611813;">historical</span> mode)
-- @settings: Settings
