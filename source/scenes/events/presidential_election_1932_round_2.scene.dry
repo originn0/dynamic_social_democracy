@@ -671,11 +671,13 @@ on-arrival: president = nsdap_candidate_1932; chancellor = "Hitler"; chancellor_
 
 @braun_wins
 on-arrival: president = "Braun"; president_ideology = "Left"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 6*(1-dissent); old_middle_spd += 4*(1-dissent); new_middle_spd += 4*(1-dissent); rural_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent);
+go-to: achievement_check_1
 
 Otto Braun of the <span style="color: #c00000;">**SPD**</span> has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
 
 @rosenfeld_wins
 on-arrival: president = "Rosenfeld"; president_ideology = "Left"; center_dissent -= 5; labor_dissent -= 5; left_dissent -= 15; left_strength += 20; workers_spd += 9*(1-dissent); unemployed_spd += 6*(1-dissent); coup_progress += 4; capital_strike_progress += 4
+go-to: achievement_check_1
 
 Kurt Rosenfeld of the [? if not left_split: <span style="color: #c00000;">**SPD**</span>?][? if left_split: <span style="color: #9B0000;">**SAPD**</span>?] has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
 
@@ -683,13 +685,23 @@ However, his leftism has sparked rumors of a planned "March on Berlin" by the <s
 
 @eckener_wins
 on-arrival: president = "Eckener"; president_ideology = "Moderate"; reformist_dissent -= 20; center_dissent -= 5; labor_dissent -= 5; reformist_strength += 20; workers_spd += 4*(1-dissent); unemployed_spd += 2*(1-dissent); old_middle_spd += 2*(1-dissent); new_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent)
+achievement: zeppelin_kapitan
+go-to: achievement_check_1
 
 Nationally renown Zeppelin pilot and independent Hugo Eckener has won the presidency! This is a moment of celebration for our party, as his victory helps keep the <span style="color: #7A3C00;">Nazis</span> at bay.
 
 @duesterburg_wins
 on-arrival: president = "Braun"; president_ideology = "Left"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
+go-to: achievement_check_1
 
 Duesterberg is too ashamed to accept the Presidency, and out of the kindness of his heart, has given it to Otto Braun. 
+
+@achievement_check_1
+on-arrival: neue_geschaftsfuhrung = 1 if chancellor == "Brüning" and spd_toleration
+go-to: neue_geschaftsfuhrung if neue_geschaftsfuhrung
+
+@neue_geschaftsfuhrung
+achievement: neue_geschaftsfuhrung
 
 @reactionary_candidate_majority
 go-to: jarres_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Jarres") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Jarres"); gessler_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Gessler") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Gessler"); luther_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Luther") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Luther"); adenauer_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Adenauer") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Adenauer"); bruning_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Brüning") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Brüning"); stegerwald_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Stegerwald") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Stegerwald"); vorbeck_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Lettow-Vorbeck") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Lettow-Vorbeck"); westarp_win if (reactionary_candidate_1_plurality and reactionary_candidate_1932 == "Westarp") or (reactionary_candidate_2_plurality and secondary_reactionary_candidate_1932 == "Westarp")

@@ -252,127 +252,11 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
   if (Q.labor_minister_party == "SPD" && Q.interior_minister_party == "SPD" && Q.finance_minister_party == "SPD" && Q.economic_minister_party == "SPD" && Q.foreign_minister_party == "SPD" && Q.justice_minister_party == "SPD" && Q.agriculture_minister_party == "SPD" && Q.reichswehr_minister_party == "SPD" && (Q.prussia_leader == "Braun" || Q.prussia_leader == "Rosenfeld") && Q.chancellor_party == "SPD" && (Q.president == "Braun" || Q.president == "Rosenfeld" && !Q.left_split || Q.president == "Schumacher" || Q.president == "Wels" || Q.president == "Grzesinski" || Q.president == "Juchacz" || (Q.president == "Rosenfeld" && !Q.left_split))) {
       this.achieve('die_rote_republik');
   }
-}
 
-const achievements = [
-  "achievement_eiserne_front",
-  "achievement_civil_war",
-  "achievement_einigkeit",
-  "achievement_victory_for_the_republic",
-  "achievement_bollwerk_der_demokratie",
-  "achievement_red_tzar_of_prussia",
-  "achievement_einheitsfront",
-  "achievement_einheitsfront_2",
-  "achievement_volksfront",
-  "achievement_grosse_volksfront",
-  "achievement_volksfront_2",
-  "achievement_weimar_coalition",
-  "achievement_majority_party",
-  "achievement_minderheitsregierung",
-  "achievement_volkspartei",
-  "achievement_rote_millionar",
-  "achievement_sohn_seiner_klasse",
-  "achievement_versohnler",
-  "achievement_deport_hitler",
-  "achievement_wirtschaftspolitik",
-  "achievement_wirtschaftswunder",
-  "achievement_wirtschaftsexperiment",
-  "achievement_freie_marktwirtschaft",
-  "achievement_equality",
-  "achievement_hirschfeld",
-  "achievement_women_reichsbanner",
-  "achievement_bruder_zur_sonne",
-  "achievement_die_rote_fahne",
-  "achievement_panik_im_mittelstand",
-  "achievement_bauernrevolution",
-  "achievement_katholischer_sozialismus",
-  "achievement_grosse_volkspartei",
-  "achievement_klassenkampf",
-  "achievement_raterepublik",
-  "achievement_polykrise",
-  "achievement_syndikalismus",
-  "achievement_drei_pfeile",
-  "achievement_ausnahmezustand",
-  "achievement_eu",
-  "achievement_heidelberger_programm",
-  "achievement_verfassungsreform",
-  "achievement_zeppelin_kapitan",
-  "achievement_wahlrechts",
-  "achievement_bundesrepublik",
-  "achievement_republik_der_wissenschaft",
-  "achievement_arbeiter_von_wien",
-  "achievement_stolperstein",
-  "achievement_sturm_und_drang",
-  "achievement_hitler_tot",
-  "achievement_vive_le_cartel",
-  "achievement_neuer_nationalismus",
-  "achievement_christliche_volkspartei",
-  "achievement_braun_koalition",
-  "achievement_liberale_blocpartei",
-  "achievement_christlicher_sozialismus",
-  "achievement_traumteam",
-  "achievement_sozialliberale_koalition",
-  "achievement_sozialchristliche_koalition",
-  "achievement_fur_gott_und_kaiser",
-  "achievement_ldp",
-  "achievement_der_grosse_neustart",
-  "achievement_deutsche_tory_demokratie",
-  "achievement_schwarze_null",
-  "achievement_historischer_kompromiss",
-  "achievement_frahm_und_brandt",
-  "achievement_neue_arbeiterpartei",
-  "achievement_ankurbelung",
-  "achievement_linksliberale_renaissance",
-  "achievement_ein_interessantes_experiment",
-  "achievement_das_grosste_aller_zelte",
-  "achievement_getrennt_marschieren_vereint_schlagen",
-  "achievement_nach_schleicher_wir",
-  "achievement_sozialdemokratische_blockpartei",
-  "achievement_aller_guten_dinge_sind_zwei",
-  "achievement_wer_braucht_schon_freunde",
-  "achievement_heuchelei",
-  "achievement_warum_kampfen_wir_immer_noch",
-  "achievement_leere_parolen",
-  "achievement_weltfrieden",
-  "achievement_blauer_winter",
-  "achievement_ampelkoalition",
-  "achievement_staatspolitiker",
-  "achievement_soziale_politik_fur_dich",
-  "achievement_polizeistaat",
-  "achievement_wahre_bundesrepublik",
-  "achievement_der_beliebte_prasident",
-  "achievement_notwendigkeit",
-  "achievement_comeback",
-  "achievement_grosse_weimarer_koalition",
-  "achievement_das_blatt_hat_sich_gewendet",
-  "achievement_modeerscheinung",
-  "achievement_catastrophepolitik",
-  "achievement_volkspartei_fur_das_volk",
-  "achievement_mit_allen_notwendigen_stimmen",
-  "achievement_wir_schaffen_das",
-  "achievement_blockparteien_parade",
-  "achievement_der_arbeiterstaat",
-  "achievement_soziale_marktwirtschaft",
-  "achievement_gegen_papen_hitler_thalmann",
-  "achievement_wels",
-  "achievement_kommunistische_alternative",
-  "achievement_die_rote_republik"
-];
-
-Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
-Q.totalAchievements = achievements.length;
-Q.percentComplete = Math.round((Q.unlockedCount / Q.totalAchievements) * 100);
-
-if (Q.percentComplete >= 33) {
-    this.achieve('achievement_holy');
+  if (Q.old_middle_spd_normalized >= 40 && Q.old_middle_spd_normalized > Q.workers_spd_normalized) {
+      this.achieve('champagner_sozialisten');
+  }
 }
-if (Q.percentComplete >= 66) {
-    this.achieve('achievement_moly');
-}
-if (Q.percentComplete >= 100) {
-    this.achieve('achievement_holy_moly');
-}
-
 this.achieve('game_completed');
 !}
 
@@ -727,7 +611,12 @@ const achievements = [
   "achievement_gegen_papen_hitler_thalmann",
   "achievement_wels",
   "achievement_kommunistische_alternative",
-  "achievement_die_rote_republik"
+  "achievement_die_rote_republik",
+  "achievement_seeheimer",
+  "achievement_champagner_sozialisten", 
+  "achievement_stabile_demokratie",
+  "achievement_neue_geschaftsfuhrung",
+  "achievement_rotes_bayern"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -2371,6 +2260,81 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_seeheimer: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/seeheimer.png" alt="Seeheimer Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Seeheimer</div>
+      <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government with less than 10% support from workers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_champagner_sozialisten: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/champagner_sozialisten.png" alt="Champagner-Sozialisten Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Champagner-Sozialisten</div>
+      <div class="achievement_subtitle"> - have more support among the old middle class (at least 40%) than among workers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_stabile_demokratie: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/stabile_demokratie.png" alt="Stabile Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Stabile Demokratie</div>
+      <div class="achievement_subtitle"> - have a majority for both the Weimar Coalition and the Center Right Coalition at the same time.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_neue_geschaftsfuhrung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/neue_geschaftsfuhrung.png" alt="Neue Geschäftsführung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Neue Geschäftsführung</div>
+      <div class="achievement_subtitle"> - an <span style="color: #c00000; font-weight: bold;">SPD</span> candidate wins the 1932 presidential election while tolerating Brüning.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_rotes_bayern: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/rotes_bayern.png" alt="Rotes Bayern Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Rotes Bayern</div>
+      <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -3907,6 +3871,81 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_seeheimer: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/seeheimer.png" alt="Seeheimer Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Seeheimer</div>
+      <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government with less than 10% support from workers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_champagner_sozialisten: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/champagner_sozialisten.png" alt="Champagner-Sozialisten Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Champagner-Sozialisten</div>
+      <div class="achievement_subtitle"> - have more support among the old middle class (at least 40%) than among workers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_stabile_demokratie: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/stabile_demokratie.png" alt="Stabile Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Stabile Demokratie</div>
+      <div class="achievement_subtitle"> - have a majority for both the Weimar Coalition and the Center Right Coalition at the same time.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_neue_geschaftsfuhrung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/neue_geschaftsfuhrung.png" alt="Neue Geschäftsführung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Neue Geschäftsführung</div>
+      <div class="achievement_subtitle"> - an <span style="color: #c00000; font-weight: bold;">SPD</span> candidate wins the 1932 presidential election while tolerating Brüning.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_rotes_bayern: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/rotes_bayern.png" alt="Rotes Bayern Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Rotes Bayern</div>
+      <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -5438,6 +5477,81 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Die Rote Republik</div>
       <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> controls the entire cabinet, the presidency, the chancellery, and the leadership of Prussia.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_seeheimer: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/seeheimer.png" alt="Seeheimer Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Seeheimer</div>
+      <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government with less than 10% support from workers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_champagner_sozialisten: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/champagner_sozialisten.png" alt="Champagner-Sozialisten Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Champagner-Sozialisten</div>
+      <div class="achievement_subtitle"> - have more support among the old middle class (at least 40%) than among workers.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_stabile_demokratie: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/stabile_demokratie.png" alt="Stabile Demokratie Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Stabile Demokratie</div>
+      <div class="achievement_subtitle"> - have a majority for both the Weimar Coalition and the Center Right Coalition at the same time.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_neue_geschaftsfuhrung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/neue_geschaftsfuhrung.png" alt="Neue Geschäftsführung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Neue Geschäftsführung</div>
+      <div class="achievement_subtitle"> - an <span style="color: #c00000; font-weight: bold;">SPD</span> candidate wins the 1932 presidential election while tolerating Brüning.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_rotes_bayern: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/rotes_bayern.png" alt="Rotes Bayern Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Rotes Bayern</div>
+      <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government in Bavaria.
     </div>
   {!</td>!}
 {!</tr>!}

@@ -1643,7 +1643,7 @@ if (window && d3) {
     }
 }
 !}
-go-to: coalition_menu
+go-to: achievement_check_e
 
 = Election results
 
@@ -1934,6 +1934,14 @@ go-to: coalition_menu
 [? if election_boycott: We have boycotted this election, delegitimizing the results in the eyes of workers and <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> alike. The impact is measured by how many stayed home instead of voting for the <span style="color: #BFC8CC;">**DNEF**</span>. [? if boycott_effect < 1.05: In the end, we achieved only limited success—our boycott has proven relatively unimpactful. So much for nothing. ?][? if boycott_effect >= 0.05 and boycott_effect < 1.1: In the end, we achieved notable success. ?][? if boycott_effect >= 1.1: In the end, we achieved smashing success. ?] ?]
 
 There are some potential coalition arrangements.
+
+@achievement_check_e
+on-arrival: stabile_demokratie = 1 if center_right_coalition >= 50 and weimar_coalition >= 50 and dnvp_ideology == "Moderate"
+go-to: stabile_demokratie if stabile_demokratie; coalition_menu if not stabile_demokratie
+
+@stabile_demokratie
+achievement: stabile_demokratie
+go-to: coalition_menu
 
 @coalition_menu
 
@@ -2863,7 +2871,7 @@ There is no path to a majority government for now. The scheming around President
 title: <span style="color: #c00000;">**SPD**</span> majority alone
 subtitle: <span style="color: #c00000;">**SPD**</span>: [+ spd_r +]%
 view-if: spd_r >= 50
-on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05;  ddp_right += 3; lvp_right += 4; dvp_right += 5; liberal_cooperation += 8; bourgeois_cooperation += 8; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; hindenburg_angry = 70; comeback = 1 if (n_elections - comeback_a == 1); catastrophepolitik = 1 if n_elections >= 10 and not catastrophepolitik_cancel; mit_allen_notwendigen_stimmen = 1 if rb_militancy <= 0.01
+on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05;  ddp_right += 3; lvp_right += 4; dvp_right += 5; liberal_cooperation += 8; bourgeois_cooperation += 8; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; hindenburg_angry = 70; comeback = 1 if (n_elections - comeback_a == 1); catastrophepolitik = 1 if n_elections >= 10 and not catastrophepolitik_cancel; mit_allen_notwendigen_stimmen = 1 if rb_militancy <= 0.01; seeheimer = 1 if workers_spd_normalized < 10
 achievement: majority_party
 go-to: achievement_check if (dynamic_mode or historical_mode or difficulty == 1); spd_majority_2 if not (dynamic_mode or historical_mode or difficulty == 1)
 
@@ -2882,10 +2890,17 @@ achievement: catastrophepolitik
 go-to: achievement_check_3
 
 @achievement_check_3
-go-to: mit_allen_notwendigen_stimmen if mit_allen_notwendigen_stimmen; spd_majority_2 if not mit_allen_notwendigen_stimmen
+go-to: mit_allen_notwendigen_stimmen if mit_allen_notwendigen_stimmen; achievement_check_4 if not mit_allen_notwendigen_stimmen
 
 @mit_allen_notwendigen_stimmen
 achievement: mit_allen_notwendigen_stimmen
+go-to: achievement_check_4
+
+@achievement_check_4
+go-to: seeheimer if seeheimer; spd_majority_2 if not seeheimer
+
+@seeheimer
+achievement: seeheimer
 go-to: spd_majority_2
 
 @spd_majority_2
