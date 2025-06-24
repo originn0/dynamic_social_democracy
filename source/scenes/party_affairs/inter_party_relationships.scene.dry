@@ -165,7 +165,7 @@ With the death of Gustav Stresemann, the right wing of the <span style="color: #
 However, given the influence of the <span style="color: #FFCC00;">**LVP**</span> among the other <span style="color: #808080;">right</span>-leaning parties [? if president == "Hindenburg" or president_ideology == "Moderate": and with President [+ president +] ?], it can still be helpful to influence them. 
 
 @dnvp
-view-if: wild_weimar
+view-if: wacky_weimar
 choose-if: resources >= 1 and ((dnvp_leader == "Treviranus" and true_christian_democracy) or (dnvp_leader == "Lambach" and lambach_stays))
 unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if dnvp_leader != "Treviranus" and dnvp_leader != "Lambach": Treviranus or Lambach must lead the <span style="color: #3E88B3;">DNVP</span>. ?][? if not true_christian_democracy and dnvp_leader == "Treviranus": Treviranus's wholesomeness is restrained by his own party. ?][? if not lambach_stays and dnvp_leader == "Lambach": Lambach's wholesomeness is restrained by his own party, he must consolidate his position first. ?]
 on-arrival: resources -= 1; dnvp_relation += 10*(1-dissent); pro_republic += 3; left_dissent += 10; center_dissent += 10
@@ -401,7 +401,7 @@ Due to our shared values of wholesomeness and love, we have agreed to run a join
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 @nsdap
-view-if: wild_weimar
+view-if: wacky_weimar
 choose-if: resources >= 1 and saxony_nsdap
 unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if not saxony_nsdap: Gregor Strasser have a position in the Saxon state government in order to wholesomeify him via governmental participation. ?]
 on-arrival: resources -= 1; nsdap_relation += 10*(1-dissent); pro_republic += 3; left_dissent += 10; center_dissent += 10
