@@ -1113,8 +1113,7 @@ Unbanned the NSDAP.
 @form_sapd
 on-arrival: {!
 // set up the infrastructure
-Q.sapd_other = 1;
-Q.sapd_kvp = 1;
+Q.sapd_formed = 1
 Q.parties.push('sapd');
 Q.parties_graph.push('sapd');
 
@@ -1155,8 +1154,9 @@ Formed the SAPD.
 
 @form_rdp
 on-arrival: {!
-// set up the infrastructure
+
 Q.rdp_formed = 1;
+Q.rdp_explode = 1;
 Q.parties.push('rdp');
 Q.parties_graph.push('rdp');
 
@@ -2451,8 +2451,9 @@ Formed the DNEF
 
 @form_aspd
 on-arrival: {!
-// set up the infrastructure
-Q.true.aspd = 1
+
+Q.aspd_other = 1
+Q.aspd_kvp = 1;
 Q.parties.push('aspd');
 Q.parties_graph.push('aspd');
 
