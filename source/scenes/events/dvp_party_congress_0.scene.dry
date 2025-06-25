@@ -1,7 +1,36 @@
 title: <span style="color: #C0A054;">**DVP**</span> Congress
 subtitle: The <span style="color: #C0A054;">**DVP**</span> decides their future...
 view-if: year = 1928 and month = 12 and dvp_congress_trigger = 1 and dnvp_ideology != "Radical" and not lvp_formed and lvp_timer_trigger == 0
-on-arrival: dvp_left += 1 if dvp_relation >= 50; dvp_right += 1 if dvp_relation < 35; dvp_right += 1 if not in_grand_coalition
+on-arrival: {!
+if (Q.dvp_relation >= 50) {
+    Q.dvp_left += 1;
+} else if (Q.dvp_relation < 35) {
+    Q.dvp_right += 1;
+}
+if (!Q.in_grand_coalition) {
+    Q.dvp_right += 1;
+}
+
+if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 4))) {
+    Q.dvp_ideology = "Right"
+} else if (Q.dvp_left > (Q.dvp_right*1.5) || (Q.dvp_left > (Q.dvp_right + 4))) {
+    Q.dvp_ideology = "Left"
+} else {
+    Q.dvp_ideology = "Moderate"
+}
+
+if (Q.dvp_ideology == "Left" || (Q.dvp_left - Q.dvp_right >= 3)) {
+    Q.stresemann_reform_yay = 1;
+}
+
+if (Q.dvp_ideology == "Right" || (Q.dvp_right - Q.dvp_left >= 3)) {
+    Q.stresemann_reform_nay = 1;
+}
+
+if (!Q.stresemann_reform_yay && !Q.stresemann_reform_nay) {
+    Q.stresemann_reform_mid = 1;
+}
+!}
 max-visits: 1
 tags: event
 face-image: img/dvp.jpg
@@ -16,16 +45,7 @@ German industry isn't going to abandon their voice within the <span style="color
 - @resultsdvp: The party votes...
 
 @resultsdvp
-on-arrival: {!
-if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 4))) {
-    Q.dvp_ideology = "Right"
-} else if (Q.dvp_left > (Q.dvp_right*1.5) || (Q.dvp_left > (Q.dvp_right + 4))) {
-    Q.dvp_ideology = "Left"
-} else {
-    Q.dvp_ideology = "Moderate"
-}
-!}
-go-to: left if dvp_ideology == "Left" or (dvp_left - dvp_right >= 3); right if dvp_ideology == "Right" or (dvp_right - dvp_left >= 3); left_conflict if not ((dvp_ideology == "Left" or (dvp_left - dvp_right >= 3)) and not (dvp_ideology == "Right" or (dvp_right - dvp_left >= 3)))
+go-to: left if stresemann_reform_yay; right if stresemann_reform_nay; left_conflict if stresemann_reform_mid
 
 @left
 on-arrival: dvp_left += 10; dvp_relation += 10; liberal_cooperation += 3; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 4; new_middle_other -= 4; old_middle_dvp += 4; old_middle_other -= 4; rural_dvp += 2; rural_other -= 2; catholics_other -= 2; catholics_z -= 2; catholics_dvp += 4; coalition_dissent -= 2 if in_grand_coalition; dvp_reform = 1; pro_republic += 5; ddp_left += 1.5; ddp_cohesion += 1.5

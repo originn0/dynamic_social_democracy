@@ -1241,6 +1241,22 @@ Q.budget = 2;
 !}
 go-to: 1928_main
 
+@1928_mod_mode_lite
+subtitle: Intended way of experiencing this mod.
+on-arrival: {!
+Q.difficulty = -1;
+Q.resources = 3;
+Q.dues = 3;
+Q.base_dues = 3;
+Q.rb_strength = 2000;
+Q.z_relation = 41;
+Q.kpd_relation = 21;
+Q.dvp_relation = 31;
+Q.ddp_relation = 55;
+Q.budget = 2;
+!}
+go-to: 1928_main
+
 @1928_challenge
 view-if: achievement_holy
 
@@ -1330,7 +1346,7 @@ for (var party of Q.parties) {
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
 }
 !}
-go-to: 1928_mod_mode
+go-to: 1928_mod_mode_lite
 
 @hitler_mode
 title: Democracy Under Siege
@@ -1412,7 +1428,7 @@ for (var party of Q.parties) {
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
 }
 !}
-go-to: 1928_mod_mode
+go-to: 1928_mod_mode_lite
 
 @wacky_weimar
 title: Wacky Weimar Mode
@@ -1422,7 +1438,7 @@ choose-if: achievement_moly
 on-arrival: {!
 Q.wacky_weimar = 1;
 !}
-go-to: 1928_mod_mode
+go-to: 1928_mod_mode_lite
 
 
 @1928_main
