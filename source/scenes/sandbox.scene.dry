@@ -1056,6 +1056,7 @@ Lowered Interior Police loyalty.
 - @ban_nsdap: Ban NSDAP
 - @unban_nsdap: Unban NSDAP
 - @form_sapd: Form SAPD
+- @form_csvd: Form CSVD
 - @form_dnf: Form DNF
 - @form_kvp: Form KVP
 - @form_lvp: Form LVP
@@ -1150,6 +1151,42 @@ for (var record of Q.party_support_records) {
 !}
 
 Formed the SAPD.
+
+@form_csvd
+on-arrival: {!
+// set up the infrastructure
+Q.csvd_formed = 1;
+Q.parties.push('csvd');
+Q.parties_graph.push('csvd');
+
+Q.workers_csvd = 0;
+Q.workers_csvd -= 3;
+Q.new_middle_csvd = 1;
+Q.old_middle_csvd = 0;
+Q.rural_csvd = 0;
+Q.unemployed_csvd = 2;
+Q.catholics_csvd = 0;
+
+Q.old_workers_csvd_display = 0
+Q.old_new_middle_csvd_display = 0
+Q.old_old_middle_csvd_display = 0
+Q.old_rural_csvd_display = 0
+Q.old_unemployed_csvd_display = 0
+Q.old_catholics_csvd_display = 0
+
+// update all records
+Q.csvd_r = 0;
+Q.old_csvd_r = 0;
+for (var record of Q.election_records) {
+    record['csvd'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['csvd'] = 0;
+}
+!}
+
+Formed the CSVD.
+
 
 @form_dnf
 on-arrival: {!
