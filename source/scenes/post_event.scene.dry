@@ -4619,6 +4619,11 @@ if (Q.industrial_total_backing) {
         Q.old_middle_dvp += Q.industrial_dvp_backing/Q.industrial_total_backing;
         Q.rural_dvp += Q.industrial_dvp_backing/Q.industrial_total_backing/2;
     }
+    if (Q.lvp_votes_calculations + 0.2 < Q.lvp_votes_post_event) {
+        Q.new_middle_lvp += Q.industrial_lvp_backing/Q.industrial_total_backing;
+        Q.old_middle_lvp += Q.industrial_lvp_backing/Q.industrial_total_backing;
+        Q.rural_lvp += Q.industrial_lvp_backing/Q.industrial_total_backing/2;
+    }
     if (Q.dnvp_votes_calculations + 0.2 < Q.dnvp_votes_post_event) {
         Q.new_middle_dnvp += Q.industrial_dnvp_backing/Q.industrial_total_backing;
         Q.old_middle_dnvp += Q.industrial_dnvp_backing/Q.industrial_total_backing;
