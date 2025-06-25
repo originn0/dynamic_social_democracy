@@ -1005,7 +1005,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
             }
         }
     }
-    if (Q.lvp_existence_timer >= 0 && Q.lvp_timer_2_trigger && Q.lvp_formed) {
+    if (Q.lvp_existence_timer >= 0 && (Q.lvp_timer_2_trigger || Q.threshold_lvp) && Q.lvp_formed) {
         Q.lvp_existence_timer += 1;
     }
     if (Q.dnvp_split_2 && Q.dnvp_split_2_timer >= 1) {
@@ -3724,7 +3724,7 @@ if (Q.kpd_relation < 50 && Q.year >= 1930) {
     }
 
     if (Q.blutmai) {
-        Q.kpd_relation_gain = Q.kpd_relation_gain * 0.5;
+        Q.kpd_relation_gain = Q.kpd_relation_gain * 0.35;
     } else if (Q.kpd_leader != "Conciliators") {
         Q.kpd_relation_gain = Q.kpd_relation_gain * 0.8;
     }
