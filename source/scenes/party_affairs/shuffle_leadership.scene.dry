@@ -19,14 +19,16 @@ go-to: rm_main
 title: Remove advisors.
 tags: center_advisor, left_advisor, reformist_advisor, labor_advisor, neorev_advisor, nonfactional_advisor 
 on-arrival: {!
-Q.advisor_1 = [];
+Q.last_time_check = Q.time;
+if (Q.time > Q.last_time_check) {
+    Q.advisor_1 = [];
 
-for (let key in Q) {
-    if (key.endsWith('_advisor') && Q[key] === 1) {
-        Q.advisor_1.push(key.replace('_advisor', ''));
+    for (let key in Q) {
+        if (key.endsWith('_advisor') && Q[key] === 1) {
+            Q.advisor_1.push(key.replace('_advisor', ''));
+        }
     }
 }
-
 console.log(Q.advisor_1)
 !}
 frequency: 1
