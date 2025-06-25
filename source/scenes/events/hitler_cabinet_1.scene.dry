@@ -62,7 +62,7 @@ on-arrival: rubicon_mini = 0; rubicon_mini_leave = 1
 
 [+ z_leader +] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. [+ z_leader +] is able to see through these lies, and whips the party's parliamentary delegation to vote against the Enabling Act. 
 
-Schleicher and [+ chancellor +] sees this as a betrayal, but what are going to do about it? Hindenburg is the real one in charge here. And speaking of him, he now believes that the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]’s refusal to support [+ chancellor +] has only deepened his impatience. Disillusioned, Hindenburg no longer sees [+ chancellor +]'s supposed ambition of becoming a parliamentary chancellor as credible.
+Schleicher regards this development as a betrayal, yet his options are limited. President Hindenburg remains the true deciding factor. He now views the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]’s refusal to support [+ chancellor +] has only deepened his impatience. Disillusioned, Hindenburg no longer considers [+ chancellor +]’s ambition to lead as a parliamentary chancellor to be credible.
 
 - @hitler_3
 
@@ -103,6 +103,8 @@ Q.unemployed_spd += 3;
 
 Q.sa_strength *= 0.8;
 
+Q.old_chancellor = Q.chancellor;
+
 Q.chancellor = "Brüning";
 Q.chancellor_party = "Z";
 
@@ -128,7 +130,7 @@ Q.rubicon_mini = 0;
 Q.rubicon_mini_leave = 1;
 !}
 
-The Reichswehr has placed more trust in [+ president +] than in Chancellor [+ chancellor +], and under this influence, [+ chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
+The Reichswehr has placed more trust in [+ president +] than in Chancellor [+ old_chancellor +], and under this influence, [+ old_chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
 
 Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected as interim chancellor. The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
 
