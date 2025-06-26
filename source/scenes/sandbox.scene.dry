@@ -1058,7 +1058,7 @@ Lowered Interior Police loyalty.
 - @form_sapd: Form <span style="color: #9B0000;">**SAPD**</span>.
 - @form_rdp: Form <span style="color: #E0B0FF;">**RDP**</span>.
 - @form_dnf: Form <span style="color: #003755;">**DNF**</span>.
-- @form_kvp: Form KVP
+- @form_kvp: Form <span style="color: #0087DC;">**KVP**</span>.
 - @form_lvp: Form LVP
 - @form_dnef: Form DNEF
 - @form_aspd: Form ASPD
@@ -1155,36 +1155,22 @@ Formed the <span style="color: #9B0000;">**SAPD**</span>.
 @form_rdp
 on-arrival: {!
 Q.rdp_formed = 1;
-Q.parties.push('rdp');
-Q.parties_graph.push('rdp');
+Q.rdp_list = 1;
 
-Q.workers_rdp = 0;
-Q.workers_rdp -= 3;
-Q.new_middle_rdp = 1;
-Q.old_middle_rdp = 0;
-Q.rural_rdp = 0;
-Q.unemployed_rdp = 2;
-Q.catholics_rdp = 0;
+Q.new_middle_lvp -= 6;
+Q.new_middle_spd += 6;
+Q.pro_republic += 5;
+
+Q.left_dissent += 5;
+Q.reformist_dissent -= 3;
+Q.reformist_strength += 3;
+Q.peoples_party_support += 1;
 
 Q.previous_rdp_last_election_votes = 0;
 Q.old_rdp_r = 0;
 
-Q.old_workers_rdp_display = 0
-Q.old_new_middle_rdp_display = 0
-Q.old_old_middle_rdp_display = 0
-Q.old_rural_rdp_display = 0
-Q.old_unemployed_rdp_display = 0
-Q.old_catholics_rdp_display = 0
-
-// update all records
-Q.rdp_r = 0;
-Q.old_rdp_r = 0;
-for (var record of Q.election_records) {
-    record['rdp'] = 0;
-}
-for (var record of Q.party_support_records) {
-    record['rdp'] = 0;
-}
+Q.lvp_relation -= 8;
+Q.lvp_right += 2;
 !}
 
 Formed the <span style="color: #E0B0FF;">**RDP**</span>.
