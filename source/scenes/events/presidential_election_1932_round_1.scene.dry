@@ -1098,52 +1098,17 @@ view-if: (organizational_endorsements_seen or not hindenburg_run or hitler_suppo
 on-arrival: {!
 Q.presidential_election_r2_trigger = 1;
 
-if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.liberal_reactionary_candidate_1932 && !Q.lib_drop_out_bourgeois && !Q.lib_drop_out) Q.lib_drop_out_2 = 1;
-if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932 && !Q.z_drop_out_bourgeois && !Q.z_drop_out) Q.z_drop_out_2 = 1;
-if (((!Q.reactionary_candidate_1932 && !Q.secondary_reactionary_candidate_1932) || (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois || !Q.liberal_reactionary_candidate_1932) && (Q.z_drop_out_2 || Q.z_drop_out_bourgeois || !Q.center_reactionary_candidate_1932)) && !Q.westarp_unlock_pres && !Q.vorbeck_unlock_pres && (Q.dnvp_ideology == "Moderate" || Q.kvp_formed)) {
-    Q.vorbeck_run = 1;
-    Q.vorbeck_fallback = 1;
-    Q.vorbeck_trolling = 1;
-    Q.reactionary_candidate_1932 = "Lettow-Vorbeck";
-    Q.reactionary_candidate_1932_disp = "Paul von Lettow-Vorbeck";
-    Q.secondary_reactionary_candidate_1932 = 0;
-    Q.secondary_reactionary_candidate_1932_disp = 0;
-    Q.z_choice = Q.reactionary_candidate_1932;
-    Q.ddp_choice = Q.reactionary_candidate_1932;
-    Q.dvp_choice = Q.reactionary_candidate_1932;
-    Q.lvp_choice = Q.reactionary_candidate_1932;
-    Q.other_choice = Q.reactionary_candidate_1932;
-    Q.kvp_choice = Q.reactionary_candidate_1932;
-    Q.dnvp_choice = Q.reactionary_candidate_1932;
-} else {
-    if (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois) {
-        if (Q.reactionary_candidate_1932 == "Luther") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Luther") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        if (Q.reactionary_candidate_1932 == "Gessler") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        if (Q.reactionary_candidate_1932 == "Jarres") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Jarres") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
+if (!Q.hindenburg_run) {
+    if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.   liberal_reactionary_candidate_1932 && !Q.lib_drop_out_bourgeois && !Q.lib_drop_out) Q.lib_drop_out_2 = 1;
+    if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932 && !Q.z_drop_out_bourgeois && !Q.z_drop_out) Q.z_drop_out_2 = 1;
+    if (((!Q.reactionary_candidate_1932 && !Q.secondary_reactionary_candidate_1932) || (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois || !Q.liberal_reactionary_candidate_1932) && (Q.   z_drop_out_2 || Q.z_drop_out_bourgeois || !Q.center_reactionary_candidate_1932)) && !Q.westarp_unlock_pres && !Q.vorbeck_unlock_pres && (Q.dnvp_ideology == "Moderate" || Q.kvp_formed)) {
+        Q.vorbeck_run = 1;
+        Q.vorbeck_fallback = 1;
+        Q.vorbeck_trolling = 1;
+        Q.reactionary_candidate_1932 = "Lettow-Vorbeck";
+        Q.reactionary_candidate_1932_disp = "Paul von Lettow-Vorbeck";
+        Q.secondary_reactionary_candidate_1932 = 0;
+        Q.secondary_reactionary_candidate_1932_disp = 0;
         Q.z_choice = Q.reactionary_candidate_1932;
         Q.ddp_choice = Q.reactionary_candidate_1932;
         Q.dvp_choice = Q.reactionary_candidate_1932;
@@ -1151,58 +1116,95 @@ if (((!Q.reactionary_candidate_1932 && !Q.secondary_reactionary_candidate_1932) 
         Q.other_choice = Q.reactionary_candidate_1932;
         Q.kvp_choice = Q.reactionary_candidate_1932;
         Q.dnvp_choice = Q.reactionary_candidate_1932;
-    } else if (Q.z_drop_out_2 || Q.z_drop_out_bourgeois) {
-        if (Q.reactionary_candidate_1932 == "Brüning") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
+    } else {
+        if (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois) {
+            if (Q.reactionary_candidate_1932 == "Luther") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Luther") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Gessler") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Jarres") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Jarres") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            Q.z_choice = Q.reactionary_candidate_1932;
+            Q.ddp_choice = Q.reactionary_candidate_1932;
+            Q.dvp_choice = Q.reactionary_candidate_1932;
+            Q.lvp_choice = Q.reactionary_candidate_1932;
+            Q.other_choice = Q.reactionary_candidate_1932;
+            Q.kvp_choice = Q.reactionary_candidate_1932;
+            Q.dnvp_choice = Q.reactionary_candidate_1932;
+        } else if (Q.z_drop_out_2 || Q.z_drop_out_bourgeois) {
+            if (Q.reactionary_candidate_1932 == "Brüning") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Adenauer") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Stegerwald") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            Q.z_choice = Q.reactionary_candidate_1932;
+            Q.ddp_choice = Q.reactionary_candidate_1932;
+            Q.dvp_choice = Q.reactionary_candidate_1932;
+            Q.lvp_choice = Q.reactionary_candidate_1932;
+            Q.other_choice = Q.reactionary_candidate_1932;
+            Q.kvp_choice = Q.reactionary_candidate_1932;
+            Q.dnvp_choice = Q.reactionary_candidate_1932;
         }
-        if (Q.reactionary_candidate_1932 == "Adenauer") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        if (Q.reactionary_candidate_1932 == "Stegerwald") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        Q.z_choice = Q.reactionary_candidate_1932;
-        Q.ddp_choice = Q.reactionary_candidate_1932;
-        Q.dvp_choice = Q.reactionary_candidate_1932;
-        Q.lvp_choice = Q.reactionary_candidate_1932;
-        Q.other_choice = Q.reactionary_candidate_1932;
-        Q.kvp_choice = Q.reactionary_candidate_1932;
-        Q.dnvp_choice = Q.reactionary_candidate_1932;
     }
-}
-
-if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
-    Q.reactionary_candidate_1932_ideology = "Liberal";
-} else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
-    Q.reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
-    Q.reactionary_candidate_1932_ideology = "Centrist";
-}
-
-if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
-    Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
-} else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
-    Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
-    Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
+    
+    if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
+        Q.reactionary_candidate_1932_ideology = "Liberal";
+    } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
+        Q.reactionary_candidate_1932_ideology = "Conservative";
+    } else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
+        Q.reactionary_candidate_1932_ideology = "Centrist";
+    }
+    
+    if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
+        Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
+    } else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
+        Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
+    } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
+        Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
+    }
 }
 !}
 
