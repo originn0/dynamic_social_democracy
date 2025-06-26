@@ -1055,7 +1055,7 @@ Lowered Interior Police loyalty.
 - @unban_kpd: Unban KPD
 - @ban_nsdap: Ban NSDAP
 - @unban_nsdap: Unban NSDAP
-- @form_kpo: Form KPO
+- @form_kpo: Form <span style="color: #C43988;">**KPO**</span>
 - @form_sapd: Form <span style="color: #9B0000;">**SAPD**</span>.
 - @form_rdp: Form <span style="color: #E0B0FF;">**RDP**</span>.
 - @form_dnf: Form <span style="color: #003755;">**DNF**</span>.
@@ -1122,15 +1122,14 @@ Q.Q.kpo_relation = 50;
 Q.kpo_leader = "Brandler";
 Q.kpo_idealogy = "Marxism-Leninism";
 
-var store = Q.workers_kpd;
-Q.workers_kpd *= 0.5;
-Q.workers_kpo = 0.5 * store;
-Q.new_middle_kpo = 4;
+Q.workers_kpo = 3;
+Q.workers_other -= 2;
+Q.workers_kpd -= 1;
+Q.new_middle_kpo = 1;
 Q.old_middle_kpo = 0;
 Q.rural_kpo = 0;
-store = Q.unemployed_kpd;
-Q.unemployed_kpd *= 0.6;
-Q.unemployed_kpo = 0.4 * store;
+Q.unemployed_kpo = 4;
+Q.unemployed_other -= 4;
 Q.catholics_kpo = 0;
 
 Q.old_workers_kpo_display = 0;
@@ -1151,7 +1150,7 @@ for (var record of Q.party_support_records) {
 }
 !}
 
-Formed the KPO
+Formed the <span style="color: #C43988;">**KPO**</span>
 
 @form_sapd
 on-arrival: {!
