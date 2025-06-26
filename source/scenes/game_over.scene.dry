@@ -161,7 +161,11 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
     Other: Q.other_r,
   };
 
-  const sortedParties = Object.entries(partySupport).sort((a, b) => b[1] - a[1]);
+  const filteredPartySupport = Object.entries(partySupport)
+    .filter(([party]) => Q.parties.includes(party))
+    .filter(([_, value]) => typeof value === 'number' && !isNaN(value));
+
+  const sortedParties = filteredPartySupport.sort((a, b) => b[1] - a[1]);
 
   const secondLargestParty = sortedParties[1]?.[0] ?? null;
 
