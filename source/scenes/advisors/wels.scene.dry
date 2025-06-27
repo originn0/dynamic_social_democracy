@@ -428,6 +428,8 @@ on-arrival: dvp_right += 1;
 - @decreasekpdrel: Decrease Relations With The KPD
 - @increaseddprel: Increase Relations With The DDP/DStP
 - @decreaseddprel: Decrease Relations With The DDP/DStP
+- @increaselvprel: Increase Relations With The LVP
+- @decreaselvprel: Decrease Relations With The LVP
 - @increasedvprel: Increase Relations With The DVP
 - @decreasedvprel: Decrease Relations With The DVP
 - @increasednvprel: Increase Relations With The DNVP (Doesn't Work)
@@ -435,6 +437,18 @@ on-arrival: dvp_right += 1;
 - @increasensdaprel: Increase Relations With The NSDAP (Doesn't Work)
 - @decreasensdaprel: Decrease Relations With The NSDAP (Doesn't Work)
 - @returnsandbox: Return To Sandbox Menu
+
+@increaselvprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation += 15;
+!}
+
+@decreaselvprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation += 15;
+!}
 
 @increasecenterrel
 go-to: editrelations
