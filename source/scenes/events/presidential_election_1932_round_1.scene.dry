@@ -950,7 +950,7 @@ With our resources, the [? if z_party_name != "CVP": <span style="color: #000000
 @z_failed
 go-to: round2_menu
 
-Unfortunately, we fail to turn them away from Hindenburg. [? if hindenburg_votes > spd_president_votes : Given that Hindenburg received more votes than Braun, they believe that we should turn to Hindenburg, not the other way around. ?]
+Unfortunately, we fail to turn them away from [? if not hindenburg_run: [+ z_choice +]?][? if hindenburg_run: Hindenburg?]. [? if hindenburg_votes > spd_president_votes and hindenburg_run : Given that Hindenburg received more votes than Braun, they believe that we should turn to Hindenburg, not the other way around. ?]
 
 @round2_convince_kpd
 choose-if: spd_votes >= kpd_votes
@@ -1189,7 +1189,7 @@ if (!Q.hindenburg_run) {
             Q.dnvp_choice = Q.reactionary_candidate_1932;
         }
     }
-    
+
     if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
         Q.reactionary_candidate_1932_ideology = "Liberal";
     } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
@@ -1197,7 +1197,7 @@ if (!Q.hindenburg_run) {
     } else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
         Q.reactionary_candidate_1932_ideology = "Centrist";
     }
-    
+
     if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
         Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
     } else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
