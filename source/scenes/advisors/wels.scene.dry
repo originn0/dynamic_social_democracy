@@ -53,7 +53,7 @@ We have gained +2 resources.
 
 @money_printer
 title: Print a SPDillion dollars.
-view-if: achievement_moly and difficulty == -1 and not dynamic_mode
+view-if: achievement_moly and ((difficulty == -1 and not dynamic_mode) or difficulty == 0)
 subtitle: This may have inflationary effects.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 and not rubicon : [+ advisor_action_timer +] months before next advisor action. ?][? if advisor_action_timer > 0 and rubicon : [+ emergency_fundraising_timer +] weeks before next emergency fundraising. ?]
