@@ -27,17 +27,17 @@ const historicalMode = q.historical_mode;
 
 const newlyAddedAchievements = [];
 
-if (!(Q.initialAchievements instanceof Set)) {
+if (!Array.isArray(Q.initialAchievements)) {
   if (Q.initialAchievements && typeof Q.initialAchievements === "object") {
-    Q.initialAchievements = new Set(Object.keys(Q.initialAchievements));
+    Q.initialAchievements = Object.keys(Q.initialAchievements);
   } else {
-    Q.initialAchievements = new Set();
+    Q.initialAchievements = [];
   }
 }
 
 for (const key in q) {
   if ((key.startsWith("game_achievement") || key.startsWith("achievement")) && q[key] === 1) {
-    if (!Q.initialAchievements.has(key)) {
+    if (!Q.initialAchievements.includes(key)) {
       newlyAddedAchievements.push(key);
     }
   }

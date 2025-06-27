@@ -13,22 +13,25 @@ const historicalMode = q.historical_mode;
 const newlyAddedAchievements = [];
 
 if (Q.year == 1928 && Q.month <= 1) {
-    Q.initialAchievements = new Set(
-    Object.keys(q).filter(key => key.startsWith("game_achievement") || key.startsWith("achievement"))
+    Q.initialAchievements = Object.keys(q).filter(
+        key => key.startsWith("game_achievement") || key.startsWith("achievement")
     );
-    
-    for (const key of Q.initialAchievements) {
+
+    for (const key of [...Q.initialAchievements]) {
         if (key.startsWith("achievement") && !key.startsWith("game_")) {
-            Q.initialAchievements.add("game_" + key);
+            const gameKey = "game_" + key;
+            if (!Q.initialAchievements.includes(gameKey)) {
+                Q.initialAchievements.push(gameKey);
+            }
         }
     }
 
     console.log(Q.initialAchievements);
 }
 
-const initialAchievements = (Q.initialAchievements instanceof Set)
+const initialAchievements = Array.isArray(Q.initialAchievements)
   ? Q.initialAchievements
-  : new Set();
+  : [];
 
 
 if (Q.achievement_holy_moly) {
