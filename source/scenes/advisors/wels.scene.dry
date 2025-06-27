@@ -19,6 +19,9 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
 - @editleftright: Edit Left/Right value of the DDP/DVP/LVP
+- @editcoaldissent: Edit Coalition Dissent
+- @editcapitalstrike: Edit how close or far you are to a capital strike
+- @editcoupprogress: Edit how close or far you are to a coup
 - @editdepression: Edit Inflation, Unemployment, and Economic Growth
 - @conciliators: MAKE SURE TO KEEP KPD RELATION ABOVE NEUTRAL AND LEFTIST STRENGTH ABOVE REFORM STRENGTH UNTIL THE EVENT FIRES IN JUNE (JULY?) 1929
 - @editrelations: Edit Party Relations
@@ -106,6 +109,77 @@ The end date has been enabled.
 @conciliators
 go-to: wels
 on-arrival: left_strength += 50; reformist_strength -= 100; kpd_relation += 200; wittorf_soviet_union = 1
+
+@editcoaldissent
+
+- @maxcoaldissent: Raise Coalition Dissent to Very High
+- @removecoaldissent: Lower Coalition Dissent to Very Low
+- @raisecoaldissent: Raise Coalition Dissent by 1 step
+- @lowercoaldissent: Lower Coalition Dissent by 1 step
+
+@maxcoaldissent
+go-to: wels
+on-arrival: coalition_dissent += 5
+
+@removecoaldissent
+go-to: wels
+on-arrival: coalition_dissent -= 5
+
+@raisecoaldissent
+go-to: wels
+on-arrival: coalition_dissent += 1
+
+@lowercoaldissent
+go-to: wels
+on-arrival: coalition_dissent -= 1
+
+@editcapitalstrike
+
+- @maxcapstrike: Force the Capital Strike event to happen
+- @nocapstrike: Remove all progression to the Capital Strike event
+- @raisecapstrike: Raise the progression to the Capital Strike event by 1
+- @lowercapstrike: Lower the progression to the Capital Strike event by 1
+- @returnsandbox: Return to sandbox menu
+
+@maxcapstrike
+go-to: wels
+on-arrival: capital_strike_progress += 11
+
+@nocapstrike
+go-to: wels
+on-arrival: capital_strike_progress -= 10
+
+@raisecapstrike
+go-to: wels
+on-arrival: capital_strike_progress += 1
+
+@lowercapstrike
+go-to: wels
+on-arrival: capital_strike_progress -= 1
+
+@editcoupprogress
+
+- @maxcoupprog: Force the Coup event to happen
+- @nocoupprog: Remove all progress to the Coup event
+- @raisecoupprog: Raise the progress to the Coup event by 1
+- @lowercoupprog: Lower the progress to the Coup event by 1
+- @returnsandbox: Return to sandbox
+
+@maxcoupprog
+go-to: wels
+on-arrival: coup_progress += 10
+
+@nocoupprog
+go-to: wels
+on-arrival: coup_progress -= 1
+
+@raisecoupprog
+go-to: wels
+on-arrival: coup_progress += 1
+
+@lowercoupprog
+go-to: wels
+on-arrival: coup_progress -= 1
 
 @editdepression
 
