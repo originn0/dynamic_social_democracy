@@ -19,6 +19,7 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
 - @editleftright: Edit Left/Right value of the DDP/DVP/LVP
+- @editdepression: Edit Inflation, Unemployment, and Economic Growth
 - @conciliators: MAKE SURE TO KEEP KPD RELATION ABOVE NEUTRAL AND LEFTIST STRENGTH ABOVE REFORM STRENGTH UNTIL THE EVENT FIRES IN JUNE (JULY?) 1929
 - @editrelations: Edit Party Relations
 - @editpartysupport: Edit Party Support
@@ -105,6 +106,70 @@ The end date has been enabled.
 @conciliators
 go-to: wels
 on-arrival: left_strength += 50; reformist_strength -= 100; kpd_relation += 200; wittorf_soviet_union = 1
+
+@editdepression
+
+- @add1inflation: Raise inflation by 1
+- @remove1inflation: Lower inflation by 1
+- @add1unemployed: Raise unemployment by 1
+- @remove1unemployed: Lower unemployment by 1
+- @add1ecogrow: Raise economic growth by 1
+- @remove1ecogrow: Lower economic growth by 1
+- @add10inflation: Raise inflation by 10
+- @remove10inflation: Lower inflation by 10
+- @add10unemployed: Raise unemployment by 10
+- @remove10unemployed: Lower unemployment by 10
+- @add10ecogrow: Raise economic growth by 10
+- @remove10ecogrow: Lower economic growth by 10
+- @returnsandbox: return to sandbox menu
+
+@add1inflation
+go-to: wels
+on-arrival: Q.inflation += 1
+
+@remove1inflation
+go-to: wels
+on-arrival: Q.inflation -= 1
+
+@add1unemployed
+go-to: wels
+on-arrival: Q.unemployed += 1
+
+@remove1unemployed
+go-to: wels
+on-arrival: Q.unemployed -= 1
+
+@add1ecogrow
+go-to: wels
+on-arrival: Q.economic_growth += 1
+
+@remove1ecogrow
+go-to: wels
+on-arrival: Q.economic_growth -= 1
+
+@add10inflation
+go-to: wels
+on-arrival: Q.inflation += 10
+
+@remove10inflation
+go-to: wels
+on-arrival: Q.inflation -= 10
+
+@add10unemployed
+go-to: wels
+on-arrival: Q.unemployed += 10
+
+@remove10unemployed
+go-to: wels
+on-arrival: Q.unemployed -= 10
+
+@add10ecogrow
+go-to: wels
+on-arrival: Q.economic_growth += 10
+
+@remove10ecogrow
+go-to: wels
+on-arrival: Q.economic_growth -= 10
 
 @editresources
 
