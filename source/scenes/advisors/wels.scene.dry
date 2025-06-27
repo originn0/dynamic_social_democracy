@@ -20,6 +20,7 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @editbudget: Edit Budget
 - @editleftright: Edit Left/Right value of the DDP/DVP/LVP
 - @editcoaldissent: Edit Coalition Dissent
+- @editstrife: Edit Strife (Maxing this lets you expand the reichsbanner without the center and liberal parties complaining)
 - @editcapitalstrike: Edit how close or far you are to a capital strike
 - @editcoupprogress: Edit how close or far you are to a coup
 - @editdepression: Edit Inflation, Unemployment, and Economic Growth
@@ -108,7 +109,7 @@ The end date has been enabled.
 
 @conciliators
 go-to: wels
-on-arrival: left_strength += 50; reformist_strength -= 100; kpd_relation += 200; wittorf_soviet_union = 1
+on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
 
 @editcoaldissent
 
@@ -123,7 +124,7 @@ on-arrival: coalition_dissent += 5
 
 @removecoaldissent
 go-to: wels
-on-arrival: coalition_dissent -= 5
+on-arrival: coalition_dissent = 0
 
 @raisecoaldissent
 go-to: wels
@@ -132,6 +133,30 @@ on-arrival: coalition_dissent += 1
 @lowercoaldissent
 go-to: wels
 on-arrival: coalition_dissent -= 1
+
+@editstrife
+
+- @maxstrife: adds lots of strife
+- @nostrife: removes all strikfe
+- @raisestrife: raises Strife by 1
+- @lowerstrife: lowers Strife by 1
+- @returnsandbox: return to sandbox
+
+@maxstrife
+go-to: wels
+on-arrival: strife += 20
+
+@nostrife
+go-to: wels
+on-arrival: strife = 0
+
+@raisestrife
+go-to: wels
+on-arrival: strife += 1
+
+@lowerstrife
+go-to: wels
+on-arrival: strife -= 1
 
 @editcapitalstrike
 
@@ -147,7 +172,7 @@ on-arrival: capital_strike_progress += 11
 
 @nocapstrike
 go-to: wels
-on-arrival: capital_strike_progress -= 10
+on-arrival: capital_strike_progress = 0
 
 @raisecapstrike
 go-to: wels
@@ -171,7 +196,7 @@ on-arrival: coup_progress += 10
 
 @nocoupprog
 go-to: wels
-on-arrival: coup_progress -= 1
+on-arrival: coup_progress = 0
 
 @raisecoupprog
 go-to: wels
