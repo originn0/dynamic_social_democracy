@@ -704,7 +704,11 @@ There is no majority in this round. In the second round, any candidate who wins 
 [? if lib_drop_out_bourgeois : In order to consolidate the bourgeois electorate around a single candidate, [+ liberal_reactionary_candidate_1932_name +] has withdrawn from the race and endorsed [+ center_reactionary_candidate_1932_name +]. ?][? if z_drop_out_bourgeois : In order to consolidate the bourgeois electorate around a single candidate, [+ center_reactionary_candidate_1932_name +] has withdrawn from the race and endorsed [+ liberal_reactionary_candidate_1932_name +]. ?]
 
 @round2_menu
-on-arrival: z_support_spd = 0 if z_support_spd == 2
+on-arrival: {!
+if (Q.z_success_spd == 2) Q.z_support_spd = 0;
+if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.liberal_reactionary_candidate_1932 && !Q.lib_drop_out_bourgeois && !Q.lib_drop_out) Q.lib_drop_out_2 = 1;
+if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932 && !Q.z_drop_out_bourgeois && !Q.z_drop_out) Q.z_drop_out_2 = 1;
+!}
 
 - @round2_convince_z: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to switch their support to us.
 - @round2_convince_kpd: Convince the <span style="color: #700000;">**KPD**</span> to switch their support to us. 
@@ -946,7 +950,7 @@ With our resources, the [? if z_party_name != "CVP": <span style="color: #000000
 @z_failed
 go-to: round2_menu
 
-Unfortunately, we fail to turn them away from Hindenburg. [? if hindenburg_votes > spd_president_votes : Given that Hindenburg received more votes than Braun, they believe that we should turn to Hindenburg, not the other way around. ?]
+Unfortunately, we fail to turn them away from [? if not hindenburg_run: [+ z_choice +]?][? if hindenburg_run: Hindenburg?]. [? if hindenburg_votes > spd_president_votes and hindenburg_run : Given that Hindenburg received more votes than Braun, they believe that we should turn to Hindenburg, not the other way around. ?]
 
 @round2_convince_kpd
 choose-if: spd_votes >= kpd_votes
@@ -1074,7 +1078,7 @@ We have switched our support to Hindenburg. [? if bruning_time: Hindenburg is re
 - @round2_vote: Second round voting begins next month.
 
 @round2_reactionary
-view-if: not hindenburg_run and reactionary_candidate_1932 and reactionary_candidate_1932 != "Westarp" and reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == reactionary_candidate_1932) and spd_choice != reactionary_candidate_1932
+view-if: not hindenburg_run and reactionary_candidate_1932 and reactionary_candidate_1932 != "Westarp" and reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (lib_drop_out_2 and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_2 and center_reactionary_candidate_1932_name == reactionary_candidate_1932) and spd_choice != reactionary_candidate_1932
 on-arrival: spd_support_reactionary = 1; spd_support_reactionary_1 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = reactionary_candidate_1932 if spd_campaign; ddp_choice = reactionary_candidate_1932 if spd_campaign; lvp_choice = reactionary_candidate_1932 if spd_campaign; dvp_choice = reactionary_candidate_1932 if spd_campaign; spd_choice = reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
 
 We have switched our support to [+ reactionary_candidate_1932 +].
@@ -1082,7 +1086,7 @@ We have switched our support to [+ reactionary_candidate_1932 +].
 - @round2_vote: Second round voting begins next month.
 
 @round2_reactionary_2
-view-if: not hindenburg_run and secondary_reactionary_candidate_1932 and secondary_reactionary_candidate_1932 != "Westarp" and secondary_reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and spd_choice != secondary_reactionary_candidate_1932
+view-if: not hindenburg_run and secondary_reactionary_candidate_1932 and secondary_reactionary_candidate_1932 != "Westarp" and secondary_reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (lib_drop_out_2 and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_2 and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and spd_choice != secondary_reactionary_candidate_1932
 on-arrival: spd_support_reactionary = 1; spd_support_reactionary_2 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = secondary_reactionary_candidate_1932 if spd_campaign; ddp_choice = secondary_reactionary_candidate_1932 if spd_campaign; lvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; dvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; spd_choice = secondary_reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3
 
 We have switched our support to [+ reactionary_candidate_1932 +].
@@ -1094,52 +1098,17 @@ view-if: (organizational_endorsements_seen or not hindenburg_run or hitler_suppo
 on-arrival: {!
 Q.presidential_election_r2_trigger = 1;
 
-if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.liberal_reactionary_candidate_1932 && !Q.lib_drop_out_bourgeois && !Q.lib_drop_out) Q.lib_drop_out_2 = 1;
-if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932 && !Q.z_drop_out_bourgeois && !Q.z_drop_out) Q.z_drop_out_2 = 1;
-if (((!Q.reactionary_candidate_1932 && !Q.secondary_reactionary_candidate_1932) || (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois) && (Q.z_drop_out_2 || Q.z_drop_out_bourgeois)) && (Q.dnvp_ideology == "Moderate" || Q.kvp_formed)) {
-    Q.vorbeck_run = 1;
-    Q.vorbeck_fallback = 1;
-    Q.vorbeck_trolling = 1;
-    Q.reactionary_candidate_1932 = "Lettow-Vorbeck";
-    Q.reactionary_candidate_1932_disp = "Paul von Lettow-Vorbeck";
-    Q.secondary_reactionary_candidate_1932 = 0;
-    Q.secondary_reactionary_candidate_1932_disp = 0;
-    Q.z_choice = Q.reactionary_candidate_1932;
-    Q.ddp_choice = Q.reactionary_candidate_1932;
-    Q.dvp_choice = Q.reactionary_candidate_1932;
-    Q.lvp_choice = Q.reactionary_candidate_1932;
-    Q.other_choice = Q.reactionary_candidate_1932;
-    Q.kvp_choice = Q.reactionary_candidate_1932;
-    Q.dnvp_choice = Q.reactionary_candidate_1932;
-} else {
-    if (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois) {
-        if (Q.reactionary_candidate_1932 == "Luther") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Luther") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        if (Q.reactionary_candidate_1932 == "Gessler") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        if (Q.reactionary_candidate_1932 == "Jarres") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Jarres") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
+if (!Q.hindenburg_run) {
+    if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.   liberal_reactionary_candidate_1932 && !Q.lib_drop_out_bourgeois && !Q.lib_drop_out) Q.lib_drop_out_2 = 1;
+    if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932 && !Q.z_drop_out_bourgeois && !Q.z_drop_out) Q.z_drop_out_2 = 1;
+    if (((!Q.reactionary_candidate_1932 && !Q.secondary_reactionary_candidate_1932) || (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois || !Q.liberal_reactionary_candidate_1932) && (Q.   z_drop_out_2 || Q.z_drop_out_bourgeois || !Q.center_reactionary_candidate_1932)) && !Q.westarp_unlock_pres && !Q.vorbeck_unlock_pres && (Q.dnvp_ideology == "Moderate" || Q.kvp_formed)) {
+        Q.vorbeck_run = 1;
+        Q.vorbeck_fallback = 1;
+        Q.vorbeck_trolling = 1;
+        Q.reactionary_candidate_1932 = "Lettow-Vorbeck";
+        Q.reactionary_candidate_1932_disp = "Paul von Lettow-Vorbeck";
+        Q.secondary_reactionary_candidate_1932 = 0;
+        Q.secondary_reactionary_candidate_1932_disp = 0;
         Q.z_choice = Q.reactionary_candidate_1932;
         Q.ddp_choice = Q.reactionary_candidate_1932;
         Q.dvp_choice = Q.reactionary_candidate_1932;
@@ -1147,58 +1116,95 @@ if (((!Q.reactionary_candidate_1932 && !Q.secondary_reactionary_candidate_1932) 
         Q.other_choice = Q.reactionary_candidate_1932;
         Q.kvp_choice = Q.reactionary_candidate_1932;
         Q.dnvp_choice = Q.reactionary_candidate_1932;
-    } else if (Q.z_drop_out_2  || Q.z_drop_out_bourgeois) {
-        if (Q.reactionary_candidate_1932 == "Brüning") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
+    } else {
+        if (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois) {
+            if (Q.reactionary_candidate_1932 == "Luther") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Luther") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Gessler") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Gessler") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Jarres") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Jarres") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            Q.z_choice = Q.reactionary_candidate_1932;
+            Q.ddp_choice = Q.reactionary_candidate_1932;
+            Q.dvp_choice = Q.reactionary_candidate_1932;
+            Q.lvp_choice = Q.reactionary_candidate_1932;
+            Q.other_choice = Q.reactionary_candidate_1932;
+            Q.kvp_choice = Q.reactionary_candidate_1932;
+            Q.dnvp_choice = Q.reactionary_candidate_1932;
+        } else if (Q.z_drop_out_2 || Q.z_drop_out_bourgeois) {
+            if (Q.reactionary_candidate_1932 == "Brüning") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Brüning") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Adenauer") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            if (Q.reactionary_candidate_1932 == "Stegerwald") {
+                Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
+                Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            } else if (Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
+                Q.secondary_reactionary_candidate_1932 = 0;
+                Q.secondary_reactionary_candidate_1932_disp = 0;
+            }
+            Q.z_choice = Q.reactionary_candidate_1932;
+            Q.ddp_choice = Q.reactionary_candidate_1932;
+            Q.dvp_choice = Q.reactionary_candidate_1932;
+            Q.lvp_choice = Q.reactionary_candidate_1932;
+            Q.other_choice = Q.reactionary_candidate_1932;
+            Q.kvp_choice = Q.reactionary_candidate_1932;
+            Q.dnvp_choice = Q.reactionary_candidate_1932;
         }
-        if (Q.reactionary_candidate_1932 == "Adenauer") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        if (Q.reactionary_candidate_1932 == "Stegerwald") {
-            Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
-            Q.reactionary_candidate_1932_disp = Q.secondary_reactionary_candidate_1932_disp;
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        } else if (Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
-            Q.secondary_reactionary_candidate_1932 = 0;
-            Q.secondary_reactionary_candidate_1932_disp = 0;
-        }
-        Q.z_choice = Q.reactionary_candidate_1932;
-        Q.ddp_choice = Q.reactionary_candidate_1932;
-        Q.dvp_choice = Q.reactionary_candidate_1932;
-        Q.lvp_choice = Q.reactionary_candidate_1932;
-        Q.other_choice = Q.reactionary_candidate_1932;
-        Q.kvp_choice = Q.reactionary_candidate_1932;
-        Q.dnvp_choice = Q.reactionary_candidate_1932;
     }
-}
 
-if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
-    Q.reactionary_candidate_1932_ideology = "Liberal";
-} else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
-    Q.reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
-    Q.reactionary_candidate_1932_ideology = "Centrist";
-}
+    if (Q.reactionary_candidate_1932 == "Luther" || Q.reactionary_candidate_1932 == "Gessler" || Q.reactionary_candidate_1932 == "Jarres") {
+        Q.reactionary_candidate_1932_ideology = "Liberal";
+    } else if (Q.reactionary_candidate_1932 == "Westarp" || Q.reactionary_candidate_1932 == "Lettow-Vorbeck") {
+        Q.reactionary_candidate_1932_ideology = "Conservative";
+    } else if (Q.reactionary_candidate_1932 == "Adenauer" || Q.reactionary_candidate_1932 == "Brüning" || Q.reactionary_candidate_1932 == "Stegerwald") {
+        Q.reactionary_candidate_1932_ideology = "Centrist";
+    }
 
-if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
-    Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
-} else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
-    Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
-} else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
-    Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
+    if (Q.secondary_reactionary_candidate_1932 == "Luther" || Q.secondary_reactionary_candidate_1932 == "Gessler" || Q.secondary_reactionary_candidate_1932 == "Jarres") {
+        Q.secondary_reactionary_candidate_1932_ideology = "Liberal";
+    } else if (Q.secondary_reactionary_candidate_1932 == "Westarp" || Q.secondary_reactionary_candidate_1932 == "Lettow-Vorbeck") {
+        Q.secondary_reactionary_candidate_1932_ideology = "Conservative";
+    } else if (Q.secondary_reactionary_candidate_1932 == "Adenauer" || Q.secondary_reactionary_candidate_1932 == "Brüning" || Q.secondary_reactionary_candidate_1932 == "Stegerwald") {
+        Q.secondary_reactionary_candidate_1932_ideology = "Centrist";
+    }
 }
 !}
 
@@ -1206,7 +1212,7 @@ Hopefully Germany makes the right choice. [? if hindenburg_confidence: With Hind
 
 [? if lib_drop_out_2: Fortunately for us, [+ liberal_reactionary_candidate_1932_name +] has dropped out due to our courting of the <span style="color: #FFCC00;">liberals</span>. ?][? if z_drop_out_2: Fortunately for us, [+ center_reactionary_candidate_1932_name +] has dropped out due to our courting of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?]
 
-[? if vorbeck_trolling: However, the withdrawal of [+ liberal_reactionary_candidate_1932_name +] and [+ center_reactionary_candidate_1932_name +] has forced the entry of [+ reactionary_candidate_1932 +] into the race, serving as a candidate for the moderate right. ?]
+[? if vorbeck_trolling: However, the withdrawal of [? if liberal_reactionary_candidate_1932: [+ liberal_reactionary_candidate_1932_name +] and?][+ center_reactionary_candidate_1932_name +] has forced the entry of [+ reactionary_candidate_1932 +] into the race, serving as a candidate for the moderate right. ?]
 
 @hindenburg_wins
 on-arrival: president = "Hindenburg"
