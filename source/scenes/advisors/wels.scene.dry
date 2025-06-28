@@ -16,6 +16,8 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @snap_election
 - @disable_end: Disable End In 1934
 - @enable_end: Enable End In 1934
+- @advisor_actions
+- @edit_hindenburg_angry: determines how angry hindenburg is at you
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
 - @editleftright: Edit Left/Right value of the DDP/DVP/LVP
@@ -111,6 +113,42 @@ The end date has been enabled.
 go-to: wels
 on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
 
+@advisor_actions
+
+- @nowait: make the advisor actions ready again
+- @placeholder: place holder for when I add all the advisor actions here, for no cost whatsoever
+- @returnsandbox: return to sandbox
+
+@nowait
+go-to: wels
+on-arrival: advisor_action_timer = 0
+
+@placeholder
+go-to: wels
+
+@edit_hindenburg_angry
+
+- @maxangry: Hindenburg crashes out
+- @noangry: Hindenburg loves you
+- @raiseangry: Hindenburg is starting to get a little angry
+- @lowerangry: Hindenburg is getting a little less angry
+
+@maxangry
+go-to: wels
+on-arrival: hindenburg_angry = 120
+
+@noangry
+go-to: wels
+on-arrival: hindenburg_angry = 0
+
+@raiseangry
+go-to: wels
+on-arrival: hindenburg_angry += 5
+
+@lowerangry
+go-to: wels
+on-arrival: hindenburg_angry -= 5
+
 @editcoaldissent
 
 - @maxcoaldissent: Raise Coalition Dissent to Very High
@@ -164,6 +202,7 @@ on-arrival: strife -= 1
 - @nocapstrike: Remove all progression to the Capital Strike event
 - @raisecapstrike: Raise the progression to the Capital Strike event by 1
 - @lowercapstrike: Lower the progression to the Capital Strike event by 1
+- @capstrikequery: How much progress do I have?
 - @returnsandbox: Return to sandbox menu
 
 @maxcapstrike
@@ -182,12 +221,18 @@ on-arrival: capital_strike_progress += 1
 go-to: wels
 on-arrival: capital_strike_progress -= 1
 
+@capstrikequery
+
+[? if capital_strike_progress = 0: you have 0 capital strike progress ?][? if capital_strike__progress = 1: You have 1 capital strike progress ?][? if capital_strike__progress = 2: You have 2 capital strike progress ?][? if capital_strike__progress = 3: You have 3 capital strike progress ?][? if capital_strike__progress = 4: You have 4 capital strike progress ?][? if capital_strike_progress = 5: You have 5 capital strike progress ?][? if capital_strike_progress = 6: You have 6 capital strike progress ?][? if capital_strike_progress = 7: You have 7 capital strike progress ?][? if capital_strike__progress = 8: You have 8 capital strike progress, a capital strike is near ?][? if capital_strike__progress = 9: You have 9 capital strike progress, a capital strike is imminent ?][? if capital_strike_progress = 10: You have 10 capital strike progress, a capital strike is imminent ?]
+- @returnsandbox: return to sandbox
+
 @editcoupprogress
 
 - @maxcoupprog: Force the Coup event to happen (must be atleast 1930 and the SA and Stahlhelm to not be banned)
 - @nocoupprog: Remove all progress to the Coup event
 - @raisecoupprog: Raise the progress to the Coup event by 1
 - @lowercoupprog: Lower the progress to the Coup event by 1
+- @querycoup: How much coup progress do I have?
 - @returnsandbox: Return to sandbox
 
 @maxcoupprog
@@ -205,6 +250,11 @@ on-arrival: coup_progress += 1
 @lowercoupprog
 go-to: wels
 on-arrival: coup_progress -= 1
+
+@querycoup
+
+[? if coup_progress = 0: You have 0 coup progress ?][? if coup_progress = 1: You have 1 coup progress ?][? if coup_progress = 2: You have 2 coup progress ?][? if coup_progress = 3: You have 3 coup progress ?][? if coup_progress = 4: You have 4 coup progress ?][? if coup_progress = 5: You have 5 coup progress ?][? if coup_progress = 6: You have 6 coup progress ?][? if coup_progress = 7: You have 7 coup progress ?][? if coup_progress = 8: You have 8 coup progress, a coup is near ?][? if coup_progress = 9: You have 9 coup progress, a coup is imminent ?][? if coup_progress = 10: You have 10 coup progress, a coup is imminent ?]
+- @returnsandbox: return to sandbox menu
 
 @editdepression
 
