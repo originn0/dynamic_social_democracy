@@ -16,6 +16,8 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @snap_election
 - @disable_end: Disable End In 1934
 - @enable_end: Enable End In 1934
+- @free_agenda: clear your hand for free
+- @adopt_plan: Adopt any (or every) economic plan
 - @time_skip: Skip time 1 month at a time (doing it more than 1 motnh at a time may break the game)
 - @advisor_actions: Access options for advisors
 - @edit_hindenburg_angry: determines how angry hindenburg is at you
@@ -113,6 +115,41 @@ The end date has been enabled.
 @conciliators
 go-to: wels
 on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
+
+@free_agenda
+go-to: wels
+on-arrival: {!
+Q.advisor_action_timer = 6;
+if (Q.difficulty >= 0) {
+    window.dendryUI.dendryEngine.state.currentHands['main'] = [];
+} else {
+    window.dendryUI.dendryEngine.state.currentHands['main.main_easy'] = [];
+}
+!}
+
+@adopt_plan
+
+- @adopt_all: adopt every economic plan
+- @adopt_moderate: adopt the reformist plan
+- @adopt_wtb: adopt the WTB plan
+- @adopt_left: adopt the Left plan
+- @returnsandbox: return to sandbox
+
+@adopt_all
+go-to: wels
+on-arrival: moderate_plan_adopted = 1; nationalization_plan = 1; wtb_adopted = 1
+
+@adopt_moderate
+go-to: wels
+on-arrival: moderate_plan_adopted = 1
+
+@adopt_wtb
+go-to: wels
+on-arrival: nationalization_plan = 1
+
+@adopt_left
+go-to: wels
+on-arrival: wtb_adopted = 1
 
 @time_skip
 go-to: wels
