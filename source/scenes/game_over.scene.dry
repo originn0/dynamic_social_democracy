@@ -49,7 +49,7 @@ if (!dynamicMode && !historicalMode && Q.difficulty != 1) {
   }
 }
 
-if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
+if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1934 && Q.month > 7) || Q.year >= 1935)) {
   // Roter Zar von Preußen - At the end of the game, Otto Braun is president, chancellor, and minister-president of prussia at the same time.
   if (Q.president == 'Braun' && Q.chancellor == 'Braun' && Q.prussia_leader == "Braun") {
       this.achieve('red_tzar_of_prussia');
@@ -217,7 +217,7 @@ if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
       this.achieve('wahre_bundesrepublik');
   }
 
-  if (Q.kvp_r >= Q.dnvp_r && Q.kvp_formed && Q.kvp_r || Q.dnf_r >= Q.dnvp_r && Q.dnvp_ideology == "Moderate" && Q.dnf_r) {
+  if ((Q.kvp_r > Q.dnvp_r && Q.kvp_formed && Q.kvp_r && !Q.cvp_kvp_formed || Q.dnf_r > Q.dnvp_r && Q.dnvp_ideology == "Moderate" && Q.dnf_r) && !Q.cvp_formed) {
       this.achieve('das_blatt_hat_sich_gewendet');
   }
 
