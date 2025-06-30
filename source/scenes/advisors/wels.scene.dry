@@ -16,8 +16,8 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @snap_election
 - @disable_end: Disable End In 1934
 - @enable_end: Enable End In 1934
+- @time_skip: Skip time 1 month at a time (doing it more than 1 motnh at a time may break the game)
 - @advisor_actions: Access options for advisors
-- @all_acheivements: unlock all acheivements when you finish this game
 - @edit_hindenburg_angry: determines how angry hindenburg is at you
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
@@ -114,6 +114,10 @@ The end date has been enabled.
 go-to: wels
 on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
 
+@time_skip
+go-to: wels
+on-arrival: month_actions += 1
+
 @advisor_actions
 
 - @nowait: make the advisor actions ready again
@@ -126,35 +130,6 @@ on-arrival: advisor_action_timer = 0
 
 @placeholder
 go-to: wels
-
-@all_acheivements
-go-to: wels
-on-arrival: {!
-if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
-    this.achieve('red_tzar_of_prussia');
-    this.achieve('civil_war');
-    this.achieve('victory_for_the_republic');
-    this.achieve('wirtschaftswunder');
-    this.achieve('bollwerk_der_demokratie');
-    this.achieve('hirschfeld');
-    this.achieve('equality');
-    this.achieve('sohn_seiner_klasse');
-    this.achieve('panik_im_mittelstand');
-    this.achieve('bauernrevolution');
-    this.achieve('katholischer_sozialismus');
-    this.achieve('klassenkampf');
-    this.achieve('grosse_volkspartei');
-    this.achieve('raterepublik');
-    this.achieve("polykrise");
-    this.achieve("wirtschaftsexperiment");
-    this.achieve("syndikalismus");
-    this.achieve('stolperstein');
-    this.achieve('heidelberger_programm');
-    this.achieve('traumteam');
-    this.achieve('ldp');
-    this.achieve('der_grosse_neustart');
-}
-!}
 
 @edit_hindenburg_angry
 
