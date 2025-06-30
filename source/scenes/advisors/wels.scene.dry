@@ -17,6 +17,7 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @disable_end: Disable End In 1934
 - @enable_end: Enable End In 1934
 - @advisor_actions: Access options for advisors
+- @all_acheivements: unlock all acheivements when you finish this game
 - @edit_hindenburg_angry: determines how angry hindenburg is at you
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
@@ -125,6 +126,32 @@ on-arrival: advisor_action_timer = 0
 
 @placeholder
 go-to: wels
+
+@all_acheivements
+go-to: wels
+on-arrival: if (Q.dynamic_mode || Q.historical_mode || Q.diffculty == 1) {
+    this.achieve('red_tzar_of_prussia');
+    this.achieve('civil_war');
+    this.achieve('victory_for_the_republic');
+    this.achieve('wirtschaftswunder');
+    this.achieve('bollwerk_der_demokratie');
+    this.achieve('hirschfeld');
+    this.achieve('equality');
+    this.achieve('sohn_seiner_klasse');
+    this.achieve('panik_im_mittelstand');
+    this.achieve('bauernrevolution');
+    this.achieve('katholischer_sozialismus');
+    this.achieve('klassenkampf');
+    this.achieve('grosse_volkspartei');
+    this.achieve('raterepublik');
+    this.achieve("polykrise");
+    this.achieve("wirtschaftsexperiment");
+    this.achieve("syndikalismus");
+    this.achieve('stolperstein');
+    this.achieve('heidelberger_programm');
+    this.achieve('traumteam');
+    this.achieve('ldp');
+    this.achieve('der_grosse_neustart');
 
 @edit_hindenburg_angry
 
