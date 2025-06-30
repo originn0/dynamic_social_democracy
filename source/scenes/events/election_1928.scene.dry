@@ -2178,7 +2178,7 @@ There are enough votes for the <span style="color: #7A3C00;">Nazis</span> and th
 @far_right_win
 on-arrival: chancellor = nsdap_chancellor; chancellor_party = "NSDAP"
 
-[? if president == "Hindenburg" : President Hindenburg's camarilla ?][? if president == "Braun" : President Braun somehow ?] has decided that [+ nsdap_leader +] must be chancellor [? if president == "Hindenburg": , and the aging president accepts their recommendations. ?][? if president == "Braun" : because it is what the constitution would stipulate. ?]
+[? if president == "Hindenburg" : President Hindenburg's camarilla ?][? if president != "Hindenburg" and president != "Braun": President [+ president +] ?][? if president == "Braun" : President Braun somehow ?] has decided that [+ nsdap_leader +] must be chancellor [? if president == "Hindenburg": , and the aging president accepts their recommendations. ?][? if president != "Hindenburg" : because it is what the constitution would stipulate. ?]
 
 - @hitler_takes_power: What do we do now?
 

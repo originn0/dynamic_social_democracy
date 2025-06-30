@@ -639,11 +639,11 @@ Results:
 
 <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span> - [+ nsdap_presidential_votes_disp +]%
 
-[? if kpd_support_spd == 0 : <span style="color: #700000;">**[+ communist_candidate_1932 +]**</span> - [+ thalmann_votes_disp +]% ?]
+[? if not kpd_support_spd : <span style="color: #700000;">**[+ communist_candidate_1932 +]**</span> - [+ thalmann_votes_disp +]% ?]
 
 [? if spd_campaign > 0 : [? if spd_candidate_1932 != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span>?][? if spd_candidate_1932 == "Eckener": <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>?] - [+ spd_president_votes_disp +]% ?]
 
-[? if thalmann_votes_rnd_1 > thalmann_votes + 2: The decline of [+ communist_candidate_1932 +]'s vote share is largely attributed to the futility of his campaign, with estimates suggesting that a significant portion of his former voters have either defected to [+ nsdap_candidate_1932 +] or abstained from the second round. The <span style="color: #700000;">**Communist**</span> camp is overcome with resignation, as this outcome suggests that the German masses are still far from ready for the revolutionary assault against capitalism that he and his party’s leadership had been preparing for. ?]
+[? if thalmann_votes_rnd_1 > thalmann_votes + 2 and not kpd_support_spd: The decline of [+ communist_candidate_1932 +]'s vote share is largely attributed to the futility of his campaign, with estimates suggesting that a significant portion of his former voters have either defected to [+ nsdap_candidate_1932 +] or abstained from the second round. The <span style="color: #700000;">**Communist**</span> camp is overcome with resignation, as this outcome suggests that the German masses are still far from ready for the revolutionary assault against capitalism that he and his party’s leadership had been preparing for. ?]
 
 [? if hindenburg_run and not hitler_support_hindenburg: It is seen that [+ nsdap_candidate_1932 +] was the one to benefit from [+ dnvp_candidate_1932 +]'s withdrawal, rather than [+ reactionary_candidate_1932 +], having garnered 60% of his former voters. Even if [+ nsdap_candidate_1932 +] doesn't win, the destruction of the parties between the <span style="color: #7A3C00;">**NSDAP**</span> and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] will have drastic consequences for German democracy. ?]
 

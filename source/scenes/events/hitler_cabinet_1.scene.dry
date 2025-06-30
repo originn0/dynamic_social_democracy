@@ -29,7 +29,7 @@ However, this is not something the [? if z_party_name != "CVP": <span style="col
 title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] votes in favor.
 view-if: (z_in_gov_mini and pro_republic < 30) or far_right_coalition >= 50
 
-[+ z_leader +] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. It proves meaningless—[+ chancellor +] never intended to honor them.
+[? if not cvp_formed: [+ z_leader +]?][? if cvp_formed: [+ cvp_formed +]?] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. It proves meaningless—[+ chancellor +] never intended to honor them.
 
 Hitler has promised a campaign of revenge against the <span style="color: #c00000;">socialists</span>, and the <span style="color: #7A3C00;">Nazis</span> have already spilled much blood on the streets. In his published manifesto, he promises a campaign of <span style="color: #7e0000;">**unspeakable**</span> <span style="color: #3f0000;">**horror**</span> against our <span style="color: #005EB8;">Jews</span>, and endless wars of violent expansion that will ruin all of Europe.
 
@@ -60,7 +60,7 @@ title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Par
 view-if: (not z_in_gov_mini or pro_republic >= 30) and far_right_coalition < 50
 on-arrival: rubicon_mini = 0; rubicon_mini_leave = 1
 
-[+ z_leader +] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. [+ z_leader +] is able to see through these lies, and whips the party's parliamentary delegation to vote against the Enabling Act. 
+[? if not cvp_formed: [+ z_leader +]?][? if cvp_formed: [+ cvp_formed +]?] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. [? if not cvp_formed: [+ z_leader +]?][? if cvp_formed: [+ cvp_formed +]?] is able to see through these lies, and whips the party's parliamentary delegation to vote against the Enabling Act. 
 
 Schleicher regards this development as a betrayal, yet his options are limited. President Hindenburg remains the true deciding factor. He now views the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]’s refusal to support [+ chancellor +] has only deepened his impatience. Disillusioned, Hindenburg no longer considers [+ chancellor +]’s ambition to lead as a parliamentary chancellor to be credible.
 

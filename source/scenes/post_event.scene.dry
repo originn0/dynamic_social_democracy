@@ -4168,6 +4168,17 @@ if (Q.president == "Hindenburg" && Q.chancellor == "Goerdeler" && !Q.spd_in_gove
 
 if (Q.rubicon_mini) Q.rubicon_mini_time += 1;
 
+if (Q.president != "Hindenburg" && Q.total_bruning_time && Q.chancellor == "Brüning" && !Q.spd_in_government && Q.year >= 1930) {
+    Q.bruning_lite_time += Q.bruning_time;
+    Q.bruning_time = 0;
+    Q.bruning_toleration_lite_time += Q.bruning_toleration_time;
+    Q.bruning_toleration_time = 0;
+    Q.total_bruning_lite_time += Q.total_bruning_time;
+    Q.total_bruning_time = 0;
+    Q.total_bruning_toleration_lite_time += Q.total_bruning_toleration_time;
+    Q.total_bruning_toleration_time = 0;
+}
+
 if (Q.president == "Hindenburg" && Q.chancellor == "Brüning" && !Q.spd_in_government && Q.year >= 1930) {
     if (Q.spd_toleration) {
         Q.bruning_toleration_time += 1; 
@@ -4183,9 +4194,22 @@ if (Q.president == "Hindenburg" && Q.chancellor == "Brüning" && !Q.spd_in_gover
     if (Q.kvp_formed) Q.bruning_coalition += Q.kvp_r;
     if (Q.dnvp_ideology == "Moderate") Q.bruning_coalition = Q.cordon_sanitaire;
     Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;
+} else if (Q.president != "Hindenburg" && Q.chancellor == "Brüning" && !Q.spd_in_government && Q.year >= 1930) {
+    if (Q.spd_toleration) {
+        Q.bruning_toleration_lite_time += 1; 
+        Q.total_bruning_toleration_lite_time += 1; 
+        Q.left_dissent += 0.5;
+        Q.ddp_cohesion -= 0.25;
+    } else if (!Q.spd_toleration) {
+        Q.bruning_toleration_lite_time = 0;
+    }
+    Q.bruning_lite_time += 1;
+    Q.total_bruning_lite_time += 1;
 } else {
     Q.bruning_toleration_time = 0;
     Q.bruning_time = 0;
+    Q.bruning_toleration_lite_time = 0;
+    Q.bruning_lite_time = 0;
 }
 
 if (!Q.spd_toleration) {
@@ -4300,6 +4324,7 @@ if (!Q.nazi_peak_triggered && !Q.rubicon) {
     } else if (Q.year >= 1934) {
         Q.nazi_peak -= 15;
     }
+    if (Q.hitler_mode) Q.nazi_peak = 100;
 }   
 if (Q.nsdap_votes >= Q.nazi_peak && !Q.nazi_peak_triggered && Q.nsdap_votes >= 22 && !Q.rubicon) {
     Q.nazi_peak_triggered = 1;
