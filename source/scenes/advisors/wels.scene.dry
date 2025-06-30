@@ -129,7 +129,8 @@ go-to: wels
 
 @all_acheivements
 go-to: wels
-on-arrival: if (Q.dynamic_mode || Q.historical_mode || Q.diffculty == 1) {
+on-arrival: {!
+if (Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) {
     this.achieve('red_tzar_of_prussia');
     this.achieve('civil_war');
     this.achieve('victory_for_the_republic');
@@ -153,6 +154,7 @@ on-arrival: if (Q.dynamic_mode || Q.historical_mode || Q.diffculty == 1) {
     this.achieve('ldp');
     this.achieve('der_grosse_neustart');
 }
+!}
 
 @edit_hindenburg_angry
 
