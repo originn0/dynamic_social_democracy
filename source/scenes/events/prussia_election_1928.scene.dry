@@ -196,10 +196,10 @@ for (var party of Q.parties) {
     Q['old_' + party + '_r_prussia'] = Q[party + '_r_prussia']; // Store the original r value for comparison
 
     // Handle constitutional reform logic: set the party's share to 0 based on conditions
-    if (Q.constitutional_reform_prussia > 0 &&
-        (Q[party + '_votes_prussia'] < Q.electoral_threshold_prussia ||
-            (Q.electoral_threshold_prussia > 1 && party === 'other') ||
-            Q[party + '_banned_prussia'])) {
+    if ((Q.constitutional_reform > 0 &&
+             (Q[party + '_votes_prussia'] < Q.electoral_threshold || 
+             (Q.electoral_threshold > 1 && party === 'other'))) 
+            || Q[party + '_banned']) {
         Q[party + '_r_prussia'] = 0;
     } else {
         // Adjust `r` based on the adjustment factor if not affected by constitutional reform
@@ -227,14 +227,17 @@ if (new_party_sum_prussia > 0) {
     for (var party of Q.parties) {
         let factor_prussia = Q['adjustmentFactors_' + party + '_prussia'] || 1.0;
 
+        if (Q[party + '_r_prussia'] === 0) continue;
+
         var total_reichstag_without_party_prussia = total_reichstag_without_prussia - (100 - Q['original_' + party + '_r_prussia']);
-        var total_other_party_sum_party_prussia = total_other_party_sum_prussia -
-            (Q['reichstag_without_' + party + '_prussia'] -
-                (Q[party + '_votes_prussia'] - Q[party + '_r_prussia']));
+        var total_other_party_sum_party_prussia = total_other_party_sum_prussia - (Q['reichstag_without_' + party + '_prussia'] - (Q[party + '_votes_prussia'] - Q[party + '_r_prussia']));
 
         if (factor_prussia === 1.0) {
-            // Calculate the new `r` value for non-adjusted parties
-            Q[party + '_r_prussia'] = Math.round((Q[party + '_r_prussia'] * total_reichstag_without_prussia) / total_other_party_sum_prussia * 10) / 10;
+            if (total_other_party_sum_prussia > 0) {
+                Q[party + '_r_prussia'] = Math.round((Q[party + '_r_prussia'] * total_reichstag_without_prussia) / total_other_party_sum_prussia * 10) / 10;
+            } else {
+                Q[party + '_r_prussia'] = Q[party + '_r_prussia'];
+            }
         } else if (factor_prussia !== 1.0 && total_reichstag_without_party_prussia > 0 && total_other_party_sum_party_prussia > 0) {
             let scaling_factor_prussia = total_reichstag_without_party_prussia / total_other_party_sum_party_prussia;
             Q[party + '_r_prussia'] = Math.round(Q[party + '_r_prussia'] * scaling_factor_prussia * 10) / 10;
@@ -251,9 +254,11 @@ if (new_party_sum_prussia > 0) {
 
     // Adjust each party's `r` value proportionally if the total isn't 100
     if (total_r_sum_prussia !== 100) {
-        let normalization_factor_prussia = 100 / total_r_sum_prussia; // Scale to match 100%
+        let normalization_factor_prussia = 100 / total_r_sum_prussia;
         for (var party of Q.parties) {
-            Q[party + '_r_prussia'] = Math.round(Q[party + '_r_prussia'] * normalization_factor_prussia * 10) / 10;
+            if (Q[party + '_r_prussia'] > 0) {
+                Q[party + '_r_prussia'] = Math.round(Q[party + '_r_prussia'] * normalization_factor_prussia * 10) / 10;
+            }
         }
     }
 }
@@ -376,12 +381,12 @@ if (Q.nsdap_split) {
     }
     if (Q.dsu_exist) {
         Q.str_votes_change_dsu_prussia = Q.dsu_votes_prussia - Q.previous_dsu_last_election_votes_prussia;
-        var sign2 = Q.str_votes_change_dsu > 0 ?
+        var sign2 = Q.str_votes_change_dsu_prussia > 0 ?
             '<img src="img/arrowup.png"> ' :
-            Q.str_votes_change_dsu < 0 ?
+            Q.str_votes_change_dsu_prussia < 0 ?
             '<img src="img/arrowdown.png"> ' :
             '<img src="img/steady.png"> ';
-        Q.str_votes_change_dsu = sign2 + Math.abs(Q.str_votes_change_dsu).toFixed(1);
+        Q.str_votes_change_dsu_prussia = sign2 + Math.abs(Q.str_votes_change_dsu_prussia).toFixed(1);
 
         Q.str_change_dsu_prussia = Q.dsu_r_prussia - Q.old_dsu_r_prussia;
         var sign2 = Q.str_change_dsu_prussia > 0 ?

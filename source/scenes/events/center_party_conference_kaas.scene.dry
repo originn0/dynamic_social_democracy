@@ -37,7 +37,7 @@ Despite pleads from his party members and colleagues, Kaas has officially resign
 
 @joos
 subtitle: Joos is part of the Catholic worker groups, and the current deputy leader of the party responsible for organizational work.
-unavailable-subtitle: Our relations are not good enough.
+unavailable-subtitle: [? if z_relation < 70: Our relations are not good enough. ?][? if bruning_unlock: Brüning is able to overshadow Joos due to his status as Chancellor. ?][? if stegerwald_unlock: Stegerwald is able to secure the votes of the party's workers. ?]
 choose-if: joos_unlock
 on-arrival: z_leader = "Joos"; catholics_z -= 5; catholics_dvp += 3; catholics_lvp += 3; catholics_dnvp += 3 if dnvp_ideology == "Moderate"; catholics_spd += 5; workers_z += 5; z_relation += 10; zentrum_disintegration += 1; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; lvp_left += 1; fake_joos = 1
 face-image: img/portraits/Joseph_Joos.jpg
