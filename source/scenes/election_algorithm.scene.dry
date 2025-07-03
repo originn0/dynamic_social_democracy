@@ -85,10 +85,10 @@ for (var party of Q.parties) {
     if (party == "nsdap" && Q.nsdap_split) {
         Q.nsdap_hitler_normalized = Q.nsdap_hitler_support / total_support;
         Q.dsu_normalized = Q.dsu_support / total_support;
-        Q.nvf_normalized = Q.nvf_support / total_support;
+        if (Q.nvf_exist) Q.nvf_normalized = Q.nvf_support / total_support;
         Q.nsdap_hitler_votes = Math.round(Q.nsdap_hitler_normalized*1000) / 10;
         Q.dsu_votes = Math.round(Q.dsu_normalized*1000) / 10;
-        Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
+        if (Q.nvf_exist) Q.nvf_votes = Math.round(Q.nvf_normalized*1000) / 10;
     }
     Q[party+'_votes'] = Math.round(Q[party+'_normalized']*1000)/ 10;
     if (party == "other") {

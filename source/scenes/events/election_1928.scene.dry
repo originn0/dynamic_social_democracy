@@ -342,7 +342,6 @@ on-arrival: {!
              (Q.electoral_threshold > 1 && party === 'other'))) 
             || Q[party + '_banned']) {
             Q[party + '_r'] = 0;
-        
         } else {
             // Adjust `r` based on the adjustment factor if not affected by constitutional reform
             Q['original_' + party + '_r'] = Math.round(Q[party + '_votes'] * 10) / 10;
