@@ -65,19 +65,24 @@ What do the three arrows stand for?
 - @all: All of the above.
 
 @unity
+on-arrival: left_dissent -= 5 if expansion = 1; center_dissent -= 5 if expansion = 1; labor_dissent -= 5 if expansion = 1; reformist_dissent -= 5 if expansion = 1;
 go-to: if_end
 
 @anti
+on-arrival: z_relation += 7 if expansion = 1; ddp_relation += 7 if expansion = 1;
 go-to: if_end
 
 @orgs
+on-arrival: workers_spd += 3*(1-dissent) if expansion = 1; labor_strength += 5 if expansion = 1; rb_militancy += 0.03 if expansion = 1;
 go-to: if_end
 
 @wtb
+on-arrival: workers_spd += 2*(1-dissent) if expansion = 1; unemployed_spd += 2*(1-dissent) if expansion = 1 and works_program >= 1;
 view-if: wtb_adopted == 1
 go-to: if_end
 
 @all
+on-arrival: neorevisionist_dissent -= (workers_spd/10) if expansion = 1;
 go-to: if_end
 
 @if_end
