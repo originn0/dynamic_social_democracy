@@ -10,8 +10,20 @@ go-to: sandbox_menu
 
 - @disable_end: Disable End In 1934
 - @enable_end: Enable End In 1934
+- @free_agenda: clear your hand for free
+- @adopt_plan: Adopt any (or every) economic plan
+- @time_skip: Skip time 1 month at a time (doing it more than 1 month at a time may break the game)
+- @advisor_actions: Access options for advisors
+- @edit_hindenburg_angry: determines how angry hindenburg is at you
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
+- @editleftright: Edit Left/Right value of the DDP/DVP/LVP
+- @editcoaldissent: Edit Coalition Dissent
+- @editstrife: Edit Strife (Maxing this lets you expand the reichsbanner without the center and liberal parties complaining)
+- @editcapitalstrike: Edit how close or far you are to a capital strike
+- @editcoupprogress: Edit how close or far you are to a coup
+- @editdepression: Edit Inflation, Unemployment, and Economic Growth
+- @conciliators: MAKE SURE TO KEEP KPD RELATION ABOVE NEUTRAL AND LEFTIST STRENGTH ABOVE REFORM STRENGTH UNTIL THE EVENT FIRES IN JUNE (JULY?) 1929
 - @editrelations: Edit Party Relations
 - @editpartysupport: Edit Party Support
 - @miscparty: Miscellaneous Party Options
@@ -23,20 +35,271 @@ go-to: sandbox_menu
 - @editironfront: Edit Iron Front
 - @editparamilitary: Edit Paramilitary Groups
 - @editreichswehr: Edit Reichswehr and Police
+- @root: Return to main
 
 @disable_end
 view-if: end_disabled != 1
 on-arrival: end_disabled = 1
-go-to: sandbox_menu
+go-to: breitscheid
 
 The end date has been disabled.
 
 @enable_end
 view-if: end_disabled = 1
 on-arrival: end_disabled = 0
-go-to: sandbox_menu
+go-to: breitscheid
 
 The end date has been enabled.
+
+@conciliators
+go-to: breitscheid
+on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
+
+@free_agenda
+go-to: breitscheid
+on-arrival: {!
+Q.advisor_action_timer = 6;
+if (Q.difficulty >= 0) {
+    window.dendryUI.dendryEngine.state.currentHands['main'] = [];
+} else {
+    window.dendryUI.dendryEngine.state.currentHands['main.main_easy'] = [];
+}
+!}
+
+@adopt_plan
+
+- @adopt_all: adopt every economic plan
+- @adopt_moderate: adopt the reformist plan
+- @adopt_wtb: adopt the WTB plan
+- @adopt_left: adopt the Left plan
+- @returnsandbox: return to sandbox
+
+@adopt_all
+go-to: breitscheid
+on-arrival: moderate_plan_adopted = 1; nationalization_plan = 1; wtb_adopted = 1
+
+@adopt_moderate
+go-to: breitscheid
+on-arrival: moderate_plan_adopted = 1
+
+@adopt_wtb
+go-to: breitscheid
+on-arrival: nationalization_plan = 1
+
+@adopt_left
+go-to: breitscheid
+on-arrival: wtb_adopted = 1
+
+@time_skip
+go-to: breitscheid
+on-arrival: month_actions += 1
+
+@advisor_actions
+
+- @nowait: make the advisor actions ready again
+- @placeholder: place holder for when I add all the advisor actions here, for no cost whatsoever
+- @returnsandbox: return to sandbox
+
+@nowait
+go-to: breitscheid
+on-arrival: advisor_action_timer = 0
+
+@placeholder
+go-to: breitscheid
+
+@edit_hindenburg_angry
+
+- @maxangry: Hindenburg crashes out
+- @noangry: Hindenburg loves you
+- @raiseangry: Hindenburg is starting to get a little angry
+- @lowerangry: Hindenburg is getting a little less angry
+
+@maxangry
+go-to: breitscheid
+on-arrival: hindenburg_angry = 120
+
+@noangry
+go-to: breitscheid
+on-arrival: hindenburg_angry = 0
+
+@raiseangry
+go-to: breitscheid
+on-arrival: hindenburg_angry += 5
+
+@lowerangry
+go-to: breitscheid
+on-arrival: hindenburg_angry -= 5
+
+@editcoaldissent
+
+- @maxcoaldissent: Raise Coalition Dissent to Very High
+- @removecoaldissent: Lower Coalition Dissent to Very Low
+- @raisecoaldissent: Raise Coalition Dissent by 1 step
+- @lowercoaldissent: Lower Coalition Dissent by 1 step
+
+@maxcoaldissent
+go-to: breitscheid
+on-arrival: coalition_dissent += 5
+
+@removecoaldissent
+go-to: breitscheid
+on-arrival: coalition_dissent = 0
+
+@raisecoaldissent
+go-to: breitscheid
+on-arrival: coalition_dissent += 1
+
+@lowercoaldissent
+go-to: breitscheid
+on-arrival: coalition_dissent -= 1
+
+@editstrife
+
+- @maxstrife: adds lots of strife
+- @nostrife: removes all strikfe
+- @raisestrife: raises Strife by 1
+- @lowerstrife: lowers Strife by 1
+- @returnsandbox: return to sandbox
+
+@maxstrife
+go-to: breitscheid
+on-arrival: strife += 20
+
+@nostrife
+go-to: breitscheid
+on-arrival: strife = 0
+
+@raisestrife
+go-to: breitscheid
+on-arrival: strife += 1
+
+@lowerstrife
+go-to: breitscheid
+on-arrival: strife -= 1
+
+@editcapitalstrike
+
+- @maxcapstrike: Force the Capital Strike event to happen
+- @nocapstrike: Remove all progression to the Capital Strike event
+- @raisecapstrike: Raise the progression to the Capital Strike event by 1
+- @lowercapstrike: Lower the progression to the Capital Strike event by 1
+- @capstrikequery: How much progress do I have?
+- @returnsandbox: Return to sandbox menu
+
+@maxcapstrike
+go-to: breitscheid
+on-arrival: capital_strike_progress += 11
+
+@nocapstrike
+go-to: breitscheid
+on-arrival: capital_strike_progress = 0
+
+@raisecapstrike
+go-to: breitscheid
+on-arrival: capital_strike_progress += 1
+
+@lowercapstrike
+go-to: breitscheid
+on-arrival: capital_strike_progress -= 1
+
+@capstrikequery
+
+[? if capital_strike_progress = 0: you have 0 capital strike progress ?][? if capital_strike__progress = 1: You have 1 capital strike progress ?][? if capital_strike__progress = 2: You have 2 capital strike progress ?][? if capital_strike__progress = 3: You have 3 capital strike progress ?][? if capital_strike__progress = 4: You have 4 capital strike progress ?][? if capital_strike_progress = 5: You have 5 capital strike progress ?][? if capital_strike_progress = 6: You have 6 capital strike progress ?][? if capital_strike_progress = 7: You have 7 capital strike progress ?][? if capital_strike__progress = 8: You have 8 capital strike progress, a capital strike is near ?][? if capital_strike__progress = 9: You have 9 capital strike progress, a capital strike is imminent ?][? if capital_strike_progress = 10: You have 10 capital strike progress, a capital strike is imminent ?]
+- @returnsandbox: return to sandbox
+
+@editcoupprogress
+
+- @maxcoupprog: Force the Coup event to happen (must be atleast 1930 and the SA and Stahlhelm to not be banned)
+- @nocoupprog: Remove all progress to the Coup event
+- @raisecoupprog: Raise the progress to the Coup event by 1
+- @lowercoupprog: Lower the progress to the Coup event by 1
+- @querycoup: How much coup progress do I have?
+- @returnsandbox: Return to sandbox
+
+@maxcoupprog
+go-to: breitscheid
+on-arrival: coup_progress += 10
+
+@nocoupprog
+go-to: breitscheid
+on-arrival: coup_progress = 0
+
+@raisecoupprog
+go-to: breitscheid
+on-arrival: coup_progress += 1
+
+@lowercoupprog
+go-to: breitscheid
+on-arrival: coup_progress -= 1
+
+@querycoup
+
+[? if coup_progress = 0: You have 0 coup progress ?][? if coup_progress = 1: You have 1 coup progress ?][? if coup_progress = 2: You have 2 coup progress ?][? if coup_progress = 3: You have 3 coup progress ?][? if coup_progress = 4: You have 4 coup progress ?][? if coup_progress = 5: You have 5 coup progress ?][? if coup_progress = 6: You have 6 coup progress ?][? if coup_progress = 7: You have 7 coup progress ?][? if coup_progress = 8: You have 8 coup progress, a coup is near ?][? if coup_progress = 9: You have 9 coup progress, a coup is imminent ?][? if coup_progress = 10: You have 10 coup progress, a coup is imminent ?]
+- @returnsandbox: return to sandbox menu
+
+@editdepression
+
+- @add1inflation: Raise inflation by 1
+- @remove1inflation: Lower inflation by 1
+- @add1unemployed: Raise unemployment by 1
+- @remove1unemployed: Lower unemployment by 1
+- @add1ecogrow: Raise economic growth by 1
+- @remove1ecogrow: Lower economic growth by 1
+- @add10inflation: Raise inflation by 10
+- @remove10inflation: Lower inflation by 10
+- @add10unemployed: Raise unemployment by 10
+- @remove10unemployed: Lower unemployment by 10
+- @add10ecogrow: Raise economic growth by 10
+- @remove10ecogrow: Lower economic growth by 10
+- @returnsandbox: return to sandbox menu
+
+@add1inflation
+go-to: breitscheid
+on-arrival: inflation += 1
+
+@remove1inflation
+go-to: breitscheid
+on-arrival: inflation -= 1
+
+@add1unemployed
+go-to: breitscheid
+on-arrival: unemployed += 1
+
+@remove1unemployed
+go-to: breitscheid
+on-arrival: unemployed -= 1
+
+@add1ecogrow
+go-to: breitscheid
+on-arrival: economic_growth += 1
+
+@remove1ecogrow
+go-to: breitscheid
+on-arrival: economic_growth -= 1
+
+@add10inflation
+go-to: breitscheid
+on-arrival: inflation += 10
+
+@remove10inflation
+go-to: breitscheid
+on-arrival: inflation -= 10
+
+@add10unemployed
+go-to: breitscheid
+on-arrival: unemployed += 10
+
+@remove10unemployed
+go-to: breitscheid
+on-arrival: unemployed -= 10
+
+@add10ecogrow
+go-to: breitscheid
+on-arrival: economic_growth += 10
+
+@remove10ecogrow
+go-to: breitscheid
+on-arrival: economic_growth -= 10
 
 @editresources
 
@@ -49,7 +312,7 @@ The end date has been enabled.
 - @returnsandbox: Return To Sandbox
 
 @add10resources
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.resources += 10;
 !}
@@ -57,7 +320,7 @@ Q.resources += 10;
 Added 10 resources to the party's stockpile.
 
 @add20resources
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.resources += 20;
 !}
@@ -65,7 +328,7 @@ Q.resources += 20;
 Added 20 resources to the party's stockpile.
 
 @add100resources
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.resources += 100;
 !}
@@ -73,7 +336,7 @@ Q.resources += 100;
 Added 100 resources to the party's stockpile, stop being greedy.
 
 @subtract10resources
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.resources -= 10;
 !}
@@ -81,7 +344,7 @@ Q.resources -= 10;
 Removed 10 resources from the party's stockpile.
 
 @subtract20resources
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.resources -= 20;
 !}
@@ -89,7 +352,7 @@ Q.resources -= 20;
 Removed 20 resources from the party's stockpile.
 
 @subtract100resources
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.resources -= 100;
 !}
@@ -107,7 +370,7 @@ Removed 100 resources from the party's stockpile. This doesn't go to the homeles
 - @returnsandbox: Return To Sandbox
 
 @add10budget
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.budget += 10;
 !}
@@ -115,7 +378,7 @@ Q.budget += 10;
 Added 10 budget to the country's stockpile.
 
 @add20budget
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.budget += 20;
 !}
@@ -123,7 +386,7 @@ Q.budget += 20;
 Added 20 budget to the country's stockpile.
 
 @add100budget
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.budget += 100;
 !}
@@ -131,7 +394,7 @@ Q.budget += 100;
 Added 100 budget to the country's stockpile, stop being greedy.
 
 @subtract10budget
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.budget -= 10;
 !}
@@ -139,7 +402,7 @@ Q.budget -= 10;
 Removed 10 budget from the country's stockpile.
 
 @subtract20budget
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.budget -= 20;
 !}
@@ -147,12 +410,46 @@ Q.budget -= 20;
 Removed 20 budget from the country's stockpile.
 
 @subtract100budget
-go-to: sandbox_menu
+go-to: breitscheid
 on-arrival: {!
 Q.budget -= 100;
 !}
 
 Removed 100 budget from the country's stockpile. This doesn't go to the homeless or anything, why would you do this?
+
+@editleftright
+
+- @lvpleft: Increase LVP Leftism
+- @lvpright: Increase LVP Rightism
+- @ddpleft: Increase DDP Leftism
+- @ddpright: Increase DDP Rightism
+- @dvpleft: Increase DVP Leftism
+- @dvpright: Increase DVP Rightism
+- @returnsandbox: return to sandbox
+
+@lvpleft
+go-to: editleftright
+on-arrival: lvp_left += 1;
+
+@lvpright
+go-to: editleftright
+on-arrival: lvp_right += 1;
+
+@ddpleft
+go-to: editleftright
+on-arrival: ddp_left += 1;
+
+@ddpright
+go-to: editleftright
+on-arrival: ddp_right += 1;
+
+@dvpleft
+go-to: editleftright
+on-arrival: dvp_left += 1;
+
+@dvpright
+go-to: editleftright
+on-arrival: dvp_right += 1;
 
 @editrelations
 
@@ -162,6 +459,8 @@ Removed 100 budget from the country's stockpile. This doesn't go to the homeless
 - @decreasekpdrel: Decrease Relations With The KPD
 - @increaseddprel: Increase Relations With The DDP/DStP
 - @decreaseddprel: Decrease Relations With The DDP/DStP
+- @increaselvprel: Increase Relations With The LVP
+- @decreaselvprel: Decrease Relations With The LVP
 - @increasedvprel: Increase Relations With The DVP
 - @decreasedvprel: Decrease Relations With The DVP
 - @increasednvprel: Increase Relations With The DNVP (Doesn't Work)
@@ -169,6 +468,18 @@ Removed 100 budget from the country's stockpile. This doesn't go to the homeless
 - @increasensdaprel: Increase Relations With The NSDAP (Doesn't Work)
 - @decreasensdaprel: Decrease Relations With The NSDAP (Doesn't Work)
 - @returnsandbox: Return To Sandbox Menu
+
+@increaselvprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation += 15;
+!}
+
+@decreaselvprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation += 15;
+!}
 
 @increasecenterrel
 go-to: editrelations
@@ -655,7 +966,7 @@ Q.neorevisionist_strength = 0;
 Removed all neorevisionist strength.
 
 @returnsandbox
-go-to: sandbox_menu
+go-to: breitscheid
 
 @editironfront
 
