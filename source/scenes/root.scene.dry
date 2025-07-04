@@ -10,10 +10,17 @@ go-to: start_menu_2
 
 @start_menu_2
 
+- @redirect: IF YOU DON'T SEE THE SANDBOX TAB BESIDE LIBRARY AND OPTIONS, CLICK HERE
 - @start_1: Start game
 - @modinfo: Mod Info
 - @credits: Credits
 - @game_over.achievements
+
+@redirect
+subtitle: The sandbox menu does not load from the mod menu, click to be redirected to the correct page.
+on-arrival: {!
+window.top.location.replace("https://tn296modding.github.io/Dynamic-Cheat/");
+!}
 
 @start_1
 on-arrival: player_beg = 1 if not achievement_game_completed
