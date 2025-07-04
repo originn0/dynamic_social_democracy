@@ -18,6 +18,7 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 - @rural: Rural workers and small farmers, who have felt neglected by us in the past.
 - @unemployed: The unemployed.
 - @catholics: Catholics, who typically support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+- @all: We will campaign in all voting blocs, but as we have to split resources between all of them, the campaign will be less effective. Additionally, certain voting blocs may only be open to voting us if certain requirements are met
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
 
@@ -66,6 +67,15 @@ subtitle: -1 resources
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 view-if: peoples_party == 1
-on-arrival: catholics_spd += 6*(1-dissent); resources -= 1
+on-arrival: catholics_spd += 6*(1-dissent); if expansion = 1: catholics_spd += 2*(1-dissent) if reichskonkordat = 1; resources -= 1
 
 We have increased our campaigning among Catholics.
+
+@all
+subtitle: -1 resources
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources
+view-if: expansion = 1
+on-arrival: catholics_spd += 1*(1-dissent); resources -= 1; unemployed_spd += 1*(1-dissent); rural_spd += 1*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 1*(1-dissent); workers_spd += 1*(1-dissent); catholics_spd += 2*(1-dissent) if reichskonkordat = 1; catholics_spd -= 1 if homoseuxal_rights >= 1; rural_spd += 2*(1-dissent) if rural_policy >= 2; unemployed_spd += 1*(1-dissent) if welfare >= 0; unemployed_spd += works_program; old_middle_spd += 1*(1-dissent) if peoples_party > 0; new_middle_spd += 1*(1-dissent) if peoples_party >0; workers_spd += 1*(1-dissent) if welfare >= 1; workers_spd += 1*(1-dissent) if works_program >= 1;
+
+We have increased our campaign among all voting blocs [? if reichskonkordat = 1: Our campign among Catholics is made more effective by us forming the Reichskonkordat ?][? if homosexual_rights >= 1: Our campaign among Catholics is made less effective by us reforming the laws against <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">als</span> ?][? if rural_policy >= 2: Our progress in the <span style="color: green;"Rural</span> Ministry has made us more popular among <span style="color: green;"Rural</span> voters ?][? if welfare >= 0: Our campaign among the unemployed is improved by our healthy welfare system ?][? if works_program >= 1: Our campaign among the unemployed and workers is improved by the institution of a works program ?][? if peoples_party > 1: Our campaign among the middle class is improved by us being a Peoples Party ?][? if welfare >= 1: Our campaign among the workers is improved by our healthy welfare system ?]
