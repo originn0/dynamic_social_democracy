@@ -10,20 +10,20 @@ go-to: sandbox_menu
 
 - @disable_end: Disable End In 1934
 - @enable_end: Enable End In 1934
-- @free_agenda: clear your hand for free
-- @adopt_plan: Adopt any (or every) economic plan
-- @time_skip: Skip time 1 month at a time (doing it more than 1 month at a time may break the game)
-- @advisor_actions: Access options for advisors
-- @edit_hindenburg_angry: determines how angry hindenburg is at you
+- @free_agenda: Clear Cards
+- @adopt_plan: Adopt Economic Plans
+- @time_skip: Skip One Month (More Than Once May Break Things)
+- @advisor_actions: Advisor Options
+- @edit_hindenburg_angry: Edit Hindenburg's Anger
 - @editresources: Edit Resources
 - @editbudget: Edit Budget
 - @editleftright: Edit Left/Right value of the DDP/DVP/LVP
 - @editcoaldissent: Edit Coalition Dissent
-- @editstrife: Edit Strife (Maxing this lets you expand the reichsbanner without the center and liberal parties complaining)
-- @editcapitalstrike: Edit how close or far you are to a capital strike
-- @editcoupprogress: Edit how close or far you are to a coup
+- @editstrife: Edit Strife (Ability To Expand Reichsbanner Without Coalition Anger)
+- @editcapitalstrike: Edit Capital Strikes
+- @editcoupprogress: Edit Coups
 - @editdepression: Edit Inflation, Unemployment, and Economic Growth
-- @conciliators: MAKE SURE TO KEEP KPD RELATION ABOVE NEUTRAL AND LEFTIST STRENGTH ABOVE REFORM STRENGTH UNTIL THE EVENT FIRES IN JUNE (JULY?) 1929
+- @conciliators: Activate Conciliators
 - @editrelations: Edit Party Relations
 - @editpartysupport: Edit Party Support
 - @miscparty: Miscellaneous Party Options
@@ -55,6 +55,8 @@ The end date has been enabled.
 go-to: sandbox_menu
 on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
 
+Activated Conciliators
+
 @free_agenda
 go-to: sandbox_menu
 on-arrival: {!
@@ -66,69 +68,94 @@ if (Q.difficulty >= 0) {
 }
 !}
 
+Cleared Hand
+
 @adopt_plan
 
-- @adopt_all: adopt every economic plan
-- @adopt_moderate: adopt the reformist plan
-- @adopt_wtb: adopt the WTB plan
-- @adopt_left: adopt the Left plan
-- @returnsandbox: return to sandbox
+- @adopt_all: Adopt Every Economic Plan
+- @adopt_moderate: Adopt the Reformist Plan
+- @adopt_wtb: Adopt The WTB Plan
+- @adopt_left: Adopt The Left Plan
+- @returnsandbox: Return To Sandbox
 
 @adopt_all
 go-to: sandbox_menu
 on-arrival: moderate_plan_adopted = 1; nationalization_plan = 1; wtb_adopted = 1
 
+Adopted all economic plans
+
 @adopt_moderate
 go-to: sandbox_menu
 on-arrival: moderate_plan_adopted = 1
+
+Adopted the moderate plan
 
 @adopt_wtb
 go-to: sandbox_menu
 on-arrival: nationalization_plan = 1
 
+Adopted the WTB plan
+
 @adopt_left
 go-to: sandbox_menu
 on-arrival: wtb_adopted = 1
+
+Adopted the left plan
 
 @time_skip
 go-to: sandbox_menu
 on-arrival: month_actions += 1
 
+Skipped time by one month
+
 @advisor_actions
 
-- @nowait: make the advisor actions ready again
-- @placeholder: place holder for when I add all the advisor actions here, for no cost whatsoever
-- @returnsandbox: return to sandbox
+- @nowait: Make The Advisor Actions Ready Again
+- @placeholder: [PLACEHOLDER BUTTON]
+- @returnsandbox: Return To Sandbox
 
 @nowait
 go-to: sandbox_menu
 on-arrival: advisor_action_timer = 0
 
+Advisor actions are now ready
+
 @placeholder
 go-to: sandbox_menu
 
+That placeholder does nothing lol
+
 @edit_hindenburg_angry
 
-- @maxangry: Hindenburg crashes out
-- @noangry: Hindenburg loves you
-- @raiseangry: Hindenburg is starting to get a little angry
-- @lowerangry: Hindenburg is getting a little less angry
+- @maxangry: Maximise Anger
+- @noangry: Minimise Anger
+- @raiseangry: Raise Anger
+- @lowerangry: Lower Anger
+- @returnsandbox: Return To Sandbox
 
 @maxangry
 go-to: sandbox_menu
 on-arrival: hindenburg_angry = 120
 
+Hindenburg is crashing out
+
 @noangry
 go-to: sandbox_menu
 on-arrival: hindenburg_angry = 0
+
+Hindenburg is sleeping peacefully
 
 @raiseangry
 go-to: sandbox_menu
 on-arrival: hindenburg_angry += 5
 
+Hindenburg is starting to get mad
+
 @lowerangry
 go-to: sandbox_menu
 on-arrival: hindenburg_angry -= 5
+
+Hindenburg is calming down
 
 @editcoaldissent
 
@@ -136,71 +163,96 @@ on-arrival: hindenburg_angry -= 5
 - @removecoaldissent: Lower Coalition Dissent to Very Low
 - @raisecoaldissent: Raise Coalition Dissent by 1 step
 - @lowercoaldissent: Lower Coalition Dissent by 1 step
+- @returnsandbox: Return To Sandbox
 
 @maxcoaldissent
 go-to: sandbox_menu
 on-arrival: coalition_dissent += 5
 
+Maximised coalition dissent
+
 @removecoaldissent
 go-to: sandbox_menu
 on-arrival: coalition_dissent = 0
+
+Removed coalition dissent
 
 @raisecoaldissent
 go-to: sandbox_menu
 on-arrival: coalition_dissent += 1
 
+Raised coalition dissent
+
 @lowercoaldissent
 go-to: sandbox_menu
 on-arrival: coalition_dissent -= 1
 
+Lowered coalition dissent
+
 @editstrife
 
-- @maxstrife: adds lots of strife
-- @nostrife: removes all strikfe
-- @raisestrife: raises Strife by 1
-- @lowerstrife: lowers Strife by 1
-- @returnsandbox: return to sandbox
+- @maxstrife: Maximise Strife
+- @nostrife: Remove Strife
+- @raisestrife: Raise Strife By 1
+- @lowerstrife: Lower Strife By 1
+- @returnsandbox: Return To Sandbox
 
 @maxstrife
 go-to: sandbox_menu
 on-arrival: strife += 20
 
+Maximised strife
+
 @nostrife
 go-to: sandbox_menu
 on-arrival: strife = 0
+
+Removed strife
 
 @raisestrife
 go-to: sandbox_menu
 on-arrival: strife += 1
 
+Raised strife
+
 @lowerstrife
 go-to: sandbox_menu
 on-arrival: strife -= 1
 
+Lowered strife
+
 @editcapitalstrike
 
-- @maxcapstrike: Force the Capital Strike event to happen
-- @nocapstrike: Remove all progression to the Capital Strike event
-- @raisecapstrike: Raise the progression to the Capital Strike event by 1
-- @lowercapstrike: Lower the progression to the Capital Strike event by 1
-- @capstrikequery: How much progress do I have?
-- @returnsandbox: Return to sandbox menu
+- @maxcapstrike: Force The Capital Strike Event To Happen
+- @nocapstrike: Remove All Progression To The Capital Strike Event
+- @raisecapstrike: Progress Capital Strikes
+- @lowercapstrike: Regress Capital Strikes
+- @capstrikequery: Check Capital Strike Progress
+- @returnsandbox: Return To Sandbox
 
 @maxcapstrike
 go-to: sandbox_menu
 on-arrival: capital_strike_progress += 11
 
+Forced a capital strike
+
 @nocapstrike
 go-to: sandbox_menu
 on-arrival: capital_strike_progress = 0
+
+Stopped a capital strike
 
 @raisecapstrike
 go-to: sandbox_menu
 on-arrival: capital_strike_progress += 1
 
+Progressed towards a capital strike
+
 @lowercapstrike
 go-to: sandbox_menu
 on-arrival: capital_strike_progress -= 1
+
+Regressed from a capital strike
 
 @capstrikequery
 
@@ -209,28 +261,37 @@ on-arrival: capital_strike_progress -= 1
 
 @editcoupprogress
 
-- @maxcoupprog: Force the Coup event to happen (must be atleast 1930 and the SA and Stahlhelm to not be banned)
-- @nocoupprog: Remove all progress to the Coup event
-- @raisecoupprog: Raise the progress to the Coup event by 1
-- @lowercoupprog: Lower the progress to the Coup event by 1
-- @querycoup: How much coup progress do I have?
-- @returnsandbox: Return to sandbox
+- @maxcoupprog: Force Coup
+- @nocoupprog: Remove All Coup Progress
+- @raisecoupprog: Raise Coup Progress
+- @lowercoupprog: Lower Coup Progress
+- @querycoup: Check Coup Progress
+- @returnsandbox: Return To Sandbox
 
 @maxcoupprog
+subtitle: Must be at least 1930 and the SA and Stahlhelm must not be banned
 go-to: sandbox_menu
 on-arrival: coup_progress += 10
+
+Forced a coup
 
 @nocoupprog
 go-to: sandbox_menu
 on-arrival: coup_progress = 0
 
+Removed coup progress
+
 @raisecoupprog
 go-to: sandbox_menu
 on-arrival: coup_progress += 1
 
+Raised coup progress
+
 @lowercoupprog
 go-to: sandbox_menu
 on-arrival: coup_progress -= 1
+
+Lowered coup progress
 
 @querycoup
 
@@ -239,18 +300,18 @@ on-arrival: coup_progress -= 1
 
 @editdepression
 
-- @add1inflation: Raise inflation by 1
-- @remove1inflation: Lower inflation by 1
-- @add1unemployed: Raise unemployment by 1
-- @remove1unemployed: Lower unemployment by 1
-- @add1ecogrow: Raise economic growth by 1
-- @remove1ecogrow: Lower economic growth by 1
-- @add10inflation: Raise inflation by 10
-- @remove10inflation: Lower inflation by 10
-- @add10unemployed: Raise unemployment by 10
-- @remove10unemployed: Lower unemployment by 10
-- @add10ecogrow: Raise economic growth by 10
-- @remove10ecogrow: Lower economic growth by 10
+- @add1inflation: Raise Inflation by 1
+- @remove1inflation: Lower Inflation by 1
+- @add1unemployed: Raise Unemployment by 1
+- @remove1unemployed: Lower Unemployment by 1
+- @add1ecogrow: Raise Economic Growth by 1
+- @remove1ecogrow: Lower Economic Growth by 1
+- @add10inflation: Raise Inflation by 10
+- @remove10inflation: Lower Inflation by 10
+- @add10unemployed: Raise Unemployment by 10
+- @remove10unemployed: Lower Unemployment by 10
+- @add10ecogrow: Raise Economic Growth by 10
+- @remove10ecogrow: Lower Economic Growth by 10
 - @returnsandbox: return to sandbox menu
 
 @add1inflation
@@ -425,7 +486,7 @@ Removed 100 budget from the country's stockpile. This doesn't go to the homeless
 - @ddpright: Increase DDP Rightism
 - @dvpleft: Increase DVP Leftism
 - @dvpright: Increase DVP Rightism
-- @returnsandbox: return to sandbox
+- @returnsandbox: Return To Sandbox
 
 @lvpleft
 go-to: editleftright
