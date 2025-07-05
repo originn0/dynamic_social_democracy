@@ -40,23 +40,23 @@ go-to: sandbox_menu
 @disable_end
 view-if: end_disabled != 1
 on-arrival: end_disabled = 1
-go-to: breitscheid
+go-to: sandbox_menu
 
 The end date has been disabled.
 
 @enable_end
 view-if: end_disabled = 1
 on-arrival: end_disabled = 0
-go-to: breitscheid
+go-to: sandbox_menu
 
 The end date has been enabled.
 
 @conciliators
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: left_strength += 50; reformist_strength = 0; kpd_relation = 100; wittorf_soviet_union = 1
 
 @free_agenda
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.advisor_action_timer = 6;
 if (Q.difficulty >= 0) {
@@ -75,23 +75,23 @@ if (Q.difficulty >= 0) {
 - @returnsandbox: return to sandbox
 
 @adopt_all
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: moderate_plan_adopted = 1; nationalization_plan = 1; wtb_adopted = 1
 
 @adopt_moderate
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: moderate_plan_adopted = 1
 
 @adopt_wtb
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: nationalization_plan = 1
 
 @adopt_left
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: wtb_adopted = 1
 
 @time_skip
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: month_actions += 1
 
 @advisor_actions
@@ -101,11 +101,11 @@ on-arrival: month_actions += 1
 - @returnsandbox: return to sandbox
 
 @nowait
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: advisor_action_timer = 0
 
 @placeholder
-go-to: breitscheid
+go-to: sandbox_menu
 
 @edit_hindenburg_angry
 
@@ -115,19 +115,19 @@ go-to: breitscheid
 - @lowerangry: Hindenburg is getting a little less angry
 
 @maxangry
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: hindenburg_angry = 120
 
 @noangry
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: hindenburg_angry = 0
 
 @raiseangry
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: hindenburg_angry += 5
 
 @lowerangry
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: hindenburg_angry -= 5
 
 @editcoaldissent
@@ -138,19 +138,19 @@ on-arrival: hindenburg_angry -= 5
 - @lowercoaldissent: Lower Coalition Dissent by 1 step
 
 @maxcoaldissent
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coalition_dissent += 5
 
 @removecoaldissent
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coalition_dissent = 0
 
 @raisecoaldissent
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coalition_dissent += 1
 
 @lowercoaldissent
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coalition_dissent -= 1
 
 @editstrife
@@ -162,19 +162,19 @@ on-arrival: coalition_dissent -= 1
 - @returnsandbox: return to sandbox
 
 @maxstrife
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: strife += 20
 
 @nostrife
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: strife = 0
 
 @raisestrife
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: strife += 1
 
 @lowerstrife
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: strife -= 1
 
 @editcapitalstrike
@@ -187,19 +187,19 @@ on-arrival: strife -= 1
 - @returnsandbox: Return to sandbox menu
 
 @maxcapstrike
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: capital_strike_progress += 11
 
 @nocapstrike
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: capital_strike_progress = 0
 
 @raisecapstrike
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: capital_strike_progress += 1
 
 @lowercapstrike
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: capital_strike_progress -= 1
 
 @capstrikequery
@@ -217,19 +217,19 @@ on-arrival: capital_strike_progress -= 1
 - @returnsandbox: Return to sandbox
 
 @maxcoupprog
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coup_progress += 10
 
 @nocoupprog
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coup_progress = 0
 
 @raisecoupprog
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coup_progress += 1
 
 @lowercoupprog
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: coup_progress -= 1
 
 @querycoup
@@ -254,51 +254,51 @@ on-arrival: coup_progress -= 1
 - @returnsandbox: return to sandbox menu
 
 @add1inflation
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: inflation += 1
 
 @remove1inflation
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: inflation -= 1
 
 @add1unemployed
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: unemployed += 1
 
 @remove1unemployed
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: unemployed -= 1
 
 @add1ecogrow
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: economic_growth += 1
 
 @remove1ecogrow
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: economic_growth -= 1
 
 @add10inflation
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: inflation += 10
 
 @remove10inflation
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: inflation -= 10
 
 @add10unemployed
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: unemployed += 10
 
 @remove10unemployed
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: unemployed -= 10
 
 @add10ecogrow
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: economic_growth += 10
 
 @remove10ecogrow
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: economic_growth -= 10
 
 @editresources
@@ -312,7 +312,7 @@ on-arrival: economic_growth -= 10
 - @returnsandbox: Return To Sandbox
 
 @add10resources
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.resources += 10;
 !}
@@ -320,7 +320,7 @@ Q.resources += 10;
 Added 10 resources to the party's stockpile.
 
 @add20resources
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.resources += 20;
 !}
@@ -328,7 +328,7 @@ Q.resources += 20;
 Added 20 resources to the party's stockpile.
 
 @add100resources
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.resources += 100;
 !}
@@ -336,7 +336,7 @@ Q.resources += 100;
 Added 100 resources to the party's stockpile, stop being greedy.
 
 @subtract10resources
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.resources -= 10;
 !}
@@ -344,7 +344,7 @@ Q.resources -= 10;
 Removed 10 resources from the party's stockpile.
 
 @subtract20resources
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.resources -= 20;
 !}
@@ -352,7 +352,7 @@ Q.resources -= 20;
 Removed 20 resources from the party's stockpile.
 
 @subtract100resources
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.resources -= 100;
 !}
@@ -370,7 +370,7 @@ Removed 100 resources from the party's stockpile. This doesn't go to the homeles
 - @returnsandbox: Return To Sandbox
 
 @add10budget
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.budget += 10;
 !}
@@ -378,7 +378,7 @@ Q.budget += 10;
 Added 10 budget to the country's stockpile.
 
 @add20budget
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.budget += 20;
 !}
@@ -386,7 +386,7 @@ Q.budget += 20;
 Added 20 budget to the country's stockpile.
 
 @add100budget
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.budget += 100;
 !}
@@ -394,7 +394,7 @@ Q.budget += 100;
 Added 100 budget to the country's stockpile, stop being greedy.
 
 @subtract10budget
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.budget -= 10;
 !}
@@ -402,7 +402,7 @@ Q.budget -= 10;
 Removed 10 budget from the country's stockpile.
 
 @subtract20budget
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.budget -= 20;
 !}
@@ -410,7 +410,7 @@ Q.budget -= 20;
 Removed 20 budget from the country's stockpile.
 
 @subtract100budget
-go-to: breitscheid
+go-to: sandbox_menu
 on-arrival: {!
 Q.budget -= 100;
 !}
@@ -966,7 +966,7 @@ Q.neorevisionist_strength = 0;
 Removed all neorevisionist strength.
 
 @returnsandbox
-go-to: breitscheid
+go-to: sandbox_menu
 
 @editironfront
 
