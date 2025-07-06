@@ -15,6 +15,34 @@ if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president != "G
 } else {
   Q.weimar_win = 0;
 }
+
+if (Q.weimar_win && (Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg") && Q.in_left_front) {
+  Q.left_win = 1;
+  Q.weimar_win = 0;
+  Q.kpd_points = 0;
+  Q.kpd_points += Q.rfb_force;
+  Q.kpd_points += (100 - Q.pro_republic) / 2;
+  Q.kpd_points += Q.unemployed / 2;
+  Q.kpd_points += Q.kpd_votes;
+  Q.kpd_points += Q.soviet_relation;
+  if (Q.president == "Thälmann") Q.kpd_points += 16;
+  if (Q.president == "Münzenberg") Q.kpd_points += 10;
+  if (Q.kpd_leader == "Conciliators") Q.kpd_points += 6;
+  if (Q.sapd_formed) {
+    Q.kpd_points += 2;
+    Q.kpd_points += Q.sapd_votes;
+  }
+  if (Q.spd_votes < 26) Q.kpd_points += 5;
+  if (Q.eu) Q.kpd_points -= 10;
+  if (Q.spd_votes >= 36) Q.kpd_points -= 5;
+  if (Q.spd_votes >= 40) Q.kpd_points -= 5;
+
+  if (Q.kpd_points >= 50) {
+    Q.kpd_win = 1;
+  } else {
+    Q.kpd_win = 0;
+  }
+}
 !}
 set-bg: img/paper.jpg
 new-page: true
@@ -29,6 +57,7 @@ A chapter in history closes.
 - @civil_war_long
 - @monarchy_win
 - @papen_win
+- @left_win
 
 @taming_lose
 title: The <span style="color: #7A3C00;">Nazi</span> Beast Tamed?
@@ -55,11 +84,11 @@ The <span style="color: #c00000;">**SPD**</span> is never formally banned and en
 
 Despite the regime’s authoritarianism, social discontent remains subdued. A <i>Wirtschaftswunder</i>—an economic miracle—emerges as the Great Depression fades. In 1935, Germany secures equality in armaments at Geneva and begins agitating for the return of the Polish Corridor separating East Prussia from the Reich.
 
-In 1942, a "special military operation" is launched to seize Danzig. Poland refuses to cede territory, and with backing from <span style="color: #002654;">France</span> and a hesitant Britain, enters a state of war. A puppet regime is installed in occupied territories. A limited <span style="color: #002654;">French</span> offensive into the Saar fails, and the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> remain at war only on paper.
+In 1942, a "special military operation" is launched to seize Danzig. Poland refuses to cede territory, and with backing from <span style="color: #002654;">France</span> and a hesitant <span style="color: #C8102E;">Britain</span>, enters a state of war. A puppet regime is installed in occupied territories. A limited <span style="color: #002654;">French</span> offensive into the Saar fails, and the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> remain at war only on paper.
 
 Sensing German isolation, the <span style="color: #750e0e;">Soviet Union</span> invades eastern Poland, citing abuses against native Belarusians and Ukrainians under military occupation. A new German–<span style="color: #750e0e;">Soviet</span> war erupts. Defense Minister Hammerstein cultivates ties with the "Little Entente"—states facing their own <span style="color: #750e0e;">Soviet</span>-backed revolutionary threats. An unofficial Mitteleuropa bloc emerges, with Germany at its core, squeezed between a Western capitalist bloc and the Eastern state-<span style="color: #c00000;">socialist</span> order.
 
-In 1946, the war ends in stalemate. Poland is partitioned at the Vistula River. Romania and Bulgaria fall under Communist control. Western Europe grows closer to the United States, and a tripolar global order takes shape.
+In 1946, the war ends in stalemate. Poland is partitioned at the Vistula River. Romania and Bulgaria fall under <span style="color: #700000;">Communist</span> control. Western Europe grows closer to the <span style="color: #B31942;">United</span> <span style="color: #0A3161;">States</span>, and a tripolar global order takes shape.
 
 By the late 1960s, economic stagnation and renewed domestic unrest—driven by the Red Army Faction and neo-Nazi agitation—force Chancellor Kurt Georg Kiesinger to begin relaxing the dictatorship. The corporatist house of cards that had maintained the regime's stability for decades begins to crumble as independent unions discreetly form. However, Germany remains far from a free and democratic country, the Reichswehr maintains constant watch over politics, exercising real control behind the scenes.
 
@@ -77,7 +106,7 @@ Following the scarring experience of the <span style="color: #7A3C00;">Nazi</spa
 
 No war as destructive as the Great War would come again. Slowly, Germany and the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> began to rebuild relations, choosing to forget and forgive. <span style="color: #7A3C00;">Fascism</span> never takes root as a dominant force, and the primary threat to European democracy becomes the resurgent <span style="color: #750e0e;">Soviet Union</span>. The Spanish Civil War ends in 1936 with a Republican victory. [? if austria_defeat: In 1939, Austria's <span style="color: #7A3C00;">Austrofascist</span> regime collapses under popular revolt.?][? if sdapo_win or force_peace: In 1938, Austria's ruling <span style="color: #A50034;">**SDAPÖ**</span> successfully holds a referendum confirming their <i>Anschluss</i> into Germany. ?][? if long_war_2: The war in Austria is eventually won by the <span style="color: #7A3C00;">Austrofascists</span>, who receive generous aid from a <span style="color: #7A3C00;">fascist</span> Italy.?]  Isolated and denied any success in his expansionist aims in Yugoslavia and Greece, Mussolini is deposed in a royalist coup led by King Victor Emmanuel III, and Italy returns to democratic governance[? if long_war_2:, leading to Austria’s government democratizing as a consequence of losing its benefactor?].
 
-Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape British rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
+Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape <span style="color: #C8102E;">British</span> rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
 
 [? if not (pro_republic < 50 and spd_votes < 25 and z_ideology == "Right" and z_relation < 35 and dnvp_ideology == "Radical"): Today, Germany is governed by a stable two-and-a-half party system, rotating power between a non-<span style="color: #9B0000;">Marxist</span> <span style="color: #c00000;">**SPD**</span>, the centrist <span style="color: #000000;">**CVP**</span>, and the liberal <span style="color: #FFCC00;">**LDPD**</span>. However, a surging <span style="color: #D79E2A;">**NDPD**</span> has emerged on the far right, capitalizing on public discontent over a refugee crisis driven by wars in an impoverished and unstable Africa. ?]
 
@@ -106,7 +135,7 @@ At the turn of the decade, the Great Depression and widespread disillusionment w
 
 No war as destructive as the Great War would come again. Slowly, Germany and the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> began to rebuild relations, choosing to forget and forgive. <span style="color: #7A3C00;">Fascism</span> never takes root as a dominant force, and the primary threat to European democracy becomes the resurgent <span style="color: #750e0e;">Soviet Union</span>. The Spanish Civil War ends in 1936 with a Republican victory. [? if austria_defeat: In 1939, Austria's <span style="color: #7A3C00;">Austrofascist</span> regime collapses under popular revolt.?][? if sdapo_win or force_peace: In 1938, Austria's ruling <span style="color: #A50034;">**SDAPÖ**</span> successfully holds a referendum confirming their <i>Anschluss</i> into Germany. ?][? if long_war_2: The war in Austria is eventually won by the <span style="color: #7A3C00;">Austrofascists</span>, who receive generous aid from a <span style="color: #7A3C00;">fascist</span> Italy.?] Isolated and denied any success in his expansionist aims in Yugoslavia and Greece, Mussolini is deposed in a royalist coup led by King Victor Emmanuel III, and Italy returns to democratic governance[? if long_war_2:, leading to Austria’s government democratizing as a consequence of losing its benefactor?].
 
-Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape British rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
+Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape <span style="color: #C8102E;">British</span> rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
 
 - @weimar_mega_win_a
 - @weimar_mega_win_b
@@ -141,7 +170,7 @@ But it is not all sunshine and rainbows. The civil war has devastated countless 
 
 No war as destructive as the Great War would come again. Slowly, Germany and the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> began to rebuild relations, but the <span style="color: #002654;">French</span> reoccupation of the Rhineland has complicated efforts. <span style="color: #7A3C00;">Fascism</span> never takes root as a dominant force, and the primary threat to European democracy becomes the resurgent <span style="color: #750e0e;">Soviet Union</span>. The Spanish Civil War ends in 1936 with a Republican victory. [? if austria_defeat: In 1939, Austria's <span style="color: #7A3C00;">Austrofascist</span> regime collapses under popular revolt.?][? if sdapo_win or force_peace: In 1938, Austria's ruling <span style="color: #A50034;">**SDAPÖ**</span> successfully holds a referendum confirming their <i>Anschluss</i> into Germany. ?][? if long_war_2: The war in Austria is eventually won by the <span style="color: #7A3C00;">Austrofascists</span>, who receive generous aid from a <span style="color: #7A3C00;">fascist</span> Italy.?] Isolated and denied any success in his expansionist aims in Yugoslavia and Greece, Mussolini is deposed in a royalist coup led by King Victor Emmanuel III, and Italy returns to democratic governance[? if long_war_2:, leading to Austria’s government democratizing as a consequence of losing its benefactor?]..
 
-Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape British rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
+Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape <span style="color: #C8102E;">British</span> rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
 
 - @civil_war_win_a
 - @civil_war_win_b
@@ -186,7 +215,7 @@ By 1936, Germany remains fractured. Poland has seized the moment to occupy parts
 
 No war as destructive as the Great War would come again. Slowly, Germany and the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> began to rebuild relations, but the <span style="color: #002654;">French</span> reoccupation of the Rhineland has complicated efforts. <span style="color: #7A3C00;">Fascism</span> never takes root as a dominant force, and the primary threat to European democracy becomes the resurgent <span style="color: #750e0e;">Soviet Union</span>. The Spanish Civil War ends in 1936 with a Republican victory. [? if austria_defeat: In 1939, Austria's <span style="color: #7A3C00;">Austrofascist</span> regime collapses under popular revolt.?][? if sdapo_win or force_peace: In 1938, Austria's ruling <span style="color: #A50034;">**SDAPÖ**</span> successfully holds a referendum confirming their <i>Anschluss</i> into Germany. ?][? if long_war_2: The war in Austria is eventually won by the <span style="color: #7A3C00;">Austrofascists</span>, who receive generous aid from a <span style="color: #7A3C00;">fascist</span> Italy.?] Isolated and denied any success in his expansionist aims in Yugoslavia and Greece, Mussolini is deposed in a royalist coup led by King Victor Emmanuel III, and Italy returns to democratic governance[? if long_war_2:, leading to Austria’s government democratizing as a consequence of losing its benefactor?].
 
-Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape British rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
+Africa remains colonized until the 1970s and 80s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape <span style="color: #C8102E;">British</span> rule in the 1950s. This tri-polar alliance has solidified into a global axis of its own.
 
 - @civil_war_long_a
 - @civil_war_long_b
@@ -229,7 +258,7 @@ Following the peaceful return of the Saarland via referendum in 1935, the Reichs
 
 With ambitions focused on reclaiming lost territories in the East and Alsace-Lorraine in the West, Germany began courting allies for its revisionist aims. The restoration of Habsburg rule in Austria and the toppling of Mussolini in a royalist coup led by King Victor Emmanuel III drastically altered the balance of power in Europe. When Poland refused to return former imperial lands, the <span style="color: #C8102E;">British</span>, and more reluctantly the <span style="color: #002654;">French</span>, turned a blind eye to escalating German border skirmishes. The <span style="color: #700000;">Communist</span> victory in Spain, and the wave of revolutions it triggered across the continent, forced the imperial powers to prioritize containment of the <span style="color: #700000;">Soviet</span> threat above all else.
 
-Africa remains colonized until the 1980s and 90s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape British rule in the 1950s. This tri-polar alliance evolved into a global axis of its own, encompassing numerous <span style="color: #700000;">Communist</span> regimes worldwide.
+Africa remains colonized until the 1980s and 90s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a "state capitalist" <span style="color: #750e0e;">Soviet Union</span> remains intact, forming a bloc with the authoritarian <span style="color: #000099;">Kuomintang</span>-ruled Republic of China and post-independence India, which fought a bloody war to escape <span style="color: #C8102E;">British</span> rule in the 1950s. This tri-polar alliance evolved into a global axis of its own, encompassing numerous <span style="color: #700000;">Communist</span> regimes worldwide.
 
 Today, Germany is a dominant party state, ruled by the elites of the <span style="color: #3E88B3;">**DNVP**</span>, who have maintained control for nearly a century. Although dissatisfaction with the monarchy and the growing strength of the opposition have forced some minor reforms, each new election consistently delivers a majority for the incumbent coalition. However, cracks are beginning to show in the system. New, young, and popular <span style="color: #c00000;">**SPD**</span> leaders are making inroads despite state repression, with Sahra Wagenknecht being the first to achieve a significant victory, having been elected Minister-President of Thuringia. Perhaps the next government will have a mere <span style="color: #3E88B3;">nationalist</span> plurality.
 
@@ -252,6 +281,62 @@ However by the 1950s, however, the regime begins to decay. Corruption, unrest, a
 Africa remains colonized until the 1980s and 90s. Independence, when it comes, is negotiated largely on the terms of the colonizers. Exploitation persists under a different guise. The Cold War unfolds along different lines, as a <span style="color: #750e0e;">Soviet Union</span> surviving intact but slightly liberalized, serving as the key pillar in a global alliance encompassing the <span style="color: #700000;">Communist</span> regimes worldwide. 
 
 Today, Germany is a multiparty democracy, following the ousting of the successor conservative party founded by figures of the former regime. Yet all is not well in the republic. Friedrich Merz, now President, has drawn criticism for invoking nostalgia for the old system, sparking fears of democratic backsliding and concentration of power in favor of the oligarchs. Now, the task of <span style="color: #f0456a;">Social Democracy</span> is to prepare for the next presidential election. Our Sahra Wagenknecht is considering running for another non-consecutive term; perhaps she is our only hope to topple Merz.
+
+- @go_back
+
+@left_win
+title: The Left Front Triumphs!
+subtitle: Ending 8
+view-if: left_win
+new-page: true
+audio: music/1930_1933/Einheitsfrontlied.mp3
+
+The United Front Government, under President Kurt Rosenfeld, withstood everything thrown its way—<span style="color: #C0A054;">capitalist</span> treachery, <span style="color: #3E88B3;">institutional</span> sabotage, and constant subversion by <span style="color: #808080;">reactionaries</span>. In 1937, after winning a second election and slightly increasing its majority, the government faced a coup attempt led by the <span style="color: #808080;">reactionary</span> elements of the Reichswehr and increasingly radicalized <span style="color: #3E88B3;">nationalists</span> and <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> forces. 
+
+The coup failed. The abortive putsch was crushed by the proletarian masses and shattered the political landscape of <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>. The far left of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]—splinters from their parties who maintained ambiguity towards the coup—split off to form the <span style="color: #E0B0FF;">**RDP**</span> and <span style="color: #FF7F00;">**CSRP**</span>, both of which soon joined the United Front.
+
+With the bourgeois center increasingly marginalized, the botched coup gave the United Front the momentum needed to finally purge the Republic of <span style="color: #808080;">reactionary</span> forces and initiate a <span style="color: #9B0000;">socialist</span> economy. Eventually a constitutional convention was called to begin a <span style="color: #9B0000;">Socialist Republic</span>.
+
+- @left_win_a
+- @left_win_b
+
+@left_win_a
+Title: Subending A - Spartakus Rises Again
+view-if: not kpd_win
+
+The convention is called, and with overwhelming support, it dismantles the old bourgeois institutions. At last, after all these years, the German <span style="color: #750e0e;">Soviet Republic</span> is formed—and this time, "All Power to the <span style="color: #750e0e;">Soviets</span>" is more than just a slogan. The <span style="color: #c00000;">**SPD**</span> takes the lead in constructing the <span style="color: #750e0e;">Soviet Republic</span>. Though the process is complex and at times byzantine, born of compromise among many factions, it is unmistakably <span style="color: #700000;">revolutionary</span>.
+
+No war as destructive as the Great War would come again. The Spanish Civil War ends in 1936 with a Republican victory. [? if austria_defeat: In 1939, Austria's <span style="color: #7A3C00;">Austrofascist</span> regime collapses under popular revolt.?][? if sdapo_win or force_peace: In 1938, Austria's ruling <span style="color: #A50034;">**SDAPÖ**</span> successfully holds a referendum confirming their <i>Anschluss</i> into Germany. ?][? if long_war_2: The war in Austria is eventually won by the <span style="color: #7A3C00;">Austrofascists</span>, who receive generous aid from a <span style="color: #7A3C00;">fascist</span> Italy.?] Isolated and denied any success in his expansionist aims in Yugoslavia and Greece, Mussolini is deposed in a royalist coup led by King Victor Emmanuel III, and Italy returns to democratic governance[? if long_war_2:, leading to Austria’s government democratizing as a consequence of losing its benefactor?]. 
+
+In a world largely hostile to <span style="color: #9B0000;">socialism</span>, we stand as a shining example: the economy is <span style="color: #c00000;">socialized</span>, and economic control is placed directly in the hands of the <span style="color: #c00000;">proletariat</span>. The <span style="color: #750e0e;">Soviet Union</span> remains distant, as does the <span style="color: #0A3161;">West</span>. We emerge as a beacon of socialism amid the growing tensions of a Cold War—between the <span style="color: #750e0e;">**Soviets**</span>, an authoritarian <span style="color: #000099;">Kuomintang</span>-led China, and an independent India on one side, and the capitalist <span style="color: #0A3161;">West</span> on the other.
+
+We maintain a strictly neutral stance, offering principled opposition to both blocs. In doing so, we inspire many nations to follow our political and geopolitical path. Our shining <span style="color: #9B0000;">socialist republic</span> manages to survive, until the end of an inconclusive Cold War in détente.
+
+As a key neutral player throughout the Cold War, we reap the benefits—becoming a center for dialogue and commerce. With the arrival of détente, more and more nations join us in non-alignment.
+
+All is not golden though. Our republic is prone to infighting, as the various proletarian groups represented in the economy often clash over resource allocation. Additionally, our council-centered system faces criticism for its inability to adapt to modern conditions, with growing signs of bureaucratic inefficiency. Nevertheless, as we enter the 2000s, the Deutsche Räterepublik remains a bastion of <span style="color: #c00000;">socialism</span> and <span style="color: #9B0000;">orthodoxy</span>.
+
+Our politics, culture, and economy are still deeply proletarian. Albeit <span style="color: #f0456a;">third way</span> and even <span style="color: #98C22C;">capitalist</span> parties remain on our right—and hardline <span style="color: #700000;">vanguardists</span> on our left—the <span style="color: #c00000;">**SPD**</span> and its successor parties maintain a firm hold on the Republic.
+
+- @go_back
+
+@left_win_b
+Title: Subending B - The Vanguard Takes the Helm
+view-if: kpd_win
+
+As the Constitutional Assembly convenes, it is gradually decided that the new <span style="color: #700000;">socialist</span> state will take inspiration from the Russian Revolution and the <span style="color: #750e0e;">Soviet Union</span>’s <span style="color: #700000;">vanguardist</span> model. The <span style="color: #c00000;">**SPD**</span>—whether convinced, divided, or simply powerless to stop the shift—accepts it. The two <span style="color: #9B0000;">**socialist**</span> parties rapidly merge into a single party that monopolizes power in the new tate, while allowing some minor parties to remain as bloc parties. The <span style="color: #DC241F;">**Socialist Unity Party**</span> (<span style="color: #DC241F;">**SED**</span>) takes the helm.
+
+The regime immediately begins aligning with the <span style="color: #750e0e;">Soviet Union</span> and puts forth its first *Gosplans*. Soon, the State becomes a member of the Eastern Bloc. World War II breaks out as a massive conflict between the <span style="color: #0A3161;">capitalist</span> and <span style="color: #700000;">communist</span> worlds. It ends with a vast Eastern Bloc stretching from Lisbon to Arkhangelsk. A Cold War begins against the <span style="color: #B31942;">United</span> <span style="color: #0A3161;">States</span>, <span style="color: #C8102E;">Britain</span>, <span style="color: #000099;">Kuomintang</span>-led China, and the <span style="color: #002654;">French</span> government in exile.
+
+The <span style="color: #DC241F;">**SED**</span> assumes an important role in the <span style="color: #750e0e;">Soviet</span> Bloc as the leader of the second most industrialized country. Germany experiences decades of growth under the economic plans, calming most dissent within the country. To combat the remaining opposition, the Party establishes the Stasi, inspired by the <span style="color: #750e0e;">Soviet Union</span>’s NKVD.
+
+Alongside the <span style="color: #750e0e;">Soviet</span> Bloc, the <span style="color: #750e0e;">Soviet Republic</span> of Germany largely wins the Cold War. Key factors include the collapse of <span style="color: #001489;">European</span> Africa, the Chinese Civil War ending with an unaligned <span style="color: #960000;">socialist</span> China, and the <span style="color: #B31942;">United</span> <span style="color: #0A3161;">States</span> and <span style="color: #C8102E;">Britain</span> shifting towards isolationism.
+
+However, by the 1990s, economic problems worsen: inflation rises, corruption grows, and the <span style="color: #750e0e;">People’s Democracies</span> begin to decay. Dissent grows to levels even the harshest Stasi measures fail to contain.
+
+Amid these conditions, General Secretary Gorbachev of the <span style="color: #750e0e;">Soviet Union</span> initiates a controlled transition toward genuine <span style="color: #9B0000;">democratic socialism</span> inspired by the Chinese model. Today, Germany holds its first elections under this new system. The political spectrum is dazzling and complex, though heavily weakened and under state supervision. The quasi-capitalist <span style="color: #87CEFA;">**CNVP**</span> and <span style="color: #FFD700;">**LSV**</span> form a coalition against the <span style="color: #DC241F;">socialists</span> and are gaining momentum.
+
+New socialist parties emerge as the <span style="color: #DC241F;">**SED**</span> fractures between <span style="color: #700000;">hardliners</span> and <span style="color: #f0456a;">reformers</span>. Perhaps the next government will have a <span style="color: #c00000;">**SEPD**</span> majority.
 
 - @go_back
 
