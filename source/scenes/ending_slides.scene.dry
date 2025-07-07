@@ -16,7 +16,7 @@ if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president != "G
   Q.weimar_win = 0;
 }
 
-if (Q.weimar_win && (Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg") && Q.in_left_front) {
+if (Q.weimar_win && (Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg") && Q.in_left_front && !Q.civil_war_seen) {
   Q.left_win = 1;
   Q.weimar_win = 0;
   Q.kpd_points = 0;
