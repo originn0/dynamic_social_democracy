@@ -893,7 +893,7 @@ We can't win this election alone, we need support from other parties. [? if spd_
 on-arrival: {!
 if ((Q.lvp_support_spd && Q.lvp_formed || (Q.dvp_support_spd || Q.ddp_support_spd && (Q.liberal_reactionary_candidate_1932_name == "Gessler" || Q.liberal_vote - Q.ddp_votes < 8))) && Q.liberal_reactionary_candidate_1932) Q.lib_drop_out = 1;
 if (Q.z_support_spd == 1 && Q.center_reactionary_candidate_1932) Q.z_drop_out = 1;
-if ((Q.lib_drop_out && Q.z_drop_out || Q.z_drop_out && !Q.secondary_reactionary_candidate_1932 || Q.lib_drop_out && !Q.secondary_reactionary_candidate_1932) && (Q.dnvp_ideology == "Moderate" || Q.kvp_formed)) {
+if ((Q.lib_drop_out && Q.z_drop_out || Q.z_drop_out && !Q.secondary_reactionary_candidate_1932 || Q.lib_drop_out && !Q.secondary_reactionary_candidate_1932)) {
     Q.vorbeck_run = 1;
     Q.vorbeck_fallback = 1;
     Q.reactionary_candidate_1932 = "Lettow-Vorbeck";

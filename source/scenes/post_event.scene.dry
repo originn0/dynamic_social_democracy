@@ -339,8 +339,10 @@ if (Q.far_right_force >= Q.democracy_force && Q.far_right_force >= Q.state_force
     }
     if (Q.sa_force >= Q.sh_force) {
         Q.sa_paramilitary = 1;
+        Q.sh_paramilitary = 0;
     } else {
         Q.sh_paramilitary = 1;
+        Q.sa_paramilitary = 0;
     }
     Q.far_right_paramilitary = 1;
 } else if (Q.democracy_force > Q.far_right_force && Q.democracy_force >= Q.state_force) {
