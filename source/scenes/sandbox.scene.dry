@@ -51,7 +51,7 @@ go-to: sandbox_menu
 @editwest
 
 - @editwestbig: Add a LOT of West Relations
-- editwestplenty: Add a good amount of West Relations
+- @editwestplenty: Add a good amount of West Relations
 - @editwestsome: Add a decent amount of West Relations
 - @editwestlittle: Add a small amount of West Relations
 - @returnsandbox: Return to Sandbox
@@ -59,7 +59,7 @@ go-to: sandbox_menu
 @editeast
 
 - @editeastbig: Add a LOT of East Relations
-- editeastplenty: Add a good amount of East Relations
+- @editeastplenty: Add a good amount of East Relations
 - @editeastsome: Add a decent amount of East Relations
 - @editeastlittle: Add a small amount of East Relations
 - @returnsandbox: Return to Sandbox
@@ -67,7 +67,7 @@ go-to: sandbox_menu
 @editsoviet
 
 - @editsovbig: Add a LOT of Soviet Relations
-- editsovplenty: Add a good amount of Soviet Relations
+- @editsovplenty: Add a good amount of Soviet Relations
 - @editsovsome: Add a decent amount of Soviet Relations
 - @editsovlittle: Add a small amount of Soviet Relations
 - @returnsandbox: Return to Sandbox
@@ -75,7 +75,7 @@ go-to: sandbox_menu
 @editeu
 
 - @editeubig: Form the EU
-- editeuplenty: Make the EU ready to form (If you have foreign ministry)
+- @editeuplenty: Make the EU ready to form (If you have foreign ministry)
 - @editeusome: Add a decent amount of EU progress
 - @editeulittle: Add a small amount of EU Progress
 - @returnsandbox: Return to Sandbox
@@ -83,19 +83,19 @@ go-to: sandbox_menu
 @editkonkordat
 
 - @editkonbig: Form the Reichkonkordat
-- editkonplenty: Make the Reichskonkordat ready to form (If you have foreign ministry)
+- @editkonplenty: Make the Reichskonkordat ready to form (If you have foreign ministry)
 - @editkonsome: Add a decent amount of Reichskonkordat progress
-- @editwkonlittle: Add a small amount of Reichskonkordat Progress
+- @editkonlittle: Add a small amount of Reichskonkordat Progress
 - @editprkonbig: Form the Prussian Concordat
-- editprkonplenty: Make the Prussian Concordat ready to form
-- @editprkontsome: Add a decent amount of Prussian Concordat progress
-- @editwprkonlittle: Add a small amount of Prussian Concordat Progress
+- @editprkonplenty: Make the Prussian Concordat ready to form
+- @editprkonsome: Add a decent amount of Prussian Concordat progress
+- @editprkonlittle: Add a small amount of Prussian Concordat Progress
 - @returnsandbox: Return to Sandbox
 
 @editrepprog
 
 - @editrepbig: Add a LOT of Reparations Progress
-- editrepplenty: Add a good amount of Reparations Progress
+- @editrepplenty: Add a good amount of Reparations Progress
 - @editrepsome: Add a decent amount of Reparations Progress
 - @editreplittle: Add a small amount of Reparations Progress
 - @returnsandbox: Return to Sandbox
@@ -106,63 +106,63 @@ go-to: editinternational
 
 @editeuplenty
 on-arrival: eu_progress += 4
-go-to: editwest
+go-to: editeu
 
 @editeusome
 on-arrival: eu_progress += 2
-go-to: editwest
+go-to: editeu
 
 @editeulittle
 on-arrival: eu_progress += 1
-go-to: editwest
+go-to: editeu
 
 @editkonbig
 on-arrival: reichskonkordat = 1
-go-to: editwest
+go-to: editinternational
 
 @editkonplenty
 on-arrival: reichskonkordat_progress += 4
-go-to: editwest
+go-to: editkonkordat
 
 @editkonsome
 on-arrival: reichskonkordat_progress += 2
-go-to: editwest
+go-to: editkonkordat
 
 @editkonlittle
 on-arrival: reichskonkordat_progress += 1
-go-to: editwest
+go-to: editkonkordat
 
 @editprkonbig
 on-arrival: prussian_concordat = 1
-go-to: editwest
+go-to: editinterntional
 
 @editprkonplenty
 on-arrival: prussian_concordat_progress += 2
-go-to: editwest
+go-to: editkonkordat
 
 @editprkonsome
 on-arrival: prussian_concordat_progress += 1
-go-to: editwest
+go-to: editkonkordat
 
 @editprkonlittle
 on-arrival: prussian_concordat_progress += 0.5
-go-to: editwest
+go-to: editkonkordat
 
 @editrepbig
 on-arrival: reparations_negotiations += 10
-go-to: editwest
+go-to: editrepprog
 
 @editrepplenty
 on-arrival: reparations_negotiations += 5
-go-to: editwest
+go-to: editrepprog
 
 @editrepsome
 on-arrival: reparations_negotiations += 2
-go-to: editwest
+go-to: editrepprog
 
 @editreplittle
 on-arrival: reparations_negotiations += 1
-go-to: editwest
+go-to: editrepprog
 
 @editwestbig
 on-arrival: west_relation += 100
@@ -208,7 +208,7 @@ go-to: editsoviet
 on-arrival: soviet_relation += 10
 go-to: editsoviet
 
-@editsovtlittle
+@editsovlittle
 on-arrival: soviet_relation += 1
 go-to: editsoviet
 
@@ -430,7 +430,8 @@ Regressed from a capital strike
 
 @capstrikequery
 
-[? if capital_strike_progress = 0: you have 0 capital strike progress ?][? if capital_strike__progress = 1: You have 1 capital strike progress ?][? if capital_strike__progress = 2: You have 2 capital strike progress ?][? if capital_strike__progress = 3: You have 3 capital strike progress ?][? if capital_strike__progress = 4: You have 4 capital strike progress ?][? if capital_strike_progress = 5: You have 5 capital strike progress ?][? if capital_strike_progress = 6: You have 6 capital strike progress ?][? if capital_strike_progress = 7: You have 7 capital strike progress ?][? if capital_strike__progress = 8: You have 8 capital strike progress, a capital strike is near ?][? if capital_strike__progress = 9: You have 9 capital strike progress, a capital strike is imminent ?][? if capital_strike_progress = 10: You have 10 capital strike progress, a capital strike is imminent ?]
+[? if capital_strike_progress = 0: you have 0 capital strike progress ?][? if capital_strike_progress = 1: You have 1 capital strike progress ?][? if capital_strike_progress = 2: You have 2 capital strike progress ?][? if capital_strike_progress = 3: You have 3 capital strike progress ?][? if capital_strike_progress = 4: You have 4 capital strike progress ?][? if capital_strike_progress = 5: You have 5 capital strike progress ?][? if capital_strike_progress = 6: You have 6 capital strike progress ?][? if capital_strike_progress = 7: You have 7 capital strike progress ?][? if capital_strike_progress = 8: You have 8 capital strike progress, a capital strike is near ?][? if capital_strike_progress = 9: You have 9 capital strike progress, a capital strike is imminent ?][? if capital_strike_progress = 10: You have 10 capital strike progress, a capital strike is imminent ?]
+
 - @returnsandbox: return to sandbox
 
 @editcoupprogress
@@ -470,6 +471,7 @@ Lowered coup progress
 @querycoup
 
 [? if coup_progress = 0: You have 0 coup progress ?][? if coup_progress = 1: You have 1 coup progress ?][? if coup_progress = 2: You have 2 coup progress ?][? if coup_progress = 3: You have 3 coup progress ?][? if coup_progress = 4: You have 4 coup progress ?][? if coup_progress = 5: You have 5 coup progress ?][? if coup_progress = 6: You have 6 coup progress ?][? if coup_progress = 7: You have 7 coup progress ?][? if coup_progress = 8: You have 8 coup progress, a coup is near ?][? if coup_progress = 9: You have 9 coup progress, a coup is imminent ?][? if coup_progress = 10: You have 10 coup progress, a coup is imminent ?]
+
 - @returnsandbox: return to sandbox menu
 
 @editdepression
@@ -698,11 +700,25 @@ on-arrival: dvp_right += 1;
 - @decreaselvprel: Decrease Relations With The LVP
 - @increasedvprel: Increase Relations With The DVP
 - @decreasedvprel: Decrease Relations With The DVP
+- @increasekvprel: Increase Relations With The KVP
+- @decreasekvprel: Decrease Relations With The KVP
 - @increasednvprel: Increase Relations With The DNVP (Doesn't Work)
 - @decreasednvprel: Decrease Relations With The DNVP (Doesn't Work)
 - @increasensdaprel: Increase Relations With The NSDAP (Doesn't Work)
 - @decreasensdaprel: Decrease Relations With The NSDAP (Doesn't Work)
 - @returnsandbox: Return To Sandbox Menu
+
+@increasekvprel
+go-to: editrelations
+on-arrival: {!
+Q.kvp_relation += 15
+!}
+
+@decreasekvprel
+go-to editrelations
+on-arrival: {!
+Q.kvp_relation -= 15
+!)
 
 @increaselvprel
 go-to: editrelations
@@ -713,7 +729,7 @@ Q.lvp_relation += 15;
 @decreaselvprel
 go-to: editrelations
 on-arrival: {!
-Q.lvp_relation += 15;
+Q.lvp_relation -= 15;
 !}
 
 @increasecenterrel
