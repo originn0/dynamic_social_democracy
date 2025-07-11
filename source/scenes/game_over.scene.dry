@@ -279,6 +279,34 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.notwendigkeit) {
       this.achieve('notwendigkeit');
   }
+
+  if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president !=   "Göring" && Q.president != "Seldte" && Q.chancellor != "Hitler" && !Q.  hammerstein_win && !(Q.president == "Hergt" && Q.chancellor == "Seldte")) {
+    if ((Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg") && Q.in_left_front) {
+      Q.kpd_points_calc = 0;
+      Q.kpd_points_calc += Q.rfb_force;
+      Q.kpd_points_calc += (100 - Q.pro_republic) / 2;
+      Q.kpd_points_calc += Q.unemployed / 2;
+      Q.kpd_points_calc += Q.kpd_votes;
+      Q.kpd_points_calc += Q.soviet_relation;
+      if (Q.presid_calcent == "Thälmann") Q.kpd_points_calc += 16;
+      if (Q.president == "Münzenberg") Q.kpd_points_calc += 10;
+      if (Q.kpd_leader == "Conciliators") Q.kpd_points_calc += 6;
+      if (Q.sapd_formed) {
+        Q.kpd_points_calc += 2;
+        Q.kpd_points_calc += Q.sapd_votes;
+      }
+      if (Q.spd_votes < 26) Q.kpd_points_calc += 5;
+      if (Q.eu) Q.kpd_points_calc -= 10;
+      if (Q.spd_votes >= 36) Q.kpd_points_calc -= 5;
+      if (Q.spd_votes >= 40) Q.kpd_points_calc -= 5;
+
+      if (Q.kpd_points_calc >= 50) {
+        this.achieve('nach_der_spd_wir');
+      } else {
+        this.achieve('1919_geracht');
+      }
+    }
+  }
 }
 this.achieve('game_completed');
 !}
@@ -639,7 +667,9 @@ const achievements = [
   "achievement_champagner_sozialisten", 
   "achievement_stabile_demokratie",
   "achievement_neue_geschaftsfuhrung",
-  "achievement_rotes_bayern"
+  "achievement_rotes_bayern",
+  "achievement_1919_geracht",
+  "achievement_nach_der_spd_wir"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -1640,7 +1670,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 
 [? if game_achievement_ldp: 
 {!<tr>!}
-  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <img src="img/achievement/ldp.png" alt="Dominantes Parteiensystem Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
@@ -2354,6 +2384,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Rotes Bayern</div>
       <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_1919_geracht: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/1919_geracht.png" alt="1919 Gerächt Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">1919 Gerächt</div>
+      <div class="achievement_subtitle"> - achieve the "Spartakus Rises Again" ending.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_nach_der_spd_wir: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/nach_der_spd_wir.png" alt="Nach der SPD wir Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Nach der SPD, wir!</div>
+      <div class="achievement_subtitle"> - achieve the "Vanguard Takes the Helm" ending.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3251,7 +3311,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 
 [? if achievement_ldp: 
 {!<tr>!}
-  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <img src="img/achievement/ldp.png" alt="Dominantes Parteiensystem Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
@@ -3965,6 +4025,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Rotes Bayern</div>
       <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_1919_geracht: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/1919_geracht.png" alt="1919 Gerächt Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">1919 Gerächt</div>
+      <div class="achievement_subtitle"> - achieve the "Spartakus Rises Again" ending.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_nach_der_spd_wir: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/nach_der_spd_wir.png" alt="Nach der SPD wir Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Nach der SPD, wir!</div>
+      <div class="achievement_subtitle"> - achieve the "Vanguard Takes the Helm" ending.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4862,7 +4952,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 
 [? if not achievement_ldp: 
 {!<tr>!}
-  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
     <img src="img/achievement/ldp.png" alt="Dominantes Parteiensystem Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
@@ -5575,6 +5665,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Rotes Bayern</div>
       <div class="achievement_subtitle"> - form an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority government in Bavaria.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_1919_geracht: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/1919_geracht.png" alt="1919 Gerächt Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">1919 Gerächt</div>
+      <div class="achievement_subtitle"> - achieve the "Spartakus Rises Again" ending.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_nach_der_spd_wir: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/nach_der_spd_wir.png" alt="Nach der SPD wir Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Nach der SPD, wir!</div>
+      <div class="achievement_subtitle"> - achieve the "Vanguard Takes the Helm" ending.
     </div>
   {!</td>!}
 {!</tr>!}

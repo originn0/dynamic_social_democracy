@@ -323,6 +323,30 @@ if (Q.total_r_saxony > 0) {
     Q.dnf_r_saxony = (Q.dnf_r_saxony / Q.total_r_saxony) * 100;
 }
 
+function toSeats(pct) {
+    const percentPerSeat = 100 / 96;
+    return Math.round(pct / percentPerSeat) * percentPerSeat;
+}
+
+Q.spd_r_saxony = toSeats(Q.spd_r_saxony);
+Q.aspd_r_saxony = toSeats(Q.aspd_r_saxony);
+Q.sapd_r_saxony = toSeats(Q.sapd_r_saxony);
+Q.kpd_r_saxony = toSeats(Q.kpd_r_saxony);
+Q.ddp_r_saxony = toSeats(Q.ddp_r_saxony);
+Q.lvp_r_saxony = toSeats(Q.lvp_r_saxony);
+Q.z_r_saxony = toSeats(Q.z_r_saxony);
+Q.dvp_r_saxony = toSeats(Q.dvp_r_saxony);
+Q.dnvp_r_saxony = toSeats(Q.dnvp_r_saxony);
+Q.nsdap_r_saxony = toSeats(Q.nsdap_r_saxony);
+Q.wp_r_saxony = toSeats(Q.wp_r_saxony);
+Q.farm_r_saxony = toSeats(Q.farm_r_saxony);
+Q.vrp_r_saxony = toSeats(Q.vrp_r_saxony);
+Q.vnr_r_saxony = toSeats(Q.vnr_r_saxony);
+Q.csvd_r_saxony = toSeats(Q.csvd_r_saxony);
+Q.other_r_saxony = toSeats(Q.other_r_saxony);
+Q.kvp_r_saxony = toSeats(Q.kvp_r_saxony);
+Q.dnf_r_saxony = toSeats(Q.dnf_r_saxony);
+
 Q.spd_r_saxony = (Q.spd_r_saxony != undefined ? parseFloat(Q.spd_r_saxony.toFixed(1)) : 0);
 Q.sapd_r_saxony = (Q.sapd_r_saxony != undefined ? parseFloat(Q.sapd_r_saxony.toFixed(1)) : 0);
 Q.kpd_r_saxony = (Q.kpd_r_saxony != undefined ? parseFloat(Q.kpd_r_saxony.toFixed(1)) : 0);
@@ -706,7 +730,7 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-Surprisingly, despite reluctance on both sides due to fears that the <span style="color: #808080;">reactionary</span> Hindenburg will order a <i>Reichsexekution</i> if a coalition were to form. <span style="color: #c00000;">Red</span> Saxony is restored! 
+Surprisingly, despite reluctance on both sides due to fears that the <span style="color: #808080;">reactionary</span> Hindenburg will order a <i>Reichsexekution</i> if a coalition were to form, <span style="color: #c00000;">Red</span> Saxony is restored! 
 
 As one of the most left-wing and industrial states in Germany, we will use our leverage to implement comprehensive reforms and transform Saxony into a stronghold of <span style="color: #c00000;">socialism</span>. Hindenburg’s patience is especially thin. Tread carefully.
 

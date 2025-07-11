@@ -213,7 +213,7 @@ data = [{
     "id": "kpd",
     "legend": "KPD",
     "name": "KPD",
-    "seats": Math.round(Q.kpd_r * 5),
+    "seats": Math.round(Q.kpd_r * Q.reichstag_size),
 }];
 
 if (Q.sapd_formed && Q.sapd_r) {
@@ -221,7 +221,7 @@ if (Q.sapd_formed && Q.sapd_r) {
         "id": "sapd",
         "legend": "SAPD",
         "name": "SAPD",
-        "seats": Math.round(Q.sapd_r * 5),
+        "seats": Math.round(Q.sapd_r * Q.reichstag_size),
     });
 }
 
@@ -230,7 +230,7 @@ if (Q.spd_r) {
         "id": "spd",
         "legend": "SPD",
         "name": "SPD",
-        "seats": Math.round(Q.spd_r * 5),
+        "seats": Math.round(Q.spd_r * Q.reichstag_size),
     });
 }
 
@@ -239,7 +239,7 @@ if (Q.rdp_r) {
         "id": "rdp",
         "legend": "RDP",
         "name": "RDP",
-        "seats": Math.round(Q.rdp_r * 5),
+        "seats": Math.round(Q.rdp_r * Q.reichstag_size),
     });
 }
 
@@ -248,7 +248,7 @@ if (Q.dnvp_r && Q.dnvp_wholesome) {
         "id": "dnvp_wholesome",
         "legend": "DNVP",
         "name": "DNVP",
-        "seats": Math.round(Q.dnvp_r * 5),
+        "seats": Math.round(Q.dnvp_r * Q.reichstag_size),
     });
 }
 
@@ -257,7 +257,7 @@ if (Q.ddp_r && !Q.lvp_formed) {
         "id": "ddp",
         "legend": Q.ddp_name,
         "name": Q.ddp_name,
-        "seats": Math.round(Q.ddp_r * 5),
+        "seats": Math.round(Q.ddp_r * Q.reichstag_size),
     });
 }
 
@@ -266,7 +266,7 @@ if (Q.lvp_r && Q.lvp_formed) {
         "id": "lvp",
         "legend": "LVP",
         "name": "LVP",
-        "seats": Math.round(Q.lvp_r * 5),
+        "seats": Math.round(Q.lvp_r * Q.reichstag_size),
     });
 }
 
@@ -275,7 +275,7 @@ if (Q.z_minus_bvp_r) {
         "id": "z",
         "legend": "Center",
         "name": "Center",
-        "seats": Math.round(Q.z_minus_bvp_r * 5),
+        "seats": Math.round(Q.z_minus_bvp_r * Q.reichstag_size),
     });
 }
 
@@ -284,7 +284,7 @@ if (Q.bvp_r) {
         "id": "bvp",
         "legend": "BVP",
         "name": "BVP",
-        "seats": Math.round(Q.bvp_r * 5),
+        "seats": Math.round(Q.bvp_r * Q.reichstag_size),
     });
 }
 
@@ -293,7 +293,7 @@ if (Q.dvp_r && !Q.lvp_formed && Q.dvp_exist) {
         "id": "dvp",
         "legend": "DVP",
         "name": "DVP",
-        "seats": Math.round(Q.dvp_r * 5),
+        "seats": Math.round(Q.dvp_r * Q.reichstag_size),
     });
 }
 
@@ -302,7 +302,7 @@ if (Q.dnef_r && Q.dnef_formed) {
         "id": "dnef",
         "legend": "DNEF",
         "name": "DNEF",
-        "seats": Math.round(Q.dnef_r * 5),
+        "seats": Math.round(Q.dnef_r * Q.reichstag_size),
     });
 }
 
@@ -311,7 +311,7 @@ if (Q.other_r) {
         "id": "other",
         "legend": "Other",
         "name": "Other",
-        "seats": Math.round(Q.other_r * 5),
+        "seats": Math.round(Q.other_r * Q.reichstag_size),
     });
 }
 
@@ -320,7 +320,7 @@ if (Q.kvp_formed && Q.kvp_r) {
         "id": "kvp",
         "legend": "KVP",
         "name": "KVP",
-        "seats": Math.round(Q.kvp_r * 5),
+        "seats": Math.round(Q.kvp_r * Q.reichstag_size),
     });
 }
 
@@ -329,7 +329,7 @@ if (Q.dnvp_r && !Q.dnvp_wholesome) {
         "id": "dnvp",
         "legend": "DNVP",
         "name": "DNVP",
-        "seats": Math.round(Q.dnvp_r * 5),
+        "seats": Math.round(Q.dnvp_r * Q.reichstag_size),
     });
 }
 
@@ -338,7 +338,7 @@ if (Q.dnf_formed && Q.dnf_r) {
         "id": "dnf",
         "legend": "DNF",
         "name": "DNF",
-        "seats": Math.round(Q.dnf_r * 5),
+        "seats": Math.round(Q.dnf_r * Q.reichstag_size),
     });
 }
 
@@ -347,7 +347,7 @@ if (Q.dsu_exist && Q.dsu_r) {
         "id": "dsu",
         "legend": "DSU",
         "name": "DSU",
-        "seats": Math.round(Q.dsu_r * 5),
+        "seats": Math.round(Q.dsu_r * Q.reichstag_size),
     });
 }
 
@@ -356,7 +356,7 @@ if (Q.nsdap_split && Q.nsdap_hitler_r) {
         "id": "nsdap",
         "legend": "NSDAP",
         "name": "NSDAP",
-        "seats": Math.round(Q.nsdap_hitler_r * 5),
+        "seats": Math.round(Q.nsdap_hitler_r * Q.reichstag_size),
     });
 }
 
@@ -365,7 +365,7 @@ if (!Q.nsdap_split && Q.nsdap_r) {
         "id": "nsdap",
         "legend": "NSDAP",
         "name": "NSDAP",
-        "seats": Math.round(Q.nsdap_r * 5),
+        "seats": Math.round(Q.nsdap_r * Q.reichstag_size),
     });
 }
 
@@ -374,7 +374,7 @@ if (Q.nvf_exist && Q.nvf_r) {
         "id": "nvf",
         "legend": "NVF",
         "name": "NVF",
-        "seats": Math.round(Q.nvf_r * 5),
+        "seats": Math.round(Q.nvf_r * Q.reichstag_size),
     });
 }
 if (d3 && window) {

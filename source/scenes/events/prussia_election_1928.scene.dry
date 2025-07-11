@@ -589,13 +589,21 @@ if (Q.left_coalition_prussia >= 50) {
     Q.left_strength += 5;
 }
 
+if (Q.year >= 1932) {
+    Q.landtag_size = 4.23;
+} else {
+    Q.landtag_size = 4.5;
+}
+
+// not sure why seats decreased from 450 to 423 between 1928 and 1932, considering the turnout vastly increased
+
 !}
 on-display: {!
 data = [{
     "id": "kpd",
     "legend": "KPD",
     "name": "KPD",
-    "seats": Math.round(Q.kpd_r_prussia * 4.5),
+    "seats": Math.round(Q.kpd_r_prussia * Q.landtag_size),
 }];
 
 if (Q.sapd_formed && Q.sapd_r_prussia) {
@@ -603,7 +611,7 @@ if (Q.sapd_formed && Q.sapd_r_prussia) {
         "id": "sapd",
         "legend": "SAPD",
         "name": "SAPD",
-        "seats": Math.round(Q.sapd_r_prussia * 4.5),
+        "seats": Math.round(Q.sapd_r_prussia * Q.landtag_size),
     });
 }
 
@@ -611,7 +619,7 @@ data = data.concat([{
     "id": "spd",
     "legend": "SPD",
     "name": "SPD",
-    "seats": Math.round(Q.spd_r_prussia * 4.5),
+    "seats": Math.round(Q.spd_r_prussia * Q.landtag_size),
 }]);
 
 if (Q.ddp_r_prussia && !Q.lvp_formed) {
@@ -619,7 +627,7 @@ if (Q.ddp_r_prussia && !Q.lvp_formed) {
         "id": "ddp",
         "legend": Q.ddp_name,
         "name": Q.ddp_name,
-        "seats": Math.round(Q.ddp_r_prussia * 4.5),
+        "seats": Math.round(Q.ddp_r_prussia * Q.landtag_size),
     });
 }
 
@@ -628,7 +636,7 @@ if (Q.lvp_r_prussia && Q.lvp_formed) {
         "id": "lvp",
         "legend": "LVP",
         "name": "LVP",
-        "seats": Math.round(Q.lvp_r_prussia * 4.5),
+        "seats": Math.round(Q.lvp_r_prussia * Q.landtag_size),
     });
 }
 
@@ -637,7 +645,7 @@ if (Q.z_r_prussia) {
         "id": "z",
         "legend": "Center",
         "name": "Center",
-        "seats": Math.round(Q.z_r_prussia * 4.5),
+        "seats": Math.round(Q.z_r_prussia * Q.landtag_size),
     });
 }
 
@@ -646,7 +654,7 @@ if (Q.dvp_r_prussia && !Q.lvp_formed && Q.dvp_exist) {
         "id": "dvp",
         "legend": "DVP",
         "name": "DVP",
-        "seats": Math.round(Q.dvp_r_prussia * 4.5),
+        "seats": Math.round(Q.dvp_r_prussia * Q.landtag_size),
     });
 }
 
@@ -655,7 +663,7 @@ if (Q.dnef_r_prussia && Q.dnef_formed) {
         "id": "dnef",
         "legend": "DNEF",
         "name": "DNEF",
-        "seats": Math.round(Q.dnef_r_prussia * 4.5),
+        "seats": Math.round(Q.dnef_r_prussia * Q.landtag_size),
     });
 }
 
@@ -664,7 +672,7 @@ if (Q.other_r_prussia) {
         "id": "other",
         "legend": "Other",
         "name": "Other",
-        "seats": Math.round(Q.other_r_prussia * 4.5),
+        "seats": Math.round(Q.other_r_prussia * Q.landtag_size),
     });
 }
 
@@ -673,7 +681,7 @@ if (Q.kvp_formed && Q.kvp_r_prussia && !Q.dnvp_dvp_formed) {
         "id": "kvp",
         "legend": "KVP",
         "name": "KVP",
-        "seats": Math.round(Q.kvp_r_prussia * 4.5),
+        "seats": Math.round(Q.kvp_r_prussia * Q.landtag_size),
     });
 }
 
@@ -682,7 +690,7 @@ if (Q.dnvp_dvp_formed) {
         "id": "fkp",
         "legend": "FKP",
         "name": "FKP",
-        "seats": Math.round(Q.kvp_r_prussia * 4.5),
+        "seats": Math.round(Q.kvp_r_prussia * Q.landtag_size),
     });
 }
 
@@ -691,7 +699,7 @@ if (Q.dnvp_r_prussia) {
         "id": "dnvp",
         "legend": "DNVP",
         "name": "DNVP",
-        "seats": Math.round(Q.dnvp_r_prussia * 4.5),
+        "seats": Math.round(Q.dnvp_r_prussia * Q.landtag_size),
     });
 }
 if (Q.dnf_formed && Q.dnf_r_prussia) {
@@ -699,7 +707,7 @@ if (Q.dnf_formed && Q.dnf_r_prussia) {
         "id": "dnf",
         "legend": "DNF",
         "name": "DNF",
-        "seats": Math.round(Q.dnf_r_prussia * 4.5),
+        "seats": Math.round(Q.dnf_r_prussia * Q.landtag_size),
     });
 }
 if (Q.dsu_exist && Q.dsu_r_prussia) {
@@ -707,7 +715,7 @@ if (Q.dsu_exist && Q.dsu_r_prussia) {
         "id": "dsu",
         "legend": "DSU",
         "name": "DSU",
-        "seats": Math.round(Q.dsu_r_prussia * 4.5),
+        "seats": Math.round(Q.dsu_r_prussia * Q.landtag_size),
     });
 }
 
@@ -716,7 +724,7 @@ if (Q.nsdap_split && Q.nsdap_hitler_r_prussia) {
         "id": "nsdap",
         "legend": "NSDAP",
         "name": "NSDAP",
-        "seats": Math.round(Q.nsdap_hitler_r_prussia * 4.5),
+        "seats": Math.round(Q.nsdap_hitler_r_prussia * Q.landtag_size),
     });
 }
 
@@ -725,7 +733,7 @@ if (!Q.nsdap_split && Q.nsdap_r_prussia) {
         "id": "nsdap",
         "legend": "NSDAP",
         "name": "NSDAP",
-        "seats": Math.round(Q.nsdap_r_prussia * 4.5),
+        "seats": Math.round(Q.nsdap_r_prussia * Q.landtag_size),
     });
 }
 
@@ -734,7 +742,7 @@ if (Q.nvf_exist && Q.nvf_r_prussia) {
         "id": "nvf",
         "legend": "NVF",
         "name": "NVF",
-        "seats": Math.round(Q.nvf_r_prussia * 4.5),
+        "seats": Math.round(Q.nvf_r_prussia * Q.landtag_size),
     });
 }
 
@@ -1175,7 +1183,7 @@ on-arrival: in_center_right_coalition_prussia = 1; hands_tied_prussia = 0; hands
 
 @call_new_elections
 subtitle: New elections will be called.
-view-if: (((grand_coalition_prussia < 50) or ((grand_coalition_prussia >= 50 and (dvp_relation < 40 or (lvp_relation < 40 and lvp_formed) or z_relation < 35)))) and far_right_coalition_prussia < 50 and (center_right_coalition_prussia < 50 or ((center_right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))) and (right_coalition_prussia < 50 or (right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))))) and not rubicon
+view-if: (((grand_coalition_prussia < 50) or ((grand_coalition_prussia >= 50 and (((dvp_relation < 40 or dvp_ideology == "Right") and not lvp_formed) or ((lvp_relation < 40 or lvp_ideology == "Right") and lvp_formed) or z_relation < 35)))) and far_right_coalition_prussia < 50 and (center_right_coalition_prussia < 50 or ((center_right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))) and (right_coalition_prussia < 50 or (right_coalition_prussia >= 50 and ((dnvp_ideology == "Radical" and not dnvp_westarp) or (year = 1929 and month >= 7)))))) and not rubicon
 go-to: call_new_elections_2 if no_majority_elections_prussia < 1 or (neo_weimar_coalition_prussia + kvp_r_prussia < 50 and dnvp_ideology == "Radical") or (neo_weimar_coalition_prussia + dnvp_r_prussia < 50 and dnvp_ideology == "Moderate"); toleration_dilemma if no_majority_elections_prussia >= 1 and ((neo_weimar_coalition_prussia + kvp_r_prussia >= 50 and dnvp_ideology == "Radical") or (neo_weimar_coalition_prussia + dnvp_r_prussia >= 50 and dnvp_ideology == "Moderate"))
 
 @toleration_dilemma
@@ -1212,6 +1220,7 @@ on-arrival: no_majority_elections_prussia_schleicher = 1
 go-to: call_new_elections_2_rubicon if prussia_leader != "Braun" and prussia_leader != "Stegerwald" and prussia_leader != "Luther" and prussia_leader != "Brüning"; prussia_explode if prussia_leader == "Braun" or prussia_leader == "Stegerwald" or prussia_leader == "Luther" or prussia_leader == "Brüning"
 
 @call_new_elections_2_rubicon
+view-if: dnef_r_prussia < 50 and (schleicher_right_coalition_prussia < 50 or dsu_leader == "Otto Strasser")
 on-arrival: next_election_week_prussia = next_election_week if rubicon and next_election_time - time < 3; next_election_week_prussia = week + 6 if rubicon and next_election_time - time >= 3; next_election_week_prussia -= 4 if rubicon and next_election_week_prussia > 4; next_election_week_prussia -= 4 if rubicon and next_election_week_prussia > 4
 call: set_next_election_time_prussia
 

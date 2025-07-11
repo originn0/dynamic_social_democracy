@@ -47,9 +47,9 @@ History seems to be repeating itself: the <span style="color: #3E88B3;">**DNVP**
 
 @results
 on-arrival: {!
-Q.pro_bruning_dnvp = (Q.dnvp_r * 5) * Q.pro_republic / 100
+Q.pro_bruning_dnvp = (Q.dnvp_r * Q.reichstag_size) * Q.pro_republic / 100
 Q.pro_bruning_dnvp = Math.round(Q.pro_bruning_dnvp)
-Q.anti_bruning_dnvp = (Q.dnvp_r * 5) - Q.pro_bruning_dnvp
+Q.anti_bruning_dnvp = (Q.dnvp_r * Q.reichstag_size) - Q.pro_bruning_dnvp
 Q.anti_bruning_dnvp = Math.round(Q.anti_bruning_dnvp)
 
 if (Q.pro_bruning_dnvp >= Q.anti_bruning_dnvp) {

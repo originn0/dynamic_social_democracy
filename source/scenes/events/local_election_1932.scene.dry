@@ -218,7 +218,15 @@ if (Q.z_local_elections_vote + Q.ddp_local_elections_vote + Q.dvp_local_election
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_local_elections_vote +]% {!</td></tr>!}
 {!</table>!}
 
-[? if nsdap_local_elections_vote >= 20: The strong performance of the <span style="color: #7A3C00;">**NSDAP**</span> leaves little room for a democratic coalition in many Landtags, and may force the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to negotiate with them as a last resort. ?][? if spd_local_elections_vote >= 30: We have maintained a strong performance, maintaining many of our seats we've won in 1928. Hopefully our coalition partners have won enough votes as well, to continue our stable and democratic coalitions. ?][? if kpd_local_elections_vote + sapd_local_elections_vote >= 16: The gains made by the <span style="color: #700000;">**KPD**</span> have left our grassroots clamoring for a United Left coalition, as our local-level relations are far more cooperative than those between our national leaderships ?][? if bourgeois_local_win: The bourgeois parties have performed unexpectedly well in these elections, despite expectations that the economic crisis would push voters toward the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. This is expected to revitalize the bourgeois parties on the national stage. ?][? if bourgeois_local_cvp_win: The bourgeois parties, especially the <span style="color: #000000;">**[+ z_party_name +]**</span>, have performed unexpectedly well in these elections, defying expectations that the economic crisis would drive voters toward the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. As one of their first electoral tests, the <span style="color: #000000;">**[+ z_party_name +]**</span> has enjoyed clear success so far. ?]
+[? if nsdap_local_elections_vote >= 20: The strong performance of the <span style="color: #7A3C00;">**NSDAP**</span> leaves little room for a democratic coalition in many Landtags, and may force the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to negotiate with them as a last resort. ?]
+
+[? if spd_local_elections_vote >= 30: We have maintained a strong performance, maintaining many of our seats we've won in 1928. Hopefully our coalition partners have won enough votes as well, to continue our stable and democratic coalitions. ?]
+
+[? if kpd_local_elections_vote + sapd_local_elections_vote >= 16: The gains made by the <span style="color: #700000;">**KPD**</span> have left our grassroots clamoring for a United Left coalition, as our local-level relations are far more cooperative than those between our national leaderships. ?]
+
+[? if bourgeois_local_win: The bourgeois parties have performed unexpectedly well in these elections, despite expectations that the economic crisis would push voters toward the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. This is expected to revitalize the bourgeois parties on the national stage. ?]
+
+[? if bourgeois_local_cvp_win: The bourgeois parties, especially the <span style="color: #000000;">**[+ z_party_name +]**</span>, have performed unexpectedly well in these elections, defying expectations that the economic crisis would drive voters toward the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. As one of their first electoral tests, the <span style="color: #000000;">**[+ z_party_name +]**</span> has enjoyed clear success so far. ?]
 
 [? if bruning_time and nsdap_local_elections_vote >= 20 and president == "Hindenburg": These results are likely the final nail in the coffin for Brüning's government, as President Hindenburg loses confidence in him. It is likely that someone even more right-wing than Brüning will replace him, given the nation's continued political shift to the right. ?]
 
@@ -371,6 +379,32 @@ if (Q.total_r_bavaria > 0) {
     Q.dnf_r_bavaria = (Q.dnf_r_bavaria / Q.total_r_bavaria) * 100;
 }
 
+Q.farm_bavaria_elections_vote = Q.other_bavaria_elections_vote*0.8
+Q.farm_r_bavaria = Q.other_r_bavaria*0.8
+
+Q.non_farm_bavaria_elections_vote = Q.other_bavaria_elections_vote*0.2
+Q.non_farm_r_bavaria = Q.other_r_bavaria*0.2
+
+function toSeats(pct) {
+    const percentPerSeat = 100 / 128;
+    return Math.round(pct / percentPerSeat) * percentPerSeat;
+}
+
+Q.spd_r_bavaria = toSeats(Q.spd_r_bavaria);
+Q.sapd_r_bavaria = toSeats(Q.sapd_r_bavaria);
+Q.kpd_r_bavaria = toSeats(Q.kpd_r_bavaria);
+Q.ddp_r_bavaria = toSeats(Q.ddp_r_bavaria);
+Q.lvp_r_bavaria = toSeats(Q.lvp_r_bavaria);
+Q.z_r_bavaria = toSeats(Q.z_r_bavaria);
+Q.dvp_r_bavaria = toSeats(Q.dvp_r_bavaria);
+Q.dnvp_r_bavaria = toSeats(Q.dnvp_r_bavaria);
+Q.nsdap_r_bavaria = toSeats(Q.nsdap_r_bavaria);
+Q.farm_r_bavaria = toSeats(Q.farm_r_bavaria);
+Q.non_farm_r_bavaria = toSeats(Q.non_farm_r_bavaria);
+Q.other_r_bavaria = toSeats(Q.other_r_bavaria);
+Q.kvp_r_bavaria = toSeats(Q.kvp_r_bavaria);
+Q.dnf_r_bavaria = toSeats(Q.dnf_r_bavaria);
+
 Q.spd_r_bavaria = (Q.spd_r_bavaria != undefined ? parseFloat(Q.spd_r_bavaria.toFixed(1)) : 0);
 Q.sapd_r_bavaria = (Q.sapd_r_bavaria != undefined ? parseFloat(Q.sapd_r_bavaria.toFixed(1)) : 0);
 Q.kpd_r_bavaria = (Q.kpd_r_bavaria != undefined ? parseFloat(Q.kpd_r_bavaria.toFixed(1)) : 0);
@@ -388,12 +422,6 @@ Q.left_coalition_bavaria = parseFloat((Q.spd_r_bavaria + Q.kpd_r_bavaria + Q.sap
 Q.bourgeois_coalition_bavaria = parseFloat((Q.z_r_bavaria + Q.dvp_r_bavaria + Q.ddp_r_bavaria + Q.lvp_r_bavaria + Q.other_r_bavaria + Q.dnvp_r_bavaria).toFixed(1));
 if (Q.dnvp_ideology == "Radical" && Q.kvp_formed) Q.bourgeois_coalition_bavaria = parseFloat((Q.z_r_bavaria + Q.dvp_r_bavaria + Q.ddp_r_bavaria + Q.lvp_r_bavaria + Q.kvp_r_bavaria + Q.other_r_bavaria).toFixed(1));
 Q.spd_coalition_bavaria = parseFloat((Q.spd_r_bavaria + (Q.other_r_bavaria * 0.8) + Q.ddp_r_bavaria + Q.lvp_r_bavaria).toFixed(1));
-
-Q.farm_bavaria_elections_vote = Q.other_bavaria_elections_vote*0.8
-Q.farm_r_bavaria = Q.other_r_bavaria*0.8
-
-Q.non_farm_bavaria_elections_vote = Q.other_bavaria_elections_vote*0.2
-Q.non_farm_r_bavaria = Q.other_r_bavaria*0.2
 
 Q.farm_bavaria_elections_vote = (Q.farm_bavaria_elections_vote != undefined ? parseFloat(Q.farm_bavaria_elections_vote.toFixed(1)) : 0);
 Q.non_farm_bavaria_elections_vote = (Q.non_farm_bavaria_elections_vote != undefined ? parseFloat(Q.non_farm_bavaria_elections_vote.toFixed(1)) : 0);
@@ -805,6 +833,32 @@ if (Q.total_r_wurttemberg > 0) {
     Q.dnf_r_wurttemberg = (Q.dnf_r_wurttemberg / Q.total_r_wurttemberg) * 100;
 }
 
+Q.farm_wurttemberg_elections_vote = Q.other_wurttemberg_elections_vote*0.66
+Q.farm_r_wurttemberg = Q.other_r_wurttemberg*0.66
+
+Q.non_farm_wurttemberg_elections_vote = Q.other_wurttemberg_elections_vote*0.34
+Q.non_farm_r_wurttemberg = Q.other_r_wurttemberg*0.34
+
+function toSeats(pct) {
+    const percentPerSeat = 100 / 80;
+    return Math.round(pct / percentPerSeat) * percentPerSeat;
+}
+
+Q.spd_r_wurttemberg = toSeats(Q.spd_r_wurttemberg);
+Q.sapd_r_wurttemberg = toSeats(Q.sapd_r_wurttemberg);
+Q.kpd_r_wurttemberg = toSeats(Q.kpd_r_wurttemberg);
+Q.ddp_r_wurttemberg = toSeats(Q.ddp_r_wurttemberg);
+Q.lvp_r_wurttemberg = toSeats(Q.lvp_r_wurttemberg);
+Q.z_r_wurttemberg = toSeats(Q.z_r_wurttemberg);
+Q.dvp_r_wurttemberg = toSeats(Q.dvp_r_wurttemberg);
+Q.dnvp_r_wurttemberg = toSeats(Q.dnvp_r_wurttemberg);
+Q.nsdap_r_wurttemberg = toSeats(Q.nsdap_r_wurttemberg);
+Q.non_farm_r_wurttemberg = toSeats(Q.non_farm_r_wurttemberg);
+Q.farm_r_wurttemberg = toSeats(Q.farm_r_wurttemberg);
+Q.other_r_wurttemberg = toSeats(Q.other_r_wurttemberg);
+Q.kvp_r_wurttemberg = toSeats(Q.kvp_r_wurttemberg);
+Q.dnf_r_wurttemberg = toSeats(Q.dnf_r_wurttemberg);
+
 Q.spd_r_wurttemberg = (Q.spd_r_wurttemberg != undefined ? parseFloat(Q.spd_r_wurttemberg.toFixed(1)) : 0);
 Q.sapd_r_wurttemberg = (Q.sapd_r_wurttemberg != undefined ? parseFloat(Q.sapd_r_wurttemberg.toFixed(1)) : 0);
 Q.kpd_r_wurttemberg = (Q.kpd_r_wurttemberg != undefined ? parseFloat(Q.kpd_r_wurttemberg.toFixed(1)) : 0);
@@ -823,12 +877,6 @@ Q.bourgeois_coalition_wurttemberg = parseFloat((Q.z_r_wurttemberg + Q.ddp_r_wurt
 if (Q.dnvp_ideology == "Moderate") Q.bourgeois_coalition_wurttemberg = parseFloat((Q.z_r_wurttemberg + Q.ddp_r_wurttemberg + Q.dvp_r_wurttemberg + Q.lvp_r_wurttemberg + Q.dnvp_r_wurttemberg + Q.other_r_wurttemberg).toFixed(1));
 Q.spd_coalition_wurttemberg = parseFloat((Q.spd_r_wurttemberg + Q.ddp_r_wurttemberg + Q.lvp_r_wurttemberg + Q.z_r_wurttemberg).toFixed(1));
 if (Q.cvp_formed) Q.spd_coalition_wurttemberg = parseFloat((Q.spd_r_wurttemberg + Q.ddp_r_wurttemberg + Q.lvp_r_wurttemberg).toFixed(1));
-
-Q.farm_wurttemberg_elections_vote = Q.other_wurttemberg_elections_vote*0.66
-Q.farm_r_wurttemberg = Q.other_r_wurttemberg*0.66
-
-Q.non_farm_wurttemberg_elections_vote = Q.other_wurttemberg_elections_vote*0.34
-Q.non_farm_r_wurttemberg = Q.other_r_wurttemberg*0.34
 
 Q.farm_wurttemberg_elections_vote = (Q.farm_wurttemberg_elections_vote != undefined ? parseFloat(Q.farm_wurttemberg_elections_vote.toFixed(1)) : 0);
 Q.non_farm_wurttemberg_elections_vote = (Q.non_farm_wurttemberg_elections_vote != undefined ? parseFloat(Q.non_farm_wurttemberg_elections_vote.toFixed(1)) : 0);
