@@ -323,29 +323,61 @@ if (Q.total_r_saxony > 0) {
     Q.dnf_r_saxony = (Q.dnf_r_saxony / Q.total_r_saxony) * 100;
 }
 
-function toSeats(pct) {
-    const percentPerSeat = 100 / 96;
-    return Math.round(pct / percentPerSeat) * percentPerSeat;
+function allocateSeats(percentages, totalSeats = 96) {
+    const exactSeats = {};
+    const flooredSeats = {};
+    const remainders = [];
+
+    let totalFlooredSeats = 0;
+    for (const party in percentages) {
+        const exact = (percentages[party] * totalSeats) / 100;
+        const floored = Math.floor(exact);
+        const remainder = exact - floored;
+
+        exactSeats[party] = exact;
+        flooredSeats[party] = floored;
+        totalFlooredSeats += floored;
+
+        remainders.push({ party, remainder });
+    }
+
+    const seatsToDistribute = totalSeats - totalFlooredSeats;
+    remainders.sort((a, b) => b.remainder - a.remainder);
+
+    for (let i = 0; i < seatsToDistribute; i++) {
+        flooredSeats[remainders[i].party]++;
+    }
+
+    return flooredSeats;
 }
 
-Q.spd_r_saxony = toSeats(Q.spd_r_saxony);
-Q.aspd_r_saxony = toSeats(Q.aspd_r_saxony);
-Q.sapd_r_saxony = toSeats(Q.sapd_r_saxony);
-Q.kpd_r_saxony = toSeats(Q.kpd_r_saxony);
-Q.ddp_r_saxony = toSeats(Q.ddp_r_saxony);
-Q.lvp_r_saxony = toSeats(Q.lvp_r_saxony);
-Q.z_r_saxony = toSeats(Q.z_r_saxony);
-Q.dvp_r_saxony = toSeats(Q.dvp_r_saxony);
-Q.dnvp_r_saxony = toSeats(Q.dnvp_r_saxony);
-Q.nsdap_r_saxony = toSeats(Q.nsdap_r_saxony);
-Q.wp_r_saxony = toSeats(Q.wp_r_saxony);
-Q.farm_r_saxony = toSeats(Q.farm_r_saxony);
-Q.vrp_r_saxony = toSeats(Q.vrp_r_saxony);
-Q.vnr_r_saxony = toSeats(Q.vnr_r_saxony);
-Q.csvd_r_saxony = toSeats(Q.csvd_r_saxony);
-Q.other_r_saxony = toSeats(Q.other_r_saxony);
-Q.kvp_r_saxony = toSeats(Q.kvp_r_saxony);
-Q.dnf_r_saxony = toSeats(Q.dnf_r_saxony);
+const inputPercentages = {
+    spd_r_saxony: Q.spd_r_saxony,
+    aspd_r_saxony: Q.aspd_r_saxony,
+    sapd_r_saxony: Q.sapd_r_saxony,
+    kpd_r_saxony: Q.kpd_r_saxony,
+    ddp_r_saxony: Q.ddp_r_saxony,
+    lvp_r_saxony: Q.lvp_r_saxony,
+    z_r_saxony: Q.z_r_saxony,
+    dvp_r_saxony: Q.dvp_r_saxony,
+    dnvp_r_saxony: Q.dnvp_r_saxony,
+    nsdap_r_saxony: Q.nsdap_r_saxony,
+    wp_r_saxony: Q.wp_r_saxony,
+    farm_r_saxony: Q.farm_r_saxony,
+    vrp_r_saxony: Q.vrp_r_saxony,
+    csvd_r_saxony: Q.csvd_r_saxony,
+    vnr_r_saxony: Q.vnr_r_saxony,
+    kvp_r_saxony: Q.kvp_r_saxony,
+    dnf_r_saxony: Q.dnf_r_saxony
+};
+
+const allocatedSeats = allocateSeats(inputPercentages);
+
+for (const party in allocatedSeats) {
+    Q[party] = parseFloat(((allocatedSeats[party] * 100) / 96).toFixed(1));
+}
+
+Q.other_r_saxony = Q.farm_r_saxony + Q.wp_r_saxony + Q.vrp_r_saxony + Q.vnr_r_saxony + Q.csvd_r_saxony;
 
 Q.spd_r_saxony = (Q.spd_r_saxony != undefined ? parseFloat(Q.spd_r_saxony.toFixed(1)) : 0);
 Q.sapd_r_saxony = (Q.sapd_r_saxony != undefined ? parseFloat(Q.sapd_r_saxony.toFixed(1)) : 0);

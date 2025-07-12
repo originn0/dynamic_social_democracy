@@ -385,38 +385,57 @@ Q.farm_r_bavaria = Q.other_r_bavaria*0.8
 Q.non_farm_bavaria_elections_vote = Q.other_bavaria_elections_vote*0.2
 Q.non_farm_r_bavaria = Q.other_r_bavaria*0.2
 
-function toSeats(pct) {
-    const percentPerSeat = 100 / 128;
-    return Math.round(pct / percentPerSeat) * percentPerSeat;
+function allocateSeats(percentages, totalSeats = 128) {
+    const exactSeats = {};
+    const flooredSeats = {};
+    const remainders = [];
+
+    let totalFlooredSeats = 0;
+    for (const party in percentages) {
+        const exact = (percentages[party] * totalSeats) / 100;
+        const floored = Math.floor(exact);
+        const remainder = exact - floored;
+
+        exactSeats[party] = exact;
+        flooredSeats[party] = floored;
+        totalFlooredSeats += floored;
+
+        remainders.push({ party, remainder });
+    }
+
+    const seatsToDistribute = totalSeats - totalFlooredSeats;
+    remainders.sort((a, b) => b.remainder - a.remainder);
+
+    for (let i = 0; i < seatsToDistribute; i++) {
+        flooredSeats[remainders[i].party]++;
+    }
+
+    return flooredSeats;
 }
 
-Q.spd_r_bavaria = toSeats(Q.spd_r_bavaria);
-Q.sapd_r_bavaria = toSeats(Q.sapd_r_bavaria);
-Q.kpd_r_bavaria = toSeats(Q.kpd_r_bavaria);
-Q.ddp_r_bavaria = toSeats(Q.ddp_r_bavaria);
-Q.lvp_r_bavaria = toSeats(Q.lvp_r_bavaria);
-Q.z_r_bavaria = toSeats(Q.z_r_bavaria);
-Q.dvp_r_bavaria = toSeats(Q.dvp_r_bavaria);
-Q.dnvp_r_bavaria = toSeats(Q.dnvp_r_bavaria);
-Q.nsdap_r_bavaria = toSeats(Q.nsdap_r_bavaria);
-Q.farm_r_bavaria = toSeats(Q.farm_r_bavaria);
-Q.non_farm_r_bavaria = toSeats(Q.non_farm_r_bavaria);
-Q.other_r_bavaria = toSeats(Q.other_r_bavaria);
-Q.kvp_r_bavaria = toSeats(Q.kvp_r_bavaria);
-Q.dnf_r_bavaria = toSeats(Q.dnf_r_bavaria);
+const inputPercentages = {
+    spd_r_bavaria: Q.spd_r_bavaria,
+    sapd_r_bavaria: Q.sapd_r_bavaria,
+    kpd_r_bavaria: Q.kpd_r_bavaria,
+    ddp_r_bavaria: Q.ddp_r_bavaria,
+    lvp_r_bavaria: Q.lvp_r_bavaria,
+    z_r_bavaria: Q.z_r_bavaria,
+    dvp_r_bavaria: Q.dvp_r_bavaria,
+    dnvp_r_bavaria: Q.dnvp_r_bavaria,
+    nsdap_r_bavaria: Q.nsdap_r_bavaria,
+    non_farm_r_bavaria: Q.non_farm_r_bavaria,
+    farm_r_bavaria: Q.farm_r_bavaria,
+    kvp_r_bavaria: Q.kvp_r_bavaria,
+    dnf_r_bavaria: Q.dnf_r_bavaria
+};
 
-Q.spd_r_bavaria = (Q.spd_r_bavaria != undefined ? parseFloat(Q.spd_r_bavaria.toFixed(1)) : 0);
-Q.sapd_r_bavaria = (Q.sapd_r_bavaria != undefined ? parseFloat(Q.sapd_r_bavaria.toFixed(1)) : 0);
-Q.kpd_r_bavaria = (Q.kpd_r_bavaria != undefined ? parseFloat(Q.kpd_r_bavaria.toFixed(1)) : 0);
-Q.ddp_r_bavaria = (Q.ddp_r_bavaria != undefined ? parseFloat(Q.ddp_r_bavaria.toFixed(1)) : 0);
-Q.lvp_r_bavaria = (Q.lvp_r_bavaria != undefined ? parseFloat(Q.lvp_r_bavaria.toFixed(1)) : 0);
-Q.z_r_bavaria = (Q.z_r_bavaria != undefined ? parseFloat(Q.z_r_bavaria.toFixed(1)) : 0);
-Q.dvp_r_bavaria = (Q.dvp_r_bavaria != undefined ? parseFloat(Q.dvp_r_bavaria.toFixed(1)) : 0);
-Q.dnvp_r_bavaria = (Q.dnvp_r_bavaria != undefined ? parseFloat(Q.dnvp_r_bavaria.toFixed(1)) : 0);
-Q.nsdap_r_bavaria = (Q.nsdap_r_bavaria != undefined ? parseFloat(Q.nsdap_r_bavaria.toFixed(1)) : 0);
-Q.other_r_bavaria = (Q.other_r_bavaria != undefined ? parseFloat(Q.other_r_bavaria.toFixed(1)) : 0);
-Q.kvp_r_bavaria = (Q.kvp_r_bavaria != undefined ? parseFloat(Q.kvp_r_bavaria.toFixed(1)) : 0);
-Q.dnf_r_bavaria = (Q.dnf_r_bavaria != undefined ? parseFloat(Q.dnf_r_bavaria.toFixed(1)) : 0);
+const allocatedSeats = allocateSeats(inputPercentages);
+
+for (const party in allocatedSeats) {
+    Q[party] = parseFloat(((allocatedSeats[party] * 100) / 128).toFixed(1));
+}
+
+Q.other_r_bavaria = Q.farm_r_bavaria + Q.non_farm_r_bavaria;
 
 Q.left_coalition_bavaria = parseFloat((Q.spd_r_bavaria + Q.kpd_r_bavaria + Q.sapd_r_bavaria).toFixed(1));
 Q.bourgeois_coalition_bavaria = parseFloat((Q.z_r_bavaria + Q.dvp_r_bavaria + Q.ddp_r_bavaria + Q.lvp_r_bavaria + Q.other_r_bavaria + Q.dnvp_r_bavaria).toFixed(1));
@@ -425,8 +444,6 @@ Q.spd_coalition_bavaria = parseFloat((Q.spd_r_bavaria + (Q.other_r_bavaria * 0.8
 
 Q.farm_bavaria_elections_vote = (Q.farm_bavaria_elections_vote != undefined ? parseFloat(Q.farm_bavaria_elections_vote.toFixed(1)) : 0);
 Q.non_farm_bavaria_elections_vote = (Q.non_farm_bavaria_elections_vote != undefined ? parseFloat(Q.non_farm_bavaria_elections_vote.toFixed(1)) : 0);
-Q.farm_r_bavaria = (Q.farm_r_bavaria != undefined ? parseFloat(Q.farm_r_bavaria.toFixed(1)) : 0);
-Q.non_farm_r_bavaria = (Q.non_farm_r_bavaria != undefined ? parseFloat(Q.non_farm_r_bavaria.toFixed(1)) : 0);
 
 !}
 on-display: {!
@@ -839,38 +856,57 @@ Q.farm_r_wurttemberg = Q.other_r_wurttemberg*0.66
 Q.non_farm_wurttemberg_elections_vote = Q.other_wurttemberg_elections_vote*0.34
 Q.non_farm_r_wurttemberg = Q.other_r_wurttemberg*0.34
 
-function toSeats(pct) {
-    const percentPerSeat = 100 / 80;
-    return Math.round(pct / percentPerSeat) * percentPerSeat;
+function allocateSeats(percentages, totalSeats = 80) {
+    const exactSeats = {};
+    const flooredSeats = {};
+    const remainders = [];
+
+    let totalFlooredSeats = 0;
+    for (const party in percentages) {
+        const exact = (percentages[party] * totalSeats) / 100;
+        const floored = Math.floor(exact);
+        const remainder = exact - floored;
+
+        exactSeats[party] = exact;
+        flooredSeats[party] = floored;
+        totalFlooredSeats += floored;
+
+        remainders.push({ party, remainder });
+    }
+
+    const seatsToDistribute = totalSeats - totalFlooredSeats;
+    remainders.sort((a, b) => b.remainder - a.remainder);
+
+    for (let i = 0; i < seatsToDistribute; i++) {
+        flooredSeats[remainders[i].party]++;
+    }
+
+    return flooredSeats;
 }
 
-Q.spd_r_wurttemberg = toSeats(Q.spd_r_wurttemberg);
-Q.sapd_r_wurttemberg = toSeats(Q.sapd_r_wurttemberg);
-Q.kpd_r_wurttemberg = toSeats(Q.kpd_r_wurttemberg);
-Q.ddp_r_wurttemberg = toSeats(Q.ddp_r_wurttemberg);
-Q.lvp_r_wurttemberg = toSeats(Q.lvp_r_wurttemberg);
-Q.z_r_wurttemberg = toSeats(Q.z_r_wurttemberg);
-Q.dvp_r_wurttemberg = toSeats(Q.dvp_r_wurttemberg);
-Q.dnvp_r_wurttemberg = toSeats(Q.dnvp_r_wurttemberg);
-Q.nsdap_r_wurttemberg = toSeats(Q.nsdap_r_wurttemberg);
-Q.non_farm_r_wurttemberg = toSeats(Q.non_farm_r_wurttemberg);
-Q.farm_r_wurttemberg = toSeats(Q.farm_r_wurttemberg);
-Q.other_r_wurttemberg = toSeats(Q.other_r_wurttemberg);
-Q.kvp_r_wurttemberg = toSeats(Q.kvp_r_wurttemberg);
-Q.dnf_r_wurttemberg = toSeats(Q.dnf_r_wurttemberg);
+const inputPercentages = {
+    spd_r_wurttemberg: Q.spd_r_wurttemberg,
+    sapd_r_wurttemberg: Q.sapd_r_wurttemberg,
+    kpd_r_wurttemberg: Q.kpd_r_wurttemberg,
+    ddp_r_wurttemberg: Q.ddp_r_wurttemberg,
+    lvp_r_wurttemberg: Q.lvp_r_wurttemberg,
+    z_r_wurttemberg: Q.z_r_wurttemberg,
+    dvp_r_wurttemberg: Q.dvp_r_wurttemberg,
+    dnvp_r_wurttemberg: Q.dnvp_r_wurttemberg,
+    nsdap_r_wurttemberg: Q.nsdap_r_wurttemberg,
+    non_farm_r_wurttemberg: Q.non_farm_r_wurttemberg,
+    farm_r_wurttemberg: Q.farm_r_wurttemberg,
+    kvp_r_wurttemberg: Q.kvp_r_wurttemberg,
+    dnf_r_wurttemberg: Q.dnf_r_wurttemberg
+};
 
-Q.spd_r_wurttemberg = (Q.spd_r_wurttemberg != undefined ? parseFloat(Q.spd_r_wurttemberg.toFixed(1)) : 0);
-Q.sapd_r_wurttemberg = (Q.sapd_r_wurttemberg != undefined ? parseFloat(Q.sapd_r_wurttemberg.toFixed(1)) : 0);
-Q.kpd_r_wurttemberg = (Q.kpd_r_wurttemberg != undefined ? parseFloat(Q.kpd_r_wurttemberg.toFixed(1)) : 0);
-Q.ddp_r_wurttemberg = (Q.ddp_r_wurttemberg != undefined ? parseFloat(Q.ddp_r_wurttemberg.toFixed(1)) : 0);
-Q.lvp_r_wurttemberg = (Q.lvp_r_wurttemberg != undefined ? parseFloat(Q.lvp_r_wurttemberg.toFixed(1)) : 0);
-Q.z_r_wurttemberg = (Q.z_r_wurttemberg != undefined ? parseFloat(Q.z_r_wurttemberg.toFixed(1)) : 0);
-Q.dvp_r_wurttemberg = (Q.dvp_r_wurttemberg != undefined ? parseFloat(Q.dvp_r_wurttemberg.toFixed(1)) : 0);
-Q.dnvp_r_wurttemberg = (Q.dnvp_r_wurttemberg != undefined ? parseFloat(Q.dnvp_r_wurttemberg.toFixed(1)) : 0);
-Q.nsdap_r_wurttemberg = (Q.nsdap_r_wurttemberg != undefined ? parseFloat(Q.nsdap_r_wurttemberg.toFixed(1)) : 0);
-Q.other_r_wurttemberg = (Q.other_r_wurttemberg != undefined ? parseFloat(Q.other_r_wurttemberg.toFixed(1)) : 0);
-Q.kvp_r_wurttemberg = (Q.kvp_r_wurttemberg != undefined ? parseFloat(Q.kvp_r_wurttemberg.toFixed(1)) : 0);
-Q.dnf_r_wurttemberg = (Q.dnf_r_wurttemberg != undefined ? parseFloat(Q.dnf_r_wurttemberg.toFixed(1)) : 0);
+const allocatedSeats = allocateSeats(inputPercentages);
+
+for (const party in allocatedSeats) {
+    Q[party] = parseFloat(((allocatedSeats[party] * 100) / 80).toFixed(1));
+}
+
+Q.other_r_wurttemberg = Q.farm_r_wurttemberg + Q.non_farm_r_wurttemberg;
 
 Q.left_coalition_wurttemberg = parseFloat((Q.spd_r_wurttemberg + Q.kpd_r_wurttemberg + Q.sapd_r_wurttemberg).toFixed(1));
 Q.bourgeois_coalition_wurttemberg = parseFloat((Q.z_r_wurttemberg + Q.ddp_r_wurttemberg + Q.dvp_r_wurttemberg + Q.lvp_r_wurttemberg + Q.kvp_r_wurttemberg + Q.other_r_wurttemberg).toFixed(1));
@@ -880,8 +916,6 @@ if (Q.cvp_formed) Q.spd_coalition_wurttemberg = parseFloat((Q.spd_r_wurttemberg 
 
 Q.farm_wurttemberg_elections_vote = (Q.farm_wurttemberg_elections_vote != undefined ? parseFloat(Q.farm_wurttemberg_elections_vote.toFixed(1)) : 0);
 Q.non_farm_wurttemberg_elections_vote = (Q.non_farm_wurttemberg_elections_vote != undefined ? parseFloat(Q.non_farm_wurttemberg_elections_vote.toFixed(1)) : 0);
-Q.farm_r_wurttemberg = (Q.farm_r_wurttemberg != undefined ? parseFloat(Q.farm_r_wurttemberg.toFixed(1)) : 0);
-Q.non_farm_r_wurttemberg = (Q.non_farm_r_wurttemberg != undefined ? parseFloat(Q.non_farm_r_wurttemberg.toFixed(1)) : 0);
 
 !}
 on-display: {!
