@@ -13,6 +13,7 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @party_discipline
 - @emergency_fundraising
 - @money_printer
+- @stimulation
 - @snap_election
 - @root: Return to main
 
@@ -44,10 +45,12 @@ We have enforced party discipline to reduce dissent across all factions.
 @emergency_fundraising
 title: Emergency Fundraising
 view-if: difficulty < 1
-subtitle: An emergency infusion of resources. Usable once per sixteen months.
-choose-if: advisor_action_timer = 0 and emergency_fundraising_timer == 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if emergency_fundraising_timer > 0 and not rubicon : [+ emergency_fundraising_timer +] months before next emergency fundraising. ?][? if emergency_fundraising_timer > 0 and rubicon : [+ emergency_fundraising_timer +] weeks before next emergency fundraising. ?]
-on-arrival: advisor_action_timer = 6; resources += 2; emergency_fundraising_timer = 16
+subtitle: An emergency infusion of resources.
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
+
+[? if emergency_used <= 1: Wels has leveraged his position as party chairman to pull in donations and arrange quick loans. ?][? if emergency_used > 1 and emergency_used < 3: Discontent is brewing among the <span style="color: #c00000;">**SPD**</span>'s rank and file due to our persistent attempts at begging for money. ?][? if emergency_used > 2: We’re really scraping the barrel now—committed members are pressured into selling their valuables, while many others leave in frustration. ?]
 
 We have gained +2 resources.
 
@@ -56,10 +59,23 @@ title: Print a SPDillion dollars.
 view-if: achievement_moly and ((difficulty == -1 and not dynamic_mode) or difficulty == 0)
 subtitle: This may have inflationary effects.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 and not rubicon : [+ advisor_action_timer +] months before next advisor action. ?][? if advisor_action_timer > 0 and rubicon : [+ emergency_fundraising_timer +] weeks before next emergency fundraising. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 and not rubicon : [+ advisor_action_timer +] months before next advisor action. ?][? if advisor_action_timer > 0 and rubicon : [+ advisor_action_timer +] weeks before next emergency fundraising. ?]
 on-arrival: advisor_action_timer = 6; resources += 10; inflation += 1; data_miner_detected = 1; ip_grabber = 1
 
 We have gained +10 resources.
+
+@stimulation
+title: Toggle Stimulation.
+view-if: achievement_moly
+on-arrival: {!
+if (Q.stimulation) {
+    Q.stimulation = 0; 
+} else {
+    Q.stimulation = 1;
+}
+!}
+
+Ok.
 
 @snap_election
 title: Snap Election

@@ -16,11 +16,13 @@ Juchacz is the founder of the Worker's Welfare, our mutual aid organization; her
 
 @emergency_fundraising
 title: Emergency Fundraising
-subtitle: An emergency infusion of resources. Usable once every sixteen months.
+subtitle: An emergency infusion of resources.
 view-if: difficulty < 1
-choose-if: advisor_action_timer = 0 and emergency_fundraising_timer == 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if emergency_fundraising_timer > 0 and not rubicon : [+ emergency_fundraising_timer +] months before next emergency fundraising. ?][? if emergency_fundraising_timer > 0 and rubicon : [+ emergency_fundraising_timer +] weeks before next emergency fundraising. ?]
-on-arrival: advisor_action_timer = 6; resources += 2; emergency_fundraising_timer = 16
+choose-if: advisor_action_timer = 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 6; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
+
+[? if emergency_used <= 1: Juchacz has leveraged her position to pull in donations and arrange quick loans. ?][? if emergency_used > 1 and emergency_used < 3: Discontent is brewing among the <span style="color: #c00000;">**SPD**</span>'s rank and file due to our persistent attempts at begging for money. ?][? if emergency_used > 2: We’re really scraping the barrel now—committed members are pressured into selling their valuables, while many others leave in frustration. ?]
 
 We have gained +2 resources.
 
