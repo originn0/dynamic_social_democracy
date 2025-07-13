@@ -391,19 +391,25 @@ if (Q.dvp_r_saxony && !Q.lvp_formed && Q.dvp_exist) {
     });
 }
 
-if (Q.other_r_saxony) {
+if (Q.farm_r_saxony) {
     data.push({
         "id": "farm4",
         "legend": "Farm",
         "name": "Farm",
         "seats": Math.round(Q.farm_r_saxony * 0.96),
     });
+}
+
+if (Q.wp_r_saxony) {
     data.push({
         "id": "wp",
         "legend": "WP",
         "name": "WP",
         "seats": Math.round(Q.wp_r_saxony * 0.96),
     });
+}
+
+if (Q.vrp_r_saxony) {
     data.push({
         "id": "vrp",
         "legend": "VRP",
@@ -411,6 +417,7 @@ if (Q.other_r_saxony) {
         "seats": Math.round(Q.vrp_r_saxony * 0.96),
     });
 }
+
 if (Q.kvp_formed && Q.kvp_r_saxony) {
     data.push({
         "id": "kvp",

@@ -498,21 +498,26 @@ if (Q.vnr_r_saxony) {
     });
 }
 
-if (Q.other_r_saxony) {
-    if (Q.dnvp_ideology == "Moderate") {
-        data.push({
+if (Q.farm_r_saxony && Q.dnvp_ideology == "Moderate") {
+    data.push({
         "id": "farm4",
         "legend": "Farm",
         "name": "Farm",
         "seats": Math.round(Q.farm_r_saxony * 0.96),
     });
-    }
+}
+
+
+if (Q.wp_r_saxony) {
     data.push({
         "id": "wp",
         "legend": "WP",
         "name": "WP",
         "seats": Math.round(Q.wp_r_saxony * 0.96),
     });
+}
+
+if (Q.vrp_r_saxony) {
     data.push({
         "id": "vrp",
         "legend": "VRP",
