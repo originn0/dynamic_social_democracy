@@ -2737,6 +2737,11 @@ if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 0) {
     Q.young_plan_votes = Math.round(Q.young_plan_votes * 10) / 10;
 }
 
+if (Q.young_plan_votes && !Q.in_grand_coalition && !Q.spd_toleration && !Q.in_right_coalition && !Q.in_center_right_coalition) {
+    Q.young_plan_votes += (Q.dvp_votes / 10);
+    Q.young_plan_votes = Math.round(Q.young_plan_votes * 10) / 10;
+}
+
 if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && Q.dvp_relation_9 >= 40 && Q.dvp_ideology_9 !== "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
     Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
@@ -3705,7 +3710,7 @@ for (var record of Q.party_support_records) {
     }
 }
 
-if (Q.kpd_relation < 50 && Q.year >= 1930) {
+if (Q.kpd_relation < 40 && Q.year >= 1930) {
     if (Q.far_right_force >= 70) {
         Q.kpd_relation_gain += 0.75;
     } else if (Q.far_right_force >= 60) {

@@ -16,7 +16,7 @@ if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president != "G
   Q.weimar_win = 0;
 }
 
-if (Q.weimar_win && (Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg") && Q.in_left_front && !Q.civil_war_seen) {
+if (Q.weimar_win && (Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Ossietzky" || Q.president == "Mann") && Q.in_left_front && !Q.civil_war_seen) {
   Q.left_win = 1;
   Q.weimar_win = 0;
   Q.kpd_points = 0;
@@ -291,7 +291,7 @@ view-if: left_win
 new-page: true
 audio: music/1930_1933/Einheitsfrontlied.mp3
 
-The United Front Government, under President Kurt Rosenfeld, withstood everything thrown its way—<span style="color: #C0A054;">capitalist</span> treachery, <span style="color: #3E88B3;">institutional</span> sabotage, and constant subversion by <span style="color: #808080;">reactionaries</span>. In 1937, after winning a second election and slightly increasing its majority, the government faced a coup attempt led by the <span style="color: #808080;">reactionary</span> elements of the Reichswehr and increasingly radicalized <span style="color: #3E88B3;">nationalists</span> and <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> forces. 
+The United Front Government, under President [? if president == "Rosenfeld": Kurt Rosenfeld?][? if president == "Thälmann": Ernst Thälmann?][? if president == "Münzenberg": Willi Münzenberg?][? if president == "Ossietzky": Carl von Ossietzky?][? if president == "Mann": Heinrich Mann?], withstood everything thrown its way—<span style="color: #C0A054;">capitalist</span> treachery, <span style="color: #3E88B3;">institutional</span> sabotage, and constant subversion by <span style="color: #808080;">reactionaries</span>. In 1937, after winning a second election and slightly increasing its majority, the government faced a coup attempt led by the <span style="color: #808080;">reactionary</span> elements of the Reichswehr and increasingly radicalized <span style="color: #3E88B3;">nationalists</span> and <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> forces. 
 
 The coup failed. The abortive putsch was crushed by the proletarian masses and shattered the political landscape of <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>. The far left of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]—splinters from their parties who maintained ambiguity towards the coup—split off to form the <span style="color: #E0B0FF;">**RDP**</span> and <span style="color: #FF7F00;">**CSRP**</span>, both of which soon joined the United Front.
 

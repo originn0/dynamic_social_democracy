@@ -12,8 +12,18 @@ Due to the formation of the <span style="color: #000000;">**[+ z_party_name +]**
 
 @vonc_menu
 
+- @social_liberal_coalition: Can we form a <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition?
 - @support_kpd: Could we get the <span style="color: #700000;">**KPD**</span> to abstain?
 - @let_it_happen: Let the vote happen.
+
+@social_liberal_coalition
+title: We can form a <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition.
+subtitle: <span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] ([+ social_liberal_coalition +]%)
+view-if: social_liberal_coalition >= 50 and liberal_parliament == 0 and bourgeois_parliament_ddp == 0 and cvp_formed
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] ([+ social_liberal_coalition +]%) [? if not ((ddp_relation >= 65 and ddp_ideology == "Right") or (ddp_relation >= 55 and ddp_ideology == "Moderate") or (ddp_relation >= 45 and ddp_ideology == "Left")) and not lvp_formed: - We do not have the adequate relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?] [? if not ((lvp_relation >= 75 and lvp_ideology == "Right") or (lvp_relation >= 65 and lvp_ideology == "Moderate") or (lvp_relation >= 55 and lvp_ideology == "Left")) and lvp_formed: - We do not have adequate relations with the <span style="color: #FFCC00;">**LVP**</span> ?]
+choose-if: ((((ddp_relation >= 65 and ddp_ideology == "Right") or (ddp_relation >= 55 and ddp_ideology == "Moderate") or (ddp_relation >= 45 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 75 and lvp_ideology == "Right") or (lvp_relation >= 65 and lvp_ideology == "Moderate") or (lvp_relation >= 55 and lvp_ideology == "Left")) and lvp_formed))
+on-arrival: leverage = spd_r
+go-to: election_1928.social_liberal_coalition_cvp
 
 @support_kpd
 choose-if: ((in_grand_coalition and communist_coalition >= 3 and kpd_relation >= 50 and kpd_r >= dvp_r and not lvp_formed) or (in_grand_coalition and communist_coalition >= 3 and kpd_relation >= 50 and kpd_r >= (lvp_r / 2) and lvp_formed)) or (in_weimar_coalition and kpd_relation >= 50 and kpd_r >= z_r and communist_coalition >= 3)

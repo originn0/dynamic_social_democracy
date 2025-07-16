@@ -19,11 +19,11 @@ on-arrival: reichsbanner_unpopularity_time = time + 6
 
 = Reichsbanner Membership Dwindles
 
-Unfortunately, the Reichsbanner's effectiveness is dragged down by the <span style="color: #c00000;">**SPD**</span>'s unpopularity, as the workers aren't particularly enthusiastic about joining. [? if spd_votes >= 29: Furthermore, we are unable to recruit significant amount of supporters from non-worker demographics. ?]
+Unfortunately, the Reichsbanner's effectiveness is dragged down by the <span style="color: #c00000;">**SPD**</span>'s unpopularity, as the workers aren't particularly enthusiastic about joining. [? if left_strength >= 40: However, more militant members from our left wing have largely remained. ?] [? if spd_votes >= 29: Furthermore, we are unable to recruit significant amount of supporters from non-worker demographics. ?]
 
 - @reichsbanner_joever: Unfortunate.
 
 @reichsbanner_joever
-on-arrival: rb_strength *= 0.9; rb_militancy *= 0.8
+on-arrival: rb_strength *= 0.9; rb_militancy *= 0.8 if left_strength < 40; rb_militancy *= 0.9 if left_strength >= 40
 
 This will continue to be a problem if our popularity continues to flag.
