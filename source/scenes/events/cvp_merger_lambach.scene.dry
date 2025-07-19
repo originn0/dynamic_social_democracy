@@ -90,7 +90,7 @@ Pro-merger factions:
 
 <span style="color: #000000;">Protestant Right</span> (<span style="color: #000000;">**Z**</span>)
 
-<span style="color: #6D5298;">Christian Socialists</span> (<span style="color: #3E88B3;">**DNVP**</span>)
+<span style="color: #6D5298;">Christian Socials</span> (<span style="color: #3E88B3;">**DNVP**</span>)
 
 <span style="color: #0087DC;">People's Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>)
 
@@ -130,7 +130,7 @@ The reparations issue remains the most contentious point of contention between t
 on-arrival: cvp_dnvp_balance += 20; cvp_right += 5; nationalism += 10; pro_republic -= 5; west_relation -= 1; east_relation -= 2; z_relation -= 5; old_middle_z += 4; old_middle_dnf -= 4; new_middle_z -= 4; new_middle_dvp += 4; new_middle_lvp += 4; rural_dnf -= 2; rural_z += 2
 go-to: cvp_dnvp_menu
 
-The <span style="color: #3E88B3;">nationalists</span> and <span style="color: #6D5298;">Christian Socialists</span> have used their leverage to edit in their most important goals to the party program.
+The <span style="color: #3E88B3;">nationalists</span> and <span style="color: #6D5298;">Christian Socials</span> have used their leverage to edit in their most important goals to the party program.
 
 Reparations - Germany must push for the complete abolition of reparations and the revocation of the "war guilt" clause, but will continue payments in the meantime
 
@@ -174,7 +174,7 @@ view-if: not cvp_monarchy and cvp_reparations
 on-arrival: cvp_monarchy = 1
 go-to: monarchy_right if cvp_dnvp_balance < 30; monarchy_moderate if cvp_dnvp_balance >= 30 and cvp_dnvp_balance < 50; monarchy_left if cvp_dnvp_balance >= 50
 
-The issue of the German <span style="color: #808080;">monarchy</span> remains highly divisive, with both parties holding starkly different views. Despite the unfeasibility of a restoration in the current political climate, the <span style="color: #3E88B3;">**DNVP**</span> has never ceased advocating for a return to the days of the <span class="tooltip-text" title="good mod">Kaiserreich</span>. The <span style="color: #000000;">Center Party</span>, on the other hand, has consistently been a staunch <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> force since the birth of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic. Perhaps the influence of the <span style="color: #0087DC;">People's Conservatives</span> and <span style="color: #6D5298;">Christian Socialists</span> will outweigh the strong objections from the <span style="color: #3E88B3;">**DNVP**</span>'s old guard.
+The issue of the German <span style="color: #808080;">monarchy</span> remains highly divisive, with both parties holding starkly different views. Despite the unfeasibility of a restoration in the current political climate, the <span style="color: #3E88B3;">**DNVP**</span> has never ceased advocating for a return to the days of the <span class="tooltip-text" title="good mod">Kaiserreich</span>. The <span style="color: #000000;">Center Party</span>, on the other hand, has consistently been a staunch <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> force since the birth of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic. Perhaps the influence of the <span style="color: #0087DC;">People's Conservatives</span> and <span style="color: #6D5298;">Christian Socials</span> will outweigh the strong objections from the <span style="color: #3E88B3;">**DNVP**</span>'s old guard.
 
 @monarchy_right
 on-arrival: cvp_dnvp_balance -= 15; cvp_right += 4; z_relation -= 5; pro_republic -= 5; rural_z += 4; rural_dnf -= 2; rural_other -= 2; old_middle_z += 6; old_middle_dnf -= 4; old_middle_other -= 2; new_middle_z += 2; new_middle_dnf -= 2; workers_z -= 5; workers_spd += 3; workers_ddp += 3; workers_lvp += 3; unemployed_z -= 3; unemployed_spd += 3; unemployed_ddp += 2; unemployed_lvp += 2; catholics_z -= 4; catholics_spd += 4; catholics_ddp += 2; catholics_lvp += 2
@@ -247,7 +247,7 @@ Great Depression - Experiment with a public works plan, combined with an increas
 on-arrival: cvp_dnvp_balance -= 10; cvp_left += 5; rural_z -= 4; rural_dnf += 2; rural_dvp += 2; rural_lvp += 2; old_middle_z -= 6; old_middle_dnf += 2; old_middle_dvp += 4; old_middle_lvp += 4; new_middle_z += 4; new_middle_dnf -= 2; new_middle_ddp -= 2; workers_z += 8; workers_spd -= 5; workers_kpd -= 3; unemployed_z += 8; unemployed_spd -= 5; unemployed_nsdap -= 3; cvp_economy_keynes = 1
 go-to: cvp_dnvp_menu
 
-The <span style="color: #000000;">Christians</span> and <span style="color: #6D5298;">Christian Socialists</span> have used their influence to advocate for a pro-worker and more ambitious economic policy, as a middle ground between capitalism and <span style="color: #c00000;">socialism</span>.
+The <span style="color: #000000;">Christians</span> and <span style="color: #6D5298;">Christian Socials</span> have used their influence to advocate for a pro-worker and more ambitious economic policy, as a middle ground between capitalism and <span style="color: #c00000;">socialism</span>.
 
 Taxation - Implement more progressive taxes and regulations, to ensure a fair Germany
 
@@ -262,7 +262,7 @@ view-if: cvp_reparations and cvp_economy and cvp_monarchy and not cvp_coalition
 on-arrival: cvp_coalition = 1
 go-to: coalition_right if cvp_dnvp_balance < 60; coalition_moderate if cvp_dnvp_balance >= 60 and cvp_dnvp_balance < 80; coalition_left if cvp_dnvp_balance >= 80
 
-The integration of the staunchly anti-<span style="color: #9B0000;">Marxist</span> <span style="color: #3E88B3;">**DNVP**</span> into the <span style="color: #000000;">Center Party</span> will likely rule out any future cooperation with them. However, a vocal minority of progressives still exists within the <span style="color: #000000;">Center</span>, who may argue in our favor. Despite the name, the <span style="color: #6D5298;">Christian Socialists</span> are not friendly at all.
+The integration of the staunchly anti-<span style="color: #9B0000;">Marxist</span> <span style="color: #3E88B3;">**DNVP**</span> into the <span style="color: #000000;">Center Party</span> will likely rule out any future cooperation with them. However, a vocal minority of progressives still exists within the <span style="color: #000000;">Center</span>, who may argue in our favor. Despite the name, the <span style="color: #6D5298;">Christian Socials</span> are not friendly at all.
 
 @coalition_right
 on-arrival: cvp_dnvp_balance += 10; cvp_right += 5; z_relation -= 10; rural_z += 6; rural_dnf -= 2; rural_other -= 2; rural_nsdap -= 2; old_middle_z += 10; old_middle_dnf -= 4; old_middle_dvp -= 2; old_middle_lvp -= 2; old_middle_other -= 4; new_middle_z += 6; new_middle_dnf -= 2; new_middle_other -= 4; workers_z -= 3; workers_spd += 3; workers_ddp += 2; workers_lvp += 2; unemployed_z -= 3; unemployed_spd += 3; unemployed_ddp += 2; unemployed_lvp += 2
