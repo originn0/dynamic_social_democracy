@@ -429,8 +429,8 @@ Q.enemy_power += Q.sh_power;
 
 Q.schleicher_points += Q.enemy_power;
 
-if (!Q.dstp_dnef && !Q.lvp_dnef && !Q.dstp_maintained && Q.republicans_schleicher < 8 && (Q.ddp_relation >= 35 && !Q.lvp_formed || Q.lvp_relation >= 45 && Q.lvp_formed) && (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" || !Q.lvp_formed)) Q.libs_against_schleicher = 1;
-if ((Q.z_ideology == "Left" || Q.stegerwald_path || Q.z_relation >= 60) && Q.republicans_schleicher < 6 && Q.z_leader != "Bracht") Q.z_against_schleicher = 1;
+if (!Q.dstp_dnef && !Q.lvp_dnef && !Q.dstp_maintained && (Q.republicans_schleicher < 8 || ((Q.ddp_relation >= 50 && !Q.lvp_formed || Q.lvp_relation >= 60 && Q.lvp_formed) && (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" || !Q.lvp_formed))) && (Q.ddp_relation >= 35 && !Q.lvp_formed || Q.lvp_relation >= 45 && Q.lvp_formed) && (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" || !Q.lvp_formed)) Q.libs_against_schleicher = 1;
+if ((Q.z_ideology == "Left" || Q.stegerwald_path || Q.z_relation >= 60) && (Q.republicans_schleicher < 6 || Q.z_relation >= 70) && Q.z_leader != "Bracht") Q.z_against_schleicher = 1;
 
 if (Q.z_against_schleicher) Q.spd_points += 5;
 if (Q.z_against_schleicher && Q.z_in_gov) Q.spd_points += 2;

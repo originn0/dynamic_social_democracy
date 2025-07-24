@@ -158,6 +158,18 @@ if (Q.pro_republic >= 100) {
 }
 // re-calculate party support
 // calculate normalized class voting for the achievements
+
+for (var factor of Q.factors) {
+    for (var c of Q.classes) {
+        for (var party of Q.parties) {
+            var added_support = 0;
+            added_support = Q[factor] * (Q[party + '_rigidity'] - Q[c + '_' + party + '_rigidity']) * Q[party + '_' + factor] * Q[c + '_' + factor];
+            Q[c + '_' + party] += added_support;
+        }
+    }
+    Q[factor] = 0;
+}
+
 for (var c of Q.classes) {
     var class_votes = 0;
     for (var party of Q.parties) {

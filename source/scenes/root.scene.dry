@@ -248,7 +248,165 @@ Q.new_middle_qol = 100;
 
 Q.classes = ['workers', 'old_middle', 'new_middle', 'rural', 'unemployed', 'catholics'];
 Q.parties = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.parties_possible = ['spd', 'sapd', 'kpd', 'z', 'ddp', 'dvp', 'lvp', 'kvp', 'dnvp', 'dnf', 'nsdap', 'other', 'dnef']
 Q.parties_graph = ['spd', 'kpd', 'z', 'ddp', 'dvp', 'dnvp', 'nsdap', 'other'];
+Q.factors = ['liberalism', 'socialism', 'republicanism', 'reactionary', 'moderate', 'nationalism'];
+
+for (var factors of Q.factors) {
+    Q[factors] = 0;
+}
+
+for (var c of Q.classes) {
+    for (var party of Q.parties) {
+        Q[c + '_' + party + '_rigidity'] = 1;
+    }
+}
+// set to 1 for default
+
+Q.spd_rigidity = 1;
+Q.kpd_rigidity = 1;
+Q.z_rigidity = 1.5;
+Q.ddp_rigidity = 1;
+Q.dvp_rigidity = 1;
+Q.dnvp_rigidity = 1;
+Q.nsdap_rigidity = 1;
+Q.other_rigidity = 1;
+Q.lvp_rigidity = 1;
+Q.dnf_rigidity = 1;
+Q.kvp_rigidity = 1; 
+Q.sapd_rigidity = 1;
+Q.dnef_rigidity = 1;
+
+Q.spd_liberalism = 0;
+Q.kpd_liberalism = 0;
+Q.z_liberalism = 0;
+Q.ddp_liberalism = 1;
+Q.dvp_liberalism = 0.9;
+Q.dnvp_liberalism = 0;
+Q.nsdap_liberalism = 0;
+Q.other_liberalism = 0;
+Q.lvp_liberalism = 1;
+Q.dnf_liberalism = 0;
+Q.kvp_liberalism = 0;
+Q.sapd_liberalism = 0;
+Q.dnef_liberalism = 0;
+
+Q.spd_socialism = 1;
+Q.kpd_socialism = 1;
+Q.z_socialism = 0.05;
+Q.ddp_socialism = 0.05;
+Q.dvp_socialism = 0;
+Q.dnvp_socialism = 0;
+Q.nsdap_socialism = 0;
+Q.other_socialism = 0;
+Q.lvp_socialism = 0;
+Q.dnf_socialism = 0;
+Q.kvp_socialism = 0;
+Q.sapd_socialism = 1;
+Q.dnef_socialism = 0;
+
+Q.spd_republicanism = 1;
+Q.kpd_republicanism = 0;
+Q.z_republicanism = 1;
+Q.ddp_republicanism = 1;
+Q.dvp_republicanism = 0.6;
+Q.dnvp_republicanism = 0;
+Q.nsdap_republicanism = 0;
+Q.other_republicanism = 0.2;
+Q.lvp_republicanism = 1;
+Q.dnf_republicanism = 0;
+Q.kvp_republicanism = 0.05;
+Q.sapd_republicanism = 0.2;
+Q.dnef_republicanism = 0;
+
+Q.spd_reactionary = 0;
+Q.kpd_reactionary = 0;
+Q.z_reactionary = 0.05;
+Q.ddp_reactionary = 0;
+Q.dvp_reactionary = 0.1;
+Q.dnvp_reactionary = 1;
+Q.nsdap_reactionary = 0.3;
+Q.other_reactionary = 0.7;
+Q.lvp_reactionary = 0;
+Q.dnf_reactionary = 1.5;
+Q.kvp_reactionary = 0.85;
+Q.sapd_reactionary = 0;
+Q.dnef_reactionary = 0.5;
+
+Q.spd_moderate = 0;
+Q.kpd_moderate = 0;
+Q.z_moderate = 1;
+Q.ddp_moderate = 1;
+Q.dvp_moderate = 1;
+Q.dnvp_moderate = 0;
+Q.nsdap_moderate = 1;
+Q.other_moderate = 1;
+Q.lvp_moderate = 1;
+Q.dnf_moderate = 0;
+Q.kvp_moderate = 0.5;
+Q.sapd_moderate = 0;
+Q.dnef_moderate = 0;
+
+Q.spd_nationalism = 0;
+Q.kpd_nationalism = 0;
+Q.z_nationalism = 0;
+Q.ddp_nationalism = 0.2;
+Q.dvp_nationalism = 0.4;
+Q.dnvp_nationalism = 1;
+Q.nsdap_nationalism = 1;
+Q.other_nationalism = 1;
+Q.lvp_nationalism = 0.2;
+Q.dnf_nationalism = 1;
+Q.kvp_nationalism = 1;
+Q.sapd_nationalism = 0;
+Q.dnef_nationalism = 1;
+
+Q.workers_liberalism = 0.02;
+Q.workers_socialism = 0.78;
+Q.workers_republicanism = 0.63;
+Q.workers_reactionary = 0.06;
+Q.workers_moderate = 0.1;
+Q.workers_nationalism = 0.1;
+
+Q.new_middle_liberalism = 0.5;
+Q.new_middle_socialism = 0.1;
+Q.new_middle_republicanism = 0.55;
+Q.new_middle_reactionary = 0.3;
+Q.new_middle_moderate = 0.65;
+Q.new_middle_nationalism = 0.5;
+
+Q.old_middle_liberalism = 0.2;
+Q.old_middle_socialism = 0.04;
+Q.old_middle_republicanism = 0.24;
+Q.old_middle_reactionary = 0.6;
+Q.old_middle_moderate = 0.5;
+Q.old_middle_nationalism = 0.8;
+
+Q.rural_liberalism = 0.05;
+Q.rural_socialism = 0.08;
+Q.rural_republicanism = 0.2;
+Q.rural_reactionary = 0.65;
+Q.rural_moderate = 0.3;
+Q.rural_nationalism = 0.85;
+
+Q.unemployed_liberalism = 0;
+Q.unemployed_socialism = 0.7;
+Q.unemployed_republicanism = 0.22;
+Q.unemployed_reactionary = 0.1;
+Q.unemployed_moderate = 0.02;
+Q.unemployed_nationalism = 0.25;
+
+Q.catholics_liberalism = 0.04;
+Q.catholics_socialism = 0.3;
+Q.catholics_republicanism = 0.65;
+Q.catholics_reactionary = 0.3;
+Q.catholics_moderate = 0.5;
+Q.catholics_nationalism = 0.3;
+
+// below, they are added to the party base rigidity so thats why its small
+
+Q.workers_spd_rigidity = 0.3;
+Q.catholics_z_rigidity = 0.5;
 
 Q.sapd_formed = 0;
 Q.dnf_formed = 0;
