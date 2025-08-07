@@ -43,8 +43,7 @@ on-arrival: welfare -= 1 if budget <= 0; workers_spd -= 3; workers_spd += 2 if b
 view-if: spd_toleration = 1
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 3; reformist_dissent += 4; left_dissent -= 4; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2
 call: set_next_election_time
-go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
-
+go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate") or bourgeois_coalition_prussia >= 50)
 We are tired of [+ chancellor +]'s policy of austerity. After [+ chancellor +]'s attempt to use emergency powers to pass another welfare cut, we have worked with the other parties to reverse this policy. In response, the Reichstag has been dissolved, and new elections called.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
