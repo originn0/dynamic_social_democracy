@@ -40,7 +40,7 @@ go-to: end_toleration_success if spd_r + kpd_r >= 50; end_toleration_fail if spd
 @end_toleration_success
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; left_dissent -= 5; dvp_relation -= 3; ddp_relation -= 3; z_relation -= 3; lvp_relation -= 3; ddp_right += 2; dvp_right += 3;
 call: set_next_election_time
-go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
+go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and (((center_right_coalition_prussia >= 50 or right_coalition_prussia >= 50) and dnvp_ideology == "Moderate") or bourgeois_coalition_prussia >= 50)
 
 With the support of the <span style="color: #700000;">**KPD**</span>, we have successfully stopped the formation of the customs union. This results in the fall of the [+ chancellor +] government.
 
