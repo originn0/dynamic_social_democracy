@@ -1600,7 +1600,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
             Q.new_middle_ddp += 3/12;
         }
         Q.new_middle_lvp += 3/12;
-        if (Q.kvp_formed && Q.bourgeois_parliament_kvp) {
+        if (Q.kvp_formed && Q.bourgeois_list_kvp) {
             Q.new_middle_kvp += 4/12;
             Q.new_middle_nsdap -= 2/12;
             Q.new_middle_dnvp -= 2/12;
@@ -1666,7 +1666,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
         Q.workers_other -= 2/12;
         Q.workers_nsdap += 2/12;
         Q.new_middle_dvp -= 3/12;
-        Q.new_middle_lvp -= 3/12;
+        Q.new_middle_ddp -= 3/12;
         Q.new_middle_lvp -= 3/12;
         Q.workers_kpd += 2/12;
         Q.sa_strength += 50/12;
@@ -2745,7 +2745,7 @@ if (Q.young_plan_votes && !Q.in_grand_coalition && !Q.spd_toleration && !Q.in_ri
 if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && Q.dvp_relation_9 >= 40 && Q.dvp_ideology_9 !== "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
     Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
-} else if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && (Q.dvp_relation_9 < 40 || Q.dvp_ideology_9 !== "Right") && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
+} else if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && (Q.dvp_relation_9 < 40 || Q.dvp_ideology_9 == "Right") && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
     Q.weimar_ref_signatures = ((Q.dnvp_votes + Q.other_votes + Q.dvp_votes + Q.bvp_votes) / 2) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_signatures = Math.round(Q.weimar_ref_signatures * 10) / 10;
 } else if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && Q.lvp_relation_9 < 40 && Q.lvp_ideology_9 == "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && Q.lvp_formed) {
@@ -2759,7 +2759,7 @@ if (Q.year == 1929 && Q.month == 10 && Q.dnf_formed == 1 && Q.dvp_relation_9 >= 
 if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 1 && Q.dvp_relation_9 >= 40 && Q.dvp_ideology_9 !== "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
     Q.weimar_ref_votes = (Q.dnvp_votes + Q.other_votes) + ((100 - Q.pro_republic) / 2);
     Q.weimar_ref_votes = Math.round(Q.weimar_ref_signatures * 10) / 10;
-} else if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 1 && (Q.dvp_relation_9 < 40 || Q.dvp_ideology_9 !== "Right") && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
+} else if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 1 && (Q.dvp_relation_9 < 40 || Q.dvp_ideology_9 == "Right") && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && !Q.lvp_formed) {
     Q.weimar_ref_votes = (Q.dnvp_votes + Q.other_votes + Q.dvp_votes + Q.bvp_votes + ((100 - Q.pro_republic) / 2));
     Q.weimar_ref_votes = Math.round(Q.weimar_ref_signatures * 10) / 10;
 } else if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 1 && Q.lvp_relation_9 < 40 && Q.lvp_ideology_9 == "Right" && Q.was_in_center_right_coalition == 0 && Q.pro_republic_8 >= 70 && Q.lvp_formed) {
@@ -3390,7 +3390,7 @@ if (Q.bourgeois_negotiations_elections_1930_timer == 1 && Q.bourgeois_negotiatio
 if (Q.bourgeois_negotiations_elections_1930_timer == 2 && Q.bourgeois_negotiations_1930_done && (Q.dnvp_split_2 || Q.kvp_formed) && Q.bourgeois_parliament && Q.bourgeois_cooperation >= 8 && Q.lvp_formed) {
     Q.bourgeois_cooperation += 2;
     Q.bourgeois_merger_kvp_trigger = 1;
-} else if (Q.bourgeois_negotiations_elections_1930_timer == 2 && Q.bourgeois_negotiations_1930_done && (Q.dnvp_split_2 || Q.kvp_formed) && Q.bourgeois_parliament && Q.bourgeois_cooperation >= 8 && Q.lvp_formed) {
+} else if (Q.bourgeois_negotiations_elections_1930_timer == 2 && Q.bourgeois_negotiations_1930_done && (Q.dnvp_split_2 || Q.kvp_formed) && Q.bourgeois_parliament && Q.bourgeois_cooperation < 8 && Q.lvp_formed) {
     Q.bourgeois_cooperation -= 2;
     Q.bourgeois_merger_kvp_trigger = 0;
 } else if (Q.bourgeois_negotiations_elections_1930_timer == 2 && Q.bourgeois_negotiations_1930_done && (Q.dnvp_split_2 || Q.kvp_formed) && !Q.bourgeois_parliament && (Q.bourgeois_cooperation >= 8 || Q.kvp_cnblp_sister) && Q.lvp_formed) {
@@ -4120,7 +4120,7 @@ if (Q.spd_in_government_time >= 6) {
         Q.hindenburg_angry += ((Q.economic_growth*-1) / 2)
     }
     if (Q.budget < 0) {
-        Q.hindenburg_angry += Q.budget;
+        Q.hindenburg_angry += Q.budget*-1;
     }
     if (Q.dnvp_ideology == "Moderate") {
         Q.hindenburg_angry += 1;
