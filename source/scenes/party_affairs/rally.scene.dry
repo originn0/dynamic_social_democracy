@@ -3,7 +3,7 @@ new-page: true
 is-card: true
 tags: party_affairs
 view-if: rally_timer <= 0
-on-arrival: month_actions += 1; rally_timer = 6 if next_election_time - time > 6 and not (year == 1928 and month == 1); rally_timer = 2 if (year == 1928 and month == 1) or (next_election_time - time < 6)
+on-arrival: month_actions += 1; rally_timer = 6 if next_election_time - time > 6 and not (year == 1928 and month == 1); rally_timer = 2 if (year == 1928 and month == 1) or (next_election_time - time <= 6)
 card-image: img/protest.jpg
 go-to: main_rally; sa_disrupt if sa_force > 25 and not sa_banned and not return_to_normalcy
 
