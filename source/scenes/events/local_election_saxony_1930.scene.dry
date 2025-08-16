@@ -236,6 +236,10 @@ let aspd_share = 0.02;
 
 if (Q.reformists_resign) aspd_share += 0.03;
 if (Q.unions_independent) aspd_share += 0.06;
+if (Q.year >= 1932 && Q.month >= 7){
+aspd_share = 0; 
+spd_share = 100;
+}
 
 let total_spd_share = aspd_share + spd_share;
 
@@ -701,6 +705,7 @@ With Schieck elected as Minister-President, he remains in power as a caretaker g
 - @grand_coalition_saxony
 - @united_left_saxony
 - @no_majority
+- @spd_majority
 
 
 @toleration_saxony
@@ -790,3 +795,11 @@ view-if: not saxony_no_majority_2 or far_right_coalition_saxony < 50
 on-arrival: saxony_election_3_trigger_time = time + 3; saxony_no_majority_2 = 1; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; unemployed_nsdap += 3; pro_republic -= 3; new_middle_spd -= 2 if toleration_possible; old_middle_spd -= 2 if toleration_possible; rural_spd -= 1 if toleration_possible; reformist_dissent += 10 if toleration_possible; left_dissent -= 5 if toleration_possible
 
 With no viable alternatives, the Landtag faces dissolution, triggering new elections—an opportunity the <span style="color: #7A3C00;">**NSDAP**</span> hopes to exploit by capitalizing on political instability and the perceived failure of parliamentary democracy.
+
+@spd_majority
+title: Form an SPD only goverment!
+subtitle: Sweat...
+view-if: spd_r_saxony >= 50 
+on-arrival: saxony_spd = 1; reformist_dissent -= 5; left_dissent -= 30; left_strength += 10; center_dissent -= 10; labor_dissent -= 10; aspd_dead = 1; workers_spd += 7; workers_kpd -= 4; new_middle_spd += 3; old_middle_spd += 2; unemployed_spd += 4; unemployed_nsdap -=3; pro_republic += 5
+
+Unexpectedly, we've found ourselves controlling a majority of the Saxony landtag and being able to form a goverment of just the <span style="color: #c00000;">**SPD**</span>! It is unclear how the bourgeois and <span style="color: #808080;">reactionaries</span> will react to a <span style="color: #c00000;">Red</span> Saxony but without the communists... [? if aspd_share > 0: The ASPD seeing as we no longer require on coalition negoations to form goverment has decided to join us. ?] 
