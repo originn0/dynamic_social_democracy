@@ -20,7 +20,7 @@ Gustav Radbruch is a renowned legal scholar and long-time <span style="color: #c
 title: Enact major judicial reforms.
 subtitle: -1 budget
 choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD" and budget > 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?] [? if budget <= 0: Not enough budget. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: judiciary.reform
 
