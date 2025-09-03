@@ -1797,6 +1797,14 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     } else if (Q.year == 1931) {
         Q.unemployed += 5/12;
         Q.inflation -= 5/12;
+        if (Q.works_program) {
+            Q.unemployed -= 4/12;
+            Q.inflation += 3/12;
+            if (Q.works_program > 1) {
+                Q.unemployed -= 1.5/12;
+                Q.inflation += 1/12;
+            }
+        }
         if (Q.z_leader == "Kaas") {
             Q.catholics_z += 3/12;
         }
