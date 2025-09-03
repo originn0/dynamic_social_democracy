@@ -130,10 +130,13 @@ The <span style="color: #700000;">**KPD**</span> is in favor of this reform, hav
 choose-if: reform_support >= pass_threshold
 unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 49 and president != "Braun" : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not trust us enough to support this policy. ?]
 on-arrival: constitutional_reform += 1; presidential_powers = 1
+go-to: bundesrepublik if president == "Adenauer"
 achievement: verfassungsreform
 
 We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less <span style="color: #808080;">authoritarian</span> Germany.
 
+@bundesrepublik
+achievement: bundesrepublik
 
 
 @constitutional_bans

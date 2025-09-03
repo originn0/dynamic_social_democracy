@@ -141,7 +141,7 @@ Q.reichswehr_power = Q.reichswehr_strength*Q.reichswehr_militancy;
 Q.schleicher_points += Q.reichswehr_power/50;
 
 Q.rfb_power = Q.rfb_strength*Q.rfb_militancy / 50;
-if (Q.spd_points >= 40) {
+if (Q.kpd_relation >= 40) {
     Q.spd_points += Q.rfb_power;
 } else if (Q.kpd_relation < 40) {
     Q.spd_points += Q.rfb_power*0.5;

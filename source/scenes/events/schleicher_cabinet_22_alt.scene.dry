@@ -39,7 +39,7 @@ if (Q.dvp_ideology != "Right" && Q.dvp_exist && !Q.lvp_formed) {
 }
 if (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" && Q.lvp_formed) { 
   Q.impeachment_votes += Q.lvp_r;
-  Q.impeachment_z = 1;
+  Q.impeachment_lvp = 1;
 }
 if (Q.z_relation >= 35) {
   Q.impeachment_votes += Q.z_r - Q.bvp_r;
@@ -151,7 +151,7 @@ An inpatient Hindenburg, with the advice of Papen, has sacked Treviranus and rep
 @schizo
 title: Crown Prince Wilhelm...?
 on-arrival: {!
-Q.chancellor = "Wilhelm III";
+Q.chancellor = "Hohenzollern";
 Q.vice_chancellor = "Papen";
 
 const contentElement = document.getElementById('content');
