@@ -1113,12 +1113,12 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     // science bonus to economic growth
     Q.science_bonus = 0;
     if (Q.major_curriculum && Q.major_curriculum == "democratic") {
-        if (Q.pro_republic < 60) {
+        if ((Q.pro_republic < 60 and Q.public_hs = 0) or (Q.pro_republic < (60 + 10*(public_hs + school_boards)) and Q.public_hs > 0)) {
             Q.pro_republic += 0.3;
         } 
     }
     if (Q.minor_curriculum && Q.minor_curriculum == "democratic") {
-        if (Q.pro_republic < 60) {
+        if ((Q.pro_republic < 60 and Q.public_hs = 0) or (Q.pro_republic < (60 + 10*(public_hs + school_boards)) and Q.public_hs > 0)) {
             Q.pro_republic += 0.15;
         } 
     }
@@ -1347,6 +1347,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     if (Q.wels_advisor) Q.center_advisor_n += 1;
     if (Q.muller_advisor) Q.center_advisor_n += 1;
     if (Q.breitscheid_advisor) Q.center_advisor_n += 1;
+    if (Q.stampfer_advisor and Q.editorial_line = "Center") Q.center_advisor_n += 1;
 
     centrist_advisor_decay_effect = Q.center_advisor_n*0.3;
 
@@ -1359,11 +1360,13 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
 
     Q.non_factional_advisor_n = 0;
     if (Q.baade_advisor) Q.non_factional_advisor_n += 1;
+        if (Q.land_reform) Q.non_factional_advisor_n += 1;
     if (Q.hirschfeld_advisor) Q.non_factional_advisor_n += 1;
-    if (Q.stampfer_advisor) Q.non_factional_advisor_n += 1;
+        if (Q.homosexual_rights) Q.non_factional_advisor_n += 1;
     if (Q.radbruch_advisor) Q.non_factional_advisor_n += 1;
+        if (Q.judicial_reform > 1) Q.non_factional_advisor_n += 1;
 
-    non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.1;
+    non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.15;
 
     if (Q.non_factional_advisor_n) {
         Q.center_dissent_decay *= (1-non_factional_advisor_decay_effect);
@@ -1377,18 +1380,21 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     if (Q.aufhauser_advisor) Q.labor_advisor_n += 1;
     if (Q.wissell_advisor) Q.labor_advisor_n += 1;
     if (Q.woytinsky_advisor) Q.labor_advisor_n += 1;
+    if (Q.stampfer_advisor and Q.editorial_line = "Labor") Q.labor_advisor_n += 1;
 
     Q.left_advisor_n = 0;
     if (Q.levi_advisor) Q.left_advisor_n += 1;
     if (Q.sender_advisor) Q.left_advisor_n += 1;
     if (Q.rosenfeld_advisor) Q.left_advisor_n += 1;
     if (Q.seydewitz_advisor) Q.left_advisor_n += 1;
+    if (Q.stampfer_advisor and Q.editorial_line = "Left") Q.left_advisor_n += 1;
 
     Q.reformist_advisor_n = 0;
     if (Q.severing_advisor) Q.reformist_advisor_n += 1;
     if (Q.braun_advisor) Q.reformist_advisor_n += 1;
     if (Q.juchacz_advisor) Q.reformist_advisor_n += 1;
     if (Q.pfulf_advisor) Q.reformist_advisor_n += 1;
+    if (Q.stampfer_advisor and Q.editorial_line = "Reformists") Q.reformist_advisor_n += 1;
 
     if (Q.nsdap_votes >= 20) {
         Q.center_dissent_decay *= 0.6;

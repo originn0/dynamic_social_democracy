@@ -15,7 +15,7 @@ In addition to being a political party, the <span style="color: #c00000;">**SPD*
 - @newspapers: Fund more newspapers and journalists.
 - @welfare: Fund more mutual aid and welfare programs.
 - @culture: Fund sports leagues, educational, and cultural programs.
-- @rb: Fund the Reichsbanner, our self-defense organization.
+- @rb: Fund and increase recruiting to the Reichsbanner, our self-defense organization.
 - @youth: We have the reputation of being a party for old men. Support the youth organizations.
 - @nothing: Do not increase funding for any program.
 - @easy_discard
@@ -24,16 +24,14 @@ In addition to being a political party, the <span style="color: #c00000;">**SPD*
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; media_timer = 0;
+on-arrival: resources -= 1; media_timer -= 6;
 go-to: media
-
-
 
 @welfare
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += 5*(1 - dissent);
+on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += (4+workers_aid)*(1 - dissent); workers_spd += (2*workers_aid)*(1-dissent) if Q.juchacz_advisor; workers_spd += 2*(1-dissent) if black_thursday_seen
 
 We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : In an age of economic crisis, this will be helpful for improving our standing among the unemployed. ?]
 
@@ -41,27 +39,26 @@ We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : I
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
-on-arrival: resources -= 1; cultural_organizations += 1; left_dissent -= 6; center_dissent -= 6; labor_dissent -= 6; reformist_dissent -= 6; neorevisionist_dissent -= 6
+on-arrival: resources -= 1; cultural_organizations += 1; left_dissent -= 5; left_dissent -= cultural_organizations if sa_force < 25; center_dissent -= 5; center_dissent -= cultural_organizations if sa_force < 25; labor_dissent -= 5; labor_dissent -= cultural_organizations if sa_force < 25; reformist_dissent -= 5; reformist_dissent-= cultural_organizations if sa_force < 25; neorevisionist_dissent -= 5; neorevisionist_dissent -= cultural_organizations if sa_force < 25
 
 It is not enough for the <span style="color: #c00000;">**SPD**</span> to solely be a political party. The Worker Singer's League, Worker's Sports, and our schools and libraries are crucial to our members' lives. Funding these organizations makes our members more committed to the party, even when our policies might not be to their liking.
 
-[? if sa_strength > 500 : However, it feels frivolous to spend on sports and choirs when the <span style="color: #7A3C00;">fascists</span> are murdering us in the streets. ?]
+[? if sa_force >= 25 : However, it feels frivolous to spend on sports and choirs when the <span style="color: #7A3C00;">fascists</span> are murdering us in the streets. ?]
 
 @rb
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
 view-if: not rb_explode
-on-arrival: resources -= 1; rb_strength  += 100; rb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
-
-We have increased recruiting to the Reichsbanner.
+on-arrival: resources -= 1; rb_strength += 100; rb_militancy += 0.01; reichsbanner_timer -= 6; funded_reichsbanner += 1
+go-to: reichsbanner
 
 @youth
 choose-if: resources > 0
 unavailable-subtitle: Not enough resources.
 subtitle: -1 resources
 view-if: not rb_explode
-on-arrival: resources -= 1; rb_strength += 50; rb_militancy += 0.02; young_socialists += 1; left_strength += 5; neorevisionist_strength += 5; radicalization += 1;
+on-arrival: resources -= 1; rb_strength += 50; rb_militancy += 0.02; young_socialists += 1; left_strength += 5; neorevisionist_strength += 5; workers_spd += 2*(1-dissent) if Q.seydewitz_advisor; new_middle_spd += 2*socialism if Q.seydewitz_advisor; radicalization += 1;
 
 Our new youth members flock to the left or neorevisionist wings of the party, and also bring new radicalism to the Reichsbanner.
 

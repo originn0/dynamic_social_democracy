@@ -38,9 +38,9 @@ achievement: heuchelei
 
 @reform_183
 subtitle: Paragraph 183 criminalizes public <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> displays and cross-dressing. We can change that.
-unavailable-subtitle: We do not have majority support for this policy.
+unavailable-subtitle:  [? if progressive_coalition < 50: We do not have majority support for this policy. ?] [? if repealed_175 == 0: We must repeal Paragraph 175 first. ?]
 view-if: reformed_183 == 0
-choose-if: progressive_coalition >= 50 
+choose-if: progressive_coalition >= 50 and repealed_175 == 1
 on-arrival: reformed_183 = 1; homosexual_rights += 1; z_relation -= 5; kpd_relation += 4*(1-dissent); ddp_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 4; ddp_left += 1; ddp_cohesion -= 1; economic_growth += 0.1;
 
 Voting together with the progressives in the <span style="color: #700000;">**KPD**</span> and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: leftist <span style="color: #FFCC00;">**LVP**</span> members?], we have reformed Paragraph 183 so that it no longer criminalizes public <span style="color: red;">ho</span><span style="color: orange;">mo</span><span style="color: yellow;">se</span><span style="color: green;">xu</span><span style="color: blue;">al</span><span style="color: purple;">ity</span> and <span style="color: deepskyblue;">cross</span>-<span style="color: deeppink;">dressing</span>.
@@ -48,9 +48,9 @@ Voting together with the progressives in the <span style="color: #700000;">**KPD
 
 @change_sex
 subtitle: We can create a legal process for individuals to change their sex, making their lives easier.
-unavailable-subtitle: We do not have majority support for this policy.
+unavailable-subtitle: [? if progressive_coalition < 50: We do not have majority support for this policy. ?] [? if repealed_175 == 0: We must repeal Paragraph 175 first. ?]
 view-if: trans_rights == 0
-choose-if: progressive_coalition >= 50
+choose-if: progressive_coalition >= 50 and repealed_175 == 1
 on-arrival: trans_rights = 1; homosexual_rights += 1; z_relation -= 5; kpd_relation += 4*(1-dissent); ddp_relation += 4*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or in_weimar_coalition); catholics_spd -= 4; ddp_left += 1; ddp_cohesion -= 1; economic_growth += 0.1;
 
 We have passed a bill to allow legal recognition of <span style="color: deepskyblue;">tran</span><span style="color: linen;">sse</span><span style="color: lightpink;">xuals</span> and transvestite individuals as the sex in which they live, and allow them to change their name, dress as they wish without police persecution, and undergo medical treatment.

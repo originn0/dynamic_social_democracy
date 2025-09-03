@@ -5,7 +5,7 @@ tags: party_affairs
 view-if: rally_timer <= 0
 on-arrival: month_actions += 1; rally_timer = 6 if next_election_time - time > 6 and not (year == 1928 and month == 1); rally_timer = 2 if (year == 1928 and month == 1) or (next_election_time - time <= 6)
 card-image: img/protest.jpg
-go-to: main_rally; sa_disrupt if sa_force > 25 and not sa_banned and not return_to_normalcy
+go-to: main_rally; sa_disrupt if sa_force >= 25 and not sa_banned and not return_to_normalcy
 
 @sa_disrupt
 
@@ -80,7 +80,7 @@ Mass rallies are a common feature of <span style="color: #c00000;">social democr
 - @easy_discard
 
 @class_struggle
-on-arrival: workers_spd += 4*(1-dissent); workers_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2; dvp_right += 0.5; ddp_right += 0.5; lvp_right += 0.5
+on-arrival: workers_spd += 4*(1-dissent); workers_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; rural_spd += land_reform*(1-dissent) if land_reform > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 3*(1-socialism); dvp_right += 0.5; ddp_right += 0.5; lvp_right += 0.5
 
 Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_adopted :  The adoption of the Left’s nationalization plan has done much to revitalize worker enthusiasm. ?][? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
 
@@ -90,7 +90,7 @@ on-arrival: workers_spd += 3*(1-dissent); workers_spd += 3*(1-dissent) if welfar
 The reformist message appeals to the organized workers, whose benefits are the accomplishments of <span style="color: #c00000;">social democracy</span>. [? if welfare > 1 : Our achievements in expanding welfare have made this message more effective. ?]
 
 @democracy
-on-arrival: democratization += 1; pro_republic += 3*(1 - dissent); workers_spd += 2*(1-dissent) if democratization >= 3; unemployed_spd += 1*(1-dissent) if democratization >= 3; new_middle_spd += 2*(1-dissent) if democratization >= 3; ddp_left += 0.5 if pro_republic >= 70; lvp_left += 0.5 if pro_republic >= 70
+on-arrival: democratization += 1; pro_republic += 3*(1 - dissent); pro_republic += 2*(1-dissent) if major_curriculum = "democratic"; workers_spd += 2*(1-dissent) if democratization >= 3; unemployed_spd += 1*(1-dissent) if democratization >= 3; new_middle_spd += 2*(1-dissent) if democratization >= 3; ddp_left += 0.5 if pro_republic >= 70; dvp_left += 0.5 if pro_republic >= 70; lvp_left += 0.5 if pro_republic >= 70
 
 Our speakers defend the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> system and rail against the <span style="color: #808080;">monarchists</span> and <span style="color: #7A3C00;">authoritarians</span> who threaten it.
 
@@ -98,7 +98,7 @@ Our speakers defend the <span style="color: #000000;">rep</span><span style="col
 [? if democratization >= 3 : Since we have consistently made democratization a theme of our campaign, the workers are enthusiastic about our message. ?]
 
 @pacifism
-on-arrival: pacifism += 1; nationalism -= 3*(1 - dissent); workers_spd += 2*(1 - dissent) if pacifism >= 3; unemployed_spd += 1*(1-dissent) if pacifism >= 3; nationalism -= 3*(1-dissent) if pacifism >= 3; new_middle_spd += 2*(1-dissent) if pacifism >= 3; ddp_left += 0.5 if (pacifism >= 3 and nationalism <= 50)
+on-arrival: pacifism += 1; nationalism -= 3*(1 - dissent); nationalism -= 2*(1-dissent) if major_curriculum = "democratic"; workers_spd += 2*(1 - dissent) if pacifism >= 3; workers_spd += (pacifism/4)*(1 - dissent) if (pacifism >= 4 and Q.siemsen_advisor); unemployed_spd += 1*(1-dissent) if pacifism >= 3; unemployed_spd += (pacifism/4)*(1 - dissent) if (pacifism >= 4 and Q.siemsen_advisor); new_middle_spd += 2*(1-dissent) if pacifism >= 3; new_middle_spd += (pacifism/4)*(1 - dissent) if (pacifism >= 4 and Q.siemsen_advisor); ddp_left += 0.5 if (pacifism >= 3 and nationalism <= 50)
 
 Our speakers denounce the military establishment and all the spending entering that black hole. Some adventurous speakers question the responsibility of the military elites in organizing the Great War.
 

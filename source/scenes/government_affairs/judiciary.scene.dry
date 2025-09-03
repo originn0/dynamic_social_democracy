@@ -29,7 +29,7 @@ on-arrival: budget -= 1; democratization += 2; coalition_dissent += 1 if (in_gra
 We investigate jurists who have shown themselves to have biased or corrupt behavior, and try to remove them, replacing them with more democratically-oriented jurists. This obviously raises quite a great deal of ire in conservative circles, including within our coalition. 
 
 @minor_reforms
-on-arrival: democratization += 1; workers_spd += 3*(1-dissent) if democratization >= 3; judicial_reform += 1; pro_republic += 2*(1-dissent); judiciary_timer += 6; dvp_left += 1; ddp_left += 0.5; lvp_left += 0.5
+on-arrival: democratization += 1; workers_spd += 3*(1-dissent) if democratization >= 3; judicial_reform += 1; pro_republic += 2*(1-dissent); judiciary_timer += 6 if !Q.radbruch_advisor; dvp_left += 1; ddp_left += 0.5; lvp_left += 0.5
 
 We try to remove the most obviously biased and corrupt jurists, while leaving most of the system intact. It is slow work reforming the judiciary.
 

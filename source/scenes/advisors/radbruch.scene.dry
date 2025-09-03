@@ -7,22 +7,30 @@ new-page: true
 
 = Gustav Radbruch
 
-Gustav Radbruch is a renowned legal scholar and long-time <span style="color: #c00000;">**SPD**</span> justice minister.
+Gustav Radbruch is a renowned legal scholar and long-time <span style="color: #c00000;">**SPD**</span> justice minister. [? if judicial_reform >= 2: He has gained support among all factions due to the <span style="color: #c00000;">SPD</span>'s success in judicial reforms. ?]
 
 
-- @judiciary_
+- @judiciary_major
+- @judiciary_minor
 - @constitutional_reform_
 - @root: Return to main
 
 
-@judiciary_
-title: Judicial Affairs
-subtitle: Enact judicial reforms.
-choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?]
-on-arrival: advisor_action_timer = 6; judiciary_timer -= 6; last_advisor_action = 1
-go-to: judiciary
+@judiciary_major
+title: Carry out substantial judicial reforms.
+subtitle: -1 budget.
+choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD" and budget > 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?] [? if budget <= 0: Not enough budget. ?]
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: judiciary.reform
 
+@judiciary_minor
+title: Carry out minor judicial reforms.
+subtitle: Gradually remove corrupt and biased jurists.
+choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD"
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?] 
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: judiciary.minor_reforms
 
 @constitutional_reform_
 title: Constitutional Reform

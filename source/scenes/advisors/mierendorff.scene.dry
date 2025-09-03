@@ -20,7 +20,7 @@ title: Build up the <span style="color: #c00000;">Iron</span> <span style="color
 subtitle: Increase our propaganda measures to recruit more members into the Reichsbanner. 
 choose-if: advisor_action_timer == 0 and iron_front_formed
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if iron_front_formed == 0 : The <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span> has not yet been formed. ?]
-on-arrival: advisor_action_timer = 6; rb_strength += 200*(workers_spd_normalized / 100);
+on-arrival: advisor_action_timer = 6; rb_strength += (200+50*young_socialists)*(workers_spd_normalized / 100);
 
 We have recruited more members into the Reichsbanner.
 

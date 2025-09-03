@@ -19,7 +19,7 @@ title: Rally for class struggle
 subtitle: The core of <span style="color: #c00000;">socialism</span> should be the struggle of the proletariat against the bourgeoisie.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 choose-if: advisor_action_timer = 0
-on-arrival: advisor_action_timer = 6; workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent); workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2; dvp_relation -= 3; dvp_right += 1; lvp_relation -= 3; lvp_right += 1
+on-arrival: advisor_action_timer = 6; workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent); workers_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 2*(1-dissent) if nationalization_adopted; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; rural_spd += land_reform*(1-dissent); left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 3*(1-socialism); dvp_relation -= 3; dvp_right += 1; lvp_relation -= 3; lvp_right += 1
 
 Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
 
@@ -30,7 +30,7 @@ subtitle: We must end our reputation as a party for old men by increasing fundin
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if resources <= 0 : Not enough resources. ?]
 choose-if: advisor_action_timer = 0 and resources > 0
 view-if: not rb_explode
-on-arrival: advisor_action_timer = 6; resources -= 1; left_strength += 5; left_dissent -= 3; rb_strength += 50; rb_militancy += 0.025; workers_spd += 2*(1-dissent); new_middle_spd += 1; radicalization += 1
+on-arrival: advisor_action_timer = 6; resources -= 1; young_socialists += 1; left_strength += 5; left_dissent -= 3; rb_strength += 50; rb_militancy += 0.025; workers_spd += 2*(1-dissent); new_middle_spd += 2*socialism; radicalization += 1
 
 Seydewitz supports building up the <span style="color: #c00000;">Socialist</span> Youth, which attracts support to the Left and increases the militancy of the Reichsbanner.
 
