@@ -6,13 +6,9 @@ on-arrival: {!
 // leave some economic decline for the banking crisis event
 Q.economic_growth -= 4.3;
 if (Q.works_program) {
-    Q.unemployed -= 4;
-    Q.inflation += 3;
     Q.economic_growth += 3.5;
 }
 if (Q.works_program && Q.works_program > 1) {
-    Q.unemployed -= 1.5;
-    Q.inflation += 1;
     Q.economic_growth += 1.5;
 }
 // moved demographic changes to post_event
