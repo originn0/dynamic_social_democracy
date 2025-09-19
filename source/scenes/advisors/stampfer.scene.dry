@@ -7,7 +7,9 @@ new-page: true
 
 = Friedrich Stampfer
 
-Friedrich Stampfer is the long-time editor-in-chief of Vorwärts, our party newspaper, and also a Reichstag member. He was historically part of the Majority <span style="color: #c00000;">**SPD**</span> that supported our participation in the Great War, but also supports cooperation with the <span style="color: #700000;">**KPD**</span> to save the Republic.
+Friedrich Stampfer is the long-time editor-in-chief of Vorwärts, our party newspaper, and also a Reichstag member. He was historically part of the Majority <span style="color: #c00000;">**SPD**</span> that supported our participation in the Great War, but also supports cooperation with the <span style="color: #700000;">**KPD**</span> to save the Republic. 
+
+[? if kpd_truce: Since such a SPD-KPD cooperation can be considered achieved through a truce with the RFB, Stampfer is emboldened to direct Vorwärts fully towards placating internal dissent by supporting a Center position. ?]
 
 - @media_
 - @faction_support_
@@ -40,28 +42,28 @@ Which faction should we support?
 - @support_neorev: Neorevisionists
 
 @support_left
-on-arrival: left_dissent -= 8; left_strength += 8
+on-arrival: left_dissent -= 8; left_strength += 8; editorial_line = "Left"
 
 Vorwärts prints editorials in support of Left positions.
 
 @support_center
-on-arrival: center_dissent -= 8; center_strength += 8
+on-arrival: center_dissent -= 8; center_strength += 8; editorial_line = "Center"
 
 Vorwärts prints editorials in support of centrist positions.
 
 @support_labor
-on-arrival: labor_dissent -= 8; labor_strength += 8
+on-arrival: labor_dissent -= 8; labor_strength += 8; editorial_line = "Labor"
 
 Vorwärts prints editorials in support of the policies of the trade unions.
 
 @support_reform
-on-arrival: reformist_dissent -= 8; reformist_strength += 8;
+on-arrival: reformist_dissent -= 8; reformist_strength += 8; editorial_line = "Reformists"
 
 Vorwärts prints editorials in support of the reformist policies.
 
 @support_neorev
 view-if: neorevisionism
-on-arrival: neorevisionist_dissent -= 8; neorevisionist_strength += 8
+on-arrival: neorevisionist_dissent -= 8; neorevisionist_strength += 8; editorial_line = "Neorevisionists"; nazi_urgency += 1
 
 Vorwärts prints editorials in support of neorevisionist ideas.
 

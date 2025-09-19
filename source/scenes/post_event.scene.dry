@@ -1359,11 +1359,15 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
 
     Q.non_factional_advisor_n = 0;
     if (Q.baade_advisor) Q.non_factional_advisor_n += 1;
+        if (Q.land_reform) Q.non_factional_advisor_n += 1;
     if (Q.hirschfeld_advisor) Q.non_factional_advisor_n += 1;
-    if (Q.stampfer_advisor) Q.non_factional_advisor_n += 1;
+        if (Q.homosexual_rights) Q.non_factional_advisor_n += 1;
+    if (Q.stampfer_advisor and Q.editorial_line = "Center) Q.non_factional_advisor_n += 1;
+        if (Q.kpd_truce) Q.non_factional_advisor_n += 1;
     if (Q.radbruch_advisor) Q.non_factional_advisor_n += 1;
+        if (Q.judicial_reform >= 2) Q.non_factional_advisor_n += 1;
 
-    non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.1;
+    non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.15;
 
     if (Q.non_factional_advisor_n) {
         Q.center_dissent_decay *= (1-non_factional_advisor_decay_effect);
@@ -1797,6 +1801,14 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     } else if (Q.year == 1931) {
         Q.unemployed += 5/12;
         Q.inflation -= 5/12;
+        if (Q.works_program) {
+            Q.unemployed -= 4/12;
+            Q.inflation += 3/12;
+            if (Q.works_program > 1) {
+                Q.unemployed -= 1.5/12;
+                Q.inflation += 1/12;
+            }
+        }
         if (Q.z_leader == "Kaas") {
             Q.catholics_z += 3/12;
         }

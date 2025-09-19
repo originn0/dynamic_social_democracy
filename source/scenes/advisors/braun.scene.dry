@@ -18,6 +18,7 @@ Braun [? if prussia_leader = "Braun": is ?][? if prussia_leader != "Braun" : was
 @coalition
 title: Negotiating with the Coalition
 subtitle: Braun can improve our relationships with our centrist and center-right coalition partners in Prussia as well as in the Reichstag.
+view-if: president != "Braun"
 choose-if: advisor_action_timer <= 0 and (spd_prussia or in_weimar_coalition or in_grand_coalition or in_popular_front or prussia_leader == "Braun")
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if not spd_prussia : The <span style="color: #c00000;">SPD</span> does not control the Prussian government. ?]
 on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if spd_in_government = 1 and coalition_dissent > 0; z_relation += 4; ddp_relation += 4; dvp_relation += 2; lvp_relation += 4; dvp_relation += 2 if in_grand_coalition; dvp_relation += 2 if in_grand_coalition_prussia; dvp_left += 1 if in_grand_coalition_prussia; z_relation += 2 if prussia_leader = "Braun"; ddp_relation += 2 if prussia_leader = "Braun"; lvp_relation += 2 if prussia_leader = "Braun"; lvp_left += 0.5; ddp_left += 0.25;
