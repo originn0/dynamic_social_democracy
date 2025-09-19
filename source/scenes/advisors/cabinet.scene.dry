@@ -1,8 +1,8 @@
 title: Cabinet
-#is-pinned-card: true
+is-pinned-card: true
 tags: advisor
 card-image: img/muller_cabinet.jpg
-#view-if: difficulty < 0 and spd_in_government and chancellor_party = "SPD"
+view-if: in_spd_majority or (in_emergency_government and chancellor_party = "SPD") or (in_left_front and chancellor_party = "SPD")
 on-arrival: last_cabinet_action = 1
 new-page: true 
 
