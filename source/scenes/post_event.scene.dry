@@ -1358,14 +1358,22 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     }
 
     Q.non_factional_advisor_n = 0;
-    if (Q.baade_advisor) Q.non_factional_advisor_n += 1;
+    if (Q.baade_advisor) {
+        Q.non_factional_advisor_n += 1;
         if (Q.land_reform) Q.non_factional_advisor_n += 1;
-    if (Q.hirschfeld_advisor) Q.non_factional_advisor_n += 1;
+    }
+    if (Q.hirschfeld_advisor) {
+        Q.non_factional_advisor_n += 1;
         if (Q.homosexual_rights) Q.non_factional_advisor_n += 1;
-    if (Q.stampfer_advisor and Q.editorial_line = "Center) Q.non_factional_advisor_n += 1;
+    }
+    if (Q.stampfer_advisor && Q.editorial_line == "Center") {
+        Q.non_factional_advisor_n += 1;
         if (Q.kpd_truce) Q.non_factional_advisor_n += 1;
-    if (Q.radbruch_advisor) Q.non_factional_advisor_n += 1;
+    }
+    if (Q.radbruch_advisor) {
+        Q.non_factional_advisor_n += 1;
         if (Q.judicial_reform >= 2) Q.non_factional_advisor_n += 1;
+    }
 
     non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.15;
 
