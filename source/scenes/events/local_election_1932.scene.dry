@@ -675,22 +675,23 @@ Heinrich Held, the incumbent Minister-President and a pro-democratic member of t
 title: The <span style="color: #c00000;">**SPD**</span> forms a majority government.
 subtitle: Congratulations.
 view-if: spd_r_bavaria >= 50
-on-arrival: bavaria_spd = 1; new_middle_nsdap -= 3; old_middle_nsdap -= 3; rural_nsdap -= 2; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_spd += 5; old_middle_spd += 6; rural_spd += 4; catholics_z -= 6; catholics_spd += 6; pro_republic += 5
+on-arrival: bavaria_spd = 1; new_middle_nsdap -= 3; old_middle_nsdap -= 3; rural_nsdap -= 2; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_spd += 5; old_middle_spd += 6; rural_spd += 4; catholics_z -= 6; catholics_spd += 6; pro_republic += 5; prussian_police_loyalty += 0.1; sa_strength -= 100; sa_strength -= 50 if sa_nationwide_ban;
 achievement: rotes_bayern
 go-to: election_menu
 
-We have somehow managed to capture a majority in the Landtag, and have put our Minister-President as the head of the most conservative state in the country. Hopefully this doesn't end badly like last time.
+We have somehow managed to capture a majority in the Landtag, and have put our Minister-President as the head of the most conservative state in the country. Hopefully this doesn't end badly like last time. Bavaria has been governed by the political right ever since 1921, and the <span style="color: #A2D8E0;">**BVP**</span> has often covered for reactionary political activity. Now, we are able to change that and aggressively counter the <span style="color: #7A3C00;">**SA**</span> thugs roaming the streets [? if sa_nationwide_ban: and more aggressively enforce the national ban of the organization that the conservative Held government had mostly ignored ?].
 
 @spd_coalition
 title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the bourgeois parties.
 subtitle: The <span style="color: #38C538;">Bavarian Peasants’ League</span> had a falling out right? Let's utilize our contacts with their left wing. -1 resource
 unavailable-subtitle: [? if spd_coalition_bavaria < 50: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?] + <span style="color: #38C538;">Bavarian Peasants’ League</span> ([+ spd_coalition_bavaria +]%)  ?][? if resources < 1: - Not enough resources (need 1). ?]
 choose-if: spd_coalition_bavaria >= 50 and resources >= 1
-on-arrival: resources -= 1; bavaria_spd = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_spd += 3; old_middle_spd += 3; rural_spd += 1; rural_other += 3; catholics_z -= 4; catholics_spd += 4; z_relation -= 5; pro_republic += 3
+on-arrival: resources -= 1; bavaria_spd = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_spd += 3; old_middle_spd += 3; rural_spd += 1; rural_other += 3; catholics_z -= 4; catholics_spd += 4; z_relation -= 5; pro_republic += 3; prussian_police_loyalty += 0.05; sa_strength -= 50; sa_strength -= 50 if sa_nationwide_ban;
 go-to: election_menu
 achievement: ampelkoalition
 
-Somehow, we have brought the [? if not lvp_formed and ddp_r_bavaria: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and?][? if lvp_formed and lvp_r_bavaria: <span style="color: #FFCC00;">**LVP**</span> and?] <span style="color: #38C538;">Bavarian Peasants’ League</span> to the negotiating table, despite their preference for working with the <span style="color: #A2D8E0;">**BVP**</span>. Through connections with the left-wing and liberal factions within the <span style="color: #38C538;">Bavarian Peasants’ League</span>, we have overcome their reluctance—and now, we are in government!
+Somehow, we have brought the [? if not lvp_formed and ddp_r_bavaria: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and?][? if lvp_formed and lvp_r_bavaria: <span style="color: #FFCC00;">**LVP**</span> and?] <span style="color: #38C538;">Bavarian Peasants’ League</span> to the negotiating table, despite their preference for working with the <span style="color: #A2D8E0;">**BVP**</span>. Through connections with the left-wing and liberal factions within the <span style="color: #38C538;">Bavarian Peasants’ League</span>, we have overcome their reluctance—and now, we are in government! Bavaria has been governed by the political right ever since 1921, and the <span style="color: #A2D8E0;">**BVP**</span> has often covered for reactionary political activity. Now, we are able to change that and counter the <span style="color: #7A3C00;">**SA**</span> thugs roaming the streets [? if sa_nationwide_ban: and more aggressively enforce the national ban of the organization that the conservative Held government had mostly ignored ?].
+
 
 @united_left
 title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>?
