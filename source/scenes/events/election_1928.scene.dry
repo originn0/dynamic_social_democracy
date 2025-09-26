@@ -3181,16 +3181,23 @@ unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_f
 choose-if: ((z_relation < 40 and z_ideology == "Right") or (z_relation < 25 and z_leader == "Joos") or (z_relation < 20 and z_leader == "Kaiser") or not z_r) and ((((ddp_relation >= 55 and ddp_ideology == "Right") or (ddp_relation >= 45 and ddp_ideology == "Moderate") or (ddp_relation >= 35 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 65 and lvp_ideology == "Right") or (lvp_relation >= 55 and lvp_ideology == "Moderate") or (lvp_relation >= 45 and lvp_ideology == "Left")) and lvp_formed)) and not rubicon and president_ideology != "Right"
 on-arrival: leverage += 10; leverage += 5 if not lvp_formed; leverage += 5 if lvp_formed and lvp_ideology == "Left"; leverage -= 5 if lvp_formed and lvp_ideology != "Left"; leverage -= 5 if not lvp_formed and ddp_ideology != "Left"; in_weimar_coalition = 1; in_social_liberal_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = ddp_name; interior_minister_party = ddp_name; justice_minister_party = ddp_name; labor_minister_party = ddp_name; reichswehr_minister_party = "I"; finance_minister_party = ddp_name; economic_minister_party = ddp_name; agriculture_minister_party = ddp_name; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "LVP" if lvp_formed; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "LVP" if lvp_formed; finance_minister_party = "LVP" if lvp_formed; economic_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "LVP" if lvp_formed; foreign_minister = "Prittwitz"; interior_minister = "Külz"; justice_minister = "Koch-Weser"; labor_minister = "Lemmer"; reichswehr_minister = "Groener"; economic_minister = "Trendelenburg"; finance_minister = "Reinhold"; agriculture_minister = "Dietrich"; dvp_right += 3; ddp_left += 3; ddp_cohesion += 1; bourgeois_cooperation += 5; lvp_left += 3; hindenburg_angry = 50; liberal_cooperation -= 2
 achievement: sozialliberale_koalition
+go-to: soc_lib_chancellor_menu if not (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175); kulturkampf if (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175)
 
 We have enough votes to form a "<span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span> and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] party! This type of coalition has never been tested before and is only possible as a last resort after our fallout with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 # add achievement for ts
 
 Who should be the chancellor?
 
+@soc_lib_chancellor_menu
+
 - @muller
 - @braun
 - @breitscheid_coalition_chancellor
 - @wels
+
+@kulturkampf
+achievement: kulturkampf
+go-to: soc_lib_chancellor_menu
 
 @social_liberal_coalition_cvp
 title: We can form a <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition.
@@ -3200,15 +3207,11 @@ unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_f
 choose-if: ((((ddp_relation >= 65 and ddp_ideology == "Right") or (ddp_relation >= 55 and ddp_ideology == "Moderate") or (ddp_relation >= 45 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 75 and lvp_ideology == "Right") or (lvp_relation >= 65 and lvp_ideology == "Moderate") or (lvp_relation >= 55 and lvp_ideology == "Left")) and lvp_formed))
 on-arrival: leverage += 5; leverage += 5 if not lvp_formed; leverage += 5 if lvp_formed and lvp_ideology == "Left"; leverage -= 5 if lvp_formed and lvp_ideology != "Left"; leverage -= 5 if not lvp_formed and ddp_ideology != "Left"; in_weimar_coalition = 1; in_social_liberal_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = ddp_name; interior_minister_party = ddp_name; justice_minister_party = ddp_name; labor_minister_party = ddp_name; reichswehr_minister_party = "I"; finance_minister_party = ddp_name; economic_minister_party = ddp_name; agriculture_minister_party = ddp_name; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "LVP" if lvp_formed; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "LVP" if lvp_formed; finance_minister_party = "LVP" if lvp_formed; economic_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "LVP" if lvp_formed; foreign_minister = "Prittwitz"; interior_minister = "Külz"; justice_minister = "Koch-Weser"; labor_minister = "Lemmer"; reichswehr_minister = "Groener"; economic_minister = "Trendelenburg"; finance_minister = "Reinhold"; agriculture_minister = "Dietrich"; dvp_right += 3; ddp_left += 3; ddp_cohesion += 1; bourgeois_cooperation += 3; lvp_left += 3; hindenburg_angry = 50; liberal_cooperation -= 4
 achievement: sozialliberale_koalition
+go-to: soc_lib_chancellor_menu if not (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175); kulturkampf if (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175)
 
 We have enough votes to form a "<span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span> and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] party! This coalition has never been tested before and is only possible because the behemoth right-wing <span style="color: #000000;">**[+ z_party_name +]**</span> includes certain <span style="color: #3E88B3;">**DNVP**</span> elements.
 
 Who should be the chancellor?
-
-- @muller
-- @braun
-- @breitscheid_coalition_chancellor
-- @wels
 
 @social_catholic_coalition_cvp
 title: Can we form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition?
