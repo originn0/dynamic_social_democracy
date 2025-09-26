@@ -62,7 +62,7 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.republic_victory) {
       this.achieve('victory_for_the_republic');
   }
-  // Einigkeit - survive without a civil war.
+  // Einigkeit und Recht und Freiheit - survive without a civil war.
 
   // Einheitsfront - form a united front with the KPD, and win the civil war.
 
@@ -318,6 +318,21 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   }
   if (Q.reichswehr_strength >= 200 && Q.unemployed < 15 && Q.budget > 0 && Q.tariffs > 5 && (Q.spd_in_government || Q.chancellor_party == "SPD")) {
     this.achieve('kriegswirtschaft');
+  }
+  if (Q.spd_votes >= 67 && Q.spd_r >= 67 && Q.in_social_liberal_coalition) {
+    this.achieve('sechs_sieben');
+  }
+  if (Q.rubicon_mini_trigger && Q.rubicon_mini_leave && Q.chancellor == "Hitler") {
+    this.achieve('er_ist_wieder_da');
+  }
+  if (!Q.hammerstein_win && Q.schleicher_spd_concession >= 2) {
+    this.achieve('abgrundlaufer');
+  }
+  if (Q.chancellor == "Brüning" && Q.president == "Brüning" && Q.prussia_leader == "Brüning") {
+    this.achieve('bruning_uber_alles');
+  }
+  if (Q.der_aufstieg_skywalkers) {
+    this.achieve('der_aufstieg_skywalkers');
   }
 }
 this.achieve('game_completed');
@@ -575,7 +590,7 @@ elements.forEach(el => {
 const achievements = [
   "achievement_eiserne_front",
   "achievement_civil_war",
-  "achievement_einigkeit",
+  "achievement_einigkeit_und_recht_und_freiheit",
   "achievement_victory_for_the_republic",
   "achievement_bollwerk_der_demokratie",
   "achievement_red_tzar_of_prussia",
@@ -684,7 +699,13 @@ const achievements = [
   "achievement_1919_geracht",
   "achievement_nach_der_spd_wir",
   "achievement_eurokommunismus",
-  "achievement_kriegswirtschaft"
+  "achievement_kriegswirtschaft",
+  "achievement_sechs_sieben",
+  "achievement_er_ist_wieder_da",
+  "achievement_abgrundlaufer",
+  "achievement_bruning_uber_alles",
+  "achievement_der_aufstieg_skywalkers",
+  "achievement_kulturkampf"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -828,15 +849,15 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 {!</tr>!}
 ?]
 
-[? if game_achievement_einigkeit: 
+[? if game_achievement_einigkeit_und_recht_und_freiheit: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/einigkeit.png" alt="Einigkeit Easy Icon"
+    <img src="img/achievement/einigkeit.png" alt="Einigkeit und Recht und Freiheit Easy Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
     <div style="padding-left: 0.5em;">
-      <div style="font-weight: bold;">Einigkeit</div>
+      <div style="font-weight: bold;">Einigkeit und Recht und Freiheit</div>
       <div class="achievement_subtitle"> - reach the end of the game without a civil war.</div>
     </div>
   {!</td>!}
@@ -2293,7 +2314,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
-      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #7A3C00;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #700000;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2478,6 +2499,96 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_sechs_sieben: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sechs_sieben.png" alt="Sechs Sieben Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sechs Sieben</div>
+      <div class="achievement_subtitle"> - the <span style='color: #c00000; font-weight: bold;'>SPD</span> holds at least 67% of the vote and Reichstag seats, and governs in a <span style="color: #c00000;">Ketchup</span> and <span style="color: #D3C24D;">Mustard</span> coalition.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_er_ist_wieder_da: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/er_ist_wieder_da.png" alt="Er ist wieder da Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Er ist wieder da</div>
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> be appointed Chancellor twice.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_abgrundlaufer: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/abgrundlaufer.png" alt="Abgrundläufer Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Abgrundläufer</div>
+      <div class="achievement_subtitle"> - successfully demand two concessions from Schleicher, and prevent a <span style="color: #BFC8CC;">**DNEF**</span> victory.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_bruning_uber_alles: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/bruning_uber_alles.png" alt="Brüning Uber Alles Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Brüning Uber Alles</div>
+      <div class="achievement_subtitle"> - Heinrich Brüning is President, Chancellor and Minister-President of Prussia.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_der_aufstieg_skywalkers: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_aufstieg_skywalkers.png" alt="Der Aufstieg Skywalkers Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Aufstieg Skywalkers</div>
+      <div class="achievement_subtitle"> - defeat <span style="color: #7A3C00;">Hitler</span> in a civil war after he returns from the dead.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_kulturkampf: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kulturkampf.png" alt="Kulturkampf Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kulturkampf</div>
+      <div class="achievement_subtitle"> - pass all women's rights and <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights reforms, secularize education, and form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> coalition.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -2514,15 +2625,15 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 {!</tr>!}
 ?]
 
-[? if achievement_einigkeit: 
+[? if achievement_einigkeit_und_recht_und_freiheit: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/einigkeit.png" alt="Einigkeit Easy Icon"
+    <img src="img/achievement/einigkeit.png" alt="Einigkeit und Recht und Freiheit Easy Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
     <div style="padding-left: 0.5em;">
-      <div style="font-weight: bold;">Einigkeit</div>
+      <div style="font-weight: bold;">Einigkeit und Recht und Freiheit</div>
       <div class="achievement_subtitle"> - reach the end of the game without a civil war.</div>
     </div>
   {!</td>!}
@@ -3979,7 +4090,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
-      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #7A3C00;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #700000;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4164,6 +4275,96 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_sechs_sieben: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sechs_sieben.png" alt="Sechs Sieben Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sechs Sieben</div>
+      <div class="achievement_subtitle"> - the <span style='color: #c00000; font-weight: bold;'>SPD</span> holds at least 67% of the vote and Reichstag seats, and governs in a <span style="color: #c00000;">Ketchup</span> and <span style="color: #D3C24D;">Mustard</span> coalition.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_er_ist_wieder_da: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/er_ist_wieder_da.png" alt="Er ist wieder da Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Er ist wieder da</div>
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> be appointed Chancellor twice.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_abgrundlaufer: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/abgrundlaufer.png" alt="Abgrundläufer Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Abgrundläufer</div>
+      <div class="achievement_subtitle"> - successfully demand two concessions from Schleicher, and prevent a <span style="color: #BFC8CC;">**DNEF**</span> victory.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_bruning_uber_alles: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/bruning_uber_alles.png" alt="Brüning Uber Alles Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Brüning Uber Alles</div>
+      <div class="achievement_subtitle"> - Heinrich Brüning is President, Chancellor and Minister-President of Prussia.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_der_aufstieg_skywalkers: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_aufstieg_skywalkers.png" alt="Der Aufstieg Skywalkers Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Aufstieg Skywalkers</div>
+      <div class="achievement_subtitle"> - defeat <span style="color: #7A3C00;">Hitler</span> in a civil war after he returns from the dead.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_kulturkampf: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kulturkampf.png" alt="Kulturkampf Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kulturkampf</div>
+      <div class="achievement_subtitle"> - pass all women's rights and <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights reforms, secularize education, and form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> coalition.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -4200,15 +4401,15 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
 {!</tr>!}
 ?]
 
-[? if not achievement_einigkeit: 
+[? if not achievement_einigkeit_und_recht_und_freiheit: 
 {!<tr>!}
   {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
-    <img src="img/achievement/einigkeit.png" alt="Einigkeit Easy Icon"
+    <img src="img/achievement/einigkeit.png" alt="Einigkeit und Recht und Freiheit Easy Icon"
          style="width: 100%; height: 100%; object-fit: cover; display: block;">
   {!</td>!}
   {!<td style="border: 2px solid #c00000; background-color: rgba(91, 154, 141, 0.1);">!}
     <div style="padding-left: 0.5em;">
-      <div style="font-weight: bold;">Einigkeit</div>
+      <div style="font-weight: bold;">Einigkeit und Recht und Freiheit</div>
       <div class="achievement_subtitle"> - reach the end of the game without a civil war.</div>
     </div>
   {!</td>!}
@@ -5664,7 +5865,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Gegen Papen, Hitler, Thälmann</div>
-      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #7A3C00;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> commit suicide, Schleicher imprison <span style="color: #700000;">Thälmann</span>, and defeat <span style="color: #808080;">Papen</span> in a civil war.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -5845,6 +6046,96 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Kriegswirtschaft</div>
       <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is in government, maintaining maximum tariffs, a Reichswehr of at least 200 thousand men, unemployment below 15%, and a budget surplus.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_sechs_sieben: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/sechs_sieben.png" alt="Sechs Sieben Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Sechs Sieben</div>
+      <div class="achievement_subtitle"> - the <span style='color: #c00000; font-weight: bold;'>SPD</span> holds at least 67% of the vote and Reichstag seats, and governs in a <span style="color: #c00000;">Ketchup</span> and <span style="color: #D3C24D;">Mustard</span> coalition.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_er_ist_wieder_da: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/er_ist_wieder_da.png" alt="Er ist wieder da Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Er ist wieder da</div>
+      <div class="achievement_subtitle"> - have <span style="color: #7A3C00;">Hitler</span> be appointed Chancellor twice.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_abgrundlaufer: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/abgrundlaufer.png" alt="Abgrundläufer Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Abgrundläufer</div>
+      <div class="achievement_subtitle"> - successfully demand two concessions from Schleicher, and prevent a <span style="color: #BFC8CC;">**DNEF**</span> victory.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_bruning_uber_alles: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/bruning_uber_alles.png" alt="Brüning Uber Alles Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(91, 154, 141, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Brüning Uber Alles</div>
+      <div class="achievement_subtitle"> - Heinrich Brüning is President, Chancellor and Minister-President of Prussia.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_der_aufstieg_skywalkers: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/der_aufstieg_skywalkers.png" alt="Der Aufstieg Skywalkers Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Der Aufstieg Skywalkers</div>
+      <div class="achievement_subtitle"> - defeat <span style="color: #7A3C00;">Hitler</span> in a civil war after he returns from the dead.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_kulturkampf: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kulturkampf.png" alt="Kulturkampf Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kulturkampf</div>
+      <div class="achievement_subtitle"> - pass all women's rights and <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights reforms, secularize education, and form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> coalition.
     </div>
   {!</td>!}
 {!</tr>!}

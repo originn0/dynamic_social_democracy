@@ -92,7 +92,7 @@ on-arrival: {!
   const achievements = [
     "achievement_eiserne_front",
     "achievement_civil_war",
-    "achievement_einigkeit",
+    "achievement_einigkeit_und_recht_und_freiheit",
     "achievement_victory_for_the_republic",
     "achievement_bollwerk_der_demokratie",
     "achievement_red_tzar_of_prussia",
@@ -201,7 +201,13 @@ on-arrival: {!
     "achievement_1919_geracht",
     "achievement_nach_der_spd_wir",
     "achievement_eurokommunismus",
-  "achievement_kriegswirtschaft"
+    "achievement_kriegswirtschaft",
+    "achievement_sechs_sieben",
+    "achievement_er_ist_wieder_da",
+    "achievement_abgrundlaufer",
+    "achievement_bruning_uber_alles",
+    "achievement_der_aufstieg_skywalkers",
+    "achievement_kulturkampf"
 ];
 
   Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -314,6 +320,16 @@ We have a friendly discord server if you want to talk to the modman, or other pl
 <a href="https://discord.gg/8BbZZgmSpb">https://discord.gg/8BbZZgmSpb</a>
 
 @changelog
+on-arrival:{!
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'none';
+}
+const elements = document.querySelectorAll('header, #content, footer');
+elements.forEach(el => {
+  el.style.maxWidth = '800px';
+});
+!}
 
 = Changelog
 
@@ -341,7 +357,9 @@ We have a friendly discord server if you want to talk to the modman, or other pl
 
 **V1.04 - 2025/09/25**
 
-[? if not snoopy: - New achievements: "Eurokommunismus" and "Kriegswirtschaft". ?]
+[? if not snoopy: - New achievements: "Eurokommunismus", "Kriegswirtschaft", "Sechs Sieben", "Er ist wieder da", "Abgrundläufer", "Brüning Uber Alles", "Der Aufstieg Skywalkers", and "Kulturkampf". ?]
+
+[? if not snoopy: - "Anders als die Andern" achievement ported from the base game. ?]
 
 [? if not snoopy: - "Heuchelei" achievement granted an icon. ?]
 
@@ -353,7 +371,20 @@ We have a friendly discord server if you want to talk to the modman, or other pl
 
 I'm currently on break.
 
-- @flavors: Back
+- @back3: Back
+
+@back3
+on-arrival:{!
+const toolsWrapper = document.getElementById('tools_wrapper');
+if (toolsWrapper) {
+  toolsWrapper.style.display = 'block';
+}
+const elements = document.querySelectorAll('header, #content, footer');
+elements.forEach(el => {
+  el.style.maxWidth = '540px';
+});
+!}
+go-to: flavors
 
 @source
 

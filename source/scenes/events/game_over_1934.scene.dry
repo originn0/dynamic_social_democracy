@@ -1,7 +1,7 @@
 on-arrival: {!
-// Einigkeit - survive without a civil war.
+// Einigkeit und Recht und Freiheit - survive without a civil war.
 if (Q.dynamic_mode || Q.historical_mode) {
-    this.achieve('einigkeit');
+    this.achieve('einigkeit_und_recht_und_freiheit');
     // Brüder, zur Sonne, zur Freiheit - reduce unemployment, pause reparations, increase women's rights, elect Otto Braun president, and deport Hitler in one playthrough on at least normal difficulty.
     if ((Q.president == "Braun" || Q.president == "Schumacher" || Q.president == "Wels" || Q.president == "Grzesinski" || Q.president == "Juchacz" || Q.president == "Rosenfeld") && !(Q.chancellor_party == "NSDAP") && Q.unemployed < 20 && Q.year >= 1933 && !Q.civil_war_seen && Q.hitler_deported && Q.reparations <= -2 && Q.womens_rights >= 3) {
         this.achieve('bruder_zur_sonne');
