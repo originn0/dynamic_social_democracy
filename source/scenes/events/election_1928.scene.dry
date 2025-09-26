@@ -2362,13 +2362,17 @@ Somehow, surprisingly, the left coalition is successfully formed, without appoin
 # just raise the coup limit, don't immediately go to civil war
 
 @left_coalition_no_civil_war
-on-arrival: kpd_goals_seen = 0; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.05; dvp_right += 10; ddp_right += 5; ddp_cohesion -= 3; lvp_right += 8; liberal_cooperation += 5; bourgeois_cooperation += 10; liberal_cooperation += 3 if in_left_front_prussia or in_popular_front_prussia; bourgeois_cooperation += 5 if in_left_front_prussia or in_popular_front_prussia; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 30; left_strength += 20; hindenburg_angry += 10 if in_popular_front_prussia or in_left_front_prussia
+on-arrival: kpd_goals_seen = 0; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.05; dvp_right += 10; ddp_right += 5; ddp_cohesion -= 3; lvp_right += 8; liberal_cooperation += 5; bourgeois_cooperation += 10; liberal_cooperation += 3 if in_left_front_prussia or in_popular_front_prussia; bourgeois_cooperation += 5 if in_left_front_prussia or in_popular_front_prussia; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 30; left_strength += 20; hindenburg_angry += 10 if in_popular_front_prussia or in_left_front_prussia; catastrophepolitik = 1 if n_elections >= 5 and not catastrophepolitik_cancel;
+go-to: catastrophepolitik_left if catastrophepolitik = 1
 
 In response to the <span style="color: #700000;">**KPD**</span>'s entrance into the government, the right-wing takes a "wait-and-see" approach for now. They expect that our government will be unstable and incompetent, and will collapse of its own accord, discrediting the left and eventually enabling the destruction of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic. Our task is to prove them wrong. [? if in_left_front_prussia: The right will be more active in resisting our rule considering we are also ruling with the <span style="color: #700000;">**KPD**</span> in Prussia too. ?]
 
 The <span style="color: #700000;">**KPD**</span> has taken an abstentionist position with regards to ministries. They claim to be participating as the "loyal opposition" in the worker's government, supporting us from the outside while also running their own propaganda campaigns to turn workers to their side. They seem to expect that we would inevitably fail, and that our failure would benefit them. 
 
 Whatever their reasoning is, the <span style="color: #c00000;">**SPD**</span> has control over the ministries of government.
+
+@catastrophepolitik_left
+achievement: catastrophepolitik
 
 @left_coalition_civil_war
 on-arrival: reichswehr_loyalty += 0.1
@@ -3139,10 +3143,14 @@ The next elections are set for [+ next_election_month : month +] [+ next_electio
 
 @no_confidence_win
 view-if: no_confidence_votes <= 50
-on-arrival: in_minority_government = 1; in_emergency_government = 0;
+on-arrival: in_minority_government = 1; in_emergency_government = 0; catastrophepolitik = 1 if n_elections >= 5 and not catastrophepolitik_cancel;
 achievement: minderheitsregierung
+go-to: catastrophepolitik_minority if catastrophepolitik = 1
 
 We have won the vote of no confidence, and are currently ruling under an <span style="color: #c00000;">**SPD**</span> minority government. Now our task is to fix the country.
+
+@catastrophepolitik_minority
+achievement: catastrophepolitik
 
 @social_catholic_coalition
 title: Can we form a <span style="color: #c00000;">Social</span>-[? if not stegerwald_path: <span style="color: #000000;">Catholic</span>?][? if stegerwald_path: <span style="color: #000000;">Christian</span>?] Coalition?

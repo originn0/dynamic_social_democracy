@@ -67,6 +67,7 @@ Unfortunately, we have failed to accomplish all of the goals the <span style="co
 - @kpd_vote_of_no_confidence.support_center: Could we form a new government based on the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (and possibly <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?
 - @kpd_vote_of_no_confidence.let_it_happen: Let the vote happen.
 - @no_vonc: They cannot call a vote of no confidence due to the constitutional reforms, but they can obstruct our government at every opportunity.
+- @spd_majority: We have a majority without them.
 
 @appeal
 choose-if: (kpd_score >= 4 and kpd_relation > 50 and kpd_appeal_seen = 0) or kpd_leader = "Conciliators"
@@ -96,3 +97,9 @@ view-if: constructive_vonc
 on-arrival: in_popular_front = 0; in_left_front = 0; in_minority_government = 1;
 
 We have been effectively made a minority government, and the <span style="color: #700000;">**KPD**</span> intends to obstruct our attempts to pass policy.
+
+@spd_majority
+view-if: spd_r >= 50
+on-arrival: in_popular_front = 0; in_left_front = 0; in_spd_majority = 1;
+
+We were so kind.

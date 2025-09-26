@@ -121,7 +121,7 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
       this.achieve("polykrise");
   }
   // Wirtschaftsexperiment - implement two different economic plans.
-  if ((Q.nationalization_progress >= 1 && Q.wtb_implemented >= 1) || (Q.wtb_implemented >= 1 && Q.moderate_plan_progress >= 1) || (Q.nationalization_progress >= 1 && Q.  moderate_plan_progress >= 1)) {
+  if ((Q.nationalization_progress >= 1 && Q.wtb_implemented >= 1) || (Q.wtb_implemented >= 1 && Q.moderate_plan_progress >= 1) || (Q.nationalization_progress >= 1 && Q.moderate_plan_progress >= 1)) {
       this.achieve("wirtschaftsexperiment");
   }
   // Syndikalismus - support factory takeovers by workers.
@@ -281,7 +281,7 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
       this.achieve('notwendigkeit');
   }
 
-  if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president !=   "Göring" && Q.president != "Seldte" && Q.chancellor != "Hitler" && !Q.  hammerstein_win && !(Q.president == "Hergt" && Q.chancellor == "Seldte")) {
+  if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president !=   "Göring" && Q.president != "Seldte" && Q.chancellor != "Hitler" && !Q.hammerstein_win && !(Q.president == "Hergt" && Q.chancellor == "Seldte")) {
     if ((Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Ossietzky" || Q.president == "Mann") && Q.in_left_front) {
       Q.kpd_points_calc = 0;
       Q.kpd_points_calc += Q.rfb_force;
@@ -308,13 +308,24 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
       }
     }
   }
+  if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president != "Göring" && Q.president != "Seldte" && Q.chancellor != "Hitler" && !Q.hammerstein_win && !(Q.president ==   "Hergt" && Q.chancellor == "Seldte")) {
+    Q.weimar_win_calc = 1;
+  } else {
+    Q.weimar_win_calc = 0;
+  }
+  if ((Q.in_left_front || Q.in_popular_front) && Q.kpd_coalition_success && Q.wurttemberg_kpd && Q.bavaria_kpd && Q.red_thuringia && Q.red_saxony && Q.weimar_win_calc && !Q.kpd_points_calc && !Q.civil_war_seen && Q.year >= 1934) {
+    this.achieve('eurokommunismus');
+  }
+  if (Q.reichswehr_strength >= 200 && Q.unemployed < 15 && Q.budget > 0 && Q.tariffs > 5 && (Q.spd_in_government || Q.chancellor_party == "SPD")) {
+    this.achieve('kriegswirtschaft');
+  }
 }
 this.achieve('game_completed');
 !}
 
 = End
 
-[? if chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring" or president == "Frick": <iframe src="https://en.wikipedia.org/wiki/The_Holocaust" height="800 " width="545" style=" margin-left: -20px; border: 1px solid #000; "></iframe> ?]
+[? if (chancellor == nsdap_chancellor or president == "Hitler" or president == "Göring" or president == "Frick") and not republic_victory: <iframe src="https://en.wikipedia.org/wiki/The_Holocaust" height="800 " width="545" style=" margin-left: -20px; border: 1px solid #000; "></iframe> ?]
 
 @eg_menu
 
@@ -588,6 +599,7 @@ const achievements = [
   "achievement_equality",
   "achievement_hirschfeld",
   "achievement_women_reichsbanner",
+  "achievement_anders_als_die_andern",
   "achievement_bruder_zur_sonne",
   "achievement_die_rote_fahne",
   "achievement_panik_im_mittelstand",
@@ -670,7 +682,9 @@ const achievements = [
   "achievement_neue_geschaftsfuhrung",
   "achievement_rotes_bayern",
   "achievement_1919_geracht",
-  "achievement_nach_der_spd_wir"
+  "achievement_nach_der_spd_wir",
+  "achievement_eurokommunismus",
+  "achievement_kriegswirtschaft"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -1169,6 +1183,21 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Mädchen in Uniform</div>
       <div class="achievement_subtitle"> - a woman's place is in the Reichsbanner.</div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_anders_als_die_andern: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/anders_als_die_andern.png" alt="Anders als die Andern Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Anders als die Andern</div>
+      <div class="achievement_subtitle"> - sexual minorities will defend the Republic.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2158,7 +2187,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Catastrophepolitik</div>
-      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 5 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only cabinet after 5 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2415,6 +2444,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Nach der SPD, wir!</div>
       <div class="achievement_subtitle"> - achieve the "Vanguard Takes the Helm" ending.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_eurokommunismus: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/eurokommunismus.png" alt="Eurokommunismus Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Eurokommunismus</div>
+      <div class="achievement_subtitle"> - by the end of the game, the <span style="color: #700000; font-weight: bold;">KPD</span> is part of the national and all state governments, all <span style="color: #700000; font-weight: bold;">KPD</span> demands have been fulfilled, and a liberal democratic ending is achieved.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_kriegswirtschaft: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kriegswirtschaft.png" alt="Kriegswirtschaft Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kriegswirtschaft</div>
+      <div class="achievement_subtitle"> - maximize tariffs, have at least 200 thousand men in the Reichswehr, keep unemployment under 15%, and achieve a budget surplus.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -2810,6 +2869,21 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Mädchen in Uniform</div>
       <div class="achievement_subtitle"> - a woman's place is in the Reichsbanner.</div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_anders_als_die_andern: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/anders_als_die_andern.png" alt="Anders als die Andern Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Anders als die Andern</div>
+      <div class="achievement_subtitle"> - sexual minorities will defend the Republic.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -3799,7 +3873,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Catastrophepolitik</div>
-      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 5 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only cabinet after 5 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4056,6 +4130,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Nach der SPD, wir!</div>
       <div class="achievement_subtitle"> - achieve the "Vanguard Takes the Helm" ending.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_eurokommunismus: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/eurokommunismus.png" alt="Eurokommunismus Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Eurokommunismus</div>
+      <div class="achievement_subtitle"> - by the end of the game, the <span style="color: #700000; font-weight: bold;">KPD</span> is part of the national and all state governments, all <span style="color: #700000; font-weight: bold;">KPD</span> demands have been fulfilled, and a liberal democratic ending is achieved.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_kriegswirtschaft: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kriegswirtschaft.png" alt="Kriegswirtschaft Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kriegswirtschaft</div>
+      <div class="achievement_subtitle"> - maximize tariffs, have at least 200 thousand men in the Reichswehr, keep unemployment under 15%, and achieve a budget surplus.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -4451,6 +4555,21 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Mädchen in Uniform</div>
       <div class="achievement_subtitle"> - a woman's place is in the Reichsbanner.</div>
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_anders_als_die_andern: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #c00000; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/anders_als_die_andern.png" alt="Anders als die Andern Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #c00000; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Anders als die Andern</div>
+      <div class="achievement_subtitle"> - sexual minorities will defend the Republic.</div>
     </div>
   {!</td>!}
 {!</tr>!}
@@ -5440,7 +5559,7 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Catastrophepolitik</div>
-      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only majority after 5 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
+      <div class="achievement_subtitle"> - govern with an <span style="color: #c00000; font-weight: bold;">SPD</span>-only cabinet after 5 elections or more, with the <span style="color: #c00000; font-weight: bold;">SPD</span> having never entered toleration or government.
     </div>
   {!</td>!}
 {!</tr>!}
@@ -5696,6 +5815,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Nach der SPD, wir!</div>
       <div class="achievement_subtitle"> - achieve the "Vanguard Takes the Helm" ending.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_eurokommunismus: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/eurokommunismus.png" alt="Eurokommunismus Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(10, 24, 97, 0.25);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Eurokommunismus</div>
+      <div class="achievement_subtitle"> - by the end of the game, the <span style="color: #700000; font-weight: bold;">KPD</span> is part of the national and all state governments, all <span style="color: #700000; font-weight: bold;">KPD</span> demands have been fulfilled, and a liberal democratic ending is achieved.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_kriegswirtschaft: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kriegswirtschaft.png" alt="Kriegswirtschaft Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kriegswirtschaft</div>
+      <div class="achievement_subtitle"> - the <span style="color: #c00000; font-weight: bold;">SPD</span> is in government, maintaining maximum tariffs, a Reichswehr of at least 200 thousand men, unemployment below 15%, and a budget surplus.
     </div>
   {!</td>!}
 {!</tr>!}

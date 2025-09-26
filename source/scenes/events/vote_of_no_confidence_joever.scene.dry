@@ -26,10 +26,10 @@ on-arrival: leverage = spd_r
 go-to: election_1928.social_liberal_coalition_cvp
 
 @support_kpd
-choose-if: ((in_grand_coalition and communist_coalition >= 3 and kpd_relation >= 50 and kpd_r >= dvp_r and not lvp_formed) or (in_grand_coalition and communist_coalition >= 3 and kpd_relation >= 50 and kpd_r >= (lvp_r / 2) and lvp_formed)) or (in_weimar_coalition and kpd_relation >= 50 and kpd_r >= z_r and communist_coalition >= 3)
+choose-if: (in_grand_coalition and communist_coalition >= 3 and kpd_relation >= 50 and popular_front_coalition >= 50) or (in_weimar_coalition and kpd_relation >= 50 and left_coalition >= 50 and communist_coalition >= 3)
 view-if: tried_supporting_kpd = 0
 on-arrival: tried_supporting_kpd = 1
-unavailable-subtitle: [? if communist_coalition < 3 : The <span style="color: #700000;">KPD</span> won't take part in parliamentary government. ?] [? if kpd_relation < 50 : The <span style="color: #700000;">KPD</span> is not friendly enough with us. ?] [? if ((in_grand_coalition and kpd_r < dvp_r and not lvp_formed) or (in_grand_coalition and kpd_r < (lvp_r / 2) and lvp_formed)) or (in_weimar_coalition and kpd_r < z_r): The <span style="color: #700000;">KPD</span> does not have enough votes. ?] [? if in_popular_front : We are already in a Popular Front with the <span style="color: #700000;">KPD</span>. ?]
+unavailable-subtitle: [? if communist_coalition < 3 : The <span style="color: #700000;">KPD</span> won't take part in parliamentary government. ?] [? if kpd_relation < 50 : The <span style="color: #700000;">KPD</span> is not friendly enough with us. ?] [? if (left_coalition < 50 and in_weimar_coalition) or (popular_front_coalition < 50 and in_grand_coalition): The <span style="color: #700000;">KPD</span> does not have enough votes. ?] [? if in_popular_front : We are already in a Popular Front with the <span style="color: #700000;">KPD</span>. ?]
 
 If the <span style="color: #700000;">**Communists**</span> abstain, then we essentially can maintain a minority government[? if president=="Hindenburg":, although it would be very difficult to make policy without the support of President Hindenburg, which we do not have ?]. If this happens, then we will own a massive debt to the <span style="color: #700000;">**KPD**</span>. This could lead to broader cooperation in the future, for better or for worse.
 

@@ -485,7 +485,7 @@ face-image: img/portraits/AlfredHugenberg.jpg
 
 The Harzburg Front has fractured, with the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?] choosing to nominate its unpopular leader, Alfred Hugenberg, rather than support the <span style="color: #7A3C00;">**NSDAP**</span>'s candidate. Hugenberg's decision is driven by ego; his well-known flaws—an absence of charisma, an aloof detachment from ordinary Germans, and a reputation for obstruction—render his campaign almost certainly doomed.
 
-The <span style="color: #3E88B3;">**Stahlhelm**</span>, infuriated by Hugenberg's abandonment of negotiations for a united front, have reverted to their traditional stance of non-partisanship, a position long favored by many in their ranks. Nonetheless, their supporters are expected to divide roughly evenly among the right-wing candidates.
+[? if dnvp_ideology == "Radical": The <span style="color: #3E88B3;">**Stahlhelm**</span>, infuriated by Hugenberg's abandonment of negotiations for a united front, have reverted to their traditional stance of non-partisanship, a position long favored by many in their ranks. Nonetheless, their supporters are expected to divide roughly evenly among the right-wing candidates. ?][? if dnvp_ideology == "Moderate": If there was ever a chance of the <span style="color: #3E88B3;">**Stahlhelm**</span> supporting a candidate of the <span style="color: #7A3C00;">national</span> <span style="color: #003755;">opposition</span>, it has vanished with the hated Hugenberg entering the race. ?]
 
 - @nsdap_selection: Who will the <span style="color: #7A3C00;">**NSDAP**</span> run?
 
@@ -1111,7 +1111,7 @@ The <span style="color: #700000;">**KPD**</span> is supporting their own candida
 - @endorsements_braun: Forget about the <span style="color: #700000;">KPD</span>.
 
 @kpd_resources
-view-if: kpd_relation >= 60 or kpd_relation >= 45 and kpd_leader == "Conciliators"
+view-if: kpd_relation >= 60 or (kpd_relation >= 45 and kpd_leader == "Conciliators")
 choose-if: resources >= 3
 subtitle: -3 resources
 unavailable-subtitle: Not enough resources (need 3).
