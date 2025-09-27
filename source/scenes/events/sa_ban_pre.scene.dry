@@ -6,6 +6,11 @@ tags: event
 new-page: true
 on-arrival: nazi_urgency += 1; interior_goal_prussia -= 1
 max-visits: 1
+go-to: sa_ban_braun if president_ideology == "Left"; sa_ban_normal if president_ideology != "Left"
+
+= <span style="color: #7A3C00;">**SA**</span> Planned Coup Discovered!
+
+@sa_ban_normal
 on-display: {!  
     var cardEl = document.createElement('div');  
     cardEl.className = "face-figure2";  
@@ -18,9 +23,6 @@ on-display: {!
     var contentDiv = document.querySelector("#page #mid_panel #content");
     contentDiv.appendChild(cardEl);
 !}
-go-to: sa_ban_braun if president_ideology == "Left"
-
-= <span style="color: #7A3C00;">**SA**</span> Planned Coup Discovered!
 
 With the presidential elections approaching[? if next_election_year_prussia == year:&nbsp;and the next Prussian elections as well?], Prussian Minister of the Interior Carl Severing has ordered an emergency search of all <span style="color: #7A3C00;">Nazi</span> and <span style="color: #7A3C00;">**SA**</span> offices throughout the state.
 
@@ -75,6 +77,18 @@ However, the ban has not been as effective as initially hoped. Few weapons have 
 [? if sa_banned_pro: Nevertheless, the <span style="color: #7A3C00;">**SA**</span> has been significantly weakened by the ban. ?]
 
 @sa_ban_braun
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/sa_rally.jpg";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
 
 With the victory of <span style="color: #c00000;">Social Democrat</span> [? if president == "Braun": Otto Braun?][? if president == "Rosenfeld": Kurt Rosenfeld?], an uptick in paramilitary violence has been seen, and even rumors of a <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> coup. Prussian Minister of the Interior Carl Severing has ordered an emergency search of all <span style="color: #7A3C00;">Nazi</span> and <span style="color: #7A3C00;">**SA**</span> offices throughout the state.
 
