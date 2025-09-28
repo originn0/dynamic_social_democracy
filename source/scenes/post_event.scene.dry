@@ -1487,6 +1487,11 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     if (Q.left_dissent < 0) Q.left_dissent = 0;
     if (Q.reformist_dissent < 0) Q.reformist_dissent = 0;
 
+    Q.center_strength += Q.center_strength_gain;
+    Q.labor_strength += Q.labor_strength_gain;
+    Q.left_strength += Q.left_strength_gain;
+    Q.reformist_strength += Q.reformist_strength_gain; 
+
     if (Q.reformist_strength >= 60) {
         if (Q.z_relation < 30 && !Q.stegerwald_path) {
             Q.z_relation += 0.5;
