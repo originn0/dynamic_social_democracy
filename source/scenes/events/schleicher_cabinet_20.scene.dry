@@ -556,7 +556,30 @@ With Schleicher nearing the end—both politically and personally—he is in no 
 
 The Blocparteis will return to their independent status, and it is primarily the [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #0087DC;">**KVP**</span>?] that will absorb the right wing. Meanwhile, the left wing has formed a new national party—the <span style="color: #fe9e00;">Old Social Democratic Party</span> (<span style="color: #fe9e00;">**ASPD**</span>)—anchored in class collaboration, nationalism, and laborism. They champion something they call “Volksocialism,” whatever that’s supposed to mean.
 
-And despite the collapse of the fragile glue that once held Schleicher’s cabinet together, [+ chancellor +] remains in office—for now—propped up only by the will of a dying Hindenburg.
+- @dnef_collapse_2
+
+@dnef_collapse_2
+title: Now what? 
+on-arrival: {!
+// Call a new Election after the collapse of the DNEF
+Q.next_election_week = Q.week + 6;
+Q.next_election_month = Q.month;
+Q.next_election_year = Q.year;
+Q.next_election_time = Q.time;
+
+let added_months = Math.floor(Q.next_election_week / 4);
+Q.next_election_month += added_months;
+Q.next_election_time += added_months;
+Q.next_election_week = Q.next_election_week % 4;
+if (Q.next_election_week === 0) Q.next_election_week = 1;
+
+if (Q.next_election_month > 12) {
+    Q.next_election_month -= 12;
+    Q.next_election_year += 1;
+}
+!}
+
+Following the collapse of the <span style="color: #BFC8CC;">**DNEF**</span>, a VONC is immediately filed against [+ chancellor +], which is successful. New Reichstag elections are scheduled for [+ next_election_month : month +] [+ next_election_year +], Week [+ next_election_week +]. 
 
 @dnef_discontent
 title: The <span style="color: #BFC8CC;">**DNEF**</span> undergoes a split. 
