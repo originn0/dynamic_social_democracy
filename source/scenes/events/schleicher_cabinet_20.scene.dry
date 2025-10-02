@@ -548,6 +548,12 @@ if (Q.dnef_formed) {
 if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
     Q.weimar_coalition_prussia += Q.sapd_r_prussia;
 }
+
+if (Q.chancellor === "Bredow") {
+    Q.bredow_was_chacellor = 1;
+} else {
+    Q.goerdeler_was_chacellor = 1;
+}
 !}
 
 The German people had only briefly united behind their so-called savior, General Kurt von Schleicher. Now, with a return to political normalcy looming, there is no place for an incoherent vehicle like the <span style="color: #BFC8CC;">**DNEF**</span> to rally the nation behind lofty abstractions like "non-partisanship" and the <i>Volksgemeinschaft</i>.
@@ -568,7 +574,7 @@ on-display: {!
 
     // Elegir la imagen según la variable existente
     var imageSrc;
-    if (chancellor === "Bredow") {
+    if (Q.bredow_was_chacellor) {
         imageSrc = "img/bredow.jpg";
     } else {
         imageSrc = "img/goerdeler.jpg";
@@ -587,8 +593,7 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-Following the collapse of the <span style="color: #BFC8CC;">**DNEF**</span>, a VONC is immediately filed against [+ chancellor +], which is successful. New Reichstag elections are scheduled for [+ next_election_month : month +] [+ next_election_year +], Week [+ next_election_week +]. 
-
+Following the collapse of the <span style="color: #BFC8CC;">**DNEF**</span>, a VONC is immediately filed against [+ chancellor +], which is successful.
 - @dnef_collapse_3
 
 @dnef_collapse_3
