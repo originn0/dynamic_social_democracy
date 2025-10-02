@@ -2520,56 +2520,9 @@ go-to: no_majority_bruning_toleration
 title: There is no clear governing majority.
 view-if: (((weimar_coalition < 50 or weimar_coalition_failed == 1 or ddp_relation < 30 or z_relation < 30 or lvp_relation < 30) and (grand_coalition < 50 or grand_coalition_failed == 1) or (grand_coalition >= 50 and ((dvp_ideology == "Right" and black_thursday_seen == 1) or not dvp_exist)) and far_right_coalition < 50 and ((right_coalition < 50) or (right_coalition >= 50 and dnvp_ideology == "Radical") and center_right_coalition < 50 or (center_right_coalition >= 50 and ((dnvp_ideology == "Radical") or (year = 1929 and month >= 7))))) or rubicon or cvp_formed) and dnef_r < 50 and president == "Hindenburg"
 on-arrival: no_majority_elections += 1
-go-to: no_majority_bruning if (chancellor = "Brüning" or chancellor = "Wirth" or chancellor = "Adenauer"); no_majority_goerdeler_2 if chancellor == "Goerdeler" and not rubicon_mini_trigger and not rubicon; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher" and not schleicher_post; no_majority_schleicher_2 if chancellor = "Schleicher" and schleicher_post; no_majority_trev if chancellor == "Treviranus"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"; no_majority_sucesor_rubicon if (chancellor == "Bredow" or chancellor == "Goerdeler")
-
+go-to: no_majority_bruning if (chancellor = "Brüning" or chancellor = "Wirth" or chancellor = "Adenauer"); no_majority_goerdeler_2 if chancellor == "Goerdeler" and not rubicon_mini_trigger and not rubicon; no_majority_papen if chancellor = "Papen" and papen_post == 0; no_majority_papen_2 if chancellor == "Papen" and papen_post >= 1; no_majority_schleicher if chancellor = "Schleicher" and not schleicher_post; no_majority_schleicher_2 if chancellor = "Schleicher" and schleicher_post; no_majority_trev if chancellor == "Treviranus"; no_majority_spd if chancellor_party = "SPD" or chancellor == "Marx"
 
 # either new elections, or Hindenburg appoints either Brüning, Papen, Schleicher, or Hitler.
-
-@no_majority_sucesor_rubicon
-on-arrival: {!
-// Trevy Time
-Q.old_chancellor = Q.chancellor;
-
-Q.chancellor = "Treviranus";
-
-if (Q.kvp_formed) {
-    Q.treviranus_party = "KVP";
-} else {
-    Q.treviranus_party = "DNVP";
-}
-
-Q.chancellor_party = Q.treviranus_party;
-
-// Reichstag convene
-Q.next_reichstag_time = Q.rubicon_time + 4;
-Q.next_reichstag_week = Q.week + 4;
-Q.next_reichstag_month = Q.month;
-Q.next_reichstag_year = Q.year;
-
-if (Q.next_reichstag_week > 4) {
-  Q.next_reichstag_week -= 4;
-  Q.next_reichstag_month += 1;
-}
-
-if (Q.next_reichstag_week > 4) {
-  Q.next_reichstag_week -= 4;
-  Q.next_reichstag_month += 1;
-}
-
-if (Q.next_reichstag_month > 12) {
-  Q.next_reichstag_month -= 12;
-  Q.next_reichstag_year += 1;
-}
-!}
-
-Without a clear governing majority, [+ old_chancellor +] loses the little confidence that [+ president +] had given him, which was no longer much after the collapse of the <span style="color: #BFC8CC;">**DNEF**</span> a few weeks ago.
-
-Westarp, despite being once again begged by an older and increasingly sick Hindenburg, has declined the offer. Instead, he recommends the appointment of rising star and <span style="color: #0087DC;">Volkskonservativ</span> leader Gottfried Treviranus. With deep ties to German industry, the Right, and a pseudo-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> veneer, Treviranus is a candidate aimed at stabilizing Germany’s worsening crisis.
-
-Much like Papen’s dismissal in favor of Schleicher, the political class breathes yet another sigh of relief. Even within the <span style="color: #c00000;">**SPD**</span>, many find it easier to confront the devil they know rather than face Schleicher’s dynamic and unpredictable rule.
-
-Treviranus will seek to construct a working majority via parliament. The new Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
-
 
 @no_majority_spd
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"

@@ -560,26 +560,86 @@ The Blocparteis will return to their independent status, and it is primarily the
 
 @dnef_collapse_2
 title: Now what? 
-on-arrival: {!
-// Call a new Election after the collapse of the DNEF
-Q.next_election_week = Q.week + 6;
-Q.next_election_month = Q.month;
-Q.next_election_year = Q.year;
-Q.next_election_time = Q.time;
+subtitle: The new parties do not seem very happy with the current chancellor.
+on-display: {!  
+    // Crear el div contenedor
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
 
-let added_months = Math.floor(Q.next_election_week / 4);
-Q.next_election_month += added_months;
-Q.next_election_time += added_months;
-Q.next_election_week = Q.next_election_week % 4;
-if (Q.next_election_week === 0) Q.next_election_week = 1;
+    // Elegir la imagen según la variable existente
+    var imageSrc;
+    if (chancellor === "Bredow") {
+        imageSrc = "img/bredow.jpg";
+    } else {
+        imageSrc = "img/goerdeler.jpg";
+    }
 
-if (Q.next_election_month > 12) {
-    Q.next_election_month -= 12;
-    Q.next_election_year += 1;
-}
+    // Crear la imagen
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = imageSrc;
+
+    // Insertar la imagen en el div
+    cardEl.appendChild(image);
+
+    // Insertar el div en la página
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
 !}
 
 Following the collapse of the <span style="color: #BFC8CC;">**DNEF**</span>, a VONC is immediately filed against [+ chancellor +], which is successful. New Reichstag elections are scheduled for [+ next_election_month : month +] [+ next_election_year +], Week [+ next_election_week +]. 
+
+- @dnef_collapse_3
+
+@dnef_collapse_3
+title: Kuno von Westarp -[? if dnvp_ideology == "Radical":&nbsp;Former?] <span style="color: #3E88B3;">**DNVP**</span>
+subtitle: Hindenburg's preferred choice once again, and [? if dnvp_leader != "Westarp":former?] <span style="color: #3E88B3;">**DNVP**</span> party leader.
+face-image: img/portraits/Treviranus.jpg
+on-arrival: {!
+Q.chancellor = "Treviranus";
+Q.schleicher_approval -= 4;
+// Trevy Time
+Q.old_chancellor = Q.chancellor;
+
+Q.chancellor = "Treviranus";
+
+if (Q.kvp_formed) {
+    Q.treviranus_party = "KVP";
+} else {
+    Q.treviranus_party = "DNVP";
+}
+
+Q.chancellor_party = Q.treviranus_party;
+
+// Reichstag convene
+Q.next_reichstag_time = Q.rubicon_time + 4;
+Q.next_reichstag_week = Q.week + 4;
+Q.next_reichstag_month = Q.month;
+Q.next_reichstag_year = Q.year;
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_week > 4) {
+  Q.next_reichstag_week -= 4;
+  Q.next_reichstag_month += 1;
+}
+
+if (Q.next_reichstag_month > 12) {
+  Q.next_reichstag_month -= 12;
+  Q.next_reichstag_year += 1;
+}
+!}
+
+Without a clear governing majority, [+ old_chancellor +] loses the little confidence that [+ president +] had given him, which was no longer much after the collapse of the <span style="color: #BFC8CC;">**DNEF**</span> a few weeks ago.
+
+Westarp, despite being once again begged by an older and increasingly sick Hindenburg, has declined the offer. Instead, he recommends the appointment of rising star and <span style="color: #0087DC;">Volkskonservativ</span> leader Gottfried Treviranus. With deep ties to German industry, the Right, and a pseudo-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> veneer, Treviranus is a candidate aimed at stabilizing Germany’s worsening crisis.
+
+Much like Papen’s dismissal in favor of Schleicher, the political class breathes yet another sigh of relief. Even within the <span style="color: #c00000;">**SPD**</span>, many find it easier to confront the devil they know rather than face Schleicher’s dynamic and unpredictable rule.
+
+Treviranus will seek to construct a working majority via parliament. The new Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
 
 @dnef_discontent
 title: The <span style="color: #BFC8CC;">**DNEF**</span> undergoes a split. 
