@@ -549,6 +549,8 @@ if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
     Q.weimar_coalition_prussia += Q.sapd_r_prussia;
 }
 
+Q.old_chancellor = Q.chancellor;
+
 if (Q.chancellor === "Bredow") {
     Q.bredow_was_chacellor = 1;
 } else {
@@ -607,8 +609,6 @@ on-arrival: {!
 Q.chancellor = "Treviranus";
 Q.schleicher_approval -= 4;
 // Trevy Time
-Q.old_chancellor = Q.chancellor;
-
 Q.chancellor = "Treviranus";
 
 if (Q.kvp_formed) {
@@ -647,7 +647,7 @@ Westarp, despite being once again begged by an older and increasingly sick Hinde
 
 Much like Papen’s dismissal in favor of Schleicher, the political class breathes yet another sigh of relief. Even within the <span style="color: #c00000;">**SPD**</span>, many find it easier to confront the devil they know rather than face Schleicher’s dynamic and unpredictable rule.
 
-Treviranus will seek to construct a working majority via parliament. The new Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
+Treviranus will seek to construct a working majority via parliament. The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
 
 @dnef_discontent
 title: The <span style="color: #BFC8CC;">**DNEF**</span> undergoes a split. 
