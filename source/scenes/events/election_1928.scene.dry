@@ -1232,6 +1232,8 @@ if (Q.lvp_formed) Q.finance_minister_party = 'LVP';
 if (!Q.lvp_formed) Q.finance_minister_party = 'DVP';
 Q.agriculture_minister_party = 'Z';
 
+Q.ddp_in_popular_front = 0;
+
 // reset KPD goals
 Q.kpd_goals_seen = 0;
 Q.kpd_ultimatum_seen = 0;
@@ -2171,7 +2173,7 @@ achievement: volksfront
 Somehow, surprisingly, the coalition is successfully formed! We still need a chancellor; the only acceptable choice among the parties was Rudolf Breitscheid of the <span style="color: #c00000;">**SPD**</span>, acceptable to the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #700000;">**KPD**</span> [? if president == "Hindenburg" or president_ideology == "Moderate": as well as President [+ president +], albeit extremely reluctantly ?].
 
 @popular_front_no_civil_war
-on-arrival: kpd_goals_seen = 0; finance_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; justice_minister_party = ddp_name if (liberal_parliament = 0 and bourgeois_parliament_ddp == 0 and not lvp_formed); economic_minister_party = "Z"; economic_minister_party = ddp_name if (liberal_parliament = 0 and bourgeois_parliament_ddp == 0 and not lvp_formed); labor_minister_party = "Z"; foreign_minister_party = "Z"; agriculture_minister_party = "Z"; reichswehr_minister = "I"; leverage += kpd_r; leverage += ddp_r if liberal_parliament = 1 or bourgeois_parliament_ddp == 1; dvp_right += 6; ddp_right += 3; lvp_right += 5; ddp_cohesion -= 2 if liberal_parliament = 0; liberal_cooperation += 5 if liberal_parliament = 1 or bourgeois_parliament_ddp == 1; bourgeois_cooperation += 5; liberal_cooperation += 3 if ((liberal_parliament = 1 or bourgeois_parliament_ddp == 1) and (in_popular_front_prussia or in_left_front_prussia)); bourgeois_cooperation += 3 if (in_popular_front_prussia or in_left_front_prussia); dvp_relation -= 5; ddp_relation -= 5 if liberal_parliament = 1 or bourgeois_parliament_ddp == 1; lvp_relation -= 5; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 20; left_strength += 15; leverage += spd_r if support_kpd_grand; leverage += kpd_r if support_kpd_grand; hindenburg_angry += 10 if (in_popular_front_prussia or in_left_front_prussia)
+on-arrival: kpd_goals_seen = 0; finance_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; ddp_in_popular_front = 1 if (liberal_parliament = 0 and bourgeois_parliament_ddp == 0 and not lvp_formed); justice_minister_party = ddp_name if ddp_in_popular_front; economic_minister_party = "Z"; economic_minister_party = ddp_name if ddp_in_popular_front; labor_minister_party = "Z"; foreign_minister_party = "Z"; agriculture_minister_party = "Z"; reichswehr_minister = "I"; leverage += kpd_r; leverage += ddp_r if liberal_parliament = 1 or bourgeois_parliament_ddp == 1; dvp_right += 6; ddp_right += 3; lvp_right += 5; ddp_cohesion -= 2 if liberal_parliament = 0; liberal_cooperation += 5 if liberal_parliament = 1 or bourgeois_parliament_ddp == 1; bourgeois_cooperation += 5; liberal_cooperation += 3 if ((liberal_parliament = 1 or bourgeois_parliament_ddp == 1) and (in_popular_front_prussia or in_left_front_prussia)); bourgeois_cooperation += 3 if (in_popular_front_prussia or in_left_front_prussia); dvp_relation -= 5; ddp_relation -= 5 if liberal_parliament = 1 or bourgeois_parliament_ddp == 1; lvp_relation -= 5; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 20; left_strength += 15; leverage += spd_r if support_kpd_grand; leverage += kpd_r if support_kpd_grand; hindenburg_angry += 10 if (in_popular_front_prussia or in_left_front_prussia); 
 achievement: volksfront
 
 In response to the <span style="color: #700000;">**KPD**</span>'s entrance into the government, the right-wing takes a "wait-and-see" approach for now. They expect that the Popular Front government will be unstable and incompetent, and will collapse of its own accord, discrediting the left and center and eventually enabling the destruction of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic. Our task is to prove them wrong. [? if in_popular_front_prussia: The right will be more active in resisting our rule considering we are also ruling with the <span style="color: #700000;">**KPD**</span> in Prussia too. ?]
@@ -4041,8 +4043,8 @@ if (Q.economic_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lv
 if (Q.economic_minister !== "Schmidt" && Q.in_social_liberal_coalition) Q.economic_minister = "Trendelenburg";
 if (Q.economic_minister !== "Schmidt" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.economic_minister = "Curtius";
 
-if (Q.economic_minister_party !== "SPD" && Q.in_social_catholic_coalition) Q.economic_minister_party = "Z";
-if (Q.economic_minister !== "Schmidt" && Q.in_social_catholic_coalition) Q.economic_minister = "Brüning";
+if (Q.economic_minister_party !== "SPD" && (Q.in_social_catholic_coalition || (Q.in_popular_front && (Q.liberal_parliament === 1 || Q.bourgeois_parliament_ddp == 1 || Q.lvp_formed)))) Q.economic_minister_party = "Z";
+if (Q.economic_minister !== "Schmidt" && (Q.in_social_catholic_coalition || (Q.in_popular_front && (Q.liberal_parliament === 1 || Q.bourgeois_parliament_ddp == 1 || Q.lvp_formed)))) Q.economic_minister = "Brüning";
 
 if (Q.justice_minister_party !== "SPD" && !Q.lvp_formed) {
     Q.justice_minister_party = Q.ddp_name;

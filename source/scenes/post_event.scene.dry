@@ -981,6 +981,8 @@ if (Q.rubicon && Q.month_actions >= 1 && Q.month_actions != Q.month_actions_chec
 
 Q.month_actions_checked = Q.month_actions;
 
+if (Q.ddp_in_popular_front && !Q.in_popular_front) Q.ddp_in_popular_front = 0;
+
 // 1. update dates
 if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon)) {
     Q.time += 1;

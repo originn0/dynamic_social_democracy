@@ -119,8 +119,8 @@ if (Q.economic_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lv
 if (Q.economic_minister !== "Schmidt" && Q.in_social_liberal_coalition) Q.economic_minister = "Trendelenburg";
 if (Q.economic_minister !== "Schmidt" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.economic_minister = "Curtius";
 
-if (Q.economic_minister_party !== "SPD" && Q.in_social_catholic_coalition) Q.economic_minister_party = "Z";
-if (Q.economic_minister !== "Schmidt" && Q.in_social_catholic_coalition) Q.economic_minister = "Brüning";
+if (Q.economic_minister_party !== "SPD" && (Q.in_social_catholic_coalition || (Q.in_popular_front && (Q.liberal_parliament === 1 || Q.bourgeois_parliament_ddp == 1 || Q.lvp_formed)))) Q.economic_minister_party = "Z";
+if (Q.economic_minister !== "Schmidt" && (Q.in_social_catholic_coalition || (Q.in_popular_front && (Q.liberal_parliament === 1 || Q.bourgeois_parliament_ddp == 1 || Q.lvp_formed)))) Q.economic_minister = "Brüning";
 
 if (Q.justice_minister_party !== "SPD" && !Q.lvp_formed) {
     Q.justice_minister_party = Q.ddp_name;
