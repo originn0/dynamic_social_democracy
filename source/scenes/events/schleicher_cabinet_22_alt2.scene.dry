@@ -1,14 +1,16 @@
-title: A "Constitutional" Coalition
-subtitle: A solution to the impasse?
-view-if: chancellor == "Treviranus" and treviranus_post and next_reichstag_time == rubicon_time and next_reichstag_time > 0 and year == 1933
+title: Government of National Unity
+subtitle: Treviranus's solution to the impasse?
+view-if: chancellor == "Treviranus" and treviranus_post and next_reichstag_time == rubicon_time and next_reichstag_time > 0 and year == 1934
 max-visits: 1
 new-page: true
 tags: event
 go-to: treviranus_menu
 
-= Constitutional Coalition
+= Government of National Unity
 
-Treviranus, having failed to win over the <span style="color: #6A1E1E;">**DSU**</span>, has now turned to us for support. We find ourselves in the role of kingmaker, while the Chancellor grows increasingly desperate to piece together a parliamentary majority—the only way to avoid being dismissed by Hindenburg for failing to deliver on the President’s central demand.
+Treviranus, having failed to win over the <span style="color: #6A1E1E;">**DSU**</span>, has now turned to us for support. We find ourselves in the role of kingmaker, while the Chancellor grows increasingly desperate to secure a majority. However, Hindenburg—on his death bed—lacks the energy to intervene in the process, leading Treviranus to personally approach us with an offer.
+
+He is offering to repeal the ban on the <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?], in return for us refraining to call a vote of no confidence on his government until Hindenburg inevitably kicks the bucket.
 
 But perhaps we can bypass this deadlock by targeting Hindenburg himself. With a two-thirds majority in the Reichstag, we could initiate impeachment proceedings under Article 59 or trigger a recall election under Article 43. If the recall election were to fail, the Reichstag would be dissolved for new elections.
 
@@ -16,8 +18,7 @@ Yet the <span style="color: #808080;">reactionary</span> nature of the courts re
 
 @treviranus_menu
 
-- @reichstag_yay
-- @reichstag_nay
+- @reichstag
 - @reichstag_impeach
 
 @reichstag_impeach
@@ -29,7 +30,7 @@ Q.impeachment_votes = 0;
 Q.impeachment_votes += Q.spd_r;
 Q.impeachment_votes += Q.kpd_r;
 if (Q.sapd_r) Q.impeachment_votes += Q.sapd_r;
-if (!Q.dstp_maintained && !Q.lvp_formed) {
+if (!Q.lvp_formed) {
   Q.impeachment_votes += Q.ddp_r;
   Q.impeachment_ddp = 1;
 }
@@ -37,26 +38,26 @@ if (Q.dvp_ideology != "Right" && Q.dvp_exist && !Q.lvp_formed) {
   Q.impeachment_votes += Q.dvp_r;
   Q.impeachment_dvp = 1;
 }
-if (Q.lvp_leader != "Dingeldey" && Q.lvp_ideology != "Right" && Q.lvp_formed) { 
+if (Q.lvp_formed) { 
   Q.impeachment_votes += Q.lvp_r;
   Q.impeachment_lvp = 1;
 }
-if (Q.z_relation >= 35) {
+if (Q.z_relation >= 25) {
   Q.impeachment_votes += Q.z_r - Q.bvp_r;
   Q.impeachment_z = 1;
 }
-if (Q.z_relation >= 60) {
+if (Q.z_relation >= 35) {
   Q.impeachment_votes += Q.bvp_r;
   Q.impeachment_bvp = 1;
 }
 Q.impeachment_votes += Q.nsdap_hitler_r;
-if (Q.nvf_exist) Q.impeachment_votes += Q.nvf_r;
+if (Q.nvf_exist) Q.impeachment_votes += Q.nvf_r
 
 Q.impeachment_votes = parseFloat(Q.impeachment_votes.toFixed(1));
 !}
 max-visits: 1
 
-We are able to gather the support of [+ spd_r + kpd_r + sapd_r +]% of the Reichstag, with all <span style="color: #c00000;">**SPD**</span>, <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?] deputies expected to vote in favor.
+We are able to gather the support of [+ spd_r + kpd_r + sapd_r +]% of the Reichstag, with all <span style="color: #c00000;">**SPD**</span>, <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?] deputies expected to vote in favor. Our effort is also aided by the fact that Hindenburg only has a few months left to live.
 
 [? if impeachment_ddp: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has been one of the only bourgeois parties standing up for the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic and the constitution the party's founders drafted. We are expected to see their deputies vote with us. ?][? if not impeachment_ddp and not lvp_formed: Unfortunately, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has strayed too far from its former <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> ideals, and now sees support for Hindenburg as a hard but necessary choice in the national interest. ?]
 
@@ -116,70 +117,16 @@ subtitle: An anti-climatic end.
 view-if: impeachment_votes < 50
 go-to: treviranus_menu
 
-With a simple majority, the Reichstag has chosen to set aside our motion and instead proceed with a vote of no confidence in Treviranus first. Should the motion pass—as is likely—his government will collapse, and the Reichstag will likely be either adjourned or dissolved in the aftermath.
+With a simple majority, the Reichstag has chosen to set aside our motion. We must decide on the deal next.
 
 @reichstag_impeach_fail_2
 go-to: treviranus_menu
 
-Despite our best efforts, we manage to rally only [+ impeachment_votes +]% of the Reichstag to our cause. A vote of no confidence in Treviranus is now set to follow.
+Despite our best efforts, we manage to rally only [+ impeachment_votes +]% of the Reichstag to our cause. We must decide on the deal next.
 
-@reichstag_yay
-title: Vote for the motion of no confidence, forcing new elections to be called.
-subtitle: New elections again...?
-on-arrival: {!
-Q.next_election_week = Q.week + 6;
-Q.next_election_month = Q.month;
-Q.next_election_year = Q.year;
-Q.next_election_time = Q.time;
-
-let added_months = Math.floor(Q.next_election_week / 4);
-Q.next_election_month += added_months;
-Q.next_election_time += added_months;
-Q.next_election_week = Q.next_election_week % 4;
-if (Q.next_election_week === 0) Q.next_election_week = 1;
-
-if (Q.next_election_month > 12) {
-    Q.next_election_month -= 12;
-    Q.next_election_year += 1;
-}
-!}
-
-An inpatient Hindenburg, with the advice of Papen, has sacked Treviranus and replaces him with...
-
-- @schizo
-
-@schizo
-title: Crown Prince Wilhelm...?
-on-arrival: {!
-Q.chancellor = "Hohenzollern";
-Q.vice_chancellor = "Papen";
-
-const contentElement = document.getElementById('content');
-contentElement.style.backgroundColor = '#312115';
-
-const toolsWrapper = document.getElementById('tools_wrapper');
-if (toolsWrapper) {
-  toolsWrapper.style.display = 'none';
-}
-
-const header = document.querySelector('header');
-header.style.color = '#ffffff';
-!}
-
-Under the influence of Franz von Papen—and apparently Schleicher as well—Hindenburg has appointed Wilhelm III, eldest son of the last German Emperor, as Chancellor, reportedly with his father’s blessing.
-
-It is clear the chaos of the past year has taken its toll. In the end, Hindenburg now trusts no one but his dearest friend, Papen. It's unknown of the former chancellor's reasoning behind such a pick, but perhaps he would've hoped that reinstating a monarchy, the people can rally around him as they once rallied around Hindenburg. 
-
-A bloody three-way civil war is inevitable.
-
-- @papen_civil_war
-
-@reichstag_nay
-title: Vote against the motion of no confidence, and tolerate the cabinet.
+@reichstag
+title: We can certainly wait a few months, accept the deal.
 subtitle: The German parliamentary system desperately needs legitimacy. Forcing new elections now risks driving voters further into the extremes.
-choose-if: reformist_strength + social_patriot_strength >= left_strength + center_strength
-unavailable-subtitle: Our parliamentary delegation won't listen to us. Again.
+on-arrival: kpd_banned = 0; sapd_banned = 0; rfb_strength += 30; workers_kpd += 6; unemployed_kpd += 6; workers_sapd += 2; unemployed_sapd += 2; pro_republic += 10
 
-Hindenburg is furious at what he sees as Treviranus’s betrayal—that he would even consider working with the <span style="color: #c00000;">socialists</span>. After much deliberation, the President moves decisively: Treviranus is sacked, and a new successor is chosen under Papen’s influence.
-
-- @schizo
+Under the influence of the plot and the modman's laziness, the <span style="color: #c00000;">**SPD**</span> has agreed on a truce, and Treviranus survives another day. Hindenburg is reportedly displeased at this development, but doesn't intervene as expected. He must be really sick then.
