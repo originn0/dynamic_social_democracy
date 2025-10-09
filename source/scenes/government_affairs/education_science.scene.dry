@@ -107,6 +107,9 @@ subtitle: -1 budget
 unavailable-subtitle: -1 budget - requires a majority of parties to support secular schools.
 choose-if: budget >= 1 and ((progressive_coalition + dvp_r >= 50 and not lvp_formed) or (kpd_r + spd_r + lvp_r >= 50 and lvp_formed))
 view-if: secularized = 0
+go-to: secularize_menu if not in_social_liberal_coalition and not in_spd_majority and not in_left_front; secularize_2 if in_social_liberal_coalition or in_spd_majority or in_left_front
+
+@secularize_menu
 
 Are you sure about this? The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition had an agreement to not touch religious schools; the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] will revolt.
 
@@ -115,8 +118,8 @@ Are you sure about this? The <span style="color: #000000;">We</span><span style=
 - @cancel_advisor_action
 
 @secularize_2
-on-arrival: secularized = 1; secularized_a = 1; budget -= 1; catholics_spd -= 15; z_relation -= 15; dvp_relation += 6*(1-dissent); ddp_relation += 6*(1-dissent); lvp_relation += 6*(1-dissent); kpd_relation += 6*(1-dissent); new_middle_spd += 3*(1-dissent); workers_spd += 3*(1-dissent); education_science += 0.5; new_middle_ddp += 4; new_middle_dvp += 4; new_middle_lvp += 8; dvp_left += 3; ddp_left += 3; ddp_cohesion += 2; lvp_left += 5; education_goal_spd += 1
-go-to: vote_of_no_confidence.vonc_menu if in_weimar_coalition or in_grand_coalition or in_popular_front or in_emergency_government
+on-arrival: secularized = 1; secularized_a = 1; budget -= 1; catholics_spd -= 15; catholics -= 5; z_relation -= 15; dvp_relation += 6*(1-dissent); ddp_relation += 6*(1-dissent); lvp_relation += 6*(1-dissent); kpd_relation += 6*(1-dissent); new_middle_spd += 3*(1-dissent); workers_spd += 3*(1-dissent); education_science += 0.5; new_middle_ddp += 4; new_middle_dvp += 4; new_middle_lvp += 8; dvp_left += 3; ddp_left += 3; ddp_cohesion += 2; lvp_left += 5; education_goal_spd += 1
+go-to: vote_of_no_confidence.vonc_menu if (in_weimar_coalition and not in_social_liberal_coalition) or in_grand_coalition or in_popular_front or in_emergency_government
 
 # instant VONC from zentrum
 
