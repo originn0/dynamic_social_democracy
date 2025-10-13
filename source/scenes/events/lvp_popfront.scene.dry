@@ -1,4 +1,4 @@
-title: The <span style="color: #FFCC00;">**LVP**</span> leaves the Popular Front government [? if in_popular_front_prussia and not in_popular_front: in Prussia?]!
+title: The <span style="color: #FFCC00;">**LVP**</span> leaves the Popular Front government[? if in_popular_front_prussia and not in_popular_front:&nbsp;in Prussia?]!
 subtitle: As expected.
 new-page: true
 on-arrival: lvp_relation -= 6; lvp_right += 3 {! 
@@ -23,7 +23,7 @@ tags: event
 
 = The <span style="color: #FFCC00;">**LVP**</span> leaves the Popular Front government!
 
-With the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> dissolving itself and joining with the <span style="color: #C0A054;">**DVP**</span> in a significantly more right-wing party, they have expectedly withdrawn their support of our incumbent Popular Front[? if in_popular_front_prussia and not in_popular_front: in Prussia?][? if in_popular_front_prussia and in_popular_front: in Prussia, and nationally?]. 
+With the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> dissolving itself and joining with the <span style="color: #C0A054;">**DVP**</span> in a significantly more right-wing party, they have expectedly withdrawn their support of our incumbent Popular Front[? if in_popular_front_prussia and not in_popular_front:&nbsp;in Prussia?][? if in_popular_front_prussia and in_popular_front:&nbsp;in Prussia, and nationally?]. 
 
 [? if in_popular_front: [? if popular_front_coalition >= 50: Fortunately, we still possess a majority without their votes, and they are able to leave government without causing much of a ruckus. ?][? if popular_front_coalition < 50: Unfortunately, the former <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s votes was key for the survival of the Popular Front, and now our government lacks a majority without them. ?] ?]
 
@@ -54,21 +54,21 @@ The vote succeeds with [+ 100 - popular_front_coalition +]% of the vote, and our
 
 @elections
 call: set_next_election_time
-go-to: collapse_prussia if (popular_front_prussia < 50 and ddp_in_popular_front_prussia)
+go-to: collapse_prussia if (popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia)
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @let_it_happen_braun
 on-arrival: spd_caretaker = 1
 call: set_next_election_time
-go-to: collapse_prussia if (popular_front_prussia < 50 and ddp_in_popular_front_prussia)
+go-to: collapse_prussia if (popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia)
 
 The vote succeeds, and our government has resigned. Chancellor [+ chancellor +] remains as the head of a caretaker government, but no longer has the power to enact new policies.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @collapse_prussia
-view-if: (popular_front_prussia < 50 and ddp_in_popular_front_prussia) and not (in_popular_front and ddp_in_popular_front and popular_front_coalition < 50)
+view-if: (popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia) and not (in_popular_front and ddp_in_popular_front and popular_front_coalition < 50)
 on-arrival: was_in_social_catholic_coalition_prussia = 0; was_in_social_liberal_coalition_prussia = 0; was_in_weimar_coalition_prussia = 0; was_in_grand_coalition_prussia = 0; was_in_social_catholic_coalition_prussia = 1 if in_social_catholic_coalition_prussia == 1 or in_minority_social_catholic_coalition_prussia == 1; was_in_social_liberal_coalition_prussia = 1 if in_social_liberal_coalition_prussia == 1 or in_minority_social_liberal_coalition_prussia == 1; was_in_weimar_coalition_prussia = 1 if ((in_weimar_coalition_prussia == 1 or in_minority_weimar_coalition_prussia == 1) or (in_grand_coalition_prussia == 1 and lvp_formed)); was_in_grand_coalition_prussia = 1 if (in_grand_coalition_prussia == 1 or in_minority_grand_coalition_prussia == 1); in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_social_liberal_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; in_minority_social_catholic_coalition_prussia = 0; in_minority_social_liberal_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0
 call: set_next_election_time_prussia
 
