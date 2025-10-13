@@ -37,7 +37,7 @@ With the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> dissolving itse
 view-if: ((popular_front_coalition >= 50 or not ddp_in_popular_front) and (popular_front_coalition_prussia >= 50 or not ddp_in_popular_front_prussia)) and not (popular_front_coalition >= 50 and popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia)
 on-arrival: ddp_in_popular_front = 0; ddp_in_popular_front_prussia = 0
 
-Their former cabinet positions [? if in_popular_front and in_popular_front_prussia: nationally and in Prussia?][? if in_popular_front and in_popular_front_prussia: in Prussia?] (if they had any) have been transferred to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+Their former cabinet positions [? if in_popular_front and in_popular_front_prussia: nationally and in Prussia?][? if not in_popular_front and in_popular_front_prussia: in Prussia?] (if they had any) have been transferred to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 
 @collapse
 view-if: popular_front_coalition < 50 and ddp_in_popular_front
