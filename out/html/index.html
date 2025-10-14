@@ -365,5 +365,57 @@
             </footer>
         </div>
     </div>
+    <script>
+    (function () {
+      const isContinue = t => t && t.trim().replace(/\u2026/g, '...') === 'Continue...';
+
+      function patch(root = document) {
+        root.querySelectorAll('button, .choice, .option, .btn, .button').forEach(el => {
+          const txt = el.textContent;
+          if (isContinue(txt)) el.textContent = '계속...';
+        });
+      }
+
+      patch();
+
+      new MutationObserver(() => patch()).observe(document.body, { childList: true, subtree: true });
+    })();
+    </script>
+
+    <script>
+    (function () {
+      function norm(t){
+        return (t||"")
+          .trim()
+          .replace(/\u2026/g,"...")
+          .replace(/\.{2,}$/, "...")
+          .toLowerCase();
+      }
+      function isContinue(t){ return norm(t) === "continue..."; }
+
+      function getLabel(el){
+        if (el.tagName === "INPUT") return el.value;
+        return el.textContent;
+      }
+      function setLabel(el, txt){
+        if (el.tagName === "INPUT") el.value = txt;
+        else el.textContent = txt;
+      }
+
+      function patch(root=document){
+        root.querySelectorAll(
+          'a, button, input[type="button"], input[type="submit"], [role="button"], .choice, .option, .btn, .button'
+        ).forEach(el=>{
+          const txt = getLabel(el);
+          if (!txt) return;
+          if (txt.trim() === "계속...") return;
+          if (isContinue(txt)) setLabel(el, "계속...");
+        });
+      }
+
+      patch();
+      new MutationObserver(()=>patch()).observe(document.body, {childList:true, subtree:true});
+    })();
+    </script>
   </body>
 </html>
