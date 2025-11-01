@@ -58,7 +58,7 @@ Germany is lost.
 @hitler_2
 title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] votes against!
 view-if: (not z_in_gov_mini or pro_republic >= 30) and far_right_coalition < 50
-on-arrival: rubicon_mini = 0; rubicon_mini_leave = 1
+on-arrival: rubicon_mini = 0; rubicon_mini_leave = 1;
 
 [? if not cvp_formed: [+ z_leader +]?][? if cvp_formed: [+ cvp_formed +]?] is personally assured significant constitutional safeguards by Schleicher, though he fails to extract a written commitment from [+ chancellor +]. [? if not cvp_formed: [+ z_leader +]?][? if cvp_formed: [+ cvp_formed +]?] is able to see through these lies, and whips the party's parliamentary delegation to vote against the Enabling Act. 
 
@@ -128,6 +128,8 @@ Q.liberal_cooperation += 5;
 
 Q.rubicon_mini = 0;
 Q.rubicon_mini_leave = 1;
+
+Q.z_in_gov_mini = 0;
 !}
 
 The Reichswehr has placed more trust in [+ president +] than in Chancellor [+ old_chancellor +], and under this influence, [+ old_chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
