@@ -263,9 +263,9 @@ go-to: menu
 
 @public_opinion
 on-arrival: {!
-Q.pro_republic_disp = Math.round(Q.pro_republic);
-Q.nationalism_disp = Math.round(Q.nationalism);
-Q.socialism_disp = Math.round(Q.socialism);
+Q.pro_republic_disp = Math.floor(Q.pro_republic);
+Q.nationalism_disp = Math.floor(Q.nationalism);
+Q.socialism_disp = Math.floor(Q.socialism);
 !}
 view-if: (((not historical_mode) or game_over) and not rubicon) or game_over
 go-to: election_algorithm
