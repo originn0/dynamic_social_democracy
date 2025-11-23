@@ -103,25 +103,25 @@ if (Q.curtius_resign_lvp || (Q.curtius_banking_crisis && Q.banking_crisis_seen))
 
 Q.opposition_points = Q.heuss_points + Q.dietrich_points + Q.curtius_points + Q.dingeldey_points
 
-if (Q.heuss_points >= Q.dietrich_points && Q.heuss_points >= Q.curtius_points && Q.heuss_points >= Q.dingeldey_points) {
+if (Q.heuss_points > Q.dietrich_points && Q.heuss_points > Q.curtius_points && Q.heuss_points > Q.dingeldey_points) {
     Q.heuss_lead = 1;
 } else {
     Q.heuss_lead = 0;
 }
 
-if (Q.dietrich_points >= Q.heuss_points && Q.dietrich_points >= Q.curtius_points && Q.dietrich_points >= Q.dingeldey_points) {
+if (Q.dietrich_points > Q.heuss_points && Q.dietrich_points > Q.curtius_points && Q.dietrich_points > Q.dingeldey_points) {
     Q.dietrich_lead = 1;
 } else {
     Q.dietrich_lead = 0;
 }
 
-if (Q.curtius_points >= Q.heuss_points && Q.curtius_points >= Q.dietrich_points && Q.curtius_points >= Q.dingeldey_points) {
+if (Q.curtius_points > Q.heuss_points && Q.curtius_points > Q.dietrich_points && Q.curtius_points > Q.dingeldey_points) {
     Q.curtius_lead = 1;
 } else {
     Q.curtius_lead = 0;
 }
 
-if (Q.dingeldey_points >= Q.heuss_points && Q.dingeldey_points >= Q.dietrich_points && Q.dingeldey_points >= Q.curtius_points) {
+if (Q.dingeldey_points > Q.heuss_points && Q.dingeldey_points > Q.dietrich_points && Q.dingeldey_points > Q.curtius_points) {
     Q.dingeldey_lead = 1;
 } else {
     Q.dingeldey_lead = 0;
