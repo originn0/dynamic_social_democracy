@@ -152,7 +152,7 @@ While Hans Luther is expected to secure re-election, scattered candidates across
 
 @luther
 view-if: luther_points >= opposition_points
-on-arrival: lvp_relation += 4; lvp_left += 2
+on-arrival: lvp_relation += 3; lvp_left += 1
 face-image: img/portraits/luther.jpg
 
 Hans Luther is expectedly re-elected as the leader of the <span style="color: #FFCC00;">**LVP**</span>. He will navigate the party through the economic depression and will hopefully try to maintain bourgeois backing for the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> system.
@@ -245,7 +245,7 @@ title: Hermann Dietrich is elected!
 subtitle: Dietrich was the former leader of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s business wing, and is somewhat skeptical of cooperation with us.
 unavailable-subtitle: [? if not heuss_lead: The wider <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, despite his previous affiliation with the <span style="color: #D3C24D;">[+ ddp_name +]</span>'s business wing. ?][? if heuss_lead: His lack of energy and the burden of his governmental roles have led the party to favor Heuss instead. ?]
 choose-if: dietrich_lead
-on-arrival: lvp_relation += 3; lvp_left += 1; lvp_leader = "Dietrich"; pro_republic += 3; old_middle_lvp += 2; rural_lvp += 2; new_middle_lvp -= 2; dietrich_lvp_explode_time = time + 8; dietrich_election_time = time
+on-arrival: lvp_relation += 5; lvp_left += 3; lvp_leader = "Dietrich"; pro_republic += 3; old_middle_lvp += 2; rural_lvp += 2; new_middle_lvp -= 2; dietrich_lvp_explode_time = time + 8; dietrich_election_time = time
 face-image: img/portraits/dietrich.jpg
 
 Hermann Dietrich, formerly affiliated with the business wing of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, has been elected chairman of the <span style="color: #FFCC00;">**LVP**</span>. Dietrich is mainly supported by smaller businesses and ruralites, and [? if chancellor == "Brüning" and not spd_in_government: is known for formulating Brüning's emergency decrees during his tenure as Finance Minister.?][? if not (chancellor == "Brüning" and not spd_in_government): is known for his fiscal conservatism.?]
@@ -258,7 +258,7 @@ subtitle: Curtius was a member of the former <span style="color: #C0A054;">**DVP
 unavailable-subtitle: [? if dingeldey_lead: The <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, and point out his lackluster record as a successor to Stresemann. ?][? if dietrich_lead or heuss_lead: The left wing of the <span style="color: #FFCC00;">LVP</span> wants to elect a former <span style="color: #D3C24D;">[+ ddp_name +]</span> member, to replace Luther. ?][? if lvp_deadlock: The left wing of the <span style="color: #FFCC00;">LVP</span> wants to elect a former <span style="color: #D3C24D;">[+ ddp_name +]</span> member, while the right wing of the party prefers a more right-wing former <span style="color: #C0A054;">DVP</span> member. ?]
 choose-if: curtius_lead
 view-if: not curtius_resign_lvp and not (curtius_banking_crisis and banking_crisis_seen)
-on-arrival: lvp_relation += 3; lvp_left += 1; lvp_leader = "Curtius"; pro_republic += 3; old_middle_lvp += 2; new_middle_lvp += 2
+on-arrival: lvp_relation += 5; lvp_left += 3; lvp_leader = "Curtius"; pro_republic += 3; old_middle_lvp += 2; new_middle_lvp += 2
 face-image: img/portraits/curtius.jpg
 
 Julius Curtius, Stresemann's successor in foreign affairs and a former member of the <span style="color: #C0A054;">**DVP**</span>, has won the vote to succeed Luther for the chairmanship. Curtius is supported by the 'Pragmatic Center', and was put forth as a compromise candidate. 
