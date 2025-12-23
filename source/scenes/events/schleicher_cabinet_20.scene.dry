@@ -105,7 +105,7 @@ On the left, a more radical interpretation of Schleicher’s syncretism is gaini
 
 @dnef_collapse
 title: The house of cards comes crashing down!
-unavailable-subtitle: The situation is far more unstable than Schleicher would ever publicly admit.
+unavailable-subtitle: The DNEF is stable enough for Schleicher to prevent full collapse. For now ...
 choose-if: dnef_collapse_points >= 30
 on-arrival: {!
 Q.dnef_collapse = 1;
@@ -652,7 +652,7 @@ Treviranus will seek to construct a working majority via parliament. The Reichst
 @dnef_discontent
 title: The <span style="color: #BFC8CC;">**DNEF**</span> undergoes a split. 
 choose-if: dnef_collapse_points >= 20 and dnef_collapse_points < 30
-unavailable-subtitle: [? if dnef_collapse_points >= 15: The situation is far more unstable than Schleicher would ever publicly admit. ?][? if dnef_collapse_points < 10: Even in his current state, Schleicher still holds influence over the party. ?]
+unavailable-subtitle: [? if dnef_collapse_points >= 30: The situation is far more unstable than Schleicher would ever publicly admit. ?][? if dnef_collapse_points < 20: Even in his current state, Schleicher still holds influence over the party. ?]
 on-arrival: {!
 if (Q.reactionary_gang_points >= Q.weimar_gang_points) Q.right_dnef = 1;
 if (Q.weimar_gang_points > Q.reactionary_gang_points) Q.left_dnef = 1;
