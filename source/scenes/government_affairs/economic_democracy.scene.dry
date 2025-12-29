@@ -47,20 +47,23 @@ National and sectorial workers councils have been part of the <span style="color
 title: Empower sectorial works councils.
 subtitle: Give works councils a role in setting wage and price policy for entire industrial sectors.
 view-if: works_councils == 2
-on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; dvp_relation -= 5; ddp_relation -= 3; lvp_relation -= 5; coalition_dissent += 1; unemployed -= 2 if unemployed > 5; workers += 2; dvp_right += 2; ddp_right += 1; lvp_right += 2; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.1 if economic_growth < 3
+on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; dvp_relation -= 5; ddp_relation -= 3; lvp_relation -= 5; coalition_dissent += 1; unemployed -= 2 if unemployed > 5; workers += 2; dvp_right += 2; ddp_right += 1; lvp_right += 2; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.1 if economic_growth < 3; economy_goal_completed += 1 if kpd_leader == "Conciliators"
 max-visits: 1
 
 Sectorial works councils can now negotiate wage and price policies for entire economic sectors, helping to both give workers more of a voice, and to rationalize the economy, smoothing over the anarchy of the market.
 
+[? if kpd_leader == "Conciliators" and kpd_ultimatum_timer: The Conciliators of the <span style="color: #700000;">**KPD**</span> are satisfied with our efforts, happy to count this as part of the 'substantial nationalization of the economy' demand. ?]
 
 @nationalize_1
 title: Begin to socialize key industries.
 subtitle: -1 budget - we should buy out industries and govern them together with workers and consumers.
-on-arrival: economic_democracy += 1; capital_strike_progress += 1; budget -= 1; socializations += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); coalition_dissent += 1; capital_strike_progress += 1 if black_thursday_seen; unemployed -= 1 if unemployed > 9; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3; dvp_right += 1; lvp_right += 1; ddp_right += 1; ddp_cohesion -= 1; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.2 if economic_growth < 5
+on-arrival: economic_democracy += 1; capital_strike_progress += 1; budget -= 1; socializations += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); coalition_dissent += 1; capital_strike_progress += 1 if black_thursday_seen; unemployed -= 1 if unemployed > 9; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3; dvp_right += 1; lvp_right += 1; ddp_right += 1; ddp_cohesion -= 1; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.2 if economic_growth < 5; economy_goal_completed += 1 if socializations >= 2
 choose-if: budget >= 1
 max-visits: 3
 
 We have begun to socialize key industries by buying out the capitalist owners, and creating coordinated governing boards consisting of worker, consumer, and state representatives. The capitalists are not pleased at our intrusion into the economy.
+
+[? if kpd_leader == "Conciliators" and socializations >= 2 and kpd_ultimatum_timer: The Conciliators of the <span style="color: #700000;">**KPD**</span> are satisfied with our efforts, happy to count this as part of the 'substantial nationalization of the economy' demand. ?]
 
 @cooperatives_1
 title: Support worker and consumer cooperatives.

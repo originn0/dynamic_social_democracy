@@ -31,8 +31,8 @@ While we allow the film, showings are marred by violence. Showings of the film e
 
 
 @allow_protect
-choose-if: prussian_police_loyalty >= 0.65 and prussia_leader = "Braun" or prussia_leader = "Rosenfeld"
-unavailable-subtitle: [? if prussian_police_loyalty < 0.65:The police are not willing to protect the film. ?] [? if not prussia_leader = "Braun" and not prussia_leader = "Rosenfeld": Our coalition partners restrain us from policing actions. ?]
+choose-if: prussian_police_loyalty >= 0.65 and ((prussia_leader = "Braun" or prussia_leader = "Rosenfeld") or z_relation >= 65)
+unavailable-subtitle: [? if prussian_police_loyalty < 0.65:The police are not willing to protect the film. ?] [? if not prussia_leader = "Braun" and not prussia_leader = "Rosenfeld" and z_relation < 65: Our coalition partners restrain us from policing actions. ?]
 on-arrival: nationalism -= 4; pro_republic += 4*(1-dissent); strife += 1
 
 Under the protection of the police, the people are allowed to watch the film in peace. <span style="color: #7A3C00;">Nazi</span> disturbances are kept to a minimum.
