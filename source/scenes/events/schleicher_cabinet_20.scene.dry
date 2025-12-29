@@ -105,7 +105,8 @@ On the left, a more radical interpretation of Schleicher’s syncretism is gaini
 
 @dnef_collapse
 title: The house of cards comes crashing down!
-unavailable-subtitle: The DNEF is stable enough for Schleicher to prevent full collapse. For now ...
+subtitle: The situation is far more unstable than Schleicher would ever publicly admit.
+unavailable-subtitle:  The <span style="color: #BFC8CC;">**DNEF**</span> is stable enough for Schleicher to prevent full collapse.
 choose-if: dnef_collapse_points >= 30
 on-arrival: {!
 Q.dnef_collapse = 1;
@@ -552,9 +553,9 @@ if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
 Q.old_chancellor = Q.chancellor;
 
 if (Q.chancellor === "Bredow") {
-    Q.bredow_was_chacellor = 1;
+    Q.bredow_was_chancellor = 1;
 } else {
-    Q.goerdeler_was_chacellor = 1;
+    Q.goerdeler_was_chancellor = 1;
 }
 !}
 
@@ -576,7 +577,7 @@ on-display: {!
 
     // Elegir la imagen según la variable existente
     var imageSrc;
-    if (Q.bredow_was_chacellor) {
+    if (Q.bredow_was_chancellor) {
         imageSrc = "img/portraits/bredow.jpg";
     } else {
         imageSrc = "img/portraits/goerdeler.jpg";
@@ -595,6 +596,8 @@ on-display: {!
     // Insertar el div en la página
     var contentDiv = document.querySelector("#page #mid_panel #content");
     contentDiv.appendChild(cardEl);
+
+    // idk this code, it was added in a pull request
 !}
 
 Following the collapse of the <span style="color: #BFC8CC;">**DNEF**</span>, a vote of no confidence is immediately filed against [+ chancellor +], which is successful.
