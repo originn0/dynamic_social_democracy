@@ -40,7 +40,7 @@ on-arrival: sa_strength += 50; workers_nsdap += 5; unemployed_nsdap += 5; new_mi
 Unfortunately, our forces fail to dislodge the <span style="color: #7A3C00;">**SA**</span> from their positions surrounding Hitler. He is seen as both a strong and powerful leader and a victim, further reinforcing his image. The <span style="color: #7A3C00;">Nazis</span> are left stronger than ever.
 
 @force_success
-on-arrival: hitler_deported = 1; sa_strength = sa_strength/2; workers_nsdap *= 0.7; new_middle_nsdap *= 0.7; old_middle_nsdap *= 0.7; rural_nsdap *= 0.7; unemployed_nsdap *= 0.7; sa_banned = 1; coup_progress -= 2; nsdap_leader = "Goebbels"; nsdap_chancellor = "Göring"; pro_republic += 10
+on-arrival: hitler_deported = 1; sa_strength = sa_strength/2; workers_nsdap *= 0.7; new_middle_nsdap *= 0.7; old_middle_nsdap *= 0.7; rural_nsdap *= 0.7; unemployed_nsdap *= 0.7; interior_goal_prussia -= 1 if not sa_banned; sa_banned = 1; coup_progress -= 2; nsdap_leader = "Goebbels"; nsdap_chancellor = "Göring"; pro_republic += 10
 achievement: deport_hitler
 
 The confrontation ends with the police and Reichsbanner prevailing, capturing Hitler so he can be deported! This is a sign of weakness, and his physical distance makes organizing difficult, impeding the <span style="color: #7A3C00;">Nazi</span> effort to win more votes.
@@ -48,7 +48,7 @@ The confrontation ends with the police and Reichsbanner prevailing, capturing Hi
 In Hitler's absence, Joseph Goebbels has become the temporary leader of the <span style="color: #7A3C00;">Nazi</span> party, with substantial influence from Hermann Göring.
 
 @deport_success
-on-arrival: hitler_deported = 1; sa_strength = sa_strength/2; workers_nsdap *= 0.7; new_middle_nsdap *= 0.7; old_middle_nsdap *= 0.7; rural_nsdap *= 0.7; unemployed_nsdap *= 0.7; sa_banned = 1; coup_progress -= 2; nsdap_leader = "Goebbels"; nsdap_chancellor = "Göring"; pro_republic += 10
+on-arrival: hitler_deported = 1; sa_strength = sa_strength/2; workers_nsdap *= 0.7; new_middle_nsdap *= 0.7; old_middle_nsdap *= 0.7; rural_nsdap *= 0.7; unemployed_nsdap *= 0.7; interior_goal_prussia -= 1 if not sa_banned; sa_banned = 1; coup_progress -= 2; nsdap_leader = "Goebbels"; nsdap_chancellor = "Göring"; pro_republic += 10
 achievement: deport_hitler
 
 Somehow, the plan worked! There was minimal resistance to Hitler's deportation. This is a sign of weakness, and his physical distance makes organizing difficult, impeding the <span style="color: #7A3C00;">Nazi</span> effort to win more votes.
