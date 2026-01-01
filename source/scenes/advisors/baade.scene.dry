@@ -1,42 +1,42 @@
-title: Fritz Baade
+title: 프리츠 바데
 is-pinned-card: true
 tags: advisor, reformist
 card-image: img/portraits/BaadeFritz.jpg
 view-if: baade_advisor = 1
 new-page: true 
 
-= Fritz Baade
+= 프리츠 바데
 
-Baade is one of the few agricultural experts in the <span style="color: #c00000;">**SPD**</span>, and an unorthodox economist. [? if land_reform > 0: He currently has considerable support among party factions due to the <span style="color: #c00000;">SPD</span> successfully enacting land reform. ?]
+바데는 <span style="color: #c00000;">**SPD**</span> 내에서 몇 안 되는 농업 전문가이자 비정통 경제학자입니다. [? if land_reform > 0: 그는 <span style="color: #c00000;">SPD</span>가 토지 개혁을 성공적으로 완수한 덕분에 현재 당내 여러 계파로부터 상당한 지지를 받고 있습니다. ?]
 
 - @agriculture
 - @rural_campaign
 - @depression
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @agriculture
-title: Agricultural Policy
-subtitle: Baade is the Minister of Agriculture.
+title: 농업 정책
+subtitle: 바데는 농업부 장관입니다.
 choose-if: advisor_action_timer <= 0 and spd_in_government and agriculture_minister_party == "SPD"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not in government. ?][? if agriculture_minister_party != "SPD": The <span style="color: #c00000;">SPD</span> does not have the Agriculture Ministry. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 집권 중이 아닙니다. ?][? if agriculture_minister_party != "SPD": <span style="color: #c00000;">SPD</span>가 농업부 장관직을 맡고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; agricultural_policy_timer -= 6; last_advisor_action = 1
 go-to: agricultural_policy
 
 
 @rural_campaign
-title: Rural Campaign
-subtitle: Try to campaign among the rural populace.
+title: 농촌 캠페인
+subtitle: 농촌 주민들을 대상으로 선거 운동을 펼칩니다.
 choose-if: advisor_action_timer == 0 and rural_policy > 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if rural_policy == 0 : We have not enacted any rural policies. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if rural_policy == 0 : 시행된 농촌 정책이 없습니다. ?]
 on-arrival: advisor_action_timer = 6; rural_spd += 5*(1-dissent); peoples_party_support += 1
 
-We have increased our campaigning among farmers and the rural populace.
+농민과 농촌 주민들을 대상으로 한 선거 운동을 강화했습니다.
 
 @depression
-title: Addressing the economic crisis
-subtitle: Formulate a plan to rescue us from the economic crisis.
+title: 경제 위기 대처
+subtitle: 경제 위기에서 탈출하기 위한 계획을 수립합니다.
 choose-if: advisor_action_timer <= 0 and wtb_adopted = 0 and black_thursday_seen
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if wtb_adopted > 0 : We have already adopted the WTB-Plan. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다. ?][? if wtb_adopted > 0 : 이미 WTB-계획을 채택했습니다. ?]
 on-arrival: advisor_action_timer = 6; wtb_support += 2; center_dissent += 10; labor_strength += 5; wtb_points += 15
 
-[? if not wtb_concept: Woytinsky, Tarnow, and Baade, has been working together to draft a plan for getting us out of the depression. Baade canvasses in favor of this plan throughout the party. ?][? if wtb_concept: The WTB-plan, named for its primary supporters Woytinsky, Tarnow, and Baade, has been adopted as the unions' plan for getting us out of the depression. Baade canvasses in favor of this plan throughout the party. ?]
+[? if not wtb_concept: 보이틴스키, 타르노프, 바데는 불황을 타개할 계획을 마련하기 위해 협력해 왔습니다. 바데는 당내에서 이 계획에 대한 지지를 호소하고 있습니다. ?][? if wtb_concept: 주요 지지자인 보이틴스키, 타르노프, 바데의 이름을 딴 WTB-계획이 불황 타개를 위한 노조의 계획으로 채택되었습니다. 바데는 당내에서 이 계획에 대한 지지를 호소하고 있습니다. ?]
