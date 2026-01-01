@@ -1,19 +1,44 @@
 title: Reichsexekution of Thuringia
 subtitle: History repeats itself.
-view-if: president = "Hindenburg" and red_thuringia and (rb_force + rfb_force < 75) and not presidential_powers and (prussian_coup_seen or prussian_reichsexekution or hindenburg_angry >= 100 or hindenburg_angry_bruning >= 50 or strife >= 5 or rb_militancy >= 0.1 or bruning_time or saxony_joever) and year >= 1930
+view-if: reichsexecution_defeated = 0 and president = "Hindenburg" and red_thuringia and (rb_force + rfb_force < 75) and not presidential_powers and (prussian_coup_seen or prussian_reichsexekution or hindenburg_angry >= 100 or hindenburg_angry_bruning >= 50 or strife >= 5 or rb_militancy >= 0.1 or bruning_time or saxony_joever) and year >= 1930
 on-arrival: thuringia_joever = 1; strife += 1; hindenburg_angry += 25; hindenburg_angry_bruning -= 25
 new-page: true
 tags: event
 max-visits: 1
 face-image: img/Reichswehr.jpg
-
 = Reichsexekution of Thuringia
-
 President [+ president +] has invoked the <i>Reichsexekution</i> to dismiss the Thuringian government, citing its "inability to maintain order" amidst escalating clashes between the <span style="color: #7A3C00;">**SA**</span>, Reichsbanner, and the increasingly militant <span style="color: #700000;">**RFB**</span>.
-
 However, the true motivation is clear: the left-wing coalition governing Thuringia poses a direct threat to the conservative and nationalist establishment in Germany.
 
 - @surrender
+- @defend
+
+@defend
+title: Fight against this overthrow attempt!
+subtitle: Labor will call a general strike. The Reichsbanner and RFB will be mobilized to resist the Reichswehr. 
+
+The Reichswehr and Stalhelm are already preparing to enter Thuringia. Our forces are unprepared for a fight and many Reformists think that the risk of civl war over Thuringia is too high. Do we recognize this?
+
+- @defend_2: We will defend the Thuringian Government with the Communists. 
+- @surrender
+
+@defend_2
+on-arrival: resist_coup = 1; thuringia_joever = 0; reformist_dissent += 10; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += rfb_strength*rfb_militancy; defense_strength += workers_spd_normalized*(1 - dissent)*(1 - unemployed/100); defense_strength += workers_kpd_normalized*(2 - unemployed/100); defense_strength*0.75; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)
+go-to: defend_2_civil_war if defense_strength < enemy_strength; defend_2_victory if defense_strength >= enemy_strength
+
+@defend_2_civil_war
+
+As the Reichswehr and their reactionary auxiliaries march into Thuringia, armed fighting erupts between them and the leftist forces of the Thuringian government. Hindenburg refuses to withdraw the Reichsexecution and orders more Reichswehr troops into Thuringia.  
+
+- @civil_war: It is a civil war.
+
+@defend_2_victory
+on-arrival: sa_strength *= 0.8; sh_strength *= 0.8; left_dissent -= 10; reformist dissent -= 10; reichsexecution_defeated = 1; pro_republic += 5; workers_spd += 4; unemployed_spd += 4; workers_kpd += 3; unemployed_kpd += 3; workers_nsdap -= 6; unemployed_nsdap -= 6; hindenburg_angry -= 35; hindenburg_angry_bruning += 30; coup_victory = 1; kpd_relation += 15; rfb_strength += 100; rfb_militancy += 0.1; rb_strength*1.05
+achievement: drei_pfeile
+
+The Reichsbanner and RFB confront the reactionaries on the road to Thuringia and somehow, the enemy has retreated without a fight! They were surprised by our resistance and Hindenburg has decided to not risk a civil war over Thuringia.
+
+This show of force has reinvigorated support for both the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span> and has weakened the fascists and reactionaries. Hindenburg's ire has also been turned away from us. For now. 
 
 @surrender
 title: Resign our positions, to prevent bloodshed.
@@ -22,4 +47,4 @@ on-arrival: red_thuringia = 0; workers_spd -= 3; workers_kpd -= 3; unemployed_kp
 
 The <span style="color: #700000;">communists</span> protesting in the streets are brutally suppressed, with the Reichswehr patrolling the streets, restricting political gatherings, and turning a blind eye to the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> as they harass local party officials.
 
-Hindenburg appoints <span style="color: #7FCEB1;">**CNBLP**</span> member Erwin Baum as <i>Reichskommissar</i> to govern Saxony, tasked with dismantling our reforms and violently suppressing the <span style="color: #700000;">**RFB**</span>.
+Hindenburg appoints <span style="color: #7FCEB1;">**CNBLP**</span> member Erwin Baum as <i>Reichskommissar</i> to govern Thuringia, tasked with dismantling our reforms and violently suppressing the <span style="color: #700000;">**RFB**</span>.
