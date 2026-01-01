@@ -1,4 +1,4 @@
-title: Rudolf Hilferding
+title: 루돌프 힐퍼딩
 is-pinned-card: true
 tags: advisor, centrist
 card-image: img/portraits/HilferdingRudolf.jpg
@@ -6,46 +6,46 @@ view-if: hilferding_advisor = 1
 new-page: true
 #face-image: img/portraits/HilferdingRudolf.jpg
 
-= Rudolf Hilferding
+= 루돌프 힐퍼딩
 
-Hilferding is an economist and a disciple of Karl Kautsky. Originating from Vienna, Austria, he trained as a medical doctor, but later became involved in Marxist economics as a discipline. He has been the lead ideologist of our party since the Heidelberg Program of 1925.
+힐퍼딩은 경제학자이자 카를 카우츠키의 제자입니다. 오스트리아 빈 출신으로 의사 교육을 받았으나, 훗날 마르크스주의 경제학 연구에 투신했습니다. 그는 1925년 하이델베르크 강령 이후 우리 당의 수석 이론가 역할을 맡고 있습니다.
 
 - @against_right_and_left
 - @toleration
 - @finance_ministry_
 - @economic_democracy_
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @against_right_and_left
-title: Against Right and Left
-subtitle: As a Centrist, Hilferding seeks to steer a course between the party's factions.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 좌우파에 맞서
+subtitle: 힐퍼딩은 중앙파로서 당내 여러 계파 사이에서 균형을 잡고자 합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 5; advisor_action_time = time; center_strength += 10; left_strength -= 5; labor_strength -= 5; neorevisionist_strength -= 5; center_dissent -= 10
 
-We have reduced the strength of the dissident factions in the party.
+당내 반대 계파들의 세력을 약화시켰습니다.
 
 @toleration
-title: Defending Toleration
+title: 묵인 정책 옹호
 subtitle: Hilferding supports cooperation with the bourgeois parties.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_toleration: The <span style="color: #c00000;">SPD</span> is not in toleration. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_toleration: <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 펴고 있지 않습니다 ?]
 choose-if: spd_in_government = 0 and spd_toleration = 1 and advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_dissent -= 10; neorevisionist_dissent -= 8; center_dissent -= 5
 
-We have reduced dissent among the anti-toleration factions.
+묵인 정책 반대 분파들의 불만을 완화했습니다.
 
 @finance_ministry_
-title: Fiscal Policy
-subtitle: As Finance Minister, Hilferding can enact tax policies.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_in_government = 0 : <span style="color: #c00000;">SPD</span> not in government: ?] [? if finance_minister_party != "SPD" : The <span style="color: #c00000;">SPD</span> does not control the finance ministry. ?]
+title: 재정 정책
+subtitle: 재무부 장관으로서, 힐퍼딩은 조세 정책을 입안할 수 있습니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_in_government = 0 : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다: ?] [? if finance_minister_party != "SPD" : <span style="color: #c00000;">SPD</span>가 재무부를 장악하고 있지 않습니다. ?]
 choose-if: advisor_action_timer == 0 and spd_in_government == 1 and finance_minister_party == "SPD"
 on-arrival: advisor_action_timer = 6; fiscal_policy_timer -= 6; last_advisor_action = 1
 go-to: fiscal_policy
 
 @economic_democracy_
-title: Economic Democracy
-subtitle: Enact policies to build a more democratic economy.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_in_government = 0 : <span style="color: #c00000;">SPD</span> not in government: ?] [? if labor_minister_party != "SPD" or (finance_minister_party != "SPD" and economic_minister_party != "SPD") : We do not have the necessary government ministers. ?] [? if cvp_economy_accepted : Our coalition agreement stipulates against socialization. ?]
+title: 경제 민주주의
+subtitle: 더 민주적인 경제를 건설하기 위한 정책을 입안합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_in_government = 0 : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다: ?] [? if labor_minister_party != "SPD" or (finance_minister_party != "SPD" and economic_minister_party != "SPD") : 필요한 정부 부처 장관직을 확보하지 못했습니다. ?] [? if cvp_economy_accepted : 연정 합의에 따라 사회화 정책은 추진할 수 없습니다. ?]
 choose-if: advisor_action_timer == 0 and spd_in_government == 1 and (economic_minister_party == "SPD" or finance_minister_party == "SPD") and (labor_minister_party == "SPD")
 on-arrival: advisor_action_timer = 6; economic_democracy_timer -= 10; last_advisor_action = 1
 go-to: economic_democracy

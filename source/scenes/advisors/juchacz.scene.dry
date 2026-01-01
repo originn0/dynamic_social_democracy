@@ -5,43 +5,43 @@ card-image: img/portraits/JuchaczMarie.jpg
 view-if: juchacz_advisor = 1
 new-page: true 
 
-= Marie Juchacz
+= 마리 유하츠
 
-Juchacz is the founder of the Worker's Welfare, our mutual aid organization; her experiences as a single mother in poverty led her to <span style="color: #c00000;">socialism</span>. She is the most senior woman among the <span style="color: #c00000;">**SPD**</span> leadership, who is often treated as the "go-to" when the predominantly male leadership sought out womens' voices.
+유하츠는 우리의 상호 부조 조직인 노동자 복지회의 설립자입니다. 빈곤 속에서 미혼모로 살았던 경험이 그녀를 <span style="color: #c00000;">사회주의</span>로 이끌었습니다. 그녀는 <span style="color: #c00000;">**SPD**</span> 지도부 내에서 가장 영향력 있는 여성으로, 남성 중심의 지도부가 여성의 목소리를 필요로 할 때 가장 먼저 찾는 인물입니다.
 
 - @emergency_fundraising
 - @welfare
 - @organizing_women
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @emergency_fundraising
-title: Emergency Fundraising
-subtitle: An emergency infusion of resources.
+title: 비상 자금 모금
+subtitle: 긴급 자원을 수혈합니다.
 view-if: difficulty < 1
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
 
-[? if emergency_used <= 1: Juchacz has leveraged her position to pull in donations and arrange quick loans. ?][? if emergency_used > 1 and emergency_used < 3: Discontent is brewing among the <span style="color: #c00000;">**SPD**</span>'s rank and file due to our persistent attempts at begging for money. ?][? if emergency_used > 2: We’re really scraping the barrel now—committed members are pressured into selling their valuables, while many others leave in frustration. ?]
+[? if emergency_used <= 1: 유하츠는 자신의 지위를 활용해 기부금을 모으고 급전을 융통했습니다. ?][? if emergency_used > 1 and emergency_used < 3: 끈질기게 돈을 걷으려는 우리의 시도 때문에 <span style="color: #c00000;">**SPD**</span> 평당원들 사이에서 불만이 고조되고 있습니다. ?][? if emergency_used > 2: 이제 정말 바닥까지 긁어모으고 있습니다. 헌신적인 당원들은 귀중품까지 팔라는 압박을 받고 있으며, 다른 많은 이들은 좌절감을 느끼고 당을 떠나고 있습니다. ?]
 
-We have gained +2 resources.
+자원을 +2 확보했습니다.
 
 @welfare
-title: Support Workers' Welfare, our mutual aid organization.
-subtitle: -1 resources
+title: 상호 부조 조직인 노동자 복지회 지원
+subtitle: 자원 -1
 choose-if: resources > 0 and advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if resources < 0: Not enough resources. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if resources < 0: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += 5*(1 - dissent); workers_spd += 3*(1-dissent); workers_spd += 2*(1-dissent) if black_thursday_seen; advisor_action_timer = 6;
 
-We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : In an age of economic crisis, this will be helpful for improving our standing among the unemployed. ?]
+노동자 복지에 대한 지원금을 늘렸습니다. [? if black_thursday_seen > 0 : 경제 위기의 시대에, 이는 실업자들 사이에서 당의 입지를 다지는 데 도움이 될 것입니다. ?]
 
 @organizing_women
-title: Organizing women
-subtitle: Juchacz's strategies are aimed at more "traditional" women.
+title: 여성 조직화
+subtitle: 유하츠의 전략은 보다 "전통적인" 여성들을 겨냥합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: womens_rights += 1; workers_spd += 4*(1-dissent); rural_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); advisor_action_timer = 6
 
-Juchacz's strategies for organizing women are aimed at working-class housewives, and acknowledge women's traditional household roles. We argue that our economic welfare programs will improve the livelihoods of women and their families.
+여성을 조직하기 위한 유하츠의 전략은 노동자 계급의 주부들을 대상으로 하며, 여성의 전통적인 가사 역할을 인정하는 방식입니다. 우리는 당의 경제 복지 프로그램이 여성과 그 가족의 생계를 향상시킬 것이라고 설득합니다.
 
-[? if spd_r < 50 : Unfortunately, women still disproportionately support the bourgeois parties. ?]
+[? if spd_r < 50 : 안타깝게도, 여성들은 여전히 부르주아 정당들을 압도적으로 지지하고 있습니다. ?]

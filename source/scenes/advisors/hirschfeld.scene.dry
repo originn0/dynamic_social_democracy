@@ -7,37 +7,37 @@ new-page: true
 
 = Magnus Hirschfeld
 
-Magnus Hirschfeld is the founder of the Institut für Sexualwissenschaft and an advocate for the rights of sexual minorities. [? if homosexual_rights: He currently has considerable support among party factions due to the <span style="color: #c00000;">**SPD**</span>'s achievement in <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights. ?]
+마그누스 히르슈펠트는 성과학 연구소의 설립자이자 성소수자 권리 옹호자입니다. [? if homosexual_rights: 그는 <span style="color: #c00000;">**SPD**</span>가 <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span> <span style="color: blue;">권</span><span style="color: purple;">리</span> 증진을 이뤄낸 덕분에 현재 당내 여러 계파로부터 상당한 지지를 받고 있습니다. ?]
 
 
 - @homosexual_rights_
 - @womens_rights_
 - @science_funding
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 
 @homosexual_rights_
-title: <span style="color: red;">Ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights
-subtitle: Enact policy that supports <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights.
+title: <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span> <span style="color: blue;">권</span><span style="color: purple;">리</span>
+subtitle: <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span> <span style="color: blue;">권</span><span style="color: purple;">리</span>를 옹호하는 정책을 입안합니다.
 choose-if: advisor_action_timer = 0 and spd_in_government and progressive_coalition >= 50 and not cvp_women_accepted
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if progressive_coalition < 50 : We do not have the votes to enact these policies. ?] [? if cvp_women_accepted : Our coalition agreement stipulates against action toward <span style="color: red;">Ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?][? if progressive_coalition < 50 : 이 정책을 통과시킬 의석수가 부족합니다. ?] [? if cvp_women_accepted : 연정 합의에 따라 <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span> <span style="color: blue;">권</span><span style="color: purple;">리</span> 관련 활동은 제한됩니다. ?]
 on-arrival: advisor_action_timer = 6; homosexual_rights_timer -= 11; last_advisor_action = 1
 go-to: homosexual_rights
 
 
 @womens_rights_
-title: Women's rights
-subtitle: Enact policy with regards to women's rights.
+title: 여성 권리
+subtitle: 여성 권리에 관한 정책을 입안합니다.
 choose-if: advisor_action_timer = 0 and spd_in_government and not cvp_women_accepted
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?] [? if cvp_women_accepted : Our coalition agreement stipulates against action toward Women's rights. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?] [? if cvp_women_accepted : 연정 합의에 따라 여성 권리 관련 활동은 제한됩니다. ?]
 on-arrival: advisor_action_timer = 6; womens_rights_timer -= 10; last_advisor_action = 1
 go-to: womens_rights
 
 @science_funding
-title: Science funding
-subtitle: Increase funding for scientific research.
+title: 과학 연구 지원
+subtitle: 과학 연구를 위한 자금을 증액합니다.
 choose-if: advisor_action_timer = 0 and spd_in_government and economic_minister_party = "SPD" and chancellor_party = "SPD"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if economic_minister_party != "SPD": This requires the Economic Ministry. ?][? if chancellor_party != "SPD": The Chancellor must be an <span style="color: #c00000;">SPD</span> member. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?][? if economic_minister_party != "SPD": 경제부 장관직이 필요합니다. ?][? if chancellor_party != "SPD": 총리가 반드시 <span style="color: #c00000;">SPD</span> 소속이어야 합니다. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
 go-to: education_science.increase_science
 

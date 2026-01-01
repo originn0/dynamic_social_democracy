@@ -1,52 +1,52 @@
-title: Rudolf Breitscheid
+title: 루돌프 브라이트샤이트
 is-pinned-card: true 
 tags: advisor, centrist
 card-image: img/portraits/BreitscheidRudolf.jpg
 new-page: true
 view-if: breitscheid_advisor = 1
 
-= Rudolf Breitscheid
+= 루돌프 브라이트샤이트
 
-Breitscheid is a long-time <span style="color: #c00000;">**SPD**</span> leader, who was at one time part of the anti-war <span style="color: #D47B9B;">**USPD**</span>. He came from a working-class family, but has a doctorate degree and started his political career as a liberal.
+브라이트샤이트는 오랜 기간 <span style="color: #c00000;">**SPD**</span>를 이끌어온 지도자로, 한때 반전주의 성향의 <span style="color: #D47B9B;">**USPD**</span>에 몸담기도 했습니다. 그는 노동자 계급 가정 출신이지만 박사 학위를 소지하고 있으며, 자유주의자로 정치 경력을 시작했습니다.
 
 - @breitscheid_international
 - @breitscheid_foreign
 - @party_discipline
 - @snap_election
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @breitscheid_international
-title: International Party Relations
-subtitle: Breitscheid is one of our contacts with international <span style="color: #c00000;">socialist</span> parties.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 국제 정당 교류
+subtitle: 브라이트샤이트는 국제 <span style="color: #c00000;">사회주의</span> 정당들과 소통하는 당의 연락책 중 하나입니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer == 0
 on-arrival: advisor_action_timer = 6; international_relations_timer -= 12; last_advisor_action = 1
 go-to: international_relations
 
 @breitscheid_foreign
-title: Foreign Policy
-subtitle: As Foreign Minister, Breitscheid can set our foreign policy.
-unavailable-subtitle: [? if not spd_in_government: The <span style="color: #c00000;">SPD</span> is not in government. ?] [? if foreign_minister_party != "SPD" : The <span style="color: #c00000;">SPD</span> does not control the Foreign Ministry. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 외교 정책
+subtitle: 외무부 장관으로서, 브라이트샤이트는 당의 외교 정책을 수립할 수 있습니다.
+unavailable-subtitle: [? if not spd_in_government: <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?] [? if foreign_minister_party != "SPD" : <span style="color: #c00000;">SPD</span>가 외무부 장관직을 맡고 있지 않습니다. ?][? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer == 0 and spd_in_government and foreign_minister_party == "SPD"
 on-arrival: advisor_action_timer = 6; foreign_policy_timer -= 8; last_advisor_action = 1
 go-to: foreign_policy
 
 
 @party_discipline
-title: Party Discipline
-subtitle: Reduce dissent across the party.
+title: 당 기강 확립
+subtitle: 당내 불만을 잠재웁니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; left_dissent -= 5; labor_dissent -= 10; center_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 5
 
-We have enforced party discipline to reduce dissent across all factions.
+당 기강을 확립하여 모든 계파의 불만을 완화했습니다.
 
 
 @snap_election
-title: Snap Election
-subtitle: Call a snap election.
-unavailable-subtitle: [? if chancellor != "Breitscheid" : Breitscheid must be Chancellor. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 조기 총선
+subtitle: 조기 총선을 소집합니다.
+unavailable-subtitle: [? if chancellor != "Breitscheid" : 브라이트샤이트가 총리여야 합니다. ?][? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer == 0 and chancellor == "Breitscheid"
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
 
-We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
+[+ next_election_year +]년 [+ next_election_month : month +]월에 치러질 새로운 선거를 소집했습니다.

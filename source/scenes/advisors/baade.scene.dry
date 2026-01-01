@@ -18,7 +18,7 @@ new-page: true
 title: 농업 정책
 subtitle: 바데는 농업부 장관입니다.
 choose-if: advisor_action_timer <= 0 and spd_in_government and agriculture_minister_party == "SPD"
-unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 집권 중이 아닙니다. ?][? if agriculture_minister_party != "SPD": <span style="color: #c00000;">SPD</span>가 농업부 장관직을 맡고 있지 않습니다. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?][? if agriculture_minister_party != "SPD": <span style="color: #c00000;">SPD</span>가 농업부 장관직을 맡고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; agricultural_policy_timer -= 6; last_advisor_action = 1
 go-to: agricultural_policy
 

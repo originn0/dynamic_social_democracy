@@ -39,7 +39,7 @@ on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if spd_in_governmen
 title: 프로이센의 방벽
 subtitle: 프로이센의 주총리로서, 브라운은 프로이센 관료 조직과 치안 조직에 대한 권한을 가집니다.
 choose-if: advisor_action_timer <= 0 and prussia_leader = "Braun"
-unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if prussia_leader != "Braun": 라운은 더 이상 프로이센을 통제하지 못합니다. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if prussia_leader != "Braun": 브라운은 더 이상 프로이센을 통제하지 못합니다. ?]
 on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
 go-to: prussian_affairs if not in_grand_coalition_prussia and not in_spd_majority_prussia; prussian_affairs_majority if in_spd_majority_prussia; prussian_affairs_dvp if in_grand_coalition_prussia
 
