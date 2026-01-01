@@ -99,7 +99,7 @@ on-arrival: support_kpd_weimar = 1
 subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span> [? if sapd_formed: + <span style="color: #9B0000;">**SAPD**</span> ?] ([+ left_coalition +]%)
 unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #700000;">KPD</span> [? if sapd_formed: + <span style="color: #9B0000;">SAPD</span> ?] ([+ left_coalition +]%). [? if kpd_relation < 50 : We do not have adequate relations with the <span style="color: #700000;">KPD</span>. ?][? if communist_coalition < 3 : The <span style="color: #700000;">Communists</span> are too committed to their radical ways to partake in government. ?] [? if rubicon: - Why the hell would Hindenburg allow this? ?] [? if president_ideology != "Left" and president != "Hindenburg": - President [+ president +] is fiercely opposed to <span style="color: #9B0000;">socialist</span> governance. ?]
 view-if: in_popular_front
-choose-if: (kpd_relation >= 50 or (kpd_leader == "Conciliators" and kpd_relation >= 40)) and communist_coalition >= 3 and not rubicon and president_ideology == "Left" or president == "Hindenburg"
+choose-if: left_coalition >= 50 and (kpd_relation >= 50 or (kpd_leader == "Conciliators" and kpd_relation >= 40)) and communist_coalition >= 3 and not rubicon and president_ideology == "Left" or president == "Hindenburg"
 go-to: election_1928.left_coalition_success
 
 @let_it_happen
