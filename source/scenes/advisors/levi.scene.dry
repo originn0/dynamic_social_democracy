@@ -1,32 +1,32 @@
-title: Paul Levi
+title: 파울 레비
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/LeviPaul.jpg
 view-if: levi_advisor = 1
 new-page: true 
 
-= Paul Levi
+= 파울 레비
 
-Levi is a former leader of the <span style="color: #700000;">**KPD**</span> who left over their devotion to violence and revolutionary adventurism.
+레비는 <span style="color: #700000;">**KPD**</span>의 폭력 노선과 혁명적 모험주의에 반발하여 탈당한 전직 <span style="color: #700000;">**KPD**</span> 지도자입니다.
 
 - @building_the_left
 - @kpd_cooperation
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @building_the_left
-title: Building the Left
-subtitle: Push the <span style="color: #c00000;">**SPD**</span> to the left.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 좌파 세력 구축
+subtitle: <span style="color: #c00000;">**SPD**</span>를 좌클릭합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_strength += 10; left_dissent -= 8; reformist_dissent += 3
 
-We have increased the strength of the left faction with the <span style="color: #c00000;">**SPD**</span>. This raised concern among the moderate reformists in the party.
+우리는 <span style="color: #c00000;">**SPD**</span> 내 좌파 분파의 세력을 키웠습니다. 이는 당내 온건 개혁주의자들의 우려를 낳았습니다.
 
 @kpd_cooperation
-title: Cooperation with the <span style="color: #700000;">**KPD**</span>
-subtitle: Any cooperation between the parties requires compromise from the <span style="color: #700000;">**KPD**</span> as well as the <span style="color: #c00000;">**SPD**</span>.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: <span style="color: #700000;">**KPD**</span>와의 협력
+subtitle: 양당 간의 협력은 <span style="color: #c00000;">**SPD**</span>뿐만 아니라 <span style="color: #700000;">**KPD**</span>의 타협 또한 필요로 합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_strength += 5; kpd_relation += 6*(1-dissent); reformist_dissent += 3; communist_coalition += 1 if kpd_cooperation_seen <= 1; kpd_cooperation_seen += 1
 
-Levi attempts to reach out to his former colleagues to dissuade the <span style="color: #700000;">**KPD**</span> from their current extreme <span style="color: #8B0000;">Stalinist</span> path. Some concessions are extracted.
+레비는 옛 동료들에게 연락하여 <span style="color: #700000;">**KPD**</span>가 현재의 극단적인 <span style="color: #8B0000;">스탈린주의</span> 노선에서 벗어나도록 설득을 시도합니다. 일부 양보를 받아냈습니다.

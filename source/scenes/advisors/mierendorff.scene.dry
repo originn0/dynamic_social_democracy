@@ -6,38 +6,38 @@ view-if: mierendorff_advisor = 1
 new-page: true
 #face-image: img/portraits/MierendorffCarlo.jpg
 
-= Carlo Mierendorff
+= 카를로 미어렌도르프
 
-Carlo Mierendorff is the founder of the neo-revisionist ideological tendency, and supports both democratic reforms and extra-parliamentary action to combat the <span style="color: #7A3C00;">Nazis</span> and <span style="color: #808080;">authoritarian</span> parties. He is from a middle-class, academic background, and is one of our youngest leaders.
+카를로 미어렌도르프는 신수정주의 이념의 창시자로, <span style="color: #7A3C00;">나치</span>와 <span style="color: #808080;">권위주의</span> 정당들에 맞서기 위해 민주적 개혁과 원외 투쟁을 모두 지지합니다. 그는 중산층 학자 출신이며, 우리 당의 가장 젊은 지도자 중 한 명입니다.
 
 - @iron_front_buildup
 - @form_iron_front
 - @nazi_urgency
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @iron_front_buildup
-title: Build up the <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span>
-subtitle: Increase our propaganda measures to recruit more members into the Reichsbanner. 
+title: <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span> 강화
+subtitle: 선전 활동을 강화하여 흑적금 국기단에 더 많은 단원을 모집합니다.
 choose-if: advisor_action_timer == 0 and iron_front_formed
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if iron_front_formed == 0 : The <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span> has not yet been formed. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if iron_front_formed == 0 : <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span>이 아직 결성되지 않았습니다. ?]
 on-arrival: advisor_action_timer = 6; rb_strength += 200*(workers_spd_normalized / 100);
 
-We have recruited more members into the Reichsbanner.
+우리는 흑적금 국기단에 더 많은 단원을 모집했습니다.
 
 
 @form_iron_front
-title: Forming the <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span>
+title: <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span> 결성
 choose-if: advisor_action_timer == 0 and iron_front_formed == 0 and nazi_urgency >= 2
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if iron_front_formed : The <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span> has already been formed. ?][? if nazi_urgency < 2 : The party does not yet see the danger of the <span style="color: #7A3C00;">Nazis</span>. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if iron_front_formed : <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span>은 이미 결성되었습니다. ?][? if nazi_urgency < 2 : 당은 아직 <span style="color: #7A3C00;">나치</span>의 위험성을 인지하지 못하고 있습니다. ?]
 on-arrival: advisor_action_timer = 6; rb_strength += 50; nazi_urgency += 1
 go-to: confronting_nazis.iron_front 
 
 
 @nazi_urgency
-title: Warning about the <span style="color: #7A3C00;">Nazis</span>
-subtitle: By warning the party about the <span style="color: #7A3C00;">Nazis</span>, we can spur our members to action.
+title: <span style="color: #7A3C00;">나치</span>에 대한 경고
+subtitle: 당에 <span style="color: #7A3C00;">나치</span>의 위험성을 경고하여 당원들의 행동을 촉구합니다.
 choose-if: advisor_action_timer == 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; nazi_urgency += 1; rb_militancy += 0.01 if not rb_explode; nsdap_workers -= 4*(1-dissent);
 
-We have begun a propaganda campaign to warn our members away from the <span style="color: #7A3C00;">Nazis</span>.
+우리는 당원들에게 <span style="color: #7A3C00;">나치</span>를 멀리하라고 경고하기 위한 선전 캠페인을 시작했습니다.

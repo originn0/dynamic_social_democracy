@@ -1,55 +1,55 @@
-title: Theodor Leipart
+title: 테오도어 라이파르트
 is-pinned-card: true
 tags: advisor, labor
 card-image: img/portraits/LeipartTheodor.jpg
 view-if: leipart_advisor = 1
 new-page: true 
 
-= Theodor Leipart
+= 테오도어 라이파르트
 
-Leipart is a leader of the ADGB, the largest federation of <span style="color: #c00000;">socialist</span> trade unions.
+라이파르트는 <span style="color: #c00000;">사회주의</span> 노동조합의 최대 연합체인 ADGB(독일노동조합총연맹)의 지도자입니다.
 
 - @organizing
 - @depression
 - @schleicher
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 # leipart was one of the people who argued for union independence
 #- @union_unity
 
 @organizing
-title: Organizing workers
-subtitle: Improve our standing among the workers.
+title: 노동자 조직화
+subtitle: 노동자들 사이에서 당의 입지를 강화합니다.
 choose-if: advisor_action_timer <= 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; workers_spd += 4*(1-dissent); workers_spd += 3*(1-dissent) if wtb_adopted == 1; labor_strength += 2;
 
-We have increased our organizing among the workers.
+우리는 노동자 조직화 활동을 강화했습니다.
 
 @depression
-title: Addressing the economic crisis
-subtitle: Formulate a plan to get us out of this mess.
+title: 경제 위기 다루기
+subtitle: 우리를 이 난국에서 구해낼 계획을 수립합니다.
 choose-if: advisor_action_timer <= 0 and wtb_adopted = 0 and black_thursday_seen
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if wtb_adopted > 0 : We have already adopted the WTB-Plan. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다. ?][? if wtb_adopted > 0 : 우리는 이미 WTB 계획을 채택했습니다. ?]
 on-arrival: advisor_action_timer = 6; wtb_support += 2; center_dissent += 10; labor_strength += 5; wtb_points += 15
 
-[? if not wtb_concept: Woytinsky, Tarnow, and Baade, has been working together to draft a plan for getting us out of the depression. Leipart canvasses in favor of this policy throughout the party and the unions. ?][? if wtb_concept: The WTB-plan, named for its primary supporters Woytinsky, Tarnow, and Baade, has been adopted as the unions' plan for getting us out of the depression. Leipart canvasses in favor of this policy throughout the party and the unions. ?]
+[? if not wtb_concept: 보이틴스키, 타르노프, 바데는 우리를 불황에서 구해낼 계획을 입안하기 위해 협력하고 있습니다. 라이파르트는 당과 노조 전반에 걸쳐 이 정책을 지지하도록 설득하고 다닙니다. ?][? if wtb_concept: 주요 지지자인 보이틴스키, 타르노프, 바데의 이름을 딴 WTB 계획은 우리를 불황에서 구해내기 위한 노조의 계획으로 채택되었습니다. 라이파르트는 당과 노조 전반에 걸쳐 이 정책을 지지하도록 설득하고 다닙니다. ?]
 
 @schleicher
-title: Negotiating with the Red General
-subtitle: Leipart will attempt to convince the <span style="color: #c00000;">**SPD**</span> to support Schleicher.
+title: 붉은 장군과 협상
+subtitle: 라이파르트는 <span style="color: #c00000;">**SPD**</span>가 슐라이허를 지지하도록 설득을 시도할 것입니다.
 view-if: red_general_unlock and rubicon
 choose-if: advisor_action_timer <= 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; red_general_timer -= 4 if not schleicher_spd_adopted; red_general_timer -= 6 if schleicher_spd_adopted; last_advisor_action = 1
 go-to: red_general
 
 
 @union_unity
-title: Union-party coordination
-subtitle: Reduce dissent among the unions.
+title: 노조-정당 공조
+subtitle: 노조 내의 불만을 완화합니다.
 choose-if: advisor_action_timer <= 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; labor_dissent -= 5; labor_strength += 5
 
-We have reduced tensions with the Labor faction, and increased its strength in the party.
+우리는 노동 분파와의 긴장을 완화하고, 당내에서 그들의 영향력을 확대했습니다.
