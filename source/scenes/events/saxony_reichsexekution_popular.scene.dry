@@ -1,6 +1,6 @@
 title: Reichsexekution of Saxony
 subtitle: History repeats itself.
-view-if: president = "Hindenburg" and red_saxony and (rb_force + rfb_force < 75) and not presidential_powers and (prussian_coup_seen or prussian_reichsexekution or hindenburg_angry >= 100 or hindenburg_angry_bruning >= 50 or strife >= 5 or rb_militancy >= 0.1 or bruning_time or thuringia_joever) and year >= 1930
+view-if: reichsexecution_defeated = 0; president = "Hindenburg" and red_saxony and (rb_force + rfb_force < 75) and not presidential_powers and (prussian_coup_seen or prussian_reichsexekution or hindenburg_angry >= 100 or hindenburg_angry_bruning >= 50 or strife >= 5 or rb_militancy >= 0.1 or bruning_time or thuringia_joever) and year >= 1930
 on-arrival: saxony_joever = 1; strife += 1; hindenburg_angry += 40; hindenburg_angry_bruning -= 40
 new-page: true
 tags: event
@@ -13,13 +13,41 @@ President [+ president +] has invoked the <i>Reichsexekution</i> to dismiss the 
 
 However, the true motivation is clear: the left-wing coalition governing Saxony poses a direct threat to the conservative and nationalist establishment in Germany.
 
+- @defend
 - @surrender
+
+@defend
+title: Fight against this overthrow attempt!
+subtitle: Labor will call a general strike. The Reichsbanner and RFB will be mobilized to resist the Reichswehr. 
+
+The Reichswehr and Stalhelm are already preparing to enter Saxony. Our forces are unprepared for a fight and many Reformists think that the risk of civl war over Saxony is too high. Do we recognize this?
+
+- @defend_2: We will defend the Saxon Government with the Communists. 
+- @surrender
+
+@defend_2
+on-arrival: resist_coup = 1; saxony_joever = 0; reformist_dissent += 10; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += rfb_strength*rfb_militancy; defense_strength += workers_spd_normalized*(1 - dissent)*(1 - unemployed/100); defense_strength += workers_kpd_normalized*(2 - unemployed/100); defense_strength*0.75; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)
+go-to: defend_2_civil_war if defense_strength < enemy_strength; defend_2_victory if defense_strength >= enemy_strength
+
+@defend_2_civil_war
+
+As the Reichswehr and their reactionary auxiliaries march into Saxony, armed fighting erupts between them and the leftist forces of the Saxon government. Hindenburg refuses to withdraw the Reichsexecution and orders more Reichswehr troops into Saxony.  
+
+- @civil_war: It is a civil war.
+
+@defend_2_victory
+on-arrival: sa_strength *= 0.8; sh_strength *= 0.8; left_dissent -= 15; reformist dissent -= 10; reichsexecution_defeated = 1; pro_republic += 5; workers_spd += 5; unemployed_spd += 5; workers_kpd += 3; unemployed_kpd += 3; workers_nsdap -= 6; unemployed_nsdap -= 6; hindenburg_angry -= 50; hindenburg_angry_bruning += 40; coup_victory = 1; kpd_relation += 15; rfb_strength += 150; rfb_militancy += 0.1; rb_strength += 200
+achievement: drei_pfeile
+
+The Reichsbanner and RFB confront the reactionaries on the road to Saxony and somehow, the enemy has retreated without a fight! They were surprised by our resistance and Hindenburg has decided to not risk a civil war over Saxony.
+
+This show of force has reinvigorated support for both the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span> and has weakened the fascists and reactionaries. Hindenburg's ire has also been turned away from us. For now.
 
 @surrender
 title: Resign our positions, to prevent bloodshed.
 subtitle: Hindenburg will appoint a right-wing <i>Reichskommissar</i>.
-on-arrival: red_saxony = 0; workers_spd -= 5; workers_kpd -= 5; unemployed_kpd -= 5; unemployed_spd -= 5; left_dissent += 15; labor_dissent += 5; rb_militancy = rb_militancy*0.7; rb_strength -= 250; rfb_banned = 1; rfb_strength -= 150; rfb_militancy -= 0.1; kpd_relation -= 25; communist_coalition -= 1
+on-arrival: red_saxony = 0; workers_spd -= 5; workers_kpd -= 5; unemployed_kpd -= 5; unemployed_spd -= 5; left_dissent += 15; labor_dissent += 5; rb_militancy = rb_militancy*0.7; rb_strength -= 250; rfb_banned = 1; rfb_strength -= 150; rfb_militancy -= 0.1; kpd_relation -= 20; communist_coalition -= 1
 
 The <span style="color: #700000;">communists</span> protesting in the streets are brutally suppressed, with the Reichswehr patrolling the streets, restricting political gatherings, and turning a blind eye to the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> as they harass local party officials.
 
-Hindenburg appoints [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] member Erwin Baum as <i>Reichskommissar</i> to govern Saxony, tasked with dismantling our reforms and violently suppressing the <span style="color: #700000;">**RFB**</span>.
+Hindenburg appoints [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] member Wilhelm Bünger as <i>Reichskommissar</i> to govern Saxony, tasked with dismantling our reforms and violently suppressing the <span style="color: #700000;">**RFB**</span>.
