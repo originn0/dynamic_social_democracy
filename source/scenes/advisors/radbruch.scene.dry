@@ -1,43 +1,43 @@
-title: Gustav Radbruch
+title: 구스타프 라트브루흐
 is-pinned-card: true
 tags: advisor
 card-image: img/portraits/RadbruchGustav.jpg
 view-if: radbruch_advisor = 1
 new-page: true 
 
-= Gustav Radbruch
+= 구스타프 라트브루흐
 
-Gustav Radbruch is a renowned legal scholar and long-time <span style="color: #c00000;">**SPD**</span> justice minister. [? if judicial_reform >= 2: He currently has considerable support among party factions due to the <span style="color: #c00000;">SPD</span>'s success in judicial reforms. ?]
+구스타프 라트브루흐는 저명한 법학자이자 <span style="color: #c00000;">**SPD**</span>의 장수 법무부 장관입니다. [? if judicial_reform >= 2: 그는 현재 <span style="color: #c00000;">SPD</span>의 성공적인 사법 개혁 덕분에 당내 여러 분파로부터 상당한 지지를 받고 있습니다. ?]
 
 
 - @judiciary_major
 - @judiciary_minor
 - @constitutional_reform_
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 
 @judiciary_major
-title: Enact major judicial reforms.
-subtitle: -1 budget
+title: 대규모 사법 개혁 단행
+subtitle: 예산 -1
 choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD" and budget > 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?] [? if budget <= 0: Not enough budget. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다. ?][? if justice_minister_party != "SPD" : <span style="color: #c00000;">SPD</span>가 법무부를 장악하고 있지 않습니다. ?] [? if budget <= 0: 예산이 부족합니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: judiciary.reform
 
 @judiciary_minor
-title: Enact minor judicial reforms.
-subtitle: Gradually remove corrupt and biased jurists.
+title: 소규모 사법 개혁 단행
+subtitle: 부패하고 편향된 법조인들을 점진적으로 제거합니다.
 choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD" and budget > 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다. ?][? if justice_minister_party != "SPD" : <span style="color: #c00000;">SPD</span>가 법무부를 장악하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: judiciary.minor_reforms
 
 
 @constitutional_reform_
-title: Constitutional Reform
-subtitle: Pursue reforms of the inadequate <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Constitution.
+title: 헌법 개혁
+subtitle: 결함이 있는 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 헌법의 개혁을 추진합니다.
 choose-if: advisor_action_timer = 0 and spd_in_government and justice_minister_party = "SPD" and ((in_weimar_coalition) or (in_spd_majority) or (in_left_front) or (in_popular_front)) and judicial_reform >= 2 and neorevisionism
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The SPD is not currently in government. ?] [? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?] [? if not neorevisionism: We do not have ideological support for constitutional reform yet - new ideas are needed. ?] [? if judicial_reform < 2: The judiciary is unlikely to tolerate progressive constitutional changes. ?] [? if not ((in_weimar_coalition) or (in_spd_majority) or (in_left_front) or (in_popular_front)) : Our current governing coalition will not support constitutional reforms. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다. ?] [? if justice_minister_party != "SPD" : We do not have the Justice Ministry. ?] [? if not neorevisionism: 아직 헌법 개혁에 대한 이념적 지지가 부족합니다. 새로운 사상 조류가 필요합니다. ?] [? if judicial_reform < 2: 사법부가 진보적인 헌법 개정을 용인할 것 같지 않습니다. ?] [? if not ((in_weimar_coalition) or (in_spd_majority) or (in_left_front) or (in_popular_front)) : 현재 집권 연정은 헌법 개혁을 지지하지 않을 것입니다. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1; constitutional_reform_timer -= 12
 go-to: constitutional_reform
 

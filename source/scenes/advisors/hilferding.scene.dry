@@ -27,8 +27,8 @@ on-arrival: advisor_action_timer = 5; advisor_action_time = time; center_strengt
 
 @toleration
 title: 묵인 정책 옹호
-subtitle: Hilferding supports cooperation with the bourgeois parties.
-unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_toleration: <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 펴고 있지 않습니다 ?]
+subtitle: 뮐러는 부르주아 정당들과의 묵인 협정을 지지합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_toleration: <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 펴고 있지 않습니다. ?]
 choose-if: spd_in_government = 0 and spd_toleration = 1 and advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_dissent -= 10; neorevisionist_dissent -= 8; center_dissent -= 5
 
@@ -37,7 +37,7 @@ on-arrival: advisor_action_timer = 6; left_dissent -= 10; neorevisionist_dissent
 @finance_ministry_
 title: 재정 정책
 subtitle: 재무부 장관으로서, 힐퍼딩은 조세 정책을 입안할 수 있습니다.
-unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_in_government = 0 : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다: ?] [? if finance_minister_party != "SPD" : <span style="color: #c00000;">SPD</span>가 재무부를 장악하고 있지 않습니다. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_in_government = 0 : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다. ?] [? if finance_minister_party != "SPD" : <span style="color: #c00000;">SPD</span>가 재무부를 장악하고 있지 않습니다. ?]
 choose-if: advisor_action_timer == 0 and spd_in_government == 1 and finance_minister_party == "SPD"
 on-arrival: advisor_action_timer = 6; fiscal_policy_timer -= 6; last_advisor_action = 1
 go-to: fiscal_policy

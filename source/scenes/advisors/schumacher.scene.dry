@@ -1,43 +1,43 @@
-title: Kurt Schumacher
+title: 쿠르트 슈마허
 is-pinned-card: true
 tags: advisor, neorevisionist
 card-image: img/portraits/SchumacherKurt.jpg
 view-if: schumacher_advisor = 1
 new-page: true 
 
-= Kurt Schumacher
+= 쿠르트 슈마허
 
-A Great War veteran and a neorevisionist leader, Kurt Schumacher argues for a strong resistance against the <span style="color: #7A3C00;">Nazis</span>.
+제1차 세계 대전 참전 용사이자 신수정주의 지도자인 쿠르트 슈마허는 <span style="color: #7A3C00;">나치</span>에 대한 강력한 저항을 주장합니다.
 
 - @emergency_fundraising
 - @build_reichsbanner
 - @moderate_economic_plan
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @emergency_fundraising
-title: Emergency Fundraising
-subtitle: An emergency infusion of resources.
+title: 비상 자금 조달
+subtitle: 긴급 자원을 수혈합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
 
-[? if emergency_used <= 1: Schumacher has leveraged his position to pull in donations and arrange quick loans. ?][? if emergency_used > 1 and emergency_used < 3: Discontent is brewing among the <span style="color: #c00000;">**SPD**</span>'s rank and file due to our persistent attempts at begging for money. ?][? if emergency_used > 2: We’re really scraping the barrel now—committed members are pressured into selling their valuables, while many others leave in frustration. ?]
+[? if emergency_used <= 1: 슈마허는 자신의 지위를 활용해 기부금을 모으고 급한 대출을 주선했습니다. ?][? if emergency_used > 1 and emergency_used < 3: 자금을 구걸하려는 우리의 끈질긴 시도 때문에 <span style="color: #c00000;">**SPD**</span> 평당원들 사이에서 불만이 고조되고 있습니다. ?][? if emergency_used > 2: 이제 정말 바닥까지 긁어모으고 있습니다. 헌신적인 당원들조차 귀중품을 팔도록 강요받고 있으며, 많은 이들이 좌절하여 당을 떠나고 있습니다. ?]
 
-We have gained +2 resources.
+자원을 +2 확보했습니다.
 
 @build_reichsbanner
-title: Reichsbanner
-subtitle: Schumacher supports providing more resources to the Reichsbanner.
+title: 흑적금 국기단
+subtitle: 슈마허는 흑적금 국기단에 더 많은 자원을 지원하는 것을 지지합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; reichsbanner_timer -= 6; last_advisor_action = 1
 go-to: reichsbanner
 
 @moderate_economic_plan
-title: Support the reformist economic plan
-subtitle: Call for a limited program of job creation without deficit spending.
+title: 개혁파 경제 계획 지지
+subtitle: 적자 재정 지출 없는 제한적인 일자리 창출 프로그램을 요구합니다.
 choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if moderate_economic_plan = 0 : We have already adopted the reformist economic plan. ?] [? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if moderate_economic_plan = 0 :우리는 이미 개혁파 경제 계획을 채택했습니다. ?] [? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다.  ?]
 on-arrival: advisor_action_timer = 6
 go-to: crisis_program.support_moderate
 

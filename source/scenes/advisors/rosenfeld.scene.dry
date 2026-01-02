@@ -1,82 +1,82 @@
-title: Kurt Rosenfeld
+title: 쿠르트 로젠펠트
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/RosenfeldKurt.jpg
 view-if: rosenfeld_advisor = 1
 new-page: true 
 
-= Kurt Rosenfeld
+= 쿠르트 로젠펠트
 
-Rosenfeld works as a lawyer in Berlin who defends left-wing individuals and causes. He favors cooperation with the <span style="color: #700000;">**KPD**</span> and a path of class struggle for the <span style="color: #c00000;">**SPD**</span>.
+로젠펠트는 베를린에서 활동하는 변호사로, 좌파 인사들과 대의를 변호하고 있습니다. 그는 <span style="color: #700000;">**KPD**</span>와의 협력과 <span style="color: #c00000;">**SPD**</span>의 계급 투쟁 노선을 선호합니다.
 
 - @building_the_left
 - @kpd_cooperation
 - @prussian_bulwark
 - @against_toleration
 - @snap_election
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @building_the_left
-title: Building the Left
-subtitle: Push the <span style="color: #c00000;">**SPD**</span> to the left.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 좌파 세력 구축
+subtitle: <span style="color: #c00000;">**SPD**</span>를 좌클릭합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_strength += 6; left_dissent -= 8; reformist_dissent += 2
 
-We have increased the strength of the left faction with the <span style="color: #c00000;">**SPD**</span>.
+우리는 <span style="color: #c00000;">**SPD**</span> 내 좌파 분파의 세력을 키웠습니다.
 
 @kpd_cooperation
-title: Cooperation with the <span style="color: #700000;">**KPD**</span>
-subtitle: Push the party to be more friendly towards the <span style="color: #700000;">**KPD**</span>.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: <span style="color: #700000;">**KPD**</span>와의 협력
+subtitle: 당이 <span style="color: #700000;">**KPD**</span>에 더 우호적인 태도를 취하도록 압박합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_strength += 5; kpd_relation += 4*(1-dissent); reformist_dissent += 2; communist_coalition += 1 if kpd_cooperation_seen <= 1; kpd_cooperation_seen += 1
 
-Through his work, Rosenfeld has defended individual <span style="color: #700000;">**KPD**</span> members; this should make some connections possible.
+로젠펠트는 변호 활동을 통해 개별 <span style="color: #700000;">**KPD**</span> 당원들을 변호해 왔으며, 이는 양당 간의 연결 고리를 만드는 데 도움이 될 것입니다.
 
 @prussian_bulwark
-title: The Prussian Bulwark
-subtitle: As the Minister-President of Prussia, Rosenfeld has power over the Prussian bureaucracy and security services.
+title: 프로이센의 방벽
+subtitle: 프로이센의 주총리로서, 로젠펠트는 프로이센 관료제와 치안 조직에 대한 권한을 가집니다.
 choose-if: advisor_action_timer <= 0 and prussia_leader = "Rosenfeld"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if prussia_leader != "Rosenfeld" : Rosenfeld doesn't control Prussia. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if prussia_leader != "Rosenfeld" : 로젠펠트가 프로이센을 장악하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
 go-to: prussian_affairs_left
 
 @against_toleration
-title: Against toleration
+title: 묵인 정책 반대
 view-if: not constructive_vonc
-subtitle: Break our current toleration arrangement, and bring down the government via a no-confidence vote.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_toleration == 0 : The <span style="color: #c00000;">SPD</span> is not currently in toleration. ?]
+subtitle: 현재의 묵인 합의를 파기하고, 불신임 투표를 통해 정부를 무너뜨립니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_toleration == 0 : <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 시행 중이지 않습니다. ?]
 choose-if: advisor_action_timer == 0 and spd_toleration
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time + 3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_toleration = 0; spd_toleration_right = 0; left_strength += 8; pro_republic -= 4; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 8; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2; spd_break_toleration += 1
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
 
-We have grown tired of the burdens of toleration, and have called a vote of no confidence in the current minority government.
+우리는 묵인 정책의 부담에 지쳤으며, 현재의 소수 정부에 대한 불신임 투표를 소집했습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+조기 총선은 [+ next_election_year +]년 [+ next_election_month : month +]로 정해졌습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센 주의회 해산 투표를 가결하여, 새로운 선거를 강제했습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 주의회 선거는 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 정해졌습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+이러한 이중 해산 사태는 민주주의에 대한 국민의 신뢰를 뒤흔들었고, <span style="color: #7A3C00;">나치</span>는 이 불안정을 틈타 민주주의는 작동 불능이며 독일에는 강력한 지도자가 필요하다고 선동하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 불신임 투표를 가결하여, 우리 정부를 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우파 정당들로 구성된 중도 우파 연정으로 교체했습니다. 이는 뼈아픈 실책이지만, 새로운 선거가 치러졌다면 극단주의 정당들이 크게 약진했을 수도 있었기에 최악의 결과는 아닙니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센의 주총리로 선출되었습니다.
 
 @snap_election
-title: Snap Election
-subtitle: Call a snap election.
-unavailable-subtitle: [? if chancellor != "Rosenfeld" and president != "Rosenfeld" : Rosenfeld must be Chancellor or President. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if president = "Rosenfeld" and presidential_powers : We have removed this power from the president with a constitutional reform. ?]
+title: 조기 총선
+subtitle: 조기 총선을 소집합니다.
+unavailable-subtitle: [? if chancellor != "Rosenfeld" and president != "Rosenfeld" : 로젠펠트가 총리 또는 대통령이어야 합니다. ?][? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if president = "Rosenfeld" and presidential_powers : 헌법 개혁을 통해 대통령의 의회 해산권을 삭제했습니다. ?]
 choose-if: advisor_action_timer == 0 and (chancellor == "Rosenfeld" or (president == "Rosenfeld" and not presidential_powers))
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
 
-We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
+우리는 조기 총선을 소집했고, 선거일은 [+ next_election_year +]년 [+ next_election_month : month +]로 정해졌습니다.

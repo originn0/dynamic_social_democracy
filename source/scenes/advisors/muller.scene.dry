@@ -5,40 +5,40 @@ card-image: img/portraits/MüllerHermann.jpg
 new-page: true
 view-if: muller_advisor = 1
 
-= Hermann Müller
+= 헤르만 뮐러
 
 
-Müller is a former [? if chancellor = "Müller": and current ?] Chancellor, and is a long-time <span style="color: #c00000;">**Social Democratic**</span> leader.
+뮐러는 전직 [? if chancellor = "Müller": 이자 현직 ?] 총리이며, 오랫동안 <span style="color: #c00000;">**사회민주당**</span>을 이끌어온 지도자입니다.
 
 - @coalition
 - @toleration
 - @snap_election
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @coalition
-title: Negotiating with the Coalition
-subtitle: Müller can improve our relationships with our coalition partners.
+title: 연정과의 협상
+subtitle: 뮐러는 연정 파트너들과의 관계를 개선할 수 있습니다.
 choose-if: advisor_action_timer <= 0 and spd_in_government = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government: The <span style="color: #c00000;">SPD</span> is not in government. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; coalition_dissent -= 1 if spd_in_government = 1 and coalition_dissent > 0; z_relation += 4; ddp_relation += 4; dvp_relation += 2; dvp_relation += 2 if in_grand_coalition; lvp_relation += 4; dvp_left += 0.5 if in_grand_coalition; lvp_left += 0.5; ddp_left += 0.25
 
-We have improved our relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?][? if not lvp_formed:, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:, and <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:&nbsp;and <span style="color: #FFCC00;">**LVP**</span>?], and reduced tensions with the coalition.
+우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?][? if not lvp_formed:, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:, 그리고 <span style="color: #C0A054;">**인민당**</span>?]?][? if lvp_formed:&nbsp;그리고 <span style="color: #FFCC00;">**LVP**</span>?]과의 관계를 개선하고, 연정 내의 긴장을 완화했습니다.
 
 
 @toleration
-title: Defending Toleration
-subtitle: Müller supports the toleration arrangement with the bourgeois parties.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_toleration: The <span style="color: #c00000;">SPD</span> is not in toleration. ?]
+title: 묵인 정책 옹호
+subtitle: 뮐러는 부르주아 정당들과의 묵인 협정을 지지합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_toleration: <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 펴고 있지 않습니다. ?]
 choose-if: spd_in_government = 0 and spd_toleration = 1 and advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; left_dissent -= 8; neorevisionist_dissent -= 8; center_dissent -= 5;
 
-We have reduced dissent among the anti-toleration factions. 
+묵인 정책 반대 분파들의 불만을 완화했습니다. 
 
 @snap_election
-title: Snap Election
-subtitle: Call a snap election.
-unavailable-subtitle: [? if chancellor != "Müller" : Müller must be Chancellor. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 조기 총선
+subtitle: 조기 총선을 소집합니다.
+unavailable-subtitle: [? if chancellor != "Müller" : 뮐러가 총리여야 합니다. ?][? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer == 0 and chancellor == "Müller"
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12;
 
-We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
+[+ next_election_year +]년 [+ next_election_month : month +]월에 치러질 새로운 선거를 소집했습니다.

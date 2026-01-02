@@ -27,7 +27,7 @@ on-arrival: advisor_action_timer = 6; pro_republic += 5; democratization += 1; n
 
 @military_affairs
 title: 군사 문제
-subtitle: 당의 군사 정책을 수립한다.
+subtitle: 당의 군사 정책을 수립합니다.
 choose-if: advisor_action_timer == 0 and spd_in_government and reichswehr_minister_party == "SPD"
 unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다 ?][? if reichswehr_minister_party != "SPD": The <span style="color: #c00000;">SPD</span>가 국방부를 장악하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1

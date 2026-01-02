@@ -1,53 +1,53 @@
-title: Antonie Pfülf
+title: 안토니 퓔프
 is-pinned-card: true
 tags: advisor, centrist
 card-image: img/portraits/PfülfAntonie.jpg
 view-if: pfulf_advisor = 1
 new-page: true 
 
-= Antonie Pfülf
+= 안토니 퓔프
 
-Pfülf is a former teacher from <span style="color: #00CCFF;">Bavaria</span> who came from a conservative Catholic family. She is an activist for women's rights and for broadening the support of the <span style="color: #c00000;">**SPD**</span>. 
+퓔프는 <span style="color: #00CCFF;">바이에른</span>의 보수적인 가톨릭 집안 출신으로 전직 교사였습니다. 그녀는 여성 인권 운동가이자 <span style="color: #c00000;">**SPD**</span>의 지지 기반 확대를 위해 활동하고 있습니다.
 
 - @support_peoples_party
 - @build_peoples_party
 - @campaigning_peoples_party
 - @womens_rights_
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @support_peoples_party
-title: Build support for a People's Party
-subtitle: Can we expand our party beyond the industrial working class?
+title: 대중정당으로의 전환 지지 확보
+subtitle: 산업 노동자 계급을 넘어 당의 외연을 확장할 수 있을까요?
 view-if: peoples_party = 0
 choose-if: peoples_party_support <= 4 and advisor_action_timer = 0 and peoples_party = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if peoples_party_support > 4: There is already substantial support for a People's Party. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if peoples_party_support > 4: 대중정당 노선에 대한 상당한 지지가 이미 존재합니다. ?]
 on-arrival: advisor_action_timer = 6; peoples_party_support += 1; reformist_strength += 5;
 
-We are building up support for the idea of a People's Party.
+우리는 대중정당 구상에 대한 지지를 구축하고 있습니다.
 
 @build_peoples_party
-title: Building a People's Party
-subtitle: Can we expand our party beyond the industrial working class?
+title: 대중정당 건설
+subtitle: 산업 노동자 계급을 넘어 당의 외연을 확장할 수 있을까요?
 view-if: peoples_party = 0
 choose-if: peoples_party_support >= 3 and advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if peoples_party_support < 3: There is not enough support for this policy within the party. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if peoples_party_support < 3: 당내에 이 정책에 대한 지지가 부족합니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: peoples_party
 
 @campaigning_peoples_party
-title: Campaigning as a People's Party
-subtitle: Campaigning with some of our previously nontraditional demographics.
+title: 대중정당으로서 선거 운동
+subtitle: 기존에는 비전통적이었던 인구 계층을 대상으로 선거 운동을 펼칩니다.
 view-if: peoples_party = 1
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: peoples_party_campaigning
 
 
 @womens_rights_
-title: Women's rights
-subtitle: Enact policy with regards to women's rights.
+title: 여성 권리
+subtitle: 여성 권리에 관한 정책을 입안합니다.
 choose-if: advisor_action_timer = 0 and spd_in_government and not cvp_women_accepted
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?] [? if cvp_women_accepted : Our coalition agreement stipulates against action toward Women's rights. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?] [? if cvp_women_accepted : 연정 합의에 따라 여성 권리 관련 활동은 제한됩니다. ?]
 on-arrival: advisor_action_timer = 6; womens_rights_timer -= 10; last_advisor_action = 1
 go-to: womens_rights

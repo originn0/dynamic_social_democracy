@@ -42,7 +42,7 @@ on-arrival: advisor_action_timer = 6;
 go-to: crisis_program.support_left 
 
 @moderate_economic_plan
-title: 개혁주의 경제 계획 지지
+title: 개혁파 경제 계획 지지
 subtitle: 아우프호이저는 온건한 경제 계획 또한 지원할 수 있습니다.
 choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
 unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if moderate_economic_plan = 0 : 이미 개혁파 경제 계획을 채택했습니다. ?] [? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다. ?]
