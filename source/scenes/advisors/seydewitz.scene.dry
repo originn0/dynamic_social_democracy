@@ -1,65 +1,65 @@
-title: Max Seydewitz
+title: 막스 자이데비츠
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/SeydewitzMax.jpg
 view-if: seydewitz_advisor = 1
 new-page: true 
 
-= Max Seydewitz
+= 막스 자이데비츠
 
-Max Seydewitz is a former leader of the youth wing, current supporter of the left wing of the <span style="color: #c00000;">**SPD**</span>, and advocates for class struggle.
+막스 자이데비츠는 청년 조직 지도자 출신으로, 현재 <span style="color: #c00000;">**SPD**</span> 좌파를 지지하며 계급 투쟁을 옹호하고 있습니다.
 
 - @class_struggle
 - @socialist_youth
 - @against_toleration
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @class_struggle
-title: Rally for class struggle
-subtitle: The core of <span style="color: #c00000;">socialism</span> should be the struggle of the proletariat against the bourgeoisie.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 계급 투쟁을 위한 집회
+subtitle: <span style="color: #c00000;">사회주의</span>의 핵심은 부르주아지에 대항하는 프롤레타리아트의 투쟁이어야 합니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer = 0
 on-arrival: advisor_action_timer = 6; workers_spd += 4*(1-dissent); unemployed_spd += 3*(1-dissent); workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2; dvp_relation -= 3; dvp_right += 1; lvp_relation -= 3; lvp_right += 1
 
-Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
+계급 투쟁에 대한 우리의 메시지는 노동자 계급 내 좌파에게 호소력이 있지만, 중산층을 멀어지게 할 가능성이 있습니다. [? if nationalization_progress > 0 : 국유화 성과가 우리의 메시지 전달에 힘을 실어주었습니다. ?]
 
 
 @socialist_youth
-title: Support the <span style="color: #c00000;">Socialist</span> Youth
-subtitle: We must end our reputation as a party for old men by increasing funding to the youth organizations. -1 resources
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if resources <= 0 : Not enough resources. ?]
+title: <span style="color: #c00000;">사회주의</span> 청년단 지원
+subtitle: 청년 조직에 대한 지원금을 늘려 '노인들을 위한 당'이라는 오명을 씻어야 합니다. 자원 -1
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if resources <= 0 : 자원이 부족합니다. ?]
 choose-if: advisor_action_timer = 0 and resources > 0
 view-if: not rb_explode
 on-arrival: advisor_action_timer = 6; resources -= 1; left_strength += 5; left_dissent -= 3; rb_strength += 50; rb_militancy += 0.025; workers_spd += 2*(1-dissent); new_middle_spd += 1; radicalization += 1
 
-Seydewitz supports building up the <span style="color: #c00000;">Socialist</span> Youth, which attracts support to the Left and increases the militancy of the Reichsbanner.
+자이데비츠는 <span style="color: #c00000;">사회주의</span> 청년단을 육성하는 것을 지지하며, 이는 좌파 지지세를 확장하고 국기단의 전투력을 강화합니다.
 
 @against_toleration
-title: Against toleration
-subtitle: Break our current toleration arrangement, and bring down the government via a no-confidence vote.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_toleration == 0 : The <span style="color: #c00000;">SPD</span> is not currently in toleration. ?]
+title: 묵인 정책 반대
+subtitle: 현재의 묵인 합의를 파기하고, 불신임 투표를 통해 정부를 무너뜨립니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_toleration == 0 : <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 시행 중이지 않습니다. ?]
 view-if: not constructive_vonc
 choose-if: advisor_action_timer == 0 and spd_toleration
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time + 3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_toleration = 0; spd_toleration_right = 0; left_strength += 8; pro_republic -= 4; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 8; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; spd_break_toleration += 1
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
 
-We have grown tired of the burdens of toleration, and have called a vote of no confidence in the current minority government.
+우리는 묵인 정책의 부담에 지쳤으며, 현재의 소수 정부에 대한 불신임 투표를 소집했습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+조기 총선은 [+ next_election_year +]년 [+ next_election_month : month +]로 정해졌습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+T[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센 주의회 해산 투표를 가결하여, 새로운 선거를 강제했습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 주의회 선거는 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 정해졌습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+이러한 이중 해산 사태는 민주주의에 대한 국민의 신뢰를 뒤흔들었고, <span style="color: #7A3C00;">나치</span>는 이 불안정을 틈타 민주주의는 작동 불능이며 독일에는 강력한 지도자가 필요하다고 선동하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 불신임 투표를 가결하여, 우리 정부를 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우파 정당들로 구성된 중도 우파 연정으로 교체했습니다. 이는 뼈아픈 실책이지만, 새로운 선거가 치러졌다면 극단주의 정당들이 크게 약진했을 수도 있었기에 최악의 결과는 아닙니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센의 주총리로 선출되었습니다.

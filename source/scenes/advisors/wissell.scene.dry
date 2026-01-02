@@ -1,32 +1,32 @@
-title: Rudolf Wissell
+title: 루돌프 비젤
 is-pinned-card: true
 tags: advisor, labor
 card-image: img/portraits/WissellRudolf.jpg
 view-if: wissell_advisor = 1
 new-page: true 
 
-= Rudolf Wissell
+= 루돌프 비젤
 
-Wissell is a labor economist working for the ADGB, the federation of free trade unions, and has been a labor minister on multiple occasions. His priority is to improve conditions for organized workers.
+루돌프 비젤은 ADGB(자유 노동조합 연맹) 소속의 노동 경제학자이며, 여러 차례 노동부 장관을 역임했습니다. 그의 최우선 과제는 조직된 노동자들의 처우를 개선하는 것입니다.
 
 - @labor_rights_
 - @union_unity
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @labor_rights_
-title: Labor Rights
-subtitle: As Labor Minister, Wissell can help set regulations for working conditions.
+title: 노동권
+subtitle: 노동부 장관으로서, 비젤은 근로 조건에 대한 규정을 수립하는 데 도움을 줄 수 있습니다.
 choose-if: advisor_action_timer <= 0 and spd_in_government and labor_minister_party = "SPD"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if labor_minister_party != "SPD" : The SPD does not control the Labor Ministry. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if labor_minister_party != "SPD" : SPD가 노동부를 장악하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; labor_rights_timer -= 10; last_advisor_action = 1
 go-to: labor_rights
 
 
 @union_unity
-title: Union-party coordination
-subtitle: Reduce dissent among the unions.
+title: 노조-당 협력 강화
+subtitle: 노조들 사이의 불만을 줄입니다.
 choose-if: advisor_action_timer <= 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; labor_dissent -= 5; labor_strength += 5
 
-We have reduced tensions with the Labor faction, and increased its strength in the party.
+우리는 노동 분파와의 긴장을 완화하고, 당내에서 그들의 입지를 강화했습니다.

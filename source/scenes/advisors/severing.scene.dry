@@ -1,32 +1,32 @@
-title: Carl Severing
+title: 카를 제베링
 is-pinned-card: true
 tags: advisor, reformist
 card-image: img/portraits/SeveringCarl.jpg
 view-if: severing_advisor = 1
 new-page: true 
 
-= Carl Severing
+= 카를 제베링
 
-Severing has been Interior Minister for both the German Republic and for the state of Prussia, and his priority is using the security services to target the enemies of the republic.
+카를 제베링은 독일 공화국과 프로이센 주 양쪽에서 내무부 장관을 역임했으며, 그의 최우선 과제는 치안 조직을 활용해 공화국의 적들을 제압하는 것입니다.
 
 - @prussian_bulwark
 - @police_affairs
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @prussian_bulwark
-title: Prussian Bulwark
-subtitle: Severing has influence over Prussian politics.
+title: 프로이센의 방벽
+subtitle: 제베링은 프로이센 정계에 영향력을 행사합니다.
 choose-if: advisor_action_timer <= 0 and spd_prussia = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_prussia : The <span style="color: #c00000;">SPD</span> is not in control of Prussia. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_prussia : <span style="color: #c00000;">SPD</span>가 프로이센을 장악하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
 go-to: prussian_affairs if in_grand_coalition_prussia == 0; prussian_affairs_dvp if in_grand_coalition_prussia == 1; prussian_affairs_left if in_popular_front_prussia or in_left_front_prussia
 
 
 @police_affairs
-title: Police affairs 
-subtitle: We can set our police policy. 
+title: 경찰 업무
+subtitle: 경찰 정책을 수립합니다.
 choose-if: advisor_action_timer == 0 and spd_in_government and interior_minister_party == "SPD"
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not in government. ?][? if interior_minister_party != "SPD": The <span style="color: #c00000;">SPD</span> does not have the Interior ministry. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여하고 있지 않습니다. ?][? if interior_minister_party != "SPD": <span style="color: #c00000;">SPD</span>가 내무부를 장악하고 있지 않습니다. ?]
 on-arrival: advisor_action_timer = 6; police_timer -= 6; last_advisor_action = 1
 go-to: police
 

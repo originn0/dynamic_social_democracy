@@ -1,39 +1,39 @@
-title: Anna Siemsen
+title: 안나 짐젠
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/SiemsenAnna.jpg
 view-if: siemsen_advisor = 1
 new-page: true 
 
-= Anna Siemsen
+= 안나 짐젠
 
-Anna Siemsen is an educational reform advocate and pacifist, who was one of the few German women to receive a PhD in the pre-war period. She was a former member of the <span style="color: #D47B9B;">**USPD**</span>.
+안나 짐젠은 교육 개혁 옹호자이자 평화주의자로, 전쟁 전 기간에 박사 학위를 받은 소수의 독일 여성 중 한 명입니다. 그녀는 <span style="color: #D47B9B;">**USPD**</span>의 전직 당원이었습니다.
 
 - @campaign_pacifism
 - @structure_
 - @curriculum_
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @campaign_pacifism
-title: Rally for pacifism.
-subtitle: Campaign for internationalism and against militarism.
+title: 평화주의를 위한 집회
+subtitle: 국제주의를 옹호하고 군국주의에 반대하는 운동을 펼칩니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: rally.pacifism
 
 
 @curriculum_
-title: Change the educational curriculum.
+title: 교육 커리큘럼 변경
 choose-if: advisor_action_timer = 0 and spd_in_government and chancellor_party = "SPD" and (prussia_leader == "Braun" or prussia_leader == "Rosenfeld") and curriculum_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if chancellor_party != "SPD": The <span style="color: #c00000;">SPD</span> must control the chancellorship. ?][? if prussia_leader != "Braun" and prussia_leader != "Rosenfeld": The <span style="color: #c00000;">SPD</span> must control the Prussian Minister-President position. ?][? if curriculum_timer > 0 : It is too early to change the curriculum again. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?][? if chancellor_party != "SPD": <span style="color: #c00000;">SPD</span>가 총리직을 차지해야 합니다. ?][? if prussia_leader != "Braun" and prussia_leader != "Rosenfeld": <span style="color: #c00000;">SPD</span>가 프로이센 주총리직을 차지해야 합니다. ?][? if curriculum_timer > 0 : 커리큘럼을 다시 변경하기에는 너무 이릅니다. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
 go-to: education_science.curriculum
 
 
 @structure_
-title: Change the structure and funding of education.
+title: 교육 구조 및 재정 개편
 choose-if: advisor_action_timer = 0 and spd_in_government and chancellor_party = "SPD" and (prussia_leader == "Braun" or prussia_leader == "Rosenfeld")
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_in_government : The <span style="color: #c00000;">SPD</span> is not currently in government. ?][? if chancellor_party != "SPD": The <span style="color: #c00000;">SPD</span> must control the chancellorship. ?][? if prussia_leader != "Braun" and prussia_leader != "Rosenfeld": The <span style="color: #c00000;">SPD</span> must control the Prussian Minister-President position. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if not spd_in_government : <span style="color: #c00000;">SPD</span>가 정부에 참여 중이 아닙니다. ?][? if chancellor_party != "SPD": <span style="color: #c00000;">SPD</span> 가 총리직을 차지해야 합니다 ?][? if prussia_leader != "Braun" and prussia_leader != "Rosenfeld": <span style="color: #c00000;">SPD</span>가 프로이센 주총리직을 차지해야 합니다. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
 go-to: education_science.structure

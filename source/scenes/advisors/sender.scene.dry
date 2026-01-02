@@ -1,74 +1,74 @@
-title: Toni Sender
+title: 토니 젠더
 is-pinned-card: true
 tags: advisor, left
 card-image: img/portraits/SenderToni.jpg
 view-if: sender_advisor = 1
 new-page: true 
 
-= Toni Sender
+= 토니 젠더
 
-Toni Sender is an organizer and writer who came from a bourgeois family, but was radicalized into <span style="color: #c00000;">socialism</span> after her experiences in the workforce. She was a member of the anti-war <span style="color: #D47B9B;">**USPD**</span>, but did not support armed revolution.
+토니 젠더는 부르주아 가정 출신이지만 노동 현장의 경험을 통해 <span style="color: #c00000;">사회주의</span>로 급진화된 조직가이자 작가입니다. 그녀는 반전주의 성향의 <span style="color: #D47B9B;">**USPD**</span> 일원이었으나, 무장 혁명 노선은 지지하지 않았습니다. 
 
 - @left_unity
 - @organizing_women
 - @against_toleration
 - @crisis
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @left_unity
-title: Left-Center Unity
-subtitle: Encourage cooperation between the left and center wings of the party.
+title: 좌파-중앙파 통합
+subtitle: 당의 좌파와 중앙파 사이의 협력을 장려합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; left_dissent -= 10; labor_dissent -= 5; center_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 5
 
-We have reduced dissent among the party's factions.
+우리는 당내 분파들 간의 불만을 완화했습니다.
 
 @organizing_women
-title: Organizing women
-subtitle: Sender's strategies are aimed at young working women.
+title: 여성 조직화
+subtitle: 젠더의 전략은 젊은 노동 여성들을 목표로 합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: womens_rights += 1; workers_spd += 3*(1-dissent); new_middle_spd += 5*(1-dissent); advisor_action_timer = 6
 
-Sender's message is popular among young women working in the service sector, and we have recruited many white-collar employees.
+젠더의 메시지는 서비스업에 종사하는 젊은 여성들에게 호응을 얻고 있으며, 우리는 많은 화이트칼라 피고용인들을 당원으로 모집했습니다.
 
-[? if spd_r < 50 : Unfortunately, women still disproportionately support the bourgeois parties. ?]
+[? if spd_r < 50 : 안타깝게도, 여성들은 여전히 불균형적으로 부르주아 정당들을 지지하고 있습니다. ?]
 
 @against_toleration
-title: Against toleration
+title: 묵인 정책 반대
 view-if: not constructive_vonc
-subtitle: Break our current toleration arrangement, and bring down the government via a no-confidence vote.
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_toleration == 0 : The <span style="color: #c00000;">SPD</span> is not currently in toleration. ?]
+subtitle: 현재의 묵인 합의를 파기하고, 불신임 투표를 통해 정부를 무너뜨립니다.
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?] [? if spd_toleration == 0 : <span style="color: #c00000;">SPD</span>는 현재 묵인 정책을 시행 중이지 않습니다. ?]
 choose-if: advisor_action_timer == 0 and spd_toleration
 on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time + 3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_toleration = 0; spd_toleration_right = 0; left_strength += 8; pro_republic -= 4; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 8; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2; spd_break_toleration += 1
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
 
-We have grown tired of the burdens of toleration, and have called a vote of no confidence in the current minority government.
+우리는 묵인 정책의 부담에 지쳤으며, 현재의 소수 정부에 대한 불신임 투표를 소집했습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+조기 총선은 [+ next_election_year +]년 [+ next_election_month : month +]로 정해졌습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센 주의회 해산 투표를 가결하여, 새로운 선거를 강제했습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 주의회 선거는 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 정해졌습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+이러한 이중 해산 사태는 민주주의에 대한 국민의 신뢰를 뒤흔들었고, <span style="color: #7A3C00;">나치</span>는 이 불안정을 틈타 민주주의는 작동 불능이며 독일에는 강력한 지도자가 필요하다고 선동하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 불신임 투표를 가결하여, 우리 정부를 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우파 정당들로 구성된 중도 우파 연정으로 교체했습니다. 이는 뼈아픈 실책이지만, 새로운 선거가 치러졌다면 극단주의 정당들이 크게 약진했을 수도 있었기에 최악의 결과는 아닙니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센의 주총리로 선출되었습니다.
 
 @crisis
-title: Addressing the economic crisis
-subtitle: Sender can help support a left-wing economic program.
+title: 경제 위기 대처
+subtitle: 젠더는 좌파 경제 프로그램을 지지하는 데 도움을 줄 수 있습니다.
 choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and black_thursday_seen == 1 and nationalization_support <= 5
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if nationalization_adopted > 0 : We have already adopted the Left plan. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다. ?][? if nationalization_adopted > 0 : 우리는 이미 좌파 계획을 채택했습니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: crisis_program.support_left

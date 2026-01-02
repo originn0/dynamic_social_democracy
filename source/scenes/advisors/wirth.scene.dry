@@ -7,57 +7,57 @@ new-page: true
 
 = Joseph Wirth
 
-Wirth is a former chancellor and figure of the <span style="color: #000000;">Center</span>'s left wing who has been devotedly <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>, to the extent of angering his former party members. He is a strong supporter of maintaining democracy and building a broad popular base for the <span style="color: #c00000;">**SPD**</span>.
+요제프 비르트는 전직 총리이자 <span style="color: #000000;">중앙당</span> 좌파의 거물로, 옛 동료들의 분노를 살 정도로 헌신적인 <span style="color: #000000;">공</span><span style="color: #DD0000;">화주</span><span style="color: #FFCC00;">의자</span>였습니다. 그는 민주주의를 수호하고 <span style="color: #c00000;">**SPD**</span>를 위한 광범위한 대중적 기반을 구축해야 한다고 강력히 주장합니다.
 
 - @democratic_rally
 - @catholics_rally
 - @support_peoples_party
 - @build_peoples_party
 - @campaigning_peoples_party
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @democratic_rally
-title: Rally for democracy
-subtitle: Rally our party and the German people to defend democracy and freedom.
+title: 민주주의 수호 집회
+subtitle: 민주주의와 자유를 수호하기 위해 당과 독일 국민을 결집합니다.
 choose-if: advisor_action_timer == 0 
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; pro_republic += 8; democratization += 1; neorevisionist_strength += 5; reformist_strength += 5; workers_spd += 3*(1-dissent) if democratization >= 4; new_middle_spd += 2*(1-dissent) if democratization >= 4; catholics_spd += 4*(1-dissent) if democratization >= 3
 
-Wirth helps us to rally the people in defense of the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> system.
+비르트는 우리가 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">국</span> 체제를 수호하기 위해 국민을 결집하는 것을 돕습니다.
 
 @catholics_rally
-title: Organizing Catholics
-subtitle: Being a devoted Catholic and former <span style="color: #000000;">Center</span> member, he's particularly effective in winning votes from the <span style="color: #000000;">**[+ z_party_name +]**</span>.
+title: 가톨릭교도 조직화
+subtitle: 독실한 가톨릭 신자이자 전 <span style="color: #000000;">중앙당</span> 당원으로서, 그는 <span style="color: #000000;">**[+ z_party_name +]**</span>로부터 표를 가져오는 데 특히 효과적입니다.
 choose-if: advisor_action_timer == 0 
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; pro_republic += 4; catholics_spd += 8*(1-dissent)
 
-Wirth helps us rally the Catholic demographic back from the conservative <span style="color: #000000;">**[+ z_party_name +]**</span>.
+비르트는 우리가 보수적인 <span style="color: #000000;">**[+ z_party_name +]**</span>로부터 가톨릭 유권자들을 다시 끌어오는 것을 돕습니다.
 
 @support_peoples_party
-title: Build support for a People's Party
-subtitle: Can we expand our party beyond the industrial working class?
+title: 대중정당으로의 전환 지지 확보
+subtitle: 산업 노동자 계급을 넘어 당의 외연을 확장할 수 있을까요?
 view-if: peoples_party = 0
 choose-if: peoples_party_support <= 4 and advisor_action_timer = 0 and peoples_party == 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if peoples_party_support > 4: There is already substantial support for a People's Party. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if peoples_party_support > 4: 대중정당 노선에 대한 상당한 지지가 이미 존재합니다. ?]
 on-arrival: advisor_action_timer = 6; peoples_party_support += 1
 
-We are building up support for the idea of a People's Party.
+우리는 대중정당 구상에 대한 지지를 구축하고 있습니다.
 
 @build_peoples_party
 title: Building a People's Party
-subtitle: Can we expand our party beyond the industrial working class?
+subtitle: 산업 노동자 계급을 넘어 당의 외연을 확장할 수 있을까요?
 view-if: peoples_party == 0
 choose-if: peoples_party_support >= 3 and advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if peoples_party_support < 3: There is not enough support for this policy within the party. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if peoples_party_support < 3: 당내에 이 정책에 대한 지지가 부족합니다. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
 go-to: peoples_party
 
 @campaigning_peoples_party
-title: Campaigning as a People's Party
-subtitle: Campaigning with some of our previously nontraditional demographics.
+title: 대중정당으로서 선거 운동
+subtitle: 기존에는 비전통적이었던 유권자 계층을 대상으로 선거 운동을 펼칩니다.
 view-if: peoples_party = 1
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6;
 go-to: peoples_party_campaigning

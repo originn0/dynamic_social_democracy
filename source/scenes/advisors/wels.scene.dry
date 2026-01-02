@@ -1,13 +1,13 @@
-title: Otto Wels
+title: 오토 벨스
 is-pinned-card: true
 tags: advisor, centrist
 card-image: img/portraits/WelsOtto.jpg
 view-if: wels_advisor = 1
 new-page: true
 
-= Otto Wels
+= 오토 벨스
 
-Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</span>. He is a gifted organizer and a member of the centrist faction.
+오토 벨스는 <span style="color: #c00000;">**SPD**</span>에서 오랫동안 의장을 맡았습니다. 그는 탁월한 조직가이자 당내 중앙파의 일원입니다.
 
 - @clear_agenda
 - @party_discipline
@@ -15,13 +15,13 @@ Wels is the long-time chairman of the <span style="color: #c00000;">**SPD**</spa
 - @money_printer
 - @stimulation
 - @snap_election
-- @root: Return to main
+- @root: 주 메뉴로 돌아가기
 
 @clear_agenda
-title: Clear the agenda
-subtitle: Removes all cards from the hand.
+title: 의제 정리
+subtitle: 손에 든 모든 카드를 제거합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: {!
 Q.advisor_action_timer = 6;
 if (Q.difficulty >= 0) {
@@ -31,41 +31,41 @@ if (Q.difficulty >= 0) {
 }
 !}
 
-All items from our agenda have been cleared.
+우리의 의제에서 모든 안건이 정리되었습니다.
 
 @party_discipline
-title: Party Discipline
-subtitle: Reduce dissent across the party.
+title: 당 규율 확립
+subtitle: 당 전체의 불만을 줄입니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; left_dissent -= 5; labor_dissent -= 10; center_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 5
 
-We have enforced party discipline to reduce dissent across all factions.
+우리는 당 규율을 강화하여 모든 분파의 불만을 완화했습니다.
 
 @emergency_fundraising
-title: Emergency Fundraising
+title: 비상 자금 조달
 view-if: difficulty < 1
-subtitle: An emergency infusion of resources.
+subtitle: 긴급 자원을 수혈합니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 on-arrival: advisor_action_timer = 6; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
 
-[? if emergency_used <= 1: Wels has leveraged his position as party chairman to pull in donations and arrange quick loans. ?][? if emergency_used > 1 and emergency_used < 3: Discontent is brewing among the <span style="color: #c00000;">**SPD**</span>'s rank and file due to our persistent attempts at begging for money. ?][? if emergency_used > 2: We’re really scraping the barrel now—committed members are pressured into selling their valuables, while many others leave in frustration. ?]
+[? if emergency_used <= 1: 벨스는 당 의장으로서의 지위를 활용해 기부금을 모으고 급전을 융통했습니다. ?][? if emergency_used > 1 and emergency_used < 3: 우리가 계속해서 자금을 구걸하는 모습에 <span style="color: #c00000;">**SPD**</span> 평당원들의 불만이 고조되고 있습니다. ?][? if emergency_used > 2: 우리는 이제 정말 바닥까지 긁어모으고 있습니다. 헌신적인 당원들은 귀중품까지 팔아야 한다는 압박을 받고 있으며, 다른 많은 이들은 좌절감을 느끼며 당을 떠나고 있습니다. ?]
 
-We have gained +2 resources.
+자원을 +2 획득했습니다.
 
 @money_printer
-title: Print a SPDillion dollars.
+title: SPD일리언 달러를 찍어내기
 view-if: achievement_moly and ((difficulty == -1 and not dynamic_mode) or difficulty == 0)
-subtitle: This may have inflationary effects.
+subtitle: 인플레이션 효과를 가져올 수 있습니다.
 choose-if: advisor_action_timer = 0
-unavailable-subtitle: [? if advisor_action_timer > 0 and not rubicon : [+ advisor_action_timer +] months before next advisor action. ?][? if advisor_action_timer > 0 and rubicon : [+ advisor_action_timer +] weeks before next emergency fundraising. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 and not rubicon : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if advisor_action_timer > 0 and rubicon : 다음 비상 자금 조달까지 [+ advisor_action_timer +]주 남았습니다.  ?]
 on-arrival: advisor_action_timer = 6; resources += 10; inflation += 1; data_miner_detected = 1; ip_grabber = 1
 
-We have gained +10 resources.
+자원을 +10 획득했습니다.
 
 @stimulation
-title: Toggle Stimulation.
+title: 시뮬레이션 기능 켜기/끄기
 view-if: achievement_moly
 on-arrival: {!
 if (Q.stimulation) {
@@ -75,14 +75,14 @@ if (Q.stimulation) {
 }
 !}
 
-Ok.
+알겠습니다.
 
 @snap_election
-title: Snap Election
-subtitle: Call a snap election.
-unavailable-subtitle: [? if chancellor != "Wels" and president != "Wels" : Wels must be Chancellor or President. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+title: 조기 총선
+subtitle: 조기 총선을 소집합니다.
+unavailable-subtitle: [? if chancellor != "Wels" and president != "Wels" : 벨스가 총리이거나 대통령이어야 합니다. ?][? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?]
 choose-if: advisor_action_timer == 0 and (chancellor == "Wels" or president == "Wels")
 on-arrival: advisor_action_timer = 6; time_to_election = 3
 call: set_next_election_time
 
-We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
+우리는 [+ next_election_year +]년 [+ next_election_month : month +]에 치러질 새로운 선거를 소집했습니다.
