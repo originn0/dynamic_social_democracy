@@ -6,13 +6,13 @@ go-to: post_event if started = 1; start_menu if started = 0
 new-page: true
 go-to: start_menu_2
 
-= Social Democracy: An Alternate History
+= 사회민주주의: 대체 역사
 
 @start_menu_2
 
-- @start_1: Start game
-- @modinfo: Mod Info - Last Updated 2025/09/27
-- @credits: Credits
+- @start_1: 시작하기
+- @modinfo: 모드 정보 - 마지막 업데이트 2025/09/27
+- @credits: 크레딧
 - @game_over.achievements
 
 @start_1
@@ -22,9 +22,9 @@ go-to: start if achievement_game_completed; pls_player if not achievement_game_c
 
 @pls_player
 
-Read.
+읽으세요.
 
-- @modinfo.infotext: Mod Info - Last Updated 2025/09/27
+- @modinfo.infotext: 모드 정보 - 마지막 업데이트 2025/09/27
 
 
 @start
@@ -1203,22 +1203,22 @@ if (Q.percentComplete >= 100) {
 set-bg: img/map_2.jpg
 new-page: true
 
-> *"Such a general development cannot be attributed to the false tactics of any single party or to the mistakes of individual leaders. On the contrary, the conduct of individual leaders is determined largely by the sentiments of the people as a whole. It would be erroneous, however, to regard the sentiments of the moment as reflecting the natural make-up and character of the people. They are merely the consequence of the special circumstances which have brought about this profound degradation of the entire nation."*
+> *"이러한 전반적인 전개는 특정 정당의 잘못된 전술이나 개별 지도자의 실책 탓으로 돌릴 수 없다. 오히려 개별 지도자의 행동은 대중 전체의 정서에 의해 크게 좌우된다. 그러나 그 순간의 정서를 대중의 본성이나 성격을 반영하는 것으로 간주하는 것은 잘못이다. 그것들은 단지 국가 전체의 심각한 타락을 초래한 특수한 상황의 결과일 뿐이다."*
 
- - Karl Kautsky, *Hitlerism and Social Democracy*, 1934
+ - 카를 카우츠키, *히틀러주의와 사회민주주의*, 1934
 
-This is a game of alternate history. While historical accuracy is a major concern, keep in mind that this is a *game*, and that any divergence from actual events will necessarily have to involve some element of make-believe. Nevertheless, please let the author know if there are any glaring mistakes.
+이것은 대체 역사 게임입니다. 역사적 고증이 중요한 요소이긴 하지만, 이것이 어디까지나 *게임*이며, 실제 사건과 달라지는 부분에는 필연적으로 허구적 요소가 포함될 수밖에 없음을 유념해 주십시오. 그럼에도 불구하고, 명백한 오류가 있다면 제작자에게 알려주시기 바랍니다.
 
-For more information on the politics and government of the German Republic, see the "Library" page on the top left. If this is your first time playing the game, it is strongly recommended that you read at least some of this information.
+독일 공화국의 정치와 정부에 대한 더 많은 정보를 원하시면, 좌측 상단의 "도서관" 페이지를 참조하십시오. 이 게임을 처음 플레이하신다면, 해당 정보의 일부라도 읽어보시는 것을 강력히 권장합니다.
 
-**If you are playing this mod via the Mod Loader in base game, there will be various items missing (parliament colours, images, arrows, etc.). For the intended experience, please play using <a href="https://originn0.github.io/dynamic_social_democracy/" style="color: #0077FF">this</a> link.**
+**만약 기본 게임의 모드 로더를 통해 이 모드를 플레이하고 계신다면, 여러 요소(의회 색상, 이미지, 화살표 등)가 누락될 수 있습니다. 제작자가 의도한 경험을 위해서는, 부디 <a href="https://originn0.github.io/dynamic_social_democracy/" style="color: #0077FF">이</a> 링크를 사용하여 플레이해 주십시오.**
 
-- @1928_mod_mode: Begin (<span style="color: #0077FF;">dynamic</span> mode)
-- @1928_easy: Begin (<span style="color: #5B9A8D;">easy</span> difficulty)
-- @1928_main: Begin (<span style="color: #C4B156;">normal</span> difficulty)
-- @1928_hard: Begin (<span style="color: #A05252;">hard</span> difficulty)
-- @1928_historical: Begin (<span style="color: #611813;">historical</span> mode)
-- @1928_challenge: Custom Modes
+- @1928_mod_mode: 시작하기 (<span style="color: #0077FF;">다이나믹</span> 모드)
+- @1928_easy: 시작하기 (<span style="color: #5B9A8D;">쉬움</span> 난이도)
+- @1928_main: 시작하기 (<span style="color: #C4B156;">보통</span> 난이도)
+- @1928_hard: 시작하기 (<span style="color: #A05252;">어려움</span> 난이도)
+- @1928_historical: 시작하기 (<span style="color: #611813;">역사적</span> 모드)
+- @1928_challenge: 사용자 지정 모드
 
 @1928_easy
 on-arrival: difficulty = -1; resources = 4; dues = 5; base_dues = 5; rb_strength = 2500; kpd_relation = 29; z_relation = 54; dvp_relation = 49; ddp_relation = 65; budget = 5;
@@ -1229,7 +1229,7 @@ on-arrival: difficulty = 1; resources = 0; dues = 3; base_dues = 3; rb_strength 
 go-to: 1928_main
 
 @1928_historical
-subtitle: Saving, loading, and polls will be disabled. [? if not achievement_game_completed: Not recommended for a first playthrough. ?]
+subtitle: 저장, 불러오기, 여론조사 기능이 비활성화됩니다. [? if not achievement_game_completed: 첫 회차 플레이에는 권장하지 않습니다. ?]
 on-arrival: {!
 Q.difficulty = 2;
 Q.historical_mode = 1;
@@ -1251,7 +1251,7 @@ this.state.disableSaves = true;
 go-to: 1928_main
 
 @1928_mod_mode
-subtitle: Intended way of experiencing this mod.
+subtitle: 이 모드를 즐기는 정석적인 방법입니다.
 on-arrival: {!
 Q.difficulty = -1;
 Q.dynamic_mode = 1;
@@ -1268,7 +1268,7 @@ Q.budget = 2;
 go-to: 1928_main
 
 @1928_mod_mode_lite
-subtitle: Intended way of experiencing this mod.
+subtitle: 이 모드를 즐기는 정석적인 방법입니다.
 on-arrival: {!
 Q.difficulty = -1;
 Q.resources = 3;
@@ -1286,12 +1286,12 @@ go-to: 1928_main
 @1928_challenge
 view-if: achievement_holy
 
-Here, you can test your skills.
+이곳에서 당신의 실력을 시험해 볼 수 있습니다.
 
 - @joever_mode
 - @hitler_mode
 - @unemployed_mode
-- @start: Go back.
+- @start: 돌아가기
 
 
 @joever_mode
@@ -1534,9 +1534,9 @@ for (var party of Q.parties) {
 go-to: 1928_mod_mode_lite
 
 @wacky_weimar
-title: Wacky Weimar Mode
-subtitle: Various unrealistic easter eggs and features will be unlocked. Bugs are part of the experience.
-unavailable-subtitle: 66% or higher achievement completion is required.
+title: 괴짜 바이마르 모드
+subtitle: 다양한 비현실적인 이스터 에그와 기능이 해금됩니다. 버그는 경험의 일부입니다.
+unavailable-subtitle: 66% 이상의 업적을 달성해야 해금됩니다.
 choose-if: achievement_moly
 on-arrival: {!
 Q.wacky_weimar = 1;
