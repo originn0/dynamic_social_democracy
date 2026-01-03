@@ -19,7 +19,7 @@ title: WTB 계획 채택!
 subtitle: 당의 다른 구성원들이 WTB 계획을 지지하도록 설득합니다.
 choose-if: advisor_action_timer <= 0 and wtb_adopted == 0 and wtb_concept and black_thursday_seen and ((labor_strength >= center_strength) and (labor_strength >= left_strength)) and wtb_points >= 160
 on-arrival: advisor_action_timer = 6;
-unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다. ?][? if wtb_adopted > 0 : 우리는 이미 WTB 계획을 채택했습니다. ?][? if wtb_points < 160 : WTB 계획은 아직 조율 중입니다. ?][? if (labor_strength < center_strength or labor_strength < left_strength): 노동파의 힘이 충분하지 않습니다. ?]
+unavailable-subtitle: [? if advisor_action_timer > 0 : 다음 고문 활동까지 [+ advisor_action_timer +]개월 남았습니다. ?][? if black_thursday_seen == 0 : 현재 경제 위기 상황이 아닙니다. ?][? if wtb_adopted > 0 : 우리는 이미 WTB 계획을 채택했습니다. ?][? if wtb_points < 160 : WTB 계획은 아직 조율 중입니다. ?][? if (labor_strength < center_strength or labor_strength < left_strength): 노동계의 세력이 충분하지 않습니다. ?]
 go-to: wtb_proposed
 
 @carry_out_policy
