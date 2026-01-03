@@ -42,7 +42,7 @@ if (Q.economic_growth) {
 
 당내 불만: [+ dissent_percent : dissent +]
 
-= Government
+= 정부
 
 대통령: [? if president == "Hindenburg": <span style="color: #808080;">힌덴부르크</span> ?][? if president == "Braun" or president == "Schumacher" or president == "Wels" or president == "Grzesinski" or president == "Juchacz" or (president == "Rosenfeld" and not left_split): <span style="color: #c00000;">[+ president +]</span> ?][? if president == "Rosenfeld" and left_split: <span style="color: #9B0000;">[+ president +]</span> ?][? if president == "Thälmann": <span style="color: #700000;">[+ president +]</span> ?][? if president == "Münzenberg": <span style="color: #9B0000;">[+ president +]</span> ?][? if president == "Hitler" or president == "Göring" or president == "Frick": <span style="color: #7A3C00;">[+ president +]</span> ?][? if president == "Eckener": <span style="color: #000000;">에</span><span style="color: #DD0000;">케</span><span style="color: #FFCC00;">너</span> ?][? if (president == "Gessler" or president == "Heuss") and not lvp_formed: <span style="color: #D3C24D;">[+ president +]</span> ?][? if (president == "Luther" or president == "Jarres") and not lvp_formed: <span style="color: #C0A054;">[+ president +]</span> ?][? if (president == "Gessler" or president == "Heuss" or president == "Jarres" or president == "Luther") and lvp_formed: <span style="color: #FFCC00;">[+ president +]</span> ?][? if (president == "Adenauer" or president == "Brüning" or president == "Stegerwald") or ((president == "Westarp" or president == "Lettow-Vorbeck") and cvp_formed): <span style="color: #000000;">[+ president +]</span> ?][? if president == "Seldte" or president == "Hergt" or ((president == "Westarp" or president == "Lettow-Vorbeck") and dnvp_ideology == "Moderate" and not cvp_formed): <span style="color: #3E88B3;">[+ president +]</span> ?][? if (president == "Westarp" or president == "Lettow-Vorbeck") and dnvp_ideology == "Radical" and not cvp_kvp_formed: <span style="color: #0087DC;">[+ president +]</span> ?][? if president == "Großmann (acting)" or president == "Bumke (acting)" or president == "Seeckt": <span style="color: #808080;">[+ president +]</span> ?][? if president == "Hammerstein": <span style="color: #BFC8CC;">[+ president +]</span> ?][? if president == "Mann" or president == "Ossietzky": <span style="color: #E0A0A0;">[+ president +]</span> ?][? if president == "Einstein": <span style="color: #CFC88F;">[+ president +]</span> ?] ([? if (president == "Adenauer" or president == "Brüning" or president == "Stegerwald") or ((president == "Westarp" or president == "Lettow-Vorbeck") and cvp_formed):<span style="color: #000000;">**[+ z_party_name +]**</span>?][? if president == "Braun" or president == "Schumacher" or president == "Wels" or president == "Juchacz" or (president == "Rosenfeld" and not left_split):<span style="color: #c00000;">**SPD**</span>?][? if president == "Rosenfeld" and left_split:<span style="color: #9B0000;">**SAPD**</span>?][? if president == "Thälmann" or president == "Münzenberg":<span style="color: #700000;">**KPD**</span>?][? if president == "Seldte" or president == "Hergt" or ((president == "Westarp" or president == "Lettow-Vorbeck") and dnvp_ideology == "Moderate" and not cvp_formed): <span style="color: #3E88B3;">**DNVP**</span>?][? if (president == "Westarp" or president == "Lettow-Vorbeck") and dnvp_ideology == "Radical" and not cvp_kvp_formed: <span style="color: #0087DC;">**KVP**</span>?][? if president == "Hitler" or president == "Göring" or president == "Frick":<span style="color: #7A3C00;">**NSDAP**</span>?][? if (president == "Gessler" or president == "Heuss") and not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if (president == "Luther" or president == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if (president == "Gessler" or president == "Heuss" or president == "Jarres" or president == "Luther") and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if president == "Eckener" or president == "Hindenburg" or president == "Großmann (acting)" or president == "Bumke (acting)" or president == "Seeckt": <span style="color: #808080;">무소속</span>?][? if president == "Hammerstein": <span style="color: #BFC8CC;">**DNEF**</span>?][? if president == "Mann" or president == "Ossietzky": <span style="color: #E0A0A0;">무소속</span>?][? if president == "Einstein": <span style="color: #CFC88F;">무소속</span>?])
 
@@ -85,7 +85,7 @@ if (Q.economic_growth) {
 
 차기 프로이센 선거: [? if prussia_leader != "Papen" and prussia_leader != "Schleicher": [+ next_election_month_prussia : month +] [+ next_election_year_prussia +][? if rubicon:, [+ next_election_week_prussia +]주차 ?] ?][? if prussia_leader == "Papen" or prussia_leader == "Schleicher": 무기한 연기 ?]
 
-= Economics
+= 경제
 
 인플레이션: [+ inflation_2 +]%
 
@@ -238,7 +238,7 @@ Q.pro_republic_disp = Math.round(Q.pro_republic);
 
 [? if nvf_exist: <span class="tooltip-text" title="국가인민전선" style="color: #142e20;">**NVF**</span>: 없음 ?]
 
-= Internal Factions of the <span style="color: #c00000;">**SPD**</span>
+= <span style="color: #c00000;">**SPD**</span> 내부 파벌
 
 {!<span class="tooltip-text" title="좌파는 급진적이고 변혁적인 정책 및 KPD와의 협력에 관심을 둡니다.">좌파</span>!} 세력: [+ left_strength : strength +], 불만: [+ left_dissent : dissent +]
 
@@ -279,7 +279,7 @@ Q.sa_strength_2 = Q.sa_strength.toFixed(1);
 
 [? if year >= 1930 and not streetfighting_joever: <h4>[? if not kpd_truce: <span style="color: #000000;">민</span><span style="color: #DD0000;">주</span><span style="color: #FFCC00;">주의</span>?][? if kpd_truce: 반-<span style="color: #7A3C00;">파시스트</span>?] 세력: [+ democracy_force +]%</h4>?]
 
-[? if year >= 1930 and not streetfighting_joever: <span style="color: #c00000;">**Reichsbanner**</span>: [+ rb_force +]%?]
+[? if year >= 1930 and not streetfighting_joever: <span style="color: #c00000;">**국기단**</span>: [+ rb_force +]%?]
 
 [? if year >= 1930 and not streetfighting_joever and prussia_leader != "Papen" and prussia_leader != "Schleicher" and prussia_leader != "Strasser": <b>프로이센 경찰: [+ prussia_force +]%</b>?]
 
@@ -289,7 +289,7 @@ Q.sa_strength_2 = Q.sa_strength.toFixed(1);
 
 [? if year >= 1930 and not streetfighting_joever: <span style="color: #7A3C00;">**SA**</span>: [+ sa_force +]%?]
 
-[? if year >= 1930 and not streetfighting_joever: <span style="color: #3E88B3;">**Stahlhelm**</span>: [+ sh_force +]%?]
+[? if year >= 1930 and not streetfighting_joever: <span style="color: #3E88B3;">**철모단**</span>: [+ sh_force +]%?]
 
 [? if year >= 1930 and not streetfighting_joever and not kpd_truce: <span style="color: #8B0000;">**RFB**</span>: [+ rfb_force +]%?]
 
@@ -302,7 +302,7 @@ Q.sa_strength_2 = Q.sa_strength.toFixed(1);
 [? if year >= 1930 and not streetfighting_joever: 현재, 거리는 [? if far_right_paramilitary and rfb_force < far_right_force:[? if far_right_paramilitary_highest: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 완전히 장악하고 있습니다?][? if far_right_paramilitary_high: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 지배하고 있습니다?][? if far_right_paramilitary_med: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 통제하고 있습니다?][? if far_right_paramilitary_low: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 약하게 통제하고 있습니다?][? if sa_paramilitary:, 주로 폭력적인 <span style="color: #7A3C00;">**SA**</span>에 의해?]?][? if rfb_force >= far_right_force and far_right_paramilitary: <span style="color: #700000;">**RFB**</span>가 통제하고 있습니다?][? if democracy_paramilitary and rfb_force < democracy_force:[? if democracy_paramilitary_highest: <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의자들</span>이 완전히 장악하고 있습니다?][? if democracy_paramilitary_high: <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의자들</span>이 지배하고 있습니다?][? if democracy_paramilitary_med: <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의자들</span>이 통제하고 있습니다?][? if democracy_paramilitary_low: <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의자들</span>이 약하게 통제하고 있습니다?]?][? if rfb_force >= democracy_force and democracy_paramilitary: <span style="color: #700000;">**RFB**</span>가 통제하고 있습니다?][? if state_paramilitary:[? if state_paramilitary_highest: <span style="color: #BFC8CC;">**국가**</span>가 완전히 장악하고 있습니다?][? if state_paramilitary_high: <span style="color: #BFC8CC;">**국가**</span>가 지배하고 있습니다?][? if state_paramilitary_med: <span style="color: #BFC8CC;">**국가**</span>가 통제하고 있습니다?][? if state_paramilitary_low: <span style="color: #BFC8CC;">**국가**</span>가 약하게 통제하고 있습니다?]?].?]
 
 
-= Official military/paramilitaries
+= 공식적 (준)군사조직
 
 국방군: [+ reichswehr_strength +]천 병력.
 
