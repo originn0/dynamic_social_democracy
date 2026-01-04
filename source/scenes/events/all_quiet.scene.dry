@@ -1,5 +1,5 @@
-title: All Quiet on the Western Front
-subtitle: Censorship and violence over a movie...
+title: 서부 전선 이상 없다
+subtitle: 한 편의 영화를 둘러싼 검열과 폭력...
 view-if: year = 1930 and month = 12 and spd_prussia and not all_quiet_seen
 on-arrival: all_quiet_seen = 1
 max-visits: 1
@@ -7,40 +7,40 @@ tags: event
 new-page: true
 face-image: img/All_Quiet.jpg
 
-= All Quiet on the Western Front
+= 서부 전선 이상 없다
 
-The American film *All Quiet on the Western Front*, based on the German novel *Im Westen nichts Neues* by Erich Maria Remarque, is a film about the experiences of German soldiers in the Great War, and how they gradually became disillusioned with the ideas of patriotism and nationalism. 
+에리히 마리아 레마르크의 독일 소설 *서부 전선 이상 없다*를 원작으로 한 동명의 미국 영화는 대전쟁 당시 독일 군인들의 경험과, 그들이 어떻게 애국심과 민족주의라는 관념에 점차 환멸을 느끼게 되었는지를 다루고 있습니다.
 
-As an anti-war film, it is the target of major protest by <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> actors, especially the <span style="color: #7A3C00;">Nazis</span> and the <span style="color: #3E88B3;">**Stahlhelm**</span>. They are calling for the government to ban the film. If we do not ban it, the <span style="color: #7A3C00;">**SA**</span> threatens to violently stop the film from being shown or watched.
+반전 영화로서, 이 영화는 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력, 특히 <span style="color: #7A3C00;">나치</span>와 <span style="color: #3E88B3;">**철모단**</span>의 주요 시위 대상이 되었습니다. 그들은 정부가 영화 상영을 금지할 것을 요구하고 있습니다. 만약 우리가 금지하지 않는다면, <span style="color: #7A3C00;">**SA**</span>는 영화 상영이나 관람을 폭력적으로 막겠다고 위협하고 있습니다.
 
-- @ban: Ban the film, to prevent <span style="color: #7A3C00;">Nazi</span> violence.
-- @allow: Allow the film to be shown.
-- @allow_protect: Allow the film to be shown, and use the Prussian police to prevent <span style="color: #7A3C00;">Nazi</span> disruptions.
-- @everyone: In fact, everyone needs to learn the lessons of this film. Give free tickets to students and government employees.
+- @ban: <span style="color: #7A3C00;">나치</span>의 폭력을 막기 위해, 영화를 금지한다.
+- @allow: 영화가 상영되도록 허용한다.
+- @allow_protect: 영화 상영을 허용하고, <span style="color: #7A3C00;">나치</span>의 방해를 막기 위해 프로이센 경찰을 투입한다.
+- @everyone: 사실, 모든 사람이 이 영화의 교훈을 배울 필요가 있다. 학생들과 공무원들에게 무료 티켓을 배포한다.
 
 @ban
 on-arrival: old_middle_nsdap += 5; new_middle_nsdap += 3; workers_nsdap += 2; unemployed_nsdap += 2; sa_strength += 50; nationalism += 6; pro_republic -= 5
 
-When we ban the film, the <span style="color: #7A3C00;">Nazis</span> immediately celebrate it as a major victory; they claim that even the red Marxists agree with them! It is a major boost to their morale.
+우리가 영화를 금지하자, <span style="color: #7A3C00;">나치</span>는 즉시 이를 주요 승리로 자축했습니다. 그들은 심지어 빨갱이 마르크스주의자들도 자신들에게 동의한다고 주장합니다! 이는 그들의 사기를 크게 북돋아 주었습니다.
 
 
 @allow
 on-arrival: nationalism += 3; old_middle_nsdap += 5; new_middle_nsdap += 3; workers_nsdap += 1; unemployed_nsdap += 1; sa_strength += 15; pro_republic -= 3; strife += 1
 
-While we allow the film, showings are marred by violence. Showings of the film eventually stop, and the <span style="color: #7A3C00;">Nazis</span> claim victory.
+우리가 영화를 허용했지만, 상영장은 폭력으로 얼룩졌습니다. 결국 영화 상영은 중단되었고, <span style="color: #7A3C00;">나치</span>는 승리를 주장하고 있습니다.
 
 
 @allow_protect
 choose-if: prussian_police_loyalty >= 0.65 and prussia_leader = "Braun" or prussia_leader = "Rosenfeld"
-unavailable-subtitle: [? if prussian_police_loyalty < 0.65:The police are not willing to protect the film. ?] [? if not prussia_leader = "Braun" and not prussia_leader = "Rosenfeld": Our coalition partners restrain us from policing actions. ?]
+unavailable-subtitle: [? if prussian_police_loyalty < 0.65:경찰은 영화를 보호할 의향이 없습니다. ?] [? if not prussia_leader = "Braun" and not prussia_leader = "Rosenfeld": 우리의 연합 파트너들이 경찰 투입을 만류하고 있습니다. ?]
 on-arrival: nationalism -= 4; pro_republic += 4*(1-dissent); strife += 1
 
-Under the protection of the police, the people are allowed to watch the film in peace. <span style="color: #7A3C00;">Nazi</span> disturbances are kept to a minimum.
+경찰의 보호 아래, 사람들은 평화롭게 영화를 관람할 수 있습니다. <span style="color: #7A3C00;">나치</span>의 소란은 최소한으로 억제되었습니다.
 
 @everyone
 choose-if: prussian_police_loyalty >= 0.75 and prussia_leader = "Braun" or prussia_leader = "Rosenfeld"
-unavailable-subtitle: [? if prussian_police_loyalty < 0.75: The police are unable to guarantee the safety of all the attendees. ?] [? if not prussia_leader = "Braun" and not prussia_leader = "Rosenfeld": Our coalition partners restrain us from this action. ?]
+unavailable-subtitle: [? if prussian_police_loyalty < 0.75: 경찰은 모든 관람객의 안전을 보장할 수 없습니다. ?] [? if not prussia_leader = "Braun" and not prussia_leader = "Rosenfeld": 우리의 연합 파트너들이 이 조치를 만류하고 있습니다. ?]
 on-arrival: nationalism -= 5; pro_republic += 5*(1-dissent); workers_nsdap -= 3; unemployed_nsdap -= 3; new_middle_nsdap -= 3
 
-Under police protection, crowds throng the film's showings, as <span style="color: #7A3C00;">Nazis</span> protest outside. The reception is mixed, but a new national conversation develops, reexamining the right-wing histories of the war. Quietly, many minds are changed, or at least affected in subtle ways.
+경찰의 보호 아래, <span style="color: #7A3C00;">나치</span>가 밖에서 시위하는 동안 군중이 영화 상영관으로 인산인해를 이룹니다. 반응은 엇갈리지만, 전쟁에 대한 우파의 역사관을 재검토하는 새로운 국가적 대화가 전개됩니다. 조용히, 많은 사람들의 생각이 바뀌거나, 적어도 미묘한 방식으로 영향을 받았습니다.
 

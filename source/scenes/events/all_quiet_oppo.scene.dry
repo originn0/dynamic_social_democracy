@@ -1,5 +1,5 @@
-title: All Quiet on the Western Front
-subtitle: Censorship and violence over a movie...
+title: 서부 전선 이상 없다
+subtitle: 한 편의 영화를 둘러싼 검열과 폭력...
 view-if: year = 1930 and month = 12 and not spd_r_prussia and not all_quiet_seen
 on-arrival: all_quiet_seen = 1
 max-visits: 1
@@ -7,35 +7,34 @@ tags: event
 new-page: true
 face-image: img/All_Quiet.jpg
 
-= All Quiet on the Western Front
+= 서부 전선 이상 없다
 
-The American film *All Quiet on the Western Front*, based on the German novel *Im Westen nichts Neues* by Erich Maria Remarque, is a film about the experiences of German soldiers in the Great War, and how they gradually became disillusioned with the ideas of patriotism and nationalism. 
+에리히 마리아 레마르크의 독일 소설 *서부 전선 이상 없다*를 원작으로 한 동명의 미국 영화는 대전쟁 당시 독일 군인들의 경험과, 그들이 어떻게 애국심과 민족주의라는 관념에 점차 환멸을 느끼게 되었는지를 다루고 있습니다.
 
-As an anti-war film, it is the target of major protest by <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> actors, especially the <span style="color: #7A3C00;">Nazis</span> and the <span style="color: #3E88B3;">**Stahlhelm**</span>. They are calling for the government to ban the film. If we do not ban it, the <span style="color: #7A3C00;">**SA**</span> threatens to violently stop the film from being shown or watched.
+반전 영화로서, 이 영화는 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력, 특히 <span style="color: #7A3C00;">나치</span>와 <span style="color: #3E88B3;">**철모단**</span>의 주요 시위 대상이 되었습니다. 그들은 정부가 영화 상영을 금지할 것을 요구하고 있습니다. 만약 우리가 금지하지 않는다면, <span style="color: #7A3C00;">**SA**</span>는 영화 상영이나 관람을 폭력적으로 막겠다고 위협하고 있습니다.
 
-Since we lack control over the Prussian state government, the decision to allow or ban the film will ultimately rest with the bourgeois parties.
+우리는 프로이센 주 정부에 대한 통제력이 부족하기 때문에, 영화를 허용할지 금지할지에 대한 결정은 궁극적으로 부르주아 정당들에게 달려 있을 것입니다.
 
-- @ban: We await their decision...
-- @allow: We await their decision...
-- @allow_protect: We await their decision...
+- @ban: 우리는 그들의 결정을 기다린다...
+- @allow: 우리는 그들의 결정을 기다린다...
+- @allow_protect: 우리는 그들의 결정을 기다린다...
 
 @ban
 view-if: z_ideology == "Right" and not (spd_toleration_prussia and prussian_police_loyalty >= 0.65)
 on-arrival: old_middle_nsdap += 4; new_middle_nsdap += 3; workers_nsdap += 2; unemployed_nsdap += 2; sa_strength += 50; nationalism += 5; pro_republic -= 4
 
-The [? if in_right_coalition_prussia: right-wing coalition?][? if in_center_right_coalition_prussia: center-right coalition?] has yielded to the <span style="color: #7A3C00;">Nazis</span>' demands, banning the controversial film. The <span style="color: #7A3C00;">Nazis</span> are quick to proclaim the decision as a significant triumph, leading to a notable boost in their morale and political confidence.
+[? if in_right_coalition_prussia: 우파 연합?][? if in_center_right_coalition_prussia: 중도 우파 연합?]은 <span style="color: #7A3C00;">나치</span>의 요구에 굴복하여, 논란이 되는 영화를 금지했습니다. <span style="color: #7A3C00;">나치</span>는 이 결정을 중요한 승리라고 재빨리 선언하며, 그들의 사기와 정치적 자신감을 크게 고취시켰습니다.
 
 
 @allow
 view-if: z_ideology == "Left" and not (spd_toleration_prussia and prussian_police_loyalty >= 0.65)
 on-arrival: nationalism += 3; old_middle_nsdap += 4; new_middle_nsdap += 3; workers_nsdap += 1; sa_strength += 15; pro_republic -= 3; strife += 1
 
-The bourgeois parties have permitted the film to be shown despite threats from the <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span>. However, screenings are marred by violence. Showings of the film are eventually halted, allowing the <span style="color: #7A3C00;">Nazis</span> to declare the outcome a victory for their movement.
+부르주아 정당들은 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>의 위협에도 불구하고 영화 상영을 허가했습니다. 그러나 상영장은 폭력으로 얼룩졌습니다. 결국 영화 상영은 중단되었고, <span style="color: #7A3C00;">나치</span>는 이 결과를 자신들의 운동이 거둔 승리라고 선언했습니다.
 
 
 @allow_protect
 view-if: spd_toleration_prussia and prussian_police_loyalty >= 0.65
 on-arrival: nationalism -= 3; pro_republic += 3*(1-dissent); strife += 1
 
-The bourgeois coalition in Prussia, who we are in a toleration agreement with, have surprisingly sent the Prussian police to prevent <span style="color: #7A3C00;">Nazi</span> violence. Under the protection of the police, the people are allowed to watch the film in relative peace.
-
+우리가 묵인 협정 중에 있는 프로이센의 부르주아 연합은 놀랍게도 <span style="color: #7A3C00;">나치</span>의 폭력을 막기 위해 프로이센 경찰을 투입했습니다. 경찰의 보호 아래, 사람들은 비교적 평화롭게 영화를 관람할 수 있습니다.
