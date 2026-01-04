@@ -1,35 +1,35 @@
-title: The Boxheim Documents
+title: 박스하임 문서
 new-page: true
-subtitle: A set of documents detailing a violent seizure of power by the <span style="color: #7A3C00;">Nazis</span> is discovered...
+subtitle: <span style="color: #7A3C00;">나치</span>의 폭력적인 정권 탈취 계획이 담긴 문서가 발견되었습니다...
 view-if: year = 1931 and month == 11 and nsdap_votes >= 24 and investigate_far_right < 3
 on-arrival: boxheim_seen = 1; nazi_urgency += 1; investigate_far_right = 4; hindenburg_angry_bruning -= 10
 max-visits: 1
 face-image: img/boxheim.jpg
 tags: event
 
-= The Boxheim Documents
+= 박스하임 문서
 
-In the elections in the State of Hesse, which resulted in no clear majority, we have remained in a caretaker capacity. [? if z_ideology == "Right": while the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #7A3C00;">**NSDAP**</span> attempt to negotiate a coalition agreement.?] This has allowed us to retain control of the Interior Ministry and granted our Wilhelm Leuschner, the authority to order house searches of <span style="color: #7A3C00;">Nazis</span> following a tip from a disgraced <span style="color: #7A3C00;">**NSDAP**</span> Landtag member.
+과반 정당이 없는 헤센 주 선거 결과에 따라, 우리는 과도 정부로서 역할을 수행하고 있습니다. [? if z_ideology == "Right": [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 <span style="color: #7A3C00;">**NSDAP**</span>가 연정 구성을 협상하는 동안 말입니다.?] 덕분에 우리는 내무부 장관직을 유지할 수 있었고, 불명예 해임 된 <span style="color: #7A3C00;">**NSDAP**</span> 주의원의 제보를 받은 우리 당의 빌헬름 로이슈너가 <span style="color: #7A3C00;">나치</span>에 대한 가택 수색을 명령할 권한을 갖게 되었습니다.
 
-During these searches, a copy of a letter sent by <span style="color: #7A3C00;">**NSDAP**</span> member Werner Best to the party leadership in Munich is discovered. The letter reveals their plan to violently seize power and includes guidelines for emergency decrees. Among these plans is a provision making access to food contingent on compulsory labor service, from which <span style="color: #005EB8;">Jews</span> would be exempt, implying they would receive no food at all.
+수색 도중, <span style="color: #7A3C00;">**NSDAP**</span> 당원 베르너 베스트가 뮌헨의 당 지도부에 보낸 편지 사본이 발견되었습니다. 이 편지에는 폭력적인 권력 탈취 계획과 긴급 칙령에 대한 지침이 드러나 있습니다. 계획 중에는 식량 배급을 강제 노동과 연계시키는 조항이 있는데, <span style="color: #005EB8;">유대인</span>은 노동 의무에서 제외된다고 명시되어 있어, 사실상 식량을 전혀 주지 않겠다는 의미를 내포하고 있습니다.
 
-In an attempt to protect themselves from the severe damage this revelation causes to [? if not hitler_deported: Hitler's?][? if hitler_deported: their?] oath of legality, the <span style="color: #7A3C00;">**NSDAP**</span> has defended the letter, claiming it was intended solely for a potential <span style="color: #700000;">communist</span> seizure of power. It is now up to the judiciary to determine the consequences of this anti-constitutional plan.
+이 폭로가 [? if not hitler_deported: 히틀러의?][? if hitler_deported: 그들의?] 충성 맹세에 입힐 심각한 타격을 막기 위해, <span style="color: #7A3C00;">**NSDAP**</span>는 이 편지가 정부가 아닌 잠재적인 <span style="color: #700000;">공산주의자</span>들의 권력 탈취에 대비한 것이라고 주장하며 방어하고 있습니다. 이 반헌법적 계획에 대한 처분은 이제 사법부의 손에 달렸습니다.
 
-- @pressure_drop: We await the decision of the courts.
-- @nothing: We await the decision of the courts.
+- @pressure_drop:법원의 판결을 기다린다.
+- @nothing: 법원의 판결을 기다린다.
 
 @pressure_drop
 view-if: judicial_reform >= 4
 on-arrival: boxheim_persecuted = 1; neorevisionist_dissent -= 20; neorevisionist_strength += 10; workers_nsdap -= 6; new_middle_nsdap -= 10; old_middle_nsdap -= 10; rural_nsdap -= 4; catholics_nsdap -= 3; workers_spd += 3; new_middle_spd += 3; pro_republic += 10; sa_militancy -= 0.1; hindenburg_angry_bruning -= 50; 
 
-Due to our thorough reform of the judicial system, the <span style="color: #7A3C00;">Nazis</span> behind these documents can now be publicly exposed and prosecuted by the state for high treason. This has dealt a severe blow to the constitutional appearance of the <span style="color: #7A3C00;">**NSDAP**</span>, causing great distrust between them and the bourgeois establishment, including President Hindenburg himself.
+사법 체계에 대한 우리의 철저한 개혁 덕분에, 이 문서의 배후에 있는 <span style="color: #7A3C00;">나치</span>들은 이제 대역죄 혐의로 공개적으로 폭로되고 기소될 수 있게 되었습니다. 이는 <span style="color: #7A3C00;">**NSDAP**</span>가 내세우던 합법적 이미지에 치명타를 입혔으며, 힌덴부르크 대통령을 포함한 부르주아 기득권층과 그들 사이에 큰 불신을 심어주었습니다.
 
-Our Hesse government is set to continue in a caretaker capacity for the foreseeable future, following the collapse of talks between the <span style="color: #7A3C00;">**NSDAP**</span> and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+우리의 헤센 정부는 <span style="color: #7A3C00;">**NSDAP**</span>와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 간의 회담이 결렬됨에 따라 당분간 과도 정부 체제로 유지될 예정입니다.
 
 @nothing
 view-if: judicial_reform < 4
 on-arrival: boxheim_persecuted = 0; neorevisionist_dissent -= 10; neorevisionist_strength += 5; workers_nsdap -= 2; new_middle_nsdap -= 6; old_middle_nsdap -= 6; rural_nsdap -= 2; pro_republic += 5; sa_militancy -= 0.05; workers_spd += 2; new_middle_spd += 2
 
-Expectedly, the Ministry of Justice believes that the documents did not constitute a crime of high treason, as they argue that the document was directed against <span style="color: #700000;">communist</span> putschists, rather than the government. [? if bruning_time: We are sure that Chancellor Brüning is behind this downplaying, to keep cooperation with the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> open. ?]
+예상대로 법무부는 이 문서가 정부가 아닌 <span style="color: #700000;">공산주의</span> 쿠데타 세력을 겨냥한 것이라는 주장을 받아들여, 대역죄에 해당하지 않는다고 판단했습니다. [? if bruning_time: 우리는 브뤼닝 총리가 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>파와의 협력 가능성을 열어두기 위해 이 사건을 축소하려 배후에서 조종하고 있다고 확신합니다. ?]
 
-We have at least discredited the <span style="color: #7A3C00;">Nazis</span> in the eyes of many, and have managed to keep our Hesse government functioning in a caretaker capacity due to the collapse of talks between the <span style="color: #7A3C00;">**NSDAP**</span> and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+우리는 적어도 많은 이들의 눈에 <span style="color: #7A3C00;">나치</span>의 신용을 떨어뜨렸고, <span style="color: #7A3C00;">**NSDAP**</span>와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 간의 회담 결렬로 인해 헤센 정부를 과도 정부 체제로 유지하는 데 성공했습니다.

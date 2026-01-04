@@ -1,21 +1,21 @@
-title: May Day, 1929
+title: 1929년 노동절
 new-page: true
-subtitle: A <span style="color: #700000;">Communist</span> demonstration
+subtitle: <span style="color: #700000;">공산당</span> 시위
 tags: event
 view-if: year = 1929 and month = 5
 max-visits: 1
 face-image: img/redfront.jpg
 
-= May Day, 1929
+= 1929년 노동절
 
-Tensions run high in Berlin. The <span style="color: #700000;">**Communists**</span> are planning a demonstration to commemorate the 10th anniversary of the <span style="color: #d00000;">Spartacist</span> Uprising. No one has forgotten that it was our party members who ordered the uprising's suppression, and the <span style="color: #700000;">**Communists**</span> still blame us for the deaths of Rosa Luxemburg and Karl Liebknecht.
+베를린의 긴장감이 고조되고 있습니다. <span style="color: #700000;">**공산주의자들**</span>은 <span style="color: #d00000;">스파르타쿠스단</span> 봉기의 10주년을 기념하기 위해 시위를 계획하고 있습니다. 우리 당원들이 봉기 진압을 명령했다는 사실을 잊은 사람은 아무도 없으며, <span style="color: #700000;">**공산주의자들**</span>은 여전히 로자 룩셈부르크와 카를 리프크네히트의 죽음을 우리 탓으로 돌리고 있습니다.
 
-Many <span style="color: #000000;">non</span>-<span style="color: #700000;">communists</span> are afraid of the possibility of another violent uprising, and our allies in the Prussian coalition are asking the Prussian Interior Ministry to ban the demonstrations.
+많은 <span style="color: #000000;">비</span><span style="color: #700000;">공산주의자들</span>은 또 다른 무장 봉기가 일어날까 두려워하고 있으며, 프로이센 연정 내 우리의 동맹들은 프로이센 내무부에 시위 금지를 요청하고 있습니다.
 
-- @ban: Ban the demonstrations.
-- @allow_police: Allow the demonstrations to proceed, but maintain a heavy police presence.
-- @allow: Allow the demonstrations to proceed.
-- @join: Join in the demonstrations ourselves.
+- @ban: 시위를 금지한다.
+- @allow_police: 시위를 허가하되, 경찰 병력을 대거 배치한다.
+- @allow: 시위가 진행되도록 허용한다.
+- @join: 우리도 시위에 동참한다.
 
 @ban
 on-arrival: blutmai = 1; kpd_relation -= 25; z_relation += 3; dvp_relation += 3; ddp_relation += 3; lvp_relation += 3; workers_spd -= 4; unemployed_spd -= 4; workers_kpd += 2; unemployed_kpd += 3; communist_coalition -= 3; strife += 1; dvp_left += 1; ddp_left += 0.5; lvp_left += 1; hindenburg_angry -= 8
@@ -32,47 +32,47 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-We issued the order to ban the demonstrations, and sent police to enforce the ban. There was a confrontation between the police and <span style="color: #700000;">**Communists**</span>, and violence erupted. Reports say that the Berlin police killed dozens of demonstrators and innocent bystanders. The <span style="color: #700000;">**Communists**</span> are already calling this incident *Blutmai*, "Bloody May".
+우리는 시위 금지 명령을 내리고 경찰을 투입해 이를 집행했습니다. 경찰과 <span style="color: #700000;">**공산주의자들**</span> 사이에 대치 상황이 벌어졌고, 폭력 사태가 발생했습니다. 보고에 따르면 베를린 경찰이 수십 명의 시위대와 무고한 시민들을 사살했다고 합니다. <span style="color: #700000;">**공산주의자들**</span>은 이미 이 사건을 *Blutmai*, 즉 "피의 5월"이라고 부르고 있습니다.
 
-This may end any attempt at reconciliation with the <span style="color: #700000;">**KPD**</span>, but the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**Christian People's**</span>?] and [? if not lvp_formed: <span style="color: #C0A054;">**People's**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] parties approve of our action.
+이로써 <span style="color: #700000;">**KPD**</span>와의 화해 시도는 끝장날지 모르지만, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**기독교 인민당**</span>?]과 [? if not lvp_formed: <span style="color: #C0A054;">**인민당**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민당**</span>?]은 우리의 조치를 지지하고 있습니다.
 
-- @corrupt_police: It is the fault of corrupt and <span style="color: #808080;">reactionary</span> elements within the police. Purge those responsible.
-- @communist_fault: It is the fault of the <span style="color: #700000;">**Communists**</span> for refusing to follow the rule of law.
-- @no_fault: It is an unfortunate incident that should not have happened, but is no one's fault at all.
+- @corrupt_police: 부패하고 <span style="color: #808080;">반동적인</span> 경찰 내부 분자들의 잘못이다. 책임자를 숙청한다.
+- @communist_fault: 법치를 거부한 <span style="color: #700000;">**공산주의자들**</span>의 잘못이다.
+- @no_fault: 일어나지 말았어야 할 불행한 사건이지만, 누구의 잘못도 아니다.
 
 @corrupt_police
 on-arrival: kpd_relation += 10; z_relation -= 2; dvp_relation -= 2; lvp_relation -= 2; prussian_police_loyalty += 0.05; hindenburg_angry += 4; prussian_police_loyalty += 0.05 if judicial_reform > 0; kpd_relation += 10 if judicial_reform > 0;
 
-We arrested the police responsible for the killings, and put them on trial. [? if judicial_reform = 0 : Unfortunately, the <span style="color: #808080;">reactionary</span> judiciary let them go free with barely any punishment at all. ?]
+우리는 살인에 책임이 있는 경찰관들을 체포해 재판에 넘겼습니다. [? if judicial_reform = 0 : 안타깝게도 <span style="color: #808080;">반동적인</span> 사법부는 솜방망이 처벌만 내린 채 그들을 풀어주었습니다. ?]
 
-This assuages some of the <span style="color: #700000;">**Communists**</span>' outrage, but certainly not all.
+이 조치는 <span style="color: #700000;">**공산주의자들**</span>의 분노를 어느 정도 가라앉힐 수는 있겠지만, 완전히 해소하기엔 역부족입니다.
 
 @communist_fault
 on-arrival: kpd_relation -= 10; z_relation += 3; dvp_relation += 3; lvp_relation += 2; rfb_strength -= 80; rfb_banned = 1; hindenburg_angry -= 4
 
-If the <span style="color: #700000;">**KPD**</span> continues to act illegally, they must suffer the consequences. Thus, we have banned the <span style="color: #8B0000;">**RFKB**</span>, their paramilitary group. The bourgeois and right-leaning parties approve.
+<span style="color: #700000;">**KPD**</span>가 계속 불법 행위를 저지른다면, 그에 따른 대가를 치러야 합니다. 이에 따라 우리는 그들의 준군사 조직인 <span style="color: #8B0000;">**RFKB**</span>를 금지했습니다. 부르주아와 우파 성향 정당들은 이를 지지합니다.
 
 @no_fault
 
-This position gains us no allies, and does not alienate anyone any further.
+이 입장은 우리에게 어떤 동맹도 만들어주지 못하며, 누구와도 더 멀어지지 않게 할 뿐입니다.
 
 
 @allow_police
 on-arrival: kpd_relation += 5; workers_kpd += 3; unemployed_kpd += 5
 
-The demonstration proceeds peacefully under the watchful eyes of the police. Onlookers admire the strength of the <span style="color: #700000;">Communist</span> workers, and perhaps some of our supporters have been peeled off.
+시위는 경찰의 감시 하에 평화롭게 진행되었습니다. 구경꾼들은 <span style="color: #700000;">공산주의</span> 노동자들의 위세에 감탄했으며, 어쩌면 우리 지지층 일부가 이탈했을지도 모릅니다.
 
 
 @allow
 on-arrival: workers_kpd += 3; unemployed_kpd += 5; kpd_relation += 10; rfb_strength += 50; z_relation -= 3; dvp_relation -= 3; ddp_relation -= 2; lvp_relation -= 3; coalition_dissent += 1; rfb_militancy += 0.1; dvp_right += 1; ddp_right += 0.5; lvp_right += 1; hindenburg_angry += 5
 
-The demonstration proceeds peacefully, with a minimal police presence. Onlookers admire the strength of the <span style="color: #700000;">Communist</span> workers, and perhaps some of our members have been peeled off. The <span style="color: #700000;">**KPD**</span> will never admit it, but they are developing a less hostile view towards us (even if they do not *like* us yet). Our <span style="color: #000000;">cen</span><span style="color: #C0A054;">trist</span> allies denounce the demonstration, but their cries are ineffectual.
+시위는 최소한의 경찰 병력만 배치된 채 평화롭게 진행되었습니다. 구경꾼들은 <span style="color: #700000;">공산주의</span> 노동자들의 위세에 감탄했으며, 어쩌면 우리 당원 일부가 이탈했을지도 모릅니다. <span style="color: #700000;">**KPD**</span>는 절대 인정하지 않겠지만, 그들은 우리에 대해 덜 적대적인 태도를 보이기 시작했습니다 (비록 아직 우리를 *좋아하는* 건 아니지만 말입니다). 우리의 <span style="color: #000000;">중</span><span style="color: #C0A054;">도</span> 동맹들은 시위를 비난하지만, 그들의 외침은 공허할 뿐입니다.
 
 
 @join
 choose-if: kpd_relation >= 45
-unavailable-subtitle: The <span style="color: #700000;">Communists</span> do not trust us enough.
+unavailable-subtitle: <span style="color: #700000;">공산당</span>은 우리를 충분히 신뢰하지 않습니다.
 on-arrival: kpd_relation += 15; workers_kpd += 3; unemployed_kpd += 5; workers_spd += 5; unemployed_spd += 5; new_middle_spd -= 5; old_middle_spd -= 5; z_relation -= 10; dvp_relation -= 10; coalition_dissent += 2; communist_coalition += 2; rb_strength += 100; rfb_strength += 100; rfb_militancy += 0.1; sa_strength += 50; sh_strength += 50; dvp_right += 3; ddp_right += 3; ddp_relation -= 8; ddp_cohesion -= 1; lvp_right += 3; lvp_relation -= 10; hindenburg_angry += 20
 achievement: die_rote_fahne
 
-It is difficult to persuade the <span style="color: #700000;">**Communists**</span> to let us march with them, given the histories of their party and ours. However, they eventually relent. The display of proletarian unity inspires the workers and terrifies the bourgeoisie and middle class. [? if in_grand_coalition or in_weimar_coalition: Our coalition partners in the government are outraged at our display with the <span style="color: #700000;">communists</span>, and are threatening to break up the government. ?] The <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> paramilitaries increase their recruitment to counter us.
+양당의 과거사를 고려할 때, <span style="color: #700000;">**공산주의자들**</span>을 설득해 우리가 함께 행진하도록 하는 것은 어려운 일입니다. 하지만 그들은 결국 수락했습니다. 프롤레타리아의 단결을 보여주는 이 광경은 노동자들을 고무시키고 부르주아와 중산층을 공포에 떨게 합니다. [? if in_grand_coalition or in_weimar_coalition: 정부 내 연정 파트너들은 <span style="color: #700000;">공산주의자들</span>과 함께한 우리의 행동에 격분하며 연정을 깨겠다고 위협하고 있습니다. ?] <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 준군사 조직들은 우리에게 대항하기 위해 조직원 모집을 늘리고 있습니다.
