@@ -1,43 +1,42 @@
-title: Uprising in Austria
+title: 오스트리아의 봉기
 new-page: true
-subtitle: In response to police attacks, the <span style="color: #A50034;">Austrian socialists</span> are rising up...
+subtitle: 경찰의 공격에 대응하여, <span style="color: #A50034;">오스트리아 사회주의자들</span>이 봉기하고 있습니다...
 view-if: year = 1934 and (month = 2 or month = 3) and austrian_parliament_seen
 max-visits: 1
 on-arrival: austrian_civil_war_seen = 1
 face-image: img/schutzbund.png
 tags: event
 
-= Uprising in Austria
+= 오스트리아의 봉기
 
 # pre-emptive democratic victory if sdapo strength >= 6
 # long civil war if sdapo_strength = 5 or 4 - opportunity for interference/forced peace
 # instant defeat if sdapo_strength < 4
 
-The crisis in Austria is continuing. The "<span style="color: #7A3C00;">Austrofascist</span>" government led by Engelbert Dollfuß continues to rule by emergency decree. It has been persecuting its political opposition, primarily the <span style="color: #A50034;">social democrats</span> of the <span style="color: #A50034;">**SDAPÖ**</span>.
+오스트리아의 위기는 계속되고 있습니다. 엥겔베르트 돌푸스가 이끄는 "<span style="color: #7A3C00;">오스트로파시스트</span>" 정부는 긴급 명령에 의한 통치를 계속하고 있습니다. 그들은 정치적 반대파, 주로 <span style="color: #A50034;">**SDAPÖ**</span>의 <span style="color: #A50034;">사회민주주의자들</span>을 박해해 왔습니다.
 
-[? if sdapo_strength < 6: Now, Austria is entering a state of civil war. When the police attempted to seize weapons from the Republikanischer Schutzbund, the Schutzbund responded with force, shooting at the government troops. Fighting has sporadically broken out between Schutzbund and government forces all over Austria. ?]
+[? if sdapo_strength < 6: 지금, 오스트리아는 내전 상태로 접어들고 있습니다. 경찰이 공화국 수비대로부터 무기를 압수하려고 시도했을 때, 수비대는 무력으로 대응하여 정부군을 향해 발포했습니다. 오스트리아 전역에서 수비대와 정부군 사이에 산발적인 전투가 발발했습니다. ?]
 
-[? if sdapo_strength >= 6: The government's attempts to suppress the <span style="color: #A50034;">socialist</span> party and the Schutzbund were met with mass protest, supported by the <span style="color: #c00000;">**SPD**</span>[? if foreign_minister_party = "SPD":&nbsp;and the German government?]. [? if eu_austria: They are also supported by the recently formed <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>, with economic sanctions targeting the government. ?] ?]
+[? if sdapo_strength >= 6: <span style="color: #A50034;">사회주의</span> 정당과 수비대를 탄압하려는 정부의 시도는 <span style="color: #c00000;">**SPD**</span>[? if foreign_minister_party = "SPD":&nbsp;그리고 독일 정부?]의 지지를 받는 대규모 시위에 직면했습니다. [? if eu_austria: 그들은 또한 최근 결성된 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>의 지지를 받고 있으며, 연합은 정부를 겨냥한 경제 제재를 가하고 있습니다. ?] ?]
 
-Eventually...
+결국...
 
 - @crushed
 - @long_war
 - @sdapo_victory
 
 @crushed
-title: The rebellious Schutzbund has been crushed.
+title: 반란을 일으킨 수비대가 진압됨
 on-arrival: austria_defeat = 1
 view-if: sdapo_strength < 4
 
-The uprising lasted for no more than a few days before it was crushed. The Schutzbund and <span style="color: #A50034;">**SDAPÖ**</span> were too weak and too divided to stand against the forces of the state.
-
+봉기는 진압되기까지 며칠도 넘기지 못했습니다. 수비대와 <span style="color: #A50034;">**SDAPÖ**</span>는 국가의 병력에 맞서기에는 너무 약하고 분열되어 있었습니다.
 @long_war
 title: It is a civil war.
 view-if: sdapo_strength = 5 or sdapo_strength = 4
 on-arrival: austria_civil_war = 1
 
-Neither side is backing down, and the <span style="color: #A50034;">**SDAPÖ**</span> have formed an alternative government after defeating the government troops in some cities. Austria is in a state of civil war.
+어느 쪽도 물러서지 않고 있으며, <span style="color: #A50034;">**SDAPÖ**</span>는 몇몇 도시들에서 정부군을 패배시킨 후 대안 정부를 수립했습니다. 오스트리아는 내전 상태입니다.
 
 - @support_sdapo_party
 - @support_sdapo_govt
@@ -45,44 +44,44 @@ Neither side is backing down, and the <span style="color: #A50034;">**SDAPÖ**</
 - @long_war_2
 
 @support_sdapo_party
-title: As a party, the <span style="color: #c00000;">**SPD**</span> will provide the <span style="color: #A50034;">**SDAPÖ**</span> with support.
-subtitle: -2 resources
+title: 당 차원에서, <span style="color: #c00000;">**SPD**</span>는 <span style="color: #A50034;">**SDAPÖ**</span>에게 지원을 제공할 것이다.
+subtitle: -2 자원
 choose-if: resources >= 2
 on-arrival: resources -= 2; sdapo_strength += 1
 go-to: sdapo_victory if sdapo_strength >= 6; long_war_2 if sdapo_strength < 6
 
-The <span style="color: #c00000;">**SPD**</span> raises its resources to provide arms and volunteers for the <span style="color: #A50034;">**SDAPÖ**</span>.
+<span style="color: #c00000;">**SPD**</span>는 <span style="color: #A50034;">**SDAPÖ**</span>를 위한 무기와 의용군을 제공하기 위해 자원을 모았습니다.
 
 @support_sdapo_govt
-title: The Foreign Ministry will support the democratic Austrian forces.
+title: 외무부는 오스트리아의 민주 세력을 지원할 것이다.
 view-if: spd_in_government and foreign_minister_party = "SPD"
 on-arrival: sdapo_strength += 1
 go-to: sdapo_victory if sdapo_strength >= 6; long_war_2 if sdapo_strength < 6
 
-We provide diplomatic and some financial and material support to the <span style="color: #A50034;">**SDAPÖ**</span> forces.
+우리는 <span style="color: #A50034;">**SDAPÖ**</span> 병력에게 외교적 지원과 더불어 약간의 재정적, 물적 지원을 제공했습니다.
 
 @force_peace
-title: Can we bring the sides together for a peace?
+title: 평화를 위해 양측을 중재할 수 있을까?
 view-if: spd_in_government and foreign_minister_party = "SPD" and sdapo_strength = 5
 on-arrival: austria_peace = 1; pro_republic += 3; coup_progress -= 1; ddp_left += 2; dvp_left += 2; lvp_left += 2
 
-The Austrian government obviously sees us as biased, so there is no way they will let us host peace negotiations. However, negotiations begin nonetheless. In Switzerland, with <span style="color: #7A3C00;">Fascist</span> Italy as the <span style="color: #7A3C00;">Austrofascists</span>' protector and Germany as the <span style="color: #A50034;">**SDAPÖ**</span>'s, a peace deal is hammered out. The <span style="color: #A50034;">socialists</span> are disarmed and give up all pretense of revolution, while the <span style="color: #ABDDA4;">right-wing</span> paramilitaries are also disarmed. Dictatorship ends, and normal government is restored, with free elections.
+오스트리아 정부는 분명히 우리를 편향된 세력으로 보고 있으므로, 우리가 평화 협상을 주재하도록 두지 않을 것입니다. 그러나, 그럼에도 불구하고 협상은 시작됩니다. 스위스에서, <span style="color: #7A3C00;">파시스트</span> 이탈리아가 <span style="color: #7A3C00;">오스트로파시스트들</span>의 후원자로, 독일이 <span style="color: #A50034;">**SDAPÖ**</span>의 후원자로 나선 가운데 평화 협정이 타결됩니다. <span style="color: #A50034;">사회주의자들</span>은 무장 해제하고 혁명에 대한 모든 명분을 포기하며, <span style="color: #ABDDA4;">우익</span> 준군사조직들도 무장 해제됩니다. 독재는 끝나고, 자유 선거와 함께 정상적인 정부가 복원됩니다.
 
-Given the <span style="color: #A50034;">**SDAPÖ**</span>'s starting position, this is treated as a victory. Now begins the long work of reconstruction...
+<span style="color: #A50034;">**SDAPÖ**</span>의 시작 위치를 고려할 때, 이것은 승리로 간주됩니다. 이제 재건을 위한 기나긴 작업이 시작될 것입니다...
 
 @long_war_2
-title: There is nothing we can do.
+title: 우리가 할 수 있는 것은 아무것도 없다.
 on-arrival: z_relation -= 6; dvp_relation -= 6; ddp_relation -= 3; catholics_spd -= 5; old_middle_spd -= 5; coalition_dissent += 1; economic_growth -= 0.5; ddp_right += 2; dvp_right += 2; lvp_right += 2
 
-No matter our efforts, the war continues. Too many lives are extinguished. Refugees begin to flow into Germany, and trade suffers. Many are calling our Austrian interference a mistake.
+우리의 노력에도 불구하고, 전쟁은 계속됩니다. 너무 많은 생명이 꺼져갑니다. 난민들이 독일로 유입되기 시작했고, 무역은 타격을 입었습니다. 많은 이들이 우리의 오스트리아 개입을 실수라고 비판하고 있습니다.
 
 
 @sdapo_victory
-title: The <span style="color: #7A3C00;">Austrofascists</span> are backing down!
+title: <span style="color: #7A3C00;">오스트로파시스트들</span>이 물러서고 있다!
 on-arrival: sdapo_win = 1; pro_republic += 5; west_relation += 1; east_relation += 1; austria_victory = 1; reichswehr_loyalty += 0.1; coup_progress -= 2; ddp_left += 3; dvp_left += 3; lvp_left += 3
 view-if: sdapo_strength >= 6
 achievement: arbeiter_von_wien
 
-The result is that the <span style="color: #7A3C00;">Austrofascists</span> have backed down! Caught in an untenable position domestically and abroad, they have agreed to restore the National Council and resign from government, holding new elections. Now begins the long work of reconstruction. Our countries are likely to be brought closer together as a result.
+결과적으로 <span style="color: #7A3C00;">오스트로파시스트들</span>이 물러섰습니다! 국내외적으로 수세에 몰린 그들은 국민의회를 복원하고 정부에서 사임하며, 새로운 선거를 치르는 것에 동의했습니다. 이제 재건을 위한 긴 작업이 시작될 것입니다. 결과적으로 우리 두 국가는 더 가까워질 가능성이 높습니다.
 
-[? if eu_austria: This is a great success of the new <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>, and its prestige is seen to rise internationally. ?]
+[? if eu_austria: 이것은 새로운 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>의 커다란 성공이며, 그 위신은 국제적으로 높아질 것으로 보입니다. ?]

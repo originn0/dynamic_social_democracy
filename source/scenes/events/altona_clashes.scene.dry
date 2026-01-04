@@ -1,24 +1,24 @@
-title: <span style="color: #7A3C00;">Nazi</span> March in Altona
+title: 알토나의 <span style="color: #7A3C00;">나치</span> 행진
 new-page: true
-subtitle: An <span style="color: #7A3C00;">**SA**</span> demonstration, with the potential for violence
+subtitle: 폭력 사태로 번질 가능성이 있는 <span style="color: #7A3C00;">**돌격대**</span>의 시위
 tags: event
 view-if: year == 1932 and month == 7 and sa_banned == 0 and spd_prussia == 1 and chancellor != "Papen" and not altona_seen
 max-visits: 1
 
-= <span style="color: #7A3C00;">Nazi</span> March in Altona
+= 알토나의 <span style="color: #7A3C00;">나치</span> 행진
 
-The <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> is planning a march through Altona, a working-class neighborhood of Hamburg known for its high working-class population. Altona is a <span style="color: #700000;">Communist</span> stronghold, and the planned march will almost certainly lead to violent conflict.
+<span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**돌격대**</span>가 함부르크의 노동자 거주 지역으로 잘 알려진 알토나를 관통하는 행진을 계획하고 있습니다. 알토나는 <span style="color: #700000;">공산당</span>의 요새이며, 계획된 행진은 거의 확실하게 폭력적인 충돌로 이어질 것입니다.
 
-- @ban_march: Ban the march before it starts.
-- @allow_police: Allow the march, with a heavy police presence.
-- @allow_no_police: Allow the march without a police presence.
+- @ban_march: 행진이 시작되기 전에 금지한다.
+- @allow_police: 대규모 경찰 병력을 대동하여 행진을 허용한다.
+- @allow_no_police: 경찰 병력 없이 행진을 허용한다.
 
 @ban_march
 choose-if: judicial_reform >= 2
-unavailable-subtitle: The judiciary would not allow us to ban the protest, because of free speech.
+unavailable-subtitle: 사법부는 표현의 자유를 이유로 시위 금지를 허가하지 않을 것입니다.
 on-arrival: sa_strength -= 10; altona_good = 1
 
-We have banned the planned protest. The <span style="color: #7A3C00;">Nazis</span> appeal the ban in the courts in the name of freedom of speech. Thankfully, the judiciary agrees with us that the <span style="color: #7A3C00;">Nazis</span>' argument is specious.
+우리는 계획된 시위를 금지했습니다. <span style="color: #7A3C00;">나치</span>는 표현의 자유라는 명목으로 법원에 금지 처분에 대해 항소했습니다. 다행히도, 사법부는 <span style="color: #7A3C00;">나치</span>의 주장이 기만적이라는 우리의 의견에 동의했습니다.
 
 
 @allow_police
@@ -27,17 +27,16 @@ go-to: allow_police_violence if prussian_police_loyalty <= 0.75; allow_police_no
 @allow_police_violence
 on-arrival: strife += 1; sa_strength += 50; kpd_relation -= 8; communist_coalition -= 1
 
-When the march arrives in Altona, they are immediately confronted by an angry crowd of <span style="color: #700000;">communists</span> and <span style="color: #c00000;">socialists</span>, who throw objects at the <span style="color: #7A3C00;">Nazis</span>. The police attempt to separate the two groups, to no avail. Gunshots are heard, reportedly from rooftop snipers (whom the police believe are <span style="color: #700000;">communists</span>). In response, the police fire into the surrounding buildings. Dozens are killed. All turn out to be civilians, and the reported snipers are never found.
+행진이 알토나에 도착하자, 그들은 즉시 <span style="color: #7A3C00;">나치</span>에게 물건을 집어던지는 <span style="color: #700000;">공산주의자들</span>과 <span style="color: #c00000;">사회주의자들</span>의 성난 군중과 마주했습니다. 경찰은 두 집단을 떼어놓으려 시도하지만, 소용이 없었습니다. 총성이 들렸으며, 보도에 따르면 지붕의 저격수들이 쏜 것이라고 합니다 (경찰은 그들이 <span style="color: #700000;">공산주의자들</span>이라고 믿고 있습니다). 이에 대응하여, 경찰은 주변 건물들을 향해 발포했습니다. 수십 명이 사망했습니다. 사망자는 모두 민간인으로 밝혀졌으며, 보고된 저격수들은 끝내 발견되지 않았습니다.
 
-This incident has been called "Altona Bloody Sunday" in the media. The <span style="color: #700000;">Communists</span> assail the incompetence of the police, who are supposedly under our command.
-
+이 사건은 언론에서 "알토나 피의 일요일"이라고 불리고 있습니다. <span style="color: #700000;">공산당</span>은 명목상 우리의 지휘 하에 있는 경찰의 무능력을 맹비난합니다.
 @allow_police_no_violence
 on-arrival: altona_good = 1; sa_strength += 10
 
-When the march arrives in Altona, they are immediately confronted by an angry crowd of <span style="color: #700000;">communists</span> and <span style="color: #c00000;">socialists</span>, who throw objects at the <span style="color: #7A3C00;">Nazis</span>. The police attempt to separate the two groups, to no avail. Gunshots are heard, reportedly from rooftop snipers. The police manage to keep their cool, the shots stop, and the march disperses without further violence.
+행진이 알토나에 도착하자, 그들은 즉시 <span style="color: #7A3C00;">나치</span>에게 물건을 집어던지는 <span style="color: #700000;">공산주의자들</span>과 <span style="color: #c00000;">사회주의자들</span>의 성난 군중과 마주했습니다. 경찰은 두 집단을 떼어놓으려 시도하지만, 소용이 없었습니다. 총성이 들렸으며, 보도에 따르면 지붕의 저격수들이 쏜 것이라고 합니다. 경찰은 냉정을 유지하는 데 성공했고, 총격은 멈추었으며, 행진은 더 이상의 폭력 사태 없이 해산되었습니다.
 
 
 @allow_no_police
 on-arrival: sa_strength += 80; rfb_strength += 50; strife += 1; kpd_relation -= 8; communist_coalition -= 1
 
-When the march arrives in Altona, they are immediately confronted by an angry crowd of <span style="color: #700000;">communists</span> and <span style="color: #c00000;">socialists</span>, who throw objects at the <span style="color: #7A3C00;">Nazis</span>. Gunshots are heard, reportedly from rooftop snipers. In response, the <span style="color: #7A3C00;">**SA**</span> engage the surrounding crowd and fire at the surrounding buildings. Dozens are killed, mostly civilians. The <span style="color: #7A3C00;">Nazis</span> recruit off their dead martyrs.
+행진이 알토나에 도착하자, 그들은 즉시 <span style="color: #7A3C00;">나치</span>에게 물건을 집어던지는 <span style="color: #700000;">공산주의자들</span>과 <span style="color: #c00000;">사회주의자들</span>의 성난 군중과 마주했습니다. 총소리가 들리고, 보도에 따르면 지붕의 저격수들이 쏜 것이라고 합니다. 이에 대응하여, <span style="color: #7A3C00;">**돌격대**</span>는 주변 군중과 교전했고 주변 건물들에 발포했습니다. 수십 명이 사망했고, 대부분은 민간인입니다. <span style="color: #7A3C00;">나치</span>는 그들의 죽은 순교자들을 이용해 세력을 불렸습니다.

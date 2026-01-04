@@ -1,5 +1,5 @@
-title: Austrian customs union
-subtitle: The Foreign Ministry seeks closer ties to Austria...
+title: 오스트리아 관세 동맹
+subtitle: 외무부가 오스트리아와의 관계 강화를 모색합니다...
 new-page: true
 on-arrival: customs_union_seen = 1
 tags: event
@@ -7,34 +7,34 @@ view-if: year = 1931 and month >= 3 and foreign_minister_party != "SPD" and fore
 max-visits: 1
 
 
-= Austrian Customs Union
+= 오스트리아 관세 동맹
 
-[? if spd_in_government: The [+ foreign_minister_party +] foreign minister has a proposal for a customs union with Austria. We can either accept or reject this agreement. ?]
-[? if not spd_in_government: The government of Chancellor [+ chancellor +] has a proposal for a customs union with Austria. Most likely, this will happen whatever we decide. ?]
+[? if spd_in_government: [+ foreign_minister_party +] 소속 외무부 장관이 오스트리아와의 관세 동맹 제안을 내놓았습니다. 우리는 이 협정을 수락하거나 거부할 수 있습니다. ?]
+[? if not spd_in_government: [+ chancellor +] 총리 정부가 오스트리아와의 관세 동맹 제안을 내놓았습니다. 우리가 어떤 결정을 내리든 이 일은 진행될 가능성이 높습니다. ?]
 
 
-The nationalist right has long yearned for closer ties with Austria, with the eventual goal of the merger of the two German-speaking countries. A customs union with Austria is the first step towards this goal. Additionally, many believe that a union with Austria would improve our current economic circumstances.
+민족주의 우파는 오랫동안 오스트리아와의 관계 강화를 갈망해 왔으며, 궁극적으로는 두 독일어권 국가의 합병을 목표로 하고 있습니다. 오스트리아와의 관세 동맹은 이 목표를 향한 첫걸음입니다. 게다가 많은 이들은 오스트리아와의 연합이 현재 우리의 경제 상황을 개선할 것이라고 믿고 있습니다.
 
-However, the Allies, especially <span style="color: #002654;">France</span>, are likely to object. This agreement would break the terms of the Versailles Treaty, and could lead to economic sanctions, further hurting our economy.
+하지만 연합국들, 특히 <span style="color: #002654;">프랑스</span>가 반대할 가능성이 높습니다. 이 협정은 베르사유 조약 위반으로 간주되어 경제 제재를 초래할 수 있으며, 이는 우리 경제에 더 큰 타격을 줄 수 있습니다.
 
-- @let_it_happen: Let it happen.
-- @end_coalition: Stop this arrangement!
-- @end_toleration: Attempt to stop this arrangement!
+- @let_it_happen: 진행되게 둔다.
+- @end_coalition: 이 협정을 중단한다!
+- @end_toleration: 이 협정을 중단하려 시도한다!
 
 @let_it_happen
 on-arrival: banking_crisis_timer = 4; curtius_banking_crisis = 1 if not in_weimar_coalition; curtius_explosion_timer = time + 7 if ((dvp_leader == "Curtius" and not in_weimar_coalition) or lvp_leader == "Curtius") and not in_popular_front and not in_left_front; customs_union = 1; west_relation -= 2; east_relation -= 2
 
-The customs union has been formed. Immediately, <span style="color: #002654;">France</span> and other neighboring countries lodge their protests. The longer-term response is yet to be seen.
+관세 동맹이 체결되었습니다. 즉시 <span style="color: #002654;">프랑스</span>와 주변국들이 항의를 제기했습니다. 장기적인 파장은 아직 지켜봐야 할 것입니다.
 
 @end_coalition
 view-if: spd_in_government = 1
 on-arrival: coalition_dissent += 1; dvp_relation -= 5; z_relation -= 4; z_relation -= 3 if chancellor_party == "Z"; dvp_relation -= 3 if chancellor_party == "Z"; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 1; lvp_right += 1;
 
-We attempt to impress upon our coalition partners the gravity of the potential Allied response. The proposal is dead, although the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are not pleased.
+W우리는 연정 파트너들에게 연합국의 잠재적 대응이 얼마나 심각할지를 인식시키려 노력했습니다. 제안은 무산되었지만, [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 불쾌해하고 있습니다.
 
 @end_toleration
 view-if: spd_toleration = 1
-subtitle: This is difficult; all of the right-of-center parties support this policy.
+subtitle: 어려운 일입니다. 모든 중도 우파 정당들이 이 정책을 지지하고 있습니다.
 go-to: end_toleration_success if spd_r + kpd_r >= 50; end_toleration_fail if spd_r + kpd_r < 50
 
 @end_toleration_success
@@ -42,28 +42,28 @@ on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0;
 call: set_next_election_time
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and (((center_right_coalition_prussia >= 50 or right_coalition_prussia >= 50) and dnvp_ideology == "Moderate") or bourgeois_coalition_prussia >= 50)
 
-With the support of the <span style="color: #700000;">**KPD**</span>, we have successfully stopped the formation of the customs union. This results in the fall of the [+ chancellor +] government.
+<span style="color: #700000;">**KPD**</span>의 지지를 얻어, 우리는 관세 동맹 결성을 성공적으로 저지했습니다. 이로 인해 [+ chancellor +] 정부는 붕괴되었습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 투표를 소집하여 주의회를 강제로 해산시키고 재선거를 치르게 했습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 선거가 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 예정되었습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+중앙 의회와 주 의회의 동시 해산은 민주주의에 대한 국민들의 신뢰를 뒤흔들었습니다. <span style="color: #7A3C00;">나치</span>는 이러한 불안정을 악용하여 민주주의는 작동하지 않으며, 독일에는 강력한 지도자가 필요하다고 주장하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 불신임 투표를 소집하여, 우리 정부를 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우리보다 우측에 있는 모든 정당으로 구성된 중도 우파 연정으로 교체했습니다. 이는 충분히 안 좋은 일이지만 최악은 아닙니다. 재선거가 치러졌다면 극단주의 정당들이 상당한 이득을 챙겼을 수도 있기 때문입니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센 주총리로 선출되었습니다.
 
 @end_toleration_fail
 on-arrival: banking_crisis_timer = 4; customs_union = 1; west_relation -= 2; east_relation -= 2
 
-Unfortunately, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties united with the government to outvote us. The customs union will be formed.
+불행히도, <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 정당들이 정부와 결탁하여 표 대결에서 우리를 눌렀습니다. 관세 동맹은 체결될 것입니다.

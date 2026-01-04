@@ -1,5 +1,5 @@
-title: Banking Crisis
-subtitle: The collapse of the German banking system...
+title: 은행 위기
+subtitle: 독일 은행 시스템의 붕괴...
 new-page: true
 on-arrival: banking_crisis_seen = 1; workers_kpd += 2; workers_nsdap += 3; new_middle_nsdap += 5; old_middle_nsdap += 5; rural_nsdap += 3; unemployed += 3; crisis_urgency += 1; workers_spd -= 4 if spd_in_government; new_middle_spd -= 5 if spd_in_government; old_middle_spd -= 5 if spd_in_government; rural_spd -= 4 if spd_in_government; economic_growth -= 1.4; hindenburg_angry_bruning += 20; hindenburg_angry += 40; dnvp_angry += 1 if spd_toleration_right; banking_crisis_fallout_time = time + 6
 tags: event
@@ -8,22 +8,22 @@ max-visits: 1
 priority: 1
 face-image: img/danat_bank.jpg
 
-= Banking Crisis
+= 은행 위기
 
-The Darmstädter und Nationalbank, or Danat Bank, has collapsed! Along with it goes much of the German banking system. The cause seemed to be due to the government's pursuit of a customs union with Austria, which led to de facto international sanctions. This has set off a global ripple effect, deepening the depression and driving foreign banks into bankruptcy.
+다름슈타트 국립은행, 즉 다나트 은행이 붕괴했습니다! 이와 함께 독일 은행 시스템의 상당 부분도 무너져 내리고 있습니다. 원인은 정부가 오스트리아와의 관세 동맹을 추진한 탓으로 보이며, 이는 사실상의 국제 제재를 초래했습니다. 이 사태는 전 세계적인 파급 효과를 일으켜 대공황을 심화시키고 외국 은행들을 파산으로 몰고 갔습니다.
 
-This is a bourgeois dispute, but the costs will be borne by the proletariat. The people are facing ever-increasing hunger and poverty, and perhaps we are partly to blame.
+이는 부르주아들의 분쟁이지만, 그 대가는 프롤레타리아가 짊어지게 될 것입니다. 사람들은 점점 더 심각한 기아와 빈곤에 직면하고 있으며, 어쩌면 우리에게도 일부 책임이 있을지 모릅니다.
 
-- @nothing_to_do: There is nothing we can do.
-- @stabilization: Take action to stabilize the economy!
-- @austerity: Chancellor [+ chancellor +]'s response is, as always, more austerity.
-- @end_toleration: We are tired of austerity. End the toleration arrangement!
+- @nothing_to_do: 우리가 할 수 있는 일은 없다.
+- @stabilization: 경제 안정을 위한 조치를 취한다!
+- @austerity: [+ chancellor +] 총리의 대응은, 언제나 그렇듯, 더 많은 긴축이다.
+- @end_toleration: 긴축 정책에 지쳤다. 묵인 협정을 끝내자!
 
 @nothing_to_do
 view-if: spd_in_government = 1
 on-arrival: welfare -= 1; workers_spd -= 3; unemployed_spd -= 3; pro_republic -= 3
 
-There is, essentially, nothing we can do.
+사실상 우리가 할 수 있는 일은 없습니다.
 
 @stabilization
 view-if: spd_in_government = 1
@@ -31,13 +31,13 @@ subtitle: -1 budget
 choose-if: budget >= 1
 on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); unemployed -= 2; inflation += 1 if inflation < 0; budget -= 1; workers_nsdap -= 3; economic_growth += 1;
 
-In the face of the banking crisis, we have taken emergency action to stabilize the economy by injecting money into the banking system. It might not be enough, but it temporarily staunches the bleeding.
+은행 위기에 직면하여, 우리는 은행 시스템에 자금을 투입해 경제를 안정시키기 위한 비상 조치를 취했습니다. 충분하지 않을 수도 있지만, 일시적으로 급한 불은 껐습니다.
 
 @austerity
 view-if: spd_in_government = 0
 on-arrival: welfare -= 1 if budget <= 0; workers_spd -= 3; workers_spd += 2 if budget > 0; workers_nsdap -= 2 if budget > 0; unemployed_spd -= 3; unemployed_spd += 2 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
 
-[? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
+[? if budget <= 0: [+ chancellor +] 총리는 은행 위기에 대응해 복지 예산을 추가 삭감했습니다.?][? if budget > 0: 놀랍게도 [+ chancellor +] 총리는 예산 흑자 덕분에 사회 지출 삭감을 자제하고, 경제와 은행 시스템을 안정시키기 위한 조치를 취했습니다. ?]
 
 @end_toleration
 view-if: spd_toleration = 1
@@ -45,23 +45,23 @@ on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0;
 call: set_next_election_time
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and (((center_right_coalition_prussia >= 50 or right_coalition_prussia >= 50) and dnvp_ideology == "Moderate") or bourgeois_coalition_prussia >= 50)
 
-We are tired of [+ chancellor +]'s policy of austerity. After [+ chancellor +]'s attempt to use emergency powers to pass another welfare cut, we have worked with the other parties to reverse this policy. In response, the Reichstag has been dissolved, and new elections called.
+우리는 긴축이라는 [+ chancellor +]의 정책에 지쳤습니다. [+ chancellor +]가 긴급 권한을 이용해 또 다른 복지 삭감안을 통과시키려 하자, 우리는 다른 정당들과 협력하여 이 정책을 뒤집었습니다. 이에 대한 대응으로 제국의회가 해산되었고, 조기 총선이 소집되었습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 투표를 소집하여 주의회를 강제로 해산시키고 재선거를 치르게 했습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 선거가 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 예정되었습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+중앙 의회와 주 의회의 동시 해산은 민주주의에 대한 국민들의 신뢰를 뒤흔들었습니다. <span style="color: #7A3C00;">나치</span>는 이러한 불안정을 악용하여 민주주의는 작동하지 않으며, 독일에는 강력한 지도자가 필요하다고 주장하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 대한 보복으로 프로이센에서 불신임 투표를 소집하여, 우리 정부를 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우리보다 우측에 있는 모든 정당으로 구성된 중도 우파 연정으로 교체했습니다. 이는 좌절스러운 일이지만 최악의 결과는 아닙니다. 재선거가 치러졌다면 극단주의 정당들이 상당한 이득을 챙겼을 수도 있기 때문입니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센 주총리로 선출되었습니다.
