@@ -1,4 +1,4 @@
-title: Economic Democracy
+title: 경제 민주주의
 is-card: true
 new-page: true
 on-arrival: economic_democracy_timer += 10; month_actions += 1
@@ -8,65 +8,63 @@ max-visits: 8
 tags: govt_affairs, cabinet
 #subtitle: How can we give workers more control over the means of production?
 
-= Economic Democracy
+= 경제 민주주의
 
-A key part of the <span style="color: #c00000;">social democratic</span> platform is that workers should have more control over the economy. This can be done either directly at the enterprise level, by giving works councils greater influence over management, or indirectly via the democratic government, by acquiring key industries from the capitalist class and placing them under democratic control.
+<span style="color: #c00000;">사회민주주의</span> 강령의 핵심은 노동자가 경제에 대해 더 많은 통제권을 가져야 한다는 것입니다. 이는 기업 차원에서 직장 평의회에 경영에 대한 더 큰 영향력을 부여하여 직접적으로 수행하거나, 혹은 민주 정부를 통해 자본가 계급으로부터 핵심 산업을 인수하여 민주적 통제하에 둠으로써 간접적으로 수행할 수 있습니다.
 
-As we control the Labor [? if economic_minister_party == "SPD" : and Economic ?][? if finance_minister_party == "SPD" : and Finance ?] ministries, we can finally begin to implement our long-standing goals. [? if in_grand_coalition or in_weimar_coalition: Our bourgeois coalition partners might not agree, however. ?]
+우리가 노동부[? if economic_minister_party == "SPD" : 와 경제부 ?][? if finance_minister_party == "SPD" : 와 재무부 ?]를 장악하고 있으므로, 마침내 우리의 오랜 숙원을 실행에 옮길 수 있게 되었습니다. [? if in_grand_coalition or in_weimar_coalition: 하지만 우리의 부르주아 연정 파트너들은 이에 동의하지 않을 수도 있습니다. ?]
 
 - @expand_councils
 - @expand_councils_2
 - @expand_councils_3
 - @nationalize_1
 - @cooperatives_1
-- @return: Do not enact any policies for now.
+- @return: 지금은 어떠한 정책도 제정하지 않는다.
 - @easy_discard
 - @cancel_advisor_action
 
 @expand_councils
-title: Support works councils.
-subtitle: Give works councils a greater influence in managing enterprises.
+title: 직장 평의회를 지원한다.
+subtitle: 기업 경영에 있어 직장 평의회에 더 큰 영향력을 부여한다.
 view-if: works_councils == 0
 on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; dvp_relation -= 5; lvp_relation -= 5; ddp_relation -= 3; coalition_dissent += 1; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 1; economy_goal_spd += 1; goal_spd_cancel_peoples += 1
 max-visits: 1
 
-The works councils, elected by workers at each major business, have been in place since the German Revolution of 1918, but they have been largely powerless in the face of capital. Now, we will have worker representation on the boards of companies, giving them more influence in management decisions.
-
+각 주요 기업에서 노동자들이 선출한 직장 평의회는 1918년 독일 혁명 이래로 존재해 왔으나, 자본 앞에서는 대체로 무력했습니다. 이제 우리는 기업 이사회에 노동자 대표를 참여시켜, 경영 의사 결정에 더 많은 영향력을 행사하게 할 것입니다.
 
 @expand_councils_2
-title: Support national and sectorial works councils.
-subtitle: This is a step towards workers' control over the entire economy.
+title: 전국 및 부문별 직장 평의회를 지원한다.
+subtitle: 이는 전체 경제에 대한 노동자 통제를 향한 발걸음입니다.
 view-if: works_councils == 1
 on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; dvp_relation -= 5; ddp_relation -= 3; lvp_relation -= 5; coalition_dissent += 1; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 2; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.1 if economic_growth < 3
 max-visits: 1
 
-National and sectorial workers councils have been part of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Constitution, but they were disempowered in the past, acting as nothing more than advisory bodies. We can change that.
-
+전국 및 부문별 노동자 평의회는 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 헌법의 일부였으나, 과거에는 권한이 없어 자문 기구에 불과했습니다. 우리는 그것을 바꿀 수 있습니다.
 
 @expand_councils_3
-title: Empower sectorial works councils.
-subtitle: Give works councils a role in setting wage and price policy for entire industrial sectors.
+title: 부문별 직장 평의회에 권한을 부여한다.
+subtitle: 전체 산업 부문의 임금 및 가격 정책 설정에 있어 직장 평의회에 역할을 부여한다.
 view-if: works_councils == 2
 on-arrival: economic_democracy += 1; workers_spd += 7*(1-dissent); capital_strike_progress += 1; works_councils += 1; labor_dissent -= 6; labor_strength += 8; dvp_relation -= 5; ddp_relation -= 3; lvp_relation -= 5; coalition_dissent += 1; unemployed -= 2 if unemployed > 5; workers += 2; dvp_right += 2; ddp_right += 1; lvp_right += 2; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.1 if economic_growth < 3
 max-visits: 1
 
-Sectorial works councils can now negotiate wage and price policies for entire economic sectors, helping to both give workers more of a voice, and to rationalize the economy, smoothing over the anarchy of the market.
+부문별 직장 평의회는 이제 전체 경제 부문의 임금 및 가격 정책을 협상할 수 있게 되어, 노동자의 발언권을 강화하는 동시에 경제를 합리화하고 시장의 무질서를 완화하는 데 도움을 줄 것입니다.
 
 
 @nationalize_1
-title: Begin to socialize key industries.
-subtitle: -1 budget - we should buy out industries and govern them together with workers and consumers.
+title: 핵심 산업의 사회화를 시작한다.
+subtitle: 예산 -1 - 산업을 매수하여 노동자 및 소비자와 함께 관리해야 합니다.
 on-arrival: economic_democracy += 1; capital_strike_progress += 1; budget -= 1; socializations += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); coalition_dissent += 1; capital_strike_progress += 1 if black_thursday_seen; unemployed -= 1 if unemployed > 9; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3; dvp_right += 1; lvp_right += 1; ddp_right += 1; ddp_cohesion -= 1; economy_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth += 0.2 if economic_growth < 5
 choose-if: budget >= 1
 max-visits: 3
 
-We have begun to socialize key industries by buying out the capitalist owners, and creating coordinated governing boards consisting of worker, consumer, and state representatives. The capitalists are not pleased at our intrusion into the economy.
+우리는 자본가 소유주들로부터 기업을 매수하고, 노동자, 소비자, 국가 대표로 구성된 통합 관리 위원회를 창설함으로써 핵심 산업의 사회화를 시작했습니다. 자본가들은 우리의 경제 개입을 달가워하지 않습니다.
 
 @cooperatives_1
-title: Support worker and consumer cooperatives.
+title: 노동자 및 소비자 협동조합을 지원한다.
 subtitle: -1 budget 
 on-arrival: economic_democracy += 1; cooperatives += 1; workers_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); budget -= 1; unemployed -= 1 if unemployed > 9; economy_goal_spd += 1; economic_growth += 0.2
 choose-if: budget >= 1
 max-visits: 3
 
-We have enacted legislation that makes it easier to create cooperative enterprises of all sorts, and provide financial support to struggling cooperatives.
+우리는 모든 종류의 협동조합 기업 설립을 더 용이하게 만드는 법안을 제정했으며, 경영난을 겪는 협동조합에 재정적 지원을 제공합니다.
