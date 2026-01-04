@@ -1,4 +1,4 @@
-title: Dealing with Toleration
+title: 묵인 정책 다루기
 new-page: true
 is-card: true
 card-image: img/portraits/BrüningHeinrich.jpg
@@ -7,98 +7,98 @@ on-arrival: dealing_with_toleration_timer += 6; month_actions += 1
 tags: govt_affairs
 #subtitle: Despite not being in government, we can still provide support.
 
-= Dealing with Toleration
+= 묵인 정책 다루기
 
-We are currently acting as external support to the government of Chancellor [+ chancellor +]. How should we use our position?
+우리는 현재 [+ chancellor +] 총리 정부에 원외 지지를 보내고 있습니다. 우리의 입지를 어떻게 활용해야 할까요?
 
 - @break_toleration
 - @urge_against_austerity
 - @urge_against_austerity_limited
 - @urge_paramilitary
 - @improve_relations
-- @stay_course: Stay the course, for stability's sake.
+- @stay_course: 안정을 위해, 묵인 정책을 유지한다.
 - @easy_discard
 
 @break_toleration
 view-if: not constructive_vonc
-title: End the toleration agreement with a vote of no confidence!
+title: 불신임 결의로 묵인 합의를 파기한다!
 
-Are we sure about this? A vote of no confidence would trigger new elections, and potentially an increased vote-share for the extremist parties. [? if in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] also threatens a no-confidence vote against us in Prussia, pressuring us to stay the course.?]
+정말입니까? 불신임 투표는 조기 총선을 촉발할 것이며, 이는 잠재적으로 극단주의 정당들의 득표율 상승으로 이어질 수 있습니다. [? if in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 또한 프로이센에서 우리에 대한 불신임 투표를 하겠다고 위협하며, 묵인 정책을 유지하라고 압박하고 있습니다.?]
 
-- @vonc: Yes, end this arrangement!
-- @stay_course: No, we should stay the course.
+- @vonc: 그래, 이 합의를 끝낸다!
+- @stay_course: 아니, 묵인 정책을 유지해야 한다.
 
 @vonc
 on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; in_grand_coalition = 0; chancellor = "Brüning"; chancellor_party = "Z"; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; left_strength += 8; pro_republic -= 5; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 5; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2; spd_break_toleration += 1
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and (((center_right_coalition_prussia >= 50 or right_coalition_prussia >= 50) and dnvp_ideology == "Moderate") or bourgeois_coalition_prussia >= 50)
 
-We have called for a vote of no confidence, and have brought down this government. Chancellor [+ chancellor +] currently rules as acting chancellor.
+우리는 불신임 결의안을 제출하여 내각을 붕괴시켰습니다. [+ chancellor +] 총리는 현재 권한 대행으로서 통치하고 있습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 프로이센에서 보복성 불신임 투표를 소집했고, 재선거를 위해 주의회를 강제로 해산시켰습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 선거가 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 예정되었습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+이중 해산 사태는 민주주의에 대한 국민들의 신뢰를 뒤흔들었고, <span style="color: #7A3C00;">나치</span>는 이러한 불안정을 이용해 민주주의는 작동 불가능하며 독일에는 강력한 지도자가 필요하다고 선전하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 프로이센에서 보복성 불신임 투표를 소집했고, 우리 정부를 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우파 정당들로 구성된 중도 우파 연정으로 교체했습니다. 뼈아픈 실책이지만, 재선거가 치러졌다면 극단주의 정당들에게 상당한 이득을 줄 수 있었기에 최악의 결과는 아닙니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센 주총리로 선출되었습니다.
 
 @urge_against_austerity
-title: Urge the coalition against austerity politics, and to increase social spending.
+title: 연정에게 긴축 정책에 반대하고, 사회 지출을 늘리도록 촉구한다.
 choose-if: budget >= 1
-unavailable-subtitle: This can only happen with a budget surplus.
+unavailable-subtitle: 예산 흑자일 때만 가능합니다.
 go-to: urge_success if z_relation >= 45 and ((ddp_relation >= 40 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed)); urge_failure if z_relation < 45 or ((ddp_relation < 40 and not lvp_formed) or (lvp_relation < 40 and lvp_formed))
 
 @urge_success
 on-arrival: welfare += 1; budget -= 1; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); new_middle_ddp += 1; old_middle_ddp += 1; new_middle_dvp += 1.5; old_middle_dvp += 1.5; new_middle_other += 1.5; old_middle_other += 1.5; new_middle_lvp += 3; old_middle_lvp += 3; z_relation -= 3; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3; reformist_dissent -= 5; center_dissent -= 5; labor_dissent -= 5; dvp_right += 1; ddp_right += 0.5; lvp_right += 1; hindenburg_angry_bruning += 10; economic_growth += 0.2; unemployed -= 0.2
 
-We have successfully urged the coalition parties to increase social spending! Unfortunately, the center-right parties increasingly see us as a nuisance, and might not wish to continue these negotiations. [? if president == "Hindenburg": President Hindenburg is also losing patience with Brüning for yielding to our demands.?]
+우리는 연정 내 정당들에게 사회 지출을 늘리도록 설득하는 데 성공했습니다! 불행히도 중도 우파 정당들은 점차 우리를 눈엣가시로 여기고 있으며, 더 이상 협상을 지속하려 하지 않을 수도 있습니다. [? if president == "Hindenburg": 힌덴부르크 대통령 또한 우리의 요구에 굴복하는 브뤼닝에게 인내심을 잃어가고 있습니다.?]
 
 @urge_failure
 on-arrival: z_relation -= 3; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3
 
-Unfortunately, our negotiations have met with failure. The center-right parties increasingly see us as a nuisance, and might not wish to continue these negotiations.
+불행히도 우리의 협상은 실패로 돌아갔습니다. 중도 우파 정당들은 점차 우리를 눈엣가시로 여기고 있으며, 더 이상 협상을 지속하려 하지 않을 수도 있습니다.
 
 @urge_against_austerity_limited
-title: Attempt to pressure Brüning to curb the worse excesses of his austerity policies. 
+title: 브뤼닝을 압박하여 긴축 정책의 과도한 부분을 완화하도록 시도한다.
 go-to: urge_success_limited if z_relation >= 35; urge_failure if z_relation < 35
 
 @urge_success_limited
 on-arrival: bruning_austerity_limited += 1; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent) if bruning_austerity_limited >= 3; new_middle_ddp += 1; old_middle_ddp += 1; new_middle_dvp += 1; old_middle_dvp += 1; new_middle_other += 1; old_middle_other += 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; new_middle_lvp += 2; old_middle_lvp += 2; z_relation -= 3; reformist_dissent -= 3; center_dissent -= 3; labor_dissent -= 3; dvp_right += 1; ddp_right += 0.5; lvp_right += 1; hindenburg_angry_bruning += 5; economic_growth += 0.1; unemployed -= 0.1
 
-We have successfully pressured Brüning to tone down the severity of his austerity policies in his emergency decrees. Unfortunately, the center-right parties increasingly see us as a nuisance, and will attempt to force Brüning to form a majority coalition with the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> instead. [? if president == "Hindenburg": President Hindenburg is also losing patience with Brüning for yielding to our demands.?]
+우리는 브뤼닝을 압박하여 긴급 명령에 포함된 긴축 정책의 가혹함을 완화하는 데 성공했습니다. 불행히도 중도 우파 정당들은 점차 우리를 눈엣가시로 여기고 있으며, 대신 브뤼닝에게 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>파와 과반 연정을 구성하도록 강요할 수도 있습니다. [? if president == "Hindenburg": 힌덴부르크 대통령 또한 우리의 요구에 굴복하는 브뤼닝에게 인내심을 잃어가고 있습니다.?]
 
-[? if bruning_austerity_limited == 1: We have successfully prevented Brüning from decreasing taxes on high earners, lessening the burden of compensatory tax increases on the lower strata. ?][? if bruning_austerity_limited == 2: We have successfully pressured Brüning into attempting to appease us by reinstating the 40-hour workweek, however wages themselves remains suboptimal. ?][? if bruning_austerity_limited >= 3: We have successfully pressured Brüning in reversing some salary cuts to civil servants. ?]
+[? if bruning_austerity_limited == 1: 우리는 브뤼닝이 고소득자에 대한 감세를 단행하는 것을 막아냈고, 그 결과 저소득층에게 전가될 세금 인상 부담을 줄였습니다. ?][? if bruning_austerity_limited == 2: 우리는 브뤼닝을 압박하여 주 40시간 근무제를 복원하게 함으로써 우리를 달래도록 만들었지만, 임금 수준은 여전히 미흡합니다. ?][? if bruning_austerity_limited >= 3: 우리는 브뤼닝을 압박하여 공무원 급여 삭감 조치 일부를 철회시켰습니다. ?]
 
 @urge_paramilitary
 view-if: political_decree < 2 and not sa_nationwide_ban
 choose-if: spd_prussia and strife >= 3 and z_relation >= 35 and not second_bruning_cabinet_seen
-unavailable-subtitle: [? if not spd_prussia: We don't control the Prussian government. ?] [? if strife < 3: Paramilitary violence isn't severe enough to justify an emergency decree. ?] [? if z_relation < 35: We lack sufficient relations with Brüning. ?] [? if second_bruning_cabinet_seen: Joseph Wirth is no longer in charge of the Interior Ministry, meaning we can no longer rely on his connections. ?]
-title: Urge Brüning to grant us stronger actions against political extremists, and to restrict certain rights.
+unavailable-subtitle: [? if not spd_prussia: 우리는 프로이센 정부를 통제하고 있지 않습니다. ?] [? if strife < 3: 준군사조직의 폭력 사태가 긴급 명령을 정당화할 만큼 심각하지 않습니다. ?] [? if z_relation < 35: 브뤼닝과의 관계가 충분히 좋지 않습니다. ?] [? if second_bruning_cabinet_seen: 요제프 비르트가 더 이상 내무부 장관이 아니므로, 그의 인맥을 활용할 수 없습니다. ?]
+title: 브뤼닝에게 정치적 극단주의자들에 대한 더 강력한 조치를 취하고, 특정 권리를 제한하도록 촉구한다.
 on-arrival: political_decree += 1; prussian_police_loyalty += 0.04; prussian_police_strength += 5; kpd_relation -= 6; rfb_militancy *= 0.9; rfb_strength *= 0.85; sa_militancy *= 0.96; sa_strength *= 0.96; sh_militancy *= 0.98; sh_strength *= 0.98; workers_kpd -= 1; workers_nsdap -= 1; unemployed_kpd -= 3; unemployed_nsdap -= 3; new_middle_nsdap -= 2; hindenburg_angry_bruning += 5
 
-Carl Severing and other Prussian officials have successfully urged Brüning to issue an emergency decree expanding police authority to suppress political extremism. The decree imposes restrictions on political meetings, organizations, newspapers, and posters, all of which now require police approval beforehand.
+카를 제베링과 다른 프로이센 관리들은 브뤼닝을 설득하여 정치적 극단주의를 억압하기 위해 경찰 권한을 강화하는 긴급 명령을 발동하게 했습니다. 이 명령은 정치 집회, 조직, 신문, 포스터에 대한 제한을 부과하며, 이제 모든 활동은 사전에 경찰의 승인을 받아야 합니다.
 
-As a result, several <span style="color: #7A3C00;">Nazi</span> and <span style="color: #700000;">Communist</span> newspapers have been banned, triggering violent clashes between their supporters and the police. [? if president == "Hindenburg": President Hindenburg has reluctantly signed the decree, but is losing patience with Brüning for yielding to our demands. ?]
+그 결과, 몇몇 <span style="color: #7A3C00;">나치</span>와 <span style="color: #700000;">공산당</span> 신문이 폐간되었고, 이는 지지자들과 경찰 간의 격렬한 충돌을 촉발했습니다. [? if president == "Hindenburg": 힌덴부르크 대통령은 마지못해 명령에 서명했지만, 우리의 요구에 굴복하는 브뤼닝에게 인내심을 잃어가고 있습니다. ?]
 
 @improve_relations
-title: Improve relations with the parties of the coalition.
+title: 연정 내 정당들과의 관계를 개선한다.
 on-arrival: z_relation += 5*(1-dissent); dvp_relation += 4*(1-dissent); ddp_relation += 4*(1-dissent); lvp_relation += 4*(1-dissent); left_dissent += 5; dvp_left += 1; ddp_left += 0.5; ddp_cohesion -= 0.5; lvp_left += 1
 
-We have increased our level of contact and discussions with the parties of the coalition, primarily the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] [? if not lvp_formed and dvp_exist:and <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:and <span style="color: #FFCC00;">**LVP**</span>?].
+우리는 연정 내 정당들, 주로 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] [? if not lvp_formed and dvp_exist:및 <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:및 <span style="color: #FFCC00;">**LVP**</span>?]과의 접촉과 대화를 늘렸습니다.
 
-Our attempts to reach out to the center-right are met with disdain by leftists within our party.
+중도 우파에게 다가가려는 우리의 시도는 당내 좌파들로부터 비난을 받고 있습니다.
 
 @stay_course
 
-We will stay the course of toleration, for the sake of stability.
+우리는 안정을 위해, 묵인 정책 기조를 유지할 것입니다.
