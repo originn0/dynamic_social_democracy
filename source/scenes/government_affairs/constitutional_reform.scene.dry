@@ -1,4 +1,4 @@
-title: Constitutional Reform
+title: 헌법 개혁
 new-page: true
 is-card: true
 view-if: spd_in_government = 1 and justice_minister_party = "SPD" and constitutional_reform_timer = 0 and judicial_reform >= 4 and neorevisionism and ((in_weimar_coalition) or (in_spd_majority) or (in_left_front) or (in_popular_front)) and constitutional_reform < 3 and neorevisionism
@@ -7,32 +7,32 @@ on-arrival: month_actions += 1; constitutional_reform_timer += 12; pass_threshol
 card-image: img/portraits/RadbruchGustav.jpg
 go-to: reforms_menu
 tags: govt_affairs, cabinet
-#subtitle: Major changes to government.
+#subtitle: 통치 구조에 대한 중대한 변화.
 
 # technically you could do some trickery to get a 2/3 quorum in the Reichstag by stopping some people from attending... if the <span style="color: #7A3C00;">**NSDAP**</span> is boycotting the Reichstag, or if the <span style="color: #7A3C00;">**NSDAP**</span> or <span style="color: #3E88B3;">**DNVP**</span> are banned in the aftermath of a coup atempt...
 
 # alternatively, a constitutional referendum can be initiated, that requires a simple majority of voters to pass (as I understand article 76). This should depend on support for the republic and for democracy, and the relationships with the other parties (more similar to the presidential election).
 
-= Constitutional Reform
+= 헌법 개혁
 
 # the ideas for constitutional reform here are based on the bundesrepublik basic law... I'm not sure if it's totally realistic to what someone like Mierendorff would've wanted.
 
-Many neorevisionists consider the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Constitution to be inadequate. They believe that the clauses of the constitution are in part responsible for the instability of the country, and must change in order to build a more stable democratic republic. Ideas from both <span style="color: #c00000;">socialists</span> and <span style="color: #D3C24D;">liberals</span>.
+많은 신수정주의자들은 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 헌법이 부적절하다고 생각합니다. 그들은 헌법 조항들이 국가 불안정의 원인 중 하나라고 믿으며, 더 안정적인 민주 공화국을 건설하기 위해 헌법을 개정해야 한다고 주장합니다. 이는 <span style="color: #c00000;">사회주의자</span>와 <span style="color: #D3C24D;">자유주의자</span> 양측에서 나온 구상입니다.
 
-A constitutional reform requires either a two-thirds supermajority in the Reichstag, or a constitutional referendum with support from a majority of the electorate. If we do not have a supermajority in the Reichstag, we must be assured of strong support from the other parties for the constitutional referendum.
+헌법 개혁을 위해서는 제국의회 재적 의원 3분의 2 이상의 찬성을 얻거나, 유권자 과반수의 지지를 받는 국민투표를 거쳐야 합니다. 제국의회에서 개헌선을 확보하지 못했다면, 국민투표를 위해 다른 정당들의 강력한 지지를 확보해야 합니다.
 
 @reforms_menu
 
-- @vote_threshold: Change the vote threshold.
-- @constructive_vonc: Ban non-constructive votes of no confidence.
-- @presidential_powers: Reduce presidential powers.
-- @as_is: Do not pursue constitutional reform.
+- @vote_threshold: 봉쇄 조항을 변경한다.
+- @constructive_vonc: 건설적 불신임 투표제를 도입한다.
+- @presidential_powers: 대통령의 권한을 축소한다.
+- @as_is: 헌법 개혁을 추진하지 않는다.
 - @easy_discard
 - @cancel_advisor_action
 #- @constitutional_bans: Allow the banning of anti-constitutional parties.
 
 @vote_threshold
-subtitle: Change the vote threshold to 5% for parties to be represented in the Reichstag.
+subtitle: 정당의 제국의회 진입을 위한 득표율 하한선을 5%로 변경합니다.
 on-arrival: {!
 Q.reform_support = Q.spd_normalized;
 if (Q.z_relation > 30) {
@@ -49,19 +49,19 @@ view-if: electoral_threshold = 0
 
 # The left is opposed to this.
 
-Some political thinkers believe that the proliferation of minor parties is responsible for the instability of the republic. They believe that a higher electoral threshold will reduce the influence of small radical parties. Parties that win a plurality in a constituency will maintain their representation, a gift to regional parties such as the <span style="color: #A2D8E0;">**BVP**</span>. 
+일부 정치 사상가들은 군소 정당의 난립이 공화국의 불안정을 초래한다고 믿습니다. 그들은 선거 봉쇄 조항을 높이면 소규모 급진 정당들의 영향력을 줄일 수 있을 것이라 생각합니다. 지역구에서 다수 득표를 한 정당은 의석을 유지할 수 있으므로, 이는 <span style="color: #A2D8E0;">**BVP**</span>와 같은 지역 정당들에게는 유리한 조건입니다.
 
-The smaller parties will obviously oppose this reform. [? if z_relation > 30 : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] supports this reform, while their <span style="color: #A2D8E0;">**BVP**</span> partners oppose it. ?] [? if kpd_relation > 50 and kpd_normalized >= 0.1 : Perhaps surprisingly, the <span style="color: #700000;">**KPD**</span> supports this reform. ?] [? if nsdap_normalized >= 0.2 : The <span style="color: #7A3C00;">**NSDAP**</span> supports this reform, as they believe they have something to gain. ?]
+군소 정당들은 당연히 이에 반대할 것입니다. [? if z_relation > 30 : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 개혁을 지지하는 반면, 그들의 파트너인 <span style="color: #A2D8E0;">**BVP**</span>는 반대하고 있습니다. ?] [? if kpd_relation > 50 and kpd_normalized >= 0.1 : 놀랍게도 <span style="color: #700000;">**KPD**</span>는 이 개혁을 지지하고 있습니다. ?] [? if nsdap_normalized >= 0.2 : <span style="color: #7A3C00;">**NSDAP**</span>는 자신들에게 이득이 될 것이라 믿고 이 개혁을 지지합니다. ?]
 
-The <span style="color: #c00000;">**SPD**</span> Left opposes this change, as they believe it to be anti-democratic.
+<span style="color: #c00000;">**SPD**</span> 내 좌파는 이것이 반민주적이라며 반대하고 있습니다.
 
-- @vote_threshold_2: Call a constitutional referendum to pass the reform!
-- @reforms_menu: See other reform options.
+- @vote_threshold_2: 개혁안 통과를 위해 국민투표를 소집한다!
+- @reforms_menu: 다른 개혁안을 살펴본다.
 
 
 @vote_threshold_2
 choose-if: reform_support >= pass_threshold
-unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 30 : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not trust us enough to support this policy. ?]
+unavailable-subtitle: 이 정책을 추진하기 위한 지지세가 부족합니다. [? if pro_republic < 65 : 유권자 과반수의 찬성이 필요한데, 공화국을 지지하지 않는 많은 유권자들이 투표에 참여하지 않을 것이므로 더 많은 여유분이 필요합니다. ?] [? if z_relation <= 30 : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 정책을 지지할 만큼 우리를 신뢰하지 않습니다. ?]
 on-arrival: constitutional_reform += 1; electoral_threshold = 5; ddp_relation -= 25; dvp_relation -= 25; lvp_relation -= 5; left_dissent += 20; workers_dnvp += workers_other*0.4; workers_nsdap += workers_other*0.4; workers_other *= 0.1; new_middle_lvp += new_middle_other*0.5; old_middle_lvp += old_middle_other*0.5; new_middle_dvp += new_middle_other*0.3; new_middle_ddp += new_middle_other*0.15; new_middle_nsdap += new_middle_other*0.3; new_middle_other *= 0.1; old_middle_dvp += 0.3*old_middle_other; old_middle_ddp += old_middle_other*0.15; old_middle_nsdap += 0.3*old_middle_other; old_middle_dnvp += 0.3*old_middle_other; old_middle_other *= 0.1; rural_dvp += 0.1*rural_other; rural_lvp += 0.1*rural_other; rural_dnvp += 0.5*rural_other; rural_nsdap += 0.3*rural_other; rural_other *= 0.1; unemployed_nsdap += 0.3*unemployed_other; unemployed_kpd += 0.4*unemployed_other; unemployed_other *= 0.2; catholics_z += 0.6*catholics_other; catholics_other *= 0.1; ddp_right += 10; ddp_cohesion -= 3; lvp_right += 3; bourgeois_cooperation += 20; liberal_cooperation += 10
 achievement: verfassungsreform
 
@@ -69,12 +69,12 @@ achievement: verfassungsreform
 
 # TODO: add bourgeois mergers cuz of this
 
-We have passed a constitutional amendment to increase the electoral threshold to 5%. This is likely to benefit the larger parties and harm the smaller ones.
+우리는 봉쇄 조항을 5%로 상향하는 헌법 수정안을 통과시켰습니다. 이는 거대 정당들에게 유리하고 군소 정당들에게 타격을 줄 가능성이 높습니다.
 
 
 
 @constructive_vonc
-subtitle: Votes of no confidence can only be called if an alternative plan for government formation can be passed, greatly reducing their incidence.
+subtitle: 차기 정부 구성을 위한 대안이 준비되어 있을 때만 불신임 결의를 할 수 있게 하여, 불신임 투표의 남발을 막는다.
 on-arrival: {!
 Q.reform_support = Q.spd_normalized + Q.ddp_normalized;
 if (Q.z_relation >= 50) {
@@ -86,21 +86,21 @@ if (!Q.stresemann_dead) {
 !}
 view-if: constructive_vonc = 0
 
-[? if z_relation >= 30 and not lvp_formed : The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition parties, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], support this reform, which will greatly improve the stability of the government. ?][? if z_relation >= 30 and lvp_formed : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] supports this reform, which will greatly improve the stability of the government, but the <span style="color: #FFCC00;">**LVP**</span> remains heavily opposed for obvious reasons. ?] [? if z_relation < 30 and not lvp_formed : The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> supports this reform, but the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not trust us enough to support the constitutional referendum. ?][? if z_relation < 30 and lvp_formed : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not trust us enough to support the constitutional referendum, and the <span style="color: #FFCC00;">**LVP**</span> remains heavily opposed for obvious reasons. ?] The more conservative and radical right-wing parties and the <span style="color: #700000;">**KPD**</span> are in opposition, as they seem to relish in the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> system's instability.
+[? if z_relation >= 30 and not lvp_formed : <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 파트너인 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 정부 안정성을 크게 높일 이 개혁을 지지합니다. ?][? if z_relation >= 30 and lvp_formed : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 정부 안정성을 크게 높일 이 개혁을 지지하지만, <span style="color: #FFCC00;">**LVP**</span>는 뻔한 이유로 강력히 반대하고 있습니다. ?] [? if z_relation < 30 and not lvp_formed : <span style="color: #D3C24D;">**[+ ddp_name +]**</span>는 이 개혁을 지지하지만, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 국민투표를 지지할 만큼 우리를 신뢰하지 않습니다. ?][? if z_relation < 30 and lvp_formed : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 국민투표를 지지할 만큼 우리를 신뢰하지 않으며, <span style="color: #FFCC00;">**LVP**</span>는 뻔한 이유로 강력히 반대하고 있습니다. ?] 더 보수적이거나 급진적인 우파 정당들과 <span style="color: #700000;">**KPD**</span>는 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">국</span> 체제의 불안정을 즐기는 듯하며 이에 반대하고 있습니다.
 
-- @constructive_vonc_2: Call a constitutional referendum to pass the reform!
-- @reforms_menu: See other reform options.
+- @constructive_vonc_2: 개혁안 통과를 위해 국민투표를 소집한다!
+- @reforms_menu: 다른 개혁안을 살펴본다.
 
 @constructive_vonc_2
 choose-if: reform_support >= pass_threshold
-unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 30 : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not trust us enough to support this policy. ?]
+unavailable-subtitle: 이 정책을 추진하기 위한 지지세가 부족합니다. [? if pro_republic < 65 : 유권자 과반수의 찬성이 필요한데, 공화국을 지지하지 않는 많은 유권자들이 투표에 참여하지 않을 것이므로 더 많은 여유분이 필요합니다. ?] [? if z_relation <= 30 : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 정책을 지지할 만큼 우리를 신뢰하지 않습니다. ?]
 on-arrival: constitutional_reform += 1; constructive_vonc = 1
 achievement: verfassungsreform
 
-We have successfully passed a constitutional amendment to ban votes of no confidence when a new government cannot be formed. Hopefully this increases the stability of our governments.
+우리는 새로운 정부를 구성할 수 없을 경우 불신임 투표를 금지하는 헌법 수정안, 즉 건설적 불신임 투표제를 성공적으로 통과시켰습니다. 이것이 우리 정부의 안정성을 높여주기를 바랍니다.
 
 @presidential_powers
-subtitle: The president can no longer dissolve the Reichstag at will, or call a <i>Reichsexekution</i> on state governments.
+subtitle: 대통령이 임의로 제국의회를 해산하거나 주 정부에 대해 <i>제국 집행</i>을 발동할 수 없게 된다.
 on-arrival: {!
 Q.reform_support = Q.spd_normalized + Q.ddp_normalized + Q.kpd_normalized + (Q.lvp_normalized / 3);
 if (Q.z_relation > 65 && (Q.president == "Hindenburg" || Q.president_ideology == "Moderate")) {
@@ -119,21 +119,21 @@ if (Q.president_ideology == "Left") {
 !}
 view-if: presidential_powers = 0
 
-The wide-ranging presidential powers promised by the constitution are a potential gateway to <span style="color: #808080;">authoritarianism</span>. Thus, we can support reforms that limit the powers of the president, ending his power to unilaterally terminate an elected government and to remove state governments.
+헌법이 보장하는 막강한 대통령 권한은 <span style="color: #808080;">권위주의</span>로 빠질 수 있는 잠재적 통로입니다. 따라서 우리는 대통령의 권한을 제한하여, 선출된 정부를 일방적으로 해산하거나 주 정부를 제거하는 권력을 끝내는 개혁을 지지할 수 있습니다.
 
-The <span style="color: #700000;">**KPD**</span> is in favor of this reform, having been victims of the <i>Reichsexekution</i> in the past (when <span style="color: #700000;">**KPD**</span>-supported state governments in Thuringia and Saxony were removed). The democrats of the [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] also support this. [? if president == "Hindenburg" or president_ideology == "Moderate": However, the opposition from conservatives is vehement, as they see a reduction in presidential powers as disrespectful to [+ president +]. ?] [? if z_relation <= 65 and (president == "Hindenburg" or president_ideology == "Moderate") : Thus, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has been influenced to oppose these reforms[? if lvp_relation < 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;along with the majority of the <span style="color: #FFCC00;">**LVP**</span>?][? if lvp_relation >= 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;however, the majority of the <span style="color: #FFCC00;">**LVP**</span> is convinced somehow?]. ?] [? if z_relation > 65 and (president == "Hindenburg" or president_ideology == "Moderate") : Despite this, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] supports the proposed reform[? if lvp_relation < 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;however, the rightists in the <span style="color: #FFCC00;">**LVP**</span> are unable to be convinced?][? if lvp_relation >= 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;along with the majority of the <span style="color: #FFCC00;">**LVP**</span>?]. ?] [? if president_ideology == "Left" : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] supports this reform. ?]
+<span style="color: #700000;">**KPD**</span>는 과거 <i>제국 집행</i>의 희생양이 된 적이 있기에(튀링겐과 작센의 <span style="color: #700000;">**KPD**</span> 연립 주 정부가 축출되었을 때) 이 개혁에 찬성합니다. [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]의 민주주의자들도 이를 지지합니다. [? if president == "Hindenburg" or president_ideology == "Moderate": 하지만 보수주의자들은 대통령 권한 축소를 [+ president +]에 대한 불경으로 여기며 격렬히 반대하고 있습니다. ?] [? if z_relation <= 65 and (president == "Hindenburg" or president_ideology == "Moderate") : 따라서 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 개혁에 반대하는 쪽으로 기울었습니다[? if lvp_relation < 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;<span style="color: #FFCC00;">**LVP**</span>의 대다수와 함께 말입니다?][? if lvp_relation >= 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;하지만 <span style="color: #FFCC00;">**LVP**</span>의 대다수는 어떻게든 설득되었습니다?]. ?] [? if z_relation > 65 and (president == "Hindenburg" or president_ideology == "Moderate") : 그럼에도 불구하고 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 제안된 개혁을 지지합니다[? if lvp_relation < 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;하지만 <span style="color: #FFCC00;">**LVP**</span> 내 우파들은 설득되지 않았습니다?][? if lvp_relation >= 49 and (president == "Hindenburg" or president_ideology == "Moderate") and lvp_formed:&nbsp;<span style="color: #FFCC00;">**LVP**</span>의 대다수와 함께 말입니다?]. ?] [? if president_ideology == "Left" : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 개혁을 지지합니다. ?]
 
-- @presidential_powers_2: Call a constitutional referendum to pass the reform!
-- @reforms_menu: See other reform options.
+- @presidential_powers_2: 개혁안 통과를 위해 국민투표를 소집한다!
+- @reforms_menu: 다른 개혁안을 살펴본다.
 
 @presidential_powers_2
 choose-if: reform_support >= pass_threshold
-unavailable-subtitle: We do not have enough support for this policy. [? if pro_republic < 65 : We should have an additional margin for the referendum since we need a majority of voters, and many voters who do not support the republic will not participate. ?] [? if z_relation <= 49 and president != "Braun" : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not trust us enough to support this policy. ?]
+unavailable-subtitle: 이 정책을 추진하기 위한 지지세가 부족합니다. [? if pro_republic < 65 : 유권자 과반수의 찬성이 필요한데, 공화국을 지지하지 않는 많은 유권자들이 투표에 참여하지 않을 것이므로 더 많은 여유분이 필요합니다. ?] [? if z_relation <= 49 and president != "Braun" : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 정책을 지지할 만큼 우리를 신뢰하지 않습니다. ?]
 on-arrival: constitutional_reform += 1; presidential_powers = 1
 go-to: bundesrepublik if president == "Adenauer"
 achievement: verfassungsreform
 
-We have successfully passed a constitutional amendment to limit presidential powers! Hopefully this results in a less <span style="color: #808080;">authoritarian</span> Germany.
+우리는 대통령 권한을 제한하는 헌법 수정안을 성공적으로 통과시켰습니다! 이것이 덜 <span style="color: #808080;">권위주의적인</span> 독일을 만드는 결과로 이어지길 바랍니다.
 
 @bundesrepublik
 achievement: bundesrepublik

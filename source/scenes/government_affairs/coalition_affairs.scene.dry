@@ -1,73 +1,73 @@
-title: Coalition Affairs
+title: 연정 문제
 new-page: true
 is-card: true
 tags: govt_affairs
 on-arrival: month_actions += 1; coalition_affairs_timer = 5
 view-if: spd_in_government = 1 and coalition_dissent >= 1 and coalition_affairs_timer = 0 and (in_grand_coalition or in_weimar_coalition or in_popular_front)
 card-image: img/muller_cabinet.jpg
-#subtitle: There is dissent within our coalition.
+#subtitle: 연정 내부에 불협화음이 있음
 
-= Coalition Affairs
+= 연정 문제
 
-Our coalition is in trouble. The right-leaning members of the [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?] [? if not in_social_catholic_coalition:[? if in_grand_coalition and not lvp_formed: and <span style="color: #C0A054;">**DVP**</span> ?][? if not lvp_formed and in_weimar_coalition: [? if not in_social_liberal_coalition: and?] <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?][? if lvp_formed: [? if not in_social_liberal_coalition: and?] <span style="color: #FFCC00;">**LVP**</span> ?]?] are constantly criticizing us for our policies, and are threatening to call a vote of no confidence to collapse this government[? if spd_prussia :, or to do the same for our government in the state of Prussia?].
+우리 연정이 곤경에 처했습니다. [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?] [? if not in_social_catholic_coalition:[? if in_grand_coalition and not lvp_formed: 및 <span style="color: #C0A054;">**DVP**</span> ?][? if not lvp_formed and in_weimar_coalition: [? if not in_social_liberal_coalition: 및?] <span style="color: #D3C24D;">**[+ ddp_name +]**</span> ?][? if lvp_formed: [? if not in_social_liberal_coalition: 및?] <span style="color: #FFCC00;">**LVP**</span> ?]?]의 우파 성향 의원들은 우리의 정책을 끊임없이 비난하고 있으며, 불신임 결의안을 제출해 이 정부를 무너뜨리겠다고 위협하고 있습니다[? if spd_prussia :, 혹은 프로이센 주 정부에 대해서도 똑같이 하겠다고 으름장을 놓고 있습니다?].
 
-How do we reduce tensions with the coalition?
+연정 파트너들과의 긴장을 어떻게 완화해야 할까요?
 
-- @dvp_prussia_2: Let the <span style="color: #C0A054;">**DVP**</span> into Prussia.
-- @promise_cuts: Agree to the bourgeois plans to cut welfare.
-- @resources: Use our party resources to support our allies.
-- @bring_down: Instead, we will bring down the government with a no-confidence vote, and call for new elections.
-- @no_change: Take none of these actions.
+- @dvp_prussia_2: <span style="color: #C0A054;">**DVP**</span>의 프로이센 내각 입각을 허용한다.
+- @promise_cuts: 복지를 삭감하려는 부르주아들의 계획에 동의한다.
+- @resources: 당의 자원을 사용하여 동맹들을 지원한다.
+- @bring_down: 대신, 우리가 먼저 불신임 결의안을 제출해 정부를 무너뜨리고 조기 총선을 소집한다.
+- @no_change: 아무런 조치도 취하지 않는다.
 - @easy_discard
 
 
 @dvp_prussia_2
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and in_grand_coalition = 1 and dvp_was_in_prussia == 0 and not lvp_formed
 choose-if: z_leader != "Kaas"
-unavailable-subtitle: [? if z_leader = "Kaas": Kaas and the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] strongly dissents against. ?]
+unavailable-subtitle: [? if z_leader = "Kaas": 카스와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이에 강력히 반대하고 있습니다. ?]
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 1; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; dvp_relation += 10; z_relation -= 5; ddp_relation += 3; coalition_dissent -= 1; left_dissent += 5; in_grand_coalition_prussia = 1; in_weimar_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; dvp_left += 3; new_middle_dvp += 3;
 
-Letting the <span style="color: #C0A054;">**DVP**</span> into the Prussian government is an offer too good for them to refuse, no matter their leadership. 
+<span style="color: #C0A054;">**DVP**</span>를 프로이센 정부에 참여시키는 것은 그들의 지도부가 누구든 간에 거절하기 힘든 매력적인 제안입니다.
 
-However, this has negatively impacted our freedom of action we previously had in the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition.
+하지만, 이로 인해 우리가 <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 연정 내에서 누렸던 행동의 자유는 제약을 받게 되었습니다.
 
 @give_up_prussia
-subtitle: Braun would need to resign.
+subtitle: 브라운이 사임해야 할 것입니다.
 view-if: prussia_leader = "Braun" and neo_weimar_coalition_prussia >= 50
 on-arrival: coalition_dissent = 1; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; reformist_dissent += 10; center_dissent += 10; labor_dissent += 10; left_dissent += 5; workers_spd -= 5; new_middle_spd -= 5; rural_spd -= 3; braun_resign = 1
 
-Fine. We no longer control the government of Prussia. The vote has been called off.
+좋습니다. 우리는 더 이상 프로이센 정부를 통제하지 않습니다. 불신임 투표는 취소되었습니다.
 
-The Minister-President position is transferred to the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+주총리직은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]으로 넘어갑니다.
 
 @promise_cuts
 on-arrival: workers_spd -= 5; unemployed_spd -= 6; workers_kpd += 5; unemployed_kpd += 3; unemployed_nsdap += 3; left_dissent += 10; labor_dissent += 5; welfare -= 1; budget += 1; coalition_dissent = 0; dvp_left += 1; ddp_cohesion -= 1; ddp_right += 1; lvp_left += 1; goal_spd_cancel += 1; social_welfare_timer = 10
 
-Fine. By cutting welfare, we have reduced dissent within the coalition.
+좋습니다. 복지 예산을 삭감함으로써 연정 내의 불만을 잠재웠습니다.
 
 @resources
-subtitle: -2 resources
+subtitle: -2 자원
 view-if: historical_mode = 0
 choose-if: (resources >= 2 and in_weimar_coalition or in_popular_front or in_minority_government) or ((resources >= 2 and in_grand_coalition and not (dvp_ideology == "Right" and year >= 1930) and not lvp_formed) or (resources >= 2 and (in_grand_coalition or in_weimar_coalition) and not (lvp_ideology == "Right" and year >= 1930) and lvp_formed))
-unavailable-subtitle: [? if resources < 2: We do not have enough resources. ?] [? if in_grand_coalition and (dvp_ideology == "Right" and year >= 1930) and not lvp_formed: The <span style="color: #C0A054;">**DVP**</span> doesn't want our resources anymore. ?] [? if (in_grand_coalition or in_weimar_coalition) and (lvp_ideology == "Right" and year >= 1930) and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> doesn't want our resources anymore. ?]
+unavailable-subtitle: [? if resources < 2: 자원이 부족합니다. ?] [? if in_grand_coalition and (dvp_ideology == "Right" and year >= 1930) and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>는 더 이상 우리의 지원을 원하지 않습니다. ?] [? if (in_grand_coalition or in_weimar_coalition) and (lvp_ideology == "Right" and year >= 1930) and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 더 이상 우리의 지원을 원하지 않습니다. ?]
 on-arrival: resources -= 2; coalition_dissent -= 1
 
-By transferring campaign funds to our coalition partners, we can make our policies more acceptable to them. Some would call this corruption, but perhaps it is necessary to save democracy.
+선거 자금을 연정 파트너들에게 지원함으로써, 우리의 정책이 그들에게 더 쉽게 받아들여지도록 만들 수 있습니다. 누군가는 이를 매수라고 부를지 모르지만, 민주주의를 지키기 위해 필요한 일일지도 모릅니다.
 
 @no_change
 
-No. We will not do this.
+아니요. 우리는 그런 짓은 하지 않을 것입니다.
 
 @bring_down
-subtitle: Bring down this government before our opponents do.
+subtitle: 반대파들이 선수치기 전에 이 정부를 무너뜨립니다.
 on-arrival: spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; chancellor = "Brüning"; chancellor_party = "Z"; spd_toleration = 0; spd_toleration_right = 0; left_strength += 8; pro_republic -= 5; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 5; bruning_event_timer = 6 if not bruning_event_seen and year >= 1930
 go-to: elections if bruning_event_seen or year < 1930
 
-We have called for a vote of no confidence in ourselves, and have brought down this government. Chancellor [+ chancellor +] currently rules as acting chancellor.
+우리는 우리 정부에 대한 불신임 결의안을 제출하여 내각을 붕괴시켰습니다. [+ chancellor +] 총리는 현재 권한 대행으로서 통치하고 있습니다.
 
-[? if not bruning_event_seen and year >= 1930: New elections haven't been called yet but it's likely that they will be soon, considering Brüning most likely doesn't have the majority of the Reichstag behind him. ?]
+[? if not bruning_event_seen and year >= 1930: 아직 조기 총선 일정이 잡히지 않았지만, 브뤼닝이 제국의회 과반의 지지를 얻지 못하고 있을 가능성이 크므로 곧 선거가 소집될 것입니다. ?]
 
 @elections
 call: set_next_election_time
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
