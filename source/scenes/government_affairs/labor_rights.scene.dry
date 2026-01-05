@@ -1,4 +1,4 @@
-title: Labor Rights
+title: 노동권
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
@@ -9,9 +9,9 @@ max-visits: 6
 go-to: labor_rights_menu
 #subtitle: Working hours, safety regulations, and unemployment insurance.
 
-= Labor Rights
+= 노동권
 
-With control of the Labor Ministry, we can set national standards for labor. Our supporters expect us to enforce a 40-hour work week and enforce safety regulations, as well as fully fund the unemployment insurance program.
+노동부를 장악함으로써 우리는 노동에 대한 국가 표준을 설정할 수 있습니다. 지지자들은 우리가 주 40시간 근무제를 시행하고 안전 규정을 강화하며, 실업 보험 프로그램에 충분한 자금을 지원하기를 기대합니다.
 
 # enforce a 40-hour work week
 # develop and enforce safety regulations in mines and industries
@@ -19,11 +19,11 @@ With control of the Labor Ministry, we can set national standards for labor. Our
 
 @labor_rights_menu
 
-- @working_hours: Enforce the 40-hour work week.
-- @shorten_hours: Shorten work hours less than 40 hours.
-- @safety: Develop and enforce safety regulations.
-- @unemployment_insurance: Fund the unemployment insurance program.
-- @root: Do not enact any policies.
+- @working_hours: 주 40시간 근무제를 시행한다.
+- @shorten_hours: 노동 시간을 40시간 미만으로 단축한다.
+- @safety: 안전 규정을 개발하고 시행한다.
+- @unemployment_insurance: 실업 보험 프로그램에 자금을 지원한다.
+- @root: 어떠한 정책도 제정하지 않는다.
 - @easy_discard
 - @cancel_advisor_action
 
@@ -31,47 +31,47 @@ With control of the Labor Ministry, we can set national standards for labor. Our
 view-if: working_hours < 2
 on-arrival: working_hours += 1; labor_dissent -= 8; left_dissent -= 5; labor_strength += 5; workers_spd += 7*(1-dissent); dvp_relation -= 4; ddp_relation -= 2; lvp_relation -= 3; coalition_dissent += 1; capital_strike_progress += 1 if (dvp_relation <= 30 and not lvp_formed); capital_strike_progress += 1 if (lvp_relation <= 30 and lvp_formed); labor_goal_completed = 1; inflation += 0.1; dvp_right += 1; ddp_left += 1; ddp_cohesion -= 0.5; lvp_right += 1; labor_goal_spd += 1; pro_labor += 1; economic_growth -= 0.1
 
-While a 40-hour work week was declared during the German Revolution in 1918, enforcement has become increasingly porous over the years. The capitalists have successfully added numerous exceptions and loopholes, returning to the old regime of forced overtime for workers.
+1918년 독일 혁명 당시 주 40시간 근무제가 선포되었지만, 수년에 걸쳐 시행은 점점 더 허술해졌습니다. 자본가들은 수많은 예외 조항과 허점을 성공적으로 추가하여 노동자들을 강제 초과 근무의 구체제로 되돌려 놓았습니다.
 
-Now, with the force of the Labor Ministry, we are finally enforcing the rights of workers to their own time. The bourgeoisie and their political representatives are displeased.
+이제 노동부의 권한으로 우리는 마침내 노동자들의 시간 권리를 집행하고 있습니다. 부르주아지와 그들의 정치적 대표들은 이에 불쾌해하고 있습니다.
 
 @shorten_hours
 view-if: working_hours >= 2 and black_thursday_seen = 1
-subtitle: Could we induce more hiring and reduce unemployment by reducing work hours?
+subtitle: 노동 시간을 줄여 고용을 늘리고 실업률을 낮출 수 있을까요?
 on-arrival: working_hours += 1; labor_dissent -= 8; left_dissent -= 5; labor_strength += 5; workers_spd += 7*(1-dissent); dvp_relation -= 4; ddp_relation -= 3; lvp_relation -= 4; coalition_dissent += 1; capital_strike_progress += 1; labor_goal_completed = 1; unemployed -= 0.3; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 0.5; lvp_right += 2; labor_goal_spd += 1; goal_spd_cancel_peoples += 1; pro_labor += 1; economic_growth -= 0.2;
 
-Some in the labor movement argue that by reducing the maximum number of hours worked, employers would be induced to hire more workers, reducing unemployment. The argument also goes that this would be complementary to deflation, maintaining the same purchasing power for workers by cutting hours without cutting wages. Employers, however, resist this policy, arguing for more flexibility in hiring and firing.
+노동 운동 일각에서는 최대 노동 시간을 줄임으로써 고용주들이 더 많은 노동자를 고용하게 유도하여 실업률을 낮출 수 있다고 주장합니다. 또한 임금 삭감 없이 노동 시간만 줄임으로써 노동자의 구매력을 유지할 수 있어 디플레이션에 대한 보완책이 될 것이라는 주장도 있습니다. 그러나 고용주들은 고용과 해고의 유연성을 주장하며 이 정책에 저항하고 있습니다.
 
 @safety
 on-arrival: workers_safety += 1; labor_dissent -= 5; labor_strength += 2; workers_spd += 5*(1-dissent); capital_strike_progress += 1 if workers_safety >= 3; ddp_right += 1 if workers_safety >= 3; dvp_right += 1 if workers_safety >= 3; lvp_right += 1 if workers_safety >= 3; labor_goal_spd += 1
 
-The Labor Ministry works on developing and enforcing safety regulations, in order to ensure healty working conditions for the proletariat. [? if workers_safety >= 3 : Businesses have begun to argue that our focus on safety is overbearing and unnecessary, interfering with the economy. ?]
+노동부는 프롤레타리아를 위한 건강한 노동 환경을 보장하기 위해 안전 규정을 개발하고 시행하는 작업을 진행합니다. [? if workers_safety >= 3 : 기업들은 안전에 대한 우리의 관심이 지나치게 고압적이고 불필요하며 경제를 방해한다고 주장하기 시작했습니다. ?]
 
 @unemployment_insurance
 view-if: unemployed >= unemployment_insurance_threshold + 4
-subtitle: With increasing unemployment, we must find new ways to fund our signature program.
+subtitle: 실업률 증가와 함께 우리의 핵심 프로그램에 자금을 조달할 새로운 방법을 찾아야 합니다.
 
-With the onset of the Depression and its throngs of unemployed, our unemployment insurance program is under strain. The program was never designed for this many claimants; something must be done to balance the budget.
+대공황의 시작과 수많은 실업자로 인해 실업 보험 프로그램이 압박을 받고 있습니다. 이 프로그램은 이렇게 많은 청구자를 감당하도록 설계되지 않았습니다. 예산 균형을 맞추기 위해 조치가 필요합니다.
 
-- @cut_benefits: Cut benefits.
-- @increase_employers: Increase employer contributions.
-- @balance: Increase both employer and employee contributions.
-- @labor_rights_menu: We can defer this decision for now.
+- @cut_benefits: 혜택을 삭감한다.
+- @increase_employers: 고용주 기여금을 인상한다.
+- @balance: 고용주와 피고용인 기여금을 모두 인상한다.
+- @labor_rights_menu: 지금은 결정을 미룰 수 있다.
 
 @cut_benefits
-subtitle: The workers will regard this as a betrayal.
+subtitle: 노동자들은 이를 배신으로 간주할 것입니다.
 on-arrival: workers_spd -= 0.12*workers_spd; unemployed_spd -= 0.2*unemployed_spd; workers_kpd += 5; workers_nsdap += 5; unemployed_kpd += 5; unemployed_nsdap += 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; reformist_dissent += 5; welfare -= 2; budget += 1; unemployed += 3; pro_republic -= 4; kpd_relation -= 8; inflation -= 2; unemployment_insurance_threshold = unemployed; unemployment_insurance_timer = 10; dvp_left += 2; ddp_left += 2 if ddp_ideology == "Left"; workers_ddp += 3 if ddp_ideology == "Left"; lvp_left += 1; goal_spd_cancel += 1; labor_goal_spd_peoples += 1; economic_growth -= 0.2;
 
-For budgetary reasons, we have cut unemployment insurance benefits. Unfortunately, our reasons for fiscal discipline are alien to the workers. They are furious at our betrayal, as are a good portion of our membership throughout the factions. Our loss is the <span style="color: #700000 ;">**KPD**</span>'s gain, and even the <span style="color: #7A3C00;">**NSDAP**</span>, those lapdogs of the bourgeoisie, have joined in criticizing us for our austerity.
+예산상의 이유로 실업 보험 혜택을 삭감했습니다. 불행히도 재정 규율에 대한 우리의 논리는 노동자들에게 낯설기만 합니다. 그들은 우리의 배신에 분노하고 있으며, 당내 모든 파벌의 당원들도 마찬가지입니다. 우리의 손실은 <span style="color: #700000 ;">**KPD**</span>의 이득이 되었으며, 심지어 부르주아지의 애완견인 <span style="color: #7A3C00;">**NSDAP**</span>조차 긴축 정책에 대해 우리를 비판하는 대열에 합류했습니다.
 
 @increase_employers
-subtitle: Employers are strongly against this. [? if in_grand_coalition: The [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] will likely break the coalition. ?][? if in_weimar_coalition and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will likely break the coalition. ?]
+subtitle: 고용주들은 이에 강력히 반대합니다. [? if in_grand_coalition: [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]는 연정을 깰 가능성이 큽니다. ?][? if in_weimar_coalition and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 연정을 깰 가능성이 큽니다. ?]
 on-arrival: capital_strike_progress += 2; coalition_dissent = 2 if in_grand_coalition; coalition_dissent = 2 if (in_weimar_coalition and lvp_formed); coalition_dissent += 1; coalition_dissent += 1 if (lvp_ideology == "Right" and in_weimar_coalition and lvp_formed); welfare += 1; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); old_middle_spd -= 6*(1-dissent); new_middle_spd -= 2*(1-dissent); unemployment_insurance_threshold = unemployed; unemployment_insurance_timer = 10; dvp_right += 2; ddp_right += 2; ddp_cohesion -= 1; lvp_right += 2; dvp_relation -= 6; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; unemployment_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth -= 0.2;
 
-We have increased employer contributions to the unemployment insurance fund, allowing the program to continue without hurting workers and the unemployed. Perhaps understandably, the capitalists and their political parties are furious, while our base in the unions and among the unemployed are pleased.
+우리는 실업 보험 기금에 대한 고용주 기여금을 인상하여 노동자와 실업자에게 피해를 주지 않고 프로그램을 지속할 수 있게 했습니다. 당연하게도 자본가들과 그들의 정당은 격분하고 있는 반면, 노조와 실업자들 사이의 우리 지지 기반은 기뻐하고 있습니다.
 
 @balance
-subtitle: Neither workers nor employers will be entirely satisfied or dissatisfied. [? if in_grand_coalition and ((dvp_ideology == "Right") or (dvp_ideology == "Moderate" and dvp_relation < 40) or (dvp_ideology == "Left" and dvp_relation < 30)) and not lvp_formed: The <span style="color: #C0A054;">**DVP**</span> will likely consider the compromise unacceptable. ?][? if in_grand_coalition and ((dvp_ideology == "Left" and dvp_relation >= 30) or (dvp_ideology == "Moderate" and dvp_relation >= 40)) and dvp_ideology != "Right" and not lvp_formed: The <span style="color: #C0A054;">**DVP**</span> might grudgingly accept the compromise for now. ?][? if (in_grand_coalition or in_weimar_coalition) and ((lvp_ideology == "Right") or (lvp_ideology == "Moderate" and lvp_relation < 40) or (lvp_ideology == "Left" and lvp_relation < 30)) and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will likely consider the compromise unacceptable. ?][? if (in_grand_coalition or in_weimar_coalition) and ((lvp_ideology == "Left" and lvp_relation >= 30) or (lvp_ideology == "Moderate" and lvp_relation >= 40)) and lvp_ideology != "Right" and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> might grudgingly accept the compromise for now. ?]
+subtitle: subtitle: 노동자도 고용주도 완전히 만족하거나 불만족하지는 않을 것입니다. [? if in_grand_coalition and ((dvp_ideology == "Right") or (dvp_ideology == "Moderate" and dvp_relation < 40) or (dvp_ideology == "Left" and dvp_relation < 30)) and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>는 타협을 받아들일 수 없다고 여길 것입니다. ?][? if in_grand_coalition and ((dvp_ideology == "Left" and dvp_relation >= 30) or (dvp_ideology == "Moderate" and dvp_relation >= 40)) and dvp_ideology != "Right" and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>는 지금은 마지못해 타협을 받아들일 것입니다. ?][? if (in_grand_coalition or in_weimar_coalition) and ((lvp_ideology == "Right") or (lvp_ideology == "Moderate" and lvp_relation < 40) or (lvp_ideology == "Left" and lvp_relation < 30)) and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 타협을 받아들일 수 없다고 여길 것입니다. ?][? if (in_grand_coalition or in_weimar_coalition) and ((lvp_ideology == "Left" and lvp_relation >= 30) or (lvp_ideology == "Moderate" and lvp_relation >= 40)) and lvp_ideology != "Right" and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 지금은 마지못해 타협을 받아들일 것입니다. ?]
 on-arrival: workers_spd -= 4; unemployed_spd -= 5; workers_kpd += 3; unemployed_kpd += 3; unemployed_nsdap += 3; left_dissent += 10; labor_dissent += 8; center_dissent += 5; welfare -= 1; budget += 1; kpd_relation -= 4; inflation -= 1; unemployment_insurance_threshold = unemployed; unemployment_insurance_timer = 10; coalition_dissent = 2 if in_grand_coalition and ((dvp_ideology == "Right") or (dvp_ideology == "Moderate" and dvp_relation < 40) or (dvp_ideology == "Left" and dvp_relation < 30)); coalition_dissent = 2 if (in_grand_coalition or in_weimar_coalition) and ((lvp_ideology == "Right") or (lvp_ideology == "Moderate" and lvp_relation < 40) or (lvp_ideology == "Left" and lvp_relation < 30)) and lvp_formed; coalition_dissent += 1 if in_grand_coalition; coalition_dissent += 1 if (in_weimar_coalition and lvp_formed); dvp_right += 1; ddp_right += 1; lvp_right += 1; labor_goal_spd_peoples += 1; economic_growth -= 0.1;
 
-Neither side is entirely satisfied by our compromise solution. Many of the workers and unemployed see this as a betrayal, although we present it as the successful aversion of a much worse alternative. [? if (in_grand_coalition or (in_weimar_coalition and lvp_formed)): Meanwhile, the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] is aghast at the prospect of raising any taxes on businesses at all. ?]
+어느 쪽도 우리의 타협안에 완전히 만족하지 않습니다. 많은 노동자와 실업자가 이를 배신으로 여기지만, 우리는 이를 훨씬 더 나쁜 대안을 성공적으로 피한 것이라고 설명합니다. [? if (in_grand_coalition or (in_weimar_coalition and lvp_formed)): 한편 [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]는 기업에 대한 세금을 조금이라도 인상한다는 전망에 경악하고 있습니다. ?]

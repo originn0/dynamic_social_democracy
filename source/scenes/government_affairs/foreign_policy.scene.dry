@@ -1,4 +1,4 @@
-title: Foreign Policy
+title: 대외 정책
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
@@ -8,9 +8,9 @@ card-image: img/portraits/BreitscheidRudolf.jpg
 go-to: fp_menu
 #subtitle: International relations and dealing with Versailles.
 
-= Foreign Policy
+= 대외 정책
 
-What should our foreign policy priority be?
+우리의 대외 정책 우선순위는 어떤 것부터 해야 할까요?
 
 @fp_menu
 
@@ -29,72 +29,72 @@ What should our foreign policy priority be?
 - @concordat
 - @support_austria
 - @support_austria_2
-- @root: Do not enact any policies for now.
+- @root: 지금은 어떠한 정책도 제정하지 않는다.
 - @easy_discard
 - @cancel_advisor_action
 
 @improve_west
-title: Improve our relations with the <span style="color: #002654;">Western</span> <span style="color: #D7141A;">Allies</span>.
+title:  <span style="color: #002654;">서방</span> <span style="color: #D7141A;">연합국</span>과의 관계를 개선한다.
 on-arrival: west_relation += 2; reparations_negotiation += 1
 
-The key to peace in Europe is a rapprochement between <span style="color: #002654;">France</span> and Germany. We are taking steps towards that rapprochement. [? if young_plan_seen == 0 : This is difficult to do when <span style="color: #002654;">France</span> is occupying a major portion of Germany's territory, but we are working on that part. ?]
+유럽 평화의 핵심은 <span style="color: #002654;">프랑스</span>와 독일 간의 화해입니다. 우리는 그 화해를 위한 단계를 밟고 있습니다. [? if young_plan_seen == 0 : <span style="color: #002654;">프랑스</span>가 독일 영토의 상당 부분을 점령하고 있는 상황에서 이는 어려운 일이지만, 우리는 그 부분에 대해 노력하고 있습니다. ?]
 
 @improve_east
-title: Improve our relations with our eastern neighbors.
+title: 동쪽 이웃 국가들과의 관계를 개선한다.
 on-arrival: east_relation += 2;
 
-We also aim to improve relations with our eastern neighbors, <span style="color: #DC143C;">Pol</span><span style="color: #FFFFFF;">and</span> and <span style="color: #11457E;">Czech</span><span style="color: #FFFFFF;">oslo</span><span style="color: #D7141A;">vakia</span>, who are rightfully terrified of German aggression. Hopefully we can convince them of our peaceful intentions.
+우리는 또한 독일의 공격성을 정당하게 우려하고 있는 동쪽 이웃인 <span style="color: #DC143C;">폴</span><span style="color: #FFFFFF;">란드</span> 및 <span style="color: #11457E;">체코</span><span style="color: #FFFFFF;">슬로</span><span style="color: #D7141A;">바키아</span>와의 관계 개선을 목표로 합니다. 그들에게 우리의 평화로운 의도를 확신시킬 수 있기를 바랍니다.
 
 @improve_soviet_eco
-title: Expand our exports to the <span style="color: #750e0e;">**Soviet Union**</span>.
-subtitle: A win for our economy and for our relationship with the <span style="color: #700000;">**KPD**</span>.
+title:  <span style="color: #750e0e;">**소비에트 연방**</span>으로의 수출을 확대한다.
+subtitle: 우리 경제와 <span style="color: #700000;">**KPD**</span>와의 관계를 위한 승리.
 view-if: year >= 1930
 on-arrival: soviet_export = 1; soviet_relation += 1; economic_growth += 0.5; unemployed -= 0.5; foreign_goal_completed += 1; kpd_relation += 6; communist_coalition += 1; hindenburg_angry += 15; z_relation -= 3; ddp_relation -= 3; dvp_relation -= 3; lvp_relation -= 3; dvp_right += 1; lvp_right += 1; ddp_right += 1
 max-visits: 1
 
-The <span style="color: #750e0e;">Soviet Union</span>, with its centrally planned economy and isolation from global markets, has insulated itself from the effects of the Great Depression. They have since been rapidly industrializing in accordance with their Five-Year Plan, making them a prime partner for exports, especially as tariffs from our nominal trading partners in the West have increased, along with their general isolation from international markets.
+<span style="color: #750e0e;">소비에트 연방</span>은 중앙 계획 경제와 세계 시장으로부터의 고립 덕분에 대공황의 여파로부터 스스로를 차단했습니다. 그들은 이후 5개년 계획에 따라 급격하게 산업화를 진행 중이며, 특히 서방의 명목상 무역 파트너들이 관세를 인상함에 따라 국제 시장에서 고립된 그들은 우리의 주요 수출 파트너가 되고 있습니다.
 
-The <span style="color: #940000;">Soviets</span> are pleased by this, and we stand to reap the economic benefits. The only downside is that the right-wing propaganda machine has decried this action, pressuring [? if president == "Hindenburg": President Hindenburg and?] the bourgeois parties to break with us.
+<span style="color: #940000;">소련인들</span>은 이에 기뻐하고 있으며, 우리는 경제적 이익을 거둘 수 있습니다. 유일한 단점은 우익 선전 매체들이 이 행동을 비난하며 [? if president == "Hindenburg": 힌덴부르크 대통령과?] 부르주아 정당들이 우리와 결별하도록 압박하고 있다는 점입니다.
 
 @improve_soviet
-title: Improve our relations with the <span style="color: #750e0e;">**Soviet Union**</span>.
-subtitle: We could also broach the question of the <span style="color: #700000;">**KPD**</span>...
+title: <span style="color: #750e0e;">**소비에트 연방**</span>과의 관계를 개선한다.
+subtitle: <span style="color: #700000;">**KPD**</span> 문제를 거론할 수도 있습니다...
 
-The <span style="color: #750e0e;">Soviet Union</span> also suffered from the international order created by the Treaty of Versailles; they have been participating in our secret rearmament program. The Treaty of Rapallo in 1922 affirmed our friendly relations.
+<span style="color: #750e0e;">소비에트 연방</span> 또한 베르사유 조약에 의해 형성된 국제 질서로부터 고통받았으며, 그들은 우리의 비밀 재무장 프로그램에 참여해 왔습니다. 1922년의 라팔로 조약은 우리의 우호적인 관계를 확인시켜 주었습니다.
 
-The <span style="color: #940000;">Soviets</span> are asking for economic and developmental assistance. They are still a poor country on the whole, and are desperately trying to catch up to the western powers. There is a chance that our <span style="color: #FF0000;">anti</span>-<span style="color: #700000;">communist</span> coalition partners would be upset, but we could assuage them by asking the <span style="color: #940000;">Soviets</span> for secret assistance in training and equipping the Reichswehr.
+<span style="color: #940000;">소련인들</span>은 경제 및 개발 원조를 요청하고 있습니다. 그들은 전체적으로 여전히 빈곤한 국가이며, 서방 열강을 따라잡기 위해 필사적으로 노력하고 있습니다. 우리의 <span style="color: #FF0000;">반</span><span style="color: #700000;">공산주의</span> 연정 파트너들이 반발할 가능성이 있지만, <span style="color: #940000;">소비에트인들</span>에게 국방군 훈련 및 장비에 대한 비밀 지원을 요청함으로써 그들을 달랠 수 있습니다.
 
-- @soviet_economic_aid_yes_mil: Provide aid, in exchange for Reichswehr assistance.
-- @soviet_economic_aid_yes: Provide aid, in exchange for only good relations.
-- @soviet_economic_aid_no: Don't provide aid.
+- @soviet_economic_aid_yes_mil: 국방군 지원을 대가로 원조를 제공한다.
+- @soviet_economic_aid_yes: 우호적인 관계만을 대가로 원조를 제공한다.
+- @soviet_economic_aid_no: 원조를 제공하지 않는다.
 
 @soviet_economic_aid_yes_mil
 choose-if: budget >= 1
-subtitle: -1 budget
+subtitle: 예산 -1
 on-arrival: soviet_aid_forpol = 1; budget -= 1; soviet_relation += 1; reichswehr_militancy += 0.2; reichswehr_loyalty += 0.05; foreign_goal_completed += 1
 
-The <span style="color: #940000;">Soviets</span> are pleased that we have sent them aid, and have agreed to help train our military. The Reichswehr appreciates our support.
+<span style="color: #940000;">소련인들</span>은 우리가 원조를 보낸 것에 기뻐하며, 우리 군대의 훈련을 돕기로 동의했습니다. 국방군은 우리의 지원에 감사하고 있습니다.
 
 @soviet_economic_aid_yes
 choose-if: budget >= 1
-subtitle: -1 budget
+subtitle: 예산 -1
 on-arrival: soviet_aid_forpol = 1; budget -= 1; soviet_relation += 2; coalition_dissent += 1; foreign_goal_completed += 1
 
-The <span style="color: #940000;">Soviets</span> are pleased that we have sent them aid, and have not asked for anything specific in exchange. Our coalition partners are less pleased.
+<span style="color: #940000;">소련인들</span>은 우리가 원조를 보낸 것에 기뻐하며, 대가로 구체적인 어떤 것도 요구하지 않았습니다. 연정 파트너들은 덜 기뻐하고 있습니다.
 
-- @kpd: Ask if <span style="color: #940000;">Moscow</span> could help repair our relations with the <span style="color: #700000;">**KPD**</span>.
-- @wittorf: Do the <span style="color: #940000;">Soviets</span> know about the Wittorf Affair? Do they know that we know?
-- @root: Do not mention the <span style="color: #700000;">**KPD**</span>.
+- @kpd: <span style="color: #940000;">모스크바</span>가 <span style="color: #700000;">**KPD**</span>와의 관계 개선을 도울 수 있는지 묻는다.
+- @wittorf: <span style="color: #940000;">소련인들</span>은 비토르프 사건에 대해 알고 있는가? 그들은 우리가 알고 있다는 사실을 아는가?
+- @root: <span style="color: #700000;">**KPD**</span>를 언급하지 않는다.
 
 @soviet_economic_aid_no
 
-The <span style="color: #940000;">Soviets</span> are slightly upset, but they seemed to expect this answer.
+<span style="color: #940000;">소련인들</span>은 다소 불쾌해했지만, 이러한 답변을 예상했던 것 같습니다.
 
 
 @kpd
 on-arrival: kpd_relation += 8*(1-dissent); communist_coalition += 1 if kpd_foreign_seen == 0; kpd_foreign_seen = 1
 
-We also mention the <span style="color: #700000;">**KPD**</span> in our conversations with the <span style="color: #940000;">Soviet</span> ambassador. They claim that the <span style="color: #700000;">**KPD**</span> is entirely independent of the <span style="color: #940000;">Soviet</span> government, and that the conflict is Thälmann's doing. But, soon after our conversation we notice a slight improvement in attitudes from the <span style="color: #700000;">**KPD**</span>.
+우리는 또한 <span style="color: #940000;">소련</span> 대사와의 대화에서 <span style="color: #700000;">**KPD**</span>를 언급했습니다. 그들은 <span style="color: #700000;">**KPD**</span>가 <span style="color: #940000;">소련</span> 정부로부터 완전히 독립적이라고 주장하며, 갈등은 텔만의 소행이라고 주장합니다. 하지만 대화 직후 우리는 <span style="color: #700000;">**KPD**</span>의 태도가 약간 개선된 것을 확인했습니다.
 
 @wittorf
 view-if: wittorf_secret = 1 and ((year = 1929 and month < 6) or year = 1928) and wittorf_soviet_union = 0
@@ -102,143 +102,143 @@ unavailable-subtitle: It is impossible that <span style="color: #8B0000;">Stalin
 on-arrival: wittorf_soviet_union = 1; kpd_relation += 6*(1-dissent); kpd_foreign_seen = 1
 max-visits: 1
 
-Of course <span style="color: #8B0000;">Stalin</span> and the various leaders of the <span style="color: #D50000;">Comintern</span> know about the Wittorf Affair, but they do not seem to know that we know as well. The <span style="color: #D50000;">Comintern</span> was planning to build a narrative around the affair that absolves Thälmann, but perhaps now they will be less inclined to defend him.
+물론 <span style="color: #8B0000;">스탈린</span>과 <span style="color: #D50000;">코민테른</span>의 여러 지도자는 비토르프 사건에 대해 알고 있지만, 그들은 우리가 그 사실을 안다는 것은 모르는 것 같습니다. <span style="color: #D50000;">코민테른</span>은 텔만을 면죄하기 위해 사건을 조작할 계획이었지만, 이제는 그를 방어하려는 의지가 꺾일지도 모릅니다.
 
 
 @customs_union
-title: Form a customs union with Austria?
-subtitle: This will likely incur the wrath of <span style="color: #002654;">France</span>.
-unavailable-subtitle: This is superseded by the <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>.
+title: 오스트리아와 관세 동맹을 맺는다?
+subtitle: 이는 <span style="color: #002654;">프랑스</span>의 분노를 초래할 가능성이 큽니다.
+unavailable-subtitle: 이 제안은 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>으로 대체되었습니다.
 choose-if: eu = 0
 view-if: black_thursday_seen = 1 and customs_union = 0
 
-The right has long desired closer ties with Austria, with the eventual goal of the merger of the two German-speaking countries. A customs union with Austria is the first step towards this goal. Additionally, many believe that a union with Austria would improve our current economic circumstances.
+우익은 오랫동안 두 독일어 사용 국가의 합병이라는 궁극적인 목표를 가지고 오스트리아와의 더 긴밀한 유대를 열망해 왔습니다. 오스트리아와의 관세 동맹은 이 목표를 향한 첫걸음입니다. 게다가 많은 이는 오스트리아와의 연합이 현재의 경제 상황을 개선할 것이라고 믿습니다.
 
-However, the Allies, especially <span style="color: #002654;">France</span>, are likely to object. This agreement would break the terms of the Versailles Treaty, and could lead to economic sanctions, further hurting our economy.
+하지만 연합국들, 특히 <span style="color: #002654;">프랑스</span>는 반대할 가능성이 큽니다. 이 합의는 베르사유 조약 위반으로 간주되어 경제 제재로 이어질 수 있으며, 우리 경제에 더 큰 타격을 줄 수 있습니다.
 
-- @customs_union_2: Yes, do it!
-- @fp_menu: No, we should do something else.
+- @customs_union_2: 그래, 진행한다!
+- @fp_menu: 아니, 다른 방안을 찾아야 한다.
 
 @customs_union_2
 on-arrival: banking_crisis_timer = 4; customs_union = 1; west_relation -= 2; east_relation -= 2; z_relation += 6; dvp_relation += 6; ddp_relation += 4; lvp_relation += 6; coalition_dissent -= 1 if coalition_dissent > 0; coup_progress -= 1; hindenburg_angry -= 15
 max-visits: 1
 
-We have formed a customs union with Austria! The right-wing parties are praising us for this unexpected turn of events.
+우리는 오스트리아와 관세 동맹을 체결했습니다! 우익 정당들은 예상치 못한 사태의 전환에 대해 우리를 칭찬하고 있습니다.
 
-Immediately, <span style="color: #002654;">France</span> and other neighboring countries lodge their protests. The longer-term response is yet to be seen.
+즉시 <span style="color: #002654;">프랑스</span>와 다른 이웃 국가들이 항의를 제기했습니다. 장기적인 반응은 아직 지켜봐야 합니다.
 
 
 @negotiate
-title: Negotiate regarding our remaining obligations from the Treaty of Versailles.
-subtitle: [? if young_plan_seen == 1 and black_thursday_seen : After passing the Young Plan, <span style="color: #002654;">France</span> has committed to withdrawing from the Rhineland. Now, we must see if they can reduce our reparations further, given the economic depression. ?][? if young_plan_seen == 1 and not black_thursday_seen : After passing the Young Plan, <span style="color: #002654;">France</span> has committed to withdrawing from the Rhineland. Now, we must see if they can reduce our reparations further. ?]
+title: 베르사유 조약의 잔여 의무에 관해 협상한다.
+subtitle: [? if young_plan_seen == 1 and black_thursday_seen : 영 안 통과 후 <span style="color: #002654;">프랑스</span>는 라인란트 철수를 약속했습니다. 이제 경제 불황을 고려하여 배상금을 더 줄일 수 있는지 확인해야 합니다. ?][? if young_plan_seen == 1 and not black_thursday_seen : 영 안 통과 후 <span style="color: #002654;">프랑스</span>는 라인란트 철수를 약속했습니다. 이제 배상금을 더 줄일 수 있는지 확인해야 합니다. ?]
 view-if: reparations > -2 and reparations_negotiation < 3
 on-arrival: west_relation += 1; reparations_negotiation += 1; reparations_negotiation += 1 if pacifism >= 3; reparations_negotiation += 1 if nationalism <= 50; reparations_negotiation += 1 if west_relation >= 3
 
-Negotiations proceed smoothly for the most part. The Western powers are convinced of Germany's sincerity and goodwill. [? if nationalism <= 50 or pacifism >= 3 : They are pleased to see that we are renouncing militarism. ?]
+협상은 대체로 순조롭게 진행됩니다. 서방 열강들은 독일의 진심과 선의를 확신하고 있습니다. [? if nationalism <= 50 or pacifism >= 3 : 그들은 우리가 군국주의를 포기하고 있다는 점을 기쁘게 생각합니다. ?]
 
 
 @reduce_reparations
-title: The <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> are finally willing to pause our reparations payments!
-subtitle: Our negotiations have been successful.
-unavailable-subtitle: [? if not young_plan_ratified: We must wait for the ratification of the Young Plan. ?][? if west_relation < 4: <span style="color: #002654;">France</span>'s government has major quarrels with other Western powers regarding a pause in reparations, higher relations with the West are required. ?]
+title: <span style="color: #0A3161;">서방</span> <span style="color: #C8102E;">연합국</span>이 마침내 배상금 지불을 중단할 의향을 보입니다!
+subtitle: 우리의 협상이 성공했습니다.
+unavailable-subtitle: [? if not young_plan_ratified: 영 안의 비준을 기다려야 합니다. ?][? if west_relation < 4: <span style="color: #002654;">프랑스</span> 정부는 배상금 중단 문제로 다른 서방 열강들과 큰 마찰을 빚고 있습니다. 서방과의 관계 개선이 필요합니다. ?]
 choose-if: young_plan_ratified == 1 and west_relation >= 4
 view-if: reparations_negotiation >= 3 and reparations > -2 and young_plan_seen
 on-arrival: west_relation += 1; reparations = -2; budget += 2 if hoover_memorandum_seen == 0; budget += 1 if hoover_memorandum_seen == 1; coalition_dissent -= 1 if coalition_dissent > 0; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); coup_progress -= 2 if coup_progress > 2; dvp_left += 3; pro_republic += 8; ddp_left += 1; ddp_cohesion += 1; lvp_left += 3; hindenburg_angry -= 20; economic_growth += 0.5 if economic_growth < 0; labor_dissent -= 15; dvp_relation += 5; ddp_relation += 5; z_relation += 5; lvp_relation += 5
 max-visits: 1
 
-Finally, given both the economic circumstances and our continued negotiations, the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> are willing to pause our reparations payments! Much of the credit must go to <span style="color: #0A3161;">Western</span> president Hoover, who has been friendlier towards us than the <span style="color: #001489;">Europeans</span>.
+마침내 경제적 상황과 우리의 지속적인 협상을 고려하여 <span style="color: #0A3161;">서방</span> <span style="color: #C8102E;">연합국</span>은 배상금 지불을 중단할 의향을 보였습니다! 이 공로의 상당 부분은 <span style="color: #001489;">유럽인들</span>보다 우리에게 더 우호적이었던 <span style="color: #0A3161;">서방</span>의 후버 대통령에게 돌아가야 합니다.
 
-This has reduced tensions within our government, and our party has gotten credit for the achievement.
+이로써 정부 내의 긴장이 완화되었고, 우리 당은 이 성과에 대한 공로를 인정받았습니다.
 
 @settle_reparations
-title: We will finally settle the reparations issues with the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span>!
-subtitle: The issue of reparations and future payments will finally be resolved.
-unavailable-subtitle: [? if west_relation < 5: <span style="color: #002654;">France</span>'s government has major quarrels with other Western powers regarding an outright abolition of reparations. ?][? if not france_left_seen and year < 1932: <span style="color: #002654;">France</span>'s right-wing government won't approve of this; we must wait until a more favorable cabinet comes to power. ?][? if not france_left_seen and year >= 1932: <span style="color: #002654;">France</span>'s government won't be able to make a decision with its own elections approaching in May. ?]
+title:마침내 <span style="color: #0A3161;">서방</span> <span style="color: #C8102E;">연합국</span>과의 배상금 문제를 해결할 것입니다!
+subtitle: 배상금과 향후 지불 문제가 마침내 해결될 것입니다.
+unavailable-subtitle: [? if west_relation < 5: <span style="color: #002654;">프랑스</span> 정부는 배상금 완전 폐지 문제로 다른 서방 열강들과 큰 마찰을 빚고 있습니다. ?][? if not france_left_seen and year < 1932: <span style="color: #002654;">프랑스</span>의 우익 정부는 이를 승인하지 않을 것입니다. 더 우호적인 내각이 집권할 때까지 기다려야 합니다. ?][? if not france_left_seen and year >= 1932: <span style="color: #002654;">프랑스</span> 정부는 5월 선거를 앞두고 결정을 내릴 수 없을 것입니다. ?]
 choose-if: west_relation >= 6 and france_left_seen
 view-if: reparations == -2 and not lausanne_seen
 on-arrival: west_relation += 1; eu_progress += 1; reparations_resolved = 1; budget += 1; coalition_dissent -= 3 if coalition_dissent > 0; workers_spd += 8*(1-dissent); old_middle_spd += 6*(1-dissent); new_middle_spd += 6*(1-dissent); rural_spd += 6*(1-dissent); catholics_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); coup_progress -= 4 if coup_progress > 4; dvp_left += 8; ddp_left += 4; ddp_cohesion += 4; pro_republic += 15; lvp_left += 8; hindenburg_angry -= 100; economic_growth += 2.5; unemployed -= 3; labor_dissent -= 15; workers_nsdap -= 5; unemployed_nsdap -= 5; new_middle_nsdap -= 5; old_middle_nsdap -= 5; rural_nsdap -= 5; catholics_nsdap -= 5; dvp_relation += 10; ddp_relation += 10; z_relation += 10; lvp_relation += 10
 max-visits: 1
 
-With our success in negotiating a pause in reparation payments, the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> have been convinced of our sincere commitment to pacifism and distancing from militarism. Additionally, <span style="color: #002654;">France</span>'s new <span style="color: #E0B0FF;">left-wing</span> Prime Minister has been considerably more amicable than their predecessor. As a result, we have secured their agreement to a conference aimed at finally settling the reparations issue.
+배상금 지불 유예 협상에 성공함으로써 <span style="color: #0A3161;">서방</span> <span style="color: #C8102E;">연합국</span>은 평화주의와 군국주의 탈피에 대한 우리의 진정성을 확신하게 되었습니다. 게다가 <span style="color: #002654;">프랑스</span>의 새로운 <span style="color: #E0B0FF;">좌익</span> 총리는 전임자보다 훨씬 더 우호적이었습니다. 그 결과 우리는 배상금 문제를 최종적으로 해결하기 위한 회의에 그들의 동의를 얻어냈습니다.
 
-In the end, Germany is required to make only a final payment of three billion marks, effectively ending future reparation obligations. This has greatly boosted investor confidence and sparked a new wave of capital inflows to Germany. This has greatly eased tensions within our government, with our party receiving credit for the achievement—much to the detriment of the <span style="color: #7A3C00;">**NSDAP**</span>, which had built much of its appeal on the narrative of Germany’s "national slavery."
+결국 독일은 30억 마르크의 마지막 지불만 하면 되며, 향후 배상금 의무는 사실상 종료됩니다. 이는 투자자들의 신뢰를 크게 높여 독일로의 자본 유입을 촉진했습니다. 또한 정부 내 긴장을 크게 완화시켰으며, 우리 당이 이 성과에 대한 공로를 인정받았습니다. 반면 독일의 "국가적 노예 상태"라는 이야기에 호소력의 대부분을 의존했던 <span style="color: #7A3C00;">**NSDAP**</span>에게는 큰 타격이 되었습니다.
 
 - @schleicher_spd
 
 @schleicher_spd
 view-if: schleicher_spd and president == "Hindenburg"
-title: But of course, Schleicher stipulates that we demand military parity.
-subtitle: This will be a severe betrayal of our values!
+title: 물론 슐라이허는 우리가 군사적 동등권을 요구해야 한다고 못 박았습니다.
+subtitle: 이는 우리의 가치에 대한 심각한 배신이 될 것입니다!
 on-arrival: military_parity = 1 if eu or (west_relation >= 8 and reformist_strength >= left_strength + center_strength and soviet_relation == 0 and kpd_relation < 30); reichswehr_strength += 300 if military_parity; sh_strength -= 100 if military_parity; sa_strength -= 50 if military_parity; rb_strength -= 150 if military_parity; nationalism += 5; nationalism += 15 if military_parity; pacifism -= 3; reichswehr_loyalty += 0.5 if military_parity; reichswehr_militancy += 2 if military_parity; workers_spd -= 6; old_middle_spd -= 2; new_middle_spd -= 4; rural_spd -= 2; catholics_spd -= 2; unemployed_spd -= 4; workers_kpd += 6; old_middle_ddp += 2; new_middle_ddp += 4; rural_ddp += 2; catholics_kpd += 2; unemployed_kpd += 4; old_middle_spd += 20 if military_parity; workers_nsdap -= 3 if military_parity; unemployed_nsdap -= 4 if military_parity; new_middle_nsdap -= 3 if military_parity; old_middle_nsdap -= 15 if military_parity; rural_nsdap -= 3 if military_parity; catholics_nsdap -= 3 if military_parity; left_dissent += 50; center_dissent += 40; labor_dissent += 30; reformist_dissent += 20; neorevisionist_dissent += 20; left_strength -= 20; center_strength -= 10; ddp_relation -= 5; dvp_relation += 15; dvp_left += 5; ddp_left += 10; ddp_cohesion += 5; lvp_relation += 5; new_middle_ddp += 10 if ddp_leader == "Lüders"; new_middle_spd -= 10 if ddp_leader == "Lüders"; workers_ddp += 5 if ddp_leader == "Lüders"; workers_spd -= 5 if ddp_leader == "Lüders"; west_relation -= 4; eu_progress -= 2
 
-General Schleicher has demanded that we raise the issue of rearmament, which remains restricted under the Treaty of Versailles. However, <span style="color: #002654;">French</span> Premier Édouard Herriot seized on this as an admission that Germany is, in fact, capable of paying its reparations and would simply redirect freed-up funds toward rearmament.
+슐라이허 장군은 베르사유 조약에 의해 제한된 재무장 문제를 제기할 것을 요구했습니다. 그러나 <span style="color: #002654;">프랑스</span> 총리 에두아르 에리오는 이를 독일이 사실 배상금을 지불할 능력이 있으며, 단지 여유 자금을 재무장에 쏟아부으려 한다는 증거로 받아들였습니다.
 
-[? if military_parity:[? if eu: However, with the formation of the <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span> and its defense agreements, preventing Germany’s rearmament has become increasingly irrelevant. As a result, military restrictions are lifted!?][? if not eu: However, our exceptionally friendly relations with the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> have led them to begrudgingly grant us flexibility in rearmament, believing that we could serve as a bulwark against the <span style="color: #700000;">Bolsheviks</span>.?] As a result, the <span style="color: #7A3C00;">**NSDAP**</span> has lost yet another propaganda tool. However, we continue to suffer heavy losses to the <span style="color: #700000;">**Communists**</span>[? if not lvp_formed:&nbsp;and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, who we have suffered serious defections to?]. ?]
+[? if military_parity:[? if eu: 하지만 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>의 결성과 방위 협정으로 인해 독일의 재무장을 막는 것은 점점 무의미해졌습니다. 그 결과 군사적 제한이 해제되었습니다!?][? if not eu: 하지만 <span style="color: #0A3161;">서방</span> <span style="color: #C8102E;">연합국</span>과의 예외적으로 우호적인 관계 덕분에 그들은 우리가 <span style="color: #700000;">볼셰비키</span>에 대항하는 방벽 역할을 할 수 있다고 믿고 마지못해 재무장의 유연성을 허용했습니다.?] 결과적으로 <span style="color: #7A3C00;">**NSDAP**</span>는 또 하나의 선전 도구를 잃었습니다. 그러나 우리는 <span style="color: #700000;">**공산당**</span>[? if not lvp_formed:&nbsp;및 심각한 이탈이 발생한 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?]에게 계속해서 큰 손실을 입고 있습니다. ?]
 
-[? if not military_parity: This has caused great embarrassment to our pacifist and democratic image, both at home and abroad. Damn you, Schleicher! ?]
+[? if not military_parity: 이는 국내외적으로 우리의 평화주의적이고 민주적인 이미지에 큰 망신을 주었습니다. 제기랄, 슐라이허! ?]
 
 @expose
-title: Expose the secret rearmament plans of the previous foreign ministry!
+title: 이전 외무부의 비밀 재무장 계획을 폭로한다!
 view-if: rearmament_exposed == 0
 on-arrival: west_relation += 2; east_relation += 1; nationalism -= 5*(1-dissent); pro_republic += 5*(1-dissent); coalition_dissent += 1; reichswehr_loyalty -= 0.05; rearmament_exposed += 1; reparations_negotiation += 3; coup_progress += 2; dvp_right += 2; ddp_left += 1; ddp_cohesion -= 1; lvp_right += 1; hindenburg_angry += 20
 
-The previous foreign ministry, despite its benevolent and peaceful face, was secretly helping the Reichswehr to build up its forces, in contravention of the Treaty of Versailles.
+이전 외무부는 겉으로는 자애롭고 평화로운 척했지만, 베르사유 조약을 위반하며 국방군의 군사력 증강을 비밀리에 돕고 있었습니다.
 
-The Allies are grateful of our exposure and repudiation of militarism. Our partners in the coalition are less supportive.
+연합국은 우리의 폭로와 군국주의 거부에 감사를 표했습니다. 그러나 연정 파트너들은 덜 지지적입니다.
 
 @concordat_negotiate
-title: Negotiate a Concordat between the Germany and the Vatican.
+title: 독일과 바티칸 간의 정교협약을 협상한다.
 view-if: (prussian_concordat = 1 or not spd_prussia) and reichskonkordat = 0 and reichskonkordat_progress < 4
 on-arrival: reichskonkordat_progress += 1; reichskonkordat_progress += 1 if z_leader == "Kaas"; reichskonkordat_progress -= 1 if abortion_rights; reichskonkordat_progress -= 1 if family_law; z_relation += 3*(1-dissent); dvp_relation -= 1; ddp_relation -= 2; ddp_cohesion -= 0.25; lvp_relation -= 1; foreign_goal_spd_peoples += 1
 
-The Roman Catholic Church is interested in furthering relations with the German Republic, seeing us as preferable to the old anti-Catholic policies of the Empire. We are working towards the signing of a Concordat, an agreement between the Vatican and the Republic that formally recognizes the Church's rights and interests in the country. The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is especially interested in making this agreement. The liberal parties are against this idea.
+로마 가톨릭교회는 우리를 제국 시절의 반가톨릭 정책보다 낫다고 판단하여 독일 공화국과의 관계 발전에 관심을 보이고 있습니다. 우리는 바티칸과 공화국 간의 합의로서 국내 교회의 권리와 이익을 공식적으로 인정하는 정교협약 체결을 위해 노력하고 있습니다. [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 이 합의를 성사시키는 데 특히 관심이 많습니다. 반면 자유주의 정당들은 이 아이디어에 반대합니다.
 
-[? if family_law : Our liberalized divorce policies make it difficult to build relations with the Vatican. ?] [? if abortion : Our legalization of abortion make it difficult to connect with the Church. ?] [? if z_leader == "Kaas" : Kaas from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is able to use his connections to speed up negotiations. ?]
+[? if family_law : 우리의 이혼 자유화 정책은 바티칸과의 관계 구축을 어렵게 만듭니다. ?] [? if abortion : 우리의 낙태 합법화는 교회와의 연결을 어렵게 만듭니다. ?] [? if z_leader == "Kaas" : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 카스는 인맥을 활용해 협상 속도를 높일 수 있습니다. ?]
 
 @concordat
-title: We can sign a Concordat with the Vatican!
+title: 바티칸과 정교협약을 체결할 수 있습니다!
 view-if: reichskonkordat_progress >= 4 and reichskonkordat = 0
 on-arrival: reichskonkordat = 1; z_relation += 15*(1-dissent); catholics_spd += 8*(1-dissent); catholics_z += 5 if in_weimar_coalition or in_grand_coalition or in_popular_front; foreign_goal_spd_peoples += 1
 achievement: reichskonkordat
 
-We have successfully signed a Concordat between Germany and the Roman Catholic Church! This treaty defines a formal relationship between the Church and the German state, guaranteeing freedom of worship for Catholics, and the right of the church to appoint their own clergy. Catholics in Germany are pleased, as are their representatives in the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+우리는 독일과 로마 가톨릭교회 간의 정교협약을 성공적으로 체결했습니다! 이 조약은 교회와 독일 국가 간의 공식적인 관계를 규정하며, 가톨릭 신자들의 예배의 자유와 교회의 성직자 임명권을 보장합니다. 독일의 가톨릭 신자들과 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 내 대표들은 이에 기뻐하고 있습니다.
 
 @support_austria
-title: Diplomatically support Austrian democracy against the Dollfuß dictatorship.
+title: 돌푸스 독재에 맞서 오스트리아 민주주의를 외교적으로 지지한다.
 view-if: austrian_parliament_seen = 1 and austrian_civil_war_seen = 0
 on-arrival: sdapo_strength += 1; left_dissent -= 3; center_dissent -= 3
 
-We provide verbal backing to Austrian democracy, wage a war of words against <span style="color: #7A3C00;">Austrofascism</span>, and promulgate additional trade sanctions. Time will tell if it will be enough.
+우리는 오스트리아 민주주의에 대한 구두 지지를 표명하고, <span style="color: #7A3C00;">오스트로파시즘</span>에 맞서 설전을 벌이며, 추가적인 무역 제재를 공포했습니다. 이것이 충분할지는 시간이 말해줄 것입니다.
 
 @support_austria_2
-title: Provide material support to Austrian democracy against the Dollfuß dictatorship.
-subtitle: -1 budget
+title: 돌푸스 독재에 맞서 오스트리아 민주주의에 물질적 지원을 제공한다.
+subtitle: 예산 -1
 choose-if: budget >= 1
 view-if: austrian_parliament_seen = 1 and austrian_civil_war_seen = 0
 on-arrival: budget -= 1; sdapo_strength += 3; left_dissent -= 6; center_dissent -= 6
 
-In public, we provide verbal backing to Austrian democracy, wage a war of words against <span style="color: #7A3C00;">Austrofascism</span>, and promulgate additional trade sanctions. Privately, we provide financial and various forms of "support" to our comrades in Austria in their struggle against dictatorship.
+공개적으로 우리는 오스트리아 민주주의에 대한 구두 지지를 표명하고, <span style="color: #7A3C00;">오스트로파시즘</span>에 맞서 설전을 벌이며, 추가적인 무역 제재를 공포했습니다. 사적으로는 독재에 맞서 싸우는 오스트리아 동지들에게 재정적 지원을 포함한 다양한 형태의 "지원"을 제공했습니다.
 
 @european_union
-title: Take steps to form a "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>".
-subtitle: Is a "United States of Europe" possible?
-unavailable-subtitle: [? if west_relation < 7 : Our relations with the West are not good enough. ?] [? if east_relation < 4 : Our relations with the East are not good enough. ?]
+title: "<span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>" 결성을 위한 조치를 취한다.
+subtitle: "유럽 합중국"은 가능한 걸까요?
+unavailable-subtitle: [? if west_relation < 7 : 서방과의 관계가 충분히 좋지 않습니다. ?] [? if east_relation < 4 : 동방과의 관계가 충분히 좋지 않습니다. ?]
 view-if: reparations <= -2 and eu_progress < 3 and not eu and france_left_seen
 choose-if: west_relation >= 7 and east_relation >= 4
 on-arrival: eu_negotiation = 1; eu_progress += 1; west_relation += 1; foreign_goal_spd_peoples += 1
 
-Forming a "<span style="color: #FFDD00;">United States</span> of <span style="color: #001489;">Europe</span>" has long been part of the <span style="color: #c00000;">**Social Democratic**</span> foreign program. Finally, we are taking steps towards it. Given our positive relations with the other countries of <span style="color: #001489;">Europe</span>, we can begin to hold multilateral negotiations for more <span style="color: #001489;">European</span> <span style="color: #FFDD00;">federalism</span>. It will take time to hammer out the exact shape of this future "<span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>", however.
+"<span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">합중국</span>" 결성은 오랫동안 <span style="color: #c00000;">**사회민주주의**</span> 대외 프로그램의 일부였습니다. 드디어 우리는 이를 위한 조치를 취하고 있습니다. <span style="color: #001489;">유럽</span>의 다른 국가들과 긍정적인 관계를 맺고 있기에, 더 큰 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연방주의</span>를 위한 다자간 협상을 시작할 수 있습니다. 하지만 미래의 "<span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>"의 정확한 형태를 다듬는 데는 시간이 걸릴 것입니다.
 
 
 @european_union_2
-title: We can sign a treaty to form a <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>!
+title: <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span> 결성 조약에 서명할 수 있습니다!
 view-if: west_relation >= 5 and east_relation >= 4 and eu_progress >= 3 and not eu and france_left_seen
 on-arrival: eu = 1; unemployed -= 2 if unemployed >= 10; inflation += 2 if inflation <= -2; inflation -= 1 if inflation >= 4.5; workers_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); old_middle_spd += 5*(1-dissent); rural_spd += 4*(1-dissent); catholics_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); pro_republic += 5; nationalism -= 5; budget += 1; ddp_left += 3; ddp_cohesion += 3; ddp_relation += 10; lvp_relation += 5; foreign_goal_spd_peoples += 1; economic_growth += 1 if economic_growth < 3; kpd_coalition_dissent += 1; kpd_relation -= 10
 max-visits: 1
 achievement: eu
 
-Along with <span style="color: #002654;">France</span>, <span style="color: #C8102E;">Great Britain</span>, and many other states of Western and Eastern Europe, we have signed a treaty to form a <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>! It is hoped that <span style="color: #001489;">Europe</span> has learned the lessons of the Great War; never again will there be another war that tears the continent apart.
+<span style="color: #002654;">프랑스</span>, <span style="color: #C8102E;">영국</span>, 그리고 서유럽과 동유럽의 많은 다른 국가와 함께 우리는 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span> 결성 조약에 서명했습니다! <span style="color: #001489;">유럽</span>이 대전쟁의 교훈을 얻었기를 바랍니다. 다시는 대륙을 분열시키는 전쟁이 일어나서는 안 됩니다.
 
-A major component of the union is the free movement of people and goods across the countries of Europe, as well as the stabilization of currency exchange rates. This provides new markets for German products and new sources of investment.
+연합의 주요 요소는 유럽 국가 간의 인적, 물적 자원의 자유로운 이동과 통화 환율의 안정화입니다. 이는 독일 제품을 위한 새로운 시장과 새로운 투자처를 제공합니다.
 
-<span style="color: #7A3C00;">Fascist</span> Italy remains a problem, and the <span style="color: #750e0e;">Soviet Union</span> also lies outside the system. But for now, there is new hope for peace and prosperity throughout the continent.
+<span style="color: #7A3C00;">파시스트</span> 이탈리아는 여전히 문제로 남아 있으며, <span style="color: #750e0e;">소비에트 연방</span> 또한 시스템 밖에 있습니다. 하지만 지금은 대륙 전체에 평화와 번영에 대한 새로운 희망이 싹트고 있습니다.

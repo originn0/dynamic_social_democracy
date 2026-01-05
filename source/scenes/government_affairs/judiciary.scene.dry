@@ -1,4 +1,4 @@
-title: Judiciary Reform
+title: 사법부 개혁
 new-page: true
 is-card: true
 view-if: spd_in_government = 1 and justice_minister_party = "SPD" and judiciary_timer = 0
@@ -6,32 +6,32 @@ on-arrival: month_actions += 1; judiciary_timer += 6
 card-image: img/portraits/RadbruchGustav.jpg
 tags: govt_affairs, cabinet
 
-= Judiciary Reform
+= 사법부 개혁
 
-The Judiciary is one of the most <span style="color: #808080;">reactionary</span> components of the government, along with the military. Many jurists have held office since the days of the Emperor. They give violent <span style="color: #7A3C00;">fascists</span> like Adolf Hitler laughably light sentences, while ruthlessly persecuting leftists and pacifists for lesser crimes.
+사법부는 군대와 함께 정부 내에서 가장 <span style="color: #808080;">반동적인</span> 집단 중 하나입니다. 많은 법조인이 황제 시절부터 관직을 유지해 왔습니다. 그들은 아돌프 히틀러 같은 폭력적인 <span style="color: #7A3C00;">파시스트</span>에게는 터무니없이 가벼운 형량을 선고하는 반면, 좌파와 평화주의자들에게는 경미한 범죄에도 무자비한 박해를 가하고 있습니다.
 
-[? if judicial_reform <= 0 : There is great demand in our membership for reforming the judiciary, although this may bring us into a collision course with our coalition allies. ?]
-[? if judicial_reform == 1 : We have started on the path to judicial reform. While some of the most antediluvian and biased justices have been replaced, many still remain. More should be done. ?]
-[? if judicial_reform >= 2 : We have successfully reformed the judiciary, to some extent. At the very least, the courts will not actively obstruct our attempts to prosecute crimes committed by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. ?]
+[? if judicial_reform <= 0 : 당원들 사이에서 사법부 개혁에 대한 요구가 거세지만, 이는 연정 동맹들과 충돌을 빚을 수도 있습니다. ?]
+[? if judicial_reform == 1 : 사법부 개혁의 길을 걷기 시작했습니다. 가장 구시대적이고 편향된 판사 일부가 교체되었지만, 여전히 많은 이가 남아 있습니다. 더 많은 조치가 필요합니다. ?]
+[? if judicial_reform >= 2 : 사법부를 어느 정도 성공적으로 개혁했습니다. 적어도 법원은 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>파가 저지른 범죄를 기소하려는 우리의 시도를 적극적으로 방해하지는 않을 것입니다. ?]
 
-- @reform: Carry out substantial judicial reforms.
-- @minor_reforms: Carry out minor judicial reforms.
-- @as_is: Leave the judiciary as it is.
+- @reform: 대대적인 사법 개혁을 단행한다.
+- @minor_reforms: 소규모 사법 개혁을 단행한다.
+- @as_is: 사법부를 현 상태로 유지한다.
 - @easy_discard
 - @cancel_advisor_action
 
 @reform
-subtitle: -1 budget
-unavailable-subtitle: Not enough budget.
+subtitle: 예산 -1
+unavailable-subtitle: 예산이 부족합니다.
 choose-if: budget >= 1
 on-arrival: budget -= 1; democratization += 2; coalition_dissent += 1 if (in_grand_coalition or (in_weimar_coalition and lvp_formed)); workers_spd += 5*(1-dissent) if democratization >= 3; judicial_reform += 2; pro_republic += 4*(1-dissent); coup_progress += 1; coalition_dissent += 1 if historical_mode; dvp_left += 2; ddp_left += 1; lvp_left += 1.5; hindenburg_angry += 5
 
-We investigate jurists who have shown themselves to have biased or corrupt behavior, and try to remove them, replacing them with more democratically-oriented jurists. This obviously raises quite a great deal of ire in conservative circles, including within our coalition. 
+우리는 편향되거나 부패한 행태를 보인 법조인들을 조사하고 제거하여, 더 민주적인 성향의 법조인들로 대체하려 합니다. 이는 우리 연정 내부를 포함한 보수 진영에서 꽤 큰 분노를 불러일으키고 있습니다.
 
 @minor_reforms
 on-arrival: democratization += 1; workers_spd += 3*(1-dissent) if democratization >= 3; judicial_reform += 1; pro_republic += 2*(1-dissent); judiciary_timer += 6; dvp_left += 1; ddp_left += 0.5; lvp_left += 0.5
 
-We try to remove the most obviously biased and corrupt jurists, while leaving most of the system intact. It is slow work reforming the judiciary.
+우리는 가장 명백하게 편향되고 부패한 법조인을 제거하려 노력하되, 시스템의 대부분은 그대로 유지합니다. 사법부 개혁은 더딘 작업입니다.
 
 @as_is
 go-to: root

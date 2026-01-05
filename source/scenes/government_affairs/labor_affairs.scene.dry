@@ -1,4 +1,4 @@
-title: Labor Affairs
+title: 노동 문제
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
@@ -7,33 +7,33 @@ view-if: spd_in_government = 1 and labor_minister_party = "SPD" and labor_affair
 card-image: img/portraits/WissellRudolf.jpg
 
 
-= Labor Affairs
+= 노동 문제
 
-The industrial Ruhr region is aflame with labor unrest. The employers have started a major lockout to force the workers to take more cuts to wages and benefits. There is a need for the Labor Ministry to arbitrate in conflicts between employers and workers.
+산업 중심지인 루르 지역이 노동 불안으로 들끓고 있습니다. 고용주들은 노동자들에게 임금 및 혜택 삭감을 강요하기 위해 대규모 직장 폐쇄를 단행했습니다. 노동부가 고용주와 노동자 간의 갈등을 중재해야 합니다.
 
-- @support_labor: Support labor in their demands.
-- @support_employers: Support the employers in their demands.
-- @balance: Try to strike a compromise between the sides.
+- @support_labor: 노동자들의 요구를 지지한다.
+- @support_employers: 고용주들의 요구를 지지한다.
+- @balance: 양측 간의 타협을 시도한다.
 - @easy_discard
 #- @cancel_advisor_action
 
 @support_labor
-subtitle: Popular among the workers, this will alienate the bourgeoisie.
+subtitle: 노동자들에게는 인기가 있지만, 부르주아지와는 멀어질 것입니다.
 on-arrival: labor_strength += 5; labor_dissent -= 5; left_dissent -= 5; workers_spd += 6*(1-dissent); coalition_dissent += 1; dvp_relation -= 4; ddp_relation -= 2; capital_strike_progress += 1 if (dvp_relation <= 30 and not lvp_formed); capital_strike_progress += 1 if (lvp_relation <= 30 and lvp_formed); capital_strike_progress += 1 if unemployed > 15; capital_strike_progress += 1 if unemployed > 24; labor_goal_completed += 1; inflation += 0.1; pro_labor += 1; strike_term_seen += 1; dvp_right += 1; ddp_left += 1; ddp_cohesion -= 1; lvp_right += 1; labor_goal_spd += 1; goal_spd_cancel_peoples += 1; economic_growth -= 0.1;
 
-Supporting labor is always popular in the <span style="color: #c00000;">**SPD**</span>, although many of our coalition partners represent employers, and they are less enthused.
+노동자 지지는 <span style="color: #c00000;">**SPD**</span> 내에서 언제나 인기 있는 일이지만, 연정 파트너 중 다수는 고용주를 대변하고 있어 덜 열광적입니다.
 
 @support_employers
-subtitle: Popular among the bourgeoisie, much less so among the workers.
+subtitle: 부르주아지에게는 인기가 있지만, 노동자들에게는 훨씬 덜합니다.
 on-arrival: labor_dissent += 8; workers_spd -= 3; coalition_dissent -= 1 if coalition_dissent > 0; dvp_relation += 5; lvp_relation += 5; z_relation += 5; ddp_relation += 4; workers_kpd += 3; kpd_coalition_dissent += 1; kpd_relation -= 8; capital_strike_progress -= 1 if capital_strike_progress > 1; capital_strike_progress -= 1 if capital_strike_progress > 8; pro_labor -= 1; strike_term_seen += 1; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 0.5; lvp_left += 1; goal_spd_cancel += 1; labor_goal_spd_peoples += 1
 
-The more radical workers despise our suppression of their strikes, recalling the days of Friedrich Ebert.
+더 급진적인 노동자들은 프리드리히 에베르트 시절을 상기하며 우리의 파업 탄압을 경멸합니다.
 
 @balance
-subtitle: Both sides need to share the pain in the current crisis.
+subtitle: 현재의 위기 속에서 양측 모두 고통을 분담해야 합니다.
 on-arrival: labor_dissent += 4; workers_spd -= 2; kpd_coalition_dissent += 1; kpd_relation -= 5; strike_term_seen += 1; ddp_cohesion += 1; ddp_left += 1; ddp_relation += 4; labor_goal_spd_peoples += 1
 
-Many workers are unhappy at our compromises, but they will learn to accept that we are all in a shared struggle against economic forces.
+많은 노동자가 우리의 타협안에 불만을 품고 있지만, 그들도 우리가 경제적 압박에 맞서 공동의 투쟁을 벌이고 있다는 점을 받아들이게 될 것입니다.
 
 
 
