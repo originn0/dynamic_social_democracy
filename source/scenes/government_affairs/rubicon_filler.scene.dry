@@ -1,4 +1,4 @@
-title: Biding our Time
+title: 때를 기다리며
 on-arrival: month_actions += 1
 view-if: rubicon
 card-image: img/hourglass.jpg
@@ -6,38 +6,38 @@ is-card: true
 new-page: true
 go-to: blank if schleicher_spd_influence >= 6
 
-= Biding our Time
+= 때를 기다리며
 
-The reality is, there is not much we can do. We cannot simply do nothing either.
+현실은 우리가 할 수 있는 일이 많지 않다는 것입니다. 그렇다고 단순히 아무것도 안 할 수도 없습니다.
 
-- @money: Raise funds.
-- @dissent: Reduce party dissent.
-- @campaign: Restore faith in the Republic.
-- @protest: Protest against the government.
+- @money: 자금을 모은다.
+- @dissent: 당내 불만을 줄인다.
+- @campaign: 공화국에 대한 신뢰를 회복한다.
+- @protest: 정부에 대항해 시위한다.
 - @easy_discard
 
 @money
-subtitle: +1 resource
+subtitle: +1 자원
 view-if: resources < 2
 on-arrival: resources += 1
 
-We have gained one additional resource.
+우리는 자원을 하나 더 얻었습니다.
 
 @dissent
-subtitle: We mustn't be divided, not in a time like this.
+subtitle: 우리는 분열되어서는 안 됩니다, 이런 시기에는 더더욱 안 됩니다.
 on-arrival: left_dissent -= 5; center_dissent -= 5; labor_dissent -= 5; reformist_dissent -= 5
 
-We have reduced dissent across all factions.
+우리는 모든 파벌에 걸쳐 불만을 줄였습니다.
 
 @campaign
-subtitle: We must defend our creation.
+subtitle: 우리는 우리가 만든 공화국을 지켜야 합니다.
 on-arrival: pro_republic += 2
 
-In a few years time, the German people will thank us.
+몇 년 후에는 독일 국민들이 우리에게 감사할 것입니다.
 
 @protest
-subtitle: The [+ chancellor +] cabinet must not be allowed to stand.
+subtitle: [+ chancellor +] 내각이 유지되도록 내버려둬서는 안 됩니다.
 view-if: papen_post_2
 on-arrival: pro_republic -= 2; workers_spd += 1; new_middle_spd += 1
 
-Labor has taken to the streets.
+노동계가 거리로 나섰습니다.

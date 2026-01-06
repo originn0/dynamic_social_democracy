@@ -1,4 +1,4 @@
-title: Shuffle Cabinet
+title: 내각 개편
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
@@ -6,11 +6,11 @@ on-arrival: shuffle_cabinet_timer = 6;
 view-if: spd_in_government == 1 and shuffle_cabinet_timer == 0 and chancellor_party == "SPD" and not in_spd_majority and not in_emergency_government and not in_left_front
 card-image: img/muller_cabinet.jpg
 
-Do we wish to shuffle our cabinet? This might upset our current coalition.
+내각을 개편하시겠습니까? 이는 현재의 연립 정부를 불안정하게 만들 수도 있습니다.
 
-Current cabinet:
+현재 내각:
 
-Labor: 
+노동부: 
 [? if labor_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "SPD": <span style="color: #c00000;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "KPD": <span style="color: #700000;">[+ labor_minister_party +]</span> ?]
@@ -19,14 +19,14 @@ Labor:
 [? if labor_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if labor_minister_party == "BVP": <span style="color: #A2D8E0;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "DVP": <span style="color: #C0A054;">[+ labor_minister_party +]</span> ?]
-[? if labor_minister_party == "Others": <span style="color: #c00000;">[+ labor_minister_party +]</span> ?]
+[? if labor_minister_party == "기타": <span style="color: #c00000;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "KVP": <span style="color: #0087DC;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "DNVP": <span style="color: #3E88B3;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "DNF": <span style="color: #003755;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ labor_minister_party +]</span> ?]
 [? if labor_minister_party == "I": [+ labor_minister_party +] ?]
 
-Interior: 
+내무부: 
 [? if interior_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "SPD": <span style="color: #c00000;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "KPD": <span style="color: #700000;">[+ interior_minister_party +]</span> ?]
@@ -35,14 +35,14 @@ Interior:
 [? if interior_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if interior_minister_party == "BVP": <span style="color: #A2D8E0;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "DVP": <span style="color: #C0A054;">[+ interior_minister_party +]</span> ?]
-[? if interior_minister_party == "Others": <span style="color: #c00000;">[+ interior_minister_party +]</span> ?]
+[? if interior_minister_party == "기타": <span style="color: #c00000;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "KVP": <span style="color: #0087DC;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "DNVP": <span style="color: #3E88B3;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "DNF": <span style="color: #003755;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ interior_minister_party +]</span> ?]
 [? if interior_minister_party == "I": [+ labor_minister_party +] ?]
 
-Finance:
+재무부:
 [? if finance_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ finance_minister_party +]</span> ?] 
 [? if finance_minister_party == "SPD": <span style="color: #c00000;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "KPD": <span style="color: #700000;">[+ finance_minister_party +]</span> ?]
@@ -51,14 +51,14 @@ Finance:
 [? if finance_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if finance_minister_party == "BVP": <span style="color: #A2D8E0;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "DVP": <span style="color: #C0A054;">[+ finance_minister_party +]</span> ?]
-[? if finance_minister_party == "Others": <span style="color: #c00000;">[+ finance_minister_party +]</span> ?]
+[? if finance_minister_party == "기타": <span style="color: #c00000;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "KVP": <span style="color: #0087DC;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "DNVP": <span style="color: #3E88B3;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "DNF": <span style="color: #003755;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ finance_minister_party +]</span> ?]
 [? if finance_minister_party == "I": [+ finance_minister_party +] ?]
 
-Economic: 
+경제부: 
 [? if economic_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "SPD": <span style="color: #c00000;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "KPD": <span style="color: #700000;">[+ economic_minister_party +]</span> ?]
@@ -67,14 +67,14 @@ Economic:
 [? if economic_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if economic_minister_party == "BVP": <span style="color: #A2D8E0;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "DVP": <span style="color: #C0A054;">[+ economic_minister_party +]</span> ?]
-[? if economic_minister_party == "Others": <span style="color: #c00000;">[+ economic_minister_party +]</span> ?]
+[? if economic_minister_party == "기타": <span style="color: #c00000;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "KVP": <span style="color: #0087DC;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "DNVP": <span style="color: #3E88B3;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "DNF": <span style="color: #003755;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ economic_minister_party +]</span> ?]
 [? if economic_minister_party == "I": [+ economic_minister_party +] ?]
 
-Justice: 
+법무부: 
 [? if justice_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "SPD": <span style="color: #c00000;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "KPD": <span style="color: #700000;">[+ justice_minister_party +]</span> ?]
@@ -83,14 +83,14 @@ Justice:
 [? if justice_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if justice_minister_party == "BVP": <span style="color: #A2D8E0;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "DVP": <span style="color: #C0A054;">[+ justice_minister_party +]</span> ?]
-[? if justice_minister_party == "Others": <span style="color: #c00000;">[+ justice_minister_party +]</span> ?]
+[? if justice_minister_party == "기타": <span style="color: #c00000;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "KVP": <span style="color: #0087DC;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "DNVP": <span style="color: #3E88B3;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "DNF": <span style="color: #003755;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ justice_minister_party +]</span> ?]
 [? if justice_minister_party == "I": [+ justice_minister_party +] ?]
 
-Foreign: 
+외무부: 
 [? if labor_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ labor_minister_party +]</span> ?]
 [? if foreign_minister_party == "SPD": <span style="color: #c00000;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "KPD": <span style="color: #700000;">[+ foreign_minister_party +]</span> ?]
@@ -99,14 +99,14 @@ Foreign:
 [? if foreign_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if foreign_minister_party == "BVP": <span style="color: #A2D8E0;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "DVP": <span style="color: #C0A054;">[+ foreign_minister_party +]</span> ?]
-[? if foreign_minister_party == "Others": <span style="color: #c00000;">[+ foreign_minister_party +]</span> ?]
+[? if foreign_minister_party == "기타": <span style="color: #c00000;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "KVP": <span style="color: #0087DC;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "DNVP": <span style="color: #3E88B3;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "DNF": <span style="color: #003755;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ foreign_minister_party +]</span> ?]
 [? if foreign_minister_party == "I": [+ foreign_minister_party +] ?]
 
-Reichswehr: 
+국방부: 
 [? if reichswehr_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "SPD": <span style="color: #c00000;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "KPD": <span style="color: #700000;">[+ reichswehr_minister_party +]</span> ?]
@@ -115,14 +115,14 @@ Reichswehr:
 [? if reichswehr_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if reichswehr_minister_party == "BVP": <span style="color: #A2D8E0;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "DVP": <span style="color: #C0A054;">[+ reichswehr_minister_party +]</span> ?]
-[? if reichswehr_minister_party == "Others": <span style="color: #c00000;">[+ reichswehr_minister_party +]</span> ?]
+[? if reichswehr_minister_party == "기타": <span style="color: #c00000;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "KVP": <span style="color: #0087DC;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "DNVP": <span style="color: #3E88B3;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "DNF": <span style="color: #003755;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ reichswehr_minister_party +]</span> ?]
 [? if reichswehr_minister_party == "I": [+ reichswehr_minister_party +] ?]
 
-Agriculture: 
+농업부: 
 [? if agriculture_minister_party == "DNEF": <span style="color: #BFC8CC;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "SPD": <span style="color: #c00000;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "KPD": <span style="color: #700000;">[+ agriculture_minister_party +]</span> ?]
@@ -131,15 +131,15 @@ Agriculture:
 [? if agriculture_minister_party == "Z": <span style="color: #000000;">[+ z_party_name +]</span> ?]
 [? if agriculture_minister_party == "BVP": <span style="color: #A2D8E0;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "DVP": <span style="color: #C0A054;">[+ agriculture_minister_party +]</span> ?]
-[? if agriculture_minister_party == "Others": <span style="color: #c00000;">[+ agriculture_minister_party +]</span> ?]
+[? if agriculture_minister_party == "기타": <span style="color: #c00000;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "KVP": <span style="color: #0087DC;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "DNVP": <span style="color: #3E88B3;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "DNF": <span style="color: #003755;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "I": [+ agriculture_minister_party +] ?]
 
-- @shuffle: Yes, do it.
-- @root: No, there is no need.
+- @shuffle: 네, 진행합시다.
+- @root: 아니요, 그럴 필요 없습니다.
 - @easy_discard
 - @cancel_advisor_action
 

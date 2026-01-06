@@ -1,4 +1,4 @@
-title: Women's Rights
+title: 여성의 권리
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
@@ -8,54 +8,54 @@ card-image: img/portraits/PfülfAntonie.jpg
 frequency: 50
 max-visits: 6
 
-= Women's Rights
+= 여성의 권리
 
-According to the Constitution, women are equal to men, but this is not followed in practice. Women in the workforce are not paid equally for the same work, in addition to often being pushed out of employment after marriage. Men are still favored in marriage and family policy, and there are restrictions on women's rights in many other domains. And that is not to mention the overwhelming patriarchal culture present in Germany.
+헌법상 여성은 남성과 평등하지만, 실제로는 지켜지지 않고 있습니다. 노동 현장의 여성들은 동일한 노동에 대해 동등한 임금을 받지 못하며, 결혼 후에는 종종 고용에서 밀려납니다. 결혼 및 가족 정책에서도 여전히 남성이 우대받고 있으며, 다른 많은 영역에서도 여성의 권리에 대한 제한이 존재합니다. 독일에 만연한 압도적인 가부장적 문화는 말할 것도 없습니다.
 
-For better or for worse, the <span style="color: #c00000;">Socialists</span> stand virtually alone in supporting increased rights for women, and even within the party, the leadership does not consider it a priority. [? if spd_r < 50 : Unfortunately, women still disproportionately support the bourgeois parties. ?]
+좋든 나쁘든, <span style="color: #c00000;">사회주의자들</span>은 여성 권리 신장을 지지하는 데 있어 사실상 고립되어 있으며, 심지어 당내 지도부조차 이를 우선순위로 여기지 않습니다. [? if spd_r < 50 : 불행히도, 여성들은 여전히 부르주아 정당들을 불균형적으로 더 많이 지지합니다. ?]
 
-- @labor: Institute policies that help women in the workforce.
-- @family: Reform marriage, divorce, and property law.
-- @welfare: Improve welfare for single mothers and children.
-- @liberalize: Attempt to liberalize abortion laws.
-- @return: Do not enact any policies for now.
+- @labor: 노동 현장의 여성들을 돕는 정책을 도입한다.
+- @family: 결혼, 이혼, 그리고 재산법을 개혁한다.
+- @welfare: 미혼모와 아동을 위한 복지를 개선한다.
+- @liberalize: 낙태법 완화를 시도한다.
+- @return: 당분간 어떤 정책도 제정하지 않는다.
 - @easy_discard
 - @cancel_advisor_action
 
 @labor
-subtitle: Paid maternal leave policies, equal pay policies, and so on.
+subtitle: 유급 출산 휴가 정책, 동일 임금 정책 등.
 on-arrival: womens_work += 1; womens_rights += 1; workers_spd -= 4 if unemployed > 15; new_middle_spd += 4*(1-dissent); workers_spd += 4*(1 - dissent); women_goal_spd += 1; economic_growth += 0.1;
 max-visits: 3
 
-These policies mean that our party is increasing in popularity among the "new women" who work outside the home. [? if unemployed > 15 : However, many male workers develop a backlash towards women in the workplace, especially given the rising unemployment. ?]
+이 정책들은 집 밖에서 일하는 "신여성"들 사이에서 우리 당의 인기가 높아지고 있음을 의미합니다. [? if unemployed > 15 : 그러나 많은 남성 노동자들은 특히 실업률이 상승하는 상황에서 직장 내 여성들에 대해 반감을 키우고 있습니다. ?]
 
 @family
-subtitle: Change family and inheritance law to treat women more equally.
+subtitle: 여성을 더 평등하게 대우하기 위해 가족법과 상속법을 개정합니다.
 on-arrival: family_law += 1; womens_rights += 1; new_middle_spd += 2*(1-dissent); workers_spd += 3*(1-dissent); old_middle_spd -= 2; rural_spd -= 2; catholics_spd -= 4; coalition_dissent += 1; z_relation -= 4; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 0.5; women_goal_spd += 1
 max-visits: 2
 
-These policies aim to ensure that women have equal rights within a marriage, including the right to divorce. The more conservative segments of society treat our reforms as deleterious to the social fabric.
+이 정책들은 여성이 이혼할 권리를 포함하여 결혼 생활 내에서 동등한 권리를 갖도록 보장하는 것을 목표로 합니다. 사회의 더 보수적인 계층은 우리의 개혁을 사회 구조에 해로운 것으로 간주합니다.
 
 
 @welfare
-subtitle: -1 budget
+subtitle: -1 예산
 choose-if: budget > 0
 on-arrival: welfare += 1; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); budget -= 1; womens_rights += 1; coalition_dissent += 1 if welfare >= 1 and unemployed >= 15; unemployed -= 0.4; inflation += 0.2; dvp_right += 1 if welfare >= 1; lvp_right += 1 if welfare >= 1; women_goal_spd += 1; economic_growth += 0.3;
 
-We have increased welfare spending on women and children. [? if welfare >= 1 and unemployed >= 15 : Some of our coalition partners consider increased welfare spending profligate at this time. ?]
+우리는 여성과 아동에 대한 복지 지출을 늘렸습니다. [? if welfare >= 1 and unemployed >= 15 : 우리의 연정 파트너 중 일부는 이 시기에 복지 지출을 늘리는 것을 낭비라고 여깁니다. ?]
 
 
 @liberalize
 max-visits: 1
-subtitle: [? if progressive_coalition < 50 : This is unlikely to succeed; we do not have majority support. ?]
+subtitle: [? if progressive_coalition < 50 : 이것은 성공할 가능성이 낮습니다. 우리에게는 과반수의 지지가 없습니다. ?]
 go-to: liberalize_fail if progressive_coalition < 50; liberalize_success if progressive_coalition >= 50
 
 @liberalize_fail
 on-arrival: z_relation -= 5; coalition_dissent += 1; workers_spd += 3*(1-dissent); catholics_spd -= 5;
 
-Unfortunately, our proposal is voted down in the Reichstag, with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] party (our long-time partners) speaking in particularly vehement opposition, and some of our own members breaking party discipline. The activists, feeling demoralized from this attempt, have decided to bide their time.
+불행히도 우리의 제안은 제국의회에서 부결되었습니다. 우리의 오랜 파트너인 가톨릭 [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**기독교인민당**</span>?] 당이 특히 격렬하게 반대했고, 우리 당원 중 일부도 당론을 어겼습니다. 이번 시도로 사기가 꺾인 활동가들은 때를 기다리기로 결정했습니다.
 
 @liberalize_success
 on-arrival: abortion_rights += 1; womens_rights += 1; coalition_dissent += 2; coalition_dissent += 3 if in_social_catholic_coalition; z_relation -= 8; catholics_spd -= 10; dvp_relation -= 5; ddp_relation += 4; lvp_relation -= 2; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); workers_z += 3; new_middle_z += 3; old_middle_z += 3; old_middle_dnvp += 3; rural_dnvp += 3; workers_nsdap -= 3; new_middle_nsdap -= 3; old_middle_nsdap -= 2; rural_nsdap -= 2; unemployed_nsdap -= 2; unemployed_z += 3; unemployed_spd += 3*(1-dissent); new_middle_ddp += 4; workers_ddp += 1; rural_ddp -= 2; ddp_left += 3; lvp_left += 1; rural_lvp -= 3; old_middle_lvp -= 3; new_middle_lvp += 3; workers_lvp += 2; women_goal_spd += 1
 
-With the support of a "progressive coalition" including the <span style="color: #700000;">**KPD**</span> and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: leftist <span style="color: #FFCC00;">**LVP**</span> members?], we have successfully passed a bill to legalize abortion in Germany! This has heartened our more progressive supporters, while hurting our relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. With the increasing political discourse around abortion, the religiously-oriented [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> have gained conservative votes at the expense of the <span style="color: #7A3C00;">**NSDAP**</span>.
+<span style="color: #700000;">**공산당**</span>과 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: 좌파 <span style="color: #FFCC00;">**자유인민당**</span> 의원들?]을 포함하는 "진보 연합"의 지지로, 우리는 독일에서 낙태를 합법화하는 법안을 성공적으로 통과시켰습니다! 이는 우리의 더 진보적인 지지자들을 고무시켰지만, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**기독교인민당**</span>?]과의 관계에는 타격을 주었습니다. 낙태를 둘러싼 정치적 담론이 증가함에 따라, 종교적 성향의 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**기독교인민당**</span>?]과 <span style="color: #3E88B3;">**국가인민당**</span>은 <span style="color: #7A3C00;">**국가사회주의 독일 노동자당**</span>의 표를 잠식하며 보수 표를 얻었습니다.

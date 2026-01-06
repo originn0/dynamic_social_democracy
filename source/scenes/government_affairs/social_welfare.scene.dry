@@ -1,4 +1,4 @@
-title: Social welfare policy
+title: 사회 복지 정책
 new-page: true
 is-card: true
 tags: govt_affairs
@@ -6,54 +6,54 @@ on-arrival: social_welfare_timer = 10; month_actions += 1
 view-if: spd_in_government = 1 and social_welfare_timer = 0
 card-image: img/portraits/JuchaczMarie.jpg
 
-= Social Welfare Policy
+= 사회 복지 정책
 
-The social welfare program, including unemployment insurance, healthcare, and old-age care, is the proudest achievement of the <span style="color: #c00000;">**SPD**</span> in our time in government. There is continuous pressure to dismantle the welfare system[? if black_thursday_seen = 1 :, especially given the economic crisis ?].
+실업 보험, 의료, 노인 요양을 포함하는 사회 복지 프로그램은 <span style="color: #c00000;">**사회민주당**</span>이 집권 기간 동안 이룬 가장 자랑스러운 성취입니다. 복지 시스템을 해체하려는 압력이 지속적으로 존재합니다[? if black_thursday_seen = 1 :, 특히 경제 위기를 감안할 때 더욱 그렇습니다 ?].
 
-- @reduce_spending: Reduce spending on welfare.
-- @increase_spending_pre_depression: Increase spending on welfare.
-- @increase_spending_post_depression: Increase spending (welfare levels will remain about the same).
-- @spending_same_pre_depression: Keep spending the same.
-- @spending_same_post_depression: Keep spending the same (effectively a service cut).
+- @reduce_spending: 복지 지출을 줄인다.
+- @increase_spending_pre_depression: 복지 지출을 늘린다.
+- @increase_spending_post_depression: 지출을 늘린다 (복지 수준은 거의 동일하게 유지될 것입니다).
+- @spending_same_pre_depression: 지출을 현행대로 유지한다.
+- @spending_same_post_depression: 지출을 현행대로 유지한다 (사실상 서비스 삭감).
 - @easy_discard
 #- @cancel_advisor_action
 
 @reduce_spending
-subtitle: This will hurt our proletarian base. +1 Budget
-unavailable-subtitle: There is nothing left to cut.
+subtitle: 이것은 우리의 프롤레타리아 지지 기반에 타격을 줄 것입니다. +1 예산
+unavailable-subtitle: 더 이상 삭감할 것이 남아있지 않습니다.
 choose-if: welfare >= -5
 on-arrival: budget += 1; workers_spd -= 6; unemployed_spd -= 6; workers_kpd += 3; welfare -= 1; reformist_dissent += 10; left_dissent += 10; labor_dissent += 10; center_dissent += 5; neorevisionist_dissent += 5; dvp_relation += 5; ddp_relation += 2; lvp_relation += 3; z_relation += 3; pro_republic -= 3; coalition_dissent -= 1 if ((in_grand_coalition or (in_weimar_coalition and lvp_formed)) and coalition_dissent > 0); kpd_coalition_dissent += 1; kpd_relation -= 8; inflation -= 0.3; unemployed += 0.4; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 0.5; lvp_left += 0.5; goal_spd_cancel += 1; economic_growth -= 0.2;
 
-We have reduced levels of social welfare spending. This means more poverty and suffering for the working class. Our detractors claim that we are sacrificing proletarian livelihoods for the sake of class peace with the bourgeoisie. Are they wrong? Are the workers wrong to turn to the <span style="color: #700000;">**Communists**</span>, in light of our choices?
+우리는 사회 복지 지출 수준을 줄였습니다. 이는 노동 계급에게 더 많은 빈곤과 고통을 의미합니다. 우리를 비난하는 사람들은 우리가 부르주아지와의 계급 평화를 위해 프롤레타리아의 생계를 희생하고 있다고 주장합니다. 과연 그들이 틀린 걸까요? 우리의 선택을 볼 때, 노동자들이 <span style="color: #700000;">**공산주의자들**</span>에게 등을 돌리는 것이 잘못된 일일까요?
 
 
 @increase_spending_pre_depression
 view-if: unemployed <= 15
 choose-if: budget > 0
-subtitle: -1 Budget
+subtitle: -1 예산
 on-arrival: budget -= 1; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); welfare += 1; reformist_dissent -= 5; labor_dissent -= 5; center_dissent -= 5; left_dissent -= 5; neorevisionist_dissent -= 5; coalition_dissent += 1 if welfare > 1; welfare_goal_completed += 1; welfare_goal_spd += 1; inflation += 0.3; unemployed -= 0.4; dvp_right += 1 if welfare > 1; lvp_right += 1 if welfare > 1; ddp_right += 1 if welfare > 2; economic_growth += 0.2;
 
-We have increased welfare spending. Our proletarian base is pleased.
+우리는 복지 지출을 늘렸습니다. 우리의 프롤레타리아 지지 기반은 기뻐하고 있습니다.
 
 @increase_spending_post_depression
 view-if: unemployed > 15
 choose-if: budget > 0
 on-arrival: budget -= 1; workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); coalition_dissent += 1 if welfare > 0; welfare_goal_completed += 1; welfare_goal_spd += 1; inflation += 0.3; dvp_right += 1; ddp_right += 1 if welfare > 1; lvp_right += 1
-subtitle: The increased levels of unemployment necessitate more spending on aid to maintain the same benefits. -1 Budget
+subtitle: 실업률 증가로 인해 동일한 혜택을 유지하려면 더 많은 지원 지출이 필요합니다. -1 예산
 
-Increasing welfare spending is necessary in light of the rise in unemployment, so we are essentially treading water.
+실업률 상승을 고려할 때 복지 지출 증액은 필수적이므로, 우리는 본질적으로 현상 유지를 하고 있을 뿐입니다.
 
 @spending_same_pre_depression
 view-if: unemployed <= 15
 
-We have kept welfare spending the same.
+우리는 복지 지출을 동일하게 유지했습니다.
 
 
 @spending_same_post_depression
 view-if: unemployed > 15
 on-arrival: workers_spd -= 3; unemployed_spd -= 4; welfare -= 1; reformist_dissent += 5; left_dissent += 5; labor_dissent += 5; center_dissent += 5; neorevisionist_dissent += 5; kpd_coalition_dissent += 1; kpd_relation -= 8 if in_popular_front or in_left_front; goal_spd_cancel += 1
-subtitle: The increased levels of unemployment necessitate more spending on aid.
+subtitle: 실업률 증가로 인해 지원에 더 많은 지출이 필요합니다.
 
-Increasing welfare spending is necessary in light of the rise in unemployment, so we have essentially cut welfare. The workers are justifiably displeased - we are sacrificing their livelihoods to appease bourgeois demands for austerity.
+실업률 상승을 고려할 때 복지 지출 증액이 필요하므로, 우리는 사실상 복지를 삭감한 셈입니다. 노동자들은 당연히 불쾌해하고 있습니다. 우리는 긴축에 대한 부르주아의 요구를 달래기 위해 그들의 생계를 희생하고 있습니다.
 
-[? if in_popular_front or in_left_front: The <span style="color: #700000;">**KPD**</span> is turning against us for our welfare policy. ?]
+[? if in_popular_front or in_left_front: <span style="color: #700000;">**공산당**</span>은 우리의 복지 정책 때문에 우리에게 등을 돌리고 있습니다. ?]
