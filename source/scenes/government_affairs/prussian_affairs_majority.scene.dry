@@ -1,4 +1,4 @@
-title: The Prussian Bulwark
+title: 프로이센의 보루
 new-page: true
 is-card: true
 view-if: in_spd_majority_prussia and (prussian_affairs_timer <= 0 or (prussian_affairs_timer <= 3 and rubicon))
@@ -7,27 +7,27 @@ tags: govt_affairs
 card-image: img/braun.jpg
 #subtitle: The state government of Prussia is a bulwark of democracy...
 
-= Prussian Affairs
+= 프로이센 업무
 
-Prussia, by far the largest and most important state in Germany, is governed solely by our party, free from the compromises demanded by the bourgeois parties. This grants us the opportunity to pursue meaningful reforms. Under the capable leadership of Otto Braun, Prussia stands as the most stable and democratic government in the Republic.
+독일에서 가장 크고 중요한 주인 프로이센은 부르주아 정당들이 요구하는 타협에서 자유로운, 우리 당의 단독 통치 하에 있습니다. 이는 우리에게 의미 있는 개혁을 추진할 기회를 부여합니다. 오토 브라운의 유능한 지도력 아래, 프로이센은 공화국에서 가장 안정적이고 민주적인 정부로 우뚝 서 있습니다.
 
-All our actions have increased effectiveness. 
+우리의 모든 조치는 효율성이 증대되었습니다.
 
-We can enact policies in Prussia.
+우리는 프로이센에서 정책을 입안할 수 있습니다.
 
-- @police_loyalty: Bolster the loyalty of the police.
-- @police_strength: Recruit additional police.
-- @bureaucracy: Purge the bureaucracy of <span style="color: #808080;">reactionary</span> elements.
-- @ban_sa: Ban the <span style="color: #7A3C00;">**SA**</span>, the <span style="color: #7A3C00;">Nazi</span> paramilitary group.
-- @prosecute_sa: Target the <span style="color: #7A3C00;">**SA**</span>, and minimize their disruptions.
-- @unban_sa: Reverse the <span style="color: #7A3C00;">**SA**</span> ban.
-- @ban_rfb: Ban the <span style="color: #8B0000;">**RFB**</span>, the <span style="color: #700000;">Communist</span> paramilitary.
-- @unban_rfb: Reverse the <span style="color: #8B0000;">**RFB**</span> ban.
-- @ban_sh: Ban the <span style="color: #3E88B3;">**Stahlhelm**</span>, the Nationalist paramilitary.
-- @unban_sh: Reverse the <span style="color: #3E88B3;">**Stahlhelm**</span> ban.
-- @negotiate_concordat: Negotiate a concordat with the Vatican.
-- @sign_concordat: Sign a concordat with the Vatican.
-- @root: No new policies are needed.
+- @police_loyalty: 경찰의 충성심을 강화한다.
+- @police_strength: 경찰 병력을 증원한다.
+- @bureaucracy: 관료 조직 내의 <span style="color: #808080;">반동적</span> 요소들을 숙청한다.
+- @ban_sa: <span style="color: #7A3C00;">나치</span> 준군사조직인 <span style="color: #7A3C00;">**SA**</span>를 금지한다.
+- @prosecute_sa: <span style="color: #7A3C00;">**SA**</span>를 표적으로 삼아 그들의 난동을 최소화한다.
+- @unban_sa: <span style="color: #7A3C00;">**SA**</span> 금지 조치를 철회한다.
+- @ban_rfb: <span style="color: #700000;">공산주의</span> 준군사조직인 <span style="color: #8B0000;">**RFB**</span>를 금지한다.
+- @unban_rfb: <span style="color: #8B0000;">**RFB**</span> 금지 조치를 철회한다.
+- @ban_sh: 민족주의 준군사조직인 <span style="color: #3E88B3;">**철모단**</span>을 금지한다.
+- @unban_sh: <span style="color: #3E88B3;">**철모단**</span> 금지 조치를 철회한다.
+- @negotiate_concordat: 바티칸과 정교조약을 협상한다.
+- @sign_concordat: 바티칸과 정교조약을 체결한다.
+- @root: 새로운 정책이 필요하지 않다.
 - @easy_discard
 - @cancel_advisor_action
 
@@ -35,77 +35,77 @@ We can enact policies in Prussia.
 view-if: prussian_police_loyalty < 1
 on-arrival: prussian_police_loyalty += 0.15
 
-The police have historically been overrun with <span style="color: #808080;">reactionaries</span>, and we are trying to change this, little by little. We have improved the training and recruitment process to select for a broader demographic than the traditional <span style="color: #3E88B3;">conservatives</span>, and to put a tighter leash on their political activity. In addition, we set up committees to investigate the ranks of the police and remove those with <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> sympathies. It is a slow and arduous work.
+경찰 조직은 역사적으로 <span style="color: #808080;">반동분자들</span>로 들끓었고, 우리는 이를 조금씩 바꾸려 노력하고 있습니다. 전통적인 <span style="color: #3E88B3;">보수주의자들</span> 외에 더 폭넓은 계층을 선발하고 그들의 정치 활동을 엄격히 통제하기 위해 훈련 및 채용 과정을 개선했습니다. 또한, 경찰 내부를 조사하고 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 동조자들을 제거하기 위한 위원회를 설치했습니다. 이는 느리고 고된 작업입니다.
 
-Current police loyalty: [+ prussian_police_loyalty : loyalty +].
+현재 경찰 충성도: [+ prussian_police_loyalty : loyalty +].
 
 @police_strength
 on-arrival: prussian_police_strength += 35
 
-We have increased the size of the Prussian police.
+우리는 프로이센 경찰의 규모를 늘렸습니다.
 
 @bureaucracy
 on-arrival: prussian_police_loyalty += 0.08; nationalism -= 4; pacifism += 1; democratization += 1; pro_republic += 4*(1-dissent); new_middle_spd += 3*(1-dissent) if democratization >= 3
 
-The bureaucracy is deeply <span style="color: #808080;">reactionary</span>, and many abuse their power to favor the <span style="color: #3E88B3;">political right</span>. By removing the <span style="color: #3E88B3;">pro-monarchy</span> and <span style="color: #7A3C00;">pro-dictatorship</span> elements, we can democratize it. Some of our opponents claim that we are infringing on individual freedoms, but perhaps the security of the republic requires it.
+관료 조직은 깊이 <span style="color: #808080;">반동적</span>이며, 많은 이들이 <span style="color: #3E88B3;">정치적 우파</span>를 돕기 위해 권력을 남용합니다. <span style="color: #3E88B3;">친제정</span> 및 <span style="color: #7A3C00;">친독재</span> 세력을 제거함으로써 우리는 관료 사회를 민주화할 수 있습니다. 반대파 일부는 우리가 개인의 자유를 침해한다고 주장하지만, 공화국의 안보를 위해 필요한 일일지도 모릅니다.
 
 @ban_sa
 view-if: nazi_urgency >= 3 and sa_banned == 0
 choose-if: not sa_ban_repealed and (prussia_coup_win or not otl_prussian_coup_seen)
-unavailable-subtitle: [+ chancellor +] has threatened a <i>Reichsexekution</i>, if we don't follow the orders of his decree.
+unavailable-subtitle: [+ chancellor +] 총리는 우리가 그의 법령을 따르지 않을 경우 <i>제국집행</i>을 단행하겠다고 위협했습니다.
 on-arrival: sa_strength *= 0.85; sa_strength *= 0.75 if prussian_police_loyalty >= 0.75; sa_banned_pro = 1 if prussian_police_loyalty >= 0.75; sa_banned_pro = 0 if prussian_police_loyalty < 0.75; sa_banned = 1; dvp_relation -= 3; prussian_police_loyalty -= 0.05; sa_militancy -= 0.05; sa_ban_timer = 6; coup_progress -= 2 if coup_progress >= 6
 
-As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has many allies in the police and bureaucracy. Our relationship with the police weakens, and the <span style="color: #7A3C00;">**SA**</span> can still organize illegally, right under the police's noses. [? if sa_banned_pro : Nevertheless, the <span style="color: #7A3C00;">**SA**</span> is substantially weakened by our ban. ?] 
+드러난 바와 같이, <span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span>는 경찰과 관료 조직 내에 많은 동조자를 두고 있습니다. 경찰과의 관계는 악화되고 있으며, <span style="color: #7A3C00;">**SA**</span>는 여전히 경찰의 눈앞에서 불법적으로 조직을 운영할 수 있습니다. [? if sa_banned_pro : 그럼에도 불구하고, <span style="color: #7A3C00;">**SA**</span>는 우리의 금지 조치로 인해 상당히 약화되었습니다. ?]
 
-[? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have disrupted some of these plans, but the threat is still present. ?]
+[? if coup_progress >= 6: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력에 의한 쿠데타가 임박했다는 보고가 있습니다. 우리는 그들의 계획 중 일부를 저지했지만, 위협은 여전히 존재합니다. ?]
 
 @prosecute_sa
 view-if: nazi_urgency >= 3 and not sa_banned and (chancellor == "Papen" or chancellor == "Schleicher")
 on-arrival: sa_strength *= 0.95; sa_militancy -= 0.02; prussian_police_loyalty -= 0.02; sa_strength *= 0.98 if prussian_police_loyalty >= 0.75
 
-While an outright ban on the <span style="color: #7A3C00;">**SA**</span> may be out of reach, we can make life as difficult as possible for the <span style="color: #7A3C00;">Storm Troopers</span>. The most reckless among them can be prosecuted on charges of murder and related crimes, and we can ensure legal public demonstrations and meetings are protected from their unlawful disruptions.
+<span style="color: #7A3C00;">**SA**</span>에 대한 전면적인 금지는 어려울 수 있지만, 우리는 <span style="color: #7A3C00;">돌격대원들</span>의 활동을 가능한 한 어렵게 만들 수 있습니다. 가장 무모한 자들은 살인 및 관련 범죄 혐의로 기소될 수 있으며, 우리는 합법적인 대중 시위와 집회가 그들의 불법적인 방해로부터 보호받도록 보장할 수 있습니다.
 
 @unban_sa
 view-if: sa_banned = 1
 on-arrival: sa_banned = 0; sa_strength += 100; sa_militancy += 0.05; coup_progress += 2 if sa_coup_progress >= 6
 
-The <span style="color: #7A3C00;">**SA**</span> is no longer banned. They immediately go on a recruiting spree.
+<span style="color: #7A3C00;">**SA**</span>에 대한 금지가 해제되었습니다. 그들은 즉시 대대적인 모집 활동에 돌입했습니다.
 
 @ban_sh
 on-arrival: sh_strength *= 0.8; sh_strength *= 0.7 if prussian_police_loyalty >= 0.75; sh_banned = 1; dvp_relation -= 5; lvp_relation -= 2; prussian_police_loyalty -= 0.1; coalition_dissent += 1 if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg"; coalition_dissent += 1 if in_social_catholic_coalition_prussia and cvp_formed; sh_ban_timer = 6; sh_coup_progress = coup_progress; coup_progress -= 1 if coup_progress >= 6; hindenburg_angry += 5
 view-if: sh_banned == 0 and not in_social_catholic_coalition_prussia
 
-[? if president == "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with President Hindenburg, as well as the political <span style="color: #3E88B3;">right</span> and the police. ?][? if president != "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with the political <span style="color: #3E88B3;">right</span> and the police. ?] [? if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg" : It also weakens our coalition due to the influence of Hindenburg on the <span style="color: #C0A054;">right</span> wing of our coalition. ?] In addition, the <span style="color: #3E88B3;">**Stahlhelm**</span> still operates out of public sight. 
+[? if president == "Hindenburg": <span style="color: #3E88B3;">**철모단**</span>을 금지하는 것은 힌덴부르크 대통령과의 관계뿐만 아니라 정치적 <span style="color: #3E88B3;">우파</span> 및 경찰과의 관계를 약화시킵니다. ?][? if president != "Hindenburg": <span style="color: #3E88B3;">**철모단**</span>을 금지하는 것은 정치적 <span style="color: #3E88B3;">우파</span> 및 경찰과의 관계를 약화시킵니다. ?] [? if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg" : 또한 힌덴부르크가 우리 연정 내 <span style="color: #C0A054;">우익</span> 세력에 미치는 영향력 때문에 연정을 약화시킬 것입니다. ?] 게다가, <span style="color: #3E88B3;">**철모단**</span>은 여전히 대중의 시야 밖에서 활동하고 있습니다.
 
 @unban_sh
 view-if: sh_banned = 1
 on-arrival: sh_banned = 0; sh_strength += 100; coup_progress += 2 if sh_coup_progress >= 6; hindenburg_angry -= 5
 
-The <span style="color: #3E88B3;">**Stahlhelm**</span> is no longer banned.
+<span style="color: #3E88B3;">**철모단**</span>에 대한 금지가 해제되었습니다.
 
 
 @ban_rfb
 view-if: communist_coalition < 3 and rfb_banned = 0
 on-arrival: kpd_relation -= 15; rfb_strength -= 50; rfb_banned = 1; communist_coalition -= 1; z_relation += 5; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; prussian_police_loyalty += 0.1; dvp_left += 1; ddp_left += 0.5; lvp_left += 1; hindenburg_angry -= 8
 
-The ban is enthusiastically carried out by the police, perhaps too enthusiastically. The <span style="color: #700000;">Communists</span> take this as one more reason why the <span style="color: #c00000;">Socialists</span> are traitors to the <span style="color: #9B0000;">left</span>. However, the <span style="color: #000000;">moderate</span> and <span style="color: #C0A054;">center-right</span> parties approve, as do the police.
+금지 조치는 경찰에 의해 열광적으로, 어쩌면 지나치게 열광적으로 집행되고 있습니다. <span style="color: #700000;">공산주의자들</span>은 이를 <span style="color: #c00000;">사회민주당</span>이 <span style="color: #9B0000;">좌파</span>의 배신자라는 또 하나의 증거로 받아들입니다. 그러나 <span style="color: #000000;">중도파</span> 및 <span style="color: #C0A054;">중도 우파</span> 정당들은 이를 지지하며, 경찰 또한 마찬가지입니다.
 
 @unban_rfb
 view-if: rfb_banned = 1 and not in_social_catholic_coalition_prussia
 on-arrival: rfb_banned = 0; rfb_strength += 50; prussian_police_loyalty -= 0.1; hindenburg_angry += 8
 
-The <span style="color: #700000;">Communist</span> <span style="color: #700000;">**RFB**</span> is no longer banned.
+<span style="color: #700000;">공산주의</span> <span style="color: #700000;">**RFB**</span>에 대한 금지가 해제되었습니다.
 
 @negotiate_concordat
 view-if: (prussian_concordat_progress < 2 and z_leader != "Kaas") or (prussian_concordat_progress < 1 and z_leader = "Kaas") and prussian_concordat = 0
 on-arrival: prussian_concordat_progress += 1; z_relation += 2*(1-dissent);
 
-We are making progress towards negotiating a concordat between Prussia and the Catholic church. [? if z_leader = "Kaas": Ludwig Kaas of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Party uses his connections to speed up negotiations. ?]
+우리는 프로이센과 가톨릭 교회 간의 정교조약 협상에서 진전을 보이고 있습니다. [? if z_leader = "Kaas": [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]당의 루트비히 카스는 협상을 가속화하기 위해 자신의 인맥을 활용하고 있습니다. ?]
 
 @sign_concordat
 view-if: (prussian_concordat_progress >= 2 and not z_leader = "Kaas") or (prussian_concordat_progress >= 1 and z_leader = "Kaas") and prussian_concordat = 0
 on-arrival: prussian_concordat = 1; z_relation += 8; catholics_spd += 3*(1-dissent); catholics_dnvp -= 2 if dnvp_ideology == "Radical"; ddp_relation -= 2; ddp_cohesion -= 0.5; lvp_relation -= 2
 
-We have signed a Concordat between the Free State of Prussia and the Roman Catholic Church, guaranteeing religious freedom for Catholics in Prussia. This sets the stage for the negotiation of a national Concordat covering all of Germany.
+우리는 프로이센 자유주와 로마 가톨릭 교회 간에 프로이센 내 가톨릭 신자들의 종교적 자유를 보장하는 정교조약을 체결했습니다. 이는 독일 전체를 포괄하는 국가 정교조약 협상을 위한 발판을 마련한 것입니다.
 
-[? if dnvp_ideology == "Radical": The Catholic members of the <span style="color: #3E88B3;">**DNVP**</span> in Prussia are in open conflict with their leadership over the vote, with many leaving the party. ?]
+[? if dnvp_ideology == "Radical": 프로이센 내 <span style="color: #3E88B3;">**DNVP**</span> 소속 가톨릭 의원들은 이 투표를 두고 지도부와 공개적으로 충돌하고 있으며, 많은 이들이 당을 떠나고 있습니다. ?]

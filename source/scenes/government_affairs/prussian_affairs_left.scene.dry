@@ -1,4 +1,4 @@
-title: The Prussian Bulwark
+title: 프로이센의 보루
 new-page: true
 is-card: true
 view-if: prussia_leader = "Rosenfeld" and in_popular_front_prussia = 1 or in_left_front_prussia = 1 and prussian_affairs_timer <= 0
@@ -7,20 +7,20 @@ tags: govt_affairs
 card-image: img/braun.jpg
 #subtitle: The state government of Prussia is a bulwark of democracy...
 
-= Prussian Affairs
+= 프로이센 업무
 
-Prussia, by far the largest and most important state in Germany, is governed by our party, in a coalition with the [? if in_popular_front_prussia: [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], [? if ddp_in_popular_front_prussia and not lvp_formed: [? if ddp_name == "DDP": <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP": <span style="color: #D3C24D;">**State**</span>?]?] and <span style="color: #700000;">**Communist**</span> parties.?][? if in_left_front_prussia: <span style="color: #700000;">**Communists**</span>.?] It is the most left-wing state government in Germany, led by Kurt Rosenfeld.
+독일에서 가장 크고 중요한 주인 프로이센은 [? if in_popular_front_prussia: [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], [? if ddp_in_popular_front_prussia and not lvp_formed: [? if ddp_name == "DDP": <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP": <span style="color: #D3C24D;">**국가**</span>?]?] 그리고 <span style="color: #700000;">**공산**</span>당과의 연정을 통해 우리 당이 통치하고 있습니다.?][? if in_left_front_prussia: <span style="color: #700000;">**공산당**</span>.?] 쿠르트 로젠펠트가 이끄는 이곳은 독일에서 가장 좌파적인 주 정부입니다.
 
-We can enact policies in Prussia. [? if president == "Hindenburg": However, President Hindenburg and the political right are closely monitoring our every move and can invoke Reichsexekution at any time. Tread lightly. ?]
+우리는 프로이센에서 정책을 입안할 수 있습니다. [? if president == "Hindenburg": 그러나 힌덴부르크 대통령과 정치적 우파는 우리의 일거수일투족을 면밀히 감시하고 있으며 언제든지 제국집행을 발동할 수 있습니다. 신중하게 행동하십시오. ?]
 
-- @police_loyalty: Bolster the loyalty of the police.
-- @police_strength: Recruit additional police.
-- @bureaucracy: Purge the bureaucracy of <span style="color: #808080;">reactionary</span> elements.
-- @ban_sa: Ban the <span style="color: #7A3C00;">**SA**</span>, the <span style="color: #7A3C00;">Nazi</span> paramilitary group.
-- @ban_sh: Ban the <span style="color: #3E88B3;">**Stahlhelm**</span>, the Nationalist paramilitary.
-- @unban_rfb: Reverse the <span style="color: #8B0000;">**RFB**</span> ban.
-- @free_kpd: Protect <span style="color: #8B0000;">**KPD**</span> demonstrations from the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
-- @root: No new policies are needed.
+- @police_loyalty: 경찰의 충성심을 강화한다.
+- @police_strength: 경찰 병력을 증원한다.
+- @bureaucracy: 관료 조직 내의 <span style="color: #808080;">반동적</span> 요소들을 숙청한다.
+- @ban_sa: <span style="color: #7A3C00;">나치</span> 준군사조직인 <span style="color: #7A3C00;">**SA**</span>를 금지한다.
+- @ban_sh: 민족주의 준군사조직인 <span style="color: #3E88B3;">**철모단**</span>을 금지한다.
+- @unban_rfb: <span style="color: #8B0000;">**RFB**</span> 금지 조치를 철회한다.
+- @free_kpd: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>로부터 <span style="color: #8B0000;">**KPD**</span>의 시위를 보호한다.
+- @root: 새로운 정책이 필요하지 않다.
 - @easy_discard
 - @cancel_advisor_action
 
@@ -28,42 +28,42 @@ We can enact policies in Prussia. [? if president == "Hindenburg": However, Pres
 view-if: prussian_police_loyalty < 1
 on-arrival: prussian_police_loyalty += 0.15; rfb_strength += 25; reichsexekution += 1
 
-The police have historically been overrun with <span style="color: #808080;">reactionaries</span>, and we are trying to change this, little by little. We have improved the training and recruitment process to select for a broader demographic than the traditional <span style="color: #3E88B3;">conservatives</span>, and to put a tighter leash on their political activity. In addition, we set up committees to investigate the ranks of the police and remove those with <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> sympathies. The <span style="color: #700000;">**KPD**</span> have also began to infiltrate some of their own into the police force...
+경찰 조직은 역사적으로 <span style="color: #808080;">반동주의자들</span>로 들끓었고, 우리는 이를 조금씩 바꾸려 노력하고 있습니다. 전통적인 <span style="color: #3E88B3;">보수주의자들</span> 외에 더 폭넓은 계층을 선발하고 그들의 정치 활동을 엄격히 통제하기 위해 훈련 및 채용 과정을 개선했습니다. 또한, 경찰 내부를 조사하고 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 동조자들을 제거하기 위한 위원회를 설치했습니다. <span style="color: #700000;">**KPD**</span> 또한 경찰 병력 내에 자신들의 인원을 침투시키기 시작했습니다...
 
-Current police loyalty: [+ prussian_police_loyalty : loyalty +].
+현재 경찰 충성도: [+ prussian_police_loyalty : loyalty +].
 
 @police_strength
 on-arrival: prussian_police_strength += 30; rfb_strength += 50
 
-We have increased the size of the Prussian police.
+우리는 프로이센 경찰의 규모를 늘렸습니다.
 
 @bureaucracy
 on-arrival: prussian_police_loyalty += 0.08; nationalism -= 5; pacifism += 1; democratization += 2; pro_republic += 3*(1-dissent); new_middle_spd += 2*(1-dissent) if democratization >= 3; new_middle_spd += 2*(1-dissent) if democratization >= 4; coup_progress += 0.5; dvp_left += 2; ddp_left += 1; lvp_left += 1.5; reichsexekution += 1; bureaucracy_goal_prussia -= 1; new_middle_kpd += 2
 
-The bureaucracy is deeply <span style="color: #808080;">reactionary</span>, and many abuse their power to favor the <span style="color: #3E88B3;">political right</span>. By removing the <span style="color: #3E88B3;">pro-monarchy</span> and <span style="color: #7A3C00;">pro-dictatorship</span> elements, we can democratize it. The <span style="color: #700000;">**KPD**</span> have also began to infiltrate some of their own into the state bureaucracy...
+관료 조직은 깊이 <span style="color: #808080;">반동적</span>이며, 많은 이들이 <span style="color: #3E88B3;">정치적 우파</span>를 돕기 위해 권력을 남용합니다. <span style="color: #3E88B3;">친제정</span> 및 <span style="color: #7A3C00;">친독재</span> 세력을 제거함으로써 우리는 관료 사회를 민주화할 수 있습니다. <span style="color: #700000;">**KPD**</span> 또한 주 관료 조직 내에 자신들의 인원을 침투시키기 시작했습니다...
 
 @ban_sa
 view-if: sa_banned == 0
 on-arrival: sa_strength *= 0.9; sa_strength *= 0.75 if prussian_police_loyalty >= 0.75; sa_banned_pro = 1 if prussian_police_loyalty >= 0.75; sa_banned_pro = 0 if prussian_police_loyalty < 0.75; sa_banned = 1; dvp_relation -= 3; prussian_police_loyalty -= 0.05; sa_militancy -= 0.05; sa_ban_timer = 6; interior_goal_prussia -= 1; coup_progress -= 2 if coup_progress >= 6
 
-As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has many allies in the police and bureaucracy. Our relationship with the police weakens, and the <span style="color: #7A3C00;">**SA**</span> can still organize illegally, right under the police's noses. [? if sa_banned_pro : Nevertheless, the <span style="color: #7A3C00;">**SA**</span> is substantially weakened by our ban. ?] 
+드러난 바와 같이, <span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span>는 경찰과 관료 조직 내에 많은 동조자를 두고 있습니다. 경찰과의 관계는 악화되고 있으며, <span style="color: #7A3C00;">**SA**</span>는 여전히 경찰의 눈앞에서 불법적으로 조직을 운영할 수 있습니다. [? if sa_banned_pro : 그럼에도 불구하고, <span style="color: #7A3C00;">**SA**</span>는 우리의 금지 조치로 인해 상당히 약화되었습니다. ?]
 
-[? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have disrupted some of these plans, but the threat is still present. ?]
+[? if coup_progress >= 6: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력에 의한 쿠데타가 임박했다는 보고가 있습니다. 우리는 그들의 계획 중 일부를 저지했지만, 위협은 여전히 존재합니다. ?]
 
 @ban_sh
 on-arrival: sh_strength *= 0.85; sh_strength *= 0.7 if prussian_police_loyalty >= 0.75; sh_banned = 1; dvp_relation -= 5; lvp_relation -= 2; prussian_police_loyalty -= 0.1; coalition_dissent += 1 if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg"; sh_ban_timer = 6; interior_goal_prussia -= 1; sh_coup_progress = coup_progress; coup_progress -= 1 if coup_progress >= 6; hindenburg_angry += 5
 view-if: sh_banned == 0
 
-[? if president == "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with President Hindenburg, as well as the political <span style="color: #3E88B3;">right</span> and the police. ?][? if president != "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with the political <span style="color: #3E88B3;">right</span> and the police. ?] [? if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg" : It also weakens our coalition due to the influence of Hindenburg on the <span style="color: #C0A054;">right</span> wing of our coalition. ?] In addition, the <span style="color: #3E88B3;">**Stahlhelm**</span> still operates out of public sight. 
+[? if president == "Hindenburg": <span style="color: #3E88B3;">**철모단**</span>을 금지하는 것은 힌덴부르크 대통령과의 관계뿐만 아니라 정치적 <span style="color: #3E88B3;">우파</span> 및 경찰과의 관계를 약화시킵니다. ?][? if president != "Hindenburg": <span style="color: #3E88B3;">**철모단**</span>을 금지하는 것은 정치적 <span style="color: #3E88B3;">우파</span> 및 경찰과의 관계를 약화시킵니다. ?] [? if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg" : 또한 힌덴부르크가 우리 연정 내 <span style="color: #C0A054;">우</span>익 세력에 미치는 영향력 때문에 연정을 약화시킬 것입니다. ?] 게다가, <span style="color: #3E88B3;">**철모단**</span>은 여전히 대중의 시야 밖에서 활동하고 있습니다.
 
 @unban_rfb
 view-if: rfb_banned = 1
 on-arrival: rfb_banned = 0; rfb_strength += 100; prussian_police_loyalty -= 0.1; rfb_goal_prussia -= 1; hindenburg_angry += 8
 
-The <span style="color: #700000;">Communist</span> <span style="color: #700000;">**RFB**</span> is no longer banned.
+<span style="color: #700000;">공산주의</span> <span style="color: #700000;">**RFB**</span>에 대한 금지가 해제되었습니다.
 
 @free_kpd
 view-if: rfb_banned = 0
 on-arrival: rfb_banned = 0; rfb_strength += 50; rfb_militancy += 0.03; prussian_police_loyalty -= 0.05; workers_kpd += 4; unemployed_kpd += 4; free_kpd_goal_prussia -= 1; reichsexekution += 1; dvp_relation -= 5; ddp_relation -= 4; lvp_relation -= 5; z_relation -= 4; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 0.5; lvp_right += 1.5; left_dissent -= 5; reformist_dissent += 5
 
-Restrictions are lifted and police are deployed to protect <span style="color: #700000;">Communist</span> demonstrations and organizations from the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
+제한이 해제되었으며, <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력으로부터 <span style="color: #700000;">공산주의</span> 시위와 조직을 보호하기 위해 경찰이 배치됩니다.

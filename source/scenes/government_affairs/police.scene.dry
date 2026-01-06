@@ -1,4 +1,4 @@
-title: Internal Security
+title: 내무부 정책
 new-page: true
 is-card: true
 tags: govt_affairs, cabinet
@@ -6,27 +6,27 @@ on-arrival: police_timer += 6; month_actions += 1
 view-if: spd_in_government = 1 and interior_minister_party = "SPD" and police_timer <= 0
 card-image: img/portraits/SeveringCarl.jpg
 
-= Internal Security
+= 내무부 정책
 
-The Interior Ministry controls internal security throughout the German Republic. While most police work is delegated to the states, the national security agency can perform special investigations.
+내무부는 독일 공화국 전역의 치안을 관장합니다. 대부분의 경찰 업무는 각 주에 위임되어 있지만, 국가 보안 기관은 특별 수사를 수행할 수 있습니다.
 
-As with the state police units and the Reichswehr, the internal police tends to be <span style="color: #808080;">reactionary</span>, and has serious issues with loyalty to the elected government of the Republic.
+주 경찰이나 국방군과 마찬가지로, 내무 경찰 역시 <span style="color: #808080;">반동적인</span> 성향을 띠며 선출된 공화국 정부에 대한 충성심에 심각한 문제를 안고 있습니다.
 
-- @loyalty: Improve the loyalty of the Interior Ministry forces.
-- @investigate_corruption: Investigate corruption by big businesses.
-- @investigate_far_right: Investigate illegal activity among the <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span>.
-- @domestic_enemies: Investigate or ban our domestic enemies.
+- @loyalty: 내무부 소속 병력의 충성심을 높인다.
+- @investigate_corruption: 대기업의 부패를 수사한다.
+- @investigate_far_right: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력의 불법 활동을 수사한다.
+- @domestic_enemies: 국내의 적들을 수사하거나 활동을 금지한다.
 - @deport_hitler
-- @root: Take no action for now.
+- @root: 당분간 아무런 조치도 취하지 않는다.
 - @easy_discard
 - @cancel_advisor_action
 
 @loyalty
 on-arrival: interior_police_loyalty += 0.1
 
-As with the Prussian state police, there are measures we can take to root out <span style="color: #808080;">reactionary</span> and anti-democratic sentiment in the police. We can improve training and recruiting procedures, and identify and remove known <span style="color: #7A3C00;">fascists</span> and the like.
+프로이센 주 경찰과 마찬가지로, 경찰 내의 <span style="color: #808080;">반동적</span>이고 반민주적인 정서를 뿌리 뽑기 위한 조치들이 있습니다. 훈련과 채용 절차를 개선하고, 알려진 <span style="color: #7A3C00;">파시스트</span>나 그와 유사한 자들을 색출하여 제거할 수 있습니다.
 
-Current interior police loyalty: [+ interior_police_loyalty : loyalty +]
+현재 내무 경찰 충성도: [+ interior_police_loyalty : loyalty +]
 
 
 @investigate_corruption
@@ -35,12 +35,12 @@ go-to: investigate_corruption_success if interior_police_loyalty >= 0.5; investi
 @investigate_corruption_success
 on-arrival: investigate_corruption += 1; workers_spd += 5*(1-dissent); inflation -= 0.1 if inflation > 3; inflation -= 0.2 if inflation >= 8; dvp_relation -= 3; dvp_right += 1; ddp_relation -= 1; ddp_left += 0.5; ddp_cohesion -= 0.5; lvp_relation -= 2; lvp_right += 1
 
-Corruption in big business is rampant, of course. We have uncovered a number of scandals, and publicizing them brings new attention to the work of Interior Minister [+ interior_minister +], building up his popular appeal and that of the <span style="color: #c00000;">**SPD**</span>.
+대기업의 부패는 물론 만연해 있습니다. 우리는 다수의 스캔들을 밝혀냈으며, 이를 공론화함으로써 내무장관 [+ interior_minister +]의 활약에 새로운 이목을 집중시키고, 그와 <span style="color: #c00000;">**SPD**</span>의 대중적 지지를 쌓아 올리고 있습니다.
 
 
 @investigate_corruption_failure
 
-Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by infiltrators within the police.
+불행히도 수사는 아무런 성과도 내지 못했습니다. 소문에 따르면 경찰 내부에 침투한 첩자들이 수사 대상에게 미리 정보를 흘렸다고 합니다.
 
 @investigate_far_right
 go-to: investigate_far_right_success if interior_police_loyalty >= 0.55; investigate_far_right_failure if interior_police_loyalty < 0.55
@@ -48,13 +48,13 @@ go-to: investigate_far_right_success if interior_police_loyalty >= 0.55; investi
 @investigate_far_right_success
 on-arrival: investigate_far_right += 1; sa_strength *= 0.96; sa_strength *= 0.96 if investigate_far_right == 2; workers_nsdap -= 1; new_middle_nsdap -= 2; nazi_urgency += 1 if investigate_far_right == 2; nazi_urgency += 2 if investigate_far_right == 3; workers_nsdap -= 2 if investigate_far_right == 3; new_middle_nsdap -= 3 if investigate_far_right == 3; old_middle_nsdap -= 3 if investigate_far_right == 3; unemployed_spd += 3 if investigate_far_right == 3; coup_progress -= 1 if coup_progress >= 6
 
-[? if investigate_far_right == 1 : We have discovered collusion between Hjalmar Schacht, president of the Reichsbank, and the <span style="color: #7A3C00;">Nazis</span>. This is very useful information. ?]
-[? if investigate_far_right == 2 : We have discovered illegal arms smuggling by the <span style="color: #7A3C00;">**SA**</span>, the <span style="color: #7A3C00;">Nazi</span> paramilitary. ?]
-[? if investigate_far_right == 3 : We have discovered a secret cache of documents from the <span style="color: #7A3C00;">**NSDAP**</span> detailing their plan to violently take over the country if they enter into power. This is an anti-constitutional plot, and will be publicized and persecuted. ?]
-[? if investigate_far_right > 3 : Of course the <span style="color: #7A3C00;">Nazis</span> are doing crimes; everyone knows that. Now, we finally have proof. ?]
+[? if investigate_far_right == 1 : 우리는 제국은행 총재 얄마르 샤흐트와 <span style="color: #7A3C00;">나치</span> 간의 결탁 사실을 밝혀냈습니다. 이는 매우 유용한 정보입니다. ?]
+[? if investigate_far_right == 2 : 우리는 <span style="color: #7A3C00;">나치</span> 준군사조직인 <span style="color: #7A3C00;">**SA**</span>의 불법 무기 밀수 현장을 적발했습니다. ?]
+[? if investigate_far_right == 3 : 우리는 <span style="color: #7A3C00;">**NSDAP**</span>가 집권 시 폭력적으로 국가를 장악하려는 계획이 담긴 비밀 문서를 발견했습니다. 이는 반헌법적 음모이며, 공론화되어 처벌받게 될 것입니다. ?]
+[? if investigate_far_right > 3 : <span style="color: #7A3C00;">나치</span>가 범죄를 저지르고 있다는 건 누구나 아는 사실입니다. 이제 드디어 증거를 확보했습니다. ?]
 
-[? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have attempted to disrupt some of these plans, but the threat is still present. ?]
+[? if coup_progress >= 6: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력에 의한 쿠데타가 임박했다는 보고가 있습니다. 우리는 그들의 계획 중 일부를 저지했지만, 위협은 여전히 존재합니다. ?]
 
 @investigate_far_right_failure
 
-Unfortunately, our investigations have failed to turn up anything. Rumors are that the targets of our investigation were tipped off by infiltrators within the police.
+불행히도 수사는 아무런 성과도 내지 못했습니다. 소문에 따르면 경찰 내부에 침투한 첩자들이 수사 대상에게 미리 정보를 흘렸다고 합니다.
