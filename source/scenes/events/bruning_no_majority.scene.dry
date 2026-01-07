@@ -1,33 +1,33 @@
-title: Brüning's government collapses!
-subtitle: The parties in support of Brüning no longer constitute a majority.
+title: 브뤼닝 정부 붕괴!
+subtitle: 브뤼닝을 지지하는 정당들이 더 이상 과반수를 구성하지 못합니다.
 new-page: true
 tags: event
 view-if: bruning_time and spd_toleration and bruning_coalition < 50
 priority: -1
 on-arrival: pro_republic -= 3
 
-= Brüning's government collapses!
+= 브뤼닝 정부 붕괴!
 
-The defection of multiple bourgeois and special interest parties from their previously unwavering support for the Brüning government has left the cabinet without a majority, even with our toleration. [? if not second_bruning_cabinet_seen: Brüning himself continues to resist forming a more right-wing cabinet to appease the defectors, believing that at least one of them will waver in the face of the political and economic instability that would follow. ?]
+브뤼닝 정부에 대해 이전에 흔들리지 않는 지지를 보내던 다수의 부르주아 및 특수 이익 정당들이 이탈하면서, 우리의 묵인에도 불구하고 내각은 과반수를 상실했습니다. [? if not second_bruning_cabinet_seen: 브뤼닝 스스로는 이탈자들을 달래기 위해 더 우파적인 내각을 구성하는 것을 계속 거부하고 있으며, 뒤따를 정치적 및 경제적 불안정에 직면하면 그들 중 적어도 일부는 다시 돌아올 것이라고 믿고 있습니다. ?]
 
-The <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> remains committed to its all-or-nothing approach, refusing to support the government unless they are granted the Chancellery. Despite this, many on the Right still believe that a compromise with Hitler and Hugenberg is possible and believe that Brüning is not making enough of an effort to achieve it.
+<span style="color: #7A3C00;">민족주의적</span> <span style="color: #3E88B3;">야당</span>은 자신들에게 총리직이 주어지지 않는 한 정부를 지지하지 않겠다는 '전부 아니면 전무' 방식을 고수하고 있습니다. 그럼에도 불구하고 우파의 많은 인사는 여전히 히틀러 및 후겐베르크와의 타협이 가능하다고 믿으며, 브뤼닝이 이를 달성하기 위한 노력을 충분히 하지 않고 있다고 생각합니다.
 
 - @vonc_yes
 - @vonc_no
 
 @vonc_yes
-title: Support the vote of no confidence, voting against the government.
-subtitle: Might as well cut our losses here.
+title: 불신임 결의안을 지지하여, 정부에 반대 투표한다.
+subtitle: 여기서 손을 떼는 게 낫겠습니다.
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 3; z_relation -= 5; ddp_relation -= 3; lvp_relation -= 3; dvp_right += 1; ddp_right += 1; lvp_right += 1
 call: set_next_election_time
 
-We have officially broken with the [+ chancellor +] government, voting against them in a vote of no confidence. The bourgeois parties have also joined in, rather than engage in a futile attempt to save Brüning’s government.
+우리는 공식적으로 [+ chancellor +] 정부와 결별하여, 불신임 투표에서 그들에게 반대표를 던졌습니다. 부르주아 정당들 또한 브뤼닝 정부를 구하기 위한 헛된 시도에 매달리기보다는 이에 동참했습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @vonc_no
-title: Oppose the vote of no confidence, voting in favor of the government.
-subtitle: Currently, [+ bruning_coalition +]% of the Reichstag supports Brüning, but subject to change.
+title: 불신임 결의안에 반대하여, 정부에 찬성 투표한다.
+subtitle: 현재 제국의회의 [+ bruning_coalition +]%가 브뤼닝을 지지하지만, 상황은 변할 수 있습니다.
 on-arrival: {!
 Q.bruning_joever = 1;
 Q.left_dissent += 15;
@@ -59,27 +59,27 @@ go-to: bruning_lives_wp if bruning_coalition >= 50 and wp_reversal; bruning_dies
 on-arrival: bruning_not_joever = 1; new_middle_nsdap += new_middle_other*0.5; new_middle_other *= 0.5; old_middle_nsdap += old_middle_other*0.5; old_middle_other *= 0.5
 face-image: img/wp2.jpg
 
-The <span style="color: #b8996f;">**WP**</span> has unexpectedly reversed its opposition to Brüning's government following last-minute concessions from the Chancellor. In a crucial no-confidence vote, they sided with the government, effectively canceling out the impact of the other bourgeois parties that voted against it.
+<span style="color: #b8996f;">**WP**</span>는 총리로부터 막판 양보를 얻어낸 후 브뤼닝 정부에 대한 반대 입장을 예상치 못하게 뒤집었습니다. 결정적인 불신임 투표에서 그들은 정부 편을 들었고, 사실상 정부에 반대표를 던진 다른 부르주아 정당들의 영향을 상쇄시켰습니다.
 
-This sudden shift by the <span style="color: #b8996f;">**WP**</span> has all but sealed its political demise. Already struggling to maintain support among the middle class, the party now faces mass defections, with local chapters either dissolving or breaking away entirely.
+<span style="color: #b8996f;">**WP**</span>의 이 갑작스러운 태도 변화는 그들의 정치적 종말을 거의 확정 지었습니다. 이미 중산층 사이에서 지지를 유지하기 위해 고군분투하던 이 당은 이제 대규모 이탈에 직면해 있으며, 지역 지부들은 해산하거나 완전히 떨어져 나가고 있습니다.
 
-Despite the formation of a more right-leaning cabinet, the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> remains unwilling to support Brüning, as they seek to claim full control for themselves.
+더 우파적인 성향의 내각이 구성되었음에도 불구하고, <span style="color: #7A3C00;">국가적</span> <span style="color: #3E88B3;">반대파</span>는 자신들이 완전한 통제권을 쥐길 원하므로 브뤼닝을 지지하기를 꺼리고 있습니다.
 
 @bruning_dies_wp
 on-arrival: time_to_election = 3; spd_toleration = 0; spd_toleration_right = 0; bruning_cabinet_collapsed = 1; new_middle_nsdap += new_middle_other*0.5; new_middle_other *= 0.5; old_middle_nsdap += old_middle_other*0.5; old_middle_other *= 0.5
 face-image: img/wp2.jpg
 call: set_next_election_time
 
-The <span style="color: #b8996f;">**WP**</span> has unexpectedly reversed its opposition to Brüning's government following last-minute concessions from the Chancellor. In a crucial no-confidence vote, they sided with the government[? if cnblp_defect or (dvp_defect and dvp_exist):, counteracting the impact of the [? if dvp_defect and dvp_exist: <span style="color: #C0A054;">**DVP**</span>'s?][? if not dvp_defect or not dvp_exist: [? if cnblp_defect: <span style="color: #7FCEB1;">**CNBLP**</span>'s?]?] withdrawal?].
+<span style="color: #b8996f;">**WP**</span>는 총리로부터 막판 양보를 얻어낸 후 브뤼닝 정부에 대한 반대 입장을 예상치 못하게 뒤집었습니다. 결정적인 불신임 투표에서 그들은 정부 편을 들었습니다[? if cnblp_defect or (dvp_defect and dvp_exist):, [? if dvp_defect and dvp_exist: <span style="color: #C0A054;">**DVP**</span>의?][? if not dvp_defect or not dvp_exist: [? if cnblp_defect: <span style="color: #7FCEB1;">**CNBLP**</span>의?]?] 지지 철회 영향을 상쇄하면서 말입니다?].
 
-This sudden shift by the <span style="color: #b8996f;">**WP**</span> has all but sealed its political demise. Already struggling to maintain support among the middle class, the party now faces mass defections, with local chapters either dissolving or breaking away entirely.
+<span style="color: #b8996f;">**WP**</span>의 이 갑작스러운 태도 변화는 그들의 정치적 종말을 거의 확정 지었습니다. 이미 중산층 사이에서 지지를 유지하기 위해 고군분투하던 이 당은 이제 대규모 이탈에 직면해 있으며, 지역 지부들은 해산하거나 완전히 떨어져 나가고 있습니다.
 
-Unfortunately, all of this effort is for naught, with only [+ bruning_coalition +]% of the Reichstag voting against the Brüning government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+불행히도 이 모든 노력은 헛수고로 돌아갔으며, 제국의회의 오직 [+ bruning_coalition +]%만이 브뤼닝 정부에 반대 투표했습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @bruning_dies_no_wp
 on-arrival: time_to_election = 3; spd_toleration = 0; spd_toleration_right = 0; bruning_cabinet_collapsed = 1
 call: set_next_election_time
 
-We are once again compelled to vote in favor of the [+ chancellor +] government to prevent the extremist parties on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> and <span style="color: #700000;">left</span> from translating their growing popular support into parliamentary gains.
+우리는 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>와 <span style="color: #700000;">좌파</span>의 극단주의 정당들이 커지는 대중적 지지를 의회 의석 확대로 연결하는 것을 막기 위해, 다시 한번 [+ chancellor +] 정부에 찬성 투표하도록 강요받았습니다.
 
-Unfortunately, all efforts to save the government have been in vain. Only [+ bruning_coalition +]% of the Reichstag voted to support Brüning’s government. As a result, new elections have been scheduled for [+ next_election_month : month +] [+ next_election_year +].
+불행히도 정부를 구하려는 모든 노력은 허사였습니다. 제국의회의 오직 [+ bruning_coalition +]%만이 브뤼닝 정부를 지지했습니다. 결과적으로 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.

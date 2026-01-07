@@ -1,5 +1,5 @@
-title: Fifth Emergency Decree for Economy and Finance
-subtitle: The Brüning cabinet announces a job creation program.
+title: 경제와 재정을 위한 제5차 비상 칙령
+subtitle: 브뤼닝 내각이 일자리 창출 프로그램을 발표합니다.
 view-if: (bruning_toleration_time >= 6 or bruning_toleration_lite_time >= 6) and ((year == 1932 and month >= 5) or year >= 1933) and unemployed >= 30 and lautenbach_failed and not works_program
 max-visits: 1
 tags: event
@@ -20,17 +20,17 @@ on-display: {!
 set-bg: img/map_2.jpg
 on-arrival: bruning_sigma_time = time + 3
 
-= Fifth Emergency Decree for Economy and Finance
+= 경제와 재정을 위한 제5차 비상 칙령
 
-With Brüning focused on securing a foreign policy victory, the [? if z_party_name != "CVP":<span style="color: #000000;">Center</span>?][? if z_party_name == "CVP":<span style="color: #000000;">**CVP**</span>?]'s Labor Minister Adam Stegerwald and the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]'s Vice Chancellor and Finance Minister Hermann Dietrich have been developing a job creation program. However, given the state of the national budget, such a program was not feasible without either severe welfare cuts or a breakthrough on reparations—delaying action until now due to fears of public backlash.
+브뤼닝이 외교 정책 승리를 확보하는 데 집중하는 동안, [? if z_party_name != "CVP":<span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP":<span style="color: #000000;">**CVP**</span>?](의) 노동장관 아담 슈테거발트와 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] 부총리이자 재무장관인 헤르만 디트리히는 일자리 창출 프로그램을 개발해왔습니다. 하지만 국가 예산 상태를 고려할 때, 심각한 복지 삭감이나 배상금 문제의 돌파구 없이는 그러한 프로그램은 실행 불가능했기에, 대중의 반발을 우려하여 지금까지 조치를 미뤄왔습니다.
 
-Dietrich has since proposed raising 1.4 billion Reichsmarks through a bond issue and secured Reichstag authorization for it. [? if not reparations_resolved: However, the Reichsbank remains hesitant to support the plan financially, at least until the reparations question is settled at Lausanne in the coming months. As a result, the cabinet has scaled back Dietrich’s proposal, allocating only 135 million Reichsmarks and introducing additional austerity measures in the next emergency decree. The decree’s main feature is the creation of a new "Voluntary Labor Service" brigade, tasked with draining swamps and digging artificial lakes—at subminimum wages. ?][? if reparations_resolved: With reparations now resolved at Lausanne, the Reichsbank feels more comfortable authorizing spending. The decree’s centerpiece is the creation of a new "Voluntary Labor Service" brigade, tasked with draining swamps and digging artificial lakes—at subminimum wages. ?]
+디트리히는 이후 채권 발행을 통해 14억 라이히스마르크를 조달할 것을 제안했고 제국의회 승인을 확보했습니다. [? if not reparations_resolved: 하지만 제국은행은 적어도 다가오는 달 로잔에서 배상금 문제가 해결될 때까지는 재정 지원을 주저하고 있습니다. 결과적으로 내각은 디트리히의 제안을 축소하여 1억 3천 5백만 라이히스마르크만을 할당하고, 다음 비상 칙령에 추가적인 긴축 조치들을 포함했습니다. 칙령의 주요 특징은 늪지 배수와 인공 호수 굴착 임무를 맡은 새로운 "자발적 노동 봉사단" 여단의 창설입니다—물론 최저 임금 이하로 말이죠. ?][? if reparations_resolved: 배상금 문제가 로잔에서 해결되었으므로, 제국은행은 지출 승인에 대해 더 긍정적입니다. 칙령의 핵심은 늪지 배수와 인공 호수 굴착 임무를 맡은 새로운 "자발적 노동 봉사단" 여단의 창설입니다—물론 최저 임금 이하로 말이죠. ?]
 
-[? if not reparations_resolved: Should Lausanne bring success, full funding for Dietrich’s program may still follow. Brüning just has to survive until then. ?]
+[? if not reparations_resolved: 로잔 회담이 성공한다면, 디트리히의 프로그램에 대한 전면적인 자금 지원이 뒤따를 수 있습니다. 브뤼닝은 그때까지 살아남기만 하면 됩니다. ?]
 
 - @wait
 
 @wait
-title: The decree is to be presented in the near future.
+title: 칙령은 가까운 시일 내에 발표될 것이다.
 
-[? if not reparations_resolved and president == "Hindenburg": With relations between Brüning and Hindenburg increasingly strained, it would take nothing short of a miracle for this to be implemented in time. Nonetheless, it marks a turning point—and aligns with Stegerwald’s promise to the unions for job creation made just a month ago. ?][? if reparations_resolved or president != "Hindenburg": This marks a turning point—and aligns with Stegerwald’s promise to the unions for job creation made just a month ago. ?]
+[? if not reparations_resolved and president == "Hindenburg": 브뤼닝과 힌덴부르크 사이의 관계가 점점 더 긴장됨에 따라, 이것이 제때 실행되려면 기적에 가까운 일이 필요할 것입니다. 그럼에도 불구하고 이는 전환점을 의미하며—불과 한 달 전 슈테거발트가 노조에 약속한 일자리 창출과도 일치합니다. ?][? if reparations_resolved or president != "Hindenburg": 이는 전환점임을 의미하며—불과 한 달 전 슈테거발트가 노조에 약속한 일자리 창출과도 일치합니다. ?]

@@ -1,5 +1,5 @@
-title: Public Works Mobilization Act
-subtitle: The Brüning cabinet announces a job creation program.
+title: 공공 사업 동원법
+subtitle: 브뤼닝 내각이 일자리 창출 프로그램을 발표합니다.
 view-if: (bruning_time >= 6 or bruning_lite_time >= 6) and ((year == 1932 and month >= 5) or year >= 1933) and unemployed >= 30 and (in_center_right_coalition or in_right_coalition) and not works_program
 max-visits: 1
 tags: event
@@ -20,24 +20,24 @@ on-display: {!
 on-arrival: bruning_skibidi_time = time + 3 if not reparations_resolved
 set-bg: img/map_2.jpg
 
-= Public Works Mobilization Act
+= 공공 사업 동원법
 
-With Brüning focused on securing a foreign policy victory, the [? if z_party_name != "CVP":<span style="color: #000000;">Center</span>?][? if z_party_name == "CVP":<span style="color: #000000;">**CVP**</span>?]'s Labor Minister Adam Stegerwald and the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]'s Vice Chancellor and Finance Minister Hermann Dietrich have been developing a job creation program. The <span style="color: #6D5298;">Christian Socials</span> and several <span style="color: #3E88B3;">**DNVP**</span> figures, such as Günther Gereke, have also backed this approach. However, given the state of the national budget, such a program was not feasible without either severe welfare cuts or a breakthrough on reparations—delaying action until now due to fears of public backlash.
+브뤼닝이 외교 정책 승리를 확보하는 데 집중하는 동안, [? if z_party_name != "CVP":<span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP":<span style="color: #000000;">**CVP**</span>?](의) 노동장관 아담 슈테거발트와 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] 부총리이자 재무장관인 헤르만 디트리히는 일자리 창출 프로그램을 개발해왔습니다. <span style="color: #6D5298;">기독교 사회주의자들</span>과 귄터 게레케 같은 몇몇 <span style="color: #3E88B3;">**DNVP**</span> 인물들도 이 접근법을 지지했습니다. 하지만 국가 예산 상태를 고려할 때, 심각한 복지 삭감이나 배상금 문제의 돌파구 없이는 그러한 프로그램은 실행 불가능했기에, 대중의 반발을 우려하여 지금까지 조치를 미뤄왔습니다.
 
-Dietrich has since secured Reichstag approval to raise 1.4 billion Reichsmarks through a bond issue to fund the initiative. [? if not reparations_resolved: Yet the Reichsbank remains reluctant to provide support, at least not until the reparations issue is resolved at Lausanne in the coming months. As a result, Dietrich’s proposal has been sharply scaled back, with only 160 million Reichsmarks allocated and further austerity measures introduced in the upcoming act. The act’s centerpiece is the establishment of a new "Voluntary Labor Service" brigade, tasked with draining swamps and digging artificial lakes—at subminimum wages. ?][? if reparations_resolved: With reparations now resolved at Lausanne, the Reichsbank feels more comfortable authorizing spending. The act's centerpiece is the creation of a new "Voluntary Labor Service" brigade, tasked with draining swamps and digging artificial lakes—at subminimum wages. ?]
+디트리히는 이후 채권 발행을 통해 14억 라이히스마르크를 조달하는 제국의회 승인을 확보했습니다. [? if not reparations_resolved: 하지만 제국은행은 적어도 다가오는 달 로잔에서 배상금 문제가 해결될 때까지는 재정 지원을 꺼리고 있습니다. 결과적으로 디트리히의 제안은 대폭 축소되어 1억 6천만 라이히스마르크만이 할당되었고, 다가오는 법안에 추가적인 긴축 조치들이 포함되었습니다. 법안의 핵심은 늪지 배수와 인공 호수 굴착 임무를 맡은 새로운 "자발적 노동 봉사단" 여단의 창설입니다—물론 최저 임금 이하로 말이죠. ?][? if reparations_resolved: 배상금 문제가 로잔에서 해결되었으므로, 제국은행은 지출 승인에 대해 더 긍정적입니다. 법안의 핵심은 늪지 배수와 인공 호수 굴착 임무를 맡은 새로운 "자발적 노동 봉사단" 여단의 창설입니다—물론 최저 임금 이하로 말이죠. ?]
 
-[? if not reparations_resolved: Should Lausanne bring success, full funding for Dietrich’s program may still follow. Brüning's coalition just has to survive until then. ?]
+[? if not reparations_resolved: 로잔 회담이 성공한다면, 디트리히의 프로그램에 대한 전면적인 자금 지원이 뒤따를 수 있습니다. 브뤼닝의 연정은 그때까지 살아남기만 하면 됩니다. ?]
 
 - @wait
 
 @wait
-title: We will vote for the act, and so will the bourgeois parties. [? if dvp_exist and not lvp_formed: (barring the <span style="color: #C0A054;">**DVP**</span>)?][? if lvp_formed: (barring the <span style="color: #FFCC00;">**LVP**</span>'s industrialists)?]
+title: 우리는 법안에 찬성 투표할 것이며, [? if dvp_exist and not lvp_formed: (<span style="color: #C0A054;">**DVP**</span>를 제외하고)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>의 산업가들을 제외하고)?] 부르주아 정당들도 그럴 것이다.
 on-arrival: labor_dissent -= 5; wtb_points += 200; hindenburg_angry_bruning -= 50; dvp_left += 5; ddp_left += 3; lvp_left += 3; ddp_cohesion += 3; z_relation += 5 if wtb_adopted; ddp_relation += 5 if wtb_adopted; lvp_relation += 5 if wtb_adopted; unemployed -= 3; inflation += 2; budget -= 1; economic_growth += 2; workers_nsdap -= 2; workers_ddp += 1; workers_z += 1; workers_dnvp += 1; workers_lvp += 1; unemployed_nsdap -= 3; unemployed_z += 2; unemployed_ddp += 2; unemployed_dnvp += 2; unemployed_lvp += 2
 go-to: public_works_pt2 if reparations_resolved
 
-With strong support from the [? if z_party_name != "CVP":<span style="color: #000000;">Center</span>?][? if z_party_name == "CVP":<span style="color: #000000;">**CVP**</span>?], General Kurt von Schleicher, and his allies in the <span style="color: #3E88B3;">**DNVP**</span>, the bill passes. However, it has provoked the anger of industrialists within the center-right coalition[? if not reparations_resolved:—though the scaled-down scope of the plan has, for now, kept their outrage contained?].
+[? if z_party_name != "CVP":<span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP":<span style="color: #000000;">**CVP**</span>?], 쿠르트 폰 슐라이허 장군, 그리고 <span style="color: #3E88B3;">**DNVP**</span> 내 그의 동맹들의 강력한 지지로 법안은 통과됩니다. 하지만 이는 중도 우파 연정 내 산업가들의 분노를 샀습니다[? if not reparations_resolved:—비록 계획의 축소된 규모가 당분간은 그들의 분노를 억제하고 있지만 말입니다?].
 
-[? if reparations_resolved: Despite Brüning’s longstanding belief that public works should follow the bottoming out of the depression, it appears he now sees that moment as having arrived—with the global recovery and the abolition of German reparations. Still, inflationary fears among the public have constrained any major expansion of the money supply, and the industrialists within the coalition have fought tooth and nail to gut the bill’s more expensive provisions. Fortunately, their votes are not required to pass it. ?]
+[? if reparations_resolved: 공공 사업은 대공황이 바닥을 친 후에 시행해야 한다는 브뤼닝의 오랜 신념에도 불구하고, 이제 그는 세계적인 경기 회복과 독일 배상금 폐지와 함께 그 순간이 도래했다고 판단한 것 같습니다. 여전히 대중들 사이의 인플레이션 공포는 통화 공급의 대규모 확대를 제한했고, 연정 내 산업가들은 법안의 비용이 많이 드는 조항들을 삭제하기 위해 필사적으로 싸웠습니다. 다행히도 법안 통과에 그들의 표는 필요하지 않았습니다. ?]
 
 @public_works_pt2
 on-arrival: labor_dissent -= 5; hindenburg_angry_bruning -= 25; lautenbach_adopted = 1; lautenbach_plan_time = time + 12; public_works_name = "Dietrich"; dvp_left += 3; ddp_left += 2; lvp_left += 2; ddp_cohesion += 2; inflation += 2; budget -= 1; economic_growth += 2; workers_nsdap -= 1; workers_ddp += 1; workers_z += 1; workers_dnvp += 1; workers_lvp += 1; unemployed_nsdap -= 3; unemployed_z += 2; unemployed_ddp += 2; unemployed_dnvp += 2; unemployed_lvp += 2
