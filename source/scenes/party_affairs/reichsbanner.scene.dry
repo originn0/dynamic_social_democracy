@@ -1,4 +1,4 @@
-title: Reichsbanner
+title: 국기단
 new-page: true
 is-card: true
 tags: party_affairs
@@ -8,16 +8,16 @@ on-arrival: month_actions += 1; reichsbanner_timer += 6; rb_militarization_cost 
 max-visits: 6
 #subtitle: Paramilitary organizing in defense of the republic.
 
-= Reichsbanner
+= 국기단
 
-The *Reichsbanner* <span style="color: #000000;"><b><i>Schwarz</i></b></span>-<span style="color: #DD0000;"><b><i>Rot</i></b></span>-<span style="color: #FFCC00;"><b><i>Gold</i></b></span> is a mass organization for the defense of the Republic against the extremists who threaten it. Some would call it a paramilitary, although currently it is hardly any sort of military. It is officially associated with the pro-democratic parties -the <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, but by far the largest component is with the <span style="color: #c00000;">**SPD**</span>.
+<span style="color: #000000;"><b><i>흑</i></b></span>-<span style="color: #DD0000;"><b><i>적</i></b></span>-<span style="color: #FFCC00;"><b><i>금</i></b></span> *국기단*은 공화국을 위협하는 극단주의자들에 맞서 공화국을 수호하기 위한 대중 조직입니다. 누군가는 이를 준군사조직이라 부를 수도 있겠지만, 현재로서는 군대라고 보기 어렵습니다. 공식적으로는 친민주주의 정당들인 <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], <span style="color: #D3C24D;">**[+ ddp_name +]**</span>과 연계되어 있지만, 단연코 가장 큰 비중을 차지하는 것은 <span style="color: #c00000;">**SPD**</span>입니다.
 
-[? if workers_spd < 46 or workers_spd < workers_nsdap or workers_spd < workers_kpd : The Reichsbanner is having a more difficult time recruiting, as the <span style="color: #c00000;">**SPD**</span> is no longer the dominant party among the workers. Many of its members have left. ?]
+[? if workers_spd < 46 or workers_spd < workers_nsdap or workers_spd < workers_kpd : 국기단은 신규 단원 모집에 어려움을 겪고 있는데, 이는 <span style="color: #c00000;">**SPD**</span>가 더 이상 노동자들 사이에서 지배적인 정당이 아니기 때문입니다. 많은 기존 단원들이 떠났습니다. ?]
 
-- @militant: Fund more military-style training and equipment for the Reichsbanner.
-- @militant_2: Use our existing resources to support more training for the Reichsbanner.
-- @same: Keep the Reichsbanner as it is.
-- @cut_rb: Cut funding for the Reichsbanner.
+- @militant: 국기단을 위한 군사식 훈련과 장비에 자금을 지원한다.
+- @militant_2: 기존 자원을 활용하여 국기단의 훈련을 지원한다.
+- @same: 국기단을 현 상태로 유지한다.
+- @cut_rb: 국기단에 대한 자금 지원을 삭감한다.
 - @women_rb
 - @easy_discard
 - @cancel_advisor_action
@@ -26,39 +26,39 @@ The *Reichsbanner* <span style="color: #000000;"><b><i>Schwarz</i></b></span>-<s
 
 @militant
 choose-if: resources >= rb_militarization_cost
-unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
-subtitle: -[+ rb_militarization_cost +] resources
+unavailable-subtitle: 자원이 부족합니다 ([+ rb_militarization_cost +] 필요).
+subtitle: -[+ rb_militarization_cost +] 자원
 on-arrival: resources -= rb_militarization_cost; rb_investment += 1; rb_strength += 100; rb_militancy += 0.05; left_strength += 2; left_dissent -= 2; reformist_dissent += 5; spd_militancy += 0.05; workers_spd += 2*(1-dissent); unemployed_spd += 2*(1-dissent); z_relation -= 3 if strife < 5; ddp_relation -= 3 if strife < 5; lvp_relation -= 3 if strife < 5
 
-Some in our party decry the increasing militarization of the Reichsbanner. They say it is emulating the <span style="color: #3E88B3;">right-wing nationalists</span> or the <span style="color: #700000;">communists</span>, and risks alienating our allies in the centrist parties. On the other hand, more left-leaning radicals are being lured to our organizations, away from the <span style="color: #700000;">communists</span>.
+당내 일각에서는 국기단의 군사화가 심화되는 것을 비난합니다. 그들은 이것이 <span style="color: #3E88B3;">우익 민족주의자들</span>이나 <span style="color: #700000;">공산주의자들</span>을 모방하는 것이며, 중도파 정당의 동맹들을 소외시킬 위험이 있다고 말합니다. 반면, 더 좌파 성향의 급진주의자들은 <span style="color: #700000;">공산주의자들</span>에게서 멀어져 우리 조직으로 유입되고 있습니다.
 
-[? if not cvp_leave_reichsbanner and not rb_exit: [? if strife < 5: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] decries the militarization of the Reichsbanner, and its members are leaving the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> organization. ?][? if strife >= 5: Seeing the strife that has filled Germany's streets, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] seem to be convinced that it is necessary for the Reichsbanner to be militarized, and mute their criticisms. ?] ?]
+[? if not cvp_leave_reichsbanner and not rb_exit: [? if strife < 5: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 국기단의 군사화를 비난하고 있으며, 소속 당원들은 이 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 조직을 떠나고 있습니다. ?][? if strife >= 5: 독일의 거리를 가득 채운 분쟁을 목격한 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]은 국기단의 군사화가 필요하다는 점을 납득한 듯하며, 비판을 자제하고 있습니다. ?] ?]
 
 
 @militant_2
 view-if: funded_reichsbanner >= 1
 on-arrival: rb_militancy += 0.02; funded_reichsbanner -= 1
 
-As we have already funded resources towards the Reichsbanner, we can invest in building up their militancy. 
+이미 국기단에 자금을 지원했으므로, 우리는 그들의 전투력을 강화하는 데 투자할 수 있습니다.
 
 
 @same
 
-The Reichsbanner is already serving the purpose it needs to serve. There is no reason to change what already works.
+국기단은 이미 제 역할을 다하고 있습니다. 잘 작동하고 있는 것을 굳이 바꿀 이유는 없습니다.
 
-- @return: Continue...
+- @return: 계속...
 
 
 @cut_rb
-subtitle: +1 resources
+subtitle: 자원 +1
 on-arrival: resources += 1; rb_strength -= 100; rb_militancy -= 0.05; left_strength -= 2; left_dissent -= 2; spd_militancy -= 0.05; workers_kpd += 2; unemployed_kpd += 2
 
-Cutting resources to the Reichsbanner causes a drop in the membership, and leads some would-be members to join the <span style="color: #700000;">Communists</span> instead.
+국기단에 대한 자원을 삭감하면 회원 수가 감소하고, 일부 예비 회원들이 대신 <span style="color: #700000;">공산당</span>에 가입하게 될 것입니다.
 
 
 @women_rb
-title: Allow women to join the Reichsbanner.
-subtitle: -1 resources - This might cause a backlash from existing members.
+title: 여성의 국기단 가입을 허용한다.
+subtitle: -1 자원 - 이는 기존 단원들의 반발을 살 수 있습니다.
 choose-if: resources > 0
 view-if: womens_rights >= 4 and sender_advisor == 1 and iron_front_formed == 1
 on-arrival: resources -= 1; rb_militancy *= 0.85; rb_strength += 400; women_in_rb = 1; rb_militancy += 0.05 if repealed_175; rb_militancy += 0.04 if trans_rights; rb_militancy += 0.02 if reformed_183;
@@ -66,9 +66,9 @@ go-to: homosexual if trans_rights or repealed_175 or reformed_183
 max-visits: 1
 achievement: women_reichsbanner
 
-The suggestion to allow women into the Reichsbanner is ridiculed by most, except for Toni Sender. But this is an exceptional time, and we need anyone who is willing to join. Thus, we organize specialized units for women, [? if homosexual_rights > 0: and even some covert units for <span style="color: deepskyblue;">tran</span><span style="color: linen;">sse</span><span style="color: lightpink;">xuals</span> and <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">os</span><span style="color: green;">ex</span><span style="color: blue;">ua</span><span style="color: purple;">ls</span>?].
+여성을 국기단에 받아들이자는 제안은 토니 젠더를 제외한 대부분에게 비웃음을 샀습니다. 그러나 지금은 비상시국이며, 우리는 가입할 의지가 있는 사람이라면 누구든 필요합니다. 따라서 우리는 여성들을 위한 특별 부대를 조직하고, [? if homosexual_rights > 0: 심지어 <span style="color: deepskyblue;">트랜</span><span style="color: linen;">스</span><span style="color: lightpink;">젠더</span>와 <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span><span style="color: blue;">들</span><span style="color: purple;">을</span> 위한 비밀 부대도 조직했습니다?].
 
-After allowing women to join, the number of comrades who leave is more than balanced out by the number of radicalized women and others who join. However, many of our departed members were veterans, and many of the new members have no experience with military-style training.
+여성 가입을 허용한 후, 떠나는 동지들의 수는 새로 가입하는 급진화된 여성들과 다른 이들의 수로 충분히 상쇄되고도 남습니다. 그러나 떠난 회원들 중 다수는 베테랑이었던 반면, 신규 회원 대다수는 군사 훈련 경험이 전무합니다.
 
 @homosexual
 achievement: anders_als_die_andern

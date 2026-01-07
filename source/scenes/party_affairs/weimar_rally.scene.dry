@@ -1,4 +1,4 @@
-title: Republican Coordination
+title: 공화주의 공조
 new-page: true
 is-card: true
 view-if: rubicon and weimar_rally and rb_stay and weimar_rally_timer <= 0 and z_relation >= 50 and (ddp_relation > 50 or lvp_relation >= 40)
@@ -6,34 +6,34 @@ on-arrival: month_actions += 1; weimar_rally_timer += 6
 card-image: img/weimar_coalition_3.jpg
 tags: party_affairs
 
-= Republican Coordination
+= 공화주의 공조
 
-Thanks to our historically strong ties with the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition parties, they have once again rallied to defend the republic we helped establish. The *Deutscher Republikanischer Reichsbund* (German Republican Reich League), once a non-partisan alliance of figures from all three parties, has now been restructured into an active political organization—intended to complement the efforts of the Reichsbanner.
+<span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 정당들과의 역사적으로 굳건한 유대 덕분에, 그들은 우리가 함께 수립한 공화국을 수호하기 위해 다시 한번 결집했습니다. 한때 3당 인물들의 초당파적 연합체였던 *독일 공화주의 국가 연맹*은 이제 국기단의 노력을 보완하기 위한 적극적인 정치 조직으로 재편되었습니다.
 
-Membership has surged, and fresh funding has arrived from all three coalition parties. The question now is: what will we do with control of this new organization?
+회원 수는 급증했고, 연정 3당 모두로부터 새로운 자금이 도착했습니다. 이제 문제는 이 새로운 조직의 통제권을 가지고 무엇을 할 것인가입니다.
 
-- @nazi: Focus attacks on the <span style="color: #7A3C00;">Nazis</span>—currently the greatest threat to Germany.
-- @rally: Conduct joint rallies and deepen electoral cooperation between the parties.
-- @republic: Launch a mass propaganda campaign in support of the republic and in opposition to <span style="color: #808080;">dictatorship</span>.
-- @relation: Strengthen ties with the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition parties.
+- @nazi: 현재 독일의 가장 큰 위협인 <span style="color: #7A3C00;">나치</span>에 공격을 집중한다.
+- @rally: 합동 집회를 개최하고 정당 간의 선거 협력을 강화한다.
+- @republic: 공화국을 지지하고 <span style="color: #808080;">독재</span>에 반대하는 대중 선전 캠페인을 시작한다.
+- @relation: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 정당들과의 유대를 강화한다.
 - @easy_discard
 
 @nazi
 on-arrival: workers_nsdap -= 2; new_middle_nsdap -= 2; old_middle_nsdap -= 2; catholics_nsdap -= 2
 
-The organization’s main effort is to steer people away from the allure of the <span style="color: #7A3C00;">Nazis</span> and expose the contradictions and demagoguery inherent in their politics.
+이 조직의 주된 노력은 대중을 <span style="color: #7A3C00;">나치</span>의 유혹에서 떼어놓고, 그들의 정치에 내재된 모순과 선동을 폭로하는 것입니다.
 
 @rally
 on-arrival: workers_spd += (pro_republic / 15); new_middle_spd += (pro_republic / 15); old_middle_spd += (pro_republic / 20); rural_spd += (pro_republic / 20); workers_ddp += (pro_republic / 40); new_middle_ddp += (pro_republic / 20); old_middle_ddp += (pro_republic / 20); rural_ddp += (pro_republic / 30); workers_lvp += (pro_republic / 30); new_middle_lvp += (pro_republic / 15); old_middle_lvp += (pro_republic / 15); rural_lvp += (pro_republic / 25); workers_z += (pro_republic / 50); new_middle_z += (pro_republic / 40); old_middle_z += (pro_republic / 40); rural_z += (pro_republic / 40); catholics_z += (pro_republic / 15); peoples_party_support += 1; neorevisionist_strength += 5; left_dissent += 3; kpd_relation -= 5
 
-We rally alongside politicians from the <span style="color: #000000;">Center</span> and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], united in our commitment to the Republic.
+우리는 공화국에 대한 헌신으로 뭉친 <span style="color: #000000;">중앙당</span> 및 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] 정치인들과 함께 행진했습니다.
 
 @republic
 on-arrival: pro_republic += 6
 
-The <span style="color: #7A3C00;">Nazi</span> and <span style="color: #700000;">Communist</span> propaganda machines have poisoned the public’s view of the Republic. Our goal is to counter their narrative with propaganda of our own.
+<span style="color: #7A3C00;">나치</span>와 <span style="color: #700000;">공산당</span>의 선전 기계는 공화국에 대한 대중의 인식을 오염시켰습니다. 우리의 목표는 그들의 서사에 맞서 우리만의 선전으로 대응하는 것입니다.
 
 @relation
 on-arrival: z_relation += 5*(1-dissent); ddp_relation += 5*(1-dissent); lvp_relation += 5*(1-dissent); ddp_left += 1; lvp_left += 1
 
-We’ve been able to strengthen our relations with the involved parties through the participation of figures like Heuss and Wirth—members of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] and the <span style="color: #000000;">Center Party</span>, respectively.
+우리는 각각 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]와 <span style="color: #000000;">중앙당</span> 소속인 호이스와 비르트 같은 인물들의 참여를 통해 관련 정당들과의 관계를 강화할 수 있었습니다.

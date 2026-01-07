@@ -1,4 +1,4 @@
-title: Streetfighting
+title: 시가전
 new-page: true
 is-card: true
 on-arrival: streetfighting_timer = 6; month_actions += 1; rb_militarization_cost = 2 if rb_militancy > 0.1 else rb_militarization_cost = 1; rb_militarization_cost = 3 if rb_militancy > 0.25; strife += 1
@@ -6,18 +6,18 @@ view-if: year >= 1930 and far_right_force >= 30 and streetfighting_timer == 0 an
 card-image: img/blutmai_2.jpg
 tags: party_affairs; antifascism
 
-= Streetfighting
+= 시가전
 
-Battles rage on the streets between the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span>, nationalist <span style="color: #3E88B3;">**Stahlhelm**</span>, communist <span style="color: #8B0000;">Rotfrontkämpferbund</span> (<span style="color: #8B0000;">**RFB**</span>), and our own Reichsbanner. In some parts of the country, conditions are nearing civil war levels, as dozens of people are killed each month.
+<span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span>, 민족주의 <span style="color: #3E88B3;">**철모단**</span>, 공산주의 <span style="color: #8B0000;">적색전선전사동맹</span> (<span style="color: #8B0000;">**RFB**</span>), 그리고 우리 국기단 사이에서 거리의 전투가 격렬하게 벌어지고 있습니다. 일부 지역에서는 매달 수십 명이 살해당하며 내전 수준에 근접하고 있습니다.
 
-We must do something to protect the workers against these predations.
+우리는 이러한 횡포로부터 노동자들을 보호하기 위해 무언가 해야 합니다.
 
 # - @battle: Test our defense units in battle against the fascists!
-- @arm_rb: Increase training and armaments for the Reichsbanner.
-- @if_training: Train union members to fight as part of the <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span>.
-- @prussian_police_training: Use the Prussian police to help train the Reichsbanner.
-- @peace: Try to avoid all militant confrontations, as much as possible.
-- @truce_rfb: Try to make peace with the <span style="color: #8B0000;">**RFB**</span>.
+- @arm_rb: 국기단의 훈련과 무장을 강화한다.
+- @if_training: <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span>의 일원으로 싸울 수 있도록 노조원들을 훈련시킨다.
+- @prussian_police_training: 프로이센 경찰을 활용해 국기단 훈련을 돕는다.
+- @peace: 가능한 한 모든 무력 충돌을 피하도록 노력한다.
+- @truce_rfb: <span style="color: #8B0000;">**RFB**</span>와 평화 협정을 맺도록 노력한다.
 - @easy_discard
 
 @battle
@@ -25,41 +25,41 @@ view-if: rb_militancy > 0.1 and rb_militancy < 0.5
 on-arrival: rb_militancy += 0.1; sa_strength += 40; rb_strength -= 100; 
 max-visits: 1
 
-Many Reichsbanner members are not ready for actual fighting, and thus quit. However, the remainder are toughened as a result. Our confrontations also provide ample recruiting material for the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span>.
+많은 국기단 단원들은 실제 전투 준비가 되어 있지 않아 그만두고 맙니다. 그러나 남은 이들은 결과적으로 더 강인해집니다. 우리의 대립은 또한 <span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span>에게 훌륭한 모병 명분을 제공합니다.
 
 @arm_rb
-subtitle: -[+ rb_militarization_cost +] resource
+subtitle: -[+ rb_militarization_cost +] 자원
 choose-if: resources >= rb_militarization_cost
-unavailable-subtitle: Not enough resources ([+ rb_militarization_cost +] needed).
+unavailable-subtitle: 자원이 부족합니다 ([+ rb_militarization_cost +] 필요).
 on-arrival: resources -= rb_militarization_cost; rb_militancy += 0.06; rb_strength += 50; sa_strength += 50; z_relation -= 3 if strife < 5; ddp_relation -= 3 if strife < 5; lvp_relation -= 3 if strife < 5
 
-We have increased training and purchased more armaments for the Reichsbanner.
+우리는 훈련을 강화하고 국기단을 위해 더 많은 무기를 구매했습니다.
 
-[? if not cvp_leave_reichsbanner and not rb_exit: [? if strife < 5: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] decries the militarization of the Reichsbanner, and its members are leaving the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> organization. ?][? if strife >= 5: Seeing the strife that has filled Germany's streets, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] seem to be convinced that it is necessary for the Reichsbanner to be militarized, and mute their criticisms. ?] ?]
+[? if not cvp_leave_reichsbanner and not rb_exit: [? if strife < 5: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 국기단의 군사화를 비난하고 있으며, 소속 당원들은 이 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 조직을 떠나고 있습니다. ?][? if strife >= 5: 독일의 거리를 가득 채운 분쟁을 목격한 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]은 국기단의 군사화가 필요하다는 점을 납득한 듯하며, 비판을 자제하고 있습니다. ?] ?]
 
 @if_training
 view-if: iron_front_formed == 1
 on-arrival: rb_militancy += 0.03; rb_strength += 200; sa_strength += 50; 
 max-visits: 2
 
-As part of the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span>, we are increasing coordination between the Reichsbanner and the unions, and many union members want to become more involved.
+<span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>의 일원으로서, 우리는 국기단과 노조 간의 공조를 강화하고 있으며, 많은 노조원이 더 적극적으로 참여하기를 원합니다.
 
 @prussian_police_training
 view-if: prussia_leader = "Braun" or prussia_leader = "Rosenfeld" and prussian_police_loyalty > 0.5
 on-arrival: rb_militancy += 0.05; sa_strength += 50; prussian_police_training += 1
 
-The loyal sections of the Prussian police can help train the Reichsbanner.
+프로이센 경찰 내 충성파들이 국기단 훈련을 도울 수 있습니다.
 
 @peace
 on-arrival: rb_militancy -= 0.02; rb_strength -= 50; pacifism += 1
 
-By not fighting, the strength of the Reichsbanner atrophies. Pacifists in the party are gaining the upper hand.
+싸우지 않음으로써 국기단의 힘은 위축됩니다. 당내 평화주의자들이 우위를 점하고 있습니다.
 
 @truce_rfb
-subtitle: The <span style="color: #8B0000;">RFB</span> will be added to the balance of power.
+subtitle: <span style="color: #8B0000;">RFB</span>가 전력 균형에 추가될 것입니다.
 choose-if: kpd_relation >= 45
 view-if: kpd_truce == 0
-unavailable-subtitle: The <span style="color: #700000;">KPD</span> is not interested.
+unavailable-subtitle: <span style="color: #700000;">KPD</span>는 이 제안에 관심이 없습니다.
 on-arrival: kpd_truce = 1; kpd_relation += 5; rfb_strength += 50; rb_strength += 50; sa_strength += 50;
 
-We have made at least a temporary truce with the <span style="color: #700000;">**KPD**</span>, so that our respective paramilitaries will stop fighting.
+우리는 <span style="color: #700000;">**KPD**</span>와 최소한 일시적인 휴전을 맺었으며, 이에 따라 양측의 준군사조직은 싸움을 멈출 것입니다.

@@ -1,4 +1,4 @@
-title: Political Rally
+title: 정치적 집회
 new-page: true
 is-card: true
 tags: party_affairs
@@ -9,12 +9,12 @@ go-to: main_rally; sa_disrupt if sa_force > 25 and not sa_banned and not return_
 
 @sa_disrupt
 
-The <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has disrupted our rally! Their street troops are preventing us from meeting.
+<span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span>가 우리 집회를 방해했습니다! 그들의 거리 부대가 우리의 회합을 막고 있습니다.
 
-- @police_protect: Call the police to protect our rally.
-- @rb_protect: Use the Reichsbanner to protect our rally.
-- @both_protect: The police and Reichsbanner should work together to protect our rally.
-- @cancel: Cancel the rally.
+- @police_protect: 집회를 보호하기 위해 경찰을 부른다.
+- @rb_protect: 집회를 보호하기 위해 국기단을 투입한다.
+- @both_protect: 경찰과 국기단이 협력하여 집회를 보호하게 한다.
+- @cancel: 집회를 취소한다.
 
 @police_protect
 view-if: prussia_leader = "Braun" or prussia_leader = "Rosenfeld"
@@ -24,12 +24,12 @@ go-to: police_protect_win if police_protect_success >= 0; police_protect_lose if
 @police_protect_win
 go-to: main_rally
 
-The police successfully protected our rally, so it can go ahead as usual.
+경찰이 성공적으로 우리 집회를 보호했으므로, 행사는 예정대로 진행될 수 있습니다.
 
 @police_protect_lose
 on-arrival: workers_nsdap += 3; strife += 1
 
-Unfortunately, the police were unable or unwilling to hold back the <span style="color: #7A3C00;">**SA**</span> mob. The <span style="color: #7A3C00;">Nazis</span> have won this show of strength.
+불행히도 경찰은 <span style="color: #7A3C00;">**SA**</span> 폭도들을 저지할 능력이 없었거나 의지가 없었습니다. <span style="color: #7A3C00;">나치</span>가 이번 세력 과시에서 승리했습니다.
 
 @rb_protect
 on-arrival: rb_success = rb_strength*rb_militancy - sa_strength*sa_militancy; strife += 1
@@ -38,83 +38,83 @@ go-to: rb_protect_win if rb_success >= 0; rb_protect_lose if rb_success < 0
 @rb_protect_win
 go-to: main_rally
 
-The Reichsbanner has successfully protected our rally against the <span style="color: #7A3C00;">**SA**</span>! Our meeting can go ahead as usual.
+국기단이 <span style="color: #7A3C00;">**SA**</span>에 맞서 성공적으로 우리 집회를 보호했습니다! 모임은 예정대로 진행될 수 있습니다.
 
 @rb_protect_lose
 on-arrival: workers_nsdap += 3; rb_strength -= 50
 
-Unfortunately, the Reichsbanner was not able to hold back the <span style="color: #7A3C00;">**SA**</span> mob. The <span style="color: #7A3C00;">Nazis</span> have won this show of strength.
+불행히도 국기단은 <span style="color: #7A3C00;">**SA**</span> 폭도들을 저지할 수 없었습니다. <span style="color: #7A3C00;">나치</span>가 이번 세력 과시에서 승리했습니다.
 
 @both_protect
 view-if: prussia_leader = "Braun" or prussia_leader = "Rosenfeld"
 choose-if: prussian_police_training > 0
-unavailable-subtitle: The loyal sections of the police have never coordinated with the Reichsbanner before.
+unavailable-subtitle: 경찰 내 충성파들은 국기단과 협력해 본 경험이 전혀 없습니다.
 on-arrival: rb_success = rb_strength*rb_militancy - sa_strength*sa_militancy + prussian_police_loyalty*prussian_police_militancy*prussian_police_strength*2; strife += 1
 go-to: both_protect_win if rb_success >= 0; both_protect_lose if rb_success < 0
 
 @both_protect_win
 go-to: main_rally
 
-The police and Reichsbanner have successfully protected our rally against the <span style="color: #7A3C00;">**SA**</span>! Our meeting can go ahead as usual.
+경찰과 국기단이 <span style="color: #7A3C00;">**SA**</span>에 맞서 성공적으로 우리 집회를 보호했습니다! 모임은 예정대로 진행될 수 있습니다.
 
 @both_protect_lose
 on-arrival: workers_nsdap += 3; rb_strength -= 50
 
-Unfortunately, the police and Reichsbanner were not able to hold back the <span style="color: #7A3C00;">**SA**</span> mob. The <span style="color: #7A3C00;">Nazi</span> have won this show of strength.
+불행히도 경찰과 국기단은 <span style="color: #7A3C00;">**SA**</span> 폭도들을 저지할 수 없었습니다. <span style="color: #7A3C00;">나치</span>가 이번 세력 과시에서 승리했습니다.
 
 @cancel
 on-arrival: workers_nsdap += 3;
 
-The <span style="color: #7A3C00;">**SA**</span> have won this show of strength.
+<span style="color: #7A3C00;">**SA**</span>가 이 세력 과시에서 승리했습니다.
 
 @main_rally
 
-Mass rallies are a common feature of <span style="color: #c00000;">social democratic</span> life, especially in the lead-up to an election. What is the primary theme of this rally?
+대중 집회는 <span style="color: #c00000;">사회민주당</span> 활동의 흔한 특징이며, 특히 선거를 앞두고는 더욱 그렇습니다. 이번 집회의 핵심 주제는 무엇이어야 할까요?
 
-- @class_struggle: The class struggle of the proletariat against the bourgeoisie.
-- @welfare: Sozialpolitik - the maintenance and expansion of social welfare programs.
-- @democracy: Expanding our nascent democracy and defending it against <span style="color: #808080;">dictatorship</span> and <span style="color: #7A3C00;">fascism</span>.
-- @pacifism: Opposing war, nationalism, and militarism at all costs.
-- @wtb: Support the WTB plan!
-- @local: A mixture of various local and national concerns that resonate most with the audience.
+- @class_struggle: 부르주아지에 대항하는 프롤레타리아트의 계급 투쟁.
+- @welfare: 사회 정책 - 사회 복지 프로그램의 유지 및 확대.
+- @democracy: 우리의 태동하는 민주주의를 확장하고 <span style="color: #808080;">독재</span>와 <span style="color: #7A3C00;">파시즘</span>으로부터 수호하는 것.
+- @pacifism: 어떤 대가를 치르더라도 전쟁, 민족주의, 군국주의에 반대하는 것.
+- @wtb: WTB 계획을 지지하라!
+- @local: 청중에게 가장 호소력 있는 다양한 지역 및 국가적 현안들.
 - @easy_discard
 
 @class_struggle
 on-arrival: workers_spd += 4*(1-dissent); workers_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2; dvp_right += 0.5; ddp_right += 0.5; lvp_right += 0.5
 
-Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_adopted :  The adoption of the Left’s nationalization plan has done much to revitalize worker enthusiasm. ?][? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
+계급 투쟁에 대한 우리의 메시지는 노동 계급 좌파에게 호소력이 있지만, 중산층을 소외시킬 가능성이 있습니다. [? if nationalization_adopted :  좌파의 국유화 계획을 채택한 것은 노동자들의 열정을 되살리는 데 큰 도움이 되었습니다. ?][? if nationalization_progress > 0 : 국유화의 성과들이 우리의 메시지에 힘을 실어주었습니다. ?]
 
 @welfare
 on-arrival: workers_spd += 3*(1-dissent); workers_spd += 3*(1-dissent) if welfare > 0; unemployed_spd += 3*(1-dissent) if welfare > 0; unemployed_spd += 4*(1-dissent) if welfare > 1; reformist_strength += 3; labor_strength += 4; reformist_dissent -= 3; labor_dissent -= 3;
 
-The reformist message appeals to the organized workers, whose benefits are the accomplishments of <span style="color: #c00000;">social democracy</span>. [? if welfare > 1 : Our achievements in expanding welfare have made this message more effective. ?]
+개혁주의적 메시지는 조직된 노동자들에게 호소력이 있으며, 그들이 누리는 혜택은 <span style="color: #c00000;">사회민주주의</span>의 성과입니다. [? if welfare > 1 : 복지 확대의 성과들이 이 메시지를 더욱 효과적으로 만들었습니다. ?]
 
 @democracy
 on-arrival: democratization += 1; pro_republic += 3*(1 - dissent); workers_spd += 2*(1-dissent) if democratization >= 3; unemployed_spd += 1*(1-dissent) if democratization >= 3; new_middle_spd += 2*(1-dissent) if democratization >= 3; ddp_left += 0.5 if pro_republic >= 70; lvp_left += 0.5 if pro_republic >= 70
 
-Our speakers defend the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> system and rail against the <span style="color: #808080;">monarchists</span> and <span style="color: #7A3C00;">authoritarians</span> who threaten it.
+우리의 연사들은 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">국</span> 체제를 옹호하며, 이를 위협하는 <span style="color: #808080;">왕당파</span>와 <span style="color: #7A3C00;">권위주의자들</span>을 비난합니다.
 
-[? if democratization < 3 : Talk of democracy does not excite the workers as much as more practical issues. But that may change; part of our job is to provide political education to the proletariat. ?]
-[? if democratization >= 3 : Since we have consistently made democratization a theme of our campaign, the workers are enthusiastic about our message. ?]
+[? if democratization < 3 : 민주주의에 대한 이야기는 더 실용적인 문제들만큼 노동자들을 흥분시키지 못합니다. 그러나 이는 바뀔 수 있습니다. 프롤레타리아트에게 정치 교육을 제공하는 것도 우리의 임무 중 하나입니다. ?]
+[? if democratization >= 3 : 우리가 일관되게 민주화를 캠페인의 주제로 삼아왔기 때문에, 노동자들은 우리의 메시지에 열광합니다. ?]
 
 @pacifism
 on-arrival: pacifism += 1; nationalism -= 3*(1 - dissent); workers_spd += 2*(1 - dissent) if pacifism >= 3; unemployed_spd += 1*(1-dissent) if pacifism >= 3; nationalism -= 3*(1-dissent) if pacifism >= 3; new_middle_spd += 2*(1-dissent) if pacifism >= 3; ddp_left += 0.5 if (pacifism >= 3 and nationalism <= 50)
 
-Our speakers denounce the military establishment and all the spending entering that black hole. Some adventurous speakers question the responsibility of the military elites in organizing the Great War.
+우리의 연사들은 군사 기득권층과 그 밑 빠진 독으로 들어가는 모든 지출을 비난합니다. 일부 대담한 연설자들은 대전쟁을 일으킨 군사 엘리트들의 책임을 묻기도 합니다.
 
-[? if pacifism < 3 : Given the volume of nationalist indoctrination in our society, it is difficult to argue so vehemently against the military. ?]
-[? if pacifism >= 3 : Since we have consistently made pacifism a theme of our campaign, the workers are enthusiastic about our message. ?]
+[? if pacifism < 3 : 우리 사회에 만연한 민족주의적 세뇌를 고려할 때, 군대에 대해 그토록 격렬하게 반대하는 주장을 펴기는 어렵습니다. ?]
+[? if pacifism >= 3 : 우리가 일관되게 평화주의를 캠페인의 주제로 삼아왔기 때문에, 노동자들은 우리의 메시지에 열광합니다. ?]
 
 @wtb
 view-if: wtb_adopted = 1
 choose-if: return_to_normalcy = 0 and (wtb_implemented >= wtb_rally or (not spd_in_government and not spd_toleration))
-unavailable-subtitle: [? if return_to_normalcy == 1: The economic crisis is largely over now, and the public is no longer interested in hearing about it. ?] [? if wtb_rally > wtb_implemented: Rhetoric alone has its limits; further implementation of the WTB plan is necessary to continue an effective campaign. ?]
+unavailable-subtitle: [? if return_to_normalcy == 1: 경제 위기는 이제 대체로 끝났고, 대중은 더 이상 그 이야기에 관심을 두지 않습니다. ?] [? if wtb_rally > wtb_implemented: 말만으로는 한계가 있습니다. 효과적인 캠페인을 지속하려면 WTB 계획의 추가적인 실행이 필요합니다. ?]
 on-arrival: workers_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent); rural_spd += 1*(1-dissent); new_middle_spd += 1*(1-dissent); old_middle_spd += 1*(1-dissent); workers_spd += 3*(1-dissent) if wtb_implemented; unemployed_spd += 3*(1-dissent) if wtb_implemented; rural_spd += 2*(1-dissent) if wtb_implemented; new_middle_spd += 2*(1-dissent) if wtb_implemented; old_middle_spd += 2*(1-dissent) if wtb_implemented; wtb_rally += 1
 
-The WTB plan has become a popular rallying cry for our party. The workers are eager to go back to work, and that is exactly what the plan promises. [? if not wtb_implemented: However, many still believe that the plan is merely an empty slogan and will remain skeptical until we actually implement it. ?]
+WTB 계획은 우리 당의 인기 있는 구호가 되었습니다. 노동자들은 다시 일터로 돌아가기를 열망하며, 그것이 바로 이 계획이 약속하는 바입니다. [? if not wtb_implemented: 그러나 많은 이들은 여전히 그 계획이 빈 구호에 불과하다고 생각하며, 우리가 실제로 실행에 옮길 때까지 회의적인 태도를 보일 것입니다. ?]
 
 
 @local
 on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent);
 
-Our speakers have gauged the mood and are speaking to the issues that seem to most affect the workers in this moment.
+우리의 연사들은 분위기를 파악하고 이 순간 노동자들에게 가장 큰 영향을 미치는 문제들에 대해 연설하고 있습니다.
