@@ -1,4 +1,4 @@
-title: Inter-Party Relationships
+title: 정당 간 관계
 new-page: true
 view-if: inter_party_relationships_timer <= 0
 tags: party_affairs
@@ -7,177 +7,177 @@ on-arrival: month_actions += 1; inter_party_relationships_timer = 6;
 card-image: img/weimar_coalition_2.jpg
 #subtitle: Building relations with the other political parties of Germany.
 
-= Inter-Party Relationships
+= 정당 간 관계
 
-The <span style="color: #c00000;">**SPD**</span> cannot govern by itself yet. Because we do not have an electoral majority, we need the support of other parties. Recently, our governments have consisted of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition of the <span style="color: #c00000;">**SPD**</span>, <span style="color: #000000;">Center</span>, and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] parties. [? if cvp_formed: However the formation of the <span style="color: #000000;">**[+ z_party_name +]**</span> has only really made cooperation with the <span style="color: #D3C24D;">liberals</span> possible. ?] We can reach out and build additional connections with these parties, or perhaps we can stand alone.
+<span style="color: #c00000;">**SPD**</span>는 아직 단독으로 집권할 수 없습니다. 선거에서 과반수를 확보하지 못했기 때문에 다른 정당들의 지지가 필요합니다. 최근 우리 정부는 <span style="color: #c00000;">**SPD**</span>, <span style="color: #000000;">중앙당</span>, 그리고 [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주당**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가당**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민당**</span>?]의 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;"르</span> 연정으로 구성되었습니다. [? if cvp_formed: 그러나 <span style="color: #000000;">**[+ z_party_name +]**</span>의 창당으로 인해 <span style="color: #D3C24D;">자유주의자들</span>과의 협력만이 유일한 선택지가 되었습니다. ?] 우리는 이 정당들과의 관계를 더욱 강화하거나, 아니면 독자 노선을 걸을 수도 있습니다.
 
-- @liberals: Strengthen our bonds with the left-liberal [? if ddp_name == "DDP": <span style="color: #D3C24D;">German Democratic Party</span>?][? if ddp_name == "DStP": <span style="color: #D3C24D;">German State Party</span>?] and conservative-liberal <span style="color: #C0A054;">German People's Party</span>.
-- @liberals_ddp: Strengthen our bonds with the left-liberal [? if ddp_name == "DDP": <span style="color: #D3C24D;">German Democratic Party</span>?][? if ddp_name == "DStP": <span style="color: #D3C24D;">German State Party</span>?].
-- @liberals_lvp: Strengthen our bonds with the <span style="color: #FFCC00;">Liberal People's Party</span>.
-- @center: Strengthen our bonds with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
-- @cvp: Reconcile with the <span style="color: #000000;">Christian People's Party</span>.
-- @kpd: Work towards repairing relationships with the <span style="color: #700000;">Communist Party</span>.
-- @dnvp: Open dialogue with [? if dnvp_leader != "Lambach": Treviranus and the <span style="color: #0087DC;">People's Conservatives</span>?][? if dnvp_leader == "Lambach": Lambach and the <span style="color: #6D5298;">Christian Socials</span>?] of the <span style="color: #3E88B3;">**DNVP**</span>.
-- @nsdap: Establish contact with Strasser and the <span style="color: #7A3C00;">Nazi Party</span>'s left wing.
-- @spd_alone: The <span style="color: #c00000;">SPD</span> can stand alone for now.
+- @liberals: 좌파 자유주의 성향의 [? if ddp_name == "DDP": <span style="color: #D3C24D;">독일 민주당</span>?][? if ddp_name == "DStP": <span style="color: #D3C24D;">독일 국가당</span>?] 및 보수 자유주의 성향의 <span style="color: #C0A054;">독일 인민당</span>과의 유대를 강화한다.
+- @liberals_ddp: 좌파 자유주의 성향의 [? if ddp_name == "DDP": <span style="color: #D3C24D;">독일 민주당</span>?][? if ddp_name == "DStP": <span style="color: #D3C24D;">독일 국가당</span>?]과의 유대를 강화한다.
+- @liberals_lvp: <span style="color: #FFCC00;">자유 인민당</span>과의 유대를 강화한다.
+- @center: 가톨릭 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과의 유대를 강화한다.
+- @cvp: <span style="color: #000000;">기독교 인민당</span>과 화해한다.
+- @kpd: <span style="color: #700000;">공산당</span>과의 관계 회복을 시도한다.
+- @dnvp: <span style="color: #3E88B3;">**DNVP**</span>의 [? if dnvp_leader != "Lambach": 트레비라누스와 <span style="color: #0087DC;">인민 보수파</span>?][? if dnvp_leader == "Lambach": 람바흐와 <span style="color: #6D5298;">기독교 사회주의자들</span>?]와 대화를 시작한다.
+- @nsdap: 슈트라서와 <span style="color: #7A3C00;">나치당</span> 내 좌익과 접촉을 시도한다.
+- @spd_alone: <span style="color: #c00000;">SPD</span>는 당분간 독자 노선을 걷는다.
 - @easy_discard
 
 
 @kpd
-subtitle: -1 resources
+subtitle: 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; kpd_inter_party_seen += 1
 go-to: kpd_blutmai if blutmai = 1; kpd_1 if blutmai = 0 and kpd_coalition_success = 0 and (kpd_relation < 40 or kpd_rectifed_history = 1); kpd_rectification_of_history if kpd_relation >= 40 and kpd_rectified_history = 0; kpd_2 if kpd_coalition_success = 1 and kpd_rectified_history = 1
 
 @kpd_1
 on-arrival: kpd_relation += 6*(1 - dissent); communist_coalition += 1 if kpd_inter_party_seen <= 1; reformist_dissent += 2; z_relation -= 2 if z_ideology == "Right"; dvp_relation -= 3; ddp_relation -= 2; lvp_relation -= 3
 
-The <span style="color: #700000;">communists</span> are suspicious of our overtures, especially the <span style="color: #8B0000;">Stalinist</span> leadership, who persist in calling us "<span style="color: #c00000;">social</span> <span style="color: #7A3C00;">fascists</span>". However, connections are made at the grassroots and local levels.
+<span style="color: #700000;">공산주의자들</span>, 특히 우리를 계속해서 "<span style="color: #c00000;">사회</span> <span style="color: #7A3C00;">파시스트</span>"라고 부르는 <span style="color: #8B0000;">스탈린주의</span> 지도부는 우리의 제안을 의심하고 있습니다. 그러나 풀뿌리 및 지역 차원에서는 연결 고리가 만들어지고 있습니다.
 
 @kpd_rectification_of_history
 
-One stumbling block for our relations with the <span style="color: #700000;">**KPD**</span> is our history of conflict, dating back to 1918 and 1919. The <span style="color: #700000;">**KPD**</span> is especially contemptuous of Gustav Noske, the <span style="color: #c00000;">**SPD**</span> "bloodhound" who reportedly ordered the violent suppression of the <span style="color: #700000;">Spartacist</span> uprising and other <span style="color: #700000;">**KPD**</span> revolts. They also blame us for the deaths of Rosa Luxemburg and Karl Liebknecht, two <span style="color: #c00000;">**SPD**</span>-turned-<span style="color: #700000;">**KPD**</span> leaders who were killed during the suppression of the uprising.
+<span style="color: #700000;">**KPD**</span>와의 관계에서 걸림돌 중 하나는 1918년과 1919년으로 거슬러 올라가는 갈등의 역사입니다. <span style="color: #700000;">**KPD**</span>는 특히 <span style="color: #700000;">스파르타쿠스단</span> 봉기와 기타 <span style="color: #700000;">**KPD**</span> 반란의 유혈 진압을 명령했다고 알려진 <span style="color: #c00000;">**SPD**</span>의 "사냥개" 구스타프 노스케를 경멸합니다. 그들은 또한 봉기 진압 과정에서 살해된 두 명의 <span style="color: #c00000;">**SPD**</span> 출신 <span style="color: #700000;">**KPD**</span> 지도자인 로자 룩셈부르크와 카를 리프크네히트의 죽음을 우리 탓으로 돌립니다.
 
-For further improvements in <span style="color: #700000;">**KPD**</span> relations, it might be necessary to expel Noske, and hold some sort of commemoration for Luxemburg and Liebknecht.
+<span style="color: #700000;">**KPD**</span>와의 관계를 더욱 개선하기 위해서는 노스케를 제명하고, 룩셈부르크와 리프크네히트를 위한 추모식을 거행해야 할 수도 있습니다.
 
-- @yes_history: Yes, we must apologize for our past actions.
-- @no_history: No, we have no need to apologize.
+- @yes_history: 그렇다, 우리는 과거의 행동에 대해 사과해야 한다.
+- @no_history: 아니다, 우리는 사과할 필요가 없다.
 
 @yes_history
 on-arrival: reformist_dissent += 12; reformist_strength -= 2; neorevisionist_dissent += 5; left_dissent -= 6; left_strength += 5; kpd_rectified_history = 1; z_relation -= 3; z_relation -= 3 if z_ideology == "Right"; dvp_relation -= 6; lvp_relation -= 6; ddp_relation -= 4; kpd_relation += 8*(1-dissent); coalition_dissent += 1; dvp_right += 2; ddp_right += 2; lvp_right += 2
 
-As part of normalizing relations with the <span style="color: #700000;">**KPD**</span>, we have to acknowledge the wrongdoings of our past. We have expelled Noske, and have held public commemorations for those killed by troops during the uprisings.
+<span style="color: #700000;">**KPD**</span>와의 관계 정상화의 일환으로, 우리는 과거의 잘못을 인정해야 합니다. 우리는 노스케를 제명하고, 봉기 중 군대에 의해 희생된 이들을 위한 공개 추모식을 거행했습니다.
 
-This leads to tensions with the moderates and reformists within our party, and criticism from the <span style="color: #000000;">conservative</span> and <span style="color: #C0A054;">liberal</span> parties.
+이로 인해 당내 중도파 및 개혁파와의 긴장이 고조되고, <span style="color: #000000;">보수</span> 및 <span style="color: #C0A054;">자유주의</span> 정당들로부터 비판을 받게 되었습니다.
 
 @no_history
 on-arrival: kpd_relation -= 3
 
-We have no need to apologize for the actions of Ebert and Noske; it is the <span style="color: #700000;">communists</span>' fault for launching a violent insurrection.
+우리는 에베르트와 노스케의 행동에 대해 사과할 필요가 없습니다. 폭력적인 반란을 일으킨 것은 <span style="color: #700000;">공산주의자들</span>의 잘못입니다.
 
 
 @kpd_2
 on-arrival: kpd_relation += 8*(1 - dissent); communist_coalition += 1 if kpd_inter_party_seen <= 1; reformist_dissent += 2; z_relation -= 3; dvp_relation -= 3; lvp_relation -= 3; ddp_relation -= 3
 
-After the success of the coalition government with the <span style="color: #700000;">**KPD**</span>, they are much more amenable to us.
+<span style="color: #700000;">**KPD**</span>와의 연립 정부가 성공을 거둔 후, 그들은 우리에게 훨씬 더 우호적입니다.
 
 @kpd_blutmai
 on-arrival: kpd_relation += 3*(1 - dissent); reformist_dissent += 1
 
-After the events of Blütmai, reconciling with the <span style="color: #700000;">Communists</span> is difficult, if not impossible. Nevertheless, we must try.
+피의 5월 사건 이후, <span style="color: #700000;">공산주의자들</span>과의 화해는 불가능하지는 않더라도 매우 어렵습니다. 그럼에도 불구하고 우리는 시도해야 합니다.
 
 @center
-subtitle: -1 resources
+subtitle: 자원 -1
 view-if: not cvp_formed
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; z_relation += 2 if z_ideology == "Left"
 go-to: center_op if not spd_in_government and chancellor != "Brüning" and ((chancellor != "Papen" and chancellor != "Schleicher") or z_in_gov); center_op_2 if not spd_in_government and (chancellor == "Papen" or chancellor == "Schleicher") and not z_in_gov; center_coalition if spd_in_government; center_bruning if chancellor = "Brüning" and not spd_in_government
 
 @center_op
 on-arrival: z_relation += 5*(1 - dissent)
 
-We are currently in opposition to the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]-led government, but that does not preclude the general building of feelings of good will.
+우리는 현재 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 이끄는 정부에 반대하고 있지만, 그렇다고 해서 우호적인 관계를 구축하는 것 자체가 불가능한 것은 아닙니다.
 
 @center_op_2
 on-arrival: z_relation += 6*(1 - dissent)
 
-Together with the <span style="color: #000000;">Center</span>, we share a common opposition to the incumbent cabinet, making improving relations easier.
+<span style="color: #000000;">중앙당</span>과 함께 우리는 현 내각에 대한 공통된 반대 입장을 가지고 있어, 관계 개선이 더 수월합니다.
 
 @center_coalition
 on-arrival: z_relation += 8*(1 - dissent)
 
-We are currently coalition partners with them, so improving relations comes naturally.
+우리는 현재 그들과 연정 파트너이므로, 관계 개선은 자연스럽게 이루어집니다.
 
 @center_bruning
 on-arrival: z_relation += 5*(1 - dissent)
 
-The Brüning semi-<span style="color: #808080;">autocratic</span> regime makes building friendly relations difficult, but not impossible.
+브뤼닝의 반-<span style="color: #808080;">권위주의적</span> 체제로 인해 우호적인 관계를 구축하기는 어렵지만, 불가능하지는 않습니다.
 
 @cvp
-subtitle: -1 resources
+subtitle: 자원 -1
 view-if: cvp_formed
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; z_relation += 6*(1 - dissent); cvp_left += 1
 
-It's not exactly easy to get the <span style="color: #000000;">Christians</span> to like us again—but it's not impossible either. We will leverage our connections with their <span style="color: #FF7F00;">Christian Left</span> and Labor factions to lay the groundwork for a potential reconciliation between our two parties.
+<span style="color: #000000;">기독교인들</span>이 우리를 다시 좋아하게 만드는 것은 결코 쉬운 일이 아닙니다. 하지만 불가능한 일도 아닙니다. 우리는 그들의 <span style="color: #FF7F00;">기독교 좌파</span> 및 노동계와의 인맥을 활용하여 양당 간의 화해를 위한 토대를 마련할 것입니다.
 
 @liberals_ddp
 view-if: not lvp_formed and not dvp_exist
-subtitle: -1 resources
+subtitle: 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; ddp_relation += 8*(1 - dissent); ddp_left += 1; ddp_cohesion += 0.5
 
-The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has been one of our closest allies throughout the course of the Republic. Now, as they are the only remaining liberal party, strengthening ties with them should be our top priority.
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 공화국 역사 내내 우리의 가장 가까운 동맹 중 하나였습니다. 이제 그들이 유일하게 남은 자유주의 정당이므로, 그들과의 유대를 강화하는 것이 우리의 최우선 과제가 되어야 합니다.
 
 @liberals
 view-if: not lvp_formed and dvp_exist
-subtitle: -1 resources
+subtitle: 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; ddp_relation += 5*(1 - dissent); ddp_left += 0.5; ddp_cohesion += 0.25; dvp_relation += 2 if in_grand_coalition_prussia
 go-to: dvp_stresemann if stresemann_dead = 0; dvp_loss if stresemann_dead = 1 and dvp_votes >= 5; dvp_moribund if stresemann_dead = 1 and dvp_votes < 5
 
-The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has been one of our closest allies through the course of the Republic. [? if year >= 1929: Although the national shift to the right is having them question our cooperation. ?]
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 공화국 역사 내내 우리의 가장 가까운 동맹 중 하나였습니다. [? if year >= 1929: 비록 국가적인 우경화로 인해 그들이 우리와의 협력에 의문을 제기하고 있지만 말입니다. ?]
 
 @dvp_stresemann
 on-arrival: dvp_relation += 6*(1 - dissent); dvp_left += 1; dvp_left += 1 if in_grand_coalition_prussia
 
-Gustav Stresemann, the leader of the <span style="color: #C0A054;">**DVP**</span> is the best foreign policy leaders of the republic, and while he has previously expressed <span style="color: #808080;">monarchist</span> tendencies, he has been friendly towards us. [? if in_grand_coalition_prussia: Their inclusion in the Prussian government has fostered a more conciliatory attitude toward us. ?]
+<span style="color: #C0A054;">**DVP**</span>의 지도자인 구스타프 슈트레제만은 공화국 최고의 외교 정책 지도자이며, 과거 <span style="color: #808080;">군주제</span> 성향을 보였음에도 불구하고 우리에게 우호적이었습니다. [? if in_grand_coalition_prussia: 그들이 프로이센 정부에 참여하게 되면서 우리에 대해 더욱 화해적인 태도를 갖게 되었습니다. ?]
 
 @dvp_loss
 on-arrival: dvp_relation += 4*(1 - dissent); dvp_left += 1; dvp_left += 1 if in_grand_coalition_prussia
 
-With the death of Gustav Stresemann, the <span style="color: #C0A054;">**DVP**</span> is much less likely to be accommodating of us. In addition, the <span style="color: #D3C24D;">liberal</span> parties are electorally in decline, so perhaps our efforts are best spent elsewhere.
+구스타프 슈트레제만의 죽음으로 인해 <span style="color: #C0A054;">**DVP**</span>는 우리에게 훨씬 덜 협조적일 것입니다. 게다가 <span style="color: #D3C24D;">자유주의</span> 정당들은 선거에서 쇠퇴하고 있으므로, 우리의 노력은 다른 곳에 쏟는 것이 나을 수도 있습니다.
 
-However, given the influence of the <span style="color: #C0A054;">**DVP**</span> among the other <span style="color: #808080;">right</span>-leaning parties[? if president == "Hindenburg" or president_ideology == "Moderate": and with President [+ president +] ?], it can still be helpful to influence them. [? if in_grand_coalition_prussia: Their inclusion in the Prussian government has also fostered a more conciliatory attitude toward us. ?]
+그러나 다른 <span style="color: #808080;">우</span>파 성향 정당들 내에서 <span style="color: #C0A054;">**DVP**</span>의 영향력을 고려할 때[? if president == "Hindenburg" or president_ideology == "Moderate": 그리고 [+ president +] 대통령과의 관계를 고려할 때 ?], 그들에게 영향력을 행사하는 것은 여전히 도움이 될 수 있습니다. [? if in_grand_coalition_prussia: 그들이 프로이센 정부에 참여하게 되면서 또한 우리에 대해 더욱 화해적인 태도를 갖게 되었습니다. ?]
 
 @dvp_moribund
 on-arrival: dvp_relation += 4*(1 - dissent); dvp_left += 1; dvp_left += 1 if in_grand_coalition_prussia
 
-The <span style="color: #D3C24D;">liberal</span> parties (both the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and <span style="color: #C0A054;">**DVP**</span>) are electorally <span style="color: #ff0000;">moribund</span>, so perhaps our efforts are best spent elsewhere.
+<span style="color: #D3C24D;">자유주의</span> 정당들(<span style="color: #D3C24D;">**[+ ddp_name +]**</span>과 <span style="color: #C0A054;">**DVP**</span> 모두)은 선거에서 <span style="color: #ff0000;">빈사 상태</span>이므로, 우리의 노력은 다른 곳에 쏟는 것이 나을 수도 있습니다.
 
-However, given the influence of the <span style="color: #C0A054;">**DVP**</span> among the other <span style="color: #808080;">right</span>-leaning parties[? if president == "Hindenburg" or president_ideology == "Moderate": and with President [+ president +] ?], it can still be helpful to influence them. [? if in_grand_coalition_prussia: Their inclusion in the Prussian government has also fostered a more conciliatory attitude toward us. ?]
+그러나 다른 <span style="color: #808080;">우</span>파 성향 정당들 내에서 <span style="color: #C0A054;">**DVP**</span>의 영향력을 고려할 때[? if president == "Hindenburg" or president_ideology == "Moderate": 그리고 [+ president +] 대통령과의 관계를 고려할 때 ?], 그들에게 영향력을 행사하는 것은 여전히 도움이 될 수 있습니다. [? if in_grand_coalition_prussia: 그들이 프로이센 정부에 참여하게 되면서 또한 우리에 대해 더욱 화해적인 태도를 갖게 되었습니다. ?]
 
 @liberals_lvp
 view-if: lvp_formed
-subtitle: -1 resources
+subtitle: 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1
 go-to: lvp_stresemann if stresemann_dead = 0; lvp_loss if stresemann_dead = 1
 
-The former two liberal parties have been our closest allies through the course of the Republic. [? if year >= 1929: Although the national shift to the right is having them question our cooperation. ?]
+이전의 두 자유주의 정당은 공화국 역사 내내 우리의 가장 가까운 동맹이었습니다. [? if year >= 1929: 비록 국가적인 우경화로 인해 그들이 우리와의 협력에 의문을 제기하고 있지만 말입니다. ?]
 
 @lvp_stresemann
 on-arrival: lvp_relation += 6*(1 - dissent); lvp_left += 1
 
-Gustav Stresemann, the former leader of the <span style="color: #C0A054;">**DVP**</span>, is the best foreign policy leaders of the republic, and while he has previously expressed <span style="color: #808080;">monarchist</span> tendencies, he has been friendly towards us. Stresemann's influence over the right wing of the <span style="color: #FFCC00;">**LVP**</span> helps sway some more reluctant party members towards us.
+<span style="color: #C0A054;">**DVP**</span>의 전 지도자인 구스타프 슈트레제만은 공화국 최고의 외교 정책 지도자이며, 과거 <span style="color: #808080;">군주제</span> 성향을 보였음에도 불구하고 우리에게 우호적이었습니다. <span style="color: #FFCC00;">**LVP**</span> 내 우익에 대한 슈트레제만의 영향력은 다소 꺼리는 당원들을 우리 쪽으로 끌어들이는 데 도움이 됩니다.
 
 @lvp_loss
 on-arrival: lvp_relation += 4*(1 - dissent); lvp_left += 1
 
-With the death of Gustav Stresemann, the right wing of the <span style="color: #FFCC00;">**LVP**</span> is much less likely to be accommodating of us. In addition, the <span style="color: #D3C24D;">liberals</span> are electorally in decline, so perhaps our efforts are best spent elsewhere.
+구스타프 슈트레제만의 죽음으로 인해 <span style="color: #FFCC00;">**LVP**</span> 내 우익은 우리에게 훨씬 덜 협조적일 것입니다. 게다가 <span style="color: #D3C24D;">자유주의자들</span>은 선거에서 쇠퇴하고 있으므로, 우리의 노력은 다른 곳에 쏟는 것이 나을 수도 있습니다.
 
-However, given the influence of the <span style="color: #FFCC00;">**LVP**</span> among the other <span style="color: #808080;">right</span>-leaning parties [? if president == "Hindenburg" or president_ideology == "Moderate": and with President [+ president +] ?], it can still be helpful to influence them. 
+그러나 다른 <span style="color: #808080;">우</span>파 성향 정당들 내에서 <span style="color: #FFCC00;">**LVP**</span>의 영향력을 고려할 때 [? if president == "Hindenburg" or president_ideology == "Moderate": 그리고 [+ president +] 대통령과의 관계를 고려할 때 ?], 그들에게 영향력을 행사하는 것은 여전히 도움이 될 수 있습니다.
 
 @dnvp
 view-if: wacky_weimar
 choose-if: resources >= 1 and ((dnvp_leader == "Treviranus" and true_christian_democracy) or (dnvp_leader == "Lambach" and lambach_stays))
-unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if dnvp_leader != "Treviranus" and dnvp_leader != "Lambach": Treviranus or Lambach must lead the <span style="color: #3E88B3;">DNVP</span>. ?][? if not true_christian_democracy and dnvp_leader == "Treviranus": Treviranus's wholesomeness is restrained by his own party. ?][? if not lambach_stays and dnvp_leader == "Lambach": Lambach's wholesomeness is restrained by his own party, he must consolidate his position first. ?]
+unavailable-subtitle: [? if resources < 1: 자원이 부족합니다. ?] [? if dnvp_leader != "Treviranus" and dnvp_leader != "Lambach": 트레비라누스나 람바흐가 <span style="color: #3E88B3;">DNVP</span>를 이끌어야 합니다. ?][? if not true_christian_democracy and dnvp_leader == "Treviranus": 트레비라누스의 건전함은 당내 반발로 인해 억제되고 있습니다. ?][? if not lambach_stays and dnvp_leader == "Lambach": 람바흐의 건전함은 당내 반발로 인해 억제되고 있습니다. 그는 먼저 자신의 입지를 공고히 해야 합니다. ?]
 on-arrival: resources -= 1; dnvp_relation += 10*(1-dissent); pro_republic += 3; left_dissent += 10; center_dissent += 10
 
-We have reached out to [+ dnvp_leader +], who responds warmly to our requests. However, it would take much more convincing to get the evil and unwholesome side of the <span style="color: #3E88B3;">**DNVP**</span> behind closer cooperation. Our Left and Center factions voice their disapproval.
+우리는 [+ dnvp_leader +]에게 손을 내밀었고, 그는 우리의 요청에 따뜻하게 화답했습니다. 그러나 <span style="color: #3E88B3;">**DNVP**</span>의 사악하고 불건전한 측면까지 긴밀한 협력으로 이끌어내려면 훨씬 더 많은 설득이 필요할 것입니다. 당내 좌파와 중앙파 파벌은 이에 반대 의사를 표명하고 있습니다.
 
 - @dnvp_wholesome
 
 @dnvp_wholesome
-title: Conclude an electoral alliance with the <span style="color: #3E88B3;">**DNVP**</span>.
+title: <span style="color: #3E88B3;">**DNVP**</span>와 선거 동맹을 체결한다.
 choose-if: in_wholesome_coalition and lambach_stays and dnvp_leader == "Lambach"
-unavailable-subtitle: [? if dnvp_leader != "Lambach" or not lambach_stays: Only Lambach can accept this deal after he has consolidated power. ?][? if not in_wholesome_coalition: We must be governing together. ?]
+unavailable-subtitle: [? if dnvp_leader != "Lambach" or not lambach_stays: 오직 람바흐만이 권력을 공고히 한 후에 이 거래를 받아들일 수 있습니다. ?][? if not in_wholesome_coalition: 우리는 함께 통치하고 있어야 합니다. ?]
 on-arrival: {!
 Q.dnvp_wholesome = 1; 
 
@@ -396,39 +396,39 @@ if (d3 && window) {
 !}
 
 
-Due to our shared values of wholesomeness and love, we have agreed to run a joint list with the <span style="color: #3E88B3;">**DNVP**</span> and welcome them into our parliamentary group. However, because of this deal, we had to expel all our <span style="color: #005EB8;">Jewish</span> members, who join the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+건전함과 사랑이라는 가치를 공유하기에, 우리는 <span style="color: #3E88B3;">**DNVP**</span>와 공동 명부를 운영하고 그들을 우리의 원내 교섭단체로 받아들이기로 합의했습니다. 그러나 이 거래로 인해 우리는 모든 <span style="color: #005EB8;">유대인</span> 당원들을 제명해야 했고, 그들은 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]에 합류하게 되었습니다.
 
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
 
 @nsdap
 view-if: wacky_weimar
 choose-if: resources >= 1 and saxony_nsdap
-unavailable-subtitle: [? if resources < 1: Not enough resources. ?] [? if not saxony_nsdap: Gregor Strasser have a position in the Saxon state government in order to wholesomeify him via governmental participation. ?]
+unavailable-subtitle: [? if resources < 1: 자원이 부족합니다. ?] [? if not saxony_nsdap: 그레고어 슈트라서는 정부 참여를 통해 건전화되기 위해 작센 주 정부에 직책을 맡아야 합니다. ?]
 on-arrival: resources -= 1; nsdap_relation += 10*(1-dissent); pro_republic += 3; left_dissent += 10; center_dissent += 10
 
-We have began our work in wholesomeifying Gregor Strasser, who is beginning to form a moderate pro-democratic <span style="color: #7A3C00;">National Social Democratic</span> faction within the <span style="color: #7A3C00;">**NSDAP**</span> under Hitler's nose. Our Left and Center factions voice their disapproval.
+우리는 그레고어 슈트라서를 건전화하는 작업을 시작했습니다. 그는 히틀러의 눈을 피해 <span style="color: #7A3C00;">**NSDAP**</span> 내에 온건한 친민주적 <span style="color: #7A3C00;">국가 사회 민주</span> 파벌을 형성하기 시작했습니다. 당내 좌파와 중앙파 파벌은 이에 반대 의사를 표명하고 있습니다.
 
 - @nsdap_wholesome
 - @nsdap_wholesome_2
 
 @nsdap_wholesome
-title: Create the anti-Liberal Front.
-unavailable-subtitle: [? if nsdap_relation < 50: We need higher relations. ?][? if harzburg_front_seen: The Harzburg Front already exists. ?]
+title: 반자유주의 전선을 창설한다.
+unavailable-subtitle: [? if nsdap_relation < 50: 관계도가 더 높아야 합니다. ?][? if harzburg_front_seen: 하르츠부르크 전선이 이미 존재합니다. ?]
 choose-if: nsdap_relation >= 50 and not harzburg_front_seen
 on-arrival: workers_ddp = 0; new_middle_ddp = 0; old_middle_ddp = 0; rural_ddp = 0; catholics_ddp = 0; unemployed_ddp = 0; workers_dvp = 0; new_middle_dvp = 0; old_middle_dvp = 0; rural_dvp = 0; catholics_dvp = 0; unemployed_dvp = 0; workers_lvp = 0; new_middle_lvp = 0; old_middle_lvp = 0; rural_lvp = 0; catholics_lvp = 0; unemployed_lvp = 0; ddp_relation = 0; lvp_relation = 0; dvp_relation = 0; z_relation += 20; dnvp_relation += 20
 
-We have formed the anti-Liberal front with Strasser's faction within the <span style="color: #7A3C00;">**NSDAP**</span>. The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> also join in.
+우리는 <span style="color: #7A3C00;">**NSDAP**</span> 내의 슈트라서 파벌과 반자유주의 전선을 결성했습니다. [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 <span style="color: #3E88B3;">**DNVP**</span>도 이에 합류합니다.
 
 @nsdap_wholesome_2
-title: Merge the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> and the Harzburg Front.
-unavailable-subtitle: [? if nsdap_relation < 50: We need higher relations. ?][? if not harzburg_front_seen: The Harzburg Front hasn't been invented yet. ?]
+title: <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span>과 하르츠부르크 전선을 통합한다.
+unavailable-subtitle: [? if nsdap_relation < 50: 관계도가 더 높아야 합니다. ?][? if not harzburg_front_seen: 하르츠부르크 전선은 아직 결성되지 않았습니다. ?]
 choose-if: nsdap_relation >= 50 and harzburg_front_seen
 on-arrival: rb_strength += sa_strength; rb_strength += sh_strength; rb_militancy += 0.5; sa_strength = 0; sh_strength = 0
 
-The <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">**SA**</span> has dissolved and joined the Reichsbanner!
+<span style="color: #3E88B3;">**철모단**</span>과 <span style="color: #7A3C00;">**SA**</span>가 해산하고 국기단에 합류했습니다!
 
 @spd_alone
 
-Whether it is because we *cannot* or *will not*, we do not make ties with other parties at this moment.
+우리가 *할 수 없어서*이든 *하지 않으려는 것*이든, 우리는 현재 다른 정당들과 관계를 맺지 않습니다.
 
-- @return: Continue...
+- @return: 계속...
