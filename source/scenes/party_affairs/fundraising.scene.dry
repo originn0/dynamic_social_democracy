@@ -1,4 +1,4 @@
-title: Fundraising
+title: 자금 조달
 new-page: true
 view-if: fundraising_timer <= 0
 on-arrival: fundraising_timer = 12
@@ -6,36 +6,36 @@ is-card: true
 card-image: img/poster_2.jpg
 tags: party_affairs
 
-= Fundraising
+= 자금 조달
 
-For better or for worse, the party cannot exist without money. Without the support of wealthy industrialists, we depend on membership dues to sustain our efforts.
+좋든 싫든, 당은 돈 없이는 존립할 수 없습니다. 부유한 산업가들의 지원이 없는 우리는 활동을 유지하기 위해 당비에 의존해야 합니다.
 
-We receive dues at the end of each year, but can adjust them throughout. Low party dissent can secure more funds, and vice versa.
+우리는 매년 말에 당비를 받지만, 연중 언제든지 조정할 수 있습니다. 당내 불만이 낮으면 더 많은 자금을 확보할 수 있고, 반대의 경우도 마찬가지입니다.
 
-- @maintain: Maintain our current dues.
-- @reduce: Reduce dues.
-- @increase: Increase dues.
+- @maintain: 현재 당비를 유지한다.
+- @reduce: 당비를 인하한다.
+- @increase: 당비를 인상한다.
 - @easy_discard
 
 @maintain
-subtitle: We gain [+ dues +] resources per year.
+subtitle: 우리는 연간 [+ dues +]의 자원을 얻습니다.
 
-We maintain our current dues.
+우리는 현재 당비를 유지합니다.
 
 @reduce
-subtitle: We will gain [+ dues - 1 +] resources per year. -1 resource
-unavailable-subtitle: We lack resources.
+subtitle: 우리는 연간 [+ dues - 1 +]의 자원을 얻을 것입니다. -1 자원
+unavailable-subtitle: 자원이 부족합니다.
 choose-if: dues > 1 and resources >= 1
 on-arrival: dues -= 1; resources -= 1; left_dissent -= 8; center_dissent -= 8; reformist_dissent -= 8; labor_dissent -= 8; resources += 1 if dissent_percent < 5; resources -= 1 if dissent_percent > 30; month_actions += 1
 
-Our current members appreciate this, but no one decides to join a party because of the low dues.
+현재 당원들은 이에 감사해하지만, 당비가 낮다는 이유만으로 정당에 가입하는 사람은 없습니다.
 
 @increase
-subtitle: We will gain [+ dues + 1 +] resources per year. +1 resource [? if unemployed >= 15 : Given the present economic situation, this may be painful. ?][? if dues >= 4 : Dues are already rather high; increasing them might reduce our membership. ?]
+subtitle: 우리는 연간 [+ dues + 1 +]의 자원을 얻을 것입니다. +1 자원 [? if unemployed >= 15 : 현재 경제 상황을 감안할 때, 이것은 고통스러울 수 있습니다. ?][? if dues >= 4 : 당비는 이미 꽤 높습니다. 이를 인상하는 것은 당원 수를 줄일지도 모릅니다. ?]
 on-arrival: dues += 1; resources += 1; workers_spd -= 3; unemployed_spd -= 3; workers_spd -= 10 if unemployed >= 15; unemployed_spd -= 10 if unemployed >= 15; workers_spd -= 3*dues if dues >= 5; unemployed_spd -= 3*dues if dues >= 5; month_actions += 1
 view-if: dues <= 4
 
-Our members grumble at this, and some of the less committed members leave. But now, we have access to additional resources.
+당원들은 이에 불평을 터뜨리고, 헌신도가 낮은 일부 당원들은 탈당합니다. 하지만 이제 우리는 추가적인 자원을 확보했습니다.
 
-[? if unemployed >= 15 : Because of the presently high unemployment, our members are feeling the extra burden hard. ?] The higher dues will make it more difficult for the <span style="color: #c00000;">**SPD**</span> to expand electorally.
+[? if unemployed >= 15 : 현재의 높은 실업률로 인해, 당원들은 추가적인 부담을 힘겨워하고 있습니다. ?] 높아진 당비는 <span style="color: #c00000;">**SPD**</span>의 선거 기반 확장을 더 어렵게 만들 것입니다.
 

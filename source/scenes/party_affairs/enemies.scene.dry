@@ -1,4 +1,4 @@
-title: Choosing Our Enemies
+title: 적대 세력 설정
 new-page: true
 view-if: year <= 1930 and enemies_timer <= 0
 on-arrival: month_actions += 1; enemies_timer = 18
@@ -7,40 +7,40 @@ is-card: true
 card-image: img/poster_1.png
 tags: party_affairs
 
-= Choosing our enemies
+= 적대 세력 설정
 
-In our media and campaign materials, who should we consider as our main opponents?
+언론과 선거 캠페인 자료에서 우리는 누구를 주적으로 간주해야 할까요?
 
-[? if enemies != 0 : Previously, we had considered the [+ enemies +] as our prior enemies. Is a change of direction necessary? ?]
+[? if enemies != 0 : 이전에 우리는 [+ enemies +]를 우리의 주적으로 간주했습니다. 방향 수정이 필요한 겁니까? ?]
 
-- @anti_dem: The anti-democratic parties of the <span style="color: #7A3C00;">far</span>-[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">right</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">right</span>?] and <span style="color: #700000;">left</span> - the <span style="color: #700000;">**KPD**</span>, <span style="color: #7A3C00;">**NSDAP**</span>, and [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?].
-- @far_right: The <span style="color: #7A3C00;">far</span>-[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">right</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">right</span>?] - the <span style="color: #7A3C00;">**NSDAP**</span> and [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?].
-- @nsdap: The <span style="color: #7A3C00;">**NSDAP**</span> alone.
-- @kpd: The <span style="color: #700000;">**KPD**</span>.
-- @bourgeois: The bourgeois parties - the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+- @anti_dem: <span style="color: #7A3C00;">극</span>-[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">우파</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">우파</span>?] 및 <span style="color: #700000;">좌파</span>의 반민주적 정당들 - <span style="color: #700000;">**KPD**</span>, <span style="color: #7A3C00;">**NSDAP**</span>, 그리고 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?].
+- @far_right: <span style="color: #7A3C00;">극</span>-[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">우파</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">우파</span>?] - <span style="color: #7A3C00;">**NSDAP**</span>와 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?].
+- @nsdap: 오직 <span style="color: #7A3C00;">**NSDAP**</span>만.
+- @kpd: <span style="color: #700000;">**KPD**</span>.
+- @bourgeois: 부르주아 정당들 - [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 및 [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
 - @easy_discard
 
 @anti_dem
 on-arrival: enemies = "anti-democratic parties"; center_strength += 5; reformist_strength += 5; left_dissent += 5; workers_kpd -= 1.5; workers_nsdap -= 2; workers_dnvp -= 1 if dnvp_ideology == "Radical"; workers_dnf -= 1; unemployed_kpd -= 2; unemployed_nsdap -= 2; kpd_relation -= 10
 
-Attacking the <span style="color: #7A3C00;">far</span>-[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">right</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">right</span>?] and <span style="color: #700000;">left</span> is popular among all but the left wing of our party, who would prefer to be fighting the bourgeois parties. This might also hamper our ability to reconcile with the <span style="color: #700000;">**KPD**</span> in the future.
+<span style="color: #7A3C00;">극</span>-[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">우파</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">우파</span>?]와 <span style="color: #700000;">좌파</span>를 모두 공격하는 것은 부르주아 정당들과 싸우기를 선호하는 당내 좌파를 제외한 모두에게 인기가 있습니다. 이는 또한 향후 <span style="color: #700000;">**KPD**</span>와 화해할 수 있는 여지를 없앨 수도 있습니다.
 
 @far_right
 on-arrival: enemies = "far right"; left_strength += 5; left_dissent -= 5; workers_nsdap -= 3; unemployed_nsdap -= 3; workers_dnvp -= 2 if dnvp_ideology == "Radical"; workers_dnf -= 2
 
-Attacking the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> is popular among the entire party, although the left considers the bourgeois parties to be just as dangerous, while the right is critical of our lack of response to the <span style="color: #700000;">**KPD**</span>. Our bourgeois coalition partners are also skeptical of our lack of commitment to anti-communism.
+<span style="color: #7A3C00;">극</span>-<span style="color: #3E88B3;">우파</span>를 공격하는 것은 당 전체에서 인기가 있지만, 좌파는 부르주아 정당들도 그만큼 위험하다고 여기며, 우파는 <span style="color: #700000;">**KPD**</span>에 대한 대응이 부족하다며 비판적입니다. 우리의 부르주아 연정 파트너들 또한 우리의 반공주의 의지가 부족하다며 회의적인 반응을 보입니다.
 
 @nsdap
 on-arrival: enemies = "NSDAP"; neorevisionist_strength += 5; nazi_urgency += 1; workers_nsdap -= 4; unemployed_nsdap -= 4; workers_nsdap += 8 if nsdap_votes < 8; unemployed_nsdap += 8 if nsdap_votes < 8
 
-[? if nazi_urgency == 0 or nsdap_votes < 10: The <span style="color: #7A3C00;">**NSDAP**</span> is a tiny party right now, with more bark than bite. Many in our party are questioning our choices. [? if nsdap_votes < 8: Worst still, giving them too much attention might only end up helping them. ?] ?][? if nazi_urgency > 0 and nsdap_votes >= 10 : The <span style="color: #7A3C00;">Nazis</span> are the most urgent problem for us to deal with. ?]
+[? if nazi_urgency == 0 or nsdap_votes < 10: <span style="color: #7A3C00;">**NSDAP**</span>는 현재 실속은 없고 목소리만 큰 아주 작은 정당에 불과합니다. 당내 많은 이들이 우리의 선택에 의문을 제기하고 있습니다. [? if nsdap_votes < 8: 설상가상으로, 그들에게 지나친 관심을 주는 것은 오히려 그들을 돕는 꼴이 될 수도 있습니다. ?] ?][? if nazi_urgency > 0 and nsdap_votes >= 10 : <span style="color: #7A3C00;">나치</span>는 우리가 대처해야 할 가장 시급한 문제입니다. ?]
 
 @kpd
 on-arrival: enemies = "KPD"; reformist_strength += 5; left_dissent += 8; reformist_dissent -= 5; kpd_relation -= 15; dvp_relation += 5; ddp_relation += 3; z_relation += 5; lvp_relation += 5; workers_kpd -= 3; unemployed_kpd -= 4; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
 
-Attacking the <span style="color: #700000;">**KPD**</span> is supported by all but the most left-wing <span style="color: #c00000;">socialists</span>, and wins us some measure of approval among the bourgeois parties. However, If we are to reconcile with the <span style="color: #700000;">**KPD**</span>, this may not be the best choice.
+<span style="color: #700000;">**KPD**</span>를 공격하는 것은 가장 급진적인 좌파 <span style="color: #c00000;">사회주의자</span>들을 제외한 모두의 지지를 받으며, 부르주아 정당들 사이에서도 어느 정도 인정을 받게 해줍니다. 그러나 만약 우리가 <span style="color: #700000;">**KPD**</span>와 화해하고자 한다면, 이건 최선의 선택이 아닐 수 있습니다.
 
 @bourgeois
 on-arrival: enemies = "bourgeois parties"; left_strength += 8; left_dissent -= 5; dvp_relation -= 5; z_relation -= 5; ddp_relation -= 3; lvp_relation -= 3; kpd_relation += 5; reformist_dissent += 8; workers_z -= 3; new_middle_dvp -= 2; workers_dvp -= 1; workers_ddp -= 0.5; workers_ddp -= 0.5 if not dvp_exist; coalition_dissent += 1; dvp_right += 1; ddp_cohesion -= 1; ddp_right += 1; lvp_right += 1
 
-Our anti-bourgeois rhetoric is popular among the left, but may make it harder to build the coalitions that are necessary for government in the future.
+우리의 반부르주아적 수사는 좌파 사이에서는 인기가 있지만, 향후 정부 구성에 필요한 연정을 구축하는 것을 더 어렵게 만들 수 있습니다.

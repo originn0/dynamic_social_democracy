@@ -1,4 +1,4 @@
-title: Questions of Ideology
+title: 이념 문제
 new-page: true
 is-card: true
 tags: party_affairs
@@ -8,17 +8,17 @@ card-image: img/arbeiterbew.jpg
 max-visits: 3
 #subtitle: Setting the party's ideological direction.
 
-= Questions of Ideology
+= 이념 문제
 
-The <span style="color: #c00000;">**SPD**</span> is torn between many different ideological currents. What should be our primary ideological guidance for now?
+<span style="color: #c00000;">**SPD**</span>는 여러 다른 이념적 흐름 사이에서 분열되어 있습니다. 현재 우리의 주된 이념적 지침은 무엇이 되어야 합니까?
 
-[? if ideology != 0 : We have previously chosen a [+ ideology +] ideology. Changing it will likely have drawbacks. ?]
+[? if ideology != 0 : 우리는 이전에 [+ ideology +] 이념을 선택했습니다. 이를 변경하는 것은 부작용이 따를 수 있습니다. ?]
 
-- @class_struggle: Class struggle and preparing the proletariat for the revolution are our primary goals.
-- @centrist: The Center <span style="color: #9B0000;">Marxism</span> of Karl Kautsky remains the best way to resolve our internal contradictions.
-- @labor: We should work with the trade unions to improve the lives of workers.
-- @reform: Following Eduard Bernstein, we should work for ethical <span style="color: #c00000;">socialism</span>, strengthen democracy, and expand the party's electorate.
-- @socpat: Pursue the fusion of <span style='color: #c00000;'>socialism</span> and patriotism.
+- @class_struggle: 계급 투쟁과 프롤레타리아 혁명 준비를 우리의 주된 목표로 삼는다.
+- @centrist: 카를 카우츠키의 중도 <span style="color: #9B0000;">마르크스주의</span>가 우리의 내부 모순을 해결하는 최선의 방법으로 남아있다.
+- @labor: 우리는 노동자들의 삶을 개선하기 위해 노동조합과 협력해야 한다.
+- @reform: 에두아르트 베른슈타인을 따르며, 윤리적 <span style="color: #c00000;">사회주의</span>를 위해 노력하고, 민주주의를 강화하며, 당의 지지 기반을 확장해야 한다.
+- @socpat: <span style='color: #c00000;'>사회주의</span>와 애국주의의 융합을 추구한다.
 - @easy_discard
 
 @class_struggle
@@ -30,7 +30,7 @@ if (Q.ideology && Q.ideology != "left") {
 go-to: changed if changed = 1
 on-departure: ideology = "left"; left_strength += 8; communist_coalition += 1; left_dissent -= 5; reformist_dissent += 5; z_relation -= 3; dvp_relation -= 5; ddp_relation -= 3; lvp_relation -= 3; ddp_cohesion -= 0.5; nationalization_support += 1; kpd_relation += 3; ddp_right += 1; dvp_right += 1.5; lvp_right += 1
 
-The radical left of the party supports a course of class struggle, and potentially a reconciliation with the <span style="color: #700000;">**Communists**</span>.
+당내 급진 좌파는 계급 투쟁 노선을 지지하며, 잠재적으로 <span style="color: #700000;">**공산당**</span>과의 화해를 지지합니다.
 
 @centrist
 on-arrival: {!
@@ -41,7 +41,7 @@ if (Q.ideology && Q.ideology != "centrist") {
 go-to: changed if changed = 1
 on-departure: ideology = "centrist"; center_strength += 8; center_dissent -= 10; left_dissent -= 5; reformist_dissent -= 5
 
-The Center Marxists, represented by Kautsky and Hilferding, support a middle course of preparing for revolution while building up the consciousness of the working class.
+카우츠키와 힐퍼딩으로 대표되는 중도 마르크스주의자들은 노동 계급의 의식을 고취하면서 혁명을 준비하는 중앙 노선을 지지합니다.
 
 @labor
 on-arrival: {!
@@ -52,7 +52,7 @@ if (Q.ideology && Q.ideology != "labor") {
 go-to: changed if changed = 1
 on-departure: ideology = "labor"; labor_strength += 8; center_dissent += 5; wtb_support += 1; labor_dissent -= 5; kpd_relation -= 3
 
-The labor wing of the party supports continued participation in government in order to provide benefits to the workers, and the creation of public works programs for employment.
+당내 노동 파벌은 노동자들에게 혜택을 제공하기 위한 지속적인 정부 참여와 고용을 위한 공공 사업 프로그램 창설을 지지합니다.
 
 @reform
 on-arrival: {!
@@ -63,7 +63,7 @@ if (Q.ideology && Q.ideology != "reformist") {
 go-to: changed if changed = 1
 on-departure: ideology = "reformist"; reformist_strength += 8; democratization += 1; reformist_dissent -= 5; left_dissent += 5; z_relation += 5; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; kpd_relation -= 8; moderate_plan_support += 1; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
 
-The reformist wing of the party seeks to preserve the Republic and the democratic system of government, and is most supportive of coalitions with the other pro-democracy parties.
+당내 개혁 파벌은 공화국과 민주적 정부 체제를 보존하고자 하며, 다른 친민주주의 정당들과의 연정에 가장 우호적입니다.
 
 @socpat
 view-if: social_patriot
@@ -75,9 +75,9 @@ if (Q.ideology && Q.ideology != "socpat") {
 go-to: changed if changed = 1
 on-departure: ideology = "socpat"; social_patriot_strength += 10; left_dissent += 10; center_dissent += 10; reformist_dissent += 5; z_relation += 6; dvp_relation += 6; ddp_relation += 6; lvp_relation += 6; kpd_relation -= 15; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
 
-The social patriot wing of the party, widely regarded as Schleicher's puppets, is the most supportive of the <span style='color: #c00000;'>**SPD**</span> and ADGB adopting a more nationalist stance.
+슐라이허의 꼭두각시라고 널리 여겨지는 당내 사회 애국주의 파벌은 <span style='color: #c00000;'>**SPD**</span>와 ADGB가 더 민족주의적인 입장을 채택하는 것을 가장 강력히 지지합니다.
 
 @changed
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; reformist_dissent += 5
 
-We have changed ideologies. Many in the party feel unmoored.
+우리는 이념을 변경했습니다. 당내 많은 이들이 방향을 잃은 듯한 느낌을 받고 있습니다.
