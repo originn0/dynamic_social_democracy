@@ -1,4 +1,4 @@
-title: Confronting the Nazis
+title: 나치와의 대결
 new-page: true
 is-card: true
 view-if: (nsdap_r >= 10 and nazi_urgency > 1) and confronting_nazis_timer == 0 and iron_front_formed == 0
@@ -8,13 +8,13 @@ tags: party_affairs; antifascism
 
 # Forming the Iron Front
 
-The <span style="color: #7A3C00;">Nazis</span>' strength is gaining, as shown by their recent election results and their violent presence in the streets. Their <span style="color: #7A3C00;">fascism</span> threatens to plunge Germany once again into the abyss.
+최근 선거 결과와 거리에서의 폭력이 존재한다는 것이 보여주듯, <span style="color: #7A3C00;">나치</span>의 세력이 커지고 있습니다. 그들의 <span style="color: #7A3C00;">파시즘</span>은 독일을 또다시 심연으로 빠뜨리겠다고 위협하고 있습니다.
 
-Many in our party are calling for urgent action. The "neorevisionist" faction, led by young <span style="color: #c00000;">socialists</span> like Carlo Mierendorff and Julius Leber, have formed specifically around this cause. But many in all factions of the party are calling for action.
+우리 당의 많은 이들이 긴급한 조치를 요구하고 있습니다. 카를로 미어렌도르프와 율리우스 레버 같은 젊은 <span style="color: #c00000;">사회주의자</span>들이 이끄는 "신수정주의" 파벌은 구체적으로 이 명분을 중심으로 결성되었습니다. 그러나 당내 모든 파벌의 많은 당원들이 행동을 촉구하고 있습니다.
 
-- @not_a_big_deal: The <span style="color: #7A3C00;">Nazis</span>' moment will pass. Let's not get too hasty.
+- @not_a_big_deal: <span style="color: #7A3C00;">나치</span>는 시간이 지나면 사라질 것이다. 너무 서두르지 말자.
 - @economic_crisis
-- @major_crisis: We must do something to confront the <span style="color: #7A3C00;">Nazis</span>.
+- @major_crisis: 우리는 <span style="color: #7A3C00;">나치</span>에 맞서기 위해 무언가 해야 한다.
 - @iron_front
 
 
@@ -22,10 +22,10 @@ Many in our party are calling for urgent action. The "neorevisionist" faction, l
 on-arrival: nazi_urgency -= 1; left_dissent += 5; neorevisionist_dissent += 15
 view-if: mierendorff_advisor = 0 and leber_advisor = 0 and schumacher_advisor = 0
 
-The <span style="color: #7A3C00;">Nazis</span> are just another <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> movement that will die of its own contradictions sooner or later; we do not need to build a specific policy to combat them.
+<span style="color: #7A3C00;">나치</span>는 조만간 자기 모순에 빠져 소멸할 또 하나의 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 운동일 뿐입니다. 그들에 대항하기 위해 특별한 정책을 수립할 필요는 없습니다.
 
 @economic_crisis
-title: We must address the economic crisis first.
+title: 우리는 경제 위기를 먼저 해결해야 한다.
 view-if: economic_plan == 0 and black_thursday_seen == 1
 go-to: crisis_program
 
@@ -33,11 +33,11 @@ go-to: crisis_program
 view-if: nazi_urgency < 5
 on-arrival: nazi_urgency += 1; neorevisionist_dissent -= 5; neorevisionist_strength += 5
 
-The <span style="color: #7A3C00;">Nazis</span> are one of the foremost threats to the German republic. However, we are still formulating a strategy to confront them, and still trying to build up consensus within our party for action. Check back on this later.
+<span style="color: #7A3C00;">나치</span>는 독일 공화국에 대한 가장 큰 위협 중 하나입니다. 그러나 우리는 여전히 그들에 대항할 전략을 구상 중이며, 행동을 위한 당내 합의를 도출하기 위해 노력하고 있습니다. 나중에 다시 확인해 주십시오.
 
 @iron_front
-title: Form the <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span>!
-subtitle: The <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span> consists of the <span style="color: #c00000;">**SPD**</span>, the trade unions, and the Reichsbanner.
+title:  <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span>을 결성한다!
+subtitle: <span style="color: #c00000;">강철</span> <span style="color: #1A1A1A;">전선</span>은 <span style="color: #c00000;">**SPD**</span>, 노동조합, 그리고 국기단으로 구성됩니다.
 view-if: nazi_urgency >= 3 and iron_front_formed == 0
 on-arrival: iron_front_formed = 1; radicalization += 1; nazi_urgency += 1; workers_spd += 5*(1-dissent); pro_republic += 5*(1-dissent); left_dissent -= 8; neorevisionist_dissent -= 10; neorevisionist_strength += 5
 on-display: {!  
@@ -54,15 +54,15 @@ on-display: {!
 !}
 achievement: eiserne_front
 
-The <span style="color: #7A3C00;">Nazi</span> threat can no longer be ignored. We must build a new organization to confront them - the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> - consisting of the <span style="color: #c00000;">**SPD**</span>, the ADGB trade union federation, and the *Reichsbanner* <span style="color: #000000;"><b><i>Schwarz</i></b></span>-<span style="color: #DD0000;"><b><i>Rot</i></b></span>-<span style="color: #FFCC00;"><b><i>Gold</i></b></span>. We have a new symbol - the Three Arrows, pointing down towards the left.
+<span style="color: #7A3C00;">나치</span>의 위협을 더 이상 무시할 수 없습니다. 우리는 그들에 맞서기 위해 새로운 조직, 즉 <span style="color: #c00000;">**SPD**</span>, ADGB 노동조합 연맹, 그리고 <span style="color: #000000;"><b><i>흑</i></b></span>-<span style="color: #DD0000;"><b><i>적</i></b></span>-<span style="color: #FFCC00;"><b><i>금</i></b></span> *국기단*으로 구성된 <span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>을 구축해야 합니다. 우리에게는 새로운 상징이 있습니다. 바로 왼쪽 아래를 가리키는 세 개의 화살입니다.
 
-What do the three arrows stand for?
+이 세 개의 화살은 무엇을 상징합니까?
 
-- @unity: Unity, Activity, and Discipline.
-- @anti: Opposition to <span style="color: #7A3C00;">Fascism</span>, <span style="color:rgb(90, 0, 0);">Stalinism</span>, and <span style="color: #808080;">Monarchism</span>.
-- @orgs: The <span style="color: #c00000;">**SPD**</span>, ADGB, and Reichsbanner.
-- @wtb: Woytinsky, Tarnow, and Baade of the WTB-Plan
-- @all: All of the above.
+- @unity: 단결, 활동, 그리고 규율.
+- @anti: <span style="color: #7A3C00;">파시즘</span>, <span style="color:rgb(90, 0, 0);">스탈린주의</span>, 그리고 <span style="color: #808080;">군주제</span>에 대한 반대.
+- @orgs: <span style="color: #c00000;">**SPD**</span>, ADGB, 그리고 국기단.
+- @wtb: WTB 계획의 보이틴스키, 타르노프, 그리고 바데.
+- @all: 위의 모든 것.
 
 @unity
 go-to: if_end
@@ -82,4 +82,4 @@ go-to: if_end
 
 @if_end
 
-The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> has given a new energy to our party.
+<span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>은 우리 당에 새로운 활력을 불어넣었습니다.

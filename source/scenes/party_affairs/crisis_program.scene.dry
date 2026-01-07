@@ -1,4 +1,4 @@
-title: The Economic Crisis
+title: 경제 위기
 new-page: true
 is-card: true
 view-if: (crisis_urgency >= 2 or year >= 1931 or (month >= 6 and year == 1930)) and crisis_program_timer = 0 and economic_plan = 0 and black_thursday_seen == 1
@@ -7,87 +7,87 @@ on-arrival: month_actions += 1; crisis_program_timer = 5
 card-image: img/bankrun.jpg
 tags: party_affairs, govt_affairs
 
-= Addressing the Economic Crisis
+= 경제 위기 대처
 
-Our party is wracked as to how to deal with the economic crisis. From the centrist faction, Hilferding argues that the economic crisis must be allowed to play out, because it is simply a part of the cyclic nature of capitalism.
+우리 당은 경제 위기를 어떻게 대처할지를 두고 고심하고 있습니다. 중앙파의 힐퍼딩은 경제 위기가 자연스럽게 해소되도록 두어야 한다고 주장합니다. 이는 단순히 자본주의의 순환적 본성의 일부이기 때문이라는 것입니다.
 
-[? if not wtb_concept: The Labor faction is arguing for increased welfare spending to alleviate the suffering of the workers. Their economist, Wladimir Woytinsky, has voiced support for a public works campaign involving deficit spending, but it will take time to iron out the details. Furthermore, he will need the united support of the ADGB; otherwise, he won't have the power to challenge Hilferding's stance. ?][? if wtb_concept: From labor, the economist Wladimir Woytinsky argues that we must pursue a massive public works program to reduce unemployment and stimulate demand, perhaps including deficit spending. His opponents, like Hilferding, argue that this plan will cause a return to hyper-inflation, and that it would not even help the economy. In addition, according to Hilferding, Woytinsky's strategy is opposed to Marxist principles. ?]
+[? if not wtb_concept: 노동계는 노동자들의 고통을 덜어주기 위해 복지 지출 확대를 주장하고 있습니다. 그들의 경제학자인 블라디미르 보이틴스키는 적자 지출을 포함한 공공 사업 캠페인에 지지를 표명했지만, 세부 사항을 조율하는 데는 시간이 걸릴 것입니다. 게다가 그는 ADGB의 통합된 지지가 필요합니다. 그렇지 않으면 힐퍼딩의 입장에 도전할 힘을 얻지 못할 것입니다. ?][? if wtb_concept: 노동계의 경제학자 블라디미르 보이틴스키는 실업을 줄이고 수요를 진작하기 위해, 필요하다면 적자 지출을 포함한 대규모 공공 사업 프로그램을 추진해야 한다고 주장합니다. 힐퍼딩과 같은 반대파들은 이 계획이 초인플레이션으로의 회귀를 초래할 것이며, 경제에 도움이 되지도 않을 것이라고 주장합니다. 또한 힐퍼딩에 따르면 보이틴스키의 전략은 마르크스주의 원칙에 위배됩니다. ?]
 
-[? if wtb_concept: The so-called WTB plan, after its chief supporters Woytinsky, Tarnow, and Baade, is receiving more attention within the party. ?]
+[? if wtb_concept: 주요 지지자인 보이틴스키, 타르노프, 바데의 이름을 딴 소위 WTB 계획은 당내에서 더 많은 관심을 받고 있습니다. ?]
 
-However, leftists in the party argue that the WTB plan is merely a bandage over the fundamental flaws of capitalism. They argue that the crisis is an opportunity to end capitalism through massive nationalizations of industry, and finally bring our country to <span style="color: #c00000;">socialism</span>.
+그러나 당내 좌파들은 WTB 계획이 자본주의의 근본적인 결함을 가리는 미봉책일 뿐이라고 주장합니다. 그들은 이번 위기가 대규모 산업 국유화를 통해 자본주의를 끝내고, 마침내 우리나라를 <span style="color: #c00000;">사회주의</span>로 이행시킬 기회라고 주장합니다.
 
-Meanwhile, moderates and reformists draw up proposals for a limited plan of job creation through public works, funded through taxes, that does not involve deficit spending or large-scale restructuring of the economy. Labor argues that the plan is inadequate in its scale and ambition.
+한편, 중도파와 개혁파들은 적자 지출이나 대규모 경제 구조조정 없이 세금으로 자금을 조달하는 제한적인 일자리 창출 계획을 제안합니다. 노동계는 이 계획의 규모와 야망이 불충분하다고 주장합니다.
 
-- @support_centrist: Support the Centrist view.
-- @support_labor: Support the Labor view.
-- @support_labor_pre: Support the Labor view.
-- @support_left: Support the Left view.
-- @support_moderate: Support the Reformist view.
-- @defer: Defer making a decision until we have more information.
+- @support_centrist: 중앙파의 견해를 지지한다.
+- @support_labor: 노동계의 견해를 지지한다.
+- @support_labor_pre: 노동계의 견해를 지지한다.
+- @support_left: 좌파의 견해를 지지한다.
+- @support_moderate: 개혁파의 견해를 지지한다.
+- @defer: 더 많은 정보를 얻을 때까지 결정을 미룬다.
 
 @support_centrist
-subtitle: Let the depression play itself out.
+subtitle: 대공황이 자연스럽게 해소되도록 둡니다.
 on-arrival: center_strength += 5; center_dissent -= 5; labor_dissent += 10; wtb_support -= 1; left_dissent += 10;
 
-Woytinsky and the trade unions vehemently criticize the centrists for their policy. The workers are starving; are we going to callously abandon them and side with bourgeois austerity? On the other hand, the centrists criticize Woytinsky for promising the workers false hope; their position is that nothing can be done to alleviate the depression. They also speak of the fear of another round of hyperinflation that may result from deficit spending.
+보이틴스키와 노동조합은 중앙파의 정책을 맹렬히 비판합니다. 노동자들이 굶주리고 있습니다. 우리가 그들을 냉정하게 버리고 부르주아들의 긴축 정책에 동조해야 합니까? 반면, 중앙파는 보이틴스키가 노동자들에게 헛된 희망을 심어준다고 비판합니다. 그들의 입장은 대공황을 완화하기 위해 할 수 있는 일이 없다는 것입니다. 그들은 또한 적자 지출로 인해 발생할 수 있는 또 다른 초인플레이션의 공포를 거론합니다.
 
-Our policy course is currently that nothing can be done to alleviate the depression.
+우리의 현재 정책 방향은 대공황을 완화하기 위해 할 수 있는 일이 없다는 것입니다.
 
 @support_labor
-subtitle: Call for increased public works and fiscal stimulus.
-unavailable-subtitle: The Labor faction is not strong enough.
+subtitle: 공공 사업 확대와 재정 부양을 요구합니다.
+unavailable-subtitle: 노동 파벌의 세력이 충분하지 않습니다.
 choose-if: labor_strength >= left_strength and labor_strength >= center_strength
 view-if: wtb_concept
 on-arrival: center_dissent += 10; left_dissent += 5; labor_strength += 5; wtb_support += 1; wtb_points += 10
 
-Our support of the WTB plan alienates the orthodox Marxists of the Centrist faction, and faces both opposition and support from a variety of sources across the spectrum. Leftists argue that the plan is flawed because it leaves capitalism intact, while some reformists are cautiously optimistic.
+WTB 계획에 대한 우리의 지지는 중앙파의 정통 마르크스주의자들을 소외시키며, 정치 성향 전반에 걸쳐 다양한 지지와 반대에 직면하고 있습니다. 좌파는 이 계획이 자본주의를 그대로 존속시키기 때문에 결함이 있다고 주장하는 반면, 일부 개혁파는 조심스럽게 낙관하고 있습니다.
 
-We have not yet convinced the party to formally adopt the plan. More work needs to be done.
+우리는 아직 당이 이 계획을 공식적으로 채택하도록 설득하지 못했습니다. 더 많은 노력이 필요합니다.
 
 @support_labor_pre
-subtitle: Call for welfare spending and emergency relief for the workers.
+subtitle: 노동자들을 위한 복지 지출과 긴급 구호를 요구합니다.
 view-if: not wtb_concept
 on-arrival: center_dissent += 5; left_dissent += 5; labor_strength += 5; labor_dissent -= 5; wtb_support += 1
 
-The Labor faction hasn't come up with a concrete solution to our economic woes yet, but has called for increased welfare spending in light of the rise in unemployment. Perhaps supporting their efforts will encourage a real solution to the crisis to be introduced.
+노동계는 아직 경제적 고통에 대한 구체적인 해결책을 내놓지 않았지만, 실업률 증가에 비추어 복지 지출 확대를 요구했습니다. 어쩌면 그들의 노력을 지지하는 것이 위기에 대한 실질적인 해결책 도입을 장려할지도 모릅니다.
 
 @support_left
-subtitle: Call for mass nationalizations and the transformation of the economy.
-unavailable-subtitle: The Left faction is not strong enough.
+subtitle: 대규모 국유화와 경제 체제의 변혁을 요구합니다.
+unavailable-subtitle: 좌파 파벌의 세력이 충분하지 않습니다.
 choose-if: left_strength >= labor_strength and left_strength >= center_strength and left_strength >= reformist_strength
 on-arrival: left_strength += 10; reformist_dissent += 5; labor_dissent += 5; nationalization_support += 2
 go-to: support_left_progress if nationalization_support < 5; adopt_left if nationalization_support >= 5
 
 @support_left_progress
 
-We attempt to convince the party to support a program of mass nationalizations in response to the economic crisis. Leftists argue that this policy is in accordance with our long-standing <span style="color: #c00000;">socialist</span> platform, while reformists and some trade unionists argue that the plan is unrealistic, and that we need to focus on more immediate improvements to workers' lives.
+우리는 경제 위기에 대한 대응으로 대규모 국유화 프로그램을 지지하도록 당을 설득하고자 합니다. 좌파는 이 정책이 우리의 오랜 <span style="color: #c00000;">사회주의</span> 강령과 일치한다고 주장하는 반면, 개혁파와 일부 노동조합원들은 이 계획이 비현실적이며 노동자들의 삶을 즉각적으로 개선하는 데 집중해야 한다고 주장합니다.
 
-We have not yet formally adopted the plan. More work needs to be done.
+우리는 아직 이 계획을 공식적으로 채택하지 않았습니다. 더 많은 노력이 필요합니다.
 
 @adopt_left
 on-arrival: left_strength += 15; left_dissent -= 10; reformist_dissent += 10; neorevisionist_dissent += 8; labor_dissent += 6; nationalization_adopted = 1; coup_progress += 1; economic_plan = 3; kpd_relation += 5*(1-dissent)
 
-With our hard work, we have convinced the majority of the party to adopt the <span style="color: #c00000;">socialist</span> economic plan! [? if spd_in_government == 1 : We can begin implementing the plan as soon as possible, as long as we have the Economic or Finance ministries. ?] Bourgeois opposition is likely to be fierce. [? if spd_in_government == 0 : It might be difficult to enact the plan, given present conditions. ?]
+우리의 부단한 노력 끝에, 당의 과반수가 <span style="color: #c00000;">사회주의</span> 경제 계획을 채택하도록 설득해냈습니다! [? if spd_in_government == 1 : 우리가 경제부나 재무부 장관직을 맡고 있다면 가능한 한 빨리 계획을 실행에 옮길 수 있습니다. ?] 부르주아들의 반대는 맹렬할 것으로 예상됩니다. [? if spd_in_government == 0 : 현재 상황을 고려할 때, 계획을 입안하는 것은 어려울 수 있습니다. ?]
 
 @support_moderate
-subtitle: Call for a limited program of job creation without deficit spending.
-unavailable-subtitle: The Reformist faction is not strong enough.
+subtitle: 적자 지출 없는 제한적인 일자리 창출 프로그램을 요구합니다.
+unavailable-subtitle: 개혁파 파벌의 세력이 충분하지 않습니다.
 choose-if: reformist_strength >= left_strength and reformist_strength >= center_strength
 on-arrival: moderate_plan_support += 1; reformist_strength += 8; reformist_dissent -= 5; left_dissent += 6; labor_dissent += 5
 go-to: adopt_moderate if moderate_plan_support >= 3; support_moderate_progress if moderate_plan_support < 3
 
 @support_moderate_progress
 
-We attempt to convince the party to support a moderate program of job creation without deficit spending. Advocates of the moderate plan argue that this plan is most likely to receive support from the bourgeois parties, and most practical in the immediate term. Opponents in the left and labor factions criticize the plan for being inadequate in its ambition.
+우리는 적자 지출 없는 온건한 일자리 창출 프로그램을 지지하도록 당을 설득하고자 합니다. 온건안 지지자들은 이 계획이 부르주아 정당들의 지지를 받을 가능성이 가장 높으며, 당장 실현하기에 가장 실용적이라고 주장합니다. 좌파와 노동계 파벌의 반대자들은 이 계획의 야망이 부족하다고 비판합니다.
 
-We have not yet adopted the plan. More work needs to be done.
+우리는 아직 이 계획을 채택하지 않았습니다. 더 많은 노력이 필요합니다.
 
 @adopt_moderate
 on-arrival: reformist_strength += 10; reformist_dissent -= 10; left_dissent += 8; labor_dissent += 6; moderate_plan_adopted = 1; economic_plan = 2; coalition_dissent -= 1 if unemployed > 15; z_relation += 5;
 
-With our hard work, we have convinced the majority of the party to adopt the moderate job creation plan! [? if spd_in_government == 1 : We can begin implementing the plan as soon as possible, as long as we have the Economic or Finance ministries. ?]
+우리의 부단한 노력 끝에, 당의 과반수가 온건한 일자리 창출 계획을 채택하도록 설득해냈습니다! [? if spd_in_government == 1 : 우리가 경제부나 재무부 장관직을 맡고 있다면 가능한 한 빨리 계획을 실행에 옮길 수 있습니다. ?]
 
 @defer
 
-We hold off on making a decision on economic policy, awaiting more information. Woytinsky and his supporters argue that inaction is a form of action of its own. 
+우리는 더 많은 정보를 기다리며 경제 정책에 대한 결정을 보류합니다. 보이틴스키와 그의 지지자들은 아무것도 하지 않는 것 또한 일종의 행동이라고 주장합니다.
