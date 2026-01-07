@@ -1,4 +1,4 @@
-title: Campaigning (People's Party)
+title: 선거 운동 (대중 정당)
 
 # basically, we can campaign as part of the people's party...
 
@@ -10,41 +10,41 @@ title: Campaigning (People's Party)
 - @campaign_catholics
 
 @campaign_workers
-title: Campaign among the workers, to assuage their doubts about our changes.
+title: 우리의 변화에 대한 의구심을 해소하기 위해 노동자들을 대상으로 선거 운동을 한다.
 on-arrival: workers_spd += 5*(1-dissent);
 
-The workers are still a key part of our constituency, and we must not alienate them in the transformation of our party.
+노동자들은 여전히 우리 지지 기반의 핵심이며, 당의 변모 과정에서 그들을 소외시켜서는 안 됩니다.
 
 @campaign_middle
-title: Campaign among the middle classes.
+title: 중산층을 대상으로 선거 운동을 한다.
 on-arrival: old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent)
 
-As a people's party, we represent the employees and small businesspeople of the middle class, and they are becoming receptive to our messages.
+대중 정당으로서 우리는 중산층 직장인들과 소상공인들을 대표하며, 그들은 우리의 메시지에 호응하고 있습니다.
 
 @campaign_rural
-title: Campaign in rural areas.
+title: 농촌 지역에서 선거 운동을 한다.
 choose-if: rural_policy > 0
-unavailable-subtitle: We have not enacted any rural policies yet.
+unavailable-subtitle: 우리는 아직 어떤 농촌 정책도 마련하지 않았습니다.
 on-arrival: rural_spd += 6*(1-dissent)
 
-As a people's party, we represent farmers and rural workers as well, and they are becoming receptive to our messages.
+대중 정당으로서 우리는 농민들과 농촌 노동자들 또한 대표하며, 그들은 우리의 메시지에 호응하고 있습니다.
 
 @campaign_unemployed
-title: Campaign among the unemployed.
+title: 실업자들을 대상으로 선거 운동을 한다.
 on-arrival: unemployed_spd += 5*(1-dissent);
 
-As a people's party, the urban poor are still a key part of our constituency.
+대중 정당으로서 도시 빈민들은 여전히 우리 지지 기반의 핵심입니다.
 
 @campaign_women
-title: Campaign among women of all classes.
+title: 모든 계층의 여성들을 대상으로 선거 운동을 한다.
 on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 3*(1-dissent); rural_spd += 3*(1-dissent); unemployed_spd += 3*(1-dissent);
 
-As a people's party, we represent women of all classes.
+대중 정당으로서 우리는 모든 계층의 여성들을 대표합니다.
 
 @campaign_catholics
-title: Campaign among political Catholics.
+title: 정치적 가톨릭 신자들을 대상으로 선거 운동을 한다.
 on-arrival: catholics_spd += 5*(1-dissent);
 
-Catholics have historically been tied to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], but there is no reason why our party cannot appeal to them. The Prussian Concordat in particular is a sign of our friendship with Catholicism.
+가톨릭 신자들은 역사적으로 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 결속되어 있었지만, 우리 당이 그들에게 호소하지 못할 이유는 없습니다. 특히 프로이센 정교협약은 가톨릭계와의 우호를 보여주는 신호입니다.
 
 

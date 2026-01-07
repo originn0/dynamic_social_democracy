@@ -1,4 +1,4 @@
-title: Party Organizations
+title: 당 조직
 new-page: true
 is-card: true
 tags: party_affairs
@@ -8,22 +8,22 @@ card-image: img/Mann_der_Arbeit.jpg
 max-visits: 6
 #subtitle: Outside of electoral politics, the SPD runs a social world onto itself.
 
-= Party Organizations
+= 당 조직
 
-In addition to being a political party, the <span style="color: #c00000;">**SPD**</span> is a social world onto itself, with a vast array of associated organizations which serve the social needs of their members from cradle to grave.
+<span style="color: #c00000;">**SPD**</span>는 단순한 정당을 넘어 그 자체로 하나의 사회적 세계이며, 요람에서 무덤까지 당원들의 사회적 필요를 충족시키는 방대한 산하 조직들을 거느리고 있습니다.
 
-- @newspapers: Fund more newspapers and journalists.
-- @welfare: Fund more mutual aid and welfare programs.
-- @culture: Fund sports leagues, educational, and cultural programs.
-- @rb: Fund the Reichsbanner, our self-defense organization.
-- @youth: We have the reputation of being a party for old men. Support the youth organizations.
-- @nothing: Do not increase funding for any program.
+- @newspapers: 더 많은 신문과 언론인에게 자금을 지원한다.
+- @welfare: 더 많은 상호 부조 및 복지 프로그램에 자금을 지원한다.
+- @culture: 스포츠 리그, 교육 및 문화 프로그램에 자금을 지원한다.
+- @rb: 자위 조직인 국기단에 자금을 지원한다.
+- @youth: 우리는 노인들을 위한 정당이라는 평판을 듣고 있다. 청년 조직을 지원한다.
+- @nothing: 어떤 프로그램에도 자금을 늘리지 않는다.
 - @easy_discard
 
 @newspapers
 choose-if: resources > 0
-unavailable-subtitle: Not enough resources.
-subtitle: -1 resources
+unavailable-subtitle: 자원이 부족합니다.
+subtitle: 자원 -1
 on-arrival: resources -= 1; media_timer = 0;
 go-to: media
 
@@ -31,42 +31,42 @@ go-to: media
 
 @welfare
 choose-if: resources > 0
-unavailable-subtitle: Not enough resources.
-subtitle: -1 resources
+unavailable-subtitle: 자원이 부족합니다.
+subtitle: 자원 -1
 on-arrival: resources -= 1; workers_aid += 1; unemployed_spd += 5*(1 - dissent);
 
-We have increased funding to Workers' Welfare. [? if black_thursday_seen > 0 : In an age of economic crisis, this will be helpful for improving our standing among the unemployed. ?]
+우리는 노동자 복지에 대한 자금 지원을 늘렸습니다. [? if black_thursday_seen > 0 : 경제 위기의 시대에, 이는 실업자들 사이에서 우리의 입지를 다지는 데 도움이 될 것입니다. ?]
 
 @culture
 choose-if: resources > 0
-unavailable-subtitle: Not enough resources.
-subtitle: -1 resources
+unavailable-subtitle: 자원이 부족합니다.
+subtitle: 자원 -1
 on-arrival: resources -= 1; cultural_organizations += 1; left_dissent -= 6; center_dissent -= 6; labor_dissent -= 6; reformist_dissent -= 6; neorevisionist_dissent -= 6
 
-It is not enough for the <span style="color: #c00000;">**SPD**</span> to solely be a political party. The Worker Singer's League, Worker's Sports, and our schools and libraries are crucial to our members' lives. Funding these organizations makes our members more committed to the party, even when our policies might not be to their liking.
+<span style="color: #c00000;">**SPD**</span>가 단순히 정당에 머무르는 것만으로는 충분하지 않습니다. 노동자 가수 연맹, 노동자 스포츠, 그리고 우리의 학교와 도서관은 당원들의 삶에 매우 중요합니다. 이러한 조직들에 자금을 지원하면 우리의 정책이 당원들의 마음에 들지 않을 때조차도 그들이 당에 더 헌신하도록 만들 수 있습니다.
 
-[? if sa_strength > 500 : However, it feels frivolous to spend on sports and choirs when the <span style="color: #7A3C00;">fascists</span> are murdering us in the streets. ?]
+[? if sa_strength > 500 : 그러나 <span style="color: #7A3C00;">파시스트들</span>이 거리에서 우리를 살해하고 있는 마당에 스포츠와 합창단에 돈을 쓰는 것은 한가한 소리처럼 들립니다. ?]
 
 @rb
 choose-if: resources > 0
-unavailable-subtitle: Not enough resources.
-subtitle: -1 resources
+unavailable-subtitle: 자원이 부족합니다.
+subtitle: 자원 -1
 view-if: not rb_explode
 on-arrival: resources -= 1; rb_strength  += 100; rb_militancy += 0.01; reichsbanner_timer = 0; funded_reichsbanner += 1
 
-We have increased recruiting to the Reichsbanner.
+우리는 국기단 모병을 늘렸습니다.
 
 @youth
 choose-if: resources > 0
-unavailable-subtitle: Not enough resources.
-subtitle: -1 resources
+unavailable-subtitle: 자원이 부족합니다.
+subtitle: 자원 -1
 view-if: not rb_explode
 on-arrival: resources -= 1; rb_strength += 50; rb_militancy += 0.02; young_socialists += 1; left_strength += 5; neorevisionist_strength += 5; radicalization += 1;
 
-Our new youth members flock to the left or neorevisionist wings of the party, and also bring new radicalism to the Reichsbanner.
+새로운 청년 당원들은 당내 좌파나 신수정주의 진영으로 몰려들고 있으며, 국기단에도 새로운 급진주의 바람을 불어넣고 있습니다.
 
 @nothing
 
-We do not fund any party organizations.
+우리는 어떤 당 조직에도 자금을 지원하지 않았습니다.
 
-- @return: Continue...
+- @return: 계속...

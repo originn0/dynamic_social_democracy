@@ -1,4 +1,4 @@
-title: Party Disunity
+title: 당내 분열
 new-page: true
 is-card: true
 view-if: party_disunity_timer = 0 and (dissent >= 0.3 or (reformist_dissent > 30 and not reformists_resign) or (center_dissent > 30 and not centrists_resign) or (left_dissent > 30 and not left_split) or (labor_dissent > 30 and not unions_independent) or (neorevisionist_dissent > 30 and neorevisionism))
@@ -8,17 +8,17 @@ frequency: 200
 tags: party_affairs
 
 
-= Party Disunity
+= 당내 분열
 
-The party is being torn apart by internal dissent. Upset at the leadership and general direction, factions have started sabotaging their rivals, hampering our efforts to win votes and carry out our policies.
+당은 내부의 반대 의견으로 분열되고 있습니다. 지도부와 당의 전반적인 방향에 불만을 품은 파벌들이 경쟁 파벌을 방해하기 시작했고, 이는 표를 얻고 정책을 수행하려는 우리의 노력을 저해하고 있습니다.
 
-[? if reformist_dissent > 30 : The reformists are upset at our direction.  ?]
-[? if center_dissent > 30 : The centrists are displeased with the direction of our party. ?]
-[? if labor_dissent > 30 : The trade unions disagree with our present course of action. ?]
-[? if left_dissent > 30: Leftists are making noises about another party split. ?]
-[? if neorevisionist_dissent > 30 and neorevisionism = 1 : Neorevisionists are in disagreement about our political direction. ?]
+[? if reformist_dissent > 30 : 개혁파들은 우리의 방향에 불만을 품고 있습니다. ?]
+[? if center_dissent > 30 : 중앙파들은 우리 당의 방향을 탐탁지 않게 여깁니다. ?]
+[? if labor_dissent > 30 : 노동조합들은 우리의 현재 행보에 동의하지 않습니다. ?]
+[? if left_dissent > 30: 좌파들은 또다시 분당을 언급하며 소란을 피우고 있습니다. ?]
+[? if neorevisionist_dissent > 30 and neorevisionism = 1 : 신수정주의자들은 우리의 정치적 방향에 동의하지 않습니다. ?]
 
-Something must be done to reinforce party unity.
+당의 단결을 강화하기 위해 조치를 취해야 합니다.
 
 - @enforce_unity
 - @concessions_reformists
@@ -30,70 +30,70 @@ Something must be done to reinforce party unity.
 - @easy_discard
 
 @enforce_unity
-title: Enforce party discipline.
+title: 당의 규율을 강화한다.
 on-arrival: reformist_dissent -= 8; center_dissent -= 8; labor_dissent -= 8; left_dissent -= 8; neorevisionist_dissent -= 8; workers_spd -= (dissent * 10); new_middle_spd -= (dissent * 5); unemployed_spd -= (dissent * 5)
 
-Enforcing party discipline reduces dissent, but it could lead to an exit of dissenting members.
+당의 규율을 강화하면 반대 의견은 줄어들겠지만, 반대파 당원들의 탈당으로 이어질 수 있습니다.
 
 # enforcing party discipline applies to all parties.
 
 # each party has a concessions action and an expulsions action.
 
 @concessions_reformists
-title: Give concessions to the reformists.
+title: 개혁파에게 양보한다.
 view-if: reformist_dissent > 30
 on-arrival: reformist_dissent -= 15; left_dissent += 10
 
-We have promised to adopt a more reformist posture. This may alienate the left, however.
+우리는 더 개혁주의적인 태도를 취하기로 약속했습니다. 그러나 이는 좌파를 소외시킬 수도 있습니다.
 
 @concessions_center
-title: Give concessions to the centrists.
+title: 중앙파에게 양보한다.
 view-if: center_dissent > 30
 on-arrival: center_dissent -= 15; reformist_dissent += 8; left_dissent += 8; neorevisionist_dissent += 8
 
-We have promised to take more policy suggestions from the centrists. Both the left and reformist wings of the party might be displeased.
+우리는 중앙파의 정책 제안을 더 많이 수용하기로 약속했습니다. 당내 좌파와 개혁파 모두 불쾌해할 수 있습니다.
 
 @concessions_left
-title: Give concessions to the left.
+title: 좌파에게 양보한다.
 view-if: left_dissent > 30
 on-arrival: left_dissent -= 15; reformist_dissent += 10; center_dissent += 5
 
-We have promised that we will listen to the left wing of the party. Of course, this leads to increased dissent from the reformists and centrists.
+우리는 당내 좌파의 목소리에 귀를 기울이겠다고 약속했습니다. 물론 이는 개혁파와 중앙파의 반발을 불러올 것입니다.
 
 @concessions_labor
-title: Give concessions to labor.
+title: 노동계에 양보한다.
 view-if: labor_dissent > 30
 on-arrival: labor_dissent -= 15; center_dissent += 10
 
-The trade unions will be granted more influence in party decision making. This upsets the centrists, who would prefer to centralize political decision making within the party.
+노동조합은 당의 의사 결정 과정에서 더 많은 영향력을 갖게 될 것입니다. 이는 당내 정치적 의사 결정의 중앙 집중화를 선호하는 중앙파들을 화나게 할 것입니다.
 
 @concessions_neorevisionists
-title: Give concessions to the neorevisionists.
+title: 신수정주의자들에게 양보한다.
 view-if: neorevisionist_dissent > 30 and neorevisionism = 1
 on-arrival: neorevisionist_dissent -= 15; center_dissent += 10;
 
-Giving the neorevisionists more influence will cause increased dissent from the centrists.
+신수정주의자들에게 더 많은 영향력을 부여하는 것은 중앙파의 반발을 야기할 것입니다.
 
 
 @do_nothing
-title: Let the factions argue with themselves.
+title: 파벌들이 알아서 논쟁하게 둔다.
 on-arrival: labor_dissent += 1; left_dissent += 1; center_dissent += 1; reformist_dissent += 1
 
-Let the factions bicker; perhaps dissent is healthy for the party.
+파벌들이 서로 옥신각신하게 두십시오. 어쩌면 반대 의견이 당에 건전한 영향을 줄지도 모릅니다.
 
 
 @expel_reformists
-title: Expel the dissident reformists.
+title: 반대하는 개혁파를 제명한다.
 view-if: reformist_dissent > 30
 
 @expel_left
-title: Expel the dissident leftists.
+title: 반대하는 좌파를 제명한다.
 view-if: left_dissent > 30
 
 @expel_center
-title: Expel the centrists.
+title: 중앙파를 제명한다.
 view-if: center_dissent > 30
 
 @expel_labor
-title: Expel the labor supporters.
+title: 노동계 지지자들을 제명한다.
 view-if: labor_dissent > 30
