@@ -26,7 +26,7 @@ The Reichswehr and Stalhelm are already preparing to enter Saxony. Our forces ar
 - @surrender
 
 @defend_2
-on-arrival: resist_coup = 1; saxony_joever = 0; reformist_dissent += 10; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += rfb_strength*rfb_militancy; defense_strength += workers_spd_normalized*(1 - dissent)*(1 - unemployed/100); defense_strength += workers_kpd_normalized*(2 - unemployed/100); defense_strength*0.75; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)
+on-arrival: resist_coup = 1; saxony_joever = 0; reformist_dissent += 10; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += rfb_strength*rfb_militancy; defense_strength += workers_spd_normalized*(1 - dissent)*(1 - unemployed/100); defense_strength += workers_kpd_normalized*(2 - unemployed/100); defense_strength *= 0.75; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)
 go-to: defend_2_civil_war if defense_strength < enemy_strength; defend_2_victory if defense_strength >= enemy_strength
 
 @defend_2_civil_war
