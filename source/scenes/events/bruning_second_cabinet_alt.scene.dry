@@ -1,5 +1,5 @@
-title: The Second Brüning cabinet
-subtitle: Chancellor [+ chancellor +] has organized his cabinet!
+title:  제2차 브뤼닝 내각
+subtitle: [+ chancellor +] 총리가 내각 구성을 완료했습니다!
 new-page: true
 view-if: total_bruning_time > 0 and bruning_toleration_time and not in_center_right_coalition and not in_right_coalition and banking_crisis_seen and emergency_decree_alt_seen and not emergency_decree_mitigate and dvp_leader == "Dingeldey" and not lvp_formed and flavour_24_trigger and time == flavour_24_trigger_time + 3 and not second_bruning_cabinet_seen and dvp_exist
 on-arrival: {!
@@ -16,29 +16,29 @@ tags: event
 face-image: img/bruningetcurtius.jpg
 max-visits: 1
 
-= The Second Brüning cabinet
+= 제2차 브뤼닝 내각
 
-The <span style="color: #C0A054;">**DVP**</span>'s Julius Curtius has resigned from the Foreign Ministry following the disastrous failure of the Austro-German customs union, which he was the architect of. With no more <span style="color: #C0A054;">**DVP**</span> ministers in cabinet, the last obstacle preventing them from breaking with Brüning's government has been removed. In an attempt to maintain their support, Brüning has formed a more conservative second cabinet, which the <span style="color: #C0A054;">**DVP**</span> reluctantly accepts, considering the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> have no interest in entering government.
+<span style="color: #C0A054;">**DVP**</span>의 율리우스 쿠르티우스가 자신이 입안했던 오스트리아-독일 관세 동맹이 처참하게 실패함에 따라 외무장관직에서 사임했습니다. 내각에 더 이상 <span style="color: #C0A054;">**DVP**</span> 소속 장관이 남지 않게 되자, 그들이 브뤼닝 정부와 결별하는 것을 막아주던 마지막 장애물이 사라졌습니다. <span style="color: #C0A054;">**DVP**</span>의 지지를 유지하기 위해 브뤼닝은 더 보수적인 제2차 내각을 구성했고, <span style="color: #C0A054;">**DVP**</span>는 <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>이 정부 참여에 관심이 없다는 점을 고려하여 이를 마지못해 받아들였습니다.
 
-We must now decide whether to continue tolerating this more right-leaning Brüning government—now absent of leftist figures such as the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]’s Joseph Wirth—or to finally use this as a pretext to break away from it, as Brüning has introduced his third emergency decree, which further reduces salaries, and cuts pensions and welfare benefits to address the deficit caused by the banking crisis.
+우리는 이제 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 요제프 비르트 같은 좌파 인물들이 배제되어 더욱 우경화된 이 브뤼닝 정부를 계속 묵인할 것인지, 아니면 브뤼닝이 은행 위기로 인한 적자를 메우기 위해 급여를 추가 삭감하고 연금과 복지 혜택을 줄이는 제3차 긴급 명령을 도입한 것을 빌미로 마침내 그와 결별할 것인지 결정해야 합니다.
 
 - @vote_yes
 - @vote_no
 
 @vote_no
-title: Vote against the Second Brüning cabinet, ending the toleration agreement.
+title: 제2차 브뤼닝 내각에 반대하여 묵인 정책을 철회한다.
 on-arrival: time_to_election = 3; spd_toleration = 0; spd_toleration_right = 0; second_bruning_cabinet_dead = 1
 call: set_next_election_time
 
-We have officially broken with the [+ chancellor +] government, voting against them in a vote of no confidence. Continuing to support such a government would go against all our values. The bourgeois parties have also joined in, choosing to cut their losses rather than engage in a futile attempt to save Brüning’s government.
+우리는 공식적으로 [+ chancellor +] 정부와 결별을 선언하고, 불신임 투표에서 반대표를 던졌습니다. 그러한 정부를 계속 지지하는 것은 우리의 모든 가치에 반하는 일입니다. 부르주아 정당들 또한 브뤼닝 정부를 구하려는 헛된 시도에 매달리기보다는 손실을 줄이기로 결정하고 이에 동참했습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @vote_yes
-title: Vote in favor of this measure to continue the toleration agreement.
+title: 묵인 정책을 유지하기 위해 이 조치에 찬성한다.
 view-if: spd_toleration
 on-arrival: left_dissent += 10; labor_dissent += 5; workers_spd -= 3; workers_nsdap += 2; workers_kpd += 1; unemployed_spd -= 3; unemployed_nsdap += 2; unemployed_kpd += 1; kpd_relation -= 5
 
-We are compelled once again to vote in favor of the [+ chancellor +] government to prevent the extremist parties on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> and <span style="color: #700000;">left</span> from translating their growing popular support into parliamentary gains.
+우리는 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>와 <span style="color: #700000;">좌파</span>의 극단주의 정당들이 높아지는 대중적 지지를 바탕으로 의회 의석을 늘리는 것을 막기 위해, 다시 한번 울며 겨자 먹기로 [+ chancellor +] 정부에 찬성표를 던질 수밖에 없습니다.
 
-Despite the new right-wing cabinet, the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> is still refusing to support Brüning, as they want all the power to themselves. 
+새로운 우파 내각이 출범했음에도 불구하고, <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>은 모든 권력을 독차지하길 원하기 때문에 여전히 브뤼닝 지지를 거부하고 있습니다.

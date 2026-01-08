@@ -1,6 +1,6 @@
-title: The <span style="color: #3E88B3;">**DNVP**</span> breaks with Brüning
+title: <span style="color: #3E88B3;">**DNVP**</span>가 브뤼닝과 결별하다
 new-page: true
-subtitle: They're finally made up their mind.
+subtitle: 그들이 마침내 결단을 내렸습니다.
 tags: event
 view-if: total_bruning_time >= 6 and spd_toleration_right and dnf_votes + nsdap_votes + dnvp_angry >= (dnvp_votes * 5) and moderate_dnvp_hitler and bruning_time >= 3 and not cvp_formed
 on-arrival: pro_republic -= dnvp_votes / 2; hindenburg_angry_bruning += 10
@@ -18,15 +18,15 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= The <span style="color: #3E88B3;">**DNVP**</span> breaks with Brüning
+= <span style="color: #3E88B3;">**DNVP**</span>가 브뤼닝과 결별하다
 
-The continued rise of the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span> following the failed attempt of more radical <span style="color: #3E88B3;">**DNVP**</span> members to bring down the Brüning government has forced even the most pro-Brüning politicians to reconsider their prior decision. 
+브뤼닝 정부를 무너뜨리려던 <span style="color: #3E88B3;">**DNVP**</span> 내 강경파의 시도가 실패한 이후에도 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>의 지지율이 계속 상승하자, 가장 친브뤼닝 성향의 정치인들조차 이전의 결정을 재고할 수밖에 없게 되었습니다.
 
 - @vonc_yes
 
 @vonc_yes
-title: Brüning's government collapses. 
-subtitle: President [+ president +] will decide if new elections are necessary.
+title: 브뤼닝 정부가 붕괴하다.
+subtitle: [+ president +] 대통령이 조기 총선 여부를 결정할 것입니다.
 on-arrival: {!
 Q.bruning_coalition = Q.neo_weimar_coalition;
 Q.bruning_coalition_loss += Q.dnvp_r;
@@ -39,20 +39,20 @@ go-to: election_set if hindenburg_angry_bruning >= 100 or bruning_coalition < 50
 on-arrival: spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 1; spd_toleration_right = 0
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-President [+ president +] has allowed Brüning to reshuffle his cabinet, replacing the <span style="color: #3E88B3;">**DNVP**</span>-affiliated ministers with bourgeois ones. At least this is a step up from what we had previously.
+[+ president +] 대통령은 브뤼닝에게 내각 개편을 허용하여 <span style="color: #3E88B3;">**DNVP**</span> 소속 장관들을 부르주아 진영 인사들로 교체하게 했습니다. 적어도 이전보다는 상황이 조금 나아졌습니다.
 
 @election_set
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0
 call: set_next_election_time
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-President [+ president +], tired of this instability, has forced Brüning's resignation to pave the way for new elections, hoping that the gains of the <span style="color: #7A3C00;">national</span> <span style="color: #003755;">opposition</span> will persuade him to enter a coalition with them.
+[+ president +] 대통령은 이러한 불안정에 지쳐 브뤼닝을 사임시키고 새로운 선거를 치르기로 했습니다. 그는 <span style="color: #7A3C00;">국가</span> <span style="color: #003755;">반대파</span>가 선거에서 승리하면 연정에 참여하도록 설득할 수 있을 것이라 기대하고 있습니다.
 
-The <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+<span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 연정이 붕괴되었습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @new_prussia_election
 on-arrival: prussia_coalition_trigger = 1
 
-The Prussian coalition isn't able to survive either, pressure from the national conservatives within the <span style="color: #3E88B3;">**DNVP**</span> forces them to exit from the <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition there as well.
+프로이센 연정 또한 살아남지 못했습니다. <span style="color: #3E88B3;">**DNVP**</span> 내 국가 보수주의자들의 압력으로 인해 그들은 프로이센의 <span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 연정에서도 탈퇴하게 되었습니다.
 
-- @prussian_coalition_formation: Negotiate a new Prussian coalition.
+- @prussian_coalition_formation: 새로운 프로이센 연정을 협상한다.

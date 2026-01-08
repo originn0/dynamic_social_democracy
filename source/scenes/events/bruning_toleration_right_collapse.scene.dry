@@ -1,37 +1,37 @@
-title: The <span style="color: #3E88B3;">**DNVP**</span> breaks with Brüning
+title: <span style="color: #3E88B3;">**DNVP**</span>가 브뤼닝과 결별하다
 new-page: true
-subtitle: The rise of the <span style="color: #7A3C00;">national</span> <span style="color: #003755;">opposition</span> has forced them to act.
+subtitle: <span style="color: #7A3C00;">민족주의</span> <span style="color: #003755;">야당</span>의 부상이 그들의 행동을 촉발했습니다.
 tags: event
 view-if: total_bruning_time >= 6 and spd_toleration_right and dnf_votes + nsdap_votes + dnvp_angry >= (dnvp_votes * 3) and bruning_time >= 3 and not cvp_formed
 on-arrival: pro_republic -= dnvp_votes / 2; hindenburg_angry_bruning += 25; moderate_dnvp_hitler = 1; dvp_right += 3; lvp_right += 3; ddp_right += 1
 max-visits: 1
 face-image: img/dnvp4.jpg
 
-= The <span style="color: #3E88B3;">**DNVP**</span> breaks with Brüning
+= <span style="color: #3E88B3;">**DNVP**</span>가 브뤼닝과 결별하다
 
-The sharp rise of the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span> in local elections has triggered mass panic within the <span style="color: #3E88B3;">**DNVP**</span>, as pessimism and a noticeable shift away from democracy rapidly take hold within the once-constructive "democratic" party. They now believe that only closer cooperation with the <span style="color: #7A3C00;">national</span> <span style="color: #003755;">opposition</span> and a rightward shift in alignment with the nation can salvage their declining poll numbers.
+지방 선거에서 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>가 급부상하자 <span style="color: #3E88B3;">**DNVP**</span> 내부는 공황 상태에 빠졌습니다. 한때 건설적인 "민주적" 정당이었던 이곳에 비관론과 반민주주의적 기류가 빠르게 자리 잡았습니다. 그들은 이제 <span style="color: #7A3C00;">민족주의</span> <span style="color: #003755;">야당</span>과 더 긴밀히 협력하고 국가주의적 우파 노선으로 이동하는 것만이 추락하는 지지율을 회복할 유일한 길이라고 믿고 있습니다.
 
-Their first step toward this goal is an attempt to bring down the Brüning government with the assistance of the anti-democratic parties, hoping either to force Brüning into reorganizing his cabinet or to trigger elections that could deliver a right-wing majority. However, Hugenberg and Hitler remain committed to their all-or-nothing strategy, demanding the chancellorship outright from Brüning. This leaves only the prospect of fresh elections as a possibility, with Hitler being very vague about what his government would look like. Given that Hugenberg and Hitler are far from the most trustworthy figures, the party remains in limbo for now.
+이 목표를 위한 첫 단계로 그들은 반민주적 정당들과 손잡고 브뤼닝 정부를 무너뜨리려 하고 있습니다. 이를 통해 브뤼닝에게 내각 개편을 강요하거나, 우파 과반을 확보할 수 있는 선거를 치르기를 희망합니다. 그러나 후겐베르크와 히틀러는 '전부 아니면 전무' 전략을 고수하며 브뤼닝에게 총리직을 즉시 내놓으라고 요구하고 있습니다. 히틀러가 자신의 정부 구상에 대해 모호한 태도를 보이는 상황에서, 남은 가능성은 조기 총선뿐입니다. 후겐베르크와 히틀러가 신뢰할 수 있는 인물들이 아니기에, 당의 앞날은 불투명한 상태입니다.
 
-Hopefully [+ dnvp_leader +] can restore order within his party, and prevent new elections from delivering catastrophic gains for the <span style="color: #7A3C00;">far</span>-<span style="color: #003755;">right</span>.
+부디 [+ dnvp_leader +]가 당내 혼란을 수습하고, 새로운 선거를 통해 <span style="color: #7A3C00;">극</span><span style="color: #003755;">우</span>파가 재앙적인 이득을 챙기는 것을 막을 수 있기를 바랍니다.
 
 - @vonc_yes
 - @vonc_no
 
 @vonc_yes
-title: Support the vote of no confidence, voting against the government.
-subtitle: We will be the one to destroy Brüning, screw you.
+title: 불신임안을 지지하여 정부에 반대표를 던진다.
+subtitle: 브뤼닝을 무너뜨리는 건 바로 우리가 될 것입니다. 엿이나 먹으라죠.
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 2; lvp_relation -= 3; reformist_dissent += 5
 call: set_next_election_time
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-We have seized the initiative from the <span style="color: #3E88B3;">**DNVP**</span>, toppling Chancellor [+ chancellor +] government with the support of votes from the extremes of German politics.
+우리는 <span style="color: #3E88B3;">**DNVP**</span>로부터 주도권을 빼앗아, 독일 정치의 양극단 세력의 표를 모아 [+ chancellor +] 총리 정부를 무너뜨렸습니다.
 
-The <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+<span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 연정이 붕괴되었습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @vonc_no
-title: Oppose the vote of no confidence, voting in favor of the government.
-subtitle: We will hope that the <span style="color: #3E88B3;">**DNVP**</span> manages to get its house in order.
+title: 불신임안에 반대하여 정부에 찬성표를 던진다.
+subtitle: 우리는 <span style="color: #3E88B3;">**DNVP**</span>가 집안 단속을 잘 해내길 바랄 뿐입니다.
 on-arrival: left_dissent += 5
 go-to: vonc_hergt if dnvp_leader == "Hergt"; vonc_treviranus if dnvp_leader == "Treviranus"; vonc_lambach if dnvp_leader == "Lambach"; vonc_moderate if dnvp_leader == "Schiele" or dnvp_leader == "Westarp"
 
@@ -39,11 +39,11 @@ go-to: vonc_hergt if dnvp_leader == "Hergt"; vonc_treviranus if dnvp_leader == "
 @vonc_hergt
 on-arrival: dnvp_leader = "Westarp"
 
-Oskar Hergt, who was once forced to resign nearly a decade ago over his decision to allow a free vote on the Dawes Plan—the very plan that rescued Germany from hyperinflation and ushered in the <span style="color: #FFDF00;">Golden Twenties</span>—is now tendering his resignation once again after failing to impose party discipline.
+거의 10년 전, 독일을 초인플레이션에서 구하고 <span style="color: #FFDF00;">황금의 20년대</span>를 열었던 도스 안에 대한 자유 투표를 허용했다는 이유로 사임해야 했던 오스카 헤르크트가, 당내 규율 확립에 실패하고 다시 한번 사임서를 제출했습니다.
 
-History seems to be repeating itself: the <span style="color: #3E88B3;">**DNVP**</span> is once again deeply divided, with its pragmatic wing supporting Brüning while its emboldened right wing aligns with the <span style="color: #7A3C00;">national</span> <span style="color: #003755;">opposition</span>. The party now faces a fateful decision—either accept the bitter pill of working within the system or risk catastrophic consequences, possibly even the destruction of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic itself.
+역사는 반복되는 듯합니다. <span style="color: #3E88B3;">**DNVP**</span>는 또다시 심각하게 분열되었습니다. 실용주의 파벌은 브뤼닝을 지지하는 반면, 기세가 오른 우파 파벌은 <span style="color: #7A3C00;">국가</span> <span style="color: #003755;">반대파</span>와 동조하고 있습니다. 당은 이제 운명적인 선택의 기로에 섰습니다. 체제 내에서 협력하는 쓴 약을 삼킬 것인가, 아니면 재앙적인 결과, 어쩌면 <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 공화국 자체의 파멸을 초래할 위험을 감수할 것인가.
 
-- @results: The Reichstag convenes.
+- @results: 제국의회가 소집된다.
 
 @results
 on-arrival: {!
@@ -80,11 +80,11 @@ Q.in_right_coalition = 0;
 !}
 go-to: election_set if anti_bruning_dnvp >= pro_bruning_dnvp
 
-Pro-Brüning delegates: [+ pro_bruning_dnvp +]
+친브뤼닝 대의원: [+ pro_bruning_dnvp +]
 
-Anti-Brüning delegates: [+ anti_bruning_dnvp +]
+반브뤼닝 대의원: [+ anti_bruning_dnvp +]
 
-[? if pro_bruning_dnvp >= anti_bruning_dnvp: The pro-Brüning delegates have maintained control of the party, and the new leader of the <span style="color: #3E88B3;">**DNVP**</span>, coincidentally Westarp again, has enforced party discipline, with only a few radical members voting against. ?][? if anti_bruning_dnvp >= pro_bruning_dnvp: The pro-Brüning delegates have lost control of the party, and the majority of the party's delegation has agreed to back a vote of no confidence against Brüning. Following Hergt's resignation, Westarp is, coincidentally, re-elected again shortly after. ?]
+[? if pro_bruning_dnvp >= anti_bruning_dnvp: 친브뤼닝 대의원들이 당의 주도권을 지켰고, 공교롭게도 다시 <span style="color: #3E88B3;">**DNVP**</span>의 지도자가 된 베스타르프가 당 규율을 확립하여 소수의 급진파 의원들만이 반대표를 던졌습니다. ?][? if anti_bruning_dnvp >= pro_bruning_dnvp: 친브뤼닝 대의원들이 당의 주도권을 잃었으며, 당 소속 의원 과반수가 브뤼닝에 대한 불신임안을 지지하기로 합의했습니다. 헤르크트의 사임 직후, 공교롭게도 베스타르프가 다시 대표로 선출되었습니다. ?]
 
 @vonc_treviranus
 on-arrival: {!
@@ -103,23 +103,23 @@ Q.bruning_coalition = Q.cordon_sanitaire;
 Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;
 !}
 
-Gottfried Treviranus, a strong supporter of Brüning and, to some extent, democracy, has enforced party discipline to ensure the Reichstag delegation votes in favor of Brüning. However, despite his efforts to democratize the party, many defy his orders and vote against Brüning's government.
+브뤼닝과 민주주의의 강력한 지지자인 고트프리트 트레비라누스는 제국의회 의원들이 브뤼닝을 지지하도록 당론을 강제했습니다. 그러나 당을 민주화하려는 그의 노력에도 불구하고, 많은 의원이 그의 지시를 거부하고 브뤼닝 정부에 반대표를 던졌습니다.
 
-- @results2: The Reichstag convenes.
-- @results3: The Reichstag convenes.
+- @results2: 제국의회가 소집된다.
+- @results3: 제국의회가 소집된다.
 
 @results2
 view-if: bruning_coalition >= 50
 on-arrival: new_middle_dnvp -= 2; new_middle_dnf += 2; new_middle_nsdap += 2; old_middle_dnvp -= 4; old_middle_dnf += 2; old_middle_nsdap += 4; rural_dnvp -= 3; rural_nsdap += 3; workers_dnvp -= 2; workers_nsdap += 2; dvp_left += 1; ddp_left += 1; lvp_left += 1
 
-Despite the defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to the <span style="color: #003755;">**DNF**</span>, Brüning's government has retained the support of [+ bruning_coalition +]% of the Reichstag. However, despite this victory, the episode has severely radicalized the <span style="color: #3E88B3;">**DNVP**</span>'s voters, leading many to defect to the more radical <span style="color: #003755;">**DNF**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>.
+<span style="color: #3E88B3;">**DNVP**</span> 의원 일부가 <span style="color: #003755;">**DNF**</span>로 이탈했음에도 불구하고, 브뤼닝 정부는 제국의회 의석의 [+ bruning_coalition +]% 지지를 확보하여 살아남았습니다. 그러나 승리에도 불구하고 이 사건은 <span style="color: #3E88B3;">**DNVP**</span> 지지층을 급격히 급진화시켰고, 많은 유권자가 더 과격한 <span style="color: #003755;">**DNF**</span>나 심지어 <span style="color: #7A3C00;">**NSDAP**</span>로 돌아서게 만들었습니다.
 
 @results3
 view-if: bruning_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; new_middle_dnvp -= 2; new_middle_dnf += 2; new_middle_nsdap += 2; old_middle_dnvp -= 4; old_middle_dnf += 3; old_middle_nsdap += 4; rural_dnvp -= 3; rural_nsdap += 3; rural_dnf += 2; workers_dnvp -= 2; workers_nsdap += 2; dvp_right += 3; ddp_right += 1; lvp_right += 2
 go-to: election_set
 
-The defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of no confidence, ushering in new elections where the extremists stand to gain.
+<span style="color: #3E88B3;">**DNVP**</span> 의원 일부가 후겐베르크의 <span style="color: #003755;">**DNF**</span>로 이탈하면서 브뤼닝에 대한 불신임안이 통과되었고, 극단주의자들이 득세할 새로운 선거가 치러지게 되었습니다.
 
 @vonc_lambach
 on-arrival: {!
@@ -138,27 +138,27 @@ Q.bruning_coalition = Q.cordon_sanitaire;
 Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;
 !}
 
-Walther Lambach, a strong supporter of Brüning and, to some extent, democracy, has enforced party discipline to ensure the Reichstag delegation votes in favor of Brüning. However, the anger many within his party has against him and his <span style="color: #6D5298;">Christian Social</span> ideals has split the party almost down the middle.
+브뤼닝과 민주주의의 강력한 지지자인 발터 람바흐는 제국의회 의원들이 브뤼닝을 지지하도록 당론을 강제했습니다. 그러나 그와 그의 <span style="color: #6D5298;">기독교 사회주의</span> 이념에 반감을 품은 당내 다수가 반발하면서 당은 사실상 두 쪽이 나고 말았습니다.
 
-- @results6: The Reichstag convenes.
-- @results7: The Reichstag convenes.
+- @results6: 제국의회가 소집된다.
+- @results7: 제국의회가 소집된다.
 
 @results6
 view-if: bruning_coalition >= 50
 on-arrival: new_middle_dnvp -= 6; new_middle_dnf += 4; new_middle_nsdap += 2; old_middle_dnvp *= 0.5; old_middle_dnf += 4; old_middle_nsdap += 2; rural_dnvp *= 0.6; rural_dnf += 4; rural_nsdap += 2; workers_dnvp -= 2; workers_nsdap += 2; dvp_left += 1; ddp_left += 1; lvp_left += 1; lambachover = 1
 
-Despite the defection of a significant portion of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to the <span style="color: #003755;">**DNF**</span>, Brüning's government has retained the support of [+ bruning_coalition +]% of the Reichstag. 
+<span style="color: #3E88B3;">**DNVP**</span> 의원 상당수가 <span style="color: #003755;">**DNF**</span>로 이탈했음에도 불구하고, 브뤼닝 정부는 제국의회 의석의 [+ bruning_coalition +]% 지지를 확보하여 살아남았습니다.
 
-However, while this may seem like a victory, the loss of nearly 40% of the party's parliamentary group has triggered a broader defection of the <span style="color: #3E88B3;">**DNVP**</span>'s non-worker voter base to the <span style="color: #003755;">**DNF**</span>—and even the <span style="color: #7A3C00;">**NSDAP**</span>.
+그러나 이것이 승리처럼 보일지 몰라도, 당 의석의 거의 40%를 잃은 것은 <span style="color: #3E88B3;">**DNVP**</span>의 비노동자 지지층이 <span style="color: #003755;">**DNF**</span>, 심지어 <span style="color: #7A3C00;">**NSDAP**</span>로 대거 이탈하는 계기가 되었습니다.
 
 @results7
 view-if: bruning_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; new_middle_dnvp -= 6; new_middle_dnf += 4; new_middle_nsdap += 2; old_middle_dnvp *= 0.5; old_middle_dnf += 4; old_middle_nsdap += 2; rural_dnvp *= 0.6; rural_dnf += 4; rural_nsdap += 2; workers_dnvp -= 2; workers_nsdap += 2; lambachover = 1; dvp_right += 3; ddp_right += 1; lvp_right += 2
 go-to: election_set
 
-The defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of no confidence, ushering in new elections where the extremists stand to gain.
+<span style="color: #3E88B3;">**DNVP**</span> 의원 일부가 후겐베르크의 <span style="color: #003755;">**DNF**</span>로 이탈하면서 브뤼닝에 대한 불신임안이 통과되었고, 극단주의자들이 득세할 새로운 선거가 치러지게 되었습니다.
 
-The loss of nearly 40% of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary group has triggered a broader defection of the <span style="color: #3E88B3;">**DNVP**</span>'s non-worker voter base to the <span style="color: #003755;">**DNF**</span>—and even the <span style="color: #7A3C00;">**NSDAP**</span>.
+<span style="color: #3E88B3;">**DNVP**</span> 의석의 거의 40%를 잃은 것은 <span style="color: #3E88B3;">**DNVP**</span>의 비노동자 지지층이 <span style="color: #003755;">**DNF**</span>, 심지어 <span style="color: #7A3C00;">**NSDAP**</span>로 대거 이탈하는 계기가 되었습니다.
 
 @vonc_moderate
 on-arrival: {!
@@ -177,32 +177,32 @@ Q.bruning_coalition = Q.cordon_sanitaire;
 Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;
 !}
 
-[? if dnvp_leader == "Schiele": Martin Schiele, a strong supporter of Brüning—and his Minister of Agriculture—has successfully persuaded the <span style="color: #385A38;">agrarian</span> wing of the <span style="color: #3E88B3;">**DNVP**</span> to oppose the vote of confidence. He also enlists the support of Westarp and incumbent cabinet members to lobby the rest of the party. However, some radical members, who remained in the party solely due to their shared hatred of Hugenberg, are expected to defy party discipline. ?][? if dnvp_leader == "Westarp": Kuno von Westarp, a longtime leader of the <span style="color: #3E88B3;">**DNVP**</span> and one of Brüning's strongest supporters, has rallied members from all wings of the party to oppose the proposed vote of no confidence, warning of the political and economic instability that would follow if it passed. However, some radical members, who remained in the party solely due to their shared hatred of Hugenberg, are expected to defy party discipline. ?]
+[? if dnvp_leader == "Schiele": 브뤼닝의 강력한 지지자이자 농업부 장관인 마르틴 쉴레는 <span style="color: #3E88B3;">**DNVP**</span> 내 <span style="color: #385A38;">농업</span> 파벌이 신임 투표에 반대하도록 설득하는 데 성공했습니다. 그는 또한 베스타르프와 현직 장관들의 지원을 받아 당내 다른 의원들을 설득했습니다. 그러나 오직 후겐베르크에 대한 반감 때문에 당에 남아있던 일부 급진파 의원들은 당론을 거부할 것으로 보입니다. ?][? if dnvp_leader == "Westarp": <span style="color: #3E88B3;">**DNVP**</span>의 오랜 지도자이자 브뤼닝의 가장 든든한 우군 중 한 명인 쿠노 폰 베스타르프는 불신임안이 통과될 경우 닥칠 정치적, 경제적 혼란을 경고하며 당내 모든 계파를 결집해 반대 입장을 표명했습니다. 그러나 오직 후겐베르크에 대한 반감 때문에 당에 남아있던 일부 급진파 의원들은 당론을 거부할 것으로 보입니다. ?]
 
-- @results4: The Reichstag convenes.
-- @results5: The Reichstag convenes.
+- @results4: 제국의회가 소집된다.
+- @results5: 제국의회가 소집된다.
 
 @results4
 view-if: bruning_coalition >= 50
 on-arrival: new_middle_dnvp -= 2; new_middle_dnf += 2; new_middle_nsdap += 2; old_middle_dnvp -= 4; old_middle_dnf += 2; old_middle_nsdap += 4; workers_dnvp -= 2; workers_nsdap += 2; dvp_left += 1; ddp_left += 1; lvp_left += 1
 
-Despite the defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to the <span style="color: #003755;">**DNF**</span>, Brüning's government has retained the support of [+ bruning_coalition +]% of the Reichstag. However, despite this victory, the episode has severely radicalized the <span style="color: #3E88B3;">**DNVP**</span>'s voters, leading many to defect to the more radical <span style="color: #003755;">**DNF**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>.
+<span style="color: #3E88B3;">**DNVP**</span> 의원 일부가 <span style="color: #003755;">**DNF**</span>로 이탈했음에도 불구하고, 브뤼닝 정부는 제국의회 의석의 [+ bruning_coalition +]% 지지를 확보하여 살아남았습니다. 그러나 승리에도 불구하고 이 사건은 <span style="color: #3E88B3;">**DNVP**</span> 지지층을 급격히 급진화시켰고, 많은 유권자가 더 과격한 <span style="color: #003755;">**DNF**</span>나 심지어 <span style="color: #7A3C00;">**NSDAP**</span>로 돌아서게 만들었습니다.
 
 @results5
 view-if: bruning_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; new_middle_dnvp -= 3; new_middle_dnf += 3; new_middle_nsdap += 3; old_middle_dnvp -= 5; old_middle_dnf += 3; old_middle_nsdap += 5; rural_dnvp -= 4; rural_nsdap += 4; workers_dnvp -= 3; workers_nsdap += 3; dvp_right += 3; ddp_right += 1; lvp_right += 2
 go-to: election_set
 
-The defections of even a small amount of members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of no confidence, ushering in new elections where the extremists stand to gain.
+<span style="color: #3E88B3;">**DNVP**</span> 의원 중 소수만이 후겐베르크의 <span style="color: #003755;">**DNF**</span>로 이탈했음에도 불구하고, 브뤼닝에 대한 불신임안이 통과되어 극단주의자들이 득세할 새로운 선거가 치러지게 되었습니다.
 
 @election_set
 call: set_next_election_time
 
-The <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+<span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 연정이 붕괴되었습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @new_prussia_election
 on-arrival: prussia_coalition_trigger = 1
 
-The Prussian coalition isn't able to survive either, pressure from the national conservatives within the <span style="color: #3E88B3;">**DNVP**</span> forces them to exit from the <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition there as well.
+프로이센 연정 또한 살아남지 못했습니다. <span style="color: #3E88B3;">**DNVP**</span> 내 국가 보수주의자들의 압력으로 인해 그들은 프로이센의 <span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 연정에서도 탈퇴하게 되었습니다.
 
-- @prussian_coalition_formation: Negotiate a new Prussian coalition.
+- @prussian_coalition_formation: 새로운 프로이센 연정을 협상한다.
