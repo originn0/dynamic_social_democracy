@@ -1,40 +1,40 @@
-title: End of the [+ chancellor +] government
-subtitle: Chancellor [+ chancellor +] proposes a controversial tax bill.
+title: [+ chancellor +] 정부의 최후
+subtitle: [+ chancellor +] 총리가 논란의 여지가 있는 세금 법안을 발의합니다.
 new-page: true
 view-if: bruning_event_timer = 2 and dnvp_ideology == "Radical" and not dnvp_split_2 and dnvp_bruning == 1 and not bourgeois_coalition >= 50 and not cvp_formed
 tags: event
 max-visits: 1
 
-= Tax reform
+= 세금 개혁
 
-Due to the crisis of the Great Depression, government budgets have fallen and welfare spending has risen substantially. Chancellor [+ chancellor +] has proposed another reform of German finances featuring unpopular tax increases.
+대공황이라는 위기 속에서 정부 예산은 급감했고 복지 지출은 크게 늘어났습니다. [+ chancellor +] 총리는 인기 없는 증세를 골자로 하는 또 다른 독일 재정 개혁안을 제안했습니다.
 
-Chancellor [+ chancellor +] has used Article 48 of the constitution for the first time in order to pass the bill. In response, a motion has been put forward to rescind the government's emergency powers, and if it succeeds, [+ chancellor +] is prepared to dissolve the Reichstag and call for new elections.
+[+ chancellor +] 총리는 법안 통과를 위해 사상 처음으로 헌법 제48조를 발동했습니다. 이에 맞서 정부의 긴급 권한을 철회하자는 발의안이 제출되었으며, 만약 이것이 통과된다면 [+ chancellor +] 총리는 제국의회를 해산하고 조기 총선을 소집할 준비가 되어 있습니다.
 
 - @vote_no
 - @vote_yes
 
 @vote_no
-title: Vote for this motion, ending the coalition.
+title: 이 발의안에 찬성하여 연정을 끝낸다.
 on-arrival: time_to_election = 2; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 3; other_r += dnvp_r*0.4 if not kvp_formed; kvp_r += dnvp_r*0.4 if kvp_formed; dnvp_r = dnvp_r*0.6; rural_dnvp -= 4; new_middle_dnvp -= 5; old_middle_dnvp -= 5; rural_other += 5 if not kvp_formed; new_middle_other += 5 if not kvp_formed; old_middle_other += 5 if not kvp_formed; rural_kvp += 5 if kvp_formed; new_middle_kvp += 5 if kvp_formed; old_middle_kvp += 5 if kvp_formed; bruning_vonc_2 = 1; dnvp_split_2 = 1; dnvp_split_2_timer = 1 if not kvp_formed; bruning_event_timer = 0
 call: set_next_election_time_2
 go-to: recalculate
 
-We have voted against the [+ chancellor +] government in a vote of no confidence. The moderates within the <span style="color: #3E88B3;">**DNVP**</span> under Westarp have finally resigned from their party[? if kvp_formed:&nbsp;to join the <span style="color: #0087DC;">**KVP**</span> and?] to vote against our motion, although it still isn't enough to block it. 
+우리는 불신임 투표에서 [+ chancellor +] 정부에 반대표를 던졌습니다. 베스타르프가 이끄는 <span style="color: #3E88B3;">**DNVP**</span> 내 온건파들은 우리의 발의안에 반대표를 던지기 위해 마침내 탈당했습니다[? if kvp_formed:&nbsp;<span style="color: #0087DC;">**KVP**</span>에 합류하기 위해서 말입니다?]. 비록 그것만으로는 발의안 통과를 막기에 역부족이었지만 말입니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 
 @vote_yes
-title: Vote against the motion and to start a toleration agreement.
-subtitle: Our parliamentary delegation may refuse to obey our orders.
+title: 발의안에 반대하여 묵인 협정을 시작한다.
+subtitle: 우리 의원단이 당의 지시에 불복할 수도 있습니다.
 on-arrival: time_to_election = 2; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 3; other_r += dnvp_r*0.4 if not kvp_formed; kvp_r += dnvp_r*0.4 if kvp_formed; dnvp_r = dnvp_r*0.6; rural_dnvp -= 4; new_middle_dnvp -= 5; old_middle_dnvp -= 5; rural_other += 5 if not kvp_formed; new_middle_other += 5 if not kvp_formed; old_middle_other += 5 if not kvp_formed; rural_kvp += 5 if kvp_formed; new_middle_kvp += 5 if kvp_formed; old_middle_kvp += 5 if kvp_formed; bruning_vonc_2 = 1; dnvp_split_2 = 1; dnvp_split_2_timer = 1 if not kvp_formed; bruning_event_timer = 0; center_dissent += 20; labor_dissent += 20; left_dissent += 20
 call: set_next_election_time_2
 go-to: recalculate
 
-We have once again voted in favor of the [+ chancellor +] government in a vote of no confidence. However, our parliamentary delegation is in open revolt over this decision and has announced they will disobey our orders, ultimately bringing down the [+ chancellor +] government regardless. The moderates within the <span style="color: #3E88B3;">**DNVP**</span> under Westarp have finally resigned from their party[? if kvp_formed:&nbsp;to join the <span style="color: #0087DC;">**KVP**</span> and?] to vote the motion, although it still isn't enough to block it. 
+우리는 불신임 투표에서 다시 한번 [+ chancellor +] 정부에 찬성표를 던졌습니다. 그러나 우리 의원단은 이 결정에 공개적으로 반기를 들며 당의 지시에 따르지 않겠다고 선언했고, 결국 우리 의도와 상관없이 [+ chancellor +] 정부를 무너뜨렸습니다. 베스타르프가 이끄는 <span style="color: #3E88B3;">**DNVP**</span> 내 온건파들은 발의안에 찬성하기 위해 마침내 탈당했습니다[? if kvp_formed:&nbsp;<span style="color: #0087DC;">**KVP**</span>에 합류하기 위해서 말입니다?]. 비록 그것만으로는 결과를 뒤집기에 역부족이었지만 말입니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 
 @recalculate

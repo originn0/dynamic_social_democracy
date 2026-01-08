@@ -1,5 +1,5 @@
-title: Brüning's government lives on?
-subtitle: Chancellor [+ chancellor +] has assembled a majority government.
+title: 브뤼닝 정부가 살아남다?
+subtitle: [+ chancellor +] 총리가 과반 정부를 구성했습니다.
 new-page: true
 view-if: spd_in_government == 0 and spd_toleration == 0 and chancellor = "Brüning" and bourgeois_coalition >= 50 and not in_bourgeois_coalition and (not kvp_formed or young_plan_ratified)
 on-arrival: bruning_event_seen = 1; spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; in_bourgeois_coalition = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = ddp_name; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; bruning_event_timer = 0; bourgeois_cooperation += 10; z_relation -= 5; judicial_reform -= 1
@@ -7,23 +7,23 @@ tags: event
 priority: -1
 max-visits: 1
 
-= actually what the hell
+= 대체 이게 무슨 일입니까
 
-Following the collapse of the Grand coalition, President [+ president +] has appointed Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in a government supported solely by bourgeois forces. Usually, these governments can't survive without toleration from the <span style="color: #c00000;">**SPD**</span> or the inclusion of the <span style="color: #3E88B3;">**DNVP**</span>. 
+대연정이 붕괴한 후, [+ president +] 대통령은 오직 부르주아 세력의 지지만 받는 정부의 수장으로 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝을 임명했습니다. 보통 이런 정부는 <span style="color: #c00000;">**SPD**</span>의 묵인이나 <span style="color: #3E88B3;">**DNVP**</span>의 참여 없이는 생존할 수 없습니다.
 
-Somehow, a bourgeois coalition actually holds a majority in the Reichstag, consisting of the plethora of parties between the <span style="color: #c00000;">**SPD**</span> and <span style="color: #3E88B3;">**DNVP**</span>. 
+그런데 웬일인지, <span style="color: #c00000;">**SPD**</span>와 <span style="color: #3E88B3;">**DNVP**</span> 사이의 수많은 군소 정당들로 구성된 부르주아 연정이 제국의회에서 과반을 차지하는 기현상이 벌어졌습니다.
 
 - @secret_mode
 - @no
 
 @secret_mode
-title: Enable Secret Mode
-subtitle: This is irreversible.
+title: 비밀 모드 활성화
+subtitle: 이 선택은 되돌릴 수 없습니다.
 on-arrival: secret_mode = 1
 
-Fine.
+좋습니다.
 
 @no
-title: Let me continue the game.
+title: 그냥 게임을 계속하게 해주세요.
 
-Fine.
+좋습니다.
