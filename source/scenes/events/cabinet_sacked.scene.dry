@@ -1,5 +1,5 @@
-title: Hindenburg Sacks [+ chancellor +]!
-subtitle: Hindenburg has turned on us...
+title: 힌덴부르크가 [+ chancellor +] 총리를 해임하다!
+subtitle: 힌덴부르크가 우리에게 등을 돌렸습니다...
 view-if: (president == "Hindenburg" and not presidential_powers and spd_in_government and hindenburg_angry >= 115 and hindenburg_angry_trigger) and chancellor != "Brüning" and next_election_time - time > 3 and not in_spd_majority
 priority: -1
 new-page: true
@@ -7,49 +7,49 @@ on-arrival: dvp_relation -= 8; ddp_relation -= 4; lvp_relation -= 4; z_relation 
 go-to: bruning_right if (bruning_event_seen or year < 1930) and right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7); bruning_center_right if (bruning_event_seen or year < 1930) and (center_right_coalition >= 50 and right_coalition < 50) and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7); bruning_chain if not ((bruning_event_seen or year < 1930) and right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not ((bruning_event_seen or year < 1930) and (center_right_coalition >= 50 and right_coalition < 50) and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7))
 tags: event
 
-= Chancellor [+ chancellor +] Sacked
+= [+ chancellor +] 총리 해임됨
 
-President Hindenburg has made his dissatisfaction with the <span style="color: #c00000;">socialist</span> presence in government clear and has used his presidential powers to remove us by force. It seems like this decision wasn't a rash one, but rather a matter of finding the appropriate pretext to dismiss our government.
+힌덴부르크 대통령은 정부 내에 <span style="color: #c00000;">사회주의자</span>가 존재하는 것에 대한 불만을 분명히 드러내며 대통령 권한을 사용해 우리를 강제로 축출했습니다. 이번 결정은 성급한 것이 아니라, 우리 정부를 해산할 적절한 명분을 찾은 결과로 보입니다.
 
-[? if spd_votes >= 31:The <span style="color: #c00000;">SPD</span> remaining electorally resilient despite the radicalizing effects of the economic depression has thwarted Hindenburg’s plan to burden us with governance and erode our popularity. Realizing his strategy has failed, he now moves to dismiss us from government to prevent further <span style="color: #c00000;">socialist</span> reforms from fueling our rising support. ?][? if unemployed >= 15 or economic_growth < 0: Germany's economic crisis and our inadequate response have severely tested Hindenburg's patience, as he favors an austerity-driven approach. ?][? if nsdap_votes >= 18: The rapid rise of the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> in local elections has pushed Hindenburg to appoint a government more in line with the national mood. ?][? if rearmament_exposed or reichswehr_loyalty <= 0.1: Kurt von Schleicher and the Reichswehr, outraged by our actions, have leveraged their influence over Hindenburg to push for our removal. ?][? if capital_strike_progress >= 5: Business leaders, frustrated by our policies, have pressured Hindenburg’s inner circle to act against us. ?]
+[? if spd_votes >= 31:경제 대공황으로 인한 급진화에도 불구하고 선거에서 건재함을 과시한 <span style="color: #c00000;">SPD</span>는 우리에게 국정 운영의 짐을 지워 인기를 떨어뜨리려던 힌덴부르크의 계획을 좌절시켰습니다. 자신의 전략이 실패했음을 깨달은 그는, 추가적인 <span style="color: #c00000;">사회주의</span> 개혁이 우리의 지지율 상승을 부추기는 것을 막기 위해 우리를 정부에서 축출하려 합니다. ?][? if unemployed >= 15 or economic_growth < 0: 독일의 경제 위기와 우리의 미흡한 대응은 긴축 정책을 선호하는 힌덴부르크의 인내심을 바닥내고 말았습니다. ?][? if nsdap_votes >= 18: 지방 선거에서 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력이 급부상하자 힌덴부르크는 국가적 분위기에 더 부합하는 정부를 임명해야 한다는 압박을 느꼈습니다. ?][? if rearmament_exposed or reichswehr_loyalty <= 0.1: 쿠르트 폰 슐라이허와 국방군은 우리의 행동에 격분하여 힌덴부르크에 대한 영향력을 행사해 우리의 축출을 추진했습니다. ?][? if capital_strike_progress >= 5: 재계 지도자들은 우리 정책에 좌절하여 힌덴부르크의 측근들을 압박해 우리에게 대항하도록 했습니다. ?]
 
-This is a blatant violation of democracy, but we are powerless to stop it. Our only hope is to rally enough support in the next election to reclaim our mandate. 
+이는 민주주의에 대한 명백한 침해지만, 우리에겐 이를 막을 힘이 없습니다. 유일한 희망은 다음 선거에서 충분한 지지를 모아 우리의 권한을 되찾는 것뿐입니다.
 
-[? if started: (Dear player, PLEASE don't ragequit, toleration is completely changed from Red Autumn. You still have a chance.) ?]
+[? if started: (친애하는 플레이어여, 제발 화내며 게임을 끄지 마세요. 묵인 정책은 '붉은 가을' 모드에서 완전히 바뀌었습니다. 당신에게는 여전히 기회가 있습니다.) ?]
 
 @bruning_right
 on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; grand_coalition_collapsed = 1 if in_grand_coalition; chancellor = "Brüning"; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "DNVP"; justice_minister_party = "DNVP"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "DVP"; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "Z"; agriculture_minister_party = "DNVP"; in_right_coalition = 1; dvp_right += 2; lvp_right += 2; liberal_cooperation -= 1; liberal_cooperation -= 3 if liberal_parliament > 0; liberal_parliament = 0 if liberal_parliament > 0; bourgeois_cooperation += 1
 
-Replacing us is Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], who has reorganized his cabinet to encompass the right-wing parties, including the <span style="color: #3E88B3;">**DNVP**</span> [? if dnvp_ideology == "Radical": who reluctantly accede to Hindenburg's wishes for a government.?][? if dnvp_ideology == "Moderate":, who are happy to participate in such a coalition, to keep out the <span style="color: #c00000;">socialists</span> from government.?] Their coalition frustratingly holds a majority in the Reichstag, meaning we are forced to accept the loss and prepare for the next elections.
+우리를 대체하는 것은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝으로, 그는 <span style="color: #3E88B3;">**DNVP**</span>를 포함한 우파 정당들을 아우르도록 내각을 개편했습니다 [? if dnvp_ideology == "Radical": 그들은 힌덴부르크의 뜻에 따라 마지못해 정부에 참여합니다.?][? if dnvp_ideology == "Moderate":, 그들은 정부에서 <span style="color: #c00000;">사회주의자들</span>을 몰아내기 위해 기꺼이 연정에 참여합니다.?] 좌절스럽게도 그들의 연정은 제국의회 과반을 차지하고 있으며, 이는 우리가 패배를 인정하고 다음 선거를 준비해야 함을 의미합니다.
 
-[? if liberal_parliament == 1: The liberal parliamentary group has been broken apart due to the <span style="color: #C0A054;">**DVP**</span> acting on its own accord. ?]
+[? if liberal_parliament == 1: 자유주의 의원단은 <span style="color: #C0A054;">**DVP**</span>의 독자 행동으로 인해 분열되었습니다. ?]
 
 @bruning_center_right
 on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "DNVP"; justice_minister_party = ddp_name; justice_minister_party  = "LVP" if lvp_formed; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "DVP"; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "Z"; agriculture_minister_party = "DNVP"; in_center_right_coalition = 1; dvp_right += 1; liberal_cooperation += 1; ddp_cohesion -= 1; ddp_right += 1; lvp_right += 1; bourgeois_cooperation += 2
 
-Replacing us is Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], who has reorganized his cabinet to encompass the right-wing parties, including the <span style="color: #3E88B3;">**DNVP**</span> who are happy to participate in such a coalition, to keep out the <span style="color: #c00000;">socialists</span> from government. Their coalition frustratingly holds a majority in the Reichstag, meaning we are forced to accept the loss and prepare for the next elections.
+우리를 대체하는 것은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝으로, 그는 정부에서 <span style="color: #c00000;">사회주의자들</span>을 몰아내기 위해 기꺼이 연정에 참여하는 <span style="color: #3E88B3;">**DNVP**</span>를 포함한 우파 정당들을 아우르도록 내각을 개편했습니다. 좌절스럽게도 그들의 연정은 제국의회 과반을 차지하고 있으며, 이는 우리가 패배를 인정하고 다음 선거를 준비해야 함을 의미합니다.
 
 @bruning_chain
 on-arrival: spd_in_government = 0; minority_government = 1; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; bruning_event_timer = 6 if not bruning_event_seen and year >= 1930
 
-Replacing us is Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], who has reorganized his cabinet to encompass the bourgeois parties. [? if bruning_event_seen or year < 1930: Although they lack a majority in the Reichstag, we could tolerate their government at the next session to prevent new elections, effectively acquiescing to Hindenburg's wishes. ?][? if not bruning_event_seen and year >= 1930: New elections haven't been called yet but it's likely that they will be soon, considering Brüning most likely doesn't have the majority of the Reichstag behind him. ?]
+우리를 대체하는 것은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 브뤼닝으로, 그는 부르주아 정당들을 아우르도록 내각을 개편했습니다. [? if bruning_event_seen or year < 1930: 비록 그들이 제국의회 과반을 확보하지 못했지만, 우리는 조기 총선을 막기 위해 다음 회기에서 그들의 정부를 묵인함으로써 사실상 힌덴부르크의 뜻에 따를 수 있습니다. ?][? if not bruning_event_seen and year >= 1930: 아직 조기 총선이 소집되지는 않았지만, 브뤼닝이 제국의회 과반을 확보하지 못했을 가능성이 크므로 곧 소집될 것으로 보입니다. ?]
 
 - @tolerate
 - @dont_tolerate
 
 @tolerate
-title: Oppose any votes of no confidence, voting for the government.
-subtitle: We would essentially provide "toleration" to a bourgeois government.
+title: 정부에 찬성표를 던져 불신임안을 부결시킨다.
+subtitle: 우리는 사실상 부르주아 정부에 "묵인"을 제공하게 될 것입니다.
 view-if: bruning_event_seen or year < 1930
 on-arrival: spd_toleration = 1; left_dissent += 10; pro_republic -= 3; workers_kpd += 3; workers_nsdap += 3; workers_spd -= 3; unemployed_kpd += 5; unemployed_nsdap += 3; unemployed_spd -= 5; dvp_right += 2; ddp_right += 1; lvp_right += 2; liberal_cooperation += 1; welfare -= 2
 
-Brüning immediately begins to cut welfare using his emergency powers granted by President [+ president +]. We try to convince the workers that this policy is necessary in order to maintain a stable parliamentary government, and to deal with the fiscal consequences of the depression. Still, this policy provides excellent recruiting fodder for <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span>.
+브뤼닝은 [+ president +] 대통령이 부여한 긴급 권한을 사용하여 즉시 복지를 삭감하기 시작합니다. 우리는 안정적인 의회 정부를 유지하고 공황의 재정적 여파를 수습하기 위해 이 정책이 필요하다고 노동자들을 설득하려 노력합니다. 하지만 이 정책은 여전히 <span style="color: #7A3C00;">나치</span>와 <span style="color: #700000;">**공산당**</span>에게 훌륭한 선전 거리를 제공할 뿐입니다.
 
 @dont_tolerate
-title: Support the vote of no confidence, voting against the government.
-subtitle: The government will collapse, and there will be new elections.
+title: 정부에 반대표를 던져 불신임안을 지지한다.
+subtitle: 정부는 붕괴할 것이고, 새로운 선거가 치러질 것입니다.
 view-if: bruning_event_seen or year < 1930
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5
 call: set_next_election_time
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.

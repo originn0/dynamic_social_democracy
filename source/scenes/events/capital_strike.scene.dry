@@ -1,16 +1,16 @@
-title: Capital Strike
-subtitle: Germany's industries are idling...
+title: 자본 파업
+subtitle: 독일의 산업이 멈춰 서고 있습니다...
 view-if: (capital_strike_progress >= 10 or budget <= -5) and spd_in_government
 new-page: true
 max-visits: 1
 on-arrival: unemployed += 5; workers_spd*= 0.7; new_middle_spd -= 15; old_middle_spd -= 15; unemployed_spd*=0.7; rural_spd -= 15; pro_republic -= 15; capital_strike_seen = 1; z_relation -= 10; dvp_relation -= 10; ddp_relation -= 8; lvp_relation -= 8; workers_nsdap += 8; unemployed_nsdap += 10; new_middle_nsdap += 15; old_middle_nsdap += 15; rural_nsdap += 15; dvp_right += 5; ddp_right += 3; ddp_cohesion -= 1; lvp_right += 4; coalition_dissent += 1; hindenburg_angry += 100; economic_growth -= 4;
 tags: event
 
-= Capital Strike
+= 자본 파업
 
-Our policies have greatly angered the capitalists. Investment has fallen, and factories are idling, preventing the workers from fulfilling their jobs. Meanwhile, the bourgeois press is a constant chorus of venomous invective directed at us and our economic policies.
+우리의 정책은 자본가들을 크게 분노하게 했습니다. 투자는 급감했고 공장은 가동을 멈췄으며, 노동자들은 일터에서 쫓겨나고 있습니다. 한편, 부르주아 언론은 우리와 우리의 경제 정책을 향해 끊임없이 독설을 퍼붓고 있습니다.
 
-What can we do?
+우리가 무엇을 할 수 있습니까?
 
 - @seize
 - @capital_controls
@@ -18,35 +18,35 @@ What can we do?
 - @nothing
 
 @seize
-title: Empower workers to seize the factories!
-unavailable-subtitle: [? if left_strength <= reformist_strength + neorevisionist_strength : The bulk of the party does not support this radical action. ?] [? if judicial_reform < 3 : The judiciary would oppose this action. ?] [? if rb_militancy < 0.25 : If we increased the strength of our paramilitary forces, perhaps we could do this. ?] [? if works_councils < 1 : We need the support of the works councils first. ?]
+title: 노동자들이 공장을 장악하도록 권한을 부여한다!
+unavailable-subtitle: [? if left_strength <= reformist_strength + neorevisionist_strength : 당의 주류는 이 급진적인 행동을 지지하지 않습니다. ?] [? if judicial_reform < 3 : 사법부가 이 조치에 반대할 것입니다. ?] [? if rb_militancy < 0.25 : 만약 우리 준군사 조직의 힘을 키웠더라면 가능했을지도 모릅니다. ?] [? if works_councils < 1 : 먼저 직장 평의회의 지지가 필요합니다. ?]
 choose-if: left_strength > reformist_strength + neorevisionist_strength and (judicial_reform >= 3 or rb_militancy >= 0.25) and works_councils >= 1
 on-arrival: nationalization_progress += 1; coup_progress += 6; unemployed -= 2; unemployed -= 1 if works_councils >= 3; works_program += 1; workers_spd += 10*(1-dissent); unemployed_spd += 10*(1-dissent); coalition_dissent += 2; dvp_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; workers_nsdap -= 8*(1-dissent); unemployed_nsdap -= 8*(1-dissent); left_strength += 15; reformist_dissent += 10; left_dissent -= 10; factory_takeovers += 1; dvp_right += 5; ddp_right += 3; lvp_right += 4; economic_growth += 2;
 
-If the capitalists are going to attack us, then we must hit them back. We have empowered the workers to seize and take full control of the factories that the capitalists have idled. The <span style="color: #7A3C00;">fascists</span>, of course, call us thieves and looters.
+자본가들이 우리를 공격한다면, 우리도 반격해야 합니다. 우리는 노동자들이 자본가들이 방치한 공장을 접수하고 완전히 통제할 수 있도록 권한을 부여했습니다. 물론 <span style="color: #7A3C00;">파시스트들</span>은 우리를 도둑이자 약탈자라고 부르고 있습니다.
 
 
 @capital_controls
-title: Enact capital controls to lessen the impact.
+title: 충격을 완화하기 위해 자본 통제를 시행한다.
 choose-if: judicial_reform >= 2
 unavailable-subtitle: The judiciary would never allow this.
 on-arrival: unemployed -= 1.5; workers_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); economic_growth += 2;
 
-Capital controls might blunt some of the worst economic components of the capital strike.
+자본 통제는 자본 파업으로 인한 최악의 경제적 여파를 어느 정도 완화해 줄지도 모릅니다.
 
 
 
 @propaganda
-title: Launch a propaganda campaign blaming the capitalists for the crisis.
-subtitle: -1 resources
+title: 위기의 책임을 자본가들에게 돌리는 선전 캠페인을 시작한다.
+subtitle: -1 자원
 choose-if: (radio >= 2 or commercialized_media >= 3) and resources >= 1
-unavailable-subtitle: [? if radio < 2 and commercialized_media < 3 : We have not built up our media enough. ?] [? if resources < 1: We do not have enough resources. ?]
+unavailable-subtitle: [? if radio < 2 and commercialized_media < 3 : 우리는 미디어 기반을 충분히 구축하지 못했습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: workers_spd += 7*(1-dissent); new_middle_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); pro_republic += 5*(1-dissent); resources -= 1
 
-We launch a counter-propaganda campaign to blame the economic crisis on the capitalists, using all of our media channels to do so. Because of our existing media framework, this is moderately successful in directing popular criticisms towards the capitalists and away from us.
+우리는 경제 위기의 책임을 자본가들에게 돌리기 위해 가용한 모든 미디어 채널을 동원하여 역선전 캠페인을 시작했습니다. 기존에 구축해 둔 미디어 체계 덕분에, 대중의 비난을 우리에게서 자본가들에게로 돌리는 데 어느 정도 성공했습니다.
 
 
 @nothing
-title: There is nothing we can do.
+title: 우리가 할 수 있는 일은 없다.
 
-There is nothing we can do that is within constitutional and legal bounds.
+헌법과 법의 테두리 안에서 우리가 할 수 있는 일은 아무것도 없습니다.

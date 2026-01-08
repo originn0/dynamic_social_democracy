@@ -1,83 +1,83 @@
-title: The Right is expelling us from their government!
-subtitle: We have angered our coalition partners too much...
+title: 우파가 우리를 그들의 정부에서 쫓아내고 있습니다!
+subtitle: 우리는 연정 파트너들을 너무 화나게 했습니다...
 new-page: true
 on-arrival: tried_supporting_kpd = 0; z_relation -= 6; dvp_relation -= 6; ddp_relation -= 6; lvp_relation -= 6; lvp_right += 3; dvp_right += 3; ddp_right += 3
 view-if: chancellor_party != "SPD" and chancellor_party != "KPD" and spd_in_government = 1 and ((in_grand_coalition = 1 or in_popular_front = 1 or in_minority_government = 1) and coalition_dissent >= 3) or (in_weimar_coalition = 1 and coalition_dissent >= 4) and spd_r < 50
 tags: event
 go-to: menu if chancellor != "Wirth"; wirth_resign_hindenburg if chancellor == "Wirth" and president_ideology != "Left"; wirth_resign_braun if chancellor == "Wirth" and president_ideology == "Left"
 
-= Cabinet Reshuffled
+= 내각 개편
 
 @menu
 
-Chancellor [+ chancellor +] has announced his intentions to President [+ president +] to reshuffle the cabinet, sacking and replacing all current <span style="color: #c00000;">**SPD**</span> ministers and replacing them with bourgeois ones. [? if bourgeois_coalition < 50 and (right_coalition < 50 or dnvp_ideology == "Radical" and not dnvp_westarp) and (center_right_coalition < 50 or dnvp_ideology == "Radical") : Luckily, they lack a majority without us, so we can bring them down with a simple motion of no confidence. ?]
+[+ chancellor +] 총리는 [+ president +] 대통령에게 내각을 개편하겠다는 의사를 밝혔습니다. 현재의 모든 <span style="color: #c00000;">**SPD**</span> 장관들을 해임하고 부르주아 장관들로 교체하겠다는 것입니다. [? if bourgeois_coalition < 50 and (right_coalition < 50 or dnvp_ideology == "Radical" and not dnvp_westarp) and (center_right_coalition < 50 or dnvp_ideology == "Radical") : 다행히도 그들은 우리 없이는 과반을 확보하지 못하므로, 단순 불신임 결의안으로 그들을 끌어내릴 수 있습니다. ?]
 
-- @try_assuage: Try to assuage our partners.
-- @right_coalition: The <span style="color: #3E88B3;">**DNVP**</span> replaces us in government.
-- @center_right_coalition: The <span style="color: #3E88B3;">**DNVP**</span> replaces us in government.
-- @minority_bruning: Brüning's cabinet survives as a minority government.
-- @breitscheid_vonc: Call a constructive motion of no confidence with the <span style="color: #700000;">**KPD**</span>!
-- @sack_bruning: President [+ president +] will call snap elections.
-- @bourgeois_coalition: The bourgeois have a lone majority.
-- @bruning_chain: What's next?
-- @tolerate: Let the reshuffle happen, and tolerate the new minority government.
-- @no_tolerate: Bring down this new backstabbing government!
+- @try_assuage: 파트너들을 달래본다.
+- @right_coalition: <span style="color: #3E88B3;">**DNVP**</span>가 정부에서 우리를 대체한다.
+- @center_right_coalition: <span style="color: #3E88B3;">**DNVP**</span>가 정부에서 우리를 대체한다.
+- @minority_bruning: 브뤼닝 내각이 소수 정부로 살아남는다.
+- @breitscheid_vonc: <span style="color: #700000;">**KPD**</span>와 함께 건설적 불신임 결의안을 제출한다!
+- @sack_bruning: [+ president +] 대통령이 조기 총선을 소집할 것이다.
+- @bourgeois_coalition: 부르주아 세력이 단독 과반을 차지한다.
+- @bruning_chain: 다음은 무엇인가?
+- @tolerate: 개편을 허용하고, 새로운 소수 정부를 묵인한다.
+- @no_tolerate: 이 배신자 정부를 무너뜨린다!
 
 @try_assuage
 
-How do we assuage our partners?
+어떻게 파트너들을 달래야 합니까?
 
-- @dvp_prussia_2: Let the <span style="color: #C0A054;">**DVP**</span> into Prussia.
-- @give_up_prussia: Give up on leadership of Prussia.
-- @austerity: Enact a massive austerity plan.
-- @resources: Use our resources to reduce dissent within the coalition.
-- @menu: Never mind. What are our options?
+- @dvp_prussia_2: <span style="color: #C0A054;">**DVP**</span>를 프로이센 연정에 참여시킨다.
+- @give_up_prussia: 프로이센의 지도권을 포기한다.
+- @austerity: 대규모 긴축 정책을 시행한다.
+- @resources: 연정 내 반발을 줄이기 위해 자원을 사용한다.
+- @menu: 됐다. 다른 선택지는 뭐가 있지?
 
 @dvp_prussia_2
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and in_grand_coalition = 1 and dvp_was_in_prussia == 0 and not lvp_formed
 choose-if: z_leader != "Kaas"
-unavailable-subtitle: [? if z_leader = "Kaas": Kaas and the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] strongly dissents against. ?]
+unavailable-subtitle:  [? if z_leader = "Kaas": 카스와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 강력하게 반대합니다. ?]
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; dvp_relation += 10; z_relation -= 5; ddp_relation += 3; coalition_dissent -= 1; left_dissent += 5; in_grand_coalition_prussia = 1; dvp_left += 3; new_middle_dvp += 3
 
-Letting the <span style="color: #C0A054;">**DVP**</span> into the Prussian government is an offer too good for them to refuse, no matter their leadership. 
+<span style="color: #C0A054;">**DVP**</span>를 프로이센 정부에 참여시키는 것은 그들의 지도부가 누구든 거절하기 힘든 매력적인 제안입니다.
 
-However, this has negatively impacted our freedom of action we previously had in the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition.
+하지만 이로 인해 우리가 이전에 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정에서 누렸던 행동의 자유는 줄어들었습니다.
 
 @give_up_prussia
-subtitle: Braun would need to resign.
+subtitle: 브라운이 사임해야 할 것입니다.
 view-if: prussia_leader = "Braun" and neo_weimar_coalition_prussia >= 50
 on-arrival: coalition_dissent = 1; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; reformist_dissent += 10; center_dissent += 10; labor_dissent += 10; left_dissent += 5; workers_spd -= 5; new_middle_spd -= 5; rural_spd -= 3; braun_resign = 1
 
-Fine. We no longer control the government of Prussia. The vote has been called off.
+좋습니다. 우리는 더 이상 프로이센 정부를 주도하지 않습니다. 투표는 취소되었습니다.
 
-The Minister-President position is transferred to the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+주총리직은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]으로 넘어갑니다.
 
 @austerity
 view-if: welfare >= 0
 on-arrival: coalition_dissent = 0; workers_spd -= 10; unemployed_spd -= 10; workers_kpd += 7; workers_nsdap += 3; unemployed_kpd += 5; unemployed_nsdap += 5; left_dissent += 15; center_dissent += 10; labor_dissent += 15; reformist_dissent += 5; welfare -= 2; budget += 1; unemployed += 3; kpd_coalition_dissent += 1; kpd_relation -= 10 if in_popular_front; goal_spd_cancel += 1
 
-Fine. We enacted a massive austerity program to cut welfare, in order to maintain the stability of our coalition. The vote has been called off.
+좋습니다. 연정의 안정을 유지하기 위해 복지를 삭감하는 대규모 긴축 프로그램을 시행했습니다. 투표는 취소되었습니다.
 
 @resources
 choose-if: (resources >= 3 and in_weimar_coalition or in_popular_front or in_minority_government) or ((resources >= 3 and in_grand_coalition and not (dvp_ideology == "Right" and year >= 1930) and not lvp_formed) or (resources >= 3 and (in_grand_coalition or in_weimar_coalition) and not (lvp_ideology == "Right" and year >= 1930) and lvp_formed))
-unavailable-subtitle: [? if resources < 3: We do not have enough resources. ?] [? if in_grand_coalition and (dvp_ideology == "Right" and year >= 1930) and not lvp_formed: The <span style="color: #C0A054;">**DVP**</span> doesn't want our resources anymore. ?] [? if (in_grand_coalition or in_weimar_coalition) and (lvp_ideology == "Right" and year >= 1930) and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> doesn't want our resources anymore. ?]
-subtitle: -3 resources
+unavailable-subtitle: [? if resources < 3: 자원이 부족합니다. ?] [? if in_grand_coalition and (dvp_ideology == "Right" and year >= 1930) and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>는 더 이상 우리의 자원을 원하지 않습니다. ?] [? if (in_grand_coalition or in_weimar_coalition) and (lvp_ideology == "Right" and year >= 1930) and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 더 이상 우리의 자원을 원하지 않습니다. ?]
+subtitle: -3 자원
 on-arrival: resources -= 3; coalition_dissent -= 1
 
-By transferring resources to our coalition partners, we can reduce their dissent against our policies. This is a crude, but effective solution.
+연정 파트너들에게 자원을 지원함으로써 우리 정책에 대한 반발을 줄일 수 있습니다. 투박하지만 효과적인 해결책입니다.
 
 @right_coalition
 view-if: right_coalition >= 50 and bourgeois_coalition < 50
 choose-if: (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)
 on-arrival: center_dissent += 5; reformist_dissent += 5; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0
-unavailable-subtitle: The <span style="color: #3E88B3;">DNVP</span> isn't willing to enter government.
+unavailable-subtitle: <span style="color: #3E88B3;">DNVP</span>는 정부에 참여할 의사가 없습니다.
 go-to: election_1928.right_coalition_2
 
 @center_right_coalition
 view-if: right_coalition < 50 and center_right_coalition >= 50 and bourgeois_coalition < 50 and dnvp_ideology == "Moderate"
 choose-if: not (year = 1929 and month >= 7)
 on-arrival: center_dissent += 5; reformist_dissent += 5; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0
-unavailable-subtitle: The <span style="color: #3E88B3;">DNVP</span> isn't willing to enter government.
+unavailable-subtitle: <span style="color: #3E88B3;">DNVP</span>는 정부에 참여할 의사가 없습니다.
 go-to: election_1928.center_right_coalition_2
 
 @bourgeois_coalition
@@ -89,66 +89,66 @@ go-to: election_1928.bourgeois_coalition
 view-if: constructive_vonc and not (right_coalition >= 50 and bourgeois_coalition < 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not (right_coalition < 50 and center_right_coalition >= 50 and bourgeois_coalition < 50 and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7))
 on-arrival: spd_in_government = 0; minority_government = 1; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; lvp_right += 3; ddp_right += 3; ddp_cohesion -= 1; dvp_right += 3
 
-Due to our own constitutional reforms, we cannot bring Brüning down. We will have to prepare for the next election to get our chance.
+우리가 추진한 헌법 개혁 때문에 브뤼닝을 끌어내릴 수 없습니다. 다음 선거까지 기다리며 기회를 엿봐야 합니다.
 
 @breitscheid_vonc
 view-if: constructive_vonc and not (right_coalition >= 50 and bourgeois_coalition < 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not (right_coalition < 50 and center_right_coalition >= 50 and bourgeois_coalition < 50 and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7)) and (left_coalition >= 50 or kpd_relation >= 50)
 choose-if: left_coalition >= 50 and kpd_relation >= 50
-unavailable-subtitle: [? if left_coalition < 50 : We do not have a majority in favor of Breitscheid. ?][? if kpd_relation < 50 : The Communists are unwilling. ?]
+unavailable-subtitle: [? if left_coalition < 50 : 브라이트샤이트를 지지하는 과반이 부족합니다. ?][? if kpd_relation < 50 : 공산당이 내켜하지 않습니다. ?]
 on-arrival: in_left_front = 1; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; chancellor_party = "SPD"; chancellor = "Breitscheid"; coup_progress += 3; capital_strike_progress += 2; coup_progress += 1 if in_left_front_prussia; capital_strike_progress += 1 if in_left_front_prussia; labor_minister_party = "SPD"; interior_minister_party = "SPD"; finance_minister_party = "SPD"; economic_minister_party = "SPD"; justice_minister_party = "SPD"; foreign_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"; kpd_relation += 10; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 10; lvp_relation -= 8; reichswehr_loyalty -= 0.05; dvp_right += 10; ddp_right += 5; ddp_cohesion -= 3; lvp_right += 8; liberal_cooperation += 5; bourgeois_cooperation += 10; liberal_cooperation += 3 if in_left_front_prussia or in_popular_front_prussia; bourgeois_cooperation += 5 if in_left_front_prussia or in_popular_front_prussia; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 30; left_strength += 20
 
-We have successfully passed a motion of no confidence to replace Brüning with Breitscheid. We are now ruling in a united front with the <span style="color: #700000;">**KPD**</span>.
+우리는 브뤼닝을 브라이트샤이트로 교체하는 불신임 결의안을 성공적으로 통과시켰습니다. 이제 우리는 <span style="color: #700000;">**KPD**</span>와 통일 전선을 형성하여 통치합니다.
 
-Whatever their reasoning is, the <span style="color: #c00000;">**SPD**</span> has control over the ministries of government.
+그들의 속내가 무엇이든, <span style="color: #c00000;">**SPD**</span>가 정부 부처의 통제권을 쥐고 있습니다.
 
 @sack_bruning
 view-if: constructive_vonc and president_ideology == "Left"
 choose-if: presidential_powers != 1
-unavailable-subtitle: We don't have that power anymore. You really screwed us here with your reforms, you know that?
+unavailable-subtitle: 우리에겐 더 이상 그런 권한이 없습니다. 당신의 개혁이 우리 발목을 잡았군요, 알고 계시죠?
 call: set_next_election_time
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; spd_toleration = 0; spd_toleration_right = 0; coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; lvp_right += 3; ddp_right += 2; ddp_cohesion -= 1; dvp_right += 3
 
-We have sacked Brüning and called for new elections for [+ next_election_month : month +] [+ next_election_year +].
+우리는 브뤼닝을 해임하고 [+ next_election_year +]년 [+ next_election_month : month +]에 조기 총선을 소집했습니다.
 
 @bruning_chain
 view-if: not constructive_vonc and not (right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not ((center_right_coalition >= 50 and right_coalition < 50) and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7)) and (not bruning_event_seen and year >= 1930)
 on-arrival: spd_in_government = 0; minority_government = 1; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; bruning_event_timer = 6 if not bruning_event_seen and year >= 1930
 
-Replacing us is Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], who has reorganized his cabinet to encompass the bourgeois parties. [? if not bruning_event_seen and year >= 1930: New elections haven't been called yet but it's likely that they will be soon, considering Brüning most likely doesn't have the majority of the Reichstag behind him. ?]
+우리를 대체하는 것은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 브뤼닝으로, 그는 부르주아 정당들을 아우르도록 내각을 개편했습니다. [? if not bruning_event_seen and year >= 1930: 아직 조기 총선이 소집되지는 않았지만, 브뤼닝이 제국의회 과반을 확보하지 못했을 가능성이 크므로 곧 소집될 것으로 보입니다. ?]
 
 @tolerate
 view-if: not constructive_vonc and (bruning_event_seen or year < 1930)
 choose-if: not (right_coalition >= 50 and bourgeois_coalition < 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not (right_coalition < 50 and center_right_coalition >= 50 and bourgeois_coalition < 50 and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7))
-unavailable-subtitle: They don't need us.
+unavailable-subtitle: 그들은 우리를 필요로 하지 않습니다.
 on-arrival: spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; coalition_dissent = 0; left_dissent += 15; labor_dissent += 5; center_dissent += 5; workers_spd -= 3; workers_kpd += 3; workers_nsdap += 3; lvp_left += 1; ddp_left += 0.5; dvp_left += 1
 go-to: election_1928.toleration_bruning
 
-Many in the party are incredulous. We have just been expelled from government, and our reaction is to allow this government to govern?
+당내 많은 이들이 믿기 힘들어합니다. 방금 정부에서 쫓겨났는데, 그 정부가 통치하도록 용인하자는 말입니까?
 
 @no_tolerate
 view-if: not constructive_vonc and (bruning_event_seen or year < 1930)
 choose-if: not (right_coalition >= 50 and bourgeois_coalition < 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)) and not (right_coalition < 50 and center_right_coalition >= 50 and bourgeois_coalition < 50 and dnvp_ideology == "Moderate" and not (year = 1929 and month >= 7))
-unavailable-subtitle: They don't need us.
+unavailable-subtitle: 그들은 우리를 필요로 하지 않습니다.
 call: set_next_election_time
 on-arrival: time_to_election = 3; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; spd_toleration = 0; spd_toleration_right = 0; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; labor_minister = "Stegerwald"; interior_minister = "Wirth"; finance_minister = "Moldenhauer"; economic_minister = "Curtius"; justice_minister = "Koch-Weser"; foreign_minister = "Stresemann" if not stresemann_dead; foreign_minister = "Curtius" if stresemann_dead; agriculture_minister = "Dietrich"; reichswehr_minister = "Groener"; coalition_dissent = 0; pro_republic -= 4; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; welfare -= 2
 
-The vote succeeds, and their government has resigned. Chancellor Brüning remains as the head of an acting government, consisting solely of the bourgeois parties. He immediately proceeds to cut welfare spending substantially.
+투표는 성공했고, 그들의 정부는 사임했습니다. 브뤼닝 총리는 오직 부르주아 정당들로만 구성된 임시 정부의 수장으로 남습니다. 그는 즉시 복지 지출을 대폭 삭감하는 조치를 취합니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @wirth_resign_braun
 call: set_next_election_time
 on-arrival: time_to_election = 3; chancellor = "Wels"; chancellor_party = "SPD"; spd_caretaker = 1; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; spd_toleration = 0; spd_toleration_right = 0; foreign_minister_party = "I"; interior_minister_party = "I"; justice_minister_party = "I"; labor_minister_party = "I"; reichswehr_minister_party = "I"; economic_minister_party = "I"; finance_minister_party = "I"; agriculture_minister_party = "I"; coalition_dissent = 0; pro_republic -= 5
 
-Unable to bear the stress of keeping the coalition together, Wirth has announced his intentions to resign as chancellor.
+연정을 유지하는 스트레스를 견디지 못한 비르트는 총리직 사임 의사를 밝혔습니다.
 
-[+ president +] has appointed as replacement Wels, who is immediately faced with a successful motion of no confidence. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+[+ president +] 대통령은 후임으로 벨스를 임명했지만, 그는 즉시 불신임 결의안에 직면했습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @wirth_resign_hindenburg
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"
 
-Unable to bear the stress of keeping the coalition together, Wirth has announced his intentions to resign as chancellor.
+연정을 유지하는 스트레스를 견디지 못한 비르트는 총리직 사임 의사를 밝혔습니다.
 
-[+ president +] appoints Brüning from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] as replacement, who immediately reforms the government.
+[+ president +] 대통령은 후임으로 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 브뤼닝을 임명했고, 그는 즉시 정부를 개혁합니다.
 
-- @menu: Brüning sacks our ministers.
+- @menu: 브뤼닝이 우리 장관들을 해임한다.

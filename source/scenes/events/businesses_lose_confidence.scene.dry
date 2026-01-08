@@ -1,37 +1,37 @@
-title: Businesses Lose Confidence
-subtitle: Big businesses are losing confidence in our government's policies.
+title: 기업들이 신뢰를 잃음
+subtitle: 대기업들이 우리 정부의 정책에 대한 신뢰를 잃고 있습니다.
 view-if: (capital_strike_progress >= 6 and capital_strike_progress < 10 and budget > -5) and spd_in_government and not capital_strike_seen
 new-page: true
 max-visits: 1
 on-arrival: unemployed += 2; new_middle_spd -= 6; old_middle_spd -= 6; rural_spd -= 5; workers_spd -= 4; unemployed_spd -= 4; dvp_relation -= 6; dvp_right += 2; ddp_relation -= 6; ddp_right += 2; ddp_cohesion -= 1; lvp_relation -= 6; lvp_right += 2; liberal_cooperation += 2; bourgeois_cooperation += 4; coalition_dissent += 1 if (in_grand_coalition or (in_weimar_coalition and lvp_formed)); economic_growth -= 1
 tags: event
 
-= Businesses Lose Confidence
+= 기업들이 신뢰를 잃음
 
-Because of our government's policies, which are perceived as anti-business, the capitalists are reducing their investment and laying off workers. This has the immediate effect of raising unemployment and dissent against our government, especially among the middle class.
+반기업적이라고 인식되는 우리 정부의 정책들 때문에, 자본가들은 투자를 줄이고 노동자들을 해고하고 있습니다. 이는 즉각적으로 실업률을 높이고 우리 정부에 대한 반감을 키우고 있으며, 특히 중산층 사이에서 더욱 그렇습니다.
 
-The business community has a variety of suggestions as to how we might improve the business environment.
+재계는 사업 환경을 개선하기 위한 다양한 제안을 내놓고 있습니다.
 
-- @taxes: Cut taxes for the upper brackets.
-- @welfare: Reduce welfare and social spending.
-- @nothing: We will not take any action for now.
-- @watch: Just watch us. The economy *will* improve.
+- @taxes: 고소득층에 대한 세금을 삭감한다.
+- @welfare: 복지와 사회 지출을 줄인다.
+- @nothing: 당분간 아무런 조치도 취하지 않는다.
+- @watch: 두고 보자. 경제는 *반드시* 나아질 것이다.
 
 @taxes
 on-arrival: upper_tax_rates -= 1; budget -= 1; capital_strike_progress -= 1; unemployed -= 1; new_middle_spd += 4*(1-dissent); old_middle_spd += 4*(1-dissent); kpd_coalition_dissent += 1; kpd_relation -= 5; left_dissent += 5; workers_spd -= 5; unemployed_spd -= 5; 
 
-Cutting taxes improves our relationship with the capitalists.
+세금을 삭감하면 자본가들과의 관계가 개선될 것입니다.
 
 @welfare
 on-arrival: welfare -= 1; budget += 1; capital_strike_progress -= 2; new_middle_spd += 2*(1-dissent); old_middle_spd += 2*(1-dissent); workers_spd -= 5; unemployed_spd -= 5; unemployed -= 1; left_dissent += 5; labor_dissent += 5; center_dissent += 5; kpd_coalition_dissent += 1; inflation -= 1; goal_spd_cancel += 1
 
-Cutting welfare improves our relationship with the capitalists, but it hurts our working-class base.
+복지를 삭감하면 자본가들과의 관계는 개선되지만, 우리의 노동자 계급 지지 기반에는 타격을 줄 것입니다.
 
 
 @nothing
 
-Realistically, there is nothing we can do.
+현실적으로 우리가 할 수 있는 일은 없습니다.
 
 @watch
 
-Presumably, we have an economic plan that will lead us out of the crisis. The capitalists do not trust us, but we will show them eventually.
+우리에게는 위기를 극복할 경제 계획이 있습니다. 자본가들은 우리를 믿지 않지만, 결국 우리가 옳았음을 증명해 보일 것입니다.
