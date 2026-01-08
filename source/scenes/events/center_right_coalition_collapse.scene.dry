@@ -1,22 +1,22 @@
-title: <span style="color: #000000;">Bourgeois</span>-<span style="color: #3E88B3;">Right</span> Government Collapses!
+title: <span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 정부 붕괴!
 new-page: true
-subtitle: New elections scheduled
+subtitle: 재선거 예정됨
 tags: event
 view-if: total_bruning_time >= 6 and (in_right_coalition or in_center_right_coalition) and bruning_coalition_dissent >= 4 and bruning_time and not cvp_formed
 on-arrival: pro_republic -= 3
 max-visits: 1
 
-= <span style="color: #000000;">Bourgeois</span>-<span style="color: #3E88B3;">Right</span> Government Collapses!
+= <span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 정부 붕괴!
 
-The disagreements between Chancellor [+ chancellor +] and his supporting parties have fallen beyond repair, and the [? if dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not dvp_exist: <span style="color: #3E88B3;">**DNVP**</span> ?] have issued a vote of no confidence against his government, which is expected to be supported by [? if dvp_exist: the <span style="color: #3E88B3;">**DNVP**</span> and ?]the array of special interest parties as well. 
+[+ chancellor +] 총리와 지지 정당들 간의 불화는 돌이킬 수 없는 지경에 이르렀고, [? if dvp_exist: <span style="color: #C0A054;">**DVP**</span>는?][? if not dvp_exist: <span style="color: #3E88B3;">**DNVP**</span>는 ?] 내각 불신임안을 제출했습니다. 이는 [? if dvp_exist: <span style="color: #3E88B3;">**DNVP**</span>와 ?]여러 특수 이익 정당들의 지지를 받을 것으로 예상됩니다.
 
 - @great
 
 @great
-title: Support the vote of no confidence, voting against the government.
-subtitle: The government will collapse, and there will be new elections.
+title: 정부에 반대 투표하여 불신임안을 지지한다.
+subtitle: 정부는 붕괴할 것이고, 새로운 선거가 치러질 것입니다.
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0
 call: set_next_election_time
 
-The <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+<span style="color: #000000;">부르주아</span>-<span style="color: #3E88B3;">우파</span> 연정이 무너졌습니다. 재선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 

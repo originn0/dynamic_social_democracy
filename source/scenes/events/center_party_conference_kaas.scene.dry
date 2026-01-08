@@ -1,5 +1,5 @@
-title: <span style="color: #000000;">Center Party</span> Conference
-subtitle: Ludwig Kaas has resigned as the <span style="color: #000000;">Center Party</span>'s chairman...
+title: <span style="color: #000000;">중앙당</span> 전당대회
+subtitle: 루트비히 카스가 <span style="color: #000000;">중앙당</span> 의장직을 사임했습니다...
 view-if: year == 1931 and month == 6 and (pro_republic >= 60 and (in_weimar_coalition or in_grand_coalition)) and z_leader == "Kaas"
 on-arrival: {!
 Q.kaas_explode_seen = 1;
@@ -24,57 +24,57 @@ tags: event
 new-page: true
 face-image: img/portraits/Ludwig_Kaas.jpg
 
-= <span style="color: #000000;">Center Party</span> Conference
+= <span style="color: #000000;">중앙당</span> 전당대회
 
-Ludwig Kaas has never truly embraced his role as party chairman, viewing it as a burden. He was elected as a compromise candidate, without actively campaigning for the position. Privately, he has made no secret of his desire to be relieved of the party chairmanship. With the stabilization of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic, Kaas believes he can retire without facing any significant consequences.
+루트비히 카스는 당 의장직을 짐으로 여겼으며, 그 역할을 진심으로 받아들인 적이 없습니다. 그는 그 직책을 위해 적극적으로 선거 운동을 하지 않은 채 타협 후보로 선출되었을 뿐입니다. 사석에서 그는 당 의장직에서 벗어나고 싶다는 열망을 숨기지 않았습니다. <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 공화국이 안정됨에 따라, 카스는 이제 큰 파장 없이 은퇴할 수 있다고 믿고 있습니다.
 
-Despite pleads from his party members and colleagues, Kaas has officially resigned as head of the <span style="color: #000000;">Center Party</span>. This decision will have little impact, as he spent most of his time in Rome anyway, delegating the management of the party to his allies Joos and Brüning. No other <span style="color: #000000;">Center</span> member has missed as many Reichstag sessions as Kaas. Now, the party must find a successor, with potential candidates being his deputy leader Joos, Brüning, Stegerwald, or perhaps another compromise candidate.
+당원들과 동료들의 만류에도 불구하고, 카스는 <span style="color: #000000;">중앙당</span> 대표직을 공식적으로 사임했습니다. 어차피 그가 로마에서 대부분의 시간을 보내며 당무를 동맹인 요스와 브뤼닝에게 위임해 왔기 때문에, 이 결정이 미칠 영향은 미미할 것입니다. 다른 어떤 <span style="color: #000000;">중앙당</span> 의원도 카스만큼 제국의회 회기에 결석하지 않았습니다. 이제 당은 후임자를 찾아야 하며, 잠재적인 후보로는 부대표인 요스, 브뤼닝, 슈테거발트, 혹은 또 다른 타협 후보가 거론되고 있습니다.
 
-- @joos: The <span style="color: #000000;">Center Party</span> elects Joseph Joos as the party chair.
-- @bruning: The <span style="color: #000000;">Center Party</span> elects Heinrich Brüning as the party chair.
-- @guerard: The <span style="color: #000000;">Center Party</span> elects Theodor von Guérard as the party chair.
-- @stegerwald: The <span style="color: #000000;">Center Party</span> elects Adam Stegerwald as the party chair.
+- @joos: <span style="color: #000000;">중앙당</span>이 요제프 요스를 당 의장으로 선출했다.
+- @bruning: <span style="color: #000000;">중앙당</span>이 하인리히 브뤼닝을 당 의장으로 선출했다.
+- @guerard: <span style="color: #000000;">중앙당</span>이 테오도어 폰 게라르트를 당 의장으로 선출했다.
+- @stegerwald: <span style="color: #000000;">중앙당</span>이 아담 슈테거발트를 당 의장으로 선출했다.
 
 @joos
-subtitle: Joos is part of the Catholic worker groups, and the current deputy leader of the party responsible for organizational work.
-unavailable-subtitle: [? if z_relation < 70: Our relations are not good enough. ?][? if bruning_unlock: Brüning is able to overshadow Joos due to his status as Chancellor. ?][? if stegerwald_unlock: Stegerwald is able to secure the votes of the party's workers. ?]
+subtitle: 요스는 가톨릭 노동자 그룹 소속이며, 현재 당의 조직 업무를 담당하는 부대표입니다.
+unavailable-subtitle: [? if z_relation < 70: 양당 관계가 충분히 좋지 않습니다. ?][? if bruning_unlock: 브뤼닝은 총리라는 지위 덕분에 요스를 압도할 수 있습니다. ?][? if stegerwald_unlock: 슈테거발트는 당내 노동자들의 표를 확보할 수 있습니다. ?]
 choose-if: joos_unlock
 on-arrival: z_leader = "Joos"; catholics_z -= 5; catholics_dvp += 3; catholics_lvp += 3; catholics_dnvp += 3 if dnvp_ideology == "Moderate"; catholics_spd += 5; workers_z += 5; z_relation += 10; zentrum_disintegration += 1; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; lvp_left += 1; fake_joos = 1
 face-image: img/portraits/Joseph_Joos.jpg
 
-With our friendly relations, we have been able to influence the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] delegates to promote Joseph Joos to become the new [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chairman. He has long been a friend of the <span style="color: #c00000;">**SPD**</span>, and will be more inclined to collaborate with us compared to Kaas. He also increases the appeal of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to the working class, though it comes at the cost of deepening the social and economic divisions once held together by religion.
+우호적인 관계 덕분에, 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 대의원들에게 영향을 주어 요제프 요스를 새로운 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 의장으로 추대할 수 있었습니다. 그는 오랫동안 <span style="color: #c00000;">**SPD**</span>의 우군이었으며, 카스에 비해 우리와 협력하는 데 더 적극적일 것입니다. 그는 또한 노동 계급에 대한 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>의?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>의?] 호소력을 높일 수 있지만, 한때 종교로 묶여 있던 사회적, 경제적 분열을 심화시키는 대가를 치러야 합니다.
 
-Unfortunately, the hands-off approach to internal party affairs under Kaas is expected to be maintained under his successor, limiting Joos's influence over the parliamentary delegation.
+불행히도, 카스 시절의 당무 불간섭 기조는 후임자에게도 이어질 것으로 예상되어, 의회 대표단에 대한 요스의 영향력은 제한적일 것입니다.
 
 @bruning
-subtitle: Brüning is the leader of the <span style="color: #000000;">Center</span>'s parliamentary group, and the party's economic expert.
-unavailable-subtitle: Brüning needs more power.
+subtitle: 브뤼닝은 <span style="color: #000000;">중앙당</span> 원내대표이자 당의 경제 전문가입니다.
+unavailable-subtitle: 브뤼닝은 더 많은 힘이 필요합니다.
 choose-if: bruning_unlock
 on-arrival: z_leader = "Brüning"; z_relation -= 3; dvp_right += 1; ddp_right += 1; lvp_right += 1
 face-image: img/portraits/BrüningHeinrich.jpg
 
-Heinrich Brüning, the current chancellor, an ally of Kaas and protege of Stegerwald has got another job under his belt now. Although his responsibilities as chancellor will leave very little room for him to manage the internal affairs of his party, with it once again being left to his colleagues. 
+현재 총리이자 카스의 동맹, 그리고 슈테거발트의 제자인 하인리히 브뤼닝은 이제 또 하나의 직함을 거머쥐었습니다. 비록 총리로서의 막중한 책임 때문에 당 내부 업무를 관리할 여력은 거의 없을 것이며, 당무는 다시 한번 그의 동료들에게 맡겨질 것입니다.
 
-Nothing ever happens.
+아무 일도 일어나지 않습니다.
 
 @guerard
-subtitle: Guérard is part of the <span style="color: #000000;">Center</span>'s civil servant wing, and is in the dead center of the party politically.
-unavailable-subtitle: Guérard is only available as a compromise candidate, as he lacks a strong base behind himself.
+subtitle: 게라르트는 <span style="color: #000000;">중앙당</span> 내 공무원 파벌 소속이며, 정치적으로 당의 정중앙에 위치해 있습니다.
+unavailable-subtitle: 게라르트는 확고한 지지 기반이 없기 때문에 오직 타협 후보로서만 가능합니다.
 choose-if: guerard_unlock
 on-arrival: z_leader = "Guérard"; z_relation += 3; new_middle_z += 6; old_middle_z += 2
 face-image: img/portraits/guerard.jpg
 
-Von Guérard, a rather plain government bureaucrat in charge of the Transport Ministry and former parliamentary group leader for the <span style="color: #000000;">Center</span>, has shifted to the left over the years. He is elected as a compromise candidate due to his inoffensiveness to any wing of the party. 
+교통부 장관을 맡고 있는 다소 평범한 관료이자 <span style="color: #000000;">중앙당</span>의 전 원내대표인 폰 게라르트는 수년에 걸쳐 좌클릭했습니다. 그는 당내 어떤 파벌에게도 거부감을 주지 않기 때문에 타협 후보로 선출되었습니다.
 
-His political position aligns with that of former chancellor and party leader Wilhelm Marx, and he has voiced support for the continuation of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
+그의 정치적 입장은 전 총리이자 당 대표였던 빌헬름 마르크스와 일치하며, 그는 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정의 지속을 지지한다고 밝혔습니다.
 
 @stegerwald
-subtitle: Stegerwald supports 'leaving the tower', expanding the party to include Protestants.
+subtitle: 슈테거발트는 '탑에서 나오기', 즉 당을 확장하여 개신교도들을 포용하는 것을 지지합니다.
 choose-if: stegerwald_unlock
-unavailable-subtitle: Stegerwald lacks the necessary influence to overcome his detractors, and the <span style="color: #000000;">Center</span> believes that their electoral situation is fine as is.
+unavailable-subtitle: 슈테거발트는 반대파를 극복할 영향력이 부족하며, <span style="color: #000000;">중앙당</span>은 현재의 선거 상황에 만족하고 있습니다.
 on-arrival: z_leader = "Stegerwald"; stegerwald_transformation_timer = 12; z_ideology = "Right"; stegerwald_path = 1; z_relation -= 8; zentrum_disintegration += 2; new_middle_z -= 5; old_middle_z -= 3; rural_z -= 1; catholics_z -= 5; workers_z += 5; unemployed_z += 3; catholics_spd += 8; catholics_other += 4; catholics_dnvp += 2 if dnvp_ideology == "Moderate"; catholics_dvp += 4; catholics_ddp += 2; catholics_lvp += 4; dvp_right += 1; ddp_left += 1; ddp_cohesion += 1; liberal_cooperation += 1; bourgeois_cooperation += 1; catholics -= 5; new_middle_dnvp -= 2 if dnvp_ideology == "Radical"; old_middle_dnvp -= 3 if dnvp_ideology == "Radical"; rural_dnvp -= 3 if dnvp_ideology == "Radical"; new_middle_z += 2 if dnvp_ideology == "Radical"; old_middle_z += 3 if dnvp_ideology == "Radical"; rural_z += 3 if dnvp_ideology == "Radical"; prussia_leader = "Brüning" if prussia_leader == "Stegerwald"
 face-image: img/portraits/stegerwald.jpg
 
-Adam Stegerwald has been elected as the chairman of the <span style="color: #000000;">Center Party</span>. He seems to represent a rightward turn from Marx, despite his trade union background, and will preside over a <span style="color: #000000;">Center Party</span> less inclined to compromise with the left. He views the <span style="color: #000000;">Center Party</span> as a prototype for a <span style="color: #000000;">Christian</span>, <span style="color: #586593;">democratic</span>, <span style="color: #000000;">German</span>, and <span style="color: #c00000;">social</span> party, and aims to transform it according to the principles laid out in his proposed "Essen program" eight years prior. 
+아담 슈테거발트가 <span style="color: #000000;">중앙당</span>의 의장으로 선출되었습니다. 그는 노동조합 출신임에도 불구하고 마르크스 체제로부터의 우경화를 상징하는 것으로 보이며, 좌파와의 타협을 꺼리는 <span style="color: #000000;">중앙당</span>을 이끌 것입니다. 그는 <span style="color: #000000;">중앙당</span>을 <span style="color: #000000;">기독교적</span>, <span style="color: #586593;">민주적</span>, <span style="color: #000000;">독일적</span>, 그리고 <span style="color: #c00000;">사회적</span> 정당의 원형으로 보고 있으며, 8년 전 그가 제안했던 "에센 프로그램"의 원칙에 따라 당을 개혁하는 것을 목표로 하고 있습니다.
 
-The <span style="color: #000000;">Center Party</span>'s middle class wing are in uproar over the vote, despite Stegerwald conceding his leadership of the Reichstag delegation and the Minister-Presidency to his protege Heinrich Brüning. [? if dnvp_ideology == "Radical": His election also attracts some Protestant <span style="color: #3E88B3;">**DNVP**</span> dissidents and industrialists, who may result in a shift of the party towards the right. ?]
+<span style="color: #000000;">중앙당</span>의 중산층 파벌은 슈테거발트가 제국의회 원내대표직과 주총리직을 자신의 제자인 하인리히 브뤼닝에게 양보했음에도 불구하고 이번 선거 결과에 크게 동요하고 있습니다. [? if dnvp_ideology == "Radical": 그의 당선은 또한 일부 개신교 <span style="color: #3E88B3;">**DNVP**</span> 반체제 인사들과 산업가들을 끌어들이고 있으며, 이는 당이 우측으로 이동하는 결과를 낳을 수 있습니다. ?]
