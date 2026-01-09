@@ -1,19 +1,19 @@
-title: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s Proposal
-subtitle: Should we offer to help them?
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 제안
+subtitle: 우리가 그들을 돕겠다고 제안해야 할까요?
 view-if: (year >= 1932 and not lvp_formed and not dstp_maintained and next_election_time - time < 3) and (((ddp_ideology == "Left" or ddp_leader == "Lemmer") and ddp_votes < 3.0) or (ddp_ideology == "Moderate" and ddp_votes < 2.0) or (ddp_ideology == "Right" and ddp_votes < 1.2))
 on-arrival: ddp_alliance_seen = 1;
 max-visits: 1
 tags: event
 new-page: true
 
-= The <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s Proposal
+= <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 제안
 
-Due to the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s declining electoral performance, threatening to wipe out their Reichstag delegation come next election, many within their party like the retired Koch-Weser have been lobbying for a technical list connection with the <span style="color: #c00000;">**SPD**</span>.
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 지지율이 하락하여 다음 선거에서 제국의회 의석이 전멸할 위기에 처하자, 은퇴한 코흐-베저를 비롯한 당내 많은 인사들이 <span style="color: #c00000;">**SPD**</span>와의 기술적 선거 명부 연합을 위해 로비를 벌여왔습니다.
 
-Despite their electoral standing, many within their business wing like Theodor Heuss argue that allying with the <span style="color: #c00000;">socialists</span> would be detrimental to their stance of economic freedom, while many on their left wing such as Ernst Lemmer argue it's a necessity in order to save their party and democracy. We can either offer to help the dying party out, increasing their parliamentary presence, or leave them on their own.
+이러한 선거적 위기에도 불구하고, 테오도어 호이스와 같은 당내 기업파의 많은 이들은 <span style="color: #c00000;">사회주의자들</span>과의 동맹이 자신들의 경제적 자유주의 입장에 해가 될 것이라고 주장하는 반면, 에른스트 레머와 같은 좌파 인사들은 당과 민주주의를 구하기 위해 이것이 필수적이라고 주장합니다. 우리는 죽어가는 당을 돕겠다고 제안하여 그들의 의회 내 입지를 높여주거나, 그들을 내버려 둘 수 있습니다.
 
-- @ddp_alliance_yay: Offer to help the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>.
-- @ddp_alliance_reject: We are not saving the party of the bourgeoisie.
+- @ddp_alliance_yay: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>에 도움을 제안한다.
+- @ddp_alliance_reject: 우리는 부르주아 정당을 구하지 않는다.
 
 @ddp_alliance_yay
 on-arrival: {!
@@ -68,9 +68,9 @@ go-to: ddp_alliance_yay_2 if ddp_alliance_points >= 5; ddp_alliance_nay_2 if ddp
 on-arrival: ddp_alliance = 1; ddp_alliance_glaze = 1 if ddp_ideology == "Left" and ddp_leader == "Lemmer"; liberal_cooperation -= 10; bourgeois_cooperation -= 3; ddp_relation += 20; pro_republic += ddp_votes; ddp_left += 6; ddp_cohesion -= 4; rural_ddp *= 0.5; old_middle_ddp *= 0.6; new_middle_ddp *= 0.8; workers_ddp += 3 if ddp_alliance_glaze; new_middle_ddp += 2 if ddp_alliance_glaze; old_middle_ddp -= 1 if ddp_alliance_glaze; rural_ddp -= 1 if ddp_alliance_glaze; pro_republic += 3 if ddp_alliance_glaze
 go-to: liberale_blocpartei if ddp_ideology == "Left" and ddp_leader == "Lemmer"
 
-After their internal vote, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> accepts our offer, despite the opposition from whatever remains of the business wing. The party suffers electorally from their association with us, even if many right-wingers stress it as nothing more than a technical list connection. Anyhow, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will receive more parliamentary seats now.
+내부 투표를 거친 후, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 기업파 잔류 세력의 반대에도 불구하고 우리의 제안을 수락합니다. 비록 당내 많은 우파 인사들이 이것이 기술적인 명부 연합에 불과하다고 강조하고 있지만, 우리와의 연대로 인해 당은 선거에서 타격을 입을 것입니다. 어쨌든, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 이제 더 많은 의회 의석을 확보하게 될 것입니다.
 
-[? if ddp_ideology == "Left" and ddp_leader == "Lemmer": Lemmer has decided to take things a step further, and has further increased electoral cooperation between our parties. Perhaps this alliance will last more than just one election? ?]
+[? if ddp_ideology == "Left" and ddp_leader == "Lemmer": 레머는 한 걸음 더 나아가기로 결정했고, 양당 간의 선거 협력을 더욱 강화했습니다. 어쩌면 이 동맹이 단 한 번의 선거보다 더 오래 지속될 수도 있을까요? ?]
 
 @liberale_blocpartei
 achievement: liberale_blocpartei
@@ -78,9 +78,9 @@ achievement: liberale_blocpartei
 @ddp_alliance_nay_2
 on-arrival: ddp_relation -= 3; ddp_right += 3; ddp_cohesion -= 3
 
-Unfortunately, despite our offer for help, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has rejected the list connection in an internal vote. Even in the state they're in currently, they still adamantly oppose any association with <span style="color: #c00000;">socialism</span>. Maybe they'll change their mind when the election results come through.
+불행히도, 우리의 지원 제안에도 불구하고 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 내부 투표에서 명부 연합을 거부했습니다. 현재의 처참한 상황에서도 그들은 여전히 <span style="color: #c00000;">사회주의</span>와의 어떠한 연결도 단호하게 반대하고 있습니다. 아마도 선거 결과가 나오면 생각이 바뀔지도 모릅니다.
 
 @ddp_alliance_reject
 on-arrival: ddp_relation -= 5; ddp_right += 5
 
-The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> are on their own. 
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 홀로 남겨졌습니다.

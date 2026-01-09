@@ -1,20 +1,20 @@
-title: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s Proposal
-subtitle: The <span style="color: #D3C24D;">[+ ddp_name +]</span> has reconsidered their prior opposition.
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 제안
+subtitle: <span style="color: #D3C24D;">[+ ddp_name +]</span>이 이전의 반대 입장을 재고했습니다.
 view-if: (year >= 1933 and not lvp_formed and not dstp_maintained and next_election_time - time < 3) and ddp_alliance_seen and ddp_r < 1
 on-arrival: ddp_alliance_2_seen = 1;
 max-visits: 1
 tags: event
 new-page: true
 
-= The <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s Proposal
+= <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 제안
 
-With the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s disastrous showing last election, only winning [+ ddp_r +]% of seats, they've reconsidered our offer for an electoral list connection. Even Heuss is convinced that they need to do something. 
+지난 선거에서 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>이 겨우 [+ ddp_r +]%의 의석만을 확보하는 처참한 성적을 거둠에 따라, 그들은 선거 명부 연합에 대한 우리의 제안을 재고하게 되었습니다. 호이스조차도 당 차원에서 무언가 조치가 필요하다는 점에 설득되었습니다.
 
-- @ddp_alliance_yay: The party votes...
+- @ddp_alliance_yay: 당내 투표가 진행된다...
 
 @ddp_alliance_yay
 on-arrival: ddp_alliance = 1; ddp_alliance_glaze = 1 if ddp_ideology == "Left" and ddp_leader == "Lemmer"; liberal_cooperation -= 8; bourgeois_cooperation -= 3; ddp_relation += 5; pro_republic += ddp_votes; ddp_left += 3; ddp_cohesion -= 2; rural_ddp *= 0.7; old_middle_ddp *= 0.8; new_middle_ddp *= 0.95; workers_ddp += 3 if ddp_alliance_glaze; new_middle_ddp += 2 if ddp_alliance_glaze; old_middle_ddp -= 1 if ddp_alliance_glaze; rural_ddp -= 1 if ddp_alliance_glaze; pro_republic += 3 if ddp_alliance_glaze
 
-After their internal vote, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> accepts our offer. The party suffers electorally from their association with us, even if many right-wingers stress it as nothing more than a technical list connection. Anyhow, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will receive more parliamentary seats now.
+내부 투표를 거친 후, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 우리의 제안을 수락합니다. 비록 당내 많은 우파 인사들이 이것이 기술적인 명부 연합에 불과하다고 강조하고 있지만, 우리와의 연대로 인해 당은 선거에서 타격을 입을 것입니다. 어쨌든, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 이제 더 많은 의회 의석을 확보하게 될 것입니다.
 
-[? if ddp_ideology == "Left" and ddp_leader == "Lemmer": Lemmer has decided to take things a step further, and has further increased electoral cooperation between our parties. Perhaps this alliance will last more than just one election? ?]
+[? if ddp_ideology == "Left" and ddp_leader == "Lemmer": 레머는 한 걸음 더 나아가기로 결정했고, 양당 간의 선거 협력을 더욱 강화했습니다. 어쩌면 이 동맹이 단 한 번의 선거보다 더 오래 지속될 수도 있을까요? ?]

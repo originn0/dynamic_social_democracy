@@ -1,5 +1,5 @@
-title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> Party Congress
-subtitle: The <span style="color: #D3C24D;">[+ ddp_name +]</span> decides their fate...
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당 대회
+subtitle: <span style="color: #D3C24D;">[+ ddp_name +]</span>이 그들의 운명을 결정합니다...
 view-if: year == 1930 and month >= 11 and not lvp_formed and not dstp_formed
 on-arrival: {!
 Q.lemmer_points = 0;
@@ -119,16 +119,16 @@ tags: event
 face-image: img/ddp.jpg
 new-page: true
 
-= <span style="color: #D3C24D;">**[+ ddp_name +]**</span> Party Congress
+= <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당 대회
 
-Koch-Weser, the long-time leader of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, has finally resigned. The internal opposition, especially following the Young German Order debacle, has reached a level that forced his retirement, though the demoralizing impact of being chairman of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> out of all parties have also contributed significantly.
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 오랜 지도자인 코흐-베저가 마침내 사임했습니다. 특히 청년독일단 사태 이후 내부 반발이 그의 은퇴를 강요하는 수준에 이르렀지만, 다른 당도 아닌 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 의장직을 수행하며 겪은 사기 저하 또한 큰 원인이 되었습니다.
 
-This year’s <span style="color: #D3C24D;">**[+ ddp_name +]**</span> party congress is officially convened to elect a new leader and to determine the party's policies amid the worsening economic depression that threatens the survival of the bourgeois middle. The candidates to succeed Koch-Weser so far include Hermann Dietrich, representing the business wing; Theodor Heuss, a committed supporter of <span style="color: #FFCC00;">liberal</span> <span style="color: #586593;">democracy</span>; and Ernst Lemmer, the leader of the liberal trade unions and the party's left wing.
+올해의 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당 대회는 새로운 지도자를 선출하고, 부르주아 중산층의 생존을 위협하는 악화일로의 경제 불황 속에서 당의 정책을 결정하기 위해 공식적으로 소집됩니다. 지금까지 코흐-베저를 계승할 후보로는 기업파를 대표하는 헤르만 디트리히, <span style="color: #FFCC00;">자유</span> <span style="color: #586593;">민주주의</span>의 헌신적인 지지자 테오도어 호이스, 그리고 자유주의 노동조합의 지도자이자 당내 좌파인 에른스트 레머가 거론됩니다.
 
-- @lemmer: The party votes...
-- @heuss: The party votes...
-- @dietrich: The party votes...
-- @deadlock: The party votes...
+- @lemmer: 당내 투표가 진행된다...
+- @heuss: 당내 투표가 진행된다...
+- @dietrich: 당내 투표가 진행된다...
+- @deadlock: 당내 투표가 진행된다...
 
 @lemmer
 view-if: lemmer_lead
@@ -136,9 +136,9 @@ on-arrival: ddp_leader = "Lemmer"; liberal_cooperation -= 3; ddp_relation += 10;
 face-image: img/portraits/lemmer.jpg
 go-to: achievement_calculation
 
-Surprisingly, Ernst Lemmer has managed to rally a majority of the party to elect him as the chairman of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>. He is primarily supported by the 'Social Republican Wing,' the Young Democrats, pacifists, radical democrats, and the labor wing of the party. However, his election would not have been possible without the backing of those who worked alongside him in the failed attempt to unite with the <span style="color: #D3D3A9;">**VNR**</span> months earlier. Now, a trade unionist leads a liberal middle-class party—what a time we live in.
+놀랍게도, 에른스트 레머는 당내 과반수의 지지를 얻어 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 의장으로 선출되었습니다. 그는 주로 '사회 공화주의 파벌', 청년 민주당원, 평화주의자, 급진 민주당원, 그리고 당내 노동 파벌의 지지를 받았습니다. 그러나 그의 당선은 몇 달 전 <span style="color: #D3D3A9;">**VNR**</span>과의 통합 시도 실패 당시 그와 함께했던 사람들의 지원 없이는 불가능했을 것입니다. 이제 노동조합원이 자유주의 중산층 정당을 이끌게 되었습니다. 참으로 놀라운 시대입니다.
 
-Lemmer's victory significantly empowers the <span style="color: #c00000;">Social</span> <span style="color: #000000;">Rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">icans</span> and left-wing elements within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, even drawing his former colleague Anton Erkelenz back into politics. We can expect his <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to adopt a 'social capitalist' platform,[? if stolper_program_adopted:&nbsp;to replace the Stolper program,?] aiming to include workers in the *Volksgemeinschaft*.
+레머의 승리는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내의 <span style="color: #c00000;">사회</span> <span style="color: #000000;">공화</span><span style="color: #DD0000;">주의자들</span>과 좌파 세력에게 상당한 힘을 실어주었으며, 심지어 그의 전 동료 안톤 에르켈렌츠를 정계로 복귀시키기도 했습니다. 우리는 그의 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>이 노동자들을 *민족공동체*에 포용하는 것을 목표로 하는, [? if stolper_program_adopted:&nbsp;슈톨퍼 프로그램을 대체할,?] '사회 자본주의' 강령을 채택할 것으로 기대할 수 있습니다.
 
 @heuss
 view-if: heuss_lead_ddp
@@ -146,9 +146,9 @@ on-arrival: ddp_leader = "Heuss"; ddp_cohesion += 3; pro_republic += (ddp_votes*
 face-image: img/portraits/heuss.jpg
 go-to: achievement_calculation
 
-Theodor Heuss a journalist turned politician and a rising star has been elected as the chairman of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>. Although affiliated with the business wing of the party, his determined and genuine support for <span style="color: #FFCC00;">liberal</span> <span style="color: #586593;">democracy</span> has earned him support from the party's left wing. 
+언론인 출신의 정치인이자 떠오르는 별인 테오도어 호이스가 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 의장으로 선출되었습니다. 비록 당내 기업파와 제휴하고 있지만, <span style="color: #FFCC00;">자유</span> <span style="color: #586593;">민주주의</span>에 대한 그의 확고하고 진실한 지지는 당내 좌파로부터도 지지를 이끌어냈습니다.
 
-Heuss's victory strengthens the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s cooperation with us, as he has urged his party members that it is crucial to save German democracy. Despite his leanings toward the right, he has refrained from ousting the far-left elements of the party or shifting its platform drastically.
+호이스의 승리는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>과 우리 당의 협력을 강화할 것입니다. 그는 당원들에게 독일 민주주의를 구하는 것이 무엇보다 중요하다고 촉구했기 때문입니다. 우파적 성향에도 불구하고, 그는 당내 극좌 세력을 축출하거나 당의 강령을 급진적으로 바꾸는 것은 자제했습니다.
 
 @dietrich
 view-if: dietrich_lead
@@ -156,16 +156,16 @@ on-arrival: ddp_leader = "Dietrich"; ddp_right += 1; liberal_cooperation += 1; n
 face-image: img/portraits/dietrich.jpg
 go-to: achievement_calculation
 
-Hermann Dietrich has, as expected, won the election to become chairman of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, receiving support from the newly dominant business wing of the party, as well as from the old-line <span style="color: #D3C24D;">democrats</span> who joined him in opposing the merger with the <span style="color: #D3D3A9;">**VNR**</span>.
+헤르만 디트리히는 예상대로 선거에서 승리하여 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 의장이 되었으며, 당의 새로운 주류가 된 기업파뿐만 아니라 <span style="color: #D3D3A9;">**VNR**</span>과의 합병 반대에 그와 뜻을 같이했던 구주류 <span style="color: #D3C24D;">민주당원들</span>로부터 지지를 받았습니다.
 
-[? if chancellor == "Brüning" and not spd_in_government: Dietrich is known for formulating Brüning's emergency decrees during his tenure as Finance Minister, justifying them as the bitter medicine the country must endure on its road to recovery. ?][? if not (chancellor == "Brüning" and not spd_in_government) and agriculture_minister_party != "SPD": Dietrich is known for his fiscal conservatism and advocacy for rural Germany during his tenure as Minister of Agriculture. ?] However, his leadership has been quite uninspiring, to say the least—a sentiment shared by many within the party, though no one seems willing to challenge him. [? if agriculture_minister_party == ddp_name or economic_minister_party == ddp_name: The responsibilities of his ministry prevent him from being involved in the day-to-day running of his party, which has now been delegated to a group of his associates in the business wing, but this is unlikely to change much in terms of policy. ?]
+[? if chancellor == "Brüning" and not spd_in_government: 디트리히는 재무장관 재임 시절 브뤼닝의 긴급 칙령을 입안한 것으로 알려져 있으며, 이를 국가가 회복의 길에서 견뎌야 하는 쓴 약으로 정당화했습니다. ?][? if not (chancellor == "Brüning" and not spd_in_government) and agriculture_minister_party != "SPD": 디트리히는 농업부 장관 재임 시절 재정 건전성과 독일 농촌을 위한 옹호 활동으로 알려져 있습니다. ?] 그러나 그의 지도부는 좋게 말해도 꽤나 영감을 주지 못했으며—이는 당내 많은 이들이 공유하는 감정이지만, 아무도 그에게 도전하려 하지 않는 것 같습니다. [? if agriculture_minister_party == ddp_name or economic_minister_party == ddp_name: 장관직 수행으로 인해 그가 당의 일상적인 운영에 관여하는 것이 어려워졌고, 이는 이제 기업파 내 그의 측근들에게 위임되었지만, 이것이 정책 측면에서 많은 변화를 가져올 것 같지는 않습니다. ?]
 
 @deadlock
 view-if: ddp_deadlock
 
-The vote has been deadlocked, with no candidate ahead by enough to constitute a majority. You, the player, now has free will to choose a compromise candidate. Spend it wisely. Actually, you don't. Choose Heuss right now.
+투표는 교착 상태에 빠졌고, 어떤 후보도 과반수를 확보하지 못했습니다. 플레이어인 당신에게는 이제 타협 후보를 선택할 자유 의지가 주어졌습니다. 현명하게 사용하십시오. 사실, 당신에겐 자유가 없습니다. 지금 당장 호이스를 선택하십시오.
 
-- @heuss_compromise: Theodor Heuss.
+- @heuss_compromise: 테오도어 호이스.
 
 @heuss_compromise
 go-to: heuss
