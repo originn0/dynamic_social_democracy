@@ -1,4 +1,4 @@
-title: The Death of Hermann Müller
+title: 헤르만 뮐러의 죽음
 view-if: year = 1931 and month >= 3
 frequency: 1000
 max-visits: 1
@@ -8,52 +8,52 @@ on-arrival: muller_dead = 1; n_advisors_start = n_advisors;  n_advisors -= 1 if 
 new-page: true
 face-image: img/portraits/MüllerHermann.jpg
 
-= The Death of Hermann Müller
+= 헤르만 뮐러의 죽음
 
 @pm
 on-arrival: muller_died_in_office = 1
 
-Chancellor Hermann Müller has died while in office. He will be greatly missed. But now, we must select a new Chancellor.
+헤르만 뮐러 총리가 재임 중 사망했습니다. 그가 몹시 그리울 것입니다. 하지만 이제 우리는 새로운 총리를 선출해야 합니다.
 
-- @braun_chancellor: Otto Braun (<span style="color: #c00000;">**SPD**</span>) for Chancellor.
-- @wels_chancellor: Otto Wels (<span style="color: #c00000;">**SPD**</span>) for Chancellor.
-- @breitscheid_chancellor: Rudolf Breitscheid (<span style="color: #c00000;">**SPD**</span>) for Chancellor.
-- @bruning_chancellor: Let Heinrich Bruning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] become Chancellor.
-- @wirth_chancellor: Joseph Wirth of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] should be Chancellor.
+- @braun_chancellor: 총리로 오토 브라운(<span style="color: #c00000;">**SPD**</span>).
+- @wels_chancellor: 총리로 오토 벨스(<span style="color: #c00000;">**SPD**</span>).
+- @breitscheid_chancellor: 총리로 루돌프 브라이트샤이트(<span style="color: #c00000;">**SPD**</span>).
+- @bruning_chancellor: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝이 총리가 되게 한다.
+- @wirth_chancellor: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 요제프 비르트가 총리가 되어야 한다.
 
 @braun_chancellor
 on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; z_relation -= 3; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3; z_relation -= 3 if prussia_leader == "Braun"; dvp_relation -= 3 if prussia_leader == "Braun"; ddp_relation -= 3 if prussia_leader == "Braun"; lvp_relation -= 3 if prussia_leader == "Braun"
-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is worried about having so much power in one man.
+subtitle: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 한 사람에게 너무 많은 권력이 집중되는 것을 우려합니다.
 
-Our coalition partners are reluctant to accept the new Chancellor, but they do not make loud objections.
+연정 파트너들은 새 총리를 받아들이기를 꺼리지만, 큰 반대는 하지 않습니다.
 
 
 @wels_chancellor
 on-arrival: chancellor = "Wels"; chancellor_party = "SPD"; z_relation -= 3; dvp_relation -= 3; ddp_relation -= 3; lvp_relation -= 3
-subtitle: He is a good organizer, but is he also a good chancellor?
+subtitle: 그는 훌륭한 조직가이지만, 좋은 총리이기도 할까요?
 
-Our coalition partners are reluctant to accept the new Chancellor, but they do not make loud objections.
+연정 파트너들은 새 총리를 받아들이기를 꺼리지만, 큰 반대는 하지 않습니다.
 
 @breitscheid_chancellor
 on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"; z_relation -= 5; dvp_relation -= 5; ddp_relation -= 5; lvp_relation -= 5; kpd_relation += 3
-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is worried about his left-leaning tendencies.
+subtitle: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 그의 좌파적 성향을 우려합니다.
 
-Our coalition partners are reluctant to accept the new Chancellor, but they do not make loud objections.
+연정 파트너들은 새 총리를 받아들이기를 꺼리지만, 큰 반대는 하지 않습니다.
 
 @bruning_chancellor
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; z_relation += 5; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; coalition_dissent -= 1; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; lvp_left += 1
-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] claims it is their turn...
+subtitle: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 자신들의 차례라고 주장합니다...
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is grateful that we have supported Brüning for Chancellor.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 우리가 브뤼닝을 총리로 지지해 준 것에 대해 감사하고 있습니다.
 
 @wirth_chancellor
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; z_relation += 5; dvp_relation += 2; ddp_relation += 2; lvp_relation += 2
 view-if: z_ideology == "Left"
-subtitle: As a moderate member of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], he could represent unity.
+subtitle: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 온건파 의원으로서, 그는 통합을 대표할 수 있습니다.
 
-Our coalition partners accept Joseph Wirth of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] as the new Chancellor.
+연정 파트너들은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 요제프 비르트를 새로운 총리로 받아들입니다.
 
 
 @not_pm
 
-Hermann Müller, one of the <span style="color: #c00000;">**SPD**</span>'s long-time leaders, has died. He will be greatly missed.
+<span style="color: #c00000;">**SPD**</span>의 오랜 지도자 중 한 명인 헤르만 뮐러가 사망했습니다. 그가 몹시 그리울 것입니다.

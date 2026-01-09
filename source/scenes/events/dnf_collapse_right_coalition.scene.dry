@@ -1,17 +1,17 @@
-title: Right coalition collapses
-subtitle: The right-wing coalition has collapsed...
+title: 우파 연정 붕괴
+subtitle: 우파 연정이 붕괴했습니다...
 new-page: true
 tags: event
 view-if: dnf_formed and year = 1928 and month = 11 and right_coalition < 50 and in_right_coalition and not lvp_formed
 max-visits: 1
 
-= Hugenberg's exit from the coalition
+= 휴겐베르크의 연정 탈퇴
 
-When Hugenberg established his own party, he successfully attracted a significant number of former <span style="color: #3E88B3;">**DNVP**</span> Reichstag members to join his party and to oppose the current right-wing coalition. The current government lacks a majority within the Reichstag and may be taken down with a no-confidence vote.
+휴겐베르크가 자신의 당을 창당했을 때, 그는 상당수의 전 <span style="color: #3E88B3;">**DNVP**</span> 제국의회 의원들을 자신의 당에 합류시키고 현재의 우파 연정에 반대하도록 성공적으로 끌어들였습니다. 현재 정부는 제국의회 내 과반 의석을 확보하지 못했으며 불신임 투표로 무너질 수 있습니다.
 
-The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has indicated their willingness to join the government now that the <span style="color: #3E88B3;">**DNVP**</span> has rid of their radical right elements. [? if center_right_coalition >= 50 : This is enough to form a functional government without us. ?][? if center_right_coalition < 50 : Although, this still doesn't provide a sufficient majority. ?]
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>는 이제 <span style="color: #3E88B3;">**DNVP**</span>가 급진 우파 요소들을 제거했으므로 정부에 합류할 의향을 내비쳤습니다. [? if center_right_coalition >= 50 : 이것은 우리 없이 기능적인 정부를 구성하기에 충분합니다. ?][? if center_right_coalition < 50 : 비록, 이것은 여전히 충분한 과반수를 제공하지 못합니다. ?]
 
-[? if center_right_coalition < 50 : We can either vote to bring down the government and hold new elections, or "tolerate" a government led by the remaining bourgeois parties. It would be extremely unpopular within our party to support a government that has the participation of the <span style="color: #3E88B3;">**DNVP**</span>—despite their removal of the most extreme factions—would be highly unpopular within our party. ?]
+[? if center_right_coalition < 50 : 우리는 정부를 무너뜨리고 새로운 선거를 치르기 위해 투표하거나, 남은 부르주아 정당들이 이끄는 정부를 "묵인"할 수 있습니다. 가장 극단적인 파벌이 제거되었다고는 하나, <span style="color: #3E88B3;">**DNVP**</span>가 참여하는 정부를 지지하는 것은 우리 당 내에서 인기가 극도로 없을 것입니다. ?]
 
 - @center_right
 - @vonc_yes
@@ -19,79 +19,79 @@ The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has indicated their 
 - @no_matter
 
 @center_right
-title: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> shall enter government.
-subtitle: The coalition will live for another day.
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 정부에 참여할 것이다.
+subtitle: 연정은 하루 더 연명할 것입니다.
 view-if: center_right_coalition >= 50
 on-arrival: spd_in_government = 0; in_center_right_coalition = 1; in_right_coalition = 0; old_middle_dnf -= 2; rural_dnf -= 2; ddp_right += 2; ddp_cohesion -= 1.5; liberal_cooperation += 1; bourgeois_cooperation += 2
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-The bourgeois has survived without our toleration, but it's unlikely that this governing arrangement will last much longer.
+부르주아는 우리의 묵인 없이 살아남았지만, 이 통치 체제가 훨씬 더 오래 지속될 것 같지는 않습니다.
 
 @vonc_yes
-title: Support the vote of no confidence, voting against the government.
-subtitle: The government will collapse, and there will be new elections.
+title: 불신임 투표를 지지하여, 정부에 반대표를 던진다.
+subtitle: 정부는 붕괴할 것이고, 새로운 선거가 치러질 것입니다.
 view-if: cordon_sanitaire >= 50 and center_right_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 2; dvp_relation -= 4; z_relation -= 4; dnvp_relation -= 4; ddp_relation -= 4; ddp_cohesion -= 1; ddp_right += 1; old_middle_dnf += 3; rural_dnf += 3
 call: set_next_election_time
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-The right-wing coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+우파 연정이 무너졌습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 잡혔습니다.
 
 @vonc_no
-title: Oppose the vote of no confidence, voting for the government.
-subtitle: We would essentially provide "toleration" to a bourgeois government.
+title: 불신임 투표에 반대하여, 정부에 찬성표를 던진다.
+subtitle: 우리는 본질적으로 부르주아 정부에 "묵인"을 제공하게 될 것입니다.
 view-if: cordon_sanitaire >= 50 and center_right_coalition < 50
 choose-if: (reformist_strength >= center_strength + left_strength)
-unavailable-subtitle: [? if (center_strength + left_strength >= reformist_strength) : Most of the party is in complete opposition to this. ?]
+unavailable-subtitle: [? if (center_strength + left_strength >= reformist_strength) : 당의 대다수가 이에 완전히 반대하고 있습니다. ?]
 on-arrival: spd_toleration = 1; spd_toleration_right = 1; in_right_coalition = 0; in_center_right_coalition = 0; left_dissent += 30; center_dissent += 25; labor_dissent += 20; reformist_dissent += 10; workers_spd -= 3; new_middle_spd -= 6; old_middle_spd -= 6; rural_spd -= 4; catholics_spd -= 5; dvp_left += 1; ddp_left += 1; liberal_cooperation += 1; bourgeois_cooperation += 2
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-By supporting the government, we have essentially entered into a "toleration" arrangement with the [+ chancellor +] government. We do not have a voice in the government, but we are responsible for its continued stability. This is wildly unpopular within the party and our supporters, as we allowed a right-wing government to form twice now.
+정부를 지지함으로써, 우리는 본질적으로 [+ chancellor +] 정부와 "묵인" 관계에 들어갔습니다. 우리는 정부 내에서 발언권은 없지만, 정부의 지속적인 안정에 책임이 있습니다. 우리가 우파 정부 구성을 두 번이나 허용했기 때문에, 이는 당과 지지자들 사이에서 몹시 인기가 없습니다.
 
 @no_matter
-title: It does not matter what we do.
-subtitle: The anti-government parties have over 50% of the vote, no matter our choices.
+title: 우리가 무엇을 하든 상관없다.
+subtitle: 우리의 선택과 관계없이 반정부 정당들이 50% 이상의 의석을 차지하고 있습니다.
 view-if: cordon_sanitaire < 50
 call: set_next_election_time
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
-The right-wing coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+우파 연정이 무너졌습니다. 새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 잡혔습니다.
 
 @new_prussia_election
 on-arrival: prussia_coalition_trigger = 1 if center_right_coalition_prussia < 50
 
-Hugenberg has also attracted some members of the <span style="color: #3E88B3;">**DNVP**</span> to split into the <span style="color: #003755;">**DNF**</span> in the Prussian Landtag too, [? if center_right_coalition_prussia < 50: even if the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> were to join in, they still lack a sufficient majority. ?][? if center_right_coalition_prussia >= 50: but if the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> were to enter, they would have a governing coalition. ?]
+휴겐베르크는 또한 <span style="color: #3E88B3;">**DNVP**</span>의 일부 의원들을 프로이센 주의회에서도 <span style="color: #003755;">**DNF**</span>로 분당하도록 끌어들였습니다. [? if center_right_coalition_prussia < 50: 비록 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 합류한다고 해도, 그들은 여전히 충분한 과반수를 확보하지 못합니다. ?][? if center_right_coalition_prussia >= 50: 그러나 만약 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 들어온다면, 그들은 집권 연정을 구성할 것입니다. ?]
 
-We have an opportunity to change the composition of the Prussian coalition.
+우리는 프로이센 연정의 구성을 바꿀 기회가 있습니다.
 
 
 - @prussia_coalition
-- @new_prussia_election_oppo: We will stay in opposition.
-- @prussian_coalition_formation: Negotiate a new Prussian coalition.
-- @new_prussia_election_called: Refuse to form a coalition, so new elections are to be called.
+- @new_prussia_election_oppo: 우리는 야당에 남을 것이다.
+- @prussian_coalition_formation: 새로운 프로이센 연정을 협상한다.
+- @new_prussia_election_called: 연정 구성을 거부하여, 새로운 선거가 소집되게 한다.
 
 @prussia_coalition
-title: Use our resources to convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to reconsider.
-subtitle: -1 resources
-unavailable-subtitle: Not enough resources (need 1).
+title: 우리의 자원을 사용하여 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 재고하도록 설득한다.
+subtitle: 자원 -1
+unavailable-subtitle: 자원이 충분하지 않음 (1 필요).
 view-if: center_right_coalition_prussia >= 50
 choose-if: resources >= 1
 on-arrival: resources -= 1; ddp_left += 2; ddp_cohesion -= 1; liberal_cooperation -= 1 if liberal_parliament = 1; prussia_coalition_trigger = 1
 
-We have successfully bribed the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>. 
+우리는 성공적으로 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>를 매수했습니다.
 
-- @prussian_coalition_formation: Negotiate a new Prussian coalition.
+- @prussian_coalition_formation: 새로운 프로이센 연정을 협상한다.
 
 @new_prussia_election_oppo
 view-if: center_right_coalition_prussia >= 50
 on-arrival: in_right_coalition_prussia = 0; in_center_right_coalition_prussia = 1; right_prussia = 1; bourgeois_cooperation += 1; liberal_cooperation += 1
 
-And so we remain.
+그렇게 우리는 남게 됩니다.
 
 @new_prussia_election_called
 view-if: center_right_coalition_prussia < 50
 on-arrival: was_in_weimar_coalition_prussia = 1 if (in_weimar_coalition_prussia == 1 or in_minority_weimar_coalition_prussia == 1); was_in_grand_coalition_prussia = 1 if (in_grand_coalition_prussia == 1 or in_minority_grand_coalition_prussia == 1); in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; spd_toleration_prussia = 0; kpd_goals_seen_prussia = 0
 call: set_next_election_time_prussia
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 선거가 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 잡혔습니다.
