@@ -1,5 +1,5 @@
-title: First <span style="color: #000000;">**[+ z_party_name +]**</span> Congress
-subtitle: The future of this new party will be decided here.
+title: 제1차 <span style="color: #000000;">**[+ z_party_name +]**</span> 전당대회
+subtitle: 이곳에서 신당의 미래가 결정될 것입니다.
 view-if: cvp_formed
 on-arrival: {!
 
@@ -238,50 +238,50 @@ tags: event
 face-image: img/cvp.jpg
 new-page: true
 
-= First <span style="color: #000000;">**[+ z_party_name +]**</span> Congress
+= 제1차 <span style="color: #000000;">**[+ z_party_name +]**</span> 전당대회
 
-The <span style="color: #000000;">Christian People's Party</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) has officially been founded! Adam Stegerwald, orchestrator of this arrangement and leader of the former <span style="color: #000000;">Center</span>, has been chosen as the interim leader of the new party.
+<span style="color: #000000;">기독교 인민당</span>(<span style="color: #000000;">**[+ z_party_name +]**</span>)이 공식적으로 창당되었습니다! 이 합당의 설계자이자 전 <span style="color: #000000;">중앙당</span>의 지도자인 아담 슈테거발트가 신당의 임시 대표로 추대되었습니다.
 
-The <span style="color: #000000;">**[+ z_party_name +]**</span>'s inaugural congress will play a major role in shaping the direction of the newly founded party, and to elect a new chairman. It finally looks like we might have some competition now.
+<span style="color: #000000;">**[+ z_party_name +]**</span>의 창립 전당대회는 갓 출범한 정당의 방향성을 정립하고 새로운 의장을 선출하는 데 있어 중대한 역할을 할 것입니다. 드디어 우리에게도 제대로 된 경쟁자가 생긴 것 같습니다.
 
 - @cvp_factions
 
 @cvp_factions
-title: The party congress is held.
-subtitle: The factions of the two parties shall reorganize into blocs.
+title: 전당대회가 개최되다.
+subtitle: 양당의 파벌들이 블록 단위로 재편될 것입니다.
 
-The merger of the two parties also brings together the many factions of the <span style="color: #000000;">Center</span> and the <span style="color: #3E88B3;">**DNVP**</span>. Though they now share a party banner, deep factional divides remain, and infighting continues to plague the new organization—at least until the party congress settles the balance of power.
+두 정당의 합당은 <span style="color: #000000;">중앙당</span>과 <span style="color: #3E88B3;">**DNVP**</span> 내의 수많은 파벌들을 한데 모으는 결과도 낳았습니다. 비록 이제는 하나의 당기를 공유하고 있지만, 깊은 파벌 간의 골은 여전하며, 전당대회에서 권력의 균형이 정리되기 전까지는 내분이 계속해서 새로운 조직을 괴롭힐 것입니다.
 
-The reorganized factions are as follows:
+재편된 파벌들은 다음과 같습니다:
 
-<span style="color: #003755;">Far-Right Protestants</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): Marginal ?]
+<span style="color: #003755;">극우 개신교도</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
 
-<span style="color: #3E3B2D;">Far-Right Catholics</span> (<span style="color: #000000;">**Z**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): Marginal ?]
+<span style="color: #3E3B2D;">극우 가톨릭교도</span> (<span style="color: #000000;">**Z**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
 
-<span style="color: #3E88B3;">National Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Gereke - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead and not conservative_right_points_lead: Influential?][? if cvp_ideology != "Left" and conservative_right_points_lead: Powerful?]
+<span style="color: #3E88B3;">국가 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 게레케 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not conservative_right_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and conservative_right_points_lead: 강력함?]
 
-<span style="color: #385A38;">Agrarians</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Gereke - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead: Relevant?][? if cvp_ideology != "Left" and agrarian_right_points_lead: Influential?]
+<span style="color: #385A38;">농본주의자</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 게레케 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 유의미함?][? if cvp_ideology != "Left" and agrarian_right_points_lead: 영향력 있음?]
 
 <hr id="read-marker">
-<span style="color: #6D5298;">Christian Socials</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Lambach - [? if cvp_ideology == "Left" and not labor_points_lead: Marginal?][? if ((cvp_ideology != "Left" and not presidential_points_lead and not labor_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): Limited?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and labor_points_lead and not labor_right_points_lead: Influential?][? if cvp_ideology != "Left" and labor_right_points_lead: Powerful?]
+<span style="color: #6D5298;">기독교 사회파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 람바흐 - [? if cvp_ideology == "Left" and not labor_points_lead: 미미함?][? if ((cvp_ideology != "Left" and not presidential_points_lead and not labor_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and labor_points_lead and not labor_right_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and labor_right_points_lead: 강력함?]
 
-<span style="color: #330000;">Catholic Labor</span> (<span style="color: #000000;">**Z**</span>) - Stegerwald - [? if cvp_ideology == "Left" and labor_left_points_lead: Powerful?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: Influential?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: Limited?]
+<span style="color: #330000;">가톨릭 노동파</span> (<span style="color: #000000;">**Z**</span>) - 슈테거발트 - [? if cvp_ideology == "Left" and labor_left_points_lead: 강력함?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: 제한적?]
 <hr id="read-marker">
-<span style="color: #0087DC;">People's Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Treviranus - [? if cvp_ideology == "Left" and democratic_points_lead: Dominant?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+<span style="color: #0087DC;">인민 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 트레비라누스 - [? if cvp_ideology == "Left" and democratic_points_lead: 지배적?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
 
-<span style="color: #000099;">Catholic Right</span> (<span style="color: #000000;">**Z**</span>) - Treviranus - [? if cvp_ideology == "Left" and democratic_points_lead: Influential?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Relevant?][? if cvp_ideology != "Left" and not democratic_points_lead: Limited?]
+<span style="color: #000099;">가톨릭 우파</span> (<span style="color: #000000;">**Z**</span>) - 트레비라누스 - [? if cvp_ideology == "Left" and democratic_points_lead: 영향력 있음?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 유의미함?][? if cvp_ideology != "Left" and not democratic_points_lead: 제한적?]
 
-[? if cvp_dvp_formed: <span style="color: #D8B868;">Stresemannites</span> (<span style="color: #C0A054;">**DVP**</span>) - Treviranus - [? if cvp_ideology == "Left" and democratic_points_lead: Relevant?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Limited?][? if cvp_ideology != "Left" and not democratic_points_lead: Marginal?]?]
+[? if cvp_dvp_formed: <span style="color: #D8B868;">슈트레제만파</span> (<span style="color: #C0A054;">**DVP**</span>) - 트레비라누스 - [? if cvp_ideology == "Left" and democratic_points_lead: 유의미함?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 제한적?][? if cvp_ideology != "Left" and not democratic_points_lead: 미미함?]?]
 
-[? if cvp_dvp_formed: <span style="color: #8C7A3C;">Industrialists</span> (<span style="color: #C0A054;">**DVP**</span>) - Treviranus - [? if cvp_ideology != "Left" and not labor_points_lead: Influential?][? if not (cvp_ideology != "Left" and not labor_points_lead): Relevant?]?]
+[? if cvp_dvp_formed: <span style="color: #8C7A3C;">산업가</span> (<span style="color: #C0A054;">**DVP**</span>) - 트레비라누스 - [? if cvp_ideology != "Left" and not labor_points_lead: 영향력 있음?][? if not (cvp_ideology != "Left" and not labor_points_lead): 유의미함?]?]
 <hr id="read-marker">
-<span style="color: #000000;">Catholic Center</span> (<span style="color: #000000;">**Z**</span>) - Adenauer - [? if cvp_ideology == "Left" and democratic_points_lead: Powerful?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+<span style="color: #000000;">가톨릭 중앙파</span> (<span style="color: #000000;">**Z**</span>) - 아데나워 - [? if cvp_ideology == "Left" and democratic_points_lead: 강력함?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
 
-<span style="color: #FF7F00;">Christian Left</span> (<span style="color: #000000;">**Z**</span>) - Adenauer / Stegerwald - [? if cvp_ideology == "Left" and labor_left_points_lead: Relevant?][? if cvp_ideology == "Left" and not labor_left_points_lead: Limited?][? if cvp_ideology != "Left": Marginal?]
+<span style="color: #FF7F00;">기독교 좌파</span> (<span style="color: #000000;">**Z**</span>) - 아데나워 / 슈테거발트 - [? if cvp_ideology == "Left" and labor_left_points_lead: 유의미함?][? if cvp_ideology == "Left" and not labor_left_points_lead: 제한적?][? if cvp_ideology != "Left": 미미함?]
 <hr id="read-marker">
-[? if labor_points_lead: The Christian trade unions have found themselves at an advantageous position going into the congress. ?][? if democratic_points_lead: The pro-<span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> forces have found themselves at an advantageous position going into the congress. ?][? if presidential_points_lead: The <span style="color: #3E88B3;">nationalist</span> forces have found themselves at an advantageous position going into the congress. ?][? if cvp_deadlock: No faction seems able to secure a significant plurality of support within the party, so a compromise candidate is expected to emerge. ?]
+[? if labor_points_lead: 기독교 노동조합들은 이번 전당대회에서 유리한 고지를 점했습니다. ?][? if democratic_points_lead: 친<span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">정</span> 세력들은 이번 전당대회에서 유리한 고지를 점했습니다. ?][? if presidential_points_lead: <span style="color: #3E88B3;">민족주의</span> 세력들은 이번 전당대회에서 유리한 고지를 점했습니다. ?][? if cvp_deadlock: 어떤 파벌도 당내에서 확실한 다수의 지지를 확보하지 못한 것으로 보여, 타협 후보가 부상할 것으로 예상됩니다. ?]
 
-The vote for the party's leadership has begun.
+당 지도부 선출을 위한 투표가 시작되었습니다.
 
 - @stegerwald
 - @lambach
@@ -291,77 +291,77 @@ The vote for the party's leadership has begun.
 - @compromise
 
 @stegerwald
-title: Adam Stegerwald, formerly of the <span style="color: #000000;">Center</span>, is elected, no longer an interim leader.
-subtitle: Stegerwald is relatively moderate, and his trade union roots are good news for our cooperation. - <span style="color: #000000;">Catholic Labor</span> Wing
-unavailable-subtitle: Stegerwald is seen as too friendly toward us, and the party needs a new face. - <span style="color: #000000;">Catholic Labor</span> Wing
+title:  전 <span style="color: #000000;">중앙당</span>의 아담 슈테거발트가 선출되다. 더 이상 임시 대표가 아니다.
+subtitle: 슈테거발트는 비교적 온건하며, 그의 노동조합 기반은 우리의 협력에 좋은 소식입니다. - <span style="color: #000000;">가톨릭 노동파</span> 파벌
+unavailable-subtitle: 슈테거발트는 우리에게 너무 우호적인 인물로 비치며, 당은 새로운 얼굴을 필요로 합니다. - <span style="color: #000000;">가톨릭 노동파</span> 파벌
 choose-if: stegerwald_unlock
 on-arrival: z_relation += 15; pro_republic += 5; ddp_relation += 5; dvp_relation += 5; lvp_relation += 5; workers_z += 5; unemployed_z += 3; workers_spd -= 3; workers_kpd -= 2; unemployed_spd -= 3; rural_z -= 4; old_middle_z -= 4; rural_dnf += 4; old_middle_dnf += 4; catholics_z += 8; cvp_leader = "Stegerwald"; cvp_left += 5; cvp_ideology = "Left"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/stegerwald.jpg
 
-Somewhat surprisingly, <span style="color: #000000;">Center</span> leader Adam Stegerwald is elected as the chairman of its successor party. This is largely attributed to the unified support from the various Christian labor unions and backing from former <span style="color: #000000;">Center</span> and Catholic politicians. However, he remains largely opposed by former <span style="color: #3E88B3;">**DNVP**</span> members due to his willingness to cooperate constructively with the <span style="color: #c00000;">**SPD**</span>.
+다소 놀랍게도, <span style="color: #000000;">중앙당</span>의 지도자 아담 슈테거발트가 후신 정당의 의장으로 선출되었습니다. 이는 주로 다양한 기독교 노동조합들의 단결된 지지와 전 <span style="color: #000000;">중앙당</span> 및 가톨릭 정치인들의 후원 덕분이었습니다. 그러나 그는 <span style="color: #c00000;">**SPD**</span>와 건설적으로 협력하려는 의지 때문에 전 <span style="color: #3E88B3;">**DNVP**</span> 구성원들로부터 여전히 큰 반감을 사고 있습니다.
 
-It was widely expected that, with the merger of the two parties, politicians like Stegerwald would shift to the left wing of the newly created party—and this has indeed proven true. His strongest supporters, aside from the trade unions, include the now strengthened <span style="color: #FF7F00;">Christian Left</span> faction, which will push for a paternalistic economic policy and greater cooperation with the <span style="color: #c00000;">socialists</span>. Stegerwald is also a committed <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>, a stance that has pushed some ardent monarchists over to the <span style="color: #003755;">**DNF**</span>.
+두 당의 합당으로 슈테거발트 같은 정치인들이 신당의 좌파로 이동할 것이라는 예상이 지배적이었는데, 이는 사실로 드러났습니다. 노동조합 외에 그의 가장 강력한 지지 기반은 이제 강화된 <span style="color: #FF7F00;">기독교 좌파</span> 파벌이며, 이들은 온정주의적 경제 정책과 <span style="color: #c00000;">사회주의자들</span>과의 더 큰 협력을 추진할 것입니다. 슈테거발트는 또한 헌신적인 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의자</span>이며, 이러한 성향은 일부 열렬한 군주주의자들을 <span style="color: #003755;">**DNF**</span>로 이탈하게 만들었습니다.
 
 @lambach
-title: Walther Lambach, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: Lambach was apart of the <span style="color: #6D5298;">Christian Social</span> wing in the former <span style="color: #3E88B3;">DNVP</span>. - <span style="color: #6D5298;">Christian Social</span> Wing
-unavailable-subtitle: Lambach and his trade unions face significant animosity from the broader party, particularly the industrialist backers - <span style="color: #6D5298;">Christian Social</span> Wing.
+title: 전 <span style="color: #3E88B3;">DNVP</span>의 발터 람바흐가 그들의 새로운 지도자로 선출되다.
+subtitle: 람바흐는 전 <span style="color: #3E88B3;">DNVP</span> 내 <span style="color: #6D5298;">기독교 사회주의</span> 파벌의 일원이었습니다. - <span style="color: #6D5298;">기독교 사회주의</span> 파벌
+unavailable-subtitle: 람바흐와 그의 노동조합들은 당내 주류, 특히 산업가 후원자들로부터 상당한 적대감에 직면해 있습니다. - <span style="color: #6D5298;">기독교 사회주의</span> 파벌
 choose-if: lambach_unlock
 on-arrival: z_relation -= 5; pro_republic -= 5; ddp_relation += 8; dvp_relation += 8; lvp_relation += 8; workers_z += 10; unemployed_z += 5; workers_dnf -= 3; workers_nsdap -= 3; workers_spd -= 3; workers_kpd -= 2; unemployed_spd -= 3; unemployed_dnf -= 3; unemployed_nsdap -= 3; rural_z -= 10; new_middle_z += 4; new_middle_spd -= 4; old_middle_z -= 10; rural_dnf += 4; old_middle_dnf += 4; rural_dvp += 6; rural_lvp += 8; rural_ddp += 2; old_middle_dvp += 6; old_middle_ddp += 2; old_middle_lvp += 8; catholics_z -= 6; catholics_spd += 4; catholics_dvp += 2; catholics_lvp += 4; catholics_ddp += 2; cvp_leader = "Lambach"; cvp_right += 5; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/LambachWalther.jpg
 achievement: christlicher_sozialismus
 
-Somehow, the <span style="color: #6D5298;">Christian Social</span> wing, now diluted within a much larger party, has managed to elect one of their own as the leader of the <span style="color: #000000;">**[+ z_party_name +]**</span>. Walther Lambach, the writer of the Lambach article years ago[? if dnvp_leader == "Lambach":, and the most recent leader of the <span style="color: #3E88B3;">**DNVP**</span>?], has won the vote largely due to the unified support of the Christian labor unions, who strongly back his vision for a *Volksgemeinschaft*.
+어떻게 된 일인지, 훨씬 더 거대해진 정당 내에서 희석되었던 <span style="color: #6D5298;">기독교 사회주의</span> 파벌이 그들 중 한 명을 <span style="color: #000000;">**[+ z_party_name +]**</span>의 지도자로 선출하는 데 성공했습니다. 수년 전 람바흐 기고문의 저자인 발터 람바흐는[? if dnvp_leader == "Lambach":, 그리고 <span style="color: #3E88B3;">**DNVP**</span>의 가장 최근 지도자인 그는?] 주로 *민족공동체(Volksgemeinschaft)*에 대한 그의 비전을 강력히 지지하는 기독교 노동조합들의 단결된 지지 덕분에 투표에서 승리했습니다.
 
-More <span style="color: #c00000;">worker-friendly</span> policies have been added to the platform, such as expanding social welfare, increasing pensions, and implementing more progressive income taxes. They've even rejected austerity as a solution to Germany's current economic crisis, instead voicing support for public works. However, this has significantly strained industrial enthusiasm for the formation of the new party, and they have begun redirecting funds toward the <span style="color: #FFCC00;">liberals</span>.
+사회 복지 확대, 연금 인상, 더 누진적인 소득세 시행과 같은 더 <span style="color: #c00000;">노동자 친화적인</span> 정책들이 강령에 추가되었습니다. 그들은 심지어 독일의 현재 경제 위기에 대한 해결책으로서의 긴축을 거부하고, 대신 공공 사업에 대한 지지를 표명했습니다. 그러나 이는 신당 창당에 대한 산업계의 열정을 상당히 식게 만들었고, 그들은 자금을 <span style="color: #FFCC00;">자유주의자들</span>에게로 돌리기 시작했습니다.
 
-This, however, is not good news for us. <span style="color: #6D5298;">Christian Social</span> ideology is deeply rooted in antisemitism, racism, nationalism, and religiosity. If anything, we've noticed worsening relations with the <span style="color: #000000;">**[+ z_party_name +]**</span>, as they attempt to present a non-<span style="color: #9B0000;">Marxist</span> alternative to the workers.
+하지만 이것은 우리에게 좋은 소식이 아닙니다. <span style="color: #6D5298;">기독교 사회주의</span> 이데올로기는 반유대주의, 인종주의, 민족주의, 그리고 종교성에 깊이 뿌리를 두고 있습니다. 오히려 우리는 <span style="color: #000000;">**[+ z_party_name +]**</span>가 노동자들에게 비<span style="color: #9B0000;">마르크스주의적</span> 대안을 제시하려 함에 따라 그들과의 관계가 악화되는 것을 목격했습니다.
 
 @adenauer
-title: Konrad Adenauer, formerly of the <span style="color: #000000;">Center</span>, is elected as their new leader.
-subtitle: Adenauer, a long-time advocate for 'leaving the tower' and Mayor of Cologne since the Republic's inception - <span style="color: #000000;">Catholic Center</span> Wing
-unavailable-subtitle: [? if stegerwald_unlock or lambach_unlock: Adenauer lacks the broad appeal needed, and the party prefers to back a Labor candidate instead. ?][? if not stegerwald_unlock and not lambach_unlock: Adenauer lacks the popular appeal needed for leadership, and the party prefers to back a more right-wing candidate instead. ?] - <span style="color: #000000;">Catholic Center</span> Wing
+title: 전 <span style="color: #000000;">중앙당</span>의 콘라트 아데나워가 그들의 새로운 지도자로 선출되다.
+subtitle: 아데나워, '상아탑을 떠나자'의 오랜 옹호자이자 공화국 수립 이래 쾰른 시장을 역임한 인물. - <span style="color: #000000;">가톨릭 중앙파</span> 파벌
+unavailable-subtitle: [? if stegerwald_unlock or lambach_unlock: 아데나워는 필요한 광범위한 호소력이 부족하며, 당은 노동계 후보를 지지하는 것을 선호합니다. ?][? if not stegerwald_unlock and not lambach_unlock: 아데나워는 지도력에 필요한 대중적 호소력이 부족하며, 당은 더 우파적인 후보를 지지하는 것을 선호합니다. ?] - <span style="color: #000000;">가톨릭 중앙파</span> 파벌
 choose-if: adenauer_unlock
 on-arrival: pro_republic += 5; z_relation += 5; ddp_relation += 3; dvp_relation += 3; lvp_relation += 3; workers_z += 3; unemployed_z += 3; workers_dnf -= 1; workers_nsdap -= 2; unemployed_dnf -= 2; unemployed_nsdap -= 2; rural_z -= 3; new_middle_z += 3; new_middle_other -= 3; old_middle_z -= 5; rural_dnf += 3; old_middle_dnf += 3; catholics_z += 5; catholics_nsdap -= 3; catholics_dnf -= 2; cvp_leader = "Adenauer"; cvp_left += 3; cvp_ideology = "Left"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/adenauer.jpg
 
 # support losses are because he is a c*tholic
 
-Konrad Adenauer, the long-time Mayor of Cologne, has been elevated to the leadership of one of Germany's largest parties, which he strongly supported the formation of. Adenauer is committed to democratic principles and sits on the right wing of the former <span style="color: #000000;">Center</span>, without being tied to Christian labor. This has granted him the ability to rally a broad coalition of party leaders around his calm and stabilizing leadership against the more fringe politicians of the party.
+오랫동안 쾰른 시장을 역임한 콘라트 아데나워가 독일 최대 정당 중 하나의 지도부로 부상했습니다. 그는 이 당의 창당을 강력히 지지했던 인물입니다. 아데나워는 민주적 원칙에 헌신하며 기독교 노동계와 얽히지 않은 채 전 <span style="color: #000000;">중앙당</span>의 우파에 위치해 있습니다. 이러한 배경 덕분에 그는 당내 극단적인 정치인들에 맞서 자신의 차분하고 안정적인 리더십 아래 당 지도자들의 광범위한 연합을 결집할 수 있었습니다.
 
-With his slogan 'No Experiments!', we do not expect any major changes to the party program under his leadership, fostering a sense among the people that the <span style="color: #000000;">**[+ z_party_name +]**</span> is a pole of stability that the German people can rally behind. In terms of our relationship with the <span style="color: #000000;">Christians</span>, Adenauer, being a former <span style="color: #000000;">Center</span> member, is relatively more friendly toward us than many others to his right. We can also count on the pressure from the <span style="color: #FF7F00;">Christian Left</span>, who, similar to the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s left wing historically, are powerless to enact changes to the left but are influential in preventing changes to the right.
+'실험은 없다!'라는 그의 슬로건과 함께, 우리는 그의 지도 아래에선 당 강령에 어떤 급격한 변화도 없을 것으로 예상합니다. 이는 대중들에게 <span style="color: #000000;">**[+ z_party_name +]**</span>가 독일 국민이 의지할 수 있는 안정의 기둥이라는 인식을 심어주고 있습니다. <span style="color: #000000;">기독교인들</span>과의 관계 측면에서, 아데나워는 전 <span style="color: #000000;">중앙당</span> 출신으로서 그의 오른쪽에 있는 많은 다른 이들보다 우리에게 비교적 더 우호적입니다. 우리는 또한 역사적으로 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 좌파와 비슷하게, 좌향적 변화를 주도할 힘은 없지만 우향적 변화를 막는 데 영향력이 있는 <span style="color: #FF7F00;">기독교 좌파</span>의 압력에 기댈 수 있습니다.
 
 @gereke
-title: Günther Gereke, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: Gereke has significant influence over the agricultural and industrial establishment, being a key member of the RLB and a founder of another rural association. - <span style="color: #3E88B3;">National Conservative</span> and <span style="color: #385A38;">Agrarian</span> Wing
-unavailable-subtitle: A new face, but associated too much with the Westarp elements on the right-wing. - <span style="color: #3E88B3;">National Conservative</span> and <span style="color: #385A38;">Agrarian</span> Wing
+title: 전 <span style="color: #3E88B3;">DNVP</span>의 귄터 게레케가 그들의 새로운 지도자로 선출되다.
+subtitle: 게레케는 농업 및 산업 기득권층에 상당한 영향력을 가지고 있으며, RLB의 핵심 구성원이자 또 다른 농촌 연합의 창립자입니다. - <span style="color: #3E88B3;">국가 보수주의</span> 및 <span style="color: #385A38;">농본주의</span> 파벌
+unavailable-subtitle: 새로운 얼굴이지만, 우파의 베스타르프 세력과 너무 깊게 연관되어 있습니다. - <span style="color: #3E88B3;">국가 보수주의</span> 및 <span style="color: #385A38;">농본주의</span> 파벌
 choose-if: gereke_unlock
 on-arrival: z_relation -= 15; cvp_right += 5; nationalism += 5; pro_republic -= 5; new_middle_z += 3; old_middle_z += 6; rural_z += 12; rural_other *= 0.3; rural_dnf -= 3; old_middle_dnf -= 5; new_middle_dnf -= 3; catholics_z -= 6; catholics_spd += 6; z_r += other_r*0.3; other_r = other_r*0.7; cvp_leader = "Gereke"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/gereke.jpg
 
-Günther Gereke, a lawyer and prominent politician from rural Germany, has been elected as the new leader of the <span style="color: #000000;">**[+ z_party_name +]**</span>. What makes him notable is that he is an <span style="color: #385A38;">agrarian</span> politician from west of the Elbe River, a leading reformist economic theorist, and someone with close ties to General Kurt von Schleicher. He bears similarities to Treviranus, though he is far less dogmatic in his beliefs.
+엘베 강 서쪽 출신의 농업 정치인이자 변호사, 저명한 정치인인 귄터 게레케가 <span style="color: #000000;">**[+ z_party_name +]**</span>의 새로운 지도자로 선출되었습니다. 그가 주목받는 이유는 그가 엘베 강 서쪽 출신의 <span style="color: #385A38;">농본주의</span> 정치인이자, 선도적인 개혁주의 경제 이론가이며, 쿠르트 폰 슐라이허 장군과 긴밀한 관계를 맺고 있는 인물이라는 점입니다. 그는 트레비라누스와 유사점을 지니지만, 신념에 있어 훨씬 덜 독단적입니다.
 
-Thanks to Gereke’s strong relationship with the <span style="color: #7FCEB1;">**CNBLP**</span>, a rural special-interest party, he has successfully negotiated a merger of the declining party into the <span style="color: #000000;">**[+ z_party_name +]**</span>, though only a few officials remain in the effectively dead party. His support for a public works program has stemmed criticism from the labor factions, and his ability to unite the key interest groups on which the German Right depends on will help secure strong <span style="color: #3E88B3;">nationalist</span> backing for the party.
+농촌 이익 대변 정당인 <span style="color: #7FCEB1;">**CNBLP**</span>와의 강력한 관계 덕분에, 게레케는 쇠퇴해가는 해당 당을 <span style="color: #000000;">**[+ z_party_name +]**</span>로 흡수 합병하는 협상을 성공적으로 마쳤으나, 사실상 와해된 당에는 소수의 간부들만 남아 있습니다. 공공 사업 프로그램에 대한 그의 지지는 노동 파벌의 비판을 잠재웠고, 독일 우파가 의존하는 주요 이익 집단들을 통합하는 그의 능력은 당에 대한 강력한 <span style="color: #3E88B3;">민족주의적</span> 지지를 확보하는 데 도움이 될 것입니다.
 
-Needless to say, this has not sat well with the <span style="color: #000000;">**[+ z_party_name +]**</span>’s Catholic wing, and has made cooperation within the party impossible for the foreseeable future.
+말할 필요도 없이, 이는 <span style="color: #000000;">**[+ z_party_name +]**</span>의 가톨릭 파벌에게 달갑지 않은 일이었으며, 당분간 당내 협력을 불가능하게 만들었습니다.
 
 @treviranus
-title: Gottfried Treviranus, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: The leader of the <span style="color: #0087DC;">Volkskonservativ</span> movement, and an advocate for democratic principles. - <span style="color: #0087DC;">People's Conservatives</span> and <span style="color: #000099;">Catholic Right</span> Wing
-unavailable-subtitle: Treviranus has earned himself enemies to the right, and the Catholic portion of the party is reluctant to back him. - <span style="color: #0087DC;">People's Conservatives</span> and <span style="color: #000099;">Catholic Right</span> Wing
+title: 전 <span style="color: #3E88B3;">DNVP</span>의 고트프리트 트레비라누스가 그들의 새로운 지도자로 선출되다.
+subtitle: <span style="color: #0087DC;">인민보수(Volkskonservativ)</span> 운동의 지도자이자 민주적 원칙의 옹호자. - <span style="color: #0087DC;">인민 보수주의파</span> 및 <span style="color: #000099;">가톨릭 우파</span> 파벌
+unavailable-subtitle: 트레비라누스는 우파에 적들을 만들었고, 당의 가톨릭 세력은 그를 지지하기를 꺼랍니다. - <span style="color: #0087DC;">인민 보수주의파</span> 및 <span style="color: #000099;">가톨릭 우파</span> 파벌
 choose-if: treviranus_unlock
 on-arrival: z_relation = 0 if z_relation < 0; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; nationalism += 3; pro_republic += 5; new_middle_z += 6; old_middle_z += 4; rural_z -= 4; rural_dnf += 4; new_middle_dvp -= 4; new_middle_lvp -= 4; new_middle_ddp -= 2; old_middle_dvp -= 4; old_middle_lvp -= 4; old_middle_ddp -= 2; new_middle_dnf += 2; old_middle_dnf += 4; catholics_z += 2; cvp_leader = "Treviranus"; cvp_ideology = "Moderate"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/Treviranus.jpg
 
-Gottfried Treviranus[? if dnvp_leader == "Treviranus":, the most recent leader of the <span style="color: #3E88B3;">**DNVP**</span>?], leader of the thriving <span style="color: #0087DC;">People's Conservative</span> movement, is seen as the ideal candidate for the first chairman of the <span style="color: #000000;">**[+ z_party_name +]**</span>. His <span style="color: #3E88B3;">nationalist</span> <span class="tooltip-text" title="that's me! the modman!">origin</span>, strong ties to key figures like Westarp on the right, and his careful cultivation of relations with the <span style="color: #000000;">Catholics</span> have earned him broad support for his leadership.
+번창하는 <span style="color: #0087DC;">인민 보수주의</span> 운동의 지도자인 고트프리트 트레비라누스는[? if dnvp_leader == "Treviranus":, <span style="color: #3E88B3;">**DNVP**</span>의 가장 최근 지도자인 그는?] <span style="color: #000000;">**[+ z_party_name +]**</span>의 초대 의장에 가장 적합한 후보로 여겨집니다. 그의 <span style="color: #3E88B3;">민족주의적</span> <span class="tooltip-text" title="that's me! the modman!">출신</span>, 우파의 베스타르프 같은 핵심 인물들과의 강력한 유대, 그리고 <span style="color: #000000;">가톨릭교도들</span>과의 관계에 대한 신중한 관리는 그의 리더십에 대한 광범위한 지지를 얻게 했습니다.
 
-With his control of the colossally sized <span style="color: #000000;">**[+ z_party_name +]**</span>, Treviranus has finally been able to mold it into the <span style="color: #0087DC;">Tory Democratic</span> party he has long envisioned. His extensive connections with Schleicher, German industry[? if president == "Hindenburg":, President Hindenburg?], and the bourgeois elite are expected to greatly aid his leadership ambitions.
+거대한 규모의 <span style="color: #000000;">**[+ z_party_name +]**</span>에 대한 통제권을 쥐게 된 트레비라누스는 마침내 당을 그가 오랫동안 구상해 온 <span style="color: #0087DC;">토리 민주주의</span> 정당으로 만들 수 있게 되었습니다. 슐라이허, 독일 산업계[? if president == "Hindenburg":, 힌덴부르크 대통령?], 그리고 부르주아 엘리트와의 광범위한 인맥은 그의 리더십 야망에 큰 힘이 될 것으로 예상됩니다.
 
-Despite his democratic leanings, the <span style="color: #000000;">[+ z_party_name +]</span> remains firmly opposed to <span style="color: #9B0000;">Marxism</span>, effectively ruling out any prospects of coalition with us.
+그의 민주적 성향에도 불구하고, <span style="color: #000000;">[+ z_party_name +]</span>는 <span style="color: #9B0000;">마르크스주의</span>에 확고히 반대하고 있어, 사실상 우리와의 연정 가능성을 배제하고 있습니다.
 
 @compromise
-title: The vote has been deadlocked!
-subtitle: No candidate is able to gather a sufficient amount of votes.
+title: 투표가 교착 상태에 빠졌습니다!
+subtitle: 어떤 후보도 충분한 표를 확보하지 못하고 있습니다.
 view-if: cvp_deadlock
 on-arrival: {!
 if (Q.democratic_points > Q.presidential_points) {
@@ -425,29 +425,29 @@ if (!Q.goerdeler_unlock && !Q.bolz_unlock && !Q.westarp_unlock && !Q.lejeune_jun
 
 !}
 
-In the first few rounds of balloting, no candidate is able to rally a majority of the party behind themselves. With an impasse having settled, new compromise candidates have been proposed.
+첫 몇 번의 투표 라운드에서, 어떤 후보도 당의 과반수를 결집시키지 못했습니다. 교착 상태가 지속되면서, 새로운 타협 후보들이 제안되었습니다.
 
-<span style="color: #003755;">Far-Right Protestants</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): Marginal ?]
+<span style="color: #003755;">극우 개신교도</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
 
-<span style="color: #3E3B2D;">Far-Right Catholics</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): Fringe ?][? if (cvp_ideology == "Right" and nsdap_votes >= 25): Marginal ?]
+<span style="color: #3E3B2D;">극우 가톨릭교도</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 25): 미미함 ?]
 
-<span style="color: #3E88B3;">National Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Westarp / Lejeune-Jung / Goerdeler - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead: Influential?][? if cvp_ideology != "Left" and conservative_right_points_lead: Powerful?]
+<span style="color: #3E88B3;">국가 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 베스타르프 / 르준-융 / 괴르델러 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and conservative_right_points_lead: 강력함?]
 
-<span style="color: #385A38;">Agrarians</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Westarp - [? if cvp_ideology == "Left": Marginal?][? if cvp_ideology != "Left" and not presidential_points_lead: Limited?][? if cvp_ideology != "Left" and presidential_points_lead: Relevant?][? if cvp_ideology != "Left" and agrarian_right_points_lead: Influential?]
+<span style="color: #385A38;">농본주의자</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 베스타르프 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 유의미함?][? if cvp_ideology != "Left" and agrarian_right_points_lead: 영향력 있음?]
 <hr id="read-marker">
-<span style="color: #6D5298;">Christian Socials</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Lettow-Vorbeck - [? if cvp_ideology == "Left" and not labor_points_lead: Marginal?][? if ((cvp_ideology != "Left" and not presidential_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): Limited?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and labor_points_lead: Influential?][? if cvp_ideology != "Left" and labor_right_points_lead: Powerful?]
+<span style="color: #6D5298;">기독교 사회파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 레토-포르베크 - [? if cvp_ideology == "Left" and not labor_points_lead: 미미함?][? if ((cvp_ideology != "Left" and not presidential_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and labor_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and labor_right_points_lead: 강력함?]
 
-<span style="color: #330000;">Catholic Labor</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Bolz - [? if cvp_ideology == "Left" and labor_left_points_lead: Powerful?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: Influential?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: Relevant?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: Limited?]
+<span style="color: #330000;">가톨릭 노동파</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - 볼츠 - [? if cvp_ideology == "Left" and labor_left_points_lead: 강력함?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: 제한적?]
 <hr id="read-marker">
-<span style="color: #0087DC;">People's Conservatives</span> (<span style="color: #3E88B3;">**DNVP**</span>) - Goerdeler / Lettow-Vorbeck - [? if cvp_ideology == "Left" and democratic_points_lead: Dominant?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+<span style="color: #0087DC;">인민 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 괴르델러 / 레토-포르베크 - [? if cvp_ideology == "Left" and democratic_points_lead: 지배적?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
 
-<span style="color: #000099;">Catholic Right</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Lejeune-Jung / Bolz - [? if cvp_ideology == "Left" and democratic_points_lead: Influential?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Relevant?][? if cvp_ideology == "Right" and not democratic_points_lead: Limited?]
+<span style="color: #000099;">가톨릭 우파</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - 르준-융 / 볼츠 - [? if cvp_ideology == "Left" and democratic_points_lead: 영향력 있음?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 유의미함?][? if cvp_ideology == "Right" and not democratic_points_lead: 제한적?]
 <hr id="read-marker">
-<span style="color: #000000;">Catholic Center</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Bolz / Lejeune-Jung - [? if cvp_ideology == "Left" and democratic_points_lead: Powerful?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): Influential?][? if cvp_ideology != "Left" and not democratic_points_lead: Relevant?]
+<span style="color: #000000;">가톨릭 중앙파</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - 볼츠 / 르준-융 - [? if cvp_ideology == "Left" and democratic_points_lead: 강력함?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
 
-<span style="color: #FF7F00;">Christian Left</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - Bolz - [? if cvp_ideology == "Left" and labor_left_points_lead: Relevant?][? if cvp_ideology == "Left" and not labor_left_points_lead: Limited?][? if cvp_ideology != "Left": Marginal?]
+<span style="color: #FF7F00;">기독교 좌파</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - 볼츠 - [? if cvp_ideology == "Left" and labor_left_points_lead: 유의미함?][? if cvp_ideology == "Left" and not labor_left_points_lead: 제한적?][? if cvp_ideology != "Left": 미미함?]
 <hr id="read-marker">
-All the compromise candidates that have emerged are broadly acceptable to the majority of the party, but a final decision on which to elect has yet to be made. Retired war hero and Reichstag member Lettow-Vorbeck has been suggested as a unity candidate, but persuading the reluctant Lettow-Vorbeck to lead a political party would require far more than just factional support.
+등장한 모든 타협 후보들은 당내 대다수에게 대체로 받아들여질 만한 인물들이지만, 누구를 선출할지에 대한 최종 결정은 아직 내려지지 않았습니다. 은퇴한 전쟁 영웅이자 제국의회 의원인 레토-포르베크가 통합 후보로 거론되었지만, 정계 진출을 꺼리는 레토-포르베크를 설득하여 정당을 이끌게 하는 것은 단순한 파벌적 지지 그 이상을 필요로 할 것입니다.
 
 - @bolz
 - @lejeune_jung
@@ -457,71 +457,71 @@ All the compromise candidates that have emerged are broadly acceptable to the ma
 
 
 @bolz
-title: Eugen Bolz, formerly of the <span style="color: #000000;">Center</span>, is elected as their new leader.
-subtitle: Bolz is the current Minister-President of Württemberg, having governed harmoniously with Bazille's state <span style="color: #3E88B3;">**DNVP**</span> for the entire duration - <span style="color: #000099;">Catholic Right</span> Wing
-unavailable-subtitle: Bolz is already reluctant to give up his job, and without unified support behind him, he will stay out of national politics. - <span style="color: #000099;">Catholic Right</span> Wing
+title: 전 <span style="color: #000000;">중앙당</span>의 오이겐 볼츠가 그들의 새로운 지도자로 선출되다.
+subtitle: 볼츠는 현재 뷔르템베르크의 주총리이며, 바질레의 주 <span style="color: #3E88B3;">DNVP</span>와 임기 내내 조화롭게 통치해 왔습니다. - <span style="color: #000099;">가톨릭 우파</span> 파벌
+unavailable-subtitle: 볼츠는 이미 자신의 직책을 포기하기를 꺼려하며, 그 뒤에 통합된 지지가 없다면 중앙 정치에서 한발 물러나 있을 것입니다. - <span style="color: #000099;">가톨릭 우파</span> 파벌
 choose-if: bolz_unlock
 on-arrival: z_relation = 0 if z_relation < 0; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; new_middle_z += 3; old_middle_z += 3; rural_z += 4; catholics_z += 5; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Bolz"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/bolz.jpg
 
-Minister-President of Württemberg Eugen Bolz has been promoted to the leadership of the national <span style="color: #000000;">**[+ z_party_name +]**</span>. Bolz has worked harmoniously with the respected Wilhelm Bazille, a conservative leader of the moderate Württemberg <span style="color: #3E88B3;">**DNVP**</span> since 1924, making him a natural choice as a compromise candidate. This has earned him nearly universal support within the party.
+뷔르템베르크 주총리 오이겐 볼츠가 전국 <span style="color: #000000;">**[+ z_party_name +]**</span>의 지도부로 영전했습니다. 볼츠는 1924년부터 온건한 뷔르템베르크 <span style="color: #3E88B3;">**DNVP**</span>의 존경받는 보수 지도자 빌헬름 바질레와 조화롭게 협력해 왔으며, 이는 그를 타협 후보로서 자연스러운 선택이 되게 했습니다. 덕분에 그는 당내에서 거의 만장일치에 가까운 지지를 얻었습니다.
 
-However, Bolz's role as a compromise candidate has hindered his ability to effect significant change, as he must tread carefully to avoid alienating the factions that helped bring him to power. Bolz will attempt to bridge the confessional divides between Catholic and Protestant conservatives, with the party still divided along the lines of their party of <span class="tooltip-text" title="that's me! the modman!">origin</span>.
+그러나 타협 후보로서 볼츠의 역할은 그를 권력으로 이끈 파벌들을 소외시키는 것을 피하기 위해 조심스럽게 행동해야 하므로, 중요한 변화를 일으킬 수 있는 그의 능력을 제한했습니다. 볼츠는 가톨릭과 개신교 보수주의자들 사이의 종파적 분열을 메우려고 시도할 것이나, 당은 여전히 그들의 <span class="tooltip-text" title="that's me! the modman!">출신</span> 정당의 계보를 따라 분열되어 있습니다.
 
-Given Bolz's refusal to enter a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition in Württemberg back in 1928, viewing the <span style="color: #c00000;">**SPD**</span> as 'incapable of governing,' we do not expect much improvement in our relationship moving forward.
+1928년 뷔르템베르크에서 <span style="color: #c00000;">**SPD**</span>를 '통치 능력이 없다'고 간주하며 <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 연정에 참여하는 것을 거부했던 볼츠의 전력을 감안할 때, 우리는 앞으로의 관계에서 큰 개선을 기대하기 어렵습니다.
 
 @lejeune_jung
-title: Paul Lejeune-Jung, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: Major member of the former <span style="color: #3E88B3;">DNVP</span>'s Catholic wing, and aligned with Westarp's group. - <span style="color: #3E88B3;">National Conservative</span> Wing
-unavailable-subtitle: Despite his Catholic faith, he is unable to garner the expected support from <span style="color: #000000;">Center</span> and <span style="color: #3E88B3;">nationalist</span> politicians - <span style="color: #3E88B3;">National Conservative</span> Wing
+title: 전 <span style="color: #3E88B3;">DNVP</span>의 파울 르준-융이 그들의 새로운 지도자로 선출되다.
+subtitle: 전 <span style="color: #3E88B3;">DNVP</span> 가톨릭 파벌의 주요 구성원이자, 베스타르프 그룹과 연대함. - <span style="color: #3E88B3;">국가 보수주의</span> 파벌
+unavailable-subtitle: 그의 가톨릭 신앙에도 불구하고, 그는 <span style="color: #000000;">중앙당</span>과 <span style="color: #3E88B3;">민족주의</span> 정치인들로부터 기대되는 지지를 얻지 못하고 있습니다. - <span style="color: #3E88B3;">국가 보수주의</span> 파벌
 choose-if: lejeune_jung_unlock
 on-arrival: z_relation -= 5; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; new_middle_z += 3; old_middle_z += 3; rural_z += 3; catholics_z += 5; catholics_dnf -= 3; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Lejeune-Jung"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/lejeune_jung.jpg
 
-Paul Lejeune-Jung, leader of the <span style="color: #3E88B3;">**DNVP**</span>'s Catholic wing, and an advocate for closer ties to the <span style="color: #000000;">Center</span> has been elected as leader of a merger between the two. His Catholic faith has made him acceptable to former <span style="color: #000000;">Center</span> members, and his alignment with Westarp's faction has solidified <span style="color: #3E88B3;">nationalist</span> support.
+<span style="color: #3E88B3;">**DNVP**</span> 가톨릭 파벌의 지도자이자 <span style="color: #000000;">중앙당</span>과의 더 긴밀한 관계를 옹호해 온 파울 르준-융이 양당 합당의 지도자로 선출되었습니다. 그의 가톨릭 신앙은 그를 전 <span style="color: #000000;">중앙당</span> 구성원들에게 받아들여질 수 있게 만들었고, 베스타르프 파벌과의 연대는 <span style="color: #3E88B3;">민족주의적</span> 지지를 공고히 했습니다.
 
-However, Lejeune-Jung's role as a compromise candidate has hindered his ability to effect significant change, as he must tread carefully to avoid alienating the factions that helped bring him to power. Lejeune-Jung will attempt to bridge the confessional divides between Catholic and Protestant conservatives, with the party still divided along the lines of their party of <span class="tooltip-text" title="that's me! the modman!">origin</span>.
+그러나 타협 후보로서 르준-융의 역할은 그를 권력으로 이끈 파벌들을 소외시키는 것을 피하기 위해 조심스럽게 행동해야 하므로, 중요한 변화를 일으킬 수 있는 그의 능력을 제한했습니다. 르준-융은 가톨릭과 개신교 보수주의자들 사이의 종파적 분열을 메우려고 시도할 것이나, 당은 여전히 그들의 <span class="tooltip-text" title="that's me! the modman!">출신</span> 정당의 계보를 따라 분열되어 있습니다.
 
-It goes without saying, this will make cooperation within the party impossible for the foreseeable future.
+말할 필요도 없이, 이는 당분간 당내 협력을 불가능하게 만들 것입니다.
 
 @goerdeler
-title: Carl Goerdeler, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: Goerdeler is the Mayor of Leipzig, harbouring fiscally conservative views and a support of <span style="color: #808080;">monarchism</span>. - <span style="color: #0087DC;">People's Conservatives</span>
-unavailable-subtitle: Goerdeler is seen as too right-wing for the <span style="color: #0087DC;">Volkskonservativ</span> movement, who only begrudgingly supports his candidacy. - <span style="color: #0087DC;">People's Conservatives</span>
+title: 전 <span style="color: #3E88B3;">DNVP</span>의 카를 괴르델러가 그들의 새로운 지도자로 선출되다.
+subtitle: 괴르델러는 라이프치히 시장으로, 재정적으로 보수적인 견해와 <span style="color: #808080;">군주주의</span>에 대한 지지를 품고 있습니다. - <span style="color: #0087DC;">인민 보수주의파</span>
+unavailable-subtitle: 괴르델러는 <span style="color: #0087DC;">인민보수</span> 운동에게 너무 우파적인 인물로 비치며, 그들은 그의 출마를 마지못해 지지할 뿐입니다. - <span style="color: #0087DC;">인민 보수주의파</span>
 choose-if: goerdeler_unlock
 on-arrival: z_relation -= 5; cvp_right += 3; z_relation -= 5; nationalism += 5; pro_republic -= 3; new_middle_z += 6; new_middle_dnf -= 4; old_middle_z += 6; old_middle_dnf -= 4; catholics_z -= 4; catholics_spd += 2; workers_z -= 4; unemployed_z -= 4; cvp_leader = "Goerdeler"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/goerdeler.jpg
 
-The Mayor of Leipzig Carl Goerdeler has been promoted to the leadership of the <span style="color: #000000;">**[+ z_party_name +]**</span>. Goerdeler is aligned more with Westarp than anything, but Treviranus is willing to give the mayor a go. Goerdeler is known for his strong support and position in Brüning's cabinet, and his fiscal conservatism has attracted support of key industrial backers.
+라이프치히 시장 카를 괴르델러가 <span style="color: #000000;">**[+ z_party_name +]**</span>의 지도부로 승격되었습니다. 괴르델러는 성향상 베스타르프 쪽에 더 가깝지만, 트레비라누스는 이 시장에게 기회를 줄 의향이 있습니다. 괴르델러는 브뤼닝 내각에서의 강력한 지지와 입지로 알려져 있으며, 그의 재정적 보수주의는 주요 산업 후원자들의 지지를 끌어들였습니다.
 
-Goerdeler's role as a compromise candidate has hindered his ability to effect significant change, as he must tread carefully to avoid alienating the factions that helped bring him to power. I actually don't know what to write for this guy, his WW2 anti-Nazi plots aren't relevant at this time since he viewed Hitler as an enlightened dictator at this time. I guess he supports taming the Nazis I guess?
+타협 후보로서 괴르델러의 역할은 그를 권력으로 이끈 파벌들을 소외시키는 것을 피하기 위해 조심스럽게 행동해야 하므로, 중요한 변화를 일으킬 수 있는 그의 능력을 제한했습니다. 사실 이 사람에 대해 뭘 써야 할지 모르겠습니다. 그의 2차 대전 반나치 음모는 이 시점에서는 관련이 없는데, 왜냐하면 그는 이 시기에 히틀러를 계몽된 독재자로 보았기 때문입니다. 아마도 그는 나치를 길들이는 것을 지지하는 것 같습니다?
 
-It goes without saying, this will make cooperation within the party impossible for the foreseeable future.
+말할 필요도 없이, 이는 당분간 당내 협력을 불가능하게 만들 것입니다.
 
 @westarp
-title: Kuno von Westarp, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: A long-time <span style="color: #3E88B3;">DNVP</span> stalwart, having prevented Hugenberg's takeover of the party in the past. - <span style="color: #3E88B3;">National Conservative</span> Wing
-unavailable-subtitle: Westarp is reluctant, and the party needs a new face. - <span style="color: #3E88B3;">National Conservative</span> Wing
+title: 전 <span style="color: #3E88B3;">DNVP</span>의 쿠노 폰 베스타르프가 그들의 새로운 지도자로 선출되다.
+subtitle: 과거 후겐베르크의 당 장악을 막았던 오랜 <span style="color: #3E88B3;">DNVP</span>의 충신. - <span style="color: #3E88B3;">국가 보수주의</span> 파벌
+unavailable-subtitle: 베스타르프는 나서기를 꺼려하고, 당은 새로운 얼굴을 필요로 합니다. - <span style="color: #3E88B3;">국가 보수주의</span> 파벌
 choose-if: westarp_unlock
 on-arrival: z_relation -= 10; cvp_right += 3; new_middle_z += 4; new_middle_dnf -= 4; old_middle_z += 4; old_middle_dnf -= 4; rural_z += 2; rural_dnf -= 2; catholics_z -= 2; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Westarp"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/Kuno_von_Westarp.jpg
 
-A key figure of the German Right since the Republic's inception, Kuno von Westarp has ascended to the leadership role of the colossal <span style="color: #000000;">Christian People's Party</span>—certainly a significant step up. His election was primarily driven by the unified support of the entire former <span style="color: #3E88B3;">nationalist</span> faction within the party.
+공화국 수립 이래 독일 우파의 핵심 인물인 쿠노 폰 베스타르프가 거대한 <span style="color: #000000;">기독교 인민당</span>의 지도자 자리에 올랐습니다—확실히 중요한 도약입니다. 그의 선출은 주로 당내 전체 전 <span style="color: #3E88B3;">민족주의</span> 파벌의 단결된 지지에 의해 주도되었습니다.
 
-Westarp is highly experienced in managing internal dissent and is careful not to lean too heavily into any one particular wing of the party, aiming to avoid fracturing the organization. While the party program remains largely unchanged, there has been a noticeable increase in antisemitic and pro-monarchist rhetoric, as Westarp seeks to preserve the character of the now-defunct <span style="color: #3E88B3;">**DNVP**</span> within this new entity.
+베스타르프는 내부 불만을 관리하는 데 매우 노련하며, 조직의 분열을 피하기 위해 당의 어느 한 특정 정파에 너무 심하게 기대지 않도록 주의하고 있습니다. 당 강령은 대체로 변경되지 않은 상태로 남아 있지만, 반유대주의적이고 친군주주의적인 수사가 눈에 띄게 증가했습니다. 이는 베스타르프가 이 새로운 실체 내에서 이제는 사라진 <span style="color: #3E88B3;">**DNVP**</span>의 성격을 보존하려고 하기 때문입니다.
 
-It goes without saying, Westarp's leadership will make cooperation within the party impossible for the foreseeable future.
+말할 필요도 없이, 베스타르프의 지도부는 당분간 당내 협력을 불가능하게 만들 것입니다.
 
 @vorbeck
-title: War Hero Paul von Lettow-Vorbeck, formerly of the <span style="color: #3E88B3;">DNVP</span>, is elected as their new leader.
-subtitle: Lettow-Vorbeck is reluctant to lead, but perhaps his war hero status can serve as a unifying force? - <span style="color: #3E88B3;">National Conservative</span> Wing
-unavailable-subtitle: Lettow-Vorbeck is reluctant to lead, and prefers his unglamorous life in the Reichstag. Unless he is convinced, of course. - <span style="color: #3E88B3;">National Conservative</span> Wing
+title: 전쟁 영웅이자 전 <span style="color: #3E88B3;">DNVP</span>의 파울 폰 레토-포르베크가 그들의 새로운 지도자로 선출되다.
+subtitle: 레토-포르베크는 지도자가 되기를 꺼려하지만, 아마도 그의 전쟁 영웅 지위가 통합의 구심점이 될 수 있을까요? - <span style="color: #3E88B3;">국가 보수주의</span> 파벌
+unavailable-subtitle: 레토-포르베크는 지도자가 되기를 꺼려하며, 제국의회에서의 조용한 삶을 선호합니다. 물론 그가 설득되지 않는다면 말입니다. - <span style="color: #3E88B3;">국가 보수주의</span> 파벌
 choose-if: vorbeck_unlock
 on-arrival: z_relation -= 10; cvp_right += 3; pro_republic -= 6; nationalism += 8; new_middle_z += 12; new_middle_dnf -= 6; new_middle_nsdap -= 3; old_middle_z += 12; old_middle_dnf -= 6; old_middle_nsdap -= 3; rural_z += 6; rural_dnf -= 4; rural_nsdap -= 2; catholics_z += 4; catholics_dnf -= 2; workers_z += 3; workers_dnf -= 3; cvp_leader = "Lettow-Vorbeck"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/lettowvorbeck.jpg
 
-Paul von Lettow-Vorbeck is a war hero renowned for his undefeated record and his successful guerrilla campaign in German East Africa, with victories that rival those of Hindenburg. Despite multiple attempts to involve him in German politics, he has remained largely inactive, serving as a member of the Reichstag elected under the <span style="color: #3E88B3;">**DNVP**</span>. However, the [? if vorbeck_deadlock: unending deadlock at the congress?][? if not vorbeck_deadlock and vorbeck_decline: drastic decline in the moderate right's vote share?][? if not vorbeck_deadlock and not vorbeck_decline and vorbeck_presidential: desire to utilize his character for a potential future election run?] has led to a growing number of factions rallying around his candidacy. The widespread popular support for him draws strong parallels to Hindenburg's own presidential candidacy declaration in 1925.
+파울 폰 레토-포르베크는 무패 기록과 독일령 동아프리카에서의 성공적인 게릴라 작전으로 유명한 전쟁 영웅으로, 힌덴부르크의 전공에 필적하는 승리를 거두었습니다. 그를 독일 정치에 참여시키려는 여러 시도에도 불구하고, 그는 <span style="color: #3E88B3;">**DNVP**</span> 소속으로 선출된 제국의회 의원으로 봉사하며 대체로 활동하지 않았습니다. 그러나 [? if vorbeck_deadlock: 전당대회에서의 끝없는 교착 상태는?][? if not vorbeck_deadlock and vorbeck_decline: 온건 우파의 득표율의 급격한 하락은?][? if not vorbeck_deadlock and not vorbeck_decline and vorbeck_presidential: 잠재적인 미래 선거 출마를 위해 그의 명성을 활용하려는 욕망은?] 점점 더 많은 파벌들이 그의 출마를 중심으로 결집하게 만들었습니다. 그에 대한 광범위한 대중적 지지는 1925년 힌덴부르크 자신의 대통령 출마 선언과 강한 유사점을 보입니다.
 
-Reluctantly, Lettow-Vorbeck has accepted the <span style="color: #000000;">**[+ z_party_name +]**</span>'s nomination as their next leader. However, he has little interest in managing the party’s internal affairs and has quietly delegated this responsibility to fellow conservatives like Westarp. Nonetheless, he remains the public face of the <span style="color: #000000;">**[+ z_party_name +]**</span> as chairman. The most crucial aspect of his election is his ability to inspire the German people to rally behind a Great War war hero once again, someone who embodies the image of stability and unity. Time will tell how long this popularity will last.
+마지못해, 레토-포르베크는 <span style="color: #000000;">**[+ z_party_name +]**</span>의 차기 지도자 지명을 수락했습니다. 그러나 그는 당의 내부 업무를 관리하는 데 거의 관심이 없으며 이 책임을 베스타르프와 같은 동료 보수주의자들에게 조용히 위임했습니다. 그럼에도 불구하고, 그는 의장으로서 <span style="color: #000000;">**[+ z_party_name +]**</span>의 대중적 얼굴로 남아 있습니다. 그의 선출의 가장 중요한 측면은 독일 국민들에게 다시 한번 대전쟁의 전쟁 영웅, 안정과 통합의 이미지를 구현하는 인물 뒤에 결집하도록 영감을 주는 능력입니다. 이 인기가 얼마나 오래 지속될지는 시간이 말해줄 것입니다.
 
-It goes without saying, his election will make cooperation within the party impossible for the foreseeable future.
+말할 필요도 없이, 그의 선출은 당분간 당내 협력을 불가능하게 만들 것입니다.

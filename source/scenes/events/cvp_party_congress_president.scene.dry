@@ -259,20 +259,20 @@ title: 전당대회가 개최된다.
 
 각 파벌의 세력은 다음과 같습니다.
 
-<span style="color: #003755;">극우 개신교도들</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
+<span style="color: #003755;">극우 개신교도</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
 
-<span style="color: #3E3B2D;">극우 가톨릭교도들</span> (<span style="color: #000000;">**Z**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
+<span style="color: #3E3B2D;">극우 가톨릭교도</span> (<span style="color: #000000;">**Z**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
 
-<span style="color: #3E88B3;">국가 보수파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 게레케 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not conservative_right_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and conservative_right_points_lead: 강력함?]
+<span style="color: #3E88B3;">국가 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 게레케 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not conservative_right_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and conservative_right_points_lead: 강력함?]
 
-<span style="color: #385A38;">농본주의자들</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 게레케 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 유의미함?][? if cvp_ideology != "Left" and agrarian_right_points_lead: 영향력 있음?]
+<span style="color: #385A38;">농본주의자</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 게레케 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 유의미함?][? if cvp_ideology != "Left" and agrarian_right_points_lead: 영향력 있음?]
 
 <hr id="read-marker">
 <span style="color: #6D5298;">기독교 사회파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 람바흐 - [? if cvp_ideology == "Left" and not labor_points_lead: 미미함?][? if ((cvp_ideology != "Left" and not presidential_points_lead and not labor_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and labor_points_lead and not labor_right_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and labor_right_points_lead: 강력함?]
 
 <span style="color: #330000;">가톨릭 노동파</span> (<span style="color: #000000;">**Z**</span>) - 슈테거발트 - [? if cvp_ideology == "Left" and labor_left_points_lead: 강력함?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: 제한적?]
 <hr id="read-marker">
-<span style="color: #0087DC;">인민 보수파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 트레비라누스 - [? if cvp_ideology == "Left" and democratic_points_lead: 지배적?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
+<span style="color: #0087DC;">인민 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 트레비라누스 - [? if cvp_ideology == "Left" and democratic_points_lead: 지배적?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
 
 <span style="color: #000099;">가톨릭 우파</span> (<span style="color: #000000;">**Z**</span>) - 트레비라누스 - [? if cvp_ideology == "Left" and democratic_points_lead: 영향력 있음?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 유의미함?][? if cvp_ideology != "Left" and not democratic_points_lead: 제한적?]
 
@@ -340,8 +340,8 @@ face-image: img/portraits/adenauer.jpg
 
 @gereke
 title: 전 <span style="color: #3E88B3;">DNVP</span> 출신 귄터 게레케가 새로운 지도자로 선출되다.
-subtitle: 게레케는 RLB의 핵심 멤버이자 또 다른 농촌 협회의 설립자로서, 농업 및 산업 기득권층에 상당한 영향력을 가지고 있습니다. - <span style="color: #3E88B3;">국가 보수파</span> 및 <span style="color: #385A38;">농본주의</span> 파벌
-unavailable-subtitle: 새로운 얼굴이지만, 우파의 베스타르프 세력과 지나치게 연관되어 있습니다. - <span style="color: #3E88B3;">국가 보수파</span> 및 <span style="color: #385A38;">농본주의</span> 파벌
+subtitle: 게레케는 RLB의 핵심 멤버이자 또 다른 농촌 협회의 설립자로서, 농업 및 산업 기득권층에 상당한 영향력을 가지고 있습니다. - <span style="color: #3E88B3;">국가 보수주의파</span> 및 <span style="color: #385A38;">농본주의</span> 파벌
+unavailable-subtitle: 새로운 얼굴이지만, 우파의 베스타르프 세력과 지나치게 연관되어 있습니다. - <span style="color: #3E88B3;">국가 보수주의파</span> 및 <span style="color: #385A38;">농본주의</span> 파벌
 choose-if: gereke_unlock
 on-arrival: z_relation -= 15; cvp_right += 5; nationalism += 5; pro_republic -= 5; new_middle_z += 3; old_middle_z += 6; rural_z += 12; rural_other *= 0.3; rural_dnf -= 3; old_middle_dnf -= 5; new_middle_dnf -= 3; catholics_z -= 6; catholics_spd += 6; z_r += other_r*0.3; other_r = other_r*0.7; cvp_leader = "Gereke"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/gereke.jpg
@@ -359,8 +359,8 @@ face-image: img/portraits/gereke.jpg
 
 @treviranus
 title: 전 <span style="color: #3E88B3;">DNVP</span> 출신 고트프리트 트레비라누스가 새로운 지도자로 선출되다.
-subtitle: <span style="color: #0087DC;">인민 보수</span> 운동의 지도자이자 민주적 원칙의 옹호자. - <span style="color: #0087DC;">인민 보수파</span>와 <span style="color: #000099;">가톨릭 우파</span>
-unavailable-subtitle: 트레비라누스는 우파에 적들을 만들었고, 당의 가톨릭 세력은 그를 지지하기를 꺼립니다. - <span style="color: #0087DC;">인민 보수파</span>와 <span style="color: #000099;">가톨릭 우파</span>
+subtitle: <span style="color: #0087DC;">인민 보수</span> 운동의 지도자이자 민주적 원칙의 옹호자. - <span style="color: #0087DC;">인민 보수주의파</span>와 <span style="color: #000099;">가톨릭 우파</span>
+unavailable-subtitle: 트레비라누스는 우파에 적들을 만들었고, 당의 가톨릭 세력은 그를 지지하기를 꺼립니다. - <span style="color: #0087DC;">인민 보수주의파</span>와 <span style="color: #000099;">가톨릭 우파</span>
 choose-if: treviranus_unlock
 on-arrival: z_relation = 0 if z_relation < 0; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; nationalism += 3; pro_republic += 5; new_middle_z += 6; old_middle_z += 4; rural_z -= 4; rural_dnf += 4; new_middle_dvp -= 4; new_middle_lvp -= 4; new_middle_ddp -= 2; old_middle_dvp -= 4; old_middle_lvp -= 4; old_middle_ddp -= 2; new_middle_dnf += 2; old_middle_dnf += 4; catholics_z += 2; cvp_leader = "Treviranus"; cvp_ideology = "Moderate"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/Treviranus.jpg
@@ -443,19 +443,19 @@ if ((!Q.goerdeler_unlock && !Q.bolz_unlock && !Q.westarp_unlock && !Q.lejeune_ju
 
 투표 초반 몇 라운드에서 어떤 후보도 당의 과반수를 확보하지 못했습니다. 난국이 지속됨에 따라, 새로운 타협 후보들이 제안되었습니다.
 
-<span style="color: #003755;">극우 개신교도들</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
+<span style="color: #003755;">극우 개신교도</span> (<span style="color: #3E88B3;">**DNVP**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 35): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 30): 미미함 ?]
 
-<span style="color: #3E3B2D;">극우 가톨릭교도들</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 25): 미미함 ?]
+<span style="color: #3E3B2D;">극우 가톨릭교도</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - ??? - [? if (cvp_ideology != "Right" or nsdap_votes < 30): 주변적 ?][? if (cvp_ideology == "Right" and nsdap_votes >= 25): 미미함 ?]
 
-<span style="color: #3E88B3;">국가 보수파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 베스타르프 / 르준-융 / 괴르델러 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and conservative_right_points_lead: 강력함?]
+<span style="color: #3E88B3;">국가 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 베스타르프 / 르준-융 / 괴르델러 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and conservative_right_points_lead: 강력함?]
 
-<span style="color: #385A38;">농본주의자들</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 베스타르프 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 유의미함?][? if cvp_ideology != "Left" and agrarian_right_points_lead: 영향력 있음?]
+<span style="color: #385A38;">농본주의자</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 베스타르프 - [? if cvp_ideology == "Left": 미미함?][? if cvp_ideology != "Left" and not presidential_points_lead: 제한적?][? if cvp_ideology != "Left" and presidential_points_lead: 유의미함?][? if cvp_ideology != "Left" and agrarian_right_points_lead: 영향력 있음?]
 <hr id="read-marker">
 <span style="color: #6D5298;">기독교 사회파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 레토-포르베크 - [? if cvp_ideology == "Left" and not labor_points_lead: 미미함?][? if ((cvp_ideology != "Left" and not presidential_points_lead) or (cvp_ideology == "Left" and labor_points_lead)): 제한적?][? if cvp_ideology != "Left" and presidential_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and labor_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and labor_right_points_lead: 강력함?]
 
 <span style="color: #330000;">가톨릭 노동파</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - 볼츠 - [? if cvp_ideology == "Left" and labor_left_points_lead: 강력함?][? if (cvp_ideology == "Left" and not labor_left_points_lead) or labor_points_lead: 영향력 있음?][? if cvp_ideology != "Left" and democratic_points_lead and not labor_points_lead: 유의미함?][? if cvp_ideology != "Left" and not democratic_points_lead and not labor_points_lead: 제한적?]
 <hr id="read-marker">
-<span style="color: #0087DC;">인민 보수파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 괴르델러 / 레토-포르베크 - [? if cvp_ideology == "Left" and democratic_points_lead: 지배적?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
+<span style="color: #0087DC;">인민 보수주의파</span> (<span style="color: #3E88B3;">**DNVP**</span>) - 괴르델러 / 레토-포르베크 - [? if cvp_ideology == "Left" and democratic_points_lead: 지배적?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 영향력 있음?][? if cvp_ideology != "Left" and not democratic_points_lead: 유의미함?]
 
 <span style="color: #000099;">가톨릭 우파</span> (<span style="color: #000000;">**[+ z_party_name +]**</span>) - 르준-융 / 볼츠 - [? if cvp_ideology == "Left" and democratic_points_lead: 영향력 있음?][? if ((cvp_ideology == "Left" and not democratic_points_lead) or (democratic_points_lead and cvp_ideology != "Left")): 유의미함?][? if cvp_ideology == "Right" and not democratic_points_lead: 제한적?]
 <hr id="read-marker">
@@ -487,8 +487,8 @@ face-image: img/portraits/bolz.jpg
 
 @lejeune_jung
 title: 전 <span style="color: #3E88B3;">DNVP</span> 출신 파울 르준-융이 새로운 지도자로 선출되다.
-subtitle: 구 <span style="color: #3E88B3;">DNVP</span> 가톨릭 파벌의 주요 인물이자, 베스타르프 그룹과 제휴함. - <span style="color: #3E88B3;">국가 보수파</span>
-unavailable-subtitle: 가톨릭 신앙에도 불구하고, 그는 <span style="color: #000000;">중앙당</span>과 <span style="color: #3E88B3;">민족주의</span> 정치인들로부터 기대되는 지지를 모으지 못하고 있습니다 - <span style="color: #3E88B3;">국가 보수파</span>
+subtitle: 구 <span style="color: #3E88B3;">DNVP</span> 가톨릭 파벌의 주요 인물이자, 베스타르프 그룹과 제휴함. - <span style="color: #3E88B3;">국가 보수주의파</span>
+unavailable-subtitle: 가톨릭 신앙에도 불구하고, 그는 <span style="color: #000000;">중앙당</span>과 <span style="color: #3E88B3;">민족주의</span> 정치인들로부터 기대되는 지지를 모으지 못하고 있습니다 - <span style="color: #3E88B3;">국가 보수주의파</span>
 choose-if: lejeune_jung_unlock
 on-arrival: z_relation -= 5; cvp_left += 3 if cvp_ideology == "Right"; cvp_right += 3 if cvp_ideology == "Left"; new_middle_z += 3; old_middle_z += 3; rural_z += 3; catholics_z += 5; catholics_dnf -= 3; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Lejeune-Jung"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/lejeune_jung.jpg
@@ -501,8 +501,8 @@ face-image: img/portraits/lejeune_jung.jpg
 
 @goerdeler
 title: 전 <span style="color: #3E88B3;">DNVP</span> 출신 카를 괴르델러가 새로운 지도자로 선출되다.
-subtitle: 괴르델러는 라이프치히 시장이며, 재정적으로 보수적인 견해와 <span style="color: #808080;">군주주의</span>에 대한 지지를 품고 있습니다. - <span style="color: #0087DC;">인민 보수파</span>
-unavailable-subtitle: 괴르델러는 <span style="color: #0087DC;">인민 보수</span> 운동이 보기에도 너무 우파적인 인물이라, 그들은 마지못해 그의 입후보를 지지할 뿐입니다. - <span style="color: #0087DC;">인민 보수파</span>
+subtitle: 괴르델러는 라이프치히 시장이며, 재정적으로 보수적인 견해와 <span style="color: #808080;">군주주의</span>에 대한 지지를 품고 있습니다. - <span style="color: #0087DC;">인민 보수주의파</span>
+unavailable-subtitle: 괴르델러는 <span style="color: #0087DC;">인민 보수</span> 운동이 보기에도 너무 우파적인 인물이라, 그들은 마지못해 그의 입후보를 지지할 뿐입니다. - <span style="color: #0087DC;">인민 보수주의파</span>
 choose-if: goerdeler_unlock
 on-arrival: z_relation -= 5; cvp_right += 3; z_relation -= 5; nationalism += 5; pro_republic -= 3; new_middle_z += 6; new_middle_dnf -= 4; old_middle_z += 6; old_middle_dnf -= 4; catholics_z -= 4; catholics_spd += 2; workers_z -= 4; unemployed_z -= 4; cvp_leader = "Goerdeler"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
 face-image: img/portraits/goerdeler.jpg
@@ -515,8 +515,8 @@ face-image: img/portraits/goerdeler.jpg
 
 @westarp
 title: 전 <span style="color: #3E88B3;">DNVP</span> 출신 쿠노 폰 베스타르프가 새로운 지도자로 선출되다.
-subtitle: 과거 후겐베르크의 당 장악을 막아냈던, 오랜 <span style="color: #3E88B3;">DNVP</span>의 거물. - <span style="color: #3E88B3;">국가 보수파</span>
-unavailable-subtitle: 베스타르프는 나서기를 꺼리고 있으며, 당은 새로운 얼굴을 원합니다. - <span style="color: #3E88B3;">국가 보수파</span>
+subtitle: 과거 후겐베르크의 당 장악을 막아냈던, 오랜 <span style="color: #3E88B3;">DNVP</span>의 거물. - <span style="color: #3E88B3;">국가 보수주의파</span>
+unavailable-subtitle: 베스타르프는 나서기를 꺼리고 있으며, 당은 새로운 얼굴을 원합니다. - <span style="color: #3E88B3;">국가 보수주의파</span>
 view-if: president != "Westarp"
 choose-if: westarp_unlock
 on-arrival: z_relation -= 10; cvp_right += 3; new_middle_z += 4; new_middle_dnf -= 4; old_middle_z += 4; old_middle_dnf -= 4; rural_z += 2; rural_dnf -= 2; catholics_z -= 2; workers_z -= 3; unemployed_z -= 3; cvp_leader = "Westarp"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
@@ -530,8 +530,8 @@ face-image: img/portraits/Kuno_von_Westarp.jpg
 
 @vorbeck
 title: 전쟁 영웅이자 전 <span style="color: #3E88B3;">DNVP</span> 출신 파울 폰 레토-포르베크가 새로운 지도자로 선출되다.
-subtitle: 레토-포르베크는 당을 이끌기를 꺼리지만, 어쩌면 그의 전쟁 영웅 지위가 통합의 구심점이 될 수 있을까요? - <span style="color: #3E88B3;">국가 보수파</span>
-unavailable-subtitle: 레토-포르베크는 당을 이끌기를 꺼리며, 제국의회에서의 화려하지 않은 삶을 선호합니다. 물론 그가 설득되지 않는다면 말입니다. - <span style="color: #3E88B3;">국가 보수파</span>
+subtitle: 레토-포르베크는 당을 이끌기를 꺼리지만, 어쩌면 그의 전쟁 영웅 지위가 통합의 구심점이 될 수 있을까요? - <span style="color: #3E88B3;">국가 보수주의파</span>
+unavailable-subtitle: 레토-포르베크는 당을 이끌기를 꺼리며, 제국의회에서의 화려하지 않은 삶을 선호합니다. 물론 그가 설득되지 않는다면 말입니다. - <span style="color: #3E88B3;">국가 보수주의파</span>
 view-if: president != "Lettow-Vorbeck"
 choose-if: vorbeck_unlock
 on-arrival: z_relation -= 10; cvp_right += 3; pro_republic -= 6; nationalism += 8; new_middle_z += 12; new_middle_dnf -= 6; new_middle_nsdap -= 3; old_middle_z += 12; old_middle_dnf -= 6; old_middle_nsdap -= 3; rural_z += 6; rural_dnf -= 4; rural_nsdap -= 2; catholics_z += 4; catholics_dnf -= 2; workers_z += 3; workers_dnf -= 3; cvp_leader = "Lettow-Vorbeck"; cvp_ideology = "Right"; old_middle_z = 25 if old_middle_z < 25; rural_z = 25 if rural_z < 25
