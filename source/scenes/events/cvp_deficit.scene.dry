@@ -1,18 +1,18 @@
-title: Deficit Spending
-subtitle: This goes against our coalition agreement with the <span style="color: #000000;">**[+ z_party_name +]**</span>...
+title: 적자 재정
+subtitle: 이는 <span style="color: #000000;">**[+ z_party_name +]**</span>와의 연정 합의에 위배됩니다...
 new-page: true
 on-arrival: z_relation -= 8; hindenburg_angry += 20; coalition_dissent += 2; cvp_economy_accepted_time = time + 3
 view-if: spd_in_government and in_social_catholic_coalition and cvp_formed and cvp_economy_accepted and budget < 0 and time >= cvp_economy_accepted_time
 tags: event
 
-= Deficit Spending
+= 적자 재정
 
-During the coalition formation process, we've promised the <span style="color: #000000;">**[+ z_party_name +]**</span> to maintain a budgetary surplus at all times. We've failed.
+연정 구성 과정에서, 우리는 <span style="color: #000000;">**[+ z_party_name +]**</span>에게 항상 예산 흑자를 유지하겠다고 약속했습니다. 하지만 우리는 그 약속을 지키지 못했습니다.
 
-[? if coalition_dissent < 3: The <span style="color: #000000;">**[+ z_party_name +]**</span> have given us more time, as they still believe that we'll follow through on our promises. ?][? if coalition_dissent >= 3: The <span style="color: #000000;">**[+ z_party_name +]**</span> have called a vote of no confidence against us. ?]
+[? if coalition_dissent < 3: <span style="color: #000000;">**[+ z_party_name +]**</span>는 우리에게 더 많은 시간을 주었습니다. 그들은 여전히 우리가 약속을 이행할 것이라고 믿기 때문입니다. ?][? if coalition_dissent >= 3: <span style="color: #000000;">**[+ z_party_name +]**</span>는 우리에 대한 불신임 투표를 소집했습니다. ?]
 
-- @careful: Ouch.
+- @careful: 이런.
 
 @careful
 
-We should be more careful next time.
+우리는 다음번에 더 주의해야 한다.
