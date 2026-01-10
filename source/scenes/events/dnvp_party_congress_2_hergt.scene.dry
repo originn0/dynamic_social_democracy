@@ -1,5 +1,5 @@
-title: <span style="color: #3E88B3;">**DNVP**</span> Congress
-subtitle: The <span style="color: #3E88B3;">DNVP</span> decides their fate...
+title: <span style="color: #3E88B3;">**DNVP**</span> 전당대회
+subtitle: <span style="color: #3E88B3;">DNVP</span>이 그들의 운명을 결정합니다...
 view-if: year = 1929 and month = 11 and dnvp_leader = "Hergt"
 on-arrival: pro_republic += 3
 max-visits: 1
@@ -7,13 +7,13 @@ tags: event
 face-image: img/dnvp2.jpg
 new-page: true
 
-= <span style="color: #3E88B3;">**DNVP**</span> Congress
+= <span style="color: #3E88B3;">**DNVP**</span> 전당대회
 
-The internal dissent within the <span style="color: #3E88B3;">**DNVP**</span> has risen again with conflict over their participation in the referendum against the Young Plan[? if was_in_right_coalition == 1:&nbsp;and their withdrawal from the government[? if spd_in_government == 1:&nbsp;leaving us in power?]?]. 
+영 안 반대 국민투표 참여와 [? if was_in_right_coalition == 1: [? if spd_in_government == 1: 우리에게 정권을 넘겨준?] 정부 연정 탈퇴?]를 둘러싼 갈등으로 인해 <span style="color: #3E88B3;">**DNVP**</span> 내부의 불화가 다시금 고조되었습니다.
 
-The "unity of the no" against <span style="color: #9B0000;">Marxism</span> has been losing its force over the years, and now is the time for the <span style="color: #3E88B3;">**DNVP**</span> to define itself through the next challenging years. [? if young_plan_signatures >= 10: The success of the Young Plan referendum to reach the adequate signatures has bolstered the current leadership.?][? if weimar_ref_signatures >= 30: The high support for the referendum for the revision of the constitution has bolstered the current leadership.?]
+<span style="color: #9B0000;">마르크스주의</span>에 대항하는 "반대를 위한 단결"은 수년 동안 동력을 잃어왔으며, 이제는 <span style="color: #3E88B3;">**DNVP**</span>가 다가올 시련의 시기를 통해 스스로의 정체성을 재정립해야 할 때입니다. [? if young_plan_signatures >= 10: 영 안 국민투표가 목표 서명 수를 달성하며 성공을 거둔 것은 현 지도부의 입지를 강화해주었습니다.?][? if weimar_ref_signatures >= 30: 헌법 개정 국민투표에 대한 높은 지지율은 현 지도부의 입지를 강화해주었습니다.?]
 
-- @resultsdnvp: The congress unfolds...
+- @resultsdnvp: 전당대회가 시작된다...
 
 @resultsdnvp
 go-to: statusquo if ((young_plan_signatures >= 10 and pro_republic_8 < 70) or (weimar_ref_signatures >= 30 and pro_republic_8 >= 70) or (was_in_center_right_coalition == 1 and pro_republic_8 >= 70 and pro_republic < 70)) and not ((peoples_party == 1 or workers_spd_normalized < 45 or unions_independent == 1 or workers_dnvp_normalized >= 10) and not in_popular_front and not in_left_front); christiansocial if (peoples_party == 1 or workers_spd_normalized < 45 or unions_independent == 1 or workers_dnvp_normalized >= 10) and not in_popular_front and not in_left_front; youngconservative if ((young_plan_signatures < 10 and pro_republic_8 < 70) or (weimar_ref_signatures < 30 and pro_republic_8 >= 70) or (was_in_center_right_coalition == 1 and pro_republic_8 >= 70 and pro_republic >= 70)) and not ((peoples_party == 1 or workers_spd_normalized < 45 or unions_independent == 1) and not in_popular_front and not in_left_front)
@@ -22,22 +22,22 @@ go-to: statusquo if ((young_plan_signatures >= 10 and pro_republic_8 < 70) or (w
 on-arrival: hergt_stays = 1; old_middle_dnf -= 2; old_middle_dnvp += 2; new_middle_dnvp += 1; new_middle_dnf -= 1; nationalism += 3; catholics_dnvp += 3 if stegerwald_path; catholics_other -= 3 if stegerwald_path
 face-image: img/portraits/OskarHergt.jpg
 
-Despite some dissent from the more <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> forces within the <span style="color: #3E88B3;">**DNVP**</span>, the congress goes through without incident. The willingness of their leadership to negotiate with the <span style="color: #7A3C00;">**NSDAP**</span> is certainly concerning.
+<span style="color: #3E88B3;">**DNVP**</span> 내부의 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 세력의 일부 반발에도 불구하고, 전당대회는 별다른 사건 없이 마무리되었습니다. 하지만 <span style="color: #7A3C00;">**NSDAP**</span>와 협상하려는 지도부의 의지는 확실히 우려스러운 부분입니다.
 
-[? if stegerwald_path: As a result of Stegerwald capturing the <span style="color: #3E88B3;">**DNVP**</span>'s working-class voters, the party is refocusing to reach out to Catholics. ?]
+[? if stegerwald_path: 슈테거발트가 <span style="color: #3E88B3;">**DNVP**</span>의 노동 계급 유권자들을 흡수한 결과, 당은 가톨릭 유권자들에게 다가가기 위해 노선을 재조정하고 있습니다. ?]
 
 @christiansocial
 on-arrival: dnvp_leader = "Lambach"; workers_dnvp += 20; workers_dnvp += 5 if unions_independent; workers_spd -= 5; workers_kpd -= 2; z_workers -= 5 if stegerwald_path; labor_dissent += 10; old_middle_dnvp -= 5; old_middle_dnf += 5; new_middle_dnvp += 2; new_middle_other -= 2; workers_other -= 4; rural_dnvp -= 6; rural_dnf += 4; rural_dvp += 4; old_middle_dvp += 6; new_middle_dvp += 6; rural_lvp += 4; old_middle_lvp += 6; new_middle_lvp += 6; ddp_right += 1; dvp_right += 2; lvp_right += 2
 face-image: img/dnvpposter.jpg
 
-The exodus of workers from our support base has greatly strengthened the <span style="color: #6D5298;">Christian Socials</span> within the <span style="color: #3E88B3;">**DNVP**</span>, who seek to take advantage of our alienation of the trade unions. 
+지지 기반이었던 노동자들의 대거 이탈은 <span style="color: #3E88B3;">**DNVP**</span> 내 <span style="color: #6D5298;">기독교 사회파</span>의 입지를 크게 강화시켰고, 이들은 당이 노동조합을 소외시킨 점을 역이용하려 하고 있습니다.
 
-Walther Lambach has been elected leader of the <span style="color: #3E88B3;">**DNVP**</span>, a trade union leader and the center of discourse within their party in the last congress. He claims a middle ground between socialism and capitalism, and to reconcile capital and labor, it remains to be seen how his leadership would impact the political landscape.
+노동조합 지도자이자 지난 전당대회에서 당내 담론의 중심이었던 발터 람바흐가 <span style="color: #3E88B3;">**DNVP**</span>의 당수로 선출되었습니다. 그는 사회주의와 자본주의 사이의 중도, 그리고 자본과 노동의 화해를 주장하고 있으나, 그의 리더십이 정치 지형에 어떤 영향을 미칠지는 아직 미지수입니다.
 
 @youngconservative
 on-arrival: dnvp_leader = "Treviranus"; true_christian_democracy = 1; rural_dnf += 3; old_middle_dnf += 3; rural_other -= 3; old_middle_other -= 3; new_middle_other -= 3; new_middle_dnvp += 3; workers_dnvp += 1; catholics_dnvp += 3; catholics_other -= 3; pro_republic += 5; dvp_left += 2; ddp_left += 1; lvp_left += 2; catholics_dnvp += 3 if stegerwald_path; catholics_other -= 3 if stegerwald_path
 face-image: img/portraits/Treviranus.jpg
 
-The reluctance for the party around Hergt and Westarp to fully commit to a democratic party has been increasingly under fire from the <span style="color: #6D5298;">Christian Socials</span> and "Young Conservatives", and [? if young_plan_signatures < 10 and pro_republic_8 < 70: the failure for the referendum against the Young Plan to reach the signature threshold has tipped the balance in their favor?][? if weimar_ref_signatures < 30 and pro_republic_8 >= 70: the underperformance of the referendum for the revision of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> constitution has tipped the balance in their favor?][? if (was_in_center_right_coalition == 1 and pro_republic_8 >= 70 and pro_republic >= 70) and not (weimar_ref_signatures < 30 and pro_republic_8 >= 70) and not (young_plan_signatures < 10 and pro_republic_8 < 70): the national opinion increasingly shifting in favor of <span style="color: #000000;">rep</span><span style="color: #DD0000;">ub</span><span style="color: #FFCC00;">lic</span>?]. 
+헤르크트와 베스타르프를 중심으로 한 당 지도부가 민주적 정당으로 완전히 탈바꿈하기를 주저하는 모습은 <span style="color: #6D5298;">기독교 사회파</span>와 "청년 보수파"로부터 점점 더 거센 비판을 받아왔습니다. [? if young_plan_signatures < 10 and pro_republic_8 < 70: 게다가 영 안 반대 국민투표가 서명 기준치 도달에 실패하면서 당내 균형추가 그들에게 유리하게 기울었습니다.?][? if weimar_ref_signatures < 30 and pro_republic_8 >= 70: 게다가 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 헌법 개정 국민투표의 저조한 성과는 당내 균형추가 그들에게 유리하게 기울도록 만들었습니다.?][? if (was_in_center_right_coalition == 1 and pro_republic_8 >= 70 and pro_republic >= 70) and not (weimar_ref_signatures < 30 and pro_republic_8 >= 70) and not (young_plan_signatures < 10 and pro_republic_8 < 70): 게다가 국민 여론이 점점 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">국</span>에 우호적으로 변해가면서 당내 균형추가 그들에게 유리하게 기울었습니다.?]
 
-Gottfried Treviranus has been elected as leader of the <span style="color: #3E88B3;">**DNVP**</span>, a member of the "Young Conservative" faction and is supportive of transforming the party into a constructive conservative force, akin to the <span style="color: #0087DC;">British Tories</span>. The defeat of the radical right and national conservative forces within the <span style="color: #3E88B3;">**DNVP**</span> helps pave the way for Treviranus' vision of a <span style="color: #87CEFA;">Christian Democratic</span>, albeit nationalist party. [? if stegerwald_path: As a result of Stegerwald capturing the <span style="color: #3E88B3;">**DNVP**</span>'s working-class voters, the party is refocusing to reach out to Catholics. ?]
+이에 따라 "청년 보수파"의 일원이자 <span style="color: #0087DC;">영국 토리당</span>을 모델로 당을 건설적인 보수 세력으로 변모시키고자 하는 고트프리트 트레비라누스가 <span style="color: #3E88B3;">**DNVP**</span>의 당수로 선출되었습니다. <span style="color: #3E88B3;">**DNVP**</span> 내 급진 우파와 국가 보수 세력의 패배는, 비록 민족주의적 성향은 유지하더라도 트레비라누스가 꿈꾸는 <span style="color: #87CEFA;">기독교 민주주의</span> 정당으로 나아가는 길을 열어주었습니다. [? if stegerwald_path: 슈테거발트가 <span style="color: #3E88B3;">**DNVP**</span>의 노동 계급 유권자들을 흡수한 결과, 당은 가톨릭 유권자들에게 다가가기 위해 노선을 재조정하고 있습니다. ?]

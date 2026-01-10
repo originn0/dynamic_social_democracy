@@ -1,5 +1,5 @@
-title: <span style="color: #3E88B3;">**DNVP**</span> Congress
-subtitle: The <span style="color: #3E88B3;">DNVP</span> chooses their new leader...
+title: <span style="color: #3E88B3;">**DNVP**</span> 전당대회
+subtitle: <span style="color: #3E88B3;">DNVP</span>이 그들의 새로운 지도자를 선출합니다...
 view-if: year = 1928 and month = 10 and dnvp_leader = "Westarp"
 on-arrival: dnvp_westarp = 0
 max-visits: 1
@@ -18,13 +18,13 @@ on-display: {!
 !}
 new-page: true
 
-= <span style="color: #3E88B3;">**DNVP**</span> Congress
+= <span style="color: #3E88B3;">**DNVP**</span> 전당대회
 
-A leadership vote is being held at the <span style="color: #3E88B3;">German National People's Party</span>(<span style="color: #3E88B3;">**DNVP**</span>) congress following the resignation of former leader Kuno von Westarp. The in-fighting resulting from their electoral defeat last election, coupled with the question of governmental participation in a system they're fundamentally opposed to has come to a head at this congress.
+전임 지도자 쿠노 폰 베스타르프의 사임에 따라 <span style="color: #3E88B3;">독일 국가인민당</span>(<span style="color: #3E88B3;">**DNVP**</span>) 전당대회에서 지도부 선출 투표가 진행 중입니다. 지난 선거 패배로 인한 내홍과, 그들이 근본적으로 반대하는 체제 하에서의 정부 참여 문제는 이번 전당대회에서 정점에 달했습니다.
 
-On the right is Alfred Hugenberg, a prominent industrialist and head of a media empire. He is vehemently opposed by the left of the party for his "<i>Katastrophenpolitik</i>", as he prefers to see the republic fall than participate in parliamentary government. With Westarp's refusal to run for re-election, despite urgent pleas from the moderates within the party, they have convinced the reluctant Oskar Hergt, former leader of the <span style="color: #3E88B3;">**DNVP**</span> from 1918—1924, himself ousted by the right. The results of this congress may very well be a turning point in the history of the entire German nation.
+우파 진영에는 저명한 산업가이자 미디어 제국의 수장인 알프레트 후겐베르크가 있습니다. 그는 의회 정부에 참여하느니 차라리 공화국이 무너지는 꼴을 보겠다는 "<i>파국 정책</i>"을 고수하여 당내 좌파로부터 격렬한 반대를 받고 있습니다. 당내 온건파의 간곡한 호소에도 불구하고 베스타르프가 재선 출마를 거부하자, 그들은 1918년부터 1924년까지 <span style="color: #3E88B3;">**DNVP**</span>를 이끌다 우파에 의해 축출되었던 오스카 헤르크트를 설득해 출마시켰습니다. 이번 전당대회의 결과는 독일 전체 역사의 전환점이 될 수도 있습니다.
 
-- @resultsdnvp: The party votes...
+- @resultsdnvp: 당이 투표를 시작한다...
 
 @resultsdnvp
 go-to: hergt if (((pro_republic - nationalism - previous_spd_last_election_votes >= -18) or (pro_republic - nationalism - previous_spd_last_election_votes >= -26 and in_right_coalition_prussia and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -23 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -21 and in_right_coalition_prussia)) and ((pro_republic_7 >= 65) or ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) or tariffs < 0); hugenberg if (((pro_republic - nationalism - previous_spd_last_election_votes <= -22) or (pro_republic - nationalism - previous_spd_last_election_votes <= -27 and in_right_coalition and in_right_coalition_prussia) or (pro_republic - nationalism - previous_spd_last_election_votes <= -25 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes <= -24 and in_right_coalition_prussia)) and ((pro_republic_7 < 65) and not ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) and tariffs >= 0); triumvirate if not ((((pro_republic - nationalism - previous_spd_last_election_votes <= -22) or (pro_republic - nationalism - previous_spd_last_election_votes <= -27 and in_right_coalition and in_right_coalition_prussia) or (pro_republic - nationalism - previous_spd_last_election_votes <= -25 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes <= -24 and in_right_coalition_prussia)) and ((pro_republic_7 < 65) and not ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) and tariffs >= 0) or (((pro_republic - nationalism - previous_spd_last_election_votes >= -18) or (pro_republic - nationalism - previous_spd_last_election_votes >= -26 and in_right_coalition_prussia and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -23 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -21 and in_right_coalition_prussia)) and ((pro_republic_7 >= 65) or ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) or tariffs < 0))
@@ -33,22 +33,22 @@ go-to: hergt if (((pro_republic - nationalism - previous_spd_last_election_votes
 on-arrival: dnvp_leader = "Hergt"; dnvp_ideology = "Moderate"; workers_other -= 1; rural_other -= 1; new_middle_other -= 1; old_middle_other -= 1; ddp_left += 1; dvp_left += 1; lvp_left += 1; z_relation -= 3; ddp_relation -= 2; dvp_relation -= 5
 face-image: img/portraits/OskarHergt.jpg
 
-With opinions on the inflammatory Lambach article being surprisingly divided among party members, a general <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> sentiment across Germany, Alfred Hugenberg and his staunch anti-democratic beliefs struggling to convince moderate party members. More and more party members are beginning to blame their decline on the thesis of the Lambach article rather than their participation in a <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> government. [? if tariffs < 0: Furthermore, our decrease in tariffs have rallied the <span style="color: #385A38;">agrarian</span> wing against Hugenberg and his all-or-nothing policy. ?]
+당의 군주제 노선을 비판한 람바흐의 선동적인 기사에 대해 당원들의 의견이 의외로 갈리고, 독일 전역에 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 정서가 만연한 가운데, 알프레트 후겐베르크의 확고한 반민주적 신념은 온건한 당원들을 설득하는 데 어려움을 겪었습니다. 점점 더 많은 당원들이 당의 쇠락 원인을 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 정부 참여가 아닌 람바흐 기사의 논조 탓으로 돌리기 시작했습니다. [? if tariffs < 0: 게다가 우리의 관세 인하 정책은 <span style="color: #385A38;">농본주의</span> 세력을 결집시켜 후겐베르크와 그의 '전부 아니면 전무' 정책에 맞서게 했습니다. ?]
 
-Oskar Hergt has been elected as the new leader of the <span style="color: #3E88B3;">**DNVP**</span> following a divisive congress. Hugenberg and his supporters have hinted towards a secession from the party's right wing, and Hugenberg himself is withholding financial support to the party.
+치열한 전당대회 끝에 오스카 헤르크트가 <span style="color: #3E88B3;">**DNVP**</span>의 새로운 당수로 선출되었습니다. 후겐베르크와 그의 지지자들은 당 우익의 분리 독립을 시사했으며, 후겐베르크 본인은 당에 대한 재정 지원을 중단하고 있습니다.
 
 @triumvirate
 on-arrival: dnvp_leader = "Triumvirate"; dnvp_ideology = "Radical"; workers_dnvp -= 1; rural_dnvp -= 2; catholics_other += 1; workers_other += 1; new_middle_dvp += 2; new_middle_lvp += 2; new_middle_dnvp -= 2; pro_republic -= 2; dvp_right += 1; ddp_right += 1; lvp_right += 1
 face-image: img/portraits/Kuno_von_Westarp.jpg
 
-Both Hugenberg and Hergt lack the majority of votes needed within the party, and now are seeking a compromise solution between the two factions. A group of party members on the fence between the two, have suggested a triumvirate between Westarp, Hugenberg, and a representative from Prussia as a compromise, a proposal Hugenberg himself is supportive of, where he can control the party from the sidelines.
+후겐베르크와 헤르크트 모두 당내 과반수를 확보하지 못하자, 이제 두 파벌 간의 타협점을 찾고 있습니다. 두 사람 사이에서 중립을 지키던 당원들은 베스타르프, 후겐베르크, 그리고 프로이센 대표로 구성된 삼두정치(Triumvirate)를 타협안으로 제안했습니다. 이는 후겐베르크 자신이 지지하는 안으로, 그가 배후에서 당을 조종할 수 있기 때문입니다.
 
-Westarp is not enthusiastic of such a proposal but agreed to take part in it for the sake of party unity. However, this arrangement is unstable and will not last long.
+베스타르프는 이 제안을 달가워하지 않았으나 당의 단결을 위해 참여하기로 동의했습니다. 그러나 이 합의는 불안정하며 오래가지 못할 것입니다.
 
 @hugenberg
 on-arrival: dnvp_leader = "Hugenberg"; dnvp_ideology = "Radical"; workers_dnvp -= 1; new_middle_dvp += 2; new_middle_lvp += 2; new_middle_dnvp -= 2; catholics_other += 2; workers_other += 2; pro_republic -= 3; dvp_right += 1; ddp_right += 1; lvp_right += 1
 face-image: img/portraits/AlfredHugenberg.jpg
 
-Alfred Hugenberg, channelling the anger created by the inflammatory Lambach article, which criticized the party's monarchist direction, the electoral defeat, and their participation in a system they fundamentally oppose, has won over the moderates in a simple majority vote for his candidacy. Hugenberg is set to alienate the left of his party and cause a possible secession due to his uncompromising stances on just about everything. Hugenberg is expected to bring about an end to internal party democracy and instill a <i>Führerprinzip</i> within the party. The former conservative catch-all party will be transformed into a party for his own goals.
+당의 군주제 노선과 선거 패배, 그리고 근본적으로 반대하는 체제에 대한 참여를 비판한 람바흐의 선동적인 기사에 대한 분노를 등에 업고, 알프레트 후겐베르크는 단순 다수결 투표에서 온건파를 꺾고 승리했습니다. 거의 모든 사안에 대해 타협 없는 입장을 고수하는 후겐베르크는 당내 좌파를 소외시키고 분당 사태를 초래할 것으로 보입니다. 후겐베르크는 당내 민주주의를 종식시키고 <i>지도자 원리</i>를 도입할 것으로 예상됩니다. 과거 보수 진영의 포괄 정당이었던 이 당은 이제 그의 개인적 목표를 위한 도구로 변모할 것입니다.
 
-Westarp remains as the chairman for the <span style="color: #3E88B3;">**DNVP**</span>'s Reichstag delegation for now, and will try his best to prevent a secession from the party, even with Hugenberg leading.
+베스타르프는 당분간 <span style="color: #3E88B3;">**DNVP**</span>의 제국의회 원내대표직을 유지하며, 후겐베르크 체제 하에서도 당의 분열을 막기 위해 최선을 다할 것입니다.

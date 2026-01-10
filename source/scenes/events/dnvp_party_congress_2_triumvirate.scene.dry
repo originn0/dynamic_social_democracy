@@ -1,5 +1,5 @@
-title: <span style="color: #3E88B3;">**DNVP**</span> Congress
-subtitle: The <span style="color: #3E88B3;">DNVP</span> decides their fate...
+title: <span style="color: #3E88B3;">**DNVP**</span> 전당대회
+subtitle: <span style="color: #3E88B3;">DNVP</span>이 그들의 운명을 결정합니다...
 view-if: year = 1929 and month = 11 and dnvp_leader = "Triumvirate"
 max-visits: 1
 tags: event
@@ -17,13 +17,13 @@ on-display: {!
 !}
 new-page: true
 
-= <span style="color: #3E88B3;">**DNVP**</span> Congress
+= <span style="color: #3E88B3;">**DNVP**</span> 전당대회
 
-The <span style="color: #3E88B3;">**DNVP**</span> has suffered severe internal conflicts the past year over Hugenberg's leadership, the Young Plan referendum with its controversial "imprisonment" paragraph, the resignation of Westarp in protest[? if young_plan_signatures >= 10:, the impending vote on it within the Reichstag ?], and the expulsion of their Reichstag member Gottfried Treviranus over a private letter suggesting a split within the party if Hugenberg is unable to be removed. [? if stegerwald_path: Furthermore, the expansion of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to Protestant voters has eroded its traditional voter base, raising serious doubts about the party's future. ?]
+지난 한 해 동안 <span style="color: #3E88B3;">**DNVP**</span>는 후겐베르크의 리더십, 논란의 여지가 있는 "투옥" 조항이 포함된 영 안 국민투표, 이에 항의한 베스타르프의 사임[? if young_plan_signatures >= 10:, 그리고 개인적인 신념으로 인해 제국의회에서의 임박한 표결 ?], 그리고 후겐베르크가 물러나지 않을 경우 분당을 시사한 제국의회 의원 고트프리트 트레비라누스의 제명 문제 등을 둘러싸고 심각한 내부 갈등을 겪었습니다. [? if stegerwald_path: 게다가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 개신교 유권자들에게까지 외연을 확장하면서 전통적인 지지 기반이 잠식당했고, 이는 당의 미래에 대한 심각한 의구심을 불러일으켰습니다. ?]
 
-The "unity of the no" against <span style="color: #9B0000;">Marxism</span> has been losing its force over the years, and the referendum against the Young Plan has only exacerbated internal party tensions. Despite Hugenberg's efforts to increase control over the party, Westarp's resignation has set off a flurry of opposition within the party. [? if young_plan_signatures < 10: The failure of the initiative against the Young Plan has strengthened the dissidents position. ?][? if young_plan_signatures >= 10: The success of the initiative against the Young Plan to gather enough signatures has thrown a wrench in the dissident's plans. ?][? if was_in_right_coalition == 1: Many party members voice their dissatisfaction on Hugenberg's withdrawal from the government some time ago.?]
+<span style="color: #9B0000;">마르크스주의</span>에 대항하는 "반대를 위한 단결"은 수년 동안 동력을 잃어왔으며, 영 안 반대 국민투표는 당내 긴장을 악화시켰을 뿐입니다. 당 장악력을 높이려는 후겐베르크의 노력에도 불구하고, 베스타르프의 사임은 당내에 거센 반발을 불러일으켰습니다. [? if young_plan_signatures < 10: 영 안 반대 운동의 실패는 반대파의 입지를 강화했습니다. ?][? if young_plan_signatures >= 10: 영 안 반대 운동이 충분한 서명을 확보하며 성공한 것은 반대파의 계획에 차질을 빚게 했습니다. ?][? if was_in_right_coalition == 1: 많은 당원들은 얼마 전 후겐베르크가 정부 연정에서 철수한 것에 대해 불만을 표출하고 있습니다.?]
 
-- @resultsdnvp: The congress unfolds...
+- @resultsdnvp: 전당대회가 시작된다...
 
 @resultsdnvp
 go-to: hugenbergremoval if young_plan_signatures < 10 or (young_plan_signatures >= 10 and was_in_right_coalition == 1); completednvpsplit if young_plan_signatures >= 10 and not (young_plan_signatures >= 10 and was_in_right_coalition == 1) and not stegerwald_path; completednvpsplit_stegerwald if young_plan_signatures >= 10 and not (young_plan_signatures >= 10 and was_in_right_coalition == 1) and stegerwald_path
@@ -33,24 +33,24 @@ on-arrival: dnvp_leader = "Treviranus"; dnvp_ideology = "Moderate"; hugenberg_re
 go-to: dnf_formed_1929_2
 face-image: img/portraits/Treviranus.jpg
 
-[? if young_plan_signatures < 10: The failure of the Young Plan referendum to reach the 10% threshold?][? if young_plan_signatures < 10 and was_in_right_coalition:&nbsp;and?] [? if was_in_right_coalition: Hugenberg's unpopular decision to exit the right-wing coalition exactly a year from now?] and the declining popularity of the <span style="color: #3E88B3;">**DNVP**</span> has convinced the majority of the party to vote out Hugenberg, replacing him with Treviranus, a member of the "Young Conservative" wing of the party. The Young Conservatives are in favor of governmental participation, advancing their goals in the framework of the system. However, the national conservatives retain heavy control over the party and the <span style="color: #3E88B3;">**DNVP**</span> isn't exactly a democratic party yet. [? if stegerwald_path: This leaves the <span style="color: #3E88B3;">**DNVP**</span> as a more nationalistic, conservative alternative to the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?]
+[? if young_plan_signatures < 10: 영 안 국민투표가 10% 기준치 달성에 실패한 것?][? if young_plan_signatures < 10 and was_in_right_coalition:&nbsp;과?] [? if was_in_right_coalition: 정확히 1년 전 우파 연정을 탈퇴하기로 한 후겐베르크의 인기 없는 결정?] 그리고 <span style="color: #3E88B3;">**DNVP**</span>의 지지율 하락은 당내 과반수가 후겐베르크를 축출하고, 그를 "청년 보수파"의 일원인 트레비라누스로 교체하도록 만들었습니다. 청년 보수파는 체제 내에서 목표를 달성하기 위해 정부 참여를 지지합니다. 그러나 국가 보수주의자들이 여전히 당을 강력하게 통제하고 있어 <span style="color: #3E88B3;">**DNVP**</span>가 완전히 민주적인 정당이 된 것은 아닙니다. [? if stegerwald_path: 이로써 <span style="color: #3E88B3;">**DNVP**</span>는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에 비해 더 민족주의적이고 보수적인 대안으로 남게 되었습니다. ?]
 
-In response, Hugenberg threatens to take himself and his supporters into a new splinter party, which is unlikely to gain much support, considering he remains deeply unpopular beyond his loyal following.
+이에 반발하여 후겐베르크는 자신과 지지자들을 이끌고 분당하겠다고 위협하고 있습니다. 하지만 그가 충성파 외에는 인기가 바닥이라는 점을 고려하면 큰 지지를 얻기는 어려울 것으로 보입니다.
 
 @completednvpsplit
 on-arrival: dnvp_split = 1; complete_dnvp_split = 1; dnvp_leader = "Hugenberg"; hugenberg_reinstated = 1
 go-to: kvp_formed_2
 face-image: img/KVP.jpg
 
-The moderates within the <span style="color: #3E88B3;">**DNVP**</span> united under Westarp are unable to defeat Hugenberg in a vote. This is in part due to Hugenberg's efforts of consolidating power within the party organizations. The <span style="color: #385A38;">agrarian</span> representatives in the party finally had enough with Hugenberg's "all or nothing" strategy, especially after he governed as de-facto party dictator, disregarding even those he has shared power with.
+베스타르프를 중심으로 뭉친 <span style="color: #3E88B3;">**DNVP**</span> 내 온건파들은 투표에서 후겐베르크를 꺾지 못했습니다. 이는 후겐베르크가 당 조직 내 권력을 공고히 해둔 탓이 큽니다. 당내 <span style="color: #385A38;">농본주의</span> 대표자들은 후겐베르크의 "전부 아니면 전무" 전략에 마침내 진저리를 쳤으며, 특히 그가 권력을 공유하던 이들조차 무시하고 사실상 당의 독재자로 군림한 이후에는 더욱 그렇습니다.
 
-The anti-Hugenberg forces within the party have all left to form a new <i>Konservative Volkspartei</i> (Conservative People's Party). It is a question of how long this party would last, with some members rather wanting to affiliate with the special interest parties. Hugenberg is left with a diminished <span style="color: #3E88B3;">**DNVP**</span>, smaller than the faction that split from it.
+당내 반 후겐베르크 세력은 모두 탈당하여 새로운 <i>보수 인민당</i>을 창당했습니다. 일부 당원들은 차라리 이익 단체 정당들과 제휴하기를 원하고 있어, 이 당이 얼마나 오래 지속될지는 미지수입니다. 후겐베르크는 분리되어 나간 파벌보다 더 작아진, 쪼그라든 <span style="color: #3E88B3;">**DNVP**</span>와 함께 남게 되었습니다.
 
 @completednvpsplit_stegerwald
 on-arrival: dnvp_split = 1; complete_dnvp_split = 1; dnvp_leader = "Hugenberg"; hugenberg_reinstated = 1; dnvp_stegerwald = 1
 go-to: kvp_formed_2_stegerwald
 face-image: img/KVP.jpg
 
-The moderates within the <span style="color: #3E88B3;">**DNVP**</span>, joined by the <span style="color: #385A38;">agrarian</span> wing, are unable to defeat Hugenberg in a vote. This is in part due to Hugenberg's efforts of consolidating power within the party organizations. The <span style="color: #385A38;">agrarian</span> representatives in the party finally had enough with Hugenberg's "all or nothing" strategy, especially [? if was_in_right_coalition: after he collapsed the right-wing coalition exactly a year ago[? if (tariffs < 0 or land_reform > 0): leaving them powerless to combat the land and tariff reforms we've enacted?]. ?][? if (tariffs < 0 or land_reform > 0) and not was_in_right_coalition and not dvp_reform: since they're left powerless to combat the land and tariff reforms enacted. ?][? if not (tariffs < 0 or land_reform > 0) and not was_in_right_coalition and dvp_reform: since the <span style="color: #C0A054;">**DVP**</span> has been eating into their voter base the past few months. ?][? if (tariffs < 0 or land_reform > 0) and not was_in_right_coalition and dvp_reform: since they're left powerless to combat the land and tariff reforms enacted. ?]
+<span style="color: #385A38;">농본주의</span> 세력과 연합한 <span style="color: #3E88B3;">**DNVP**</span> 내 온건파들은 투표에서 후겐베르크를 꺾지 못했습니다. 이는 후겐베르크가 당 조직 내 권력을 공고히 해둔 탓이 큽니다. 당내 <span style="color: #385A38;">농본주의</span> 대표자들은 후겐베르크의 "전부 아니면 전무" 전략에 마침내 진저리를 쳤으며, 특히 [? if was_in_right_coalition: 그가 정확히 1년 전 우파 연정을 붕괴시킨 후[? if (tariffs < 0 or land_reform > 0): 우리가 시행한 토지 및 관세 개혁에 맞서 싸울 힘조차 없게 만들었기 때문입니다?]. ?][? if (tariffs < 0 or land_reform > 0) and not was_in_right_coalition and not dvp_reform: 시행된 토지 및 관세 개혁에 맞서 싸울 힘이 없게 되었기 때문입니다. ?][? if not (tariffs < 0 or land_reform > 0) and not was_in_right_coalition and dvp_reform: <span style="color: #C0A054;">**DVP**</span>가 지난 몇 달간 그들의 지지 기반을 잠식해 들어왔기 때문입니다. ?][? if (tariffs < 0 or land_reform > 0) and not was_in_right_coalition and dvp_reform: 시행된 토지 및 관세 개혁에 맞서 싸울 힘이 없게 되었기 때문입니다. ?]
 
-The anti-Hugenberg forces within the party have all left in separate ways. Committed <span style="color: #3E88B3;">nationalists</span> form a new <i>Konservative Volkspartei</i> (Conservative People's Party), while more pragmatic members and trade unionists choose to join the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. It is a question of how long this party would last, since it finds itself in the small political base to the right of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], but to the left of the <span style="color: #3E88B3;">**DNVP**</span>.
+당내 반 후겐베르크 세력은 뿔뿔이 흩어졌습니다. 골수 <span style="color: #3E88B3;">민족주의자들</span>은 새로운 <i>보수 인민당</i>을 창당했고, 더 실용적인 당원들과 노동조합원들은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 합류를 선택했습니다. [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]보다는 오른쪽, <span style="color: #3E88B3;">**DNVP**</span>보다는 왼쪽이라는 협소한 정치적 입지 탓에 이 신당이 얼마나 버틸지는 의문입니다.

@@ -1,5 +1,5 @@
-title: <span style="color: #3E88B3;">**DNVP**</span> Congress
-subtitle: The economic depression has radicalized the party...
+title: <span style="color: #3E88B3;">**DNVP**</span> 전당대회
+subtitle: 경제 대공황이 당을 급진화시켰습니다...
 view-if: year = 1930 and month = 11 and dnvp_leader = "Hergt"
 on-arrival: pro_republic += dnvp_votes if pro_republic < 50
 max-visits: 1
@@ -7,31 +7,31 @@ tags: event
 face-image: img/dnvp3.jpg
 new-page: true
 
-= <span style="color: #3E88B3;">**DNVP**</span> Congress
+=< span style="color: #3E88B3;">**DNVP**</span> 전당대회
 
-The victory of the moderates within the <span style="color: #3E88B3;">**DNVP**</span> has not entirely halted the party’s rightward shift since its electoral defeat. Hergt’s triumph over the democratic Young Conservatives, led by Treviranus, has dashed our hopes for a more democratic and constructive <span style="color: #3E88B3;">**DNVP**</span>.
+<span style="color: #3E88B3;">**DNVP**</span> 내 온건파의 승리도 선거 패배 이후 당의 우경화를 완전히 막지는 못했습니다. 트레비라누스가 이끄는 민주적 청년 보수파에 대한 헤르크트의 승리는 더 민주적이고 건설적인 <span style="color: #3E88B3;">**DNVP**</span>에 대한 우리의 희망을 꺾어버렸습니다.
 
-While the initial turmoil following Hugenberg’s split and the Young Plan has subsided, a rightward shift in the party’s policies remains possible, especially as the <span style="color: #7A3C00;">**NSDAP**</span> threatens to eclipse them. The ongoing crisis in Germany continues to radicalize the electorate—and, by extension, the bourgeois parties that represent them.
+후겐베르크의 분당과 영 안 사태 이후의 초기 혼란은 가라앉았지만, 특히 <span style="color: #7A3C00;">**NSDAP**</span>가 그들을 집어삼킬 듯 위협함에 따라 당 정책의 우경화는 여전히 현재진행형입니다. 독일의 계속되는 위기는 유권자들을 급진화시키고 있으며, 이는 그들을 대표하는 부르주아 정당들 또한 마찬가지입니다.
 
-- @statusquo: Hergt has once again won re-election.
-- @schiele: The mantle is transferred to Martin Schiele and the <span style="color: #385A38;">agrarians</span>.
+- @statusquo: 헤르크트가 다시 한번 재선에 성공한다.
+- @schiele: 당권은 마르틴 쉴레와 <span style="color: #385A38;">농본주의자들</span>에게 넘어간다.
 
 @statusquo
 choose-if: land_reform == 0 and rural_spd_normalized < 40 and rural_nsdap_normalized < rural_dnvp_normalized
-unavailable-subtitle: The <span style="color: #385A38;">agrarian</span> wing of the <span style="color: #3E88B3;">DNVP</span> objects, claiming that it is their turn to lead.
+unavailable-subtitle: <span style="color: #3E88B3;">DNVP</span>의 <span style="color: #385A38;">농업주의</span> 파벌이 이의를 제기하며, 이제는 자신들이 당을 지도할 차례라고 주장합니다.
 on-arrival: hergt_stays_again = 1; rural_dnvp += 2; rural_nsdap += 2; rural_dnf -= 2; new_middle_dnvp -= 1; new_middle_nsdap += 1; workers_dnvp -= 1; workers_nsdap += 1; catholics_dnvp -= 1; catholics_z += 1; pro_republic -= 4; dvp_right += 3; lvp_right += 2
 face-image: img/portraits/OskarHergt.jpg
 
-Oskar Hergt has been re-elected once again. However, he and the national conservatives within the party are increasingly looking toward alliances with forces to their right, as their previous hostility toward the <span style="color: #003755;">**DNF**</span> continues to fade. Furthermore, the bourgeois elites influencing the party have pushed its leadership to reconsider some form of cooperation with the <span style="color: #7A3C00;">**NSDAP**</span>, aiming to integrate them as a "constructive component of the state" through a so-called '<span class="tooltip-text" title="Coined by conservative elites like Schleicher and Papen, this strategy aims to control the dynamic Nazi movement and integrate it into the state by introducing the party to government. In their eyes, this would moderate the Nazis, transforming them into a constructive component of the state.">taming strategy</span>'.
+오스카 헤르크트가 다시 한번 재선되었습니다. 그러나 그와 당내 국가 보수주의자들은 <span style="color: #003755;">**DNF**</span>에 대한 적대감이 희미해짐에 따라 점점 더 우측 세력과의 동맹을 모색하고 있습니다. 게다가 당에 영향력을 행사하는 부르주아 엘리트들은 지도부를 압박하여, <span style="color: #7A3C00;">**NSDAP**</span>를 소위 '<span class="tooltip-text" title="슐라이허와 파펜 같은 보수 엘리트들이 고안한 이 전략은 역동적인 나치 운동을 통제하고 당을 정부에 참여시킴으로써 국가 체제 내로 통합하려는 목표를 가집니다. 그들의 시각에서는 이것이 나치를 온건화하여 국가의 건설적인 구성 요소로 변화시킬 것입니다.">길들이기 전략</span>'을 통해 "국가의 건설적인 구성 요소"로 통합한다는 명분 하에 그들과의 협력을 재고하도록 만들었습니다.
 
-Recently, discussions have emerged about a new referendum—one designed to unite the German right, much like the Young Plan referendum attempted, but this time focused on prematurely dissolving the Prussian Landtag. Given the radicalized political climate, such a move would allow the <span style="color: #7A3C00;">**NSDAP**</span>, which currently holds a meager [+ nsdap_r_prussia +]% of seats, to make significant gains.
+최근에는 영 안 국민투표 때처럼 독일 우파를 단결시키기 위한 새로운 국민투표에 대한 논의가 부상하고 있는데, 이번 목표는 프로이센 주의회의 조기 해산입니다. 급진화된 정치적 기후를 고려할 때, 그러한 움직임은 현재 겨우 [+ nsdap_r_prussia +]%의 의석을 보유한 <span style="color: #7A3C00;">**NSDAP**</span>가 상당한 이득을 얻도록 만들 것입니다.
 
 @schiele
 choose-if: land_reform >= 1 or rural_spd_normalized >= 30 or rural_nsdap_normalized >= rural_dnvp_normalized
-unavailable-subtitle: There is no suitable pretext for a leadership change.
+unavailable-subtitle: 지도부 교체를 정당화할 만한 적절한 명분이 없습니다.
 on-arrival: dnvp_leader = "Schiele"; rural_dnvp += 6; rural_nsdap -= 3; rural_dnf -= 3; rural_dnvp += rural_other; rural_other = rural_other*0.2; new_middle_dnvp -= 3; new_middle_nsdap += 3; workers_dnvp -= 1; workers_nsdap += 1; catholics_dnvp += 7; catholics_other -= 2; catholics_z -= 5; z_relation -= 5; dnvp_r += other_r*0.3; other_r = other_r*0.7; dvp_right += 3; lvp_right += 2
 face-image: img/portraits/schiele.jpg
 
-[? if land_reform >= 1 : Due to the land reform policies enacted by our[? if not spd_in_government:&nbsp;previous?] government, the <span style="color: #385A38;">agrarian</span> conservative elites have made it their strongest effort to rally the German right against them. This involves orchestrating a leadership change within the <span style="color: #3E88B3;">**DNVP**</span>, the primary political home of <span style="color: #385A38;">agrarian</span> conservatism. Oskar Hergt has been persuaded to resign, in favor of the president of the National Rural League (RLB), Martin Schiele. They hope that by electing the most influential figure in the agricultural community, they can safeguard the relevance of organized agriculture within Germany. ?][? if rural_spd_normalized >= 30 and land_reform == 0 : With the <span style="color: #c00000;">**SPD**</span> making significant inroads among rural voters, the <span style="color: #3E88B3;">**DNVP**</span> and its <span style="color: #385A38;">agrarian</span> elites have persuaded Oskar Hergt to resign, passing the party's leadership to Martin Schiele, the president of the National Rural League (RLB). They hope that the most influential figure in the agricultural community can stem the tide and maintain the historic bond between agriculture and German conservatism in the years ahead. ?][? if rural_nsdap_normalized >= rural_dnvp_normalized and rural_spd_normalized < 30 and land_reform == 0 : Due to the significant inroads made by the insurgent <span style="color: #7A3C00;">**NSDAP**</span> among their primary rural voter base, the <span style="color: #3E88B3;">**DNVP**</span> and its agrarian elites have persuaded Oskar Hergt to step down, passing the party’s leadership to Martin Schiele, president of the National Rural League (RLB). They hope that the most influential figure in the agricultural community can stem the tide and maintain the historic bond between organized agriculture and German conservatism in the years ahead. ?]
+[? if land_reform >= 1 : 우리의[? if not spd_in_government:&nbsp;이전?] 정부가 시행한 토지 개혁 정책 때문에, <span style="color: #385A38;">농본주의</span> 보수 엘리트들은 독일 우파를 결집시켜 이에 대항하고자 총력을 기울이고 있습니다. 여기에는 <span style="color: #385A38;">농본주의</span> 보수주의의 정치적 본산인 <span style="color: #3E88B3;">**DNVP**</span>의 지도부를 교체하는 것도 포함됩니다. 오스카 헤르크트는 사임 압박을 받아 전국농촌연맹 회장인 마르틴 쉴레에게 자리를 넘겨주었습니다. 그들은 농업계에서 가장 영향력 있는 인물을 선출함으로써 독일 내 조직된 농업의 입지를 지킬 수 있기를 희망합니다. ?][? if rural_spd_normalized >= 30 and land_reform == 0 : <span style="color: #c00000;">**SPD**</span>가 농촌 유권자들 사이에서 약진함에 따라, <span style="color: #3E88B3;">**DNVP**</span>와 그 <span style="color: #385A38;">농본주의</span> 엘리트들은 오스카 헤르크트를 설득해 사임하게 하고, 전국농촌연맹 회장인 마르틴 쉴레에게 당권을 넘겼습니다. 그들은 농업계에서 가장 영향력 있는 인물이 이 흐름을 막고 향후 농업과 독일 보수주의 간의 역사적 유대를 유지할 수 있기를 희망합니다. ?][? if rural_nsdap_normalized >= rural_dnvp_normalized and rural_spd_normalized < 30 and land_reform == 0 : 급부상한 <span style="color: #7A3C00;">**NSDAP**</span>가 그들의 주요 농촌 지지 기반을 잠식해 들어옴에 따라, <span style="color: #3E88B3;">**DNVP**</span>와 그 농본주의 엘리트들은 오스카 헤르크트를 물러나게 하고 전국농촌연맹 회장인 마르틴 쉴레에게 당권을 넘겼습니다. 그들은 농업계에서 가장 영향력 있는 인물이 이 흐름을 막고 향후 조직된 농업과 독일 보수주의 간의 역사적 유대를 유지할 수 있기를 희망합니다. ?]
 
-Schiele’s election has led to the merger of the majority of the <span style="color: #7FCEB1;">**CNBLP**</span> into the <span style="color: #3E88B3;">**DNVP**</span>, strengthening its hold on the countryside and uniting the RLB in lobbying for <span style="color: #385A38;">agrarian</span> interests. This consolidation has given rise to the renewal of the <span style="color: #385A38;">Green Front</span>, an umbrella group of the RLB, peasant unions, and some Catholic and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]-affiliated agricultural organizations.
+쉴레의 선출로 <span style="color: #7FCEB1;">**CNBLP**</span> 대다수가 <span style="color: #3E88B3;">**DNVP**</span>로 흡수 합병되었고, 이는 농촌 장악력을 강화하고 RLB를 중심으로 <span style="color: #385A38;">농본주의</span> 이익을 위한 로비 활동을 단일화하는 결과를 낳았습니다. 이러한 통합은 RLB, 농민 조합, 그리고 일부 가톨릭 및 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 산하 농업 조직들의 연합체인 <span style="color: #385A38;">녹색 전선</span>의 부활을 알렸습니다.
