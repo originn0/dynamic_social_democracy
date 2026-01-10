@@ -1,5 +1,5 @@
-title: <span style="color: #C0A054;">**DVP**</span> Congress
-subtitle: The <span style="color: #C0A054;">**DVP**</span> decides their future...
+title: <span style="color: #C0A054;">**DVP**</span> 전당대회
+subtitle: <span style="color: #C0A054;">**DVP**</span>의 미래를 결정합니다...
 view-if: year = 1928 and month = 12 and dvp_congress_trigger = 1 and dnvp_ideology = "Radical" and not lvp_formed and lvp_timer_trigger == 0
 on-arrival: dvp_left += 1 if dvp_relation >= 50; dvp_right += 1 if dvp_relation < 35; dvp_right += 1 if not in_grand_coalition
 max-visits: 1
@@ -7,13 +7,13 @@ tags: event
 face-image: img/dvp.jpg
 new-page: true
 
-= <span style="color: #C0A054;">**DVP**</span> Congress
+= <span style="color: #C0A054;">**DVP**</span> 전당대회
 
-A party congress has been called within the <span style="color: #C0A054;">**DVP**</span> over proposed internal reform that would turn the party into a genuine People's Party, not one of industrial interests. 
+당을 산업계의 이익 대변 집단이 아닌 진정한 인민당으로 탈바꿈시키려는 내부 개혁안을 두고 <span style="color: #C0A054;">**DVP**</span> 전당대회가 소집되었습니다.
 
-German industry isn't going to abandon their voice within the <span style="color: #C0A054;">**DVP**</span> so easily, and this is likely to be the last chance Stresemann will have to maintain control of the party, with his declining health. [? if not in_grand_coalition: The left of the <span style="color: #C0A054;">**DVP**</span> has also been diminished by the current absence of a coalition including both parties. ?]
+독일 산업계는 <span style="color: #C0A054;">**인민당**</span> 내에서의 영향력을 쉽게 포기하지 않을 것입니다. 건강이 악화되고 있는 슈트레제만에게 있어 이번이 당 장악력을 유지할 마지막 기회가 될 가능성이 큽니다. [? if not in_grand_coalition: 또한 현재 두 당이 참여하는 연정이 구성되지 않은 탓에 <span style="color: #C0A054;">**DVP**</span> 좌파의 입지는 좁아진 상태입니다. ?]
 
-- @resultsdvp: The party votes...
+- @resultsdvp: 당의 투표 결과는...
 
 @resultsdvp
 on-arrival: {!
@@ -31,22 +31,22 @@ go-to: left if dvp_ideology == "Left" or (dvp_left - dvp_right >= 3); right if d
 on-arrival: dvp_left += 10; dvp_relation += 10; liberal_cooperation += 3; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 8; new_middle_dnvp -= 2; new_middle_other -= 6; old_middle_dvp += 4; old_middle_dnvp -= 2; old_middle_other -= 2; rural_dvp += 4; rural_dnvp -= 2; rural_other -= 2; catholics_other -= 2; catholics_z -= 2; catholics_dvp += 4; coalition_dissent -= 2 if in_grand_coalition; dvp_reform = 1; pro_republic += 5; ddp_left += 2; ddp_cohesion += 2
 face-image: img/portraits/Stresemann.jpg
 
-Stresemann rallies what's left of the <span style="color: #C0A054;">**DVP**</span> that aren't bought out by industry into adopting the proposed reform, not without any fierce opposition from the other half of the party. With the loss of the <span style="color: #3E88B3;">**DNVP**</span> from the grasp of industry to the antagonistic Hugenberg, they begrudgingly remain behind the <span style="color: #C0A054;">**DVP**</span> for now. The party also attracts those who are against Hugenberg's leadership.
+슈트레제만은 산업계에 매수되지 않은 <span style="color: #C0A054;">**DVP**</span>의 잔류 세력을 규합하여 개혁안을 채택했지만, 당내 반대파의 격렬한 저항이 없었던 것은 아닙니다. 산업계는 <span style="color: #3E88B3;">**DNVP**</span>이 적대적인 후겐베르크의 손에 넘어가 버렸기 때문에, 지금으로서는 마지못해 <span style="color: #C0A054;">**DVP**</span>을 계속 지원하기로 했습니다. 또한 당은 후겐베르크의 지도력에 반대하는 이들을 흡수하고 있습니다.
 
-We have noticed an improvement in relations with the <span style="color: #C0A054;">**DVP**</span>, and them moving away from the radical right. The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has also voiced approval to the actions of the congress and have opened up talks for further cooperation. This also has a ripple effect within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, shifting them leftwards.
+우리는 <span style="color: #C0A054;">**DVP**</span>과의 관계가 개선되고 그들이 급진 우파와 거리를 두는 것을 확인했습니다. <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 또한 이번 전당대회의 결과에 지지를 표명하며 추가적인 협력을 위한 대화에 나섰습니다. 이는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내부에도 파급 효과를 미쳐, 당을 좌측으로 이동시키고 있습니다.
 
 @left_conflict
 on-arrival: dvp_left += 5; dvp_relation += 5; liberal_cooperation += 2; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 3; new_middle_dnvp -= 1; new_middle_other -= 2; old_middle_dvp += 4; old_middle_dnvp -= 2; old_middle_other -= 2; rural_dvp += 2; rural_dnvp -= 1; rural_other -= 1; catholics_other -= 2; catholics_dvp += 2; coalition_dissent -= 1 if in_grand_coalition; dvp_reform = 1; pro_republic += 3; ddp_cohesion += 1; ddp_left += 1
 face-image: img/portraits/Stresemann.jpg
 
-Stresemann and the left-wing of the <span style="color: #C0A054;">**DVP**</span> pushed through the reform by an extremely narrow margin, only achieved by Stresemann's threats to resign if it were not to pass. Half of the party's Reichstag delegation is tied to industry, which are now without much influence within the <span style="color: #C0A054;">**DVP**</span>, and even the <span style="color: #3E88B3;">**DNVP**</span> with Hugenberg's leadership. They are now in open conflict with the left-wing of the <span style="color: #C0A054;">**DVP**</span> and are withholding their financial contributions.
+슈트레제만과 <span style="color: #C0A054;">**DVP**</span> 좌파는 슈트레제만의 사임 협박 끝에 간신히 개혁안을 통과시켰습니다. 당 제국의회 의원단의 절반은 산업계와 유착되어 있는데, 이들은 이제 <span style="color: #C0A054;">**DVP**</span> 내에서는 물론 후겐베르크가 이끄는 <span style="color: #3E88B3;">**DNVP**</span> 내에서도 영향력을 잃었습니다. 이들은 현재 <span style="color: #C0A054;">**DVP**</span> 좌파와 공개적으로 대립하며 자금 지원을 중단하고 있습니다.
 
-We have noticed a small improvement in relations with the <span style="color: #C0A054;">**DVP**</span>, and them moving away from the radical right. The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has also voiced approval to the actions of the congress and have opened up talks for further cooperation. This also has a ripple effect within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, shifting them leftwards.
+우리는 <span style="color: #C0A054;">**DVP**</span>과의 관계가 소폭 개선되고 그들이 급진 우파와 거리를 두는 것을 확인했습니다. <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 또한 이번 전당대회의 결과에 지지를 표명하며 추가적인 협력을 위한 대화에 나섰습니다. 이는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내부에도 파급 효과를 미쳐, 당을 좌측으로 이동시키고 있습니다.
 
 @right
 on-arrival: dvp_right += 5; dvp_relation -= 5; old_middle_other += 2; new_middle_other += 2; coalition_dissent += 1 if in_grand_coalition; dvp_reform = 0; pro_republic -= 2; ddp_cohesion -= 1; ddp_right += 1
 face-image: img/portraits/ernst_scholz.jpg
 
-Stresemann has faced a resounding defeat at the hands of the right-wing industrial interests inside the <span style="color: #C0A054;">**DVP**</span>. They have capitalized on this defeat by restricting the powers of the party chairmanship under Stresemann towards the more conservative Reichstag delegation led by Ernst Scholz, the lead figure on the right-wing. 
+슈트레제만은 <span style="color: #C0A054;">**DVP**</span> 내 우파 산업계 세력에게 참패를 당했습니다. 그들은 이 승리를 기회로 삼아 슈트레제만의 당 대표 권한을 축소하고, 우파의 거두인 에른스트 숄츠가 이끄는 보수적인 제국의회 의원단으로 권력을 이양시켰습니다.
 
-We have noticed an deterioration in relations with the <span style="color: #C0A054;">**DVP**</span>[? if in_grand_coalition:, and increased tension in the coalition?]. It is also a major setback for the efforts to create a united bourgeois party.
+우리는 <span style="color: #C0A054;">**DVP**</span>과의 관계가 악화되었음을 확인했습니다[? if in_grand_coalition:, 또한 연정 내 긴장이 고조되고 있습니다?]. 이는 또한 통합 부르주아 정당을 창당하려던 노력에 큰 차질을 빚게 되었습니다.
