@@ -1,5 +1,5 @@
-title: <span style="color: #C0A054;">**DVP**</span> Party Vote
-subtitle: The Kunz-Dohna group ousts Dingeldey!
+title: <span style="color: #C0A054;">**DVP**</span> 당내 투표
+subtitle: 쿤츠-도나 그룹이 딩겔다이를 축출했습니다!
 view-if: ((year == 1931 and month == 12) or year >= 1932) and dvp_leader == "Dingeldey" and (dvp_ideology == "Left" or (dvp_ideology == "Moderate" and pro_republic >= 60)) and dvp_exist and (dnvp_ideology == "Radical" or dnvp_leader == "Lambach") and not lvp_formed and not (lvp_timer_1_trigger and (lvp_merger_1_timer or lvp_trigger_1_time))
 on-arrival: dvp_right += 3 if dvp_relation < 30; dvp_left += 2 if dvp_relation >= 50; dvp_right += 2 if not in_grand_coalition
 max-visits: 1
@@ -7,23 +7,23 @@ tags: event
 face-image: img/dvp.jpg
 new-page: true
 
-= <span style="color: #C0A054;">**DVP**</span> Party Vote
+= <span style="color: #C0A054;">**DVP**</span> 당내 투표
 
-The non-industrialist and Stresemannite elements of the <span style="color: #C0A054;">**DVP**</span> have revolted, angered by their marginalization at the hands of the industrialists, who have pushed to realign Stresemann’s former party with the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>.
+<span style="color: #C0A054;">**DVP**</span> 내 비산업가 세력과 슈트레제만 계열 인사들이 반란을 일으켰습니다. 이들은 슈트레제만의 옛 당을 <span style="color: #7A3C00;">국가</span> <span style="color: #3E88B3;">반대파</span>와 재정렬하도록 몰아붙인 산업가들에 의해 소외된 것에 분노하고 있습니다.
 
-Led by Wilhelm Kunz, a Berlin lawyer, and Count Alexander zu Dohna, a legal expert and widely respected figure on the party’s left wing, they aim to publicly challenge Dingeldey and the industrialist faction that has effectively puppeteered him.
+베를린 변호사 빌헬름 쿤츠와, 법률 전문가이자 당내 좌파에서 널리 존경받는 인물인 알렉산더 추 도나 백작이 이끄는 이들은 딩겔다이와 그를 사실상 조종해 온 산업가 파벌에게 공개적으로 도전장을 내밀었습니다.
 
-They both advocate for cooperation with the minor bourgeois parties and the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, and firmly reject what they call the “psychosis of <span style="color: #7A3C00;">National Socialism</span>.”
+이들은 소수 부르주아 정당들 및 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와의 협력을 옹호하며, 그들이 "<span style="color: #7A3C00;">국가사회주의</span>의 광기"라고 부르는 것을 단호하게 거부합니다.
 
 - @dingeldey_explode
 
 @dingeldey_explode
-title: Dingeldey loses the vote of no confidence!
+title: 딩겔다이, 불신임 투표에서 패배!
 on-arrival: dvp_leader = "zu Dohna-Schlodien"; dvp_left += 5; liberal_cooperation += 5; bourgeois_cooperation += 5; dvp_relation += 15; dvp_relation = 25 if dvp_relation < 25; new_middle_dvp += 4; old_middle_dvp += 4; rural_dvp += 2; pro_republic += dvp_votes*2; ddp_right += 2; ddp_cohesion += 2
 face-image: img/portraits/dohna.jpg
 
-At a divisive party congress, prominent figures from the party’s left wing—such as Thiel, Glatzel, and Curtius—force a vote on Dingeldey’s leadership of the <span style="color: #C0A054;">**DVP**</span>. Dingeldey is ousted, replaced by zu Dohna, prompting the industrialist faction to withdraw its support and shift its funds to the right.
+분열된 당 대회에서 틸, 글라첼, 쿠르티우스 등 당내 좌파의 유력 인사들이 <span style="color: #C0A054;">**DVP**</span> 내 딩겔다이의 지도력에 대한 투표를 강행했습니다. 딩겔다이는 축출되어 추 도나로 교체되었고, 이에 산업가 파벌은 지지를 철회하고 자금줄을 우파 정당들로 옮겼습니다.
 
-However, the <span style="color: #C0A054;">**DVP**</span>’s move to distance itself from its former industrial backers—and its renewed campaign to revive Stresemann’s legacy—has done much to restore some of its lost electoral strength.
+하지만 옛 산업계 후원자들과 거리를 두려는 <span style="color: #C0A054;">**DVP**</span>의 행보는—그리고 슈트레제만의 유산을 되살리려는 갱신된 캠페인은—잃어버린 선거 경쟁력을 일부 회복하는 데 큰 도움이 되었습니다.
 
-Our relationship with the <span style="color: #C0A054;">**DVP**</span> has improved. Still, Dingeldey’s tenure radicalized the party toward the right, and the damage cannot be undone overnight.
+<span style="color: #C0A054;">**DVP**</span>와 우리의 관계는 개선되었습니다. 하지만 딩겔다이의 재임 기간 동안 당은 우경화되어 급진적으로 변했고, 그 피해는 하루아침에 복구될 수 없습니다.

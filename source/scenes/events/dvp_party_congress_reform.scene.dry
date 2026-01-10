@@ -1,5 +1,5 @@
-title: <span style="color: #C0A054;">**DVP**</span> Party Vote
-subtitle: The <span style="color: #C0A054;">**DVP**</span> chooses their new leader...
+title: <span style="color: #C0A054;">**DVP**</span> 당내 투표
+subtitle: <span style="color: #C0A054;">**DVP**</span>가 새로운 지도자를 선택합니다...
 view-if: year = 1929 and month = 12 and dvp_reform = 1 and not lvp_formed and not (lvp_timer_1_trigger and (lvp_merger_1_timer or lvp_trigger_1_time))
 on-arrival: dvp_right += 3 if dvp_relation < 30; dvp_left += 2 if dvp_relation >= 50; dvp_right += 2 if not in_grand_coalition
 max-visits: 1
@@ -7,13 +7,13 @@ tags: event
 face-image: img/dvp.jpg
 new-page: true
 
-= <span style="color: #C0A054;">**DVP**</span> Congress
+= <span style="color: #C0A054;">**DVP**</span> 전당대회
 
-The <span style="color: #C0A054;">**DVP**</span> are having an internal party vote to elect a successor to former party leader and statesman Gustav Stresemann. Despite recent reforms, both the party and its electorate have been shifting to the right in recent years. [? if not in_grand_coalition: The left of the <span style="color: #C0A054;">**DVP**</span> has also been diminished by the current absence of a coalition including both parties. ?]
+<span style="color: #C0A054;">**DVP**</span>는 전 당수이자 정치가인 구스타프 슈트레제만의 후계자를 선출하기 위해 내부 투표를 진행하고 있습니다. 최근의 개혁에도 불구하고, 당과 지지 기반 모두 최근 몇 년간 우경화되어 왔습니다. [? if not in_grand_coalition: 또한 현재 두 당이 참여하는 연정이 구성되지 않은 탓에 <span style="color: #C0A054;">**DVP**</span> 좌파의 입지는 좁아진 상태입니다. ?]
 
-The candidate on the right is current party leader Ernst Scholz. Scholz has heavy ties to industry and a record of opposing bourgeois unity. Although the right of the party was weakened, nationalist influences have rose since Stresemann's death. On the left is Julius Curtius, [? if in_grand_coalition or in_right_coalition or in_center_right_coalition: the <span style="color: #C0A054;">**DVP**</span>'s [? if (foreign_minister_party == "DVP" and economic_minister_party != "DVP") or (foreign_minister_party == "DVP" and economic_minister_party == "DVP"): Foreign Minister who succeeded Stresemann in the role.?][? if economic_minister_party == "DVP" and foreign_minister_party != "DVP": Economic Minister, and a close ally of Stresemann?]?][? if not in_grand_coalition: a close ally of Stresemann and seen by many as his natural successor?]. A movement to draft former Chancellor Hans Luther is met with his own personal reluctance, but he remains a possible compromise candidate.
+우파 후보는 현 당 지도자인 에른스트 숄츠입니다. 숄츠는 산업계와 깊은 유대 관계를 맺고 있으며 부르주아 통합에 반대해 온 이력이 있습니다. 당내 우파가 약화되긴 했지만, 슈트레제만 사후 민족주의적 영향력이 커졌습니다. 좌파 후보로는 율리우스 쿠르티우스가 있는데, [? if in_grand_coalition or in_right_coalition or in_center_right_coalition: 그는 <span style="color: #C0A054;">**DVP**</span> 소속 [? if (foreign_minister_party == "DVP" and economic_minister_party != "DVP") or (foreign_minister_party == "DVP" and economic_minister_party == "DVP"): 외무장관으로서 그 직책에서 슈트레제만을 승계했습니다.?][? if economic_minister_party == "DVP" and foreign_minister_party != "DVP": 경제장관이자 슈트레제만의 가까운 동맹입니다?]?][? if not in_grand_coalition: 슈트레제만의 가까운 동맹이자 많은 이들에게 그의 자연스러운 후계자로 여겨지는 인물입니다?]. 전 총리 한스 루터를 추대하려는 움직임은 본인의 고사로 난항을 겪고 있지만, 그는 여전히 가능한 타협 후보로 남아 있습니다.
 
-- @resultsdvp: The party votes...
+- @resultsdvp: 당의 투표 결과는...
 
 @resultsdvp
 on-arrival: {!
@@ -31,22 +31,22 @@ go-to: curtius if dvp_ideology == "Left" or (dvp_ideology == "Moderate" and (coa
 on-arrival: dvp_leader = "Curtius"; liberal_cooperation += 1; bourgeois_cooperation += 1; dvp_left += 3; dvp_relation += 5; new_middle_dvp += 5; rural_dvp += 2; pro_republic += 5; ddp_left += 1; ddp_cohesion += 1
 face-image: img/portraits/curtius.jpg
 
-Julius Curtius has won the vote to succeed Stresemann for the chairmanship. It seems like the industrialists have finally lost their fight to control the <span style="color: #C0A054;">**DVP**</span>, which has now become a genuine People's Party that Stresemann envisioned.
+율리우스 쿠르티우스가 슈트레제만을 승계할 의장 선거에서 승리했습니다. 산업가들은 <span style="color: #C0A054;">**DVP**</span>를 장악하기 위한 싸움에서 마침내 패배한 것으로 보이며, 당은 이제 슈트레제만이 꿈꿨던 진정한 인민당이 되었습니다.
 
-This is still excellent news for us and our relations with the <span style="color: #C0A054;">**DVP**</span>. [? if in_grand_coalition: We have noticed a decrease in coalition tensions. ?]
+이는 우리와 <span style="color: #C0A054;">**DVP**</span>와의 관계에 있어 여전히 훌륭한 소식입니다. [? if in_grand_coalition: 우리는 연정 내 긴장이 완화된 것을 확인했습니다. ?]
 
 @scholz
 on-arrival: dvp_leader = "Scholz"; dvp_right += 2; dvp_relation -= 10; old_middle_dvp -= 4; new_middle_dvp -= 4; rural_dvp -= 2; old_middle_dnvp += 4 if dnvp_ideology == "Moderate"; new_middle_dnvp += 4 if dnvp_ideology == "Moderate"; rural_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_kvp += 4 if kvp_formed; new_middle_kvp += 4 if kvp_formed; rural_kvp += 4 if kvp_formed; workers_ddp += 1; workers_dvp -= 1; pro_republic -= 3; ddp_right += 1; ddp_cohesion -= 1; liberal_cooperation -= 3; bourgeois_cooperation -= 2
 face-image: img/portraits/ernst_scholz.jpg
 
-Ernst Scholz has surprisingly won the vote to succeed Stresemann for the chairmanship. The right wing of the <span style="color: #C0A054;">**DVP**</span> was crippled in the events of their last congress, but managed to claw back into power. The left of the party still have some control over internal affairs and can dissuade them from their worse excesses.
+에른스트 숄츠가 예상을 깨고 슈트레제만을 승계할 의장 선거에서 승리했습니다. <span style="color: #C0A054;">**DVP**</span> 우파는 지난 전당대회 사태로 타격을 입었음에도 불구하고 다시 권력을 잡는 데 성공했습니다. 당내 좌파는 여전히 내부 문제에 대해 어느 정도 통제력을 가지고 있어 그들의 최악의 폭주를 막을 수는 있습니다.
 
-Needless to say, this is bad news for our relationship with the <span style="color: #C0A054;">**DVP**</span>, and makes the formation of future governments involving us more difficult[? if in_grand_coalition:, and the current government untenable?].
+말할 필요도 없이, 이는 <span style="color: #C0A054;">**DVP**</span>와 우리의 관계에 나쁜 소식이며, 우리를 포함한 미래 정부 구성을 더 어렵게 만듭니다[? if in_grand_coalition:, 또한 현재 정부를 유지할 수 없게 만듭니다?].
 
 @luther
 on-arrival: dvp_leader = "Luther"; dvp_left += 3 if in_grand_coalition; liberal_cooperation += 4; bourgeois_cooperation += 4; dvp_relation += 3 if in_grand_coalition; new_middle_dvp += 3; old_middle_dvp += 5; rural_dvp += 3; pro_republic += 5; old_middle_dnvp -= 2 if (dnvp_ideology == "Radical" and not kvp_formed); old_middle_dvp += 2 if (dnvp_ideology == "Radical" and not kvp_formed); new_middle_dnvp -= 2 if (dnvp_ideology == "Radical" and not kvp_formed); new_middle_dvp += 2 if (dnvp_ideology == "Radical" and not kvp_formed); rural_dnvp -= 1 if (dnvp_ideology == "Radical" and not kvp_formed); rural_dvp += 1 if (dnvp_ideology == "Radical" and not kvp_formed); ddp_left += 1; ddp_cohesion += 2
 face-image: img/portraits/luther.jpg
 
-Hans Luther has surprisingly won the vote to succeed Stresemann for the chairmanship. Luther has support among both the industrialists and the left of the party, giving him the ability to command strong influence over the party unlike his predecessors. Perhaps he's what the <span style="color: #C0A054;">**DVP**</span> needs in order to survive this crisis of German democracy. [? if (dnvp_ideology == "Radical" and not kvp_formed): Luther also manages to attract dissidents from Hugenberg's <span style="color: #3E88B3;">**DNVP**</span>. ?]
+한스 루터가 예상을 깨고 슈트레제만을 승계할 의장 선거에서 승리했습니다. 루터는 산업계와 당내 좌파 양쪽의 지지를 받고 있어, 전임자들과 달리 당에 강력한 영향력을 행사할 수 있습니다. 어쩌면 그는 독일 민주주의의 위기 속에서 <span style="color: #C0A054;">**DVP**</span>가 살아남기 위해 필요한 인물일지도 모릅니다. [? if (dnvp_ideology == "Radical" and not kvp_formed): 루터는 또한 후겐베르크의 <span style="color: #3E88B3;">**DNVP**</span>에서 이탈한 인사들을 끌어들이는 데 성공했습니다. ?]
 
-Luther is particularly supportive of uniting the liberal parties and even for the creation of a broad bourgeois party. [? if in_grand_coalition: He has also voiced support for maintaining the Grand coalition and cooperation between the two parties. ?][? if not in_grand_coalition and dvp_relation >= 40: He has voiced support for a coalition government involving us and cooperation between the two parties. ?][? if not in_grand_coalition and dvp_relation < 40: He has voiced skepticism to any potential coalitions involving us, because of the current absence of a coalition including both parties. ?]
+루터는 자유주의 정당 통합, 심지어 광범위한 부르주아 정당 창설에 특히 호의적입니다. [? if in_grand_coalition: 그는 또한 대연정 유지와 양당 간의 협력에 지지를 표명했습니다. ?][? if not in_grand_coalition and dvp_relation >= 40: 그는 우리를 포함하는 연립 정부와 양당 간의 협력에 지지를 표명했습니다. ?][? if not in_grand_coalition and dvp_relation < 40: 그는 현재 양당이 포함된 연정이 부재하다는 이유로 우리를 포함하는 잠재적 연정에 회의적인 입장을 표명했습니다. ?]

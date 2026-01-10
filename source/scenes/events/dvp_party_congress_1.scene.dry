@@ -1,5 +1,5 @@
-title: <span style="color: #C0A054;">**DVP**</span> Party Vote
-subtitle: The industrialists attempt to force the resignation of [+ dvp_leader +]...
+title: <span style="color: #C0A054;">**DVP**</span> 당내 투표
+subtitle: 산업가들이 [+ dvp_leader +]의 사임을 강요하려 합니다...
 view-if: year = 1930 and month = 12 and (dvp_leader == "Luther" or dvp_leader == "Curtius") and not lvp_formed
 on-arrival: dvp_right += 3 if dvp_relation < 25; dvp_left += 3 if dvp_relation >= 45; dvp_left += 2 if in_grand_coalition; dvp_left += 3 if dvp_leader == "Luther"; dvp_right += 3 if foreign_minister_party == "DVP" and dvp_leader == "Curtius"; dvp_left += 3 if liberal_parliament; dvp_right += 3 if bourgeois_parliament
 max-visits: 1
@@ -7,13 +7,13 @@ tags: event
 face-image: img/dvp.jpg
 new-page: true
 
-= <span style="color: #C0A054;">**DVP**</span> Party Vote
+= <span style="color: #C0A054;">**DVP**</span> 당내 투표
 
-Over the past few months, the dire state of the economy—and of Germany as a whole—has pushed the landscape of bourgeois parties toward radicalization and a rightward shift. While the <span style="color: #C0A054;">**DVP**</span> resisted this trend with the election of [+ dvp_leader +] last year, the party’s right-wing industrial forces have now united their resources for one final effort to oust [+ dvp_leader +].
+지난 몇 달간, 경제와 독일 전반의 처참한 상황은 부르주아 정당들의 지형을 급진화와 우경화로 몰아넣었습니다. <span style="color: #C0A054;">**DVP**</span>는 작년 [+ dvp_leader +]의 선출로 이러한 경향에 저항했지만, 당내 우파 산업 세력들은 이제 [+ dvp_leader +]를 축출하기 위한 마지막 시도를 위해 자원을 총동원하고 있습니다.
 
-[? if dvp_leader == "Curtius": Julius Curtius, the incumbent chairman of the party, has been pressured to delegate some of his responsibilities to the newly appointed deputy leader, Eduard Dingeldey[? if foreign_minister_party == "DVP":, due to his preoccupation with his duties as Foreign Minister?][? if foreign_minister_party != "DVP":, due to his preoccupation with governmental affairs?]. Dingeldey was among the first within the <span style="color: #C0A054;">**DVP**</span> to support the movement for bourgeois unity. He also holds sufficiently conservative views—particularly regarding cooperation with the <span style="color: #c00000;">**SPD**</span>—to garner support from Scholz and the party's right wing. Given his broad support within the party, the right wing of the <span style="color: #C0A054;">**DVP**</span> has put him forward as a replacement for Curtius, citing [? if foreign_minister_party == "DVP": his lackluster performance as Foreign Minister following Stresemann's death?][? if foreign_minister_party != "DVP": his lackluster performance as the successor of Stresemann?]. ?][? if dvp_leader == "Luther": Hans Luther, despite being elected with strong backing from German businesses, has partially fallen out of favor with his former supporters, mainly due to his unpopular stance in favor of constructive cooperation with the <span style="color: #c00000;">**SPD**</span>. As the German electorate has shifted significantly to the right, the party's right wing sees this as a weakness to exploit. They have put forth Eduard Dingeldey, who was among the first in the <span style="color: #C0A054;">**DVP**</span> to support the movement for bourgeois unity, granting his support over the <span style="color: #C0A054;">**DVP**</span> affiliated bourgeois unity groups. He is also sufficiently conservative—particularly regarding cooperation with the <span style="color: #c00000;">**SPD**</span>—to gain unified support from Scholz and the party’s right wing. ?]
+[? if dvp_leader == "Curtius": 당의 현직 의장인 율리우스 쿠르티우스는, 새로 임명된 부대표 에두아르트 딩겔다이에게 권한 일부를 위임하라는 압력을 받아왔는데, 이는 [? if foreign_minister_party == "DVP": 외무장관으로서의 업무에 몰두해 있기 때문입니다?][? if foreign_minister_party != "DVP": 정부 업무에 몰두해 있기 때문입니다?]. 딩겔다이는 <span style="color: #C0A054;">**DVP**</span> 내에서 부르주아 통합 운동을 지지한 최초의 인물 중 하나였습니다. 그는 또한 숄츠와 당내 우파의 지지를 얻기에 충분히 보수적인 견해를—특히 <span style="color: #c00000;">**SPD**</span>와의 협력에 관하여—가지고 있습니다. 당내의 폭넓은 지지를 바탕으로, <span style="color: #C0A054;">**DVP**</span> 우파는 [? if foreign_minister_party == "DVP": 슈트레제만 사후 외무장관으로서 보여준 부진한 성과를?][? if foreign_minister_party != "DVP": 슈트레제만의 후계자로서 보여준 부진한 성과를?] 구실로 그를 쿠르티우스의 대체자로 내세웠습니다. ?][? if dvp_leader == "Luther": 독일 재계의 강력한 후원을 업고 선출되었음에도 불구하고, 한스 루터는 이전 지지자들과 사이가 다소 멀어졌는데, 주로 <span style="color: #c00000;">**SPD**</span>와의 건설적인 협력에 호의적인 그의 인기 없는 입장 때문입니다. 독일 유권자들이 상당히 우경화됨에 따라, 당내 우파는 이를 공략할 약점으로 보고 있습니다. 그들은 에두아르트 딩겔다이를 내세웠는데, 그는 <span style="color: #C0A054;">**DVP**</span> 내에서 부르주아 통합 운동을 지지한 최초의 인물 중 하나였으며, <span style="color: #C0A054;">**DVP**</span> 산하 부르주아 통합 단체들에 대한 지지를 승인했습니다. 그는 또한 숄츠와 당내 우파의 통합된 지지를 얻기에 충분히 보수적입니다—특히 <span style="color: #c00000;">**SPD**</span>와의 협력에 관해서 말입니다. ?]
 
-- @resultsdvp: The party votes...
+- @resultsdvp: 당의 투표 결과는...
 
 @resultsdvp
 on-arrival: {!
@@ -31,25 +31,25 @@ go-to: curtius if dvp_leader == "Curtius" and dvp_ideology != "Right"; luther if
 on-arrival: dvp_leader = "Curtius"; liberal_cooperation += 2; bourgeois_cooperation -= 1; dvp_left += 5; dvp_relation += 3; new_middle_dvp += 4; new_middle_nsdap -= 4; new_middle_other -= 4; catholics_dvp += 3; catholics_other -= 3; old_middle_dvp -= 2; old_middle_dnvp += 2; old_middle_kvp += 2 if kvp_formed; rural_dvp += 2; rural_dnvp += 2; rural_dnvp += 2 if dnvp_ideology == "Moderate"; rural_kvp += 2 if kvp_formed; pro_republic += (dvp_votes * 2); ddp_right += 3 if ddp_ideology != "Right"; ddp_relation += 5;
 face-image: img/portraits/curtius.jpg
 
-Julius Curtius has once again won the vote to retain his position against the right wing of the <span style="color: #C0A054;">**DVP**</span>. The industrialists have lost their final battle, paving the way for the <span style="color: #C0A054;">**DVP**</span> to become a party Stresemann would be proud of—a genuinely liberal <span style="color: #C0A054;">German People's Party</span>, free from the obstruction of <span style="color: #808080;">reactionary</span> forces.
+율리우스 쿠르티우스는 <span style="color: #C0A054;">**DVP**</span> 우파의 공세에 맞서 의장직을 수성하는 데 다시 한번 성공했습니다. 산업가들은 마지막 전투에서 패배했고, 이로써 <span style="color: #C0A054;">**DVP**</span>는 슈트레제만이 자랑스러워할 만한 정당—<span style="color: #808080;">반동적인</span> 세력의 방해로부터 자유로운, 진정으로 자유주의적인 <span style="color: #C0A054;">독일 인민당</span>—이 될 기틀을 마련했습니다.
 
-This is more than excellent news for us and our relationship with the <span style="color: #C0A054;">**DVP**</span>, sending notable ripple effects throughout the entire party system. In response to their loss, the industrialists have shifted their donations toward the <span style="color: #3E88B3;">**DNVP**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>, hoping to establish a new political home for their interests.
+이는 우리와 <span style="color: #C0A054;">**DVP**</span>와의 관계에 있어 더할 나위 없는 소식이며, 전체 정당 시스템에 주목할 만한 파급 효과를 미치고 있습니다. 패배에 대한 반발로 산업가들은 기부금을 <span style="color: #3E88B3;">**DNVP**</span>와 심지어 <span style="color: #7A3C00;">**NSDAP**</span> 쪽으로 돌려, 자신들의 이익을 대변할 새로운 정치적 안식처를 찾으려 하고 있습니다.
 
 @luther
 on-arrival: dvp_leader = "Luther"; dvp_left += 3 if in_grand_coalition; liberal_cooperation += 3; bourgeois_cooperation += 5; dvp_relation += 3 if in_grand_coalition; new_middle_dvp += 3; catholics_dvp += 5; catholics_other -= 3; catholics_z -= 2; rural_dvp += 3; pro_republic += dvp_votes; ddp_right += 5 if ddp_ideology != "Right"
 face-image: img/portraits/luther.jpg
 
-Hans Luther has, as expected, won his re-election for the <span style="color: #C0A054;">**DVP**</span>'s chairmanship. Despite his tarnished reputation among the party’s right wing, his broad support was sufficient for a decisive victory in the vote of no confidence. His plans for a united liberal—and even bourgeois—party to presumably counter the influence of the <span style="color: #c00000;">socialists</span> have reassured most industrial donors, though some have begun shifting their funding toward the <span style="color: #3E88B3;">**DNVP**</span>.
+한스 루터는 예상대로 <span style="color: #C0A054;">**DVP**</span> 의장 재선에 성공했습니다. 당내 우파 사이에서 평판이 나빠졌음에도 불구하고, 그의 폭넓은 지지 기반은 불신임 투표에서 결정적인 승리를 거두기에 충분했습니다. <span style="color: #c00000;">사회주의자들</span>의 영향력에 대항하기 위해 자유주의—심지어 부르주아—정당을 통합하겠다는 그의 구상은 대부분의 산업계 기부자들을 안심시켰지만, 일부는 자금 지원을 <span style="color: #3E88B3;">**DNVP**</span> 쪽으로 옮기기 시작했습니다.
 
-This is excellent news for democracy and for our constructive cooperation with the <span style="color: #C0A054;">**DVP**</span>. The right-wing forces have been defeated once again, ensuring that the party will likely remain on its democratic path for the foreseeable future. 
+이는 민주주의와 <span style="color: #C0A054;">**DVP**</span>와의 건설적인 협력을 위해 아주 좋은 소식입니다. 우파 세력은 다시 한번 패배했고, 당이 당분간은 민주적인 노선을 유지할 가능성이 높아졌습니다.
 
 @dingeldey
 on-arrival: old_dvp_leader = dvp_leader; dvp_leader = "Dingeldey"; dvp_right += 6; dvp_relation -= 15; old_middle_dvp -= 3; new_middle_dvp -= 6; rural_dvp -= 4; pro_republic -= 5; ddp_left += 3 if ddp_ideology == "Right"; ddp_cohesion -= 1; liberal_cooperation -= 3; bourgeois_cooperation -= 3
 face-image: img/portraits/dingeldey.jpg
 
-Eduard Dingeldey has unexpectedly won the vote to replace [+ old_dvp_leader +] as chairman of the <span style="color: #C0A054;">**DVP**</span>. Backed by broad and unified support from the party’s right wing, led by Ernst Scholz, along with some reform-minded elements and <span style="color: #C0A054;">**DVP**</span>-affiliated youth groups, he has narrowly clinched victory in a vote of no confidence against [+ old_dvp_leader +].
+에두아르트 딩겔다이는 예상을 깨고 [+ old_dvp_leader +]를 대신할 <span style="color: #C0A054;">**DVP**</span> 의장으로 선출되었습니다. 에른스트 숄츠가 이끄는 당내 우파의 전폭적인 지지와 일부 개혁 성향 세력 및 <span style="color: #C0A054;">**DVP**</span> 산하 청년 단체들의 지원을 받아, 그는 [+ old_dvp_leader +]에 대한 불신임 투표에서 간신히 승리를 거두었습니다.
 
-Dingeldey's election represents a significant and irreversible shift to the right,[? if dvp_reform:&nbsp;with him even repealing Stresemann's reform of the internal party structure,?] granting the industrialists back their lost influence on the <span style="color: #C0A054;">**DVP**</span>'s decision making. [? if chancellor == "Brüning" and not spd_in_government: Dingeldey doesn't even feel great loyalty toward the Brüning government and believes that the party could only fulfill its mission towards bourgeois concentration after it is freed from the burden of governmental responsibility.?] 
+딩겔다이의 당선은 우측으로의 중대하고 되돌릴 수 없는 이동을 의미하며,[? if dvp_reform:&nbsp;그가 당 내부 구조에 대한 슈트레제만의 개혁을 폐지하기까지 하면서,?] 산업가들에게 <span style="color: #C0A054;">**DVP**</span>의 의사 결정에 대한 잃어버린 영향력을 되돌려 주었습니다. [? if chancellor == "Brüning" and not spd_in_government: 딩겔다이는 브뤼닝 정부에 대해 큰 충성심을 느끼지 않으며, 당이 국정 책임의 짐에서 벗어난 후에야 비로소 부르주아 결집이라는 임무를 완수할 수 있다고 믿습니다.?]
 
-Furthermore, Dingeldey is not particularly interested in a closer relationship with the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and definitely not with us, but rather with parties to the right, such as the <span style="color: #3E88B3;">**DNVP**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>, to transform them into a 'constructive component of the state.' This does not bode well for the future of <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> democracy.
+게다가 딩겔다이는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와의 관계 증진에는 별 관심이 없고 우리와는 더더욱 거리가 멉니다. 오히려 <span style="color: #3E88B3;">**DNVP**</span>나 심지어 <span style="color: #7A3C00;">**NSDAP**</span> 같은 우파 정당들과 연대하여, 그들을 '국가의 건설적인 구성 요소'로 탈바꿈시키는 데 관심이 있습니다. 이는 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 민주주의의 미래에 좋은 징조가 아닙니다.
 
