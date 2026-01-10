@@ -1,18 +1,18 @@
-title: Emergency budget cuts
-subtitle: Chancellor [+ chancellor +] proposes significant cuts to social spending.
+title: 긴급 예산 삭감
+subtitle: [+ chancellor +] 총리가 사회 지출의 대폭 삭감을 제안합니다.
 new-page: true
 view-if: (year == 1929 or year == 1930 or year == 1931 or year == 1932) and month >= 12 and chancellor == "Brüning" and spd_in_government == 0 and (unemployed > 15 or (year == 1929 and unemployed > 10)) and welfare >= -0 and reparations > -2 and emergency_cuts_timer = 0
 on-arrival: emergency_cuts_seen = 1; emergency_cuts_timer = 12; ddp_right += 1; dvp_right += 1; lvp_right += 1; hindenburg_angry_bruning += 5
 tags: event
 max-visits: 4
 
-= Emergency budget cuts
+= 긴급 예산 삭감
 
-Due to the crisis of the Great Depression, government budgets have fallen and welfare spending has risen substantially. Chancellor [+ chancellor +] has used Article 48 of the constitution in order to pass an emergency bill cutting welfare spending.
+대공황의 위기로 인해 정부 예산은 줄어든 반면 복지 지출은 급증했습니다. [+ chancellor +] 총리는 복지 예산을 삭감하는 긴급 법안을 통과시키기 위해 헌법 제48조를 발동했습니다.
 
-[? if spd_toleration : If we reject this, it would mean the end of the toleration agreement, and [+ chancellor +] would likely dissolve the Reichstag and call new elections. Of course, the workers are opposed to this policy, although it might be necessary for economic and political stability. ?]
+[? if spd_toleration : 만약 우리가 이를 거부한다면 묵인 협정은 깨질 것이고, [+ chancellor +] 총리는 제국의회를 해산하고 조기 총선을 소집할 가능성이 큽니다. 물론 노동자들은 이 정책에 반대하지만, 경제적·정치적 안정을 위해 필요할지도 모릅니다. ?]
 
-- @nothing_to_do: There is nothing we can do.
+- @nothing_to_do: 우리가 할 수 있는 일은 없다.
 - @vote_no
 - @vote_yes
 
@@ -20,40 +20,40 @@ Due to the crisis of the Great Depression, government budgets have fallen and we
 view-if: spd_toleration == 0
 on-arrival: welfare -= 1; unemployed += 1; unemployed_nsdap += 3; unemployed_kpd += 3; unemployed_spd += 3; pro_republic -= 4; budget += 1; inflation -= 2; economic_growth -= 0.5;
 
-The emergency policy passes under emergency rules, as the Reichstag is currently dissolved. The <span style="color: #7A3C00;">Nazis</span> use this as a recruiting tool, and so do we.
+제국의회가 해산된 상태이므로, 긴급 조치는 비상 명령권에 따라 통과됩니다. <span style="color: #7A3C00;">나치</span>는 이를 당원 모집의 호재로 삼고 있으며, 우리 또한 그렇습니다.
 
 
 @vote_no
-title: Vote against this measure, ending the toleration agreement.
+title: 묵인 협정을 파기하고, 이 조치에 반대 투표한다.
 view-if: spd_toleration
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5; left_strength += 8; pro_republic -= 4; reformist_dissent += 8; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2
 call: set_next_election_time
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
 
-We have broken with the [+ chancellor +] government, and have voted against them in a vote of no confidence. Welfare has been saved, but at what cost?
+우리는 [+ chancellor +] 정부와 결별을 선언하고, 불신임 투표에서 반대표를 던졌습니다. 복지는 지켜냈지만, 그 대가는 무엇이었을까요?
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
 @new_prussia_election
 on-arrival: z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; kpd_relation += 5; dvp_right += 3; ddp_right += 2; lvp_right += 2; pro_republic -= 3; new_middle_spd -= 2; rural_spd -= 2; old_middle_spd -= 2; catholics_spd -= 2; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; catholics_nsdap += 2; in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0
 call: set_next_election_time_prussia
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory vote in Prussia, forcing the dissolution of the Landtag for new elections.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>이?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>가?] 프로이센에서 보복성 투표를 감행하여, 주의회를 해산시키고 재선거를 강제했습니다.
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +].
+새로운 프로이센 선거가 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 확정되었습니다.
 
-A double dissolution has shaken the people's faith in democracy, with the <span style="color: #7A3C00;">Nazis</span> exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+잇따른 의회 해산은 민주주의에 대한 국민의 신뢰를 뒤흔들었고, <span style="color: #7A3C00;">나치</span>는 이러한 불안정을 틈타 민주주의는 작동 불능이며 독일에겐 강력한 지도자가 필요하다고 선전하고 있습니다.
 
 @center_right_coalition_prussia
 on-arrival: in_center_right_coalition_prussia = 1; in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; prussia_coalition_trigger = 0; prussia_leader = "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald"; new_middle_spd -= 3; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; dvp_right += 3; ddp_right += 2; pro_republic -= 3; prussian_police_loyalty -= 0.06; prussian_police_strength -= 8; 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has called a retaliatory no confidence vote in Prussia, replacing our government with a center-right coalition composed of all parties to our right, except for the <span style="color: #003755;">**DNF**</span> and <span style="color: #7A3C00;">**NSDAP**</span>. While this is a setback, it is not the worst possible outcome, as new elections could have led to significant gains for extremist parties.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>이?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>가?] 프로이센에서 보복성 불신임 투표를 감행하여, 우리 정부를 무너뜨리고 <span style="color: #003755;">**DNF**</span>와 <span style="color: #7A3C00;">**NSDAP**</span>를 제외한 우리 우측의 모든 정당으로 구성된 중도 우파 연정을 수립했습니다. 뼈아픈 후퇴지만, 재선거가 치러졌다면 극단주의 정당들이 약진했을 수도 있기에 최악의 결과는 아닙니다.
 
-[? if z_leader != "Stegerwald": Adam Stegerwald?][? if z_leader == "Stegerwald": Heinrich Brüning?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is selected to be the Minister-President of Prussia.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>의?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>의?] [? if z_leader != "Stegerwald": 아담 슈테거발트가?][? if z_leader == "Stegerwald": 하인리히 브뤼닝이?] 프로이센 주총리로 선출되었습니다.
 
 @vote_yes
-title: Vote in favor of this measure to continue the toleration agreement.
+title: 묵인 협정을 유지하기 위해, 이 조치에 찬성 투표한다.
 view-if: spd_toleration
 on-arrival: welfare -= 1; unemployed += 1; left_dissent += 10; labor_dissent += 10; workers_spd *= 0.92; unemployed_spd *= 0.92; unemployed_nsdap += 3; unemployed_kpd += 3; workers_nsdap += 3; workers_kpd += 3; workers_spd -= 3 if welfare < 0; unemployed_spd -= 4 if welfare < 0; pro_republic -= 3; kpd_relation -= 8; budget += 1; inflation -= 2; economic_growth -= 0.5
 
-We try to convince the workers that this policy is necessary in order to maintain a stable parliamentary government, and to deal with the fiscal consequences of the depression. Still, this policy provides excellent recruiting fodder for <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span>.
+우리는 안정적인 의회 정부를 유지하고 대공황의 재정적 여파에 대처하기 위해 이 정책이 불가피하다고 노동자들을 설득하려 합니다. 하지만 이 정책이 <span style="color: #7A3C00;">나치</span>와 <span style="color: #700000;">**공산당**</span>에게 훌륭한 선전 먹잇감이 된다는 사실은 변함없습니다.

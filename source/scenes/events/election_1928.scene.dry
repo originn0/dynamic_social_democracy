@@ -1,4 +1,4 @@
-title: Reichstag Elections
+title:  제국의회 선거
 new-page: true
 tags: event
 priority: -2
@@ -10,51 +10,51 @@ set-bg: img/map_2.jpg
 #face-image: img/Rothe_Wahlen_1903.jpg
 
 
-= Elections, [+ month : month +] [+ year +]
+= [+ year +]년 [+ month : month +] 선거
 
-The Reichstag elections are to be held now.
+이제 제국의회 선거가 치러질 예정입니다.
 
-- @election_algorithm: May we do our best...
+- @election_algorithm: 우리가 최선을 다했기를...
 - @cancel_elections
 - @boycott_elections
 
 @cancel_elections
-title: We cannot hold the elections now. Cancel the elections.
-subtitle: This is an anti-democratic move that may backfire.
+title: 지금은 선거를 치를 수 없다. 선거를 취소한다.
+subtitle: 이것은 역풍을 맞을 수 있는 반민주적인 조치입니다.
 view-if: in_emergency_government == 1 and president_ideology == "Left" and not presidential_powers
 
-Since we are currently ruling as part of an emergency government, we may use quasi-constitutional trickery to significantly delay these elections, and continue governing via Article 48. This is likely to be extremely unpopular both with our base and with the other parties. However, this may be necessary to prevent the extremists from gaining power.
+우리는 현재 비상 정부의 일원으로 통치하고 있기 때문에, 준헌법적인 꼼수를 써서 이 선거를 상당히 지연시키고 헌법 48조를 통해 계속 통치할 수 있습니다. 이것은 우리의 지지 기반과 다른 정당들 모두에게 극도로 인기 없는 조치가 될 가능성이 높습니다. 하지만, 극단주의자들이 권력을 잡는 것을 막기 위해 필요할지도 모릅니다.
 
-- @cancel_elections_2: Yes, do it.
-- @election_algorithm: No, let's hold the elections.
+- @cancel_elections_2: 그래, 하자.
+- @election_algorithm: 아니, 그냥 선거를 치른다.
 
 @cancel_elections_2
 on-departure: next_election_year = next_election_year + 1; next_election_time = time + 12; pro_republic -= 10; dvp_relation -= 8; lvp_relation -= 8; z_relation -= 8; ddp_relation -= 10; kpd_relation -= 8; coup_progress += 2; workers_spd -= 4; new_middle_spd -= 5; old_middle_spd -= 5; rural_spd -= 5; catholics_spd -= 5; unemployed_spd -= 5; coup_progress += 2 if nsdap_normalized >= 0.3; coup_progress += 2 if nsdap_normalized + dnvp_normalized >= 0.5 and dnvp_ideology = "Radical"; coup_progress += 2 if nsdap_normalized + dnf_normalized >= 0.5 and dnvp_ideology = "Moderate"; sa_strength += 100 if coup_progress >= 7; sh_strength += 100 if coup_progress >= 7
 achievement: ausnahmezustand
 
-Fine. President [+ president +] has taken the unprecedented step of canceling these elections. New elections are scheduled for [+ next_election_month : month +] [+ next_election_year +].
+좋습니다. [+ president +] 대통령은 이 선거를 취소하는 전례 없는 조치를 단행했습니다. 새로운 선거는 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
-Let us hope this does not backfire.
+부디 이것이 역효과를 내지 않기를 바랍시다.
 
 @boycott_elections
-title: Boycott the elections. Schleicher will rig it anyway.
-subtitle: Maybe the other parties will join us.
+title: 선거를 보이콧하자. 슐라이허가 어차피 조작할 것이다.
+subtitle: 다른 정당들이 우리와 함께할지도 모릅니다.
 view-if: chancellor == "Schleicher" and schleicher_post and dnef_total_votes >= 30
 
-There’s little point in participating in an election that’s clearly rigged. The most we can do is boycott the vote—depress turnout and deny Schleicher the legitimacy he desperately needs. But if we aren’t strong enough, we’ll simply hand the <span style="color: #BFC8CC;">**DNEF**</span> a majority government on a silver platter.
+명백히 조작된 선거에 참여하는 것은 의미가 거의 없습니다. 우리가 할 수 있는 최선은 투표를 보이콧하는 것입니다. 투표율을 떨어뜨려 슐라이허가 절실히 필요로 하는 정당성을 거부하는 것입니다. 하지만 우리가 충분히 강하지 않다면, 우리는 그저 <span style="color: #BFC8CC;">**DNEF**</span>에게 은쟁반에 담긴 다수 정부를 바치는 꼴이 될 것입니다.
 
-However, if we commit, we might bring the other anti-Schleicher parties into the boycott as well. Strength in numbers.
+하지만, 만약 우리가 결단을 내린다면, 다른 반 슐라이허 정당들도 보이콧에 끌어들일 수 있을지도 모릅니다. 뭉치면 강해지는 법입니다.
 
-Are we sure?
+확실합니까?
 
-- @boycott_elections_2: Yes, do it.
-- @election_algorithm: No, let's participate in the elections.
+- @boycott_elections_2: 그래, 하자.
+- @election_algorithm: 아니, 선거에 참여한다.
 
 @boycott_elections_2
 on-arrival: boycott_count = 0;
 go-to: boycott_elections_menu
 
-Alright. We'll see whether the other parties share the same sentiment. We already know the <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;and <span style="color: #9B0000;">**SAPD**</span>?] are with us—who else?
+알겠습니다. 다른 정당들이 같은 뜻을 품고 있는지 확인해 봅시다. 이미 <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;그리고 <span style="color: #9B0000;">**SAPD**</span>?]가 우리와 함께한다는 것은 알고 있습니다. 또 누가 있습니까?
 
 @boycott_elections_menu
 
@@ -66,8 +66,8 @@ Alright. We'll see whether the other parties share the same sentiment. We alread
 - @boycott_elections_3
 
 @spd_boycott
-title: Check in our own party.
-subtitle: The workers may have a different mindset.
+title: 우리 당 내부를 확인한다
+subtitle: 노동자들은 다른 생각을 가지고 있을지도 모릅니다.
 on-arrival: {!
 Q.boycott_count += 1;
 Q.spd_boycott_efficacy = 1;
@@ -82,13 +82,13 @@ view-if: boycott_count < 5
 max-visits: 1
 go-to: boycott_elections_menu
 
-The efficacy of our boycott depends on two key factors: party dissent and our control over labor. If the Schleicher-sympathetic factions within the unions and the party choose to vote for the <span style="color: #BFC8CC;">**DNEF**</span> regardless, our boycott will be in vain.
+우리 보이콧의 효율은 두 가지 핵심 요소에 달려 있습니다. 바로 당내 반대 여론과 노동계에 대한 우리의 통제력입니다. 만약 노조와 당 내의 슐라이허 동조 파벌들이 어쨌든 <span style="color: #BFC8CC;">**DNEF**</span>에 투표하기로 결정한다면, 우리의 보이콧은 헛수고가 될 것입니다.
 
-Boycott efficacy: [+ spd_boycott_efficacy : boycott_efficacy +]
+보이콧 효율: [+ spd_boycott_efficacy : boycott_efficacy +]
 
 @center_boycott
-title: Check in the <span style="color: #000000;">Center Party</span>.
-subtitle: [? if not z_dnef: Relations: [+ z_relation : relationships +] ?][? if z_dnef: <span style="color: #000000;">**[+ z_party_name +]**</span> - Blocpartei Status?]
+title: <span style="color: #000000;">중앙당</span>을 확인한다.
+subtitle: [? if not z_dnef: 관계도: [+ z_relation : relationships +] ?][? if z_dnef: <span style="color: #000000;">**[+ z_party_name +]**</span> - 블록 정당 상태?]
 on-arrival: {!
 Q.boycott_count += 1;
 Q.z_boycott_efficacy = 1;
@@ -105,13 +105,13 @@ view-if: boycott_count < 5
 max-visits: 1
 go-to: boycott_elections_menu
 
-[? if not z_dnef: The <span style="color: #000000;">Center Party</span> is internally split on this. Their ties to the Schleicher cabinet and the pro-Schleicher sentiment expressed by many of their party members have made joining the <span style="color: #c00000;">socialist</span>-led boycott a hard pill to swallow. However, we have gained the sympathy of their left wing. ?][? if z_dnef: The <span style="color: #000000;">Center Party</span> is already a <i>Blocpartei</i>, so it's out of the question. However, we have some sympathetic voices on the party's left wing, like Wirth and Jakob Kaiser of the <span style="color: #000000;">Christian</span> labor unions, lending their support nonetheless. ?]
+[? if not z_dnef: <span style="color: #000000;">중앙당</span>은 이 문제에 대해 내부적으로 분열되어 있습니다. 슐라이허 내각과의 유대 관계와 많은 당원들이 표명한 친 슐라이허 정서 때문에, <span style="color: #c00000;">사회주의자</span>가 주도하는 보이콧에 참여하는 것은 그들에게 받아들이기 힘든 일입니다. 하지만, 우리는 그들 당내 좌파의 동조를 얻어냈습니다. ?][? if z_dnef: <span style="color: #000000;">중앙당</span>은 이미 <i>블록 정당 상태</i>이므로, 논의 대상조차 아닙니다. 하지만, 비르트나 <span style="color: #000000;">기독교</span> 노동조합의 야코프 카이저 같은 당내 좌파의 몇몇 동조적인 목소리가 그럼에도 불구하고 지지를 보내고 있습니다. ?]
 
-Boycott efficacy: [+ z_boycott_efficacy : boycott_efficacy +]
+보이콧 효율: [+ z_boycott_efficacy : boycott_efficacy +]
 
 @liberals_boycott
-title: Check in the <span style="color: #FFCC00;">liberals</span>.
-subtitle: [? if lvp_formed and not lvp_dnef: Relations: [+ lvp_relation : relationships +] ?][? if lvp_formed and lvp_dnef: <span style="color: #FFCC00;">**LVP**</span> - Blocpartei Status?][? if not lvp_formed and not dvp_exist and not dstp_dnef: Relations: [+ ddp_relation : relationships +] ?][? if not lvp_formed and not dvp_exist and dstp_dnef: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> - Blocpartei Status ?][? if not lvp_formed and dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> [? if not dstp_dnef: relations: [+ ddp_relation : relationships +] ?][? if dstp_dnef: - Blocpartei Status ?] <br> <span style="color: #C0A054;">**DVP**</span> [? if not dvp_dnef: relations: [+ dvp_relation : relationships +] ?][? if dvp_dnef: - Blocpartei Status ?] ?]
+title: <span style="color: #FFCC00;">자유주의자들</span>을 확인한다.
+subtitle: [? if lvp_formed and not lvp_dnef: 관계도: [+ lvp_relation : relationships +] ?][? if lvp_formed and lvp_dnef: <span style="color: #FFCC00;">**LVP**</span> - 블록 정당 상태?][? if not lvp_formed and not dvp_exist and not dstp_dnef: 관계도: [+ ddp_relation : relationships +] ?][? if not lvp_formed and not dvp_exist and dstp_dnef: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> - 블록 정당 상태 ?][? if not lvp_formed and dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> [? if not dstp_dnef: 관계도: [+ ddp_relation : relationships +] ?][? if dstp_dnef: - 블록 정당 상태 ?] <br> <span style="color: #C0A054;">**DVP**</span> [? if not dvp_dnef: 관계도: [+ dvp_relation : relationships +] ?][? if dvp_dnef: - 블록 정당 상태 ?] ?]
 on-arrival: {!
 Q.boycott_count += 1;
 Q.lib_boycott_efficacy = 1;
@@ -139,17 +139,17 @@ view-if: boycott_count < 5
 max-visits: 1
 go-to: boycott_elections_menu
 
-[? if not lvp_dnef and lvp_formed: As much as we expect the <span style="color: #FFCC00;">**LVP**</span> to put up a defense of the Republic, since they're liberal, pro-Schleicher elements run rampant throughout the party. We can, however, expect strong support from their left wing and intelligentsia. ?][? if lvp_dnef and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> have succumb to Schleicher's influence, becoming a <i>Blocpartei</i>. We can only expect support from the miniscule <span style="color: #E0B0FF;">**RDP**</span>. ?]
+[? if not lvp_dnef and lvp_formed: 우리가 <span style="color: #FFCC00;">**LVP**</span>가 공화국을 수호하기를 기대하는 만큼이나, 그들의 자유주의적 성향 탓에 친 슐라이허 요소들이 당 전체에 만연해 있습니다. 하지만 우리는 그들의 좌파와 지식인층으로부터 강력한 지지를 기대할 수 있습니다. ?][? if lvp_dnef and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 슐라이허의 영향력에 굴복하여 <i>블록 정당</i>가 되었습니다. 우리는 오직 아주 미미한 세력인 <span style="color: #E0B0FF;">**RDP**</span>로부터의 지지만 기대할 수 있습니다. ?]
 
-[? if not lvp_formed and not dstp_dnef: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> are effectively dead electorally and offer little of value to us. However, they are embroiled in an internal struggle, and surprisingly, the business wing of the party—figures like Heuss and Dietrich—are more inclined to align with us than the left wing's Lemmer. ?][? if not lvp_formed and dstp_dnef: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> have fully fallen under Schleicher's influence. Not like their electorally dead party could offer much impact anyway. ?]
+[? if not lvp_formed and not dstp_dnef: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 선거 경쟁력을 사실상 상실했고 우리에게 별다른 가치가 없습니다. 하지만 그들은 내부 투쟁에 휘말려 있으며, 놀랍게도 당내 좌파인 레머보다 호이스나 디트리히 같은 기업가 파벌이 우리와 연대하려는 경향이 더 큽니다. ?][? if not lvp_formed and dstp_dnef: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 슐라이허의 영향력 아래 완전히 떨어졌습니다. 어차피 선거 경쟁력을 상실한 정당이라 큰 영향이 있는 것도 아닙니다. ?]
 
-[? if not lvp_formed and dvp_exist and not dvp_dnef: The <span style="color: #C0A054;">**DVP**</span> is quite distant from us, even more so as they drift under Schleicher's influence. [? if dvp_relation < 40: We cannot expect them to take part in a <span style="color: #c00000;">socialist</span>-led boycott. ?][? if dvp_relation >= 40: We can count on the support of Stresemannites like Thiel and Curtius to lobby the party. ?] ?][? if not lvp_formed and dvp_exist and dvp_dnef: The <span style="color: #C0A054;">**DVP**</span> is firmly under Schleicher's control, and their leadership is far too hostile to us to consider participation, even if they weren’t a <i>Blocpartei</i>. ?]
+[? if not lvp_formed and dvp_exist and not dvp_dnef: <span style="color: #C0A054;">**DVP**</span>는 우리와 꽤 거리가 멀고, 그들이 슐라이허의 영향력 아래로 표류함에 따라 더욱 그렇습니다. [? if dvp_relation < 40: 우리는 그들이 <span style="color: #c00000;">사회주의자</span>가 주도하는 보이콧에 참여할 것이라고 기대할 수 없습니다. ?][? if dvp_relation >= 40: 우리는 당에 로비하기 위해 틸과 쿠르티우스 같은 슈트레제만 파의 지지를 믿을 수 있습니다. ?] ?][? if not lvp_formed and dvp_exist and dvp_dnef: <span style="color: #C0A054;">**DVP**</span>는 슐라이허의 통제 아래 확고히 있으며, 그들의 지도부는 우리가 고려하기에는 너무 적대적입니다. 비록 그들이 <i>블록 정당</i>가 아니었다고 해도 말입니다. ?]
 
-Boycott efficacy: [+ lib_boycott_efficacy : boycott_efficacy +]
+보이콧 효율: [+ lib_boycott_efficacy : boycott_efficacy +]
 
 @right_boycott
-title: Hugenberg can be relied on.
-subtitle: We can count on him to boycott the elections.
+title: 후겐베르크는 신뢰할 수 있다.
+subtitle: 우리는 그가 선거를 보이콧할 것이라고 믿을 수 있습니다.
 on-arrival: {!
 Q.boycott_count += 1;
 !}
@@ -157,11 +157,11 @@ view-if: boycott_count < 5
 max-visits: 1
 go-to: boycott_elections_menu
 
-On the right, we can only truly count on Hugenberg and what remains of his followers to boycott the election, as he remains a mortal enemy of the chancellor. However, his stance of total opposition is deeply unpopular—even among his most fanatically loyal supporters, many of whom are likely to vote for Schleicher anyway.
+우파에서 우리가 선거를 보이콧할 것이라고 진정으로 믿을 수 있는 건 오직 후겐베르크와 그의 남은 추종자들뿐입니다. 그는 여전히 총리의 철천지원수이기 때문입니다. 하지만, 그의 '완전한 반대' 입장은 인기가 매우 없습니다. 심지어 그의 가장 광신적인 지지자들 사이에서도 말입니다. 그들 중 다수는 어차피 슐라이허에게 투표할 가능성이 높습니다.
 
 @nazis_boycott
-title: Perhaps the <span style="color: #7A3C00;">Nazis</span> could participate..?
-subtitle: We shouldn't expect much.
+title: 아마도 <span style="color: #7A3C00;">나치</span>가 참여할 수 있을까..?
+subtitle: 많은 것을 기대해서는 안 됩니다.
 on-arrival: {!
 Q.boycott_count += 1;
 !}
@@ -169,18 +169,18 @@ view-if: boycott_count < 5
 max-visits: 1
 go-to: boycott_elections_menu
 
-It appears that the <span style="color: #7A3C00;">**NSDAP**</span> and <span style="color: #6A1E1E;">**DSU**</span> haven’t abandoned their ballot-box tactics and have chosen to participate in the elections regardless. [? if nvf_exist and not nvf_dnef: The <span style="color: #142e20;">**NVF**</span>, however, have boycotted, preferring to pool their limited resources into the <span style="color: #7A3C00;">**SA**</span> rather than waste them on a costly electoral campaign. ?]
+<span style="color: #7A3C00;">**NSDAP**</span>와 <span style="color: #6A1E1E;">**DSU**</span>는 그들의 선거 전술을 버리지 않았고 어쨌든 선거에 참여하기로 선택한 것으로 보입니다. [? if nvf_exist and not nvf_dnef: 하지만 <span style="color: #142e20;">**NVF**</span>는 보이콧했습니다. 비용이 많이 드는 선거 캠페인에 돈을 낭비하기보다는 그들의 제한된 자원을 <span style="color: #7A3C00;">**SA**</span>에 집중하는 것을 선호했기 때문입니다. ?]
 
 @boycott_elections_3
-title: We have finished negotiations.
+title:  협상을 마쳤습니다.
 on-arrival: {!
 Q.election_boycott = 1;
 !}
 view-if: boycott_count >= 5
 
-Hopefully, this will have some effect.
+부디, 이것이 어떤 효과가 있기를 바랍니다.
 
-- @election_algorithm: We've done enough.
+- @election_algorithm: 우리는 할 수 있는 모든 걸 했다.
 
 @post_election_1928
 on-arrival: {!  
@@ -1675,12 +1675,12 @@ if (window && d3) {
 !}
 go-to: achievement_check_e
 
-= Election results
+= 선거 결과
 
 {!<svg id="reichstag" style="width: 500px; height: 250px;"> </svg>!}
-[? if dnef_formed: Reichstag mandates for the other parties in the <span style="color: #BFC8CC;">German National Unity Front</span> organization are counted toward the party itself for simplicity's sake. ?]
+[? if dnef_formed: <span style="color: #BFC8CC;">독일 민족 단결 전선</span> 소속 다른 정당들의 제국의회 의석은 편의상 전선 자체의 의석으로 합산됩니다. ?]
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>% Change</td><td>Reichstag Seats</td><td>% Change</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>변동폭 %</td><td>제국의회 의석</td><td>변동폭 %</td></tr>!}
 [? if not dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_votes +]%** {!</td><td>!} **[+ str_votes_change_spd +]** {!</td><td>!} **[+ spd_r +]%** {!</td><td>!} **[+ str_change_spd +]** {!</td></tr>!} ?][? if dnef_formed: {!<tr><td><div class="box" style='background-color:#BFC8CC; outline: 2px; outline-style: solid;'> </div> !} **DNEF:** {!</td><td>!} **[+ dnef_votes +]%** {!</td><td>!} **[+ str_votes_change_dnef +]** {!</td><td>!} **[+ true_dnef_r +]%** {!</td><td>!} **[+ str_change_dnef +]** {!</td></tr>!} ?]
 
 [? if dnef_formed and not (right_dnef or left_dnef): {!<tr><td><div class="box2" style='background-color:#BFC8CC'> </div> !} DNEF: {!</td><td>!} [+ schleicher_dnef_votes +]% {!</td><td>!} [+ str_votes_change_schleicher_dnef +] {!</td><td>!} [+ schleicher_dnef_r +]% {!</td><td>!} [+ str_change_dnef +] {!</td></tr>!} ?]
@@ -1703,7 +1703,7 @@ go-to: achievement_check_e
 
 [? if not lvp_formed and dvp_exist and dvp_dnef: {!<tr><td><div class="box2" style='background-color:#AA861F'> </div> !} DVP: {!</td><td>!} [+ dvp_votes +]% {!</td><td>!} [+ str_votes_change_dvp +] {!</td><td>!} [+ dvp_r +]% {!</td><td>!} [+ str_change_dvp +] {!</td></tr>!} ?]
 
-[? if other_dnef: {!<tr><td><div class="box2" style='background-color:#707070'> </div> !} Others: {!</td><td>!} [+ other_votes +]% {!</td><td>!} [+ str_votes_change_other +] {!</td><td>!} [+ other_r +]% {!</td><td>!} [+ str_change_other +] {!</td></tr>!} ?]
+[? if other_dnef: {!<tr><td><div class="box2" style='background-color:#707070'> </div> !} 기타: {!</td><td>!} [+ other_votes +]% {!</td><td>!} [+ str_votes_change_other +] {!</td><td>!} [+ other_r +]% {!</td><td>!} [+ str_change_other +] {!</td></tr>!} ?]
 
 [? if kvp_formed and not cvp_kvp_formed and kvp_dnef: {!<tr><td><div class="box2" style='background-color:#0072C0'> </div> !}KVP: {!</td><td>!} [+ kvp_votes +]% {!</td><td>!} [+ str_votes_change_kvp +] {!</td><td>!} [+ kvp_r +]% {!</td><td>!} [+ str_change_kvp +] {!</td></tr>!} ?]
 
@@ -1756,21 +1756,21 @@ go-to: achievement_check_e
 [? if nvf_exist and not nvf_dnef: {!<tr><td><div class="box" style='background-color:#142e20'> </div> !} NVF: {!</td><td>!} [+ nvf_votes +]% {!</td><td>!} [+ str_votes_change_nvf +] {!</td><td>!} [+ nvf_r +]% {!</td><td>!} [+ str_change_nvf +] {!</td></tr>!} ?]
 {!</table>!}
 
-{!<button class="tab_button" id="demographics_tab" onclick="window.toggleDem();">Demographic Results</button>!}
-{!<button class="tab_button" id="election_tab" onclick="window.toggleElectionGraph();">Previous Elections Graph</button>!}
-{!<button class="tab_button" id="graph_tab" onclick="window.toggleGraph();">Party Support Graph</button>!}
+{!<button class="tab_button" id="demographics_tab" onclick="window.toggleDem();">계층별 투표 결과</button>!}
+{!<button class="tab_button" id="election_tab" onclick="window.toggleElectionGraph();">이전 선거 그래프</button>!}
+{!<button class="tab_button" id="graph_tab" onclick="window.toggleGraph();">정당 지지율 그래프</button>!}
 
 {!<div id="results" style="display: none;">!}
     {!<div style="overflow-x:auto;">!}
     {!<table style="text-align:center; border-spacing: 0.2em;">!}
         {!<tr>!}
-            {!<th>Party</th>!}
-            {!<th>Workers</th>!}
-            {!<th>New Middle Class</th>!}
-            {!<th>Old Middle Class</th>!}
-            {!<th>Rural</th>!}
-            {!<th>Unemployed</th>!}
-            {!<th>Catholics</th>!}
+            {!<th>정당</th>!}
+            {!<th>노동자</th>!}
+            {!<th>신중산층</th>!}
+            {!<th>구중산층</th>!}
+            {!<th>농촌</th>!}
+            {!<th>실업자</th>!}
+            {!<th>가톨릭</th>!}
         {!</tr>!}
         [? if dnef_formed: {!<tr>!}
             {!<td><span style="color: #BFC8CC;">!}**DNEF**{!</span></td>!}
@@ -1899,7 +1899,7 @@ go-to: achievement_check_e
             {!<td style="background-color: rgba(122, 60, 0, 0.2); font-size: 0.85em;">!}[+ catholics_nsdap_display +]%[? if n_elections != 1 and demo_change_catholics_nsdap_display != 0 : ([+ demo_change_catholics_nsdap_display +])?]{!</td>!}
         {!</tr>!} ?]
         {!<tr>!}
-            {!<td><b>Others</b></td>!}
+            {!<td><b>기타</b></td>!}
             {!<td style="background-color: rgba(144, 144, 144, 0.2); font-size: 0.85em; padding: 10px">!}[+ workers_other_display +]%[? if n_elections != 1 and demo_change_workers_other_display != 0 : ([+ demo_change_workers_other_display +])?]{!</td>!}
             {!<td style="background-color: rgba(144, 144, 144, 0.2); font-size: 0.85em;">!}[+ new_middle_other_display +]%[? if n_elections != 1 and demo_change_new_middle_other_display != 0 : ([+ demo_change_new_middle_other_display +])?]{!</td>!}
             {!<td style="background-color: rgba(144, 144, 144, 0.2); font-size: 0.85em;">!}[+ old_middle_other_display +]%[? if n_elections != 1 and demo_change_old_middle_other_display != 0 : ([+ demo_change_old_middle_other_display +])?]{!</td>!}
@@ -1913,57 +1913,57 @@ go-to: achievement_check_e
 {!<svg id="election_history" style="width: 500px; height: 400px; display: none;"> </svg>!}
 {!<svg id="party_support_history" style="width: 500px; height: 400px; display: none;"> </svg>!}
 
-**Potential coalitions:**
+**구성 가능한 연정:**
 
-[? if kpd_relation >= 40 and left_coalition >= 45: United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:  + <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition +]% ?]
+[? if kpd_relation >= 40 and left_coalition >= 45: 통일 좌파 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:  + <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition +]% ?]
 
-[? if kpd_relation > 35 and z_relation > 35 and not cvp_formed: Popular Front Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span>[? if (liberal_parliament == 0 and bourgeois_parliament_ddp == 0) and not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ popular_front_coalition +]% ?]
+[? if kpd_relation > 35 and z_relation > 35 and not cvp_formed: 인민전선 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span>[? if (liberal_parliament == 0 and bourgeois_parliament_ddp == 0) and not lvp_formed:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ popular_front_coalition +]% ?]
 
-[? if not cvp_formed: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?][? if sapd_formed and kpd_relation >= 30:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ weimar_coalition +]% ?]
+[? if not cvp_formed: <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed:<span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?][? if sapd_formed and kpd_relation >= 30:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ weimar_coalition +]% ?]
 
-[? if cvp_formed: <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]): [+ social_liberal_coalition +]% ?]
+[? if cvp_formed: <span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정 (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]): [+ social_liberal_coalition +]% ?]
 
-[? if cvp_formed: <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span>): [+ social_catholic_coalition +]% ?]
+[? if cvp_formed: <span style="color: #c00000;">사회</span>-<span style="color: #000000;">기독교</span> 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span>): [+ social_catholic_coalition +]% ?]
 
-[? if dvp_exist and not cvp_formed: Grand Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]): [+ grand_coalition +]% ?]
+[? if dvp_exist and not cvp_formed: 대연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]): [+ grand_coalition +]% ?]
 
-[? if bourgeois_coalition >= 25 and not kvp_formed: Bourgeois Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + **Others**): [+ bourgeois_coalition +]% ?]
+[? if bourgeois_coalition >= 25 and not kvp_formed: 부르주아 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + **기타**): [+ bourgeois_coalition +]% ?]
 
-[? if bourgeois_coalition >= 25 and kvp_formed: Bourgeois Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **Others** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition +]% ?]
+[? if bourgeois_coalition >= 25 and kvp_formed: 부르주아 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **기타** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition +]% ?]
 
-[? if dnvp_ideology == "Moderate" and not lvp_formed and not cvp_formed: Center-Right Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?] + **Others**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ center_right_coalition +]% ?]
+[? if dnvp_ideology == "Moderate" and not lvp_formed and not cvp_formed: 중도우파 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?] + **기타**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ center_right_coalition +]% ?]
 
-[? if dnvp_ideology == "Radical" or lvp_formed and not cvp_formed: Right-wing Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **Others**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ right_coalition +]% ?]
+[? if dnvp_ideology == "Radical" or lvp_formed and not cvp_formed: 우파 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **기타**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ right_coalition +]% ?]
 
-[? if (cvp_formed and far_right_coalition >= 25) or (hitler_right_coalition >= 50 and rubicon): Black-Brown Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ hitler_right_coalition +]% ?]
+[? if (cvp_formed and far_right_coalition >= 25) or (hitler_right_coalition >= 50 and rubicon): 흑갈 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ hitler_right_coalition +]% ?]
 
-[? if dnef_formed: Schleicher Right Coalition (<span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **Others**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate" and not dnvp_dnef:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?]): [+ schleicher_right_coalition +]% ?]
+[? if dnef_formed: 슐라이허 우파 연정 (<span style="color: #BFC8CC;">**DNEF**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if not lvp_formed and dvp_exist and not dvp_dnef:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?][? if not other_dnef:&nbsp;+ **기타**?][? if kvp_formed and not kvp_dnef:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?][? if dnvp_ideology == "Moderate" and not dnvp_dnef:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?][? if dsu_exist:&nbsp;+ <span style="color: #6A1E1E;">**DSU**</span>?]): [+ schleicher_right_coalition +]% ?]
 
-[? if dnef_formed: Schleicher Left Coalition (<span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?]): [+ schleicher_left_coalition +]% ?]
+[? if dnef_formed: 슐라이허 좌파 연정 (<span style="color: #BFC8CC;">**DNEF**</span> + <span style="color: #c00000;">**SPD**</span>[? if not z_dnef:&nbsp;+ <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>?][? if not lvp_formed and not dstp_dnef:&nbsp;+ <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed and not lvp_dnef:&nbsp;+ <span style="color: #FFCC00;">**LVP**</span>?]): [+ schleicher_left_coalition +]% ?]
 
-[? if dnvp_ideology == "Radical" and far_right_coalition >= 35 and not cvp_formed: <span style="color: #7A3C00;">Far</span>-<span style="color: #3E88B3;">right</span> Coalition ([?  if hugenberg_dvp: <span style="color: #C0A054;">**DVP**</span> + ?]<span style="color: #3E88B3;">**DNVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition +]% ?]
+[? if dnvp_ideology == "Radical" and far_right_coalition >= 35 and not cvp_formed: <span style="color: #7A3C00;">극</span>-<span style="color: #3E88B3;">우</span> 연정 ([?  if hugenberg_dvp: <span style="color: #C0A054;">**DVP**</span> + ?]<span style="color: #3E88B3;">**DNVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition +]% ?]
 
-[? if dnvp_ideology == "Moderate" and far_right_coalition >= 30: <span style="color: #7A3C00;">Far</span>-<span style="color: #3E88B3;">right</span> Coalition ([?  if hugenberg_dvp: <span style="color: #C0A054;">**DVP**</span> + ?]<span style="color: #003755;">**DNF**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition +]% ?]
+[? if dnvp_ideology == "Moderate" and far_right_coalition >= 30: <span style="color: #7A3C00;">극</span>-<span style="color: #3E88B3;">우</span> 연정 ([?  if hugenberg_dvp: <span style="color: #C0A054;">**DVP**</span> + ?]<span style="color: #003755;">**DNF**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition +]% ?]
 
-[? if nazi_urgency <= 1 and nsdap_r >= 15 : The rapid rise in <span style="color: #7A3C00;">**NSDAP**</span> votes is extremely worrying. Many had believed that the party was <span style="color: #ff0000;">moribund</span>; now, some of us consider it to be the greatest threat to democracy in Germany. ?]
+[? if nazi_urgency <= 1 and nsdap_r >= 15 : <span style="color: #7A3C00;">**NSDAP**</span> 득표율의 급격한 상승은 극도로 우려스럽습니다. 많은 이들이 그 당이 <span style="color: #ff0000;">소멸해간다</span>고 믿었으나, 이제 우리 중 일부는 그들을 독일 민주주의에 대한 가장 큰 위협으로 간주하고 있습니다. ?]
 
-[? if anti_democratic_coalition >= 50 and dnvp_ideology == "Radical": Together, the anti-democratic <span style="color: #700000;">**KPD**</span>, <span style="color: #3E88B3;">**DNVP**</span>, and <span style="color: #7A3C00;">**NSDAP**</span> have a majority in the Reichstag. A stable governing majority will be almost impossible. ?]
+[? if anti_democratic_coalition >= 50 and dnvp_ideology == "Radical": 반민주적인 <span style="color: #700000;">**KPD**</span>, <span style="color: #3E88B3;">**DNVP**</span>, 그리고 <span style="color: #7A3C00;">**NSDAP**</span>가 합쳐서 제국의회 과반을 차지했습니다. 안정적인 통치 다수 구성은 거의 불가능할 것입니다. ?]
 
-[? if anti_democratic_coalition >= 50 and dnvp_ideology == "Moderate": Together, the anti-democratic <span style="color: #700000;">**KPD**</span>, <span style="color: #003755;">**DNF**</span>, and <span style="color: #7A3C00;">**NSDAP**</span> have a majority in the Reichstag. A stable governing majority will be almost impossible. ?]
+[? if anti_democratic_coalition >= 50 and dnvp_ideology == "Moderate": 반민주적인 <span style="color: #700000;">**KPD**</span>, <span style="color: #003755;">**DNF**</span>, 그리고 <span style="color: #7A3C00;">**NSDAP**</span>가 합쳐서 제국의회 과반을 차지했습니다. 안정적인 통치 다수 구성은 거의 불가능할 것입니다. ?]
 
-[? if hitler_right_coalition >= 50 and rubicon and hitler_right_coalition_time == time: The <span style="color: #000000;">Center Party</span> and its <span style="color: #A2D8E0;">Bavarian</span> counterpart, together with the <span style="color: #7A3C00;">**NSDAP**</span>, constitute a majority in the Reichstag. This has sparked rumors of a potential parliamentary-backed Black-Brown coalition that could unseat [+ chancellor +]—rumors that are unlikely to materialize, as the ideological gulf between the <span style="color: #7A3C00;">Nazis</span> and the constitutionalist <span style="color: #000000;">Center Party</span> remains vast. ?]
+[? if hitler_right_coalition >= 50 and rubicon and hitler_right_coalition_time == time: <span style="color: #000000;">중앙당</span>과 그 자매 정당인 <span style="color: #A2D8E0;">바이에른 인민당</span>은 <span style="color: #7A3C00;">**NSDAP**</span>와 함께 제국의회 과반을 구성합니다. 이는 의회의 지지를 받는 흑갈 연정이 [+ chancellor +] 총리를 축출할 수도 있다는 소문을 촉발했습니다. 하지만 <span style="color: #7A3C00;">나치</span>와 헌법옹호적인 <span style="color: #000000;">중앙당</span> 사이의 이념적 격차는 여전히 광대하기에, 그 소문이 실현될 가능성은 낮습니다. ?]
 
-[? if change_nsdap_votes < -2 and rubicon and nsdap_decline_time == time: The <span style="color: #7A3C00;">Nazis</span> have finally declined. Many who once backed the movement as a protest vote never actually wanted them in power, while others have simply stayed home. Disillusioned conservatives and religious voters have drifted back to the conservative and middle parties to their left. Perhaps the <span style="color: #7A3C00;">Nazis</span> have peaked—they cannot win new voters without alienating their existing base. ?]
+[? if change_nsdap_votes < -2 and rubicon and nsdap_decline_time == time: <span style="color: #7A3C00;">나치</span>가 마침내 쇠퇴했습니다. 한때 항의의 표시로 그 운동을 지지했던 많은 이들은 결코 그들이 권력을 잡기를 원하지 않았고, 다른 이들은 단순히 투표를 포기했습니다. 환멸을 느낀 보수주의자들과 종교적 유권자들은 그들보다 왼쪽에 있는 보수 및 중도 정당들로 다시 표류했습니다. 아마도 <span style="color: #7A3C00;">나치</span>는 정점에 달했을 것입니다. 기존 지지 기반을 소외시키지 않고는 새로운 유권자를 확보할 수 없기 때문입니다. ?]
 
-[? if spd_votes < 20 and schleicher_spd_r >= 3: Our poor electoral results have led Schleicher to question the wisdom of collaborating with a party on the brink, one that can’t even secure a fifth of the vote. Many within our own party now blame our ties with the <span style="color: #808080;">reactionary</span> general as a major factor behind our disappointing electoral results. ?][? if spd_votes < 25 and spd_votes > 20 and schleicher_spd_r >= 5: Our poor electoral results have led Schleicher to question the wisdom of collaborating with a party on the brink, one that can’t even secure a quarter of the vote. Many within our own party now blame our ties with the <span style="color: #808080;">reactionary</span> general as a major factor behind our disappointing electoral results. ?]
+[? if spd_votes < 20 and schleicher_spd_r >= 3: 우리의 저조한 선거 결과는 슐라이허로 하여금 벼랑 끝에 몰린 정당, 즉 득표율 20%조차 확보하지 못한 정당과 협력하는 것이 과연 현명한지 의문을 품게 만들었습니다. 우리 당 내부의 많은 이들은 이제 <span style="color: #808080;">반동적인</span> 장군과의 유대가 실망스러운 선거 결과의 주요 원인이라고 비난하고 있습니다. ?][? if spd_votes < 25 and spd_votes > 20 and schleicher_spd_r >= 5: 우리의 저조한 선거 결과는 슐라이허로 하여금 벼랑 끝에 몰린 정당, 즉 득표율 25%조차 확보하지 못한 정당과 협력하는 것이 과연 현명한지 의문을 품게 만들었습니다. 우리 당 내부의 많은 이들은 이제 <span style="color: #808080;">반동적인</span> 장군과의 유대가 실망스러운 선거 결과의 주요 원인이라고 비난하고 있습니다. ?]
 
-[? if spd_votes >= 35 and left_strength >= reformist_strength + labor_strength: Our strong performance has, unfortunately, driven our former bourgeois coalition partners to distance themselves from us. They blame their electoral defeats on their association with us and refuse to spend their dwindling influence supporting a government with the leverage to transform Germany into <span style="color: #c00000;">socialism</span>. ?]
+[? if spd_votes >= 35 and left_strength >= reformist_strength + labor_strength: 우리의 강력한 성과는, 불행히도 이전의 부르주아 연정 파트너들이 우리로부터 거리를 두게 만들었습니다. 그들은 자신들의 선거 패배를 우리와의 연대 탓으로 돌리고 있으며, 독일을 <span style="color: #c00000;">사회주의</span>로 변형시킬 영향력을 가진 정부를 지원하는 데 자신들의 줄어드는 영향력을 소비하기를 거부하고 있습니다. ?]
 
-[? if left_coalition >= 50: The fact that the <span style="color: #9B0000;">Marxist</span> parties now hold a majority in the Reichstag by themselves has energized the grassroots of both our parties to push for closer cooperation. ?]
+[? if left_coalition >= 50: <span style="color: #9B0000;">마르크스주의</span> 정당들이 이제 제국의회에서 단독 과반을 차지하고 있다는 사실은 우리 두 당의 풀뿌리 당원들이 더 긴밀한 협력을 요구하도록 자극했습니다. ?]
 
-[? if election_boycott: We have boycotted this election, delegitimizing the results in the eyes of workers and <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> alike. The impact is measured by how many stayed home instead of voting for the <span style="color: #BFC8CC;">**DNEF**</span>. [? if boycott_effect < 1.05: In the end, we achieved only limited success—our boycott has proven relatively unimpactful. So much for nothing. ?][? if boycott_effect >= 0.05 and boycott_effect < 1.1: In the end, we achieved notable success. ?][? if boycott_effect >= 1.1: In the end, we achieved smashing success. ?] ?]
+[? if election_boycott: 우리는 이번 선거를 보이콧하여, 노동자들과 <span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자들</span> 모두의 눈에 결과의 정당성을 훼손했습니다. 그 영향은 얼마나 많은 사람들이 <span style="color: #BFC8CC;">**DNEF**</span>에 투표하는 대신 기권했는지로 측정됩니다. [? if boycott_effect < 1.05: 결국, 우리는 제한적인 성공만을 거두었습니다. 우리의 보이콧은 비교적 영향력이 없는 것으로 판명되었습니다. 헛수고였습니다. ?][? if boycott_effect >= 0.05 and boycott_effect < 1.1: 결국, 우리는 주목할 만한 성공을 거두었습니다. ?][? if boycott_effect >= 1.1: 결국, 우리는 대성공을 거두었습니다. ?] ?]
 
-There are some potential coalition arrangements.
+몇 가지 잠재적인 연정 구성안이 있습니다.
 
 @achievement_check_e
 on-arrival: stabile_demokratie = 1 if center_right_coalition >= 50 and weimar_coalition >= 50 and dnvp_ideology == "Moderate"

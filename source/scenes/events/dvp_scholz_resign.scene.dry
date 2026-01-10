@@ -1,5 +1,5 @@
-title: <span style="color: #C0A054;">**DVP**</span> Executive Committee Meeting
-subtitle: Ernst Scholz has resigned!
+title: <span style="color: #C0A054;">**DVP**</span> 집행위원회 회의
+subtitle: 에른스트 숄츠가 사임했습니다!
 view-if: year = 1930 and month = 12 and dvp_leader == "Scholz" and not lvp_formed
 on-arrival: dvp_left += 2 if dvp_relation >= 35; dvp_left += 2 if in_grand_coalition
 max-visits: 1
@@ -7,13 +7,13 @@ tags: event
 face-image: img/portraits/ernst_scholz.jpg
 new-page: true
 
-= <span style="color: #C0A054;">**DVP**</span> Executive Committee Meeting
+= <span style="color: #C0A054;">**DVP**</span> 집행위원회 회의
 
-Ernst Scholz, recovering from surgery the past few months due to a resurgence of his health problems, has ultimately resigned in favor of his deputy Eduard Dingeldey, who is now guaranteed to succeed him as chairman.
+지난 몇 달간 지병이 재발하여 수술 후 회복 중이던 에른스트 숄츠가 결국 사임했습니다. 그는 부대표인 에두아르트 딩겔다이를 지지하며 물러났고, 딩겔다이가 의장직을 승계하는 것이 확실시됩니다.
 
-Eduard Dingeldey is one of the first within the <span style="color: #C0A054;">**DVP**</span> to support the movement for bourgeois unity and is popular with the youth and bourgeois unity groups that have coalesced on the <span style="color: #C0A054;">**DVP**</span>'s left wing, having rallied around Schnell and his efforts last month. Dingeldey is also sufficiently conservative on most political issues—particularly on the question of cooperation with the <span style="color: #c00000;">**SPD**</span>—to gain support from the party's right wing.
+에두아르트 딩겔다이는 <span style="color: #C0A054;">**DVP**</span> 내에서 부르주아 진영 통합 운동을 가장 먼저 지지한 인물 중 하나입니다. 그는 지난달 슈넬과 그의 노력에 호응하여 결집했던 <span style="color: #C0A054;">**DVP**</span> 좌파의 청년층 및 부르주아 통합 그룹에게 인기가 높습니다. 동시에 딩겔다이는 대부분의 정치적 사안, 특히 <span style="color: #c00000;">**SPD**</span>와의 협력 문제에 있어 당내 우파의 지지를 얻을 만큼 충분히 보수적입니다.
 
-- @resultsdvp: The party votes...
+- @resultsdvp: 투표 결과를 지켜보자...
 
 @resultsdvp
 on-arrival: {!
@@ -31,6 +31,6 @@ go-to: dingeldey
 on-arrival: dvp_leader = "Dingeldey"; old_middle_dvp -= 2; new_middle_dvp -= 2; old_middle_nsdap += 2; new_middle_nsdap += 2; pro_republic -= 3; liberal_cooperation -= 1; bourgeois_cooperation += 1
 face-image: img/portraits/dingeldey.jpg
 
-Dingeldey's election to the chairmanship represents a triumph for the reform-minded elements on the <span style="color: #C0A054;">**DVP**</span>'s left wing and met with strong approval from the movement towards bourgeois unity. However, despite the enthusiasm exhibited by those on the left wing, his election doesn't seem to represent a shift to the left at all and only confirms the party's shift to the right. [? if chancellor == "Brüning" and not spd_in_government: Dingeldey doesn't even feel great loyalty toward the Brüning government and believes that the party could only fulfill its mission towards bourgeois concentration after it is freed from the burden of governmental responsibility.?] So far, he has proven to be a weak and ineffectual leader, capitulating to the right wing at every possible opportunity.
+딩겔다이의 의장 선출은 <span style="color: #C0A054;">**DVP**</span> 좌파의 개혁 세력에게 승리이자, 부르주아 통합 운동으로부터 강력한 지지를 받은 결과입니다. 그러나 좌파 세력이 보여준 열광에도 불구하고, 그의 선출은 당의 좌클릭을 의미하기보다는 오히려 우경화를 확정 짓는 것으로 보입니다. [? if chancellor == "Brüning" and not spd_in_government: 딩겔다이는 브뤼닝 정부에 대한 충성심도 별로 없으며, 당이 정부 책임의 부담에서 벗어난 뒤에야 부르주아 세력 결집이라는 임무를 완수할 수 있다고 믿습니다.?] 지금까지 그는 기회가 될 때마다 우파에게 굴복하며 유약하고 무능한 지도자임을 드러냈습니다.
 
-Furthermore, Dingeldey is not particularly interested in a closer relationship with the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and definitely not with us, but rather with parties to the right, such as the <span style="color: #3E88B3;">**DNVP**</span> and even the <span style="color: #7A3C00;">**NSDAP**</span>, to transform them into a 'constructive component of the state.' This does not bode well for the future of <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> democracy.
+게다가 딩겔다이는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와의 관계 강화에는 별 관심이 없으며, 우리와는 더더욱 그렇습니다. 오히려 그는 <span style="color: #3E88B3;">**DNVP**</span>나 심지어 <span style="color: #7A3C00;">**NSDAP**</span> 같은 우익 정당들과 협력하여 그들을 '국가의 건설적인 구성원'으로 탈바꿈시키는 데 관심이 있습니다. 이는 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 민주주의의 앞날에 불길한 징조입니다.
