@@ -2633,11 +2633,11 @@ if (Q.next_reichstag_month > 12) {
 face-image: img/portraits/PapenFranz.jpg
 go-to: no_majority_papen_plus
 
-With the <span style="color: #7A3C00;">**NSDAP**</span> commanding a strong position in parliament, it can decide the fate of the independent Papen cabinet, as only the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?][? if dvp_exist and hugenberg_dvp:&nbsp;and <span style="color: #C0A054;">**DVP**</span>?] are the only other parties willing to tie themselves to the unpopular chancellor. 
+<span style="color: #7A3C00;">**NSDAP**</span>가 의회에서 강력한 입지를 점하고 있으므로, 그들이 무소속 파펜 내각의 운명을 결정할 수 있습니다. 오직 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?][? if dvp_exist and hugenberg_dvp:&nbsp;그리고 <span style="color: #C0A054;">**DVP**</span>?]만이 인기 없는 총리와 운명을 같이하려는 유일한 정당들이기 때문입니다.
 # TODO
 @no_majority_papen_plus
 
-However, it's likely that even a coalition of all parties to the right won't receive a majority, not without the support of the antagonistic <span style="color: #000000;">Center Party</span>. The new Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
+하지만, 우파의 모든 정당이 연합한다 해도 과반수를 확보할 가능성은 작습니다. 적대적인 <span style="color: #000000;">중앙당</span>의 지지 없이는 말입니다. 새로운 제국의회는 [+ next_reichstag_year +]년 [+ next_reichstag_month : month +] [+ next_reichstag_week +]주차에 소집될 것입니다.
 
 @no_majority_papen_2
 on-arrival: {!
@@ -2668,32 +2668,32 @@ if (Q.next_reichstag_month > 12) {
 !}
 face-image: img/portraits/PapenFranz.jpg
 
-There is, once again, no clear path to a majority government. Nevertheless, Hindenburg has reaffirmed his confidence in the chancellor and granted him permission to continue ruling by decree. With the <span style="color: #7A3C00;">**NSDAP**</span>'s poor electoral performance, the Camarilla is now convinced the party will be more reasonable in its demands and potentially open to tolerating the Papen cabinet.
+다시 한번, 과반수 정부를 구성할 명확한 길이 보이지 않습니다. 그럼에도 불구하고, 힌덴부르크는 총리에 대한 신임을 재확인했고 그에게 긴급명령권에 의한 통치를 계속할 권한을 부여했습니다. <span style="color: #7A3C00;">**NSDAP**</span>의 저조한 선거 실적으로 인해, 대통령 측근 세력들은 이제 나치당이 요구 사항에 있어 더 합리적으로 나올 것이며, 잠재적으로 파펜 내각을 묵인할 가능성이 있다고 확신하고 있습니다.
 
-Negotiations with [+ nsdap_chancellor +] will resume in the coming weeks. However, Schleicher has begun to lose faith in Papen’s ability to reach an understanding with the <span style="color: #7A3C00;">Nazis</span>—and if these talks fail, it may be the final straw that turns the schemer against yet another of his old friends.
+[+ nsdap_chancellor +]와의 협상은 다가오는 몇 주 안에 재개될 것입니다. 하지만, 슐라이허는 파펜이 <span style="color: #7A3C00;">나치</span>와 합의에 도달할 수 있을지에 대해 불신하기 시작했습니다. 만약 이 회담들이 실패한다면, 그것은 그 모략가가 또 다른 그의 옛 친구에게 등을 돌리게 만드는 결정타가 될지도 모릅니다.
 
 @no_majority_schleicher
 on-arrival: hindenburg_schleicher_r -= 1; schleicher_strength -= 1; hindenburg_hitler_r += 1
 
-Predictably, there is no clear path to a majority government, even with the fracturing of the <span style="color: #7A3C00;">**NSDAP**</span>. Hindenburg is tired of the constant elections and presidential governments, but there is simply no way out. 
+예상대로, <span style="color: #7A3C00;">**NSDAP**</span>의 분열에도 불구하고 과반수 정부로 가는 명확한 길은 없습니다. 힌덴부르크는 끊임없는 선거와 새로운 정부들에 지쳤지만, 현재로썬 빠져나갈 길이 없습니다.
 
-The prospect of negotiations with the <span style="color: #7A3C00;">Nazi</span> movement remains unobtainable, even with their electoral defeat causing even more defections and the shattering of their party morale. 
+<span style="color: #7A3C00;">나치</span> 운동과의 협상 전망은 여전히 불가능해 보입니다. 그들의 선거 패배가 더 많은 탈당과 당내 사기의 붕괴를 야기하고 있음에도 말입니다.
 
 - @schleicher_dsu
 
 @schleicher_dsu
-title: Schleicher invites the <span style="color: #6A1E1E;">**DSU**</span> into cabinet?
+title: 슐라이허가 <span style="color: #6A1E1E;">**DSU**</span>를 내각으로 초대할까?
 
-Despite their addition barely doing much to grant Schleicher a majority, it signals a major step toward Schleicher's goal of integrating "favorable" <span style="color: #7A3C00;">Nazis</span> into the state—as he acknowledges that this is how much he's going to get. Their poor electoral performance will grant them few cabinet posts, but there remains substantial risks in letting the <span style="color: #7A3C00;">Nazis</span> govern.
+그들의 합류가 슐라이허에게 과반수를 안겨주는 데는 거의 도움이 되지 않음에도 불구하고, 그것은 "호의적인" <span style="color: #7A3C00;">나치</span>를 제도권으로 통합하려는 슐라이허의 목표를 향한 중대한 발걸음을 의미합니다—그는 이것이 그가 얻을 수 있는 최선이라고 인정하기 때문입니다. 그들의 저조한 선거 실적 탓에 적은 내각 자리를 배분받겠지만, <span style="color: #7A3C00;">나치</span>가 국정에 참여하게 두는 것에는 여전히 상당한 위험이 따릅니다.
 
-We could attempt to use our relations with the chancellor to prevent this, but he'll demand much concessions in return.
+우리는 총리와의 관계를 이용하여 이것을 막으려 시도할 수 있지만, 그는 대가로 많은 양보를 요구할 것입니다.
 
 - @schleicher_dsu_yay
 - @schleicher_dsu_nay
 
 @schleicher_dsu_yay
-title: Let it happen.
-subtitle: Schleicher will moderate their excesses, it's still a presidential government after all.
+title: 일어나게 둔다.
+subtitle: 슐라이허가 그들의 과도함을 제어할 것이다, 어쨌든 여전히 대통령 정부이다.
 on-arrival: {!
 Q.dsu_in_gov = 1;
 Q.schleicher_post = 1;
@@ -2736,62 +2736,62 @@ if (Q.next_reichstag_month > 12) {
 }
 !}
 
-Wilhelm Frick is nominated to the Interior Ministry[? if old_prussia_leader == "Schleicher": in both the Reich and Prussia, with the latter now under the control of [+ prussia_leader +], appointed as commissioner?]. Gregor Strasser takes the vice-chancellorship—a title without power.
+빌헬름 프릭이 내무부 장관으로 지명되었습니다[? if old_prussia_leader == "Schleicher": 제국과 프로이센 양쪽 모두에서 말입니다. 프로이센은 이제 판무관으로 임명된 [+ prussia_leader +]의 통제 하에 있습니다?]. 그레고어 슈트라서가 부총리직을 맡습니다—실권 없는 명예직입니다.
 
-At the <span style="color: #7A3C00;">Nazis’</span> insistence, Hjalmar Schacht is named to the Economic Ministry as an independent. Hans Kerrl, a <span style="color: #7A3C00;">Nazi</span> parliamentarian, receives the post of Minister without Portfolio.
+<span style="color: #7A3C00;">나치</span>의 주장에 따라, 얄마르 샤흐트가 무소속 자격으로 경제부 장관에 지명됩니다. <span style="color: #7A3C00;">나치</span> 국회의원인 한스 케를은 무임소 장관직을 받습니다.
 
-Schleicher blocks <span style="color: #7A3C00;">Nazi</span> claims to the Labor Ministry, unwilling to provoke organized labor and still hoping to bring Adam Stegerwald—and the <span style="color: #000000;">Center Party</span>—into his coalition.
+슐라이허는 노동부 장관직에 대한 <span style="color: #7A3C00;">나치</span>의 요구를 거부했는데, 조직된 노동계를 자극하기를 꺼리고 여전히 아담 슈테거발트—그리고 <span style="color: #000000;">중앙당</span>—를 그의 연정으로 끌어들이기를 희망하기 때문입니다.
 
 @schleicher_dsu_nay
-title: Strike a deal with Schleicher.
-subtitle: This is a point of no return.
-unavailable-subtitle: [? if schleicher_spd_r < 5: Our relations with Schleicher are too low. ?][? if schleicher_spd_support < 8: Our party won't support compromising our independence. ?]
+title: 슐라이허와 거래를 맺는다.
+subtitle: 이것은 돌아올 수 없는 강을 건너는 것입니다.
+unavailable-subtitle: [? if schleicher_spd_r < 5: 슐라이허와의 관계가 너무 나쁩니다. ?][? if schleicher_spd_support < 8: 우리 당은 우리의 독립성을 훼손하는 타협을 지지하지 않을 것입니다. ?]
 choose-if: schleicher_spd_r >= 5 and schleicher_spd_support >= 8
 
-Exploiting our unusually good relations with the chancellor, we have moved to strike a deal with him to block <span style="color: #7A3C00;">Nazi</span> entry into the cabinet. We have threatened mass action by organized labor and the withdrawal of the Reichsbanner from his plans. Yet Schleicher sees greater advantage in aligning with the <span style="color: #7A3C00;">Nazis</span> regardless, and we are negotiating from a position of weakness.
+총리와의 이례적으로 좋은 관계를 이용하여, 우리는 <span style="color: #7A3C00;">나치</span>의 내각 진입을 막기 위해 그와 거래를 맺기로 했습니다. 우리는 조직된 노동계에 의한 대중 행동과 그의 계획들로부터 국기단의 철수를 위협했습니다. 그러나 슐라이허는 상관없이 <span style="color: #7A3C00;">나치</span>와 제휴하는 것에서 더 큰 이점을 보고 있으며, 우리는 약자의 위치에서 협상하고 있습니다.
 
-What shall we give up?
+우리는 무엇을 포기해야 합니까?
 
 - @schleicher_soul
 - @schleicher_labor
 - @schleicher_reichsbanner
 
 @schleicher_soul
-title: Schleicher strengthens his grip over the <span style="color: #c00000;">**SPD**</span> leadership.
-subtitle: Our autonomy will be undermined.
+title: 슐라이허가 <span style="color: #c00000;">**SPD**</span> 지도부에 대한 장악력을 강화한다.
+subtitle: 우리의 자율성은 훼손될 것입니다.
 on-arrival: schleicher_spd_party = 1; schleicher_spd_concession += 1; schleicher_spd_influence += 4; dues -= 2 if dues > 1; workers_spd -= 4; workers_kpd += 2; new_middle_spd -= 4; new_middle_kpd += 4; left_dissent += 70; center_dissent += 50; reformist_strength += 20; labor_strength += 10; social_patriot_strength += 10; neorevisionist_strength -= 10; left_strength -= 20; center_strength -= 20; reformist_dissent += 20; neorevisionist_dissent += 40; labor_dissent += 40; nationalism += 20; pro_republic -= 10
 
-Schleicher demands that his "supporters" be installed in leadership positions within the <span style="color: #c00000;">**SPD**</span>, and that those already aligned with him, such as Braun, be elevated further within the party hierarchy.
+슐라이허는 그의 "지지자들"을 <span style="color: #c00000;">**SPD**</span> 내의 지도부 요직에 앉힐 것과, 브라운과 같이 이미 그와 제휴한 자들이 당 위계 내에서 더 승격될 것을 요구합니다.
 
-Furthermore, our commitments to pacifism, internationalism, and anti-militarism are being stripped out—not without backlash from our core interest groups.
+게다가, 평화주의, 국제주의, 그리고 반군국주의에 대한 우리의 헌신들이 제거되고 있습니다—우리의 핵심 이익 집단들로부터의 반발을 무릅쓰고 말입니다.
 
 - @schleicher_dsu_nay_2
 
 @schleicher_labor
-title: The ADGB falls under state influence.
-subtitle: Class collaborationism will undermine the workers' power.
+title: ADGB가 국가 영향력 아래로 떨어집니다.
+subtitle: 계급 협조주의는 노동자의 힘을 훼손할 것입니다.
 on-arrival: schleicher_spd_labor = 1; schleicher_spd_concession += 1; schleicher_spd_influence += 3; workers_kpd += workers_spd*0.2; workers_spd *= 0.8; unemployed_kpd += unemployed_spd*0.2; unemployed_spd *= 0.8; dues -= 1 if dues > 1; labor_dissent += 40; labor_strength += 10; social_patriot_strength += 10; center_dissent += 40; left_dissent += 60; neorevisionist_dissent += 10; reformist_dissent += 10; pro_republic -= 10
 
-We have convinced the ADGB to appoint some sketchy pro-Schleicher unionists to many top positions in the organization. Only time will tell what Schleicher will instruct his followers to do, but we can guess it has something to do with class solidarity for the goal of Germany's rearmament.
+우리는 ADGB를 설득하여 조직 내의 많은 고위직에 수상쩍은 친슐라이허 노조원들을 임명하도록 했습니다. 슐라이허가 그의 추종자들에게 무엇을 하라고 지시할지는 시간만이 말해줄 것이지만, 우리는 그것이 독일의 재무장이라는 목표를 위한 계급 연대와 관련이 있다고 짐작할 수 있습니다.
 
-The working class is not entirely won over to the chancellor yet, and we stand to lose significant numbers of them to the <span style="color: #700000;">**KPD**</span>.
+노동 계급은 아직 총리에게 완전히 설득되지 않았으며, 우리는 그들 중 상당수를 <span style="color: #700000;">**KPD**</span>에게 빼앗길 위기에 처해 있습니다.
 
 - @schleicher_dsu_nay_2
 
 @schleicher_reichsbanner
-title: The Reichsbanner is integrated into the state.
-subtitle: We will be defenseless.
+title: 국기단이 국가로 통합된다.
+subtitle: 우리는 무방비 상태가 될 것입니다.
 on-arrival: schleicher_spd_para = 1; schleicher_spd_concession += 1; schleicher_spd_influence += 2; reichswehr_strength += 75; reichswehr_militancy -= (1 - rb_militancy); rb_militancy = 0.02; rb_strength = 300; sa_strength += 50; rfb_strength += 200; prussian_police_militancy = 1.5; prussian_police_strength += 15; workers_spd -= 4; unemployed_spd -= 6; new_middle_spd -= 2; workers_kpd += 2; unemployed_kpd += 4; neorevisionist_dissent += 60; neorevisionist_strength -= 10; labor_dissent += 30; center_dissent += 20; left_dissent += 50; reformist_dissent += 10; dues -= 1 if dues > 1; pro_republic -= 10
 
-The Reichsbanner has been largely disarmed, with Schleicher promising increased funding for the police to maintain order in the streets.
+국기단은 거리의 질서를 유지하기 위해 경찰에 대한 자금 지원을 늘리겠다는 슐라이허의 약속과 함께, 사실상 무장 해제되었습니다.
 
-The <span style="color: #c00000;">**SPD**</span> is demoralized, as many Reichsbanner members defect to the <span style="color: #700000;">**KPD**</span> and their <span style="color: #700000;">**RFB**</span>. We are now compelled to back the Reichswehr's auxiliaries in their campaigns against the <span style="color: #700000;">**Communists**</span>.
+많은 국기단 단원들이 <span style="color: #700000;">**KPD**</span>와 그들의 <span style="color: #700000;">**RFB**</span>로 전향함에 따라 <span style="color: #c00000;">**SPD**</span>는 사기가 꺾였습니다. 우리는 이제 <span style="color: #700000;">**공산주의자들**</span>에 대항하는 캠페인에서 국방군의 보조 부대를 지원하도록 강요받습니다.
 
 - @schleicher_dsu_nay_2
 
 @schleicher_dsu_nay_2
-title: The <span style="color: #6A1E1E;">**DSU**</span> is kept away from government!
-subtitle: The <span style="color: #000000;">Center Party</span> has been flirting with a return to governance.
+title: <span style="color: #6A1E1E;">**DSU**</span>는 정부로부터 배제된다!
+subtitle: <span style="color: #000000;">중앙당</span>은 국정 복귀를 타진하고 있습니다.
 on-arrival: {!
 Q.z_in_gov = 1;
 Q.schleicher_post = 1;
@@ -2829,11 +2829,11 @@ if (Q.next_reichstag_month > 12) {
 }
 !}
 
-Schleicher has suspended talks with the <span style="color: #6A1E1E;">**DSU**</span> by deliberately creating an impasse over control of the Interior Ministry. In the meantime, the absence of <span style="color: #7A3C00;">Nazis</span> in the cabinet has made it tolerable for the <span style="color: #000000;">Center Party</span> to return to government, with Adam Stegerwald securing the Labor Ministry and the nominal Vice Chancellorship, alongside other members claiming the Transport and Justice portfolios. The <span style="color: #A2D8E0;">**BVP**</span> is also granted the Postal Ministry. [? if z_leader == "Kaas": Schleicher has also secured Ludwig Kaas's backing by promising the immediate negotiation of a <i>Reichskonkordat</i> with the Vatican. ?]
+슐라이허는 내무부 통제권을 두고 고의적으로 교착 상태를 조성함으로써 <span style="color: #6A1E1E;">**DSU**</span>와의 회담을 중단했습니다. 그 사이에, 내각 내 <span style="color: #7A3C00;">나치</span>의 부재는 <span style="color: #000000;">중앙당</span>이 정부로 복귀하는 것을 용인할 수 있게 만들었으며, 아담 슈테거발트가 노동부 장관직과 명목상의 부총리직을 확보했고, 다른 멤버들이 교통부와 법무부 장관직을 차지했습니다. <span style="color: #A2D8E0;">**BVP**</span> 또한 체신부를 부여받습니다. [? if z_leader == "Kaas": 슐라이허는 또한 바티칸과의 *제국종교협약*의 즉각적인 협상을 약속함으로써 루트비히 카스의 지지를 확보했습니다. ?]
 
-[? if old_prussia_leader == "Schleicher": The Prussian <i>Reichskommissar</i> post is also handed from Schleicher to Goerdeler—a signal that Schleicher has genuinely abandoned Papen's scheme for state centralization, and gestures toward an eventual return to democratic governance once stability is restored. Braun is overjoyed at this, and argues that only a break with Schleicher would change his mind. ?]
+[? if old_prussia_leader == "Schleicher": 프로이센 *제국판무관* 직위 또한 슐라이허에게서 괴르델러에게로 넘겨집니다—이는 슐라이허가 파펜의 국가 중앙집권화 계획을 진정으로 포기했음을 알리는 신호이며, 안정이 회복되면 민주적 통치로 결국 복귀하겠다는 제스처입니다. 브라운은 이에 매우 기뻐하며, 오직 슐라이허와의 결별만이 그의 마음을 바꿀 것이라고 주장합니다. ?]
 
-The <span style="color: #FFCC00;">liberals</span> and minor bourgeois parties have also rallied behind Schleicher once again. As part of our arrangement, he acknowledges the <span style="color: #c00000;">**SPD**</span>'s need to remain in opposition—a necessary measure, as a <span style="color: #700000;">**Communist**</span> surge is an outcome neither of us desires.
+<span style="color: #FFCC00;">자유주의자들</span>과 소수 부르주아 정당들도 다시 한번 슐라이허 뒤로 결집했습니다. 우리 합의의 일환으로, 그는 <span style="color: #c00000;">**SPD**</span>가 야당으로 남아야 할 필요성을 인정합니다—<span style="color: #700000;">**공산주의자**</span>의 급증은 우리 중 누구도 바라지 않는 결과이기에 필요한 조치입니다.
 
 @no_majority_schleicher_2
 on-arrival: {!
@@ -2862,9 +2862,9 @@ if (Q.next_reichstag_month > 12) {
 }
 !}
 
-Schleicher's supporting parties have failed to secure a majority coalition in the Reichstag—at least, not one the chancellor finds acceptable. [? if dnef_formed: He demands total power for the <span style="color: #BFC8CC;">**DNEF**</span>, unwilling to let other parties hold his government hostage. ?]
+슐라이허의 지지 정당들은 제국의회에서 과반수 연정을 확보하는 데 실패했습니다—적어도, 총리가 받아들일 수 있는 연정은 아닙니다. [? if dnef_formed: 그는 다른 정당들이 그의 정부를 인질로 잡게 두기를 꺼리며, <span style="color: #BFC8CC;">**DNEF**</span>를 위한 전권을 요구합니다. ?]
 
-[? if schleicher_right_coalition >= 50: While a coalition of all right-wing factions around Schleicher is possible, he refuses to grant the Reichstag new legitimacy and will press on with his presidential government.?] Thus, another continuation of the current governing coalition appears inevitable.
+[? if schleicher_right_coalition >= 50: 슐라이허를 중심으로 한 모든 우파 파벌들의 연정이 가능하지만, 그는 제국의회에 새로운 정당성을 부여하기를 거부하고 그의 대통령 정부를 밀고 나갈 것입니다.?] 따라서, 현재 통치 연정의 또 다른 연장이 불가피해 보입니다.
 
 @no_majority_trev
 on-arrival: {!
@@ -2893,25 +2893,25 @@ if (Q.next_reichstag_month > 12) {
 }
 !}
 
-Predictably, Treviranus has failed to assemble a majority coalition in support of his bourgeois-right cabinet. Hindenburg, increasingly frustrated and in rapid physical decline, may act more rashly than he did when appointing Papen a year ago.
+예상대로, 트레비라누스는 그의 부르주아 우파 내각을 지지하는 과반수 연정을 구성하는 데 실패했습니다. 점점 더 좌절하고 급격한 신체적 쇠퇴를 겪고 있는 힌덴부르크는 1년 전 파펜을 임명했을 때보다 더 성급하게 행동할지도 모릅니다.
 
-With Papen back in his inner circle after Schleicher’s fall, and his disillusionment with his <span style="color: #3E88B3;">nationalist</span> allies deepening, the future grows more uncertain. We don't know what Hindenburg is planning on as a last resort.
+슐라이허의 몰락 이후 파펜이 다시 그의 측근으로 돌아오고, 그의 <span style="color: #3E88B3;">민족주의자</span> 동맹들에 대한 환멸이 깊어짐에 따라, 미래는 더욱 불확실해집니다. 우리는 힌덴부르크가 최후의 수단으로 무엇을 계획하고 있는지 모릅니다.
 
-Once again, the question stands before us: do we choose to tolerate this cabinet? That is for you to decide.
+다시 한번, 질문이 우리 앞에 놓여 있습니다: 우리는 이 내각을 묵인하기로 선택해야 할까요? 당신이 결정할 일입니다.
 
-The new Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichstag_year +], Week [+ next_reichstag_week +].
+새로운 제국의회는 [+ next_reichstag_year +]년 [+ next_reichstag_month : month +] [+ next_reichstag_week +]주차에 소집될 것입니다.
 
 @hitler_chancellor
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"
 
-There is no path to a majority government for now. The scheming around President Hindenburg is leading to only one path - that of Chancellor Adolf Hitler. [? if largest_party == "NSDAP" : Since they are the largest party, it is not exactly contrary to parliamentary procedure, so it is difficult to raise objections solely on procedural grounds. ?] [? if hitler_deported: Despite his earlier deportation, the <span style="color: #7A3C00;">Nazi</span> leaders and their <span style="color: #3E88B3;">reactionary</span> allies have connived for the president to give him German citizenship after all. ?]
+당분간 과반수 정부로 가는 길은 없습니다. 힌덴부르크 대통령 주변의 모략은 오직 하나의 길로 이끌고 있습니다 - 바로 아돌프 히틀러 총리의 길입니다. [? if largest_party == "NSDAP" : 그들이 제1당이기 때문에, 의회 절차에 정확히 반하는 것은 아니므로, 절차적 근거만으로 이의를 제기하기는 어렵습니다. ?] [? if hitler_deported: 그의 이전 추방에도 불구하고, <span style="color: #7A3C00;">나치</span> 지도자들과 그들의 <span style="color: #3E88B3;">반동적</span> 동맹들은 대통령이 결국 그에게 독일 시민권을 주도록 공모했습니다. ?]
 
-- @hitler_takes_power: What now?
+- @hitler_takes_power: 이제 어쩌지?
 
 # if NSDAP is largest party and Hindenburg is president, then Hindenburg appoints Hitler chancellor.
 
 @spd_majority
-title: <span style="color: #c00000;">**SPD**</span> majority alone
+title: <span style="color: #c00000;">**SPD**</span> 단독 과반
 subtitle: <span style="color: #c00000;">**SPD**</span>: [+ spd_r +]%
 view-if: spd_r >= 50
 on-arrival: chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05;  ddp_right += 3; lvp_right += 4; dvp_right += 5; liberal_cooperation += 8; bourgeois_cooperation += 8; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; hindenburg_angry = 70; comeback = 1 if (n_elections - comeback_a == 1); catastrophepolitik = 1 if n_elections >= 5 and not catastrophepolitik_cancel; mit_allen_notwendigen_stimmen = 1 if rb_militancy <= 0.01; seeheimer = 1 if workers_spd_normalized < 10
@@ -2948,49 +2948,49 @@ go-to: spd_majority_2
 
 @spd_majority_2
 
-Finally, the <span style="color: #c00000;">**SPD**</span> can govern alone! Our long campaign of electioneering has paid off. We do not need to worry about coalition government; anything is possible. However, our former coalition partners are going to start drifting to the right.
+마침내, <span style="color: #c00000;">**SPD**</span>가 단독으로 통치할 수 있게 되었습니다! 우리의 오랜 선거 운동이 결실을 보았습니다. 우리는 이제 연립 정부 구성을 걱정할 필요가 없습니다; 무엇이든 가능합니다. 하지만, 우리의 이전 연정 파트너들은 우경화되기 시작할 것입니다.
 
-Who should be chancellor?
+누가 총리가 되어야 합니까?
 
-- @braun_majority_chancellor: Otto Braun for Chancellor.
-- @breitscheid_majority_chancellor: Rudolf Breitscheid for Chancellor.
-- @muller_majority_chancellor: Hermann Müller for Chancellor.
-- @wels_majority_chancellor: Otto Wels for Chancellor.
+- @braun_majority_chancellor: 오토 브라운을 총리로.
+- @breitscheid_majority_chancellor: 루돌프 브라이트샤이트를 총리로.
+- @muller_majority_chancellor: 헤르만 뮐러를 총리로.
+- @wels_majority_chancellor: 오토 벨스를 총리로.
 
 @braun_majority_chancellor
 view-if: not historical_mode or not prussia_leader = "Braun"
 on-arrival: chancellor = "Braun"
 
-[? if president == "Braun": Our experts have checked the constitution, and have discovered that there is no specific prohibition against the Chancellor also being the President (the President may not be a member of the Reichstag; there is no law saying that the Chancellor must be a member of the Reichstag). Thus, we have Chancellor-President Otto Braun. ?]
-[? if president != "Braun": Otto Braun has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority. ?]
+[? if president == "Braun": 우리 전문가들이 헌법을 검토한 결과, 총리가 대통령직을 겸임하는 것에 대한 구체적인 금지 조항이 없음을 발견했습니다 (대통령은 제국의회 의원일 수 없지만, 총리가 제국의회 의원이어야 한다는 법은 없습니다). 따라서, 오토 브라운이 총리 겸 대통령이 되었습니다. ?]
+[? if president != "Braun": 오토 브라운이 <span style="color: #c00000;">**SPD**</span> 과반 정부의 총리가 되었습니다. ?]
 
 @breitscheid_majority_chancellor
 on-arrival: chancellor = "Breitscheid"
 
-Rudolf Breitscheid has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority.
+루돌프 브라이트샤이트가 <span style="color: #c00000;">**SPD**</span> 과반 정부의 총리가 되었습니다.
 
 @muller_majority_chancellor
 view-if: muller_dead = 0
 on-arrival: chancellor = "Müller"
 
-Hermann Müller has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority.
+헤르만 뮐러가 <span style="color: #c00000;">**SPD**</span> 과반 정부의 총리가 되었습니다.
 
 @wels_majority_chancellor
 view-if: muller_dead = 1
 on-arrival: chancellor = "Wels"
 
-Otto Wels has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority.
+오토 벨스가 <span style="color: #c00000;">**SPD**</span> 과반 정부의 총리가 되었습니다.
 
 
 @brauns_dilemma
-title: There is no clear governing majority.
-subtitle: President [+ president +] faces a dilemma.
+title: 명확한 통치 과반수가 없습니다.
+subtitle: [+ president +] 대통령은 딜레마에 빠졌습니다.
 view-if: president_ideology == "Left" and ((grand_coalition < 50 or grand_coalition_failed == 1) or weimar_coalition_failed or (weimar_coalition >= 49.9 and z_relation < 40 or ddp_relation < 40) or ((grand_coalition >= 50 and black_thursday_seen and dvp_ideology == "Right" and weimar_coalition < 50) or not dvp_exist))
 
-President [+ president +] faces a dilemma. He desperately desires a <span style="color: #c00000;">socialist</span> or at least <span style="color: #D3C24D;">democratic</span> government, but the electoral results are not there for such. Article 48 has been used by Hindenburg to promulgate anti-<span style="color: #D3C24D;">democratic</span> and anti-<span style="color: #c00000;">worker</span> policies; can Article 48 be used for good as well as evil?
+[+ president +] 대통령은 딜레마에 빠졌습니다. 그는 필사적으로 <span style="color: #c00000;">사회주의</span> 혹은 적어도 <span style="color: #D3C24D;">민주주의</span> 정부를 원하지만, 선거 결과가 이를 뒷받침하지 못합니다. 힌덴부르크는 헌법 제48조를 이용하여 반<span style="color: #D3C24D;">민주적</span>이고 반<span style="color: #c00000;">노동자</span>적인 정책들을 공포해 왔습니다. 과연 제48조가 악행뿐만 아니라 선행을 위해서도 쓰일 수 있을까요?
 
-- @emergency_braun: We will form an emergency government with [+ president +]'s support.
-- @new_elections: We will have new elections.
+- @emergency_braun: 우리는 [+ president +]의 지지를 받아 비상 정부를 구성할 것이다.
+- @new_elections: 우리는 새로운 선거를 치를 것이다.
 - @left_coalition
 - @popular_front_coalition
 - @far_right_coalition
@@ -2998,34 +2998,34 @@ President [+ president +] faces a dilemma. He desperately desires a <span style=
 
 
 @emergency_braun
-title: We will form an emergency government with [+ president +]'s support.
-subtitle: This may have the effect of inflamming public sentiment against us, and the <span style="color: #808080;">reactionaries</span> will be against us each step of the way.
+title: 우리는 [+ president +]의 지지를 받아 비상 정부를 구성할 것이다.
+subtitle: 이것은 우리에 대한 대중의 정서를 자극할 수 있으며, <span style="color: #808080;">반동주의자들</span>은 사사건건 우리에게 맞설 것입니다.
 on-arrival: sa_strength += 100; sh_strength += 100; in_emergency_government = 1; ddp_relation -= 5; lvp_relation -= 5; dvp_relation -= 5; z_relation -= 5; ddp_right += 1; ddp_cohesion -= 0.5; dvp_right += 3; lvp_right += 1; bourgeois_cooperation += 5; liberal_cooperation += 3
 
-Yes, an emergency minority government, with the support of the <span style="color: #c00000;">**SPD**</span>. Who should lead this emergency minority government?
+네, <span style="color: #c00000;">**SPD**</span>의 지지를 받는 비상 소수 정부입니다. 누가 이 비상 소수 정부를 이끌어야 합니까?
 
-- @braun_emergency_chancellor: Otto Braun for Chancellor[? if president == "Braun":-President?]!
-- @breitscheid_emergency_chancellor: Rudolf Breitscheid for emergency Chancellor.
-- @bruning_emergency_chancellor: Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], as a goodwill gesture toward the bourgeoisie.
-- @wirth_emergency_chancellor: Joseph Wirth of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], as a gesture of <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> unity.
+- @braun_emergency_chancellor: 오토 브라운을 총리[? if president == "Braun": 겸 대통령으?]로!
+- @breitscheid_emergency_chancellor: 루돌프 브라이트샤이트를 비상 총리로.
+- @bruning_emergency_chancellor: 부르주아지를 향한 선의의 표시로서, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 브뤼닝.
+- @wirth_emergency_chancellor: <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 통합의 표시로서, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 요제프 비르트.
 
 @braun_emergency_chancellor
-subtitle: [? if president == "Braun": This is unprecedented. ?][? if president != "Braun": Perhaps more acceptable to the bourgeois parties... ?]
+subtitle: [? if president == "Braun": 이것은 전례가 없는 일입니다. ?][? if president != "Braun": 아마도 부르주아 정당들에게 더 잘 받아들여질 것입니다... ?]
 view-if: not historical_mode
 on-arrival: chancellor = "Braun"; chancellor_party = "SPD"; spd_in_government = 1; pro_republic -= 5; ddp_relation -= 4; dvp_relation -= 4; z_relation -= 4; lvp_relation -= 4; dvp_right += 2; ddp_right += 1.5; ddp_cohesion -= 1; lvp_right += 2; pro_republic += 3 if president != "Braun"; ddp_relation += 4 if president != "Braun"; dvp_relation += 4 if president != "Braun"; z_relation += 4 if president != "Braun"; lvp_relation += 4 if president != "Braun"; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.1; bourgeois_cooperation += 3; liberal_cooperation += 3
 
-[? if president == "Braun": Our experts have checked the constitution, and have discovered that there is no specific prohibition against the Chancellor also being the President (the President may not be a member of the Reichstag; there is no law saying that the Chancellor *must* be a member of the Reichstag). ?][? if president != "Braun": Otto Braun, one of our leading reformist politicians and statesmen, has been elevated to the second-highest office in the land. ?]
+[? if president == "Braun": 우리 전문가들이 헌법을 검토한 결과, 총리가 대통령직을 겸임하는 것에 대한 구체적인 금지 조항이 없음을 발견했습니다 (대통령은 제국의회 의원일 수 없지만, 총리가 제국의회 의원이어야 *한다는* 법은 없습니다). ?][? if president != "Braun": 우리의 선도적인 개혁주의 정치인이자 국무가인 오토 브라운이 이 나라에서 두 번째로 높은 직위로 승격되었습니다. ?]
 
-[? if president == "Braun": Thus, we have Chancellor-President Otto Braun. He claims that he will resign as soon as the economic-political crisis is over. ?] The right-wing parties, who were once clamoring to replace parliamentary rule with <span style="color: #7A3C00;">dictatorship</span> or <span style="color: #808080;">monarchy</span>, are now clamoring for the restoration of democracy.
+[? if president == "Braun": 따라서, 오토 브라운이 총리 겸 대통령이 되었습니다. 그는 경제적-정치적 위기가 끝나는 대로 사임할 것이라고 주장합니다. ?] 한때 의회 통치를 <span style="color: #7A3C00;">독재</span>나 <span style="color: #808080;">군주제</span>로 대체해야 한다고 아우성치던 우파 정당들이, 이제는 민주주의의 복원을 부르짖고 있습니다.
 
 - @far_right_coup
-- @emergency_no_confidence: The <span style="color: #7A3C00;">Nazis</span> immediately call a no-confidence vote against us...
+- @emergency_no_confidence: <span style="color: #7A3C00;">나치</span>가 즉시 우리에 대한 불신임 투표를 소집한다...
 
 @breitscheid_emergency_chancellor
-subtitle: The <span style="color: #700000;">Communists</span> are warming to him...
+subtitle: <span style="color: #700000;">공산주의자들</span>이 그에게 호의를 보이고 있습니다...
 on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"; spd_in_government = 1; kpd_relation += 5; ddp_relation -= 3; lvp_relation -= 3; dvp_relation -= 3; z_relation -= 3; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 1; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_loyalty -= 0.1;
 
-We have appointed Rudolf Breitscheid as emergency chancellor. The <span style="color: #700000;">**Communists**</span> consider him less objectionable than the alternatives, although it is unclear whether they will tolerate this government.
+우리는 루돌프 브라이트샤이트를 비상 총리로 임명했습니다. <span style="color: #700000;">**공산주의자들**</span>은 그를 다른 대안들보다는 덜 불쾌하다고 여기지만, 그들이 이 정부를 묵인할지는 불분명합니다.
 
 - @far_right_coup
 - @emergency_no_confidence
@@ -3034,7 +3034,7 @@ We have appointed Rudolf Breitscheid as emergency chancellor. The <span style="c
 @bruning_emergency_chancellor
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 1; z_relation += 10; dvp_relation += 3; ddp_relation += 3; lvp_relation += 3; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD" 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is pleased, and somewhat surprised, that we have appointed [+ chancellor +] as chancellor.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 우리가 [+ chancellor +]를 총리로 임명한 것에 기뻐하며, 다소 놀라워하고 있습니다.
 
 - @far_right_coup
 - @emergency_no_confidence
@@ -3043,7 +3043,7 @@ The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</spa
 view-if: z_ideology == "Left"
 on-arrival: chancellor = "Wirth"; chancellor_party = "Z"; spd_in_government = 1; z_relation += 10; dvp_relation += 3; ddp_relation += 3; lvp_relation += 3; foreign_minister_party = "SPD"; interior_minister_party = "SPD"; justice_minister_party = "SPD"; labor_minister_party = "SPD"; reichswehr_minister_party = "SPD"; economic_minister_party = "SPD"; finance_minister_party = "SPD"; agriculture_minister_party = "SPD" 
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is pleased that we have appointed [+ chancellor +] as chancellor.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 우리가 [+ chancellor +]를 총리로 임명한 것에 기뻐하고 있습니다.
 
 - @far_right_coup
 - @emergency_no_confidence
@@ -3051,19 +3051,19 @@ The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</spa
 
 
 @far_right_coup
-title: The <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties immediately launch a military coup against us...
+title: <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 정당들이 즉시 우리에 대해 군사 쿠데타를 시작했다...
 view-if: far_right_coalition >= 45
 on-arrival: sh_strength += 150; sa_strength += 150; sh_militancy += 0.05; sa_militancy += 0.05
 
-The <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> parties, seeing that we are willing to deny them government by questionably democratic means, have decided that they can only take power by undemocratic means, and have risen up in force against the sitting government.
+우리가 민주적 정당성이 의심스러운 수단으로 그들의 집권을 막으려 한다는 것을 본 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 정당들은, 오직 비민주적 수단으로만 권력을 잡을 수 있다고 판단하고 현 정부에 대항하여 무력으로 봉기했습니다.
 
-Their numbers are bolstered by the many government workers who are against the prospect of a unified <span style="color: #c00000;">Socialist</span> government. Police and soldiers defect to the <span style="color: #7A3C00;">**SA**</span> and <span style="color: #3E88B3;">**Stahlhelm**</span>.
+그들의 숫자는 통합된 <span style="color: #c00000;">사회주의</span> 정부의 전망에 반대하는 많은 공무원에 의해 강화되었습니다. 경찰과 군인들이 <span style="color: #7A3C00;">**SA**</span>와 <span style="color: #3E88B3;">**Stahlhelm**</span>으로 전향하고 있습니다.
 
-- @civil_war: It is war.
+- @civil_war: 전쟁이다.
 
 
 @emergency_no_confidence
-title: The <span style="color: #7A3C00;">Nazis</span> immediately call a no-confidence vote against us...
+title: <span style="color: #7A3C00;">나치</span>가 즉시 우리에 대한 불신임 투표를 소집합니다...
 view-if: far_right_coalition < 45
 on-arrival: {!
 Q.z_no_confidence = (Q.z_relation < 45) ? 1 : 0;
@@ -3088,12 +3088,12 @@ Q.no_confidence_succeeds = (Q.no_confidence_votes > 50) ? 1 : 0;
 Q.no_confidence_votes = parseFloat(Q.no_confidence_votes.toFixed(1));
 !}
 
-The <span style="color: #7A3C00;">**NSDAP**</span>[? if dnf_formed:, <span style="color: #003755;">**DNF**</span>?][? if kvp_formed:, <span style="color: #0087DC;">**KVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> will vote against us, of course. The other parties vote their conscience. [? if z_no_confidence: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is voting against us. ?] [? if lvp_no_confidence and lvp_formed: The <span style="color: #FFCC00;">**LVP**</span> will vote against us. ?] [? if kpd_no_confidence: The <span style="color: #700000;">**KPD**</span> votes against us. ?] [? if other_no_confidence: The assortment of minor parties are voting against us. ?]
+<span style="color: #7A3C00;">**NSDAP**</span>[? if dnf_formed:, <span style="color: #003755;">**DNF**</span>?][? if kvp_formed:, <span style="color: #0087DC;">**KVP**</span>?]와 <span style="color: #3E88B3;">**DNVP**</span>는 물론 우리에게 반대표를 던질 것입니다. 다른 정당들은 그들의 양심에 따라 투표합니다. [? if z_no_confidence: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 우리에게 반대 투표하고 있습니다. ?] [? if lvp_no_confidence and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>는 우리에게 반대 투표할 것입니다. ?] [? if kpd_no_confidence: <span style="color: #700000;">**KPD**</span>는 우리에게 반대 투표합니다. ?] [? if other_no_confidence: 잡다한 소수 정당들도 우리에게 반대 투표하고 있습니다. ?]
 
-In total, [+ no_confidence_votes +]% of the Reichstag is against us. [? if no_confidence_succeeds : We have lost the vote of no confidence. ?]
+총합하여, 제국의회의 [+ no_confidence_votes +]%가 우리에게 반대합니다. [? if no_confidence_succeeds : 우리는 불신임 투표에서 졌습니다. ?]
 
-- @no_confidence_elections_new: There will be new elections, which we will try to delay.
-- @no_confidence_win: We have won, for now.
+- @no_confidence_elections_new: 새로운 선거가 있을 것이며, 우리는 그것을 최대한 지연시키려 노력할 것이다.
+- @no_confidence_win: 우리는 이겼다, 당분간은.
 
 
 @no_confidence_elections_new
@@ -3139,7 +3139,7 @@ if (Q.pro_republic < 36) {
 !}
 view-if: no_confidence_votes > 50
 
-The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+다음 선거는 [+ next_election_year +]년 [+ next_election_month : month +]로 잡혔습니다.
 
 
 @no_confidence_win
@@ -3148,24 +3148,24 @@ on-arrival: in_minority_government = 1; in_emergency_government = 0; catastrophe
 achievement: minderheitsregierung
 go-to: catastrophepolitik_minority if catastrophepolitik = 1
 
-We have won the vote of no confidence, and are currently ruling under an <span style="color: #c00000;">**SPD**</span> minority government. Now our task is to fix the country.
+우리는 불신임 투표에서 이겼고, 현재 <span style="color: #c00000;">**SPD**</span> 소수 정부 하에서 통치하고 있습니다. 이제 우리의 임무는 나라를 바로잡는 것입니다.
 
 @catastrophepolitik_minority
 achievement: catastrophepolitik
 
 @social_catholic_coalition
-title: Can we form a <span style="color: #c00000;">Social</span>-[? if not stegerwald_path: <span style="color: #000000;">Catholic</span>?][? if stegerwald_path: <span style="color: #000000;">Christian</span>?] Coalition?
+title: 우리가 <span style="color: #c00000;">사회</span>-[? if not stegerwald_path: <span style="color: #000000;">가톨릭</span>?][? if stegerwald_path: <span style="color: #000000;">기독교</span>?] 연정을 구성할 수 있을까?
 subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> ([+ social_catholic_coalition +]%)
 view-if: social_catholic_coalition >= 50 and ((liberal_parliament == 1 or bourgeois_parliament_ddp == 1) or return_to_normalcy or (ddp_r < 1.5 and not lvp_formed) or (lvp_r < 4 and lvp_formed) or (lvp_relation < 20 and lvp_formed) or (ddp_relation < 20 and not lvp_formed)) and not cvp_formed
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> ([+ social_catholic_coalition +]%) [? if not (((((ddp_relation < 40 and ddp_ideology == "Right") or (ddp_relation < 30 and ddp_ideology == "Moderate") or (ddp_relation < 20 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation < 40 and lvp_ideology == "Right") or (lvp_relation < 30 and lvp_ideology == "Moderate") or (lvp_relation < 25 and lvp_ideology == "Left")) and lvp_formed)) or (not ddp_r and not lvp_formed) or (not lvp_r and lvp_formed) or (liberal_parliament or bourgeois_list_ddp)): - The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?] wants the [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] to be included in order to form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition, strengthening the bourgeois counterweight. ?] [? if not ((z_relation >= 45 and z_ideology == "Right") or (z_relation >= 30 and z_leader == "Joos") or z_leader == "Kaiser"): - We do not have the adequate relations with the <span style="color: #000000;">[+ z_party_name +]</span>. ?] [? if rubicon: - President Hindenburg will not allow a return to <span style="color: #c00000;">socialist</span> governance. ?]
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> ([+ social_catholic_coalition +]%) [? if not (((((ddp_relation < 40 and ddp_ideology == "Right") or (ddp_relation < 30 and ddp_ideology == "Moderate") or (ddp_relation < 20 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation < 40 and lvp_ideology == "Right") or (lvp_relation < 30 and lvp_ideology == "Moderate") or (lvp_relation < 25 and lvp_ideology == "Left")) and lvp_formed)) or (not ddp_r and not lvp_formed) or (not lvp_r and lvp_formed) or (liberal_parliament or bourgeois_list_ddp)): - [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]은 부르주아 세력의 균형추를 강화하기 위해 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정을 형성하도록 [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?]가 포함되기를 원합니다. ?] [? if not ((z_relation >= 45 and z_ideology == "Right") or (z_relation >= 30 and z_leader == "Joos") or z_leader == "Kaiser"): - 우리는 <span style="color: #000000;">[+ z_party_name +]</span>과 적절한 관계를 맺고 있지 않습니다. ?] [? if rubicon: - 힌덴부르크 대통령은 <span style="color: #c00000;">사회주의</span> 통치로의 복귀를 허용하지 않을 것입니다. ?]
 choose-if: ((((((ddp_relation < 40 and ddp_ideology == "Right") or (ddp_relation < 30 and ddp_ideology == "Moderate") or (ddp_relation < 20 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation < 40 and lvp_ideology == "Right") or (lvp_relation < 30 and lvp_ideology == "Moderate") or (lvp_relation < 25 and lvp_ideology == "Left")) and lvp_formed)) or (ddp_r < 1.5 and not lvp_formed) or (lvp_r < 4 and lvp_formed) or (liberal_parliament or bourgeois_parliament_ddp)) and ((z_relation >= 45 and z_ideology == "Right") or (z_relation >= 30 and z_leader == "Joos") or z_leader == "Kaiser")) and not rubicon
 on-arrival: leverage += 5; leverage += 5 if z_ideology == "Left"; leverage -= 10 if stegerwald_path; in_weimar_coalition = 1; in_social_catholic_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; finance_minister_party = "Z"; economic_minister_party = "Z"; agriculture_minister_party = "Z"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Guérard"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Brüning"; finance_minister = "Köhler"; agriculture_minister = "Hermes"; dvp_right += 2; ddp_right += 4; ddp_cohesion -= 3; lvp_right += 3; hindenburg_angry = 50; liberal_cooperation += 3
 achievement: sozialchristliche_koalition
 
-We have enough votes to form a "<span style="color: #c00000;">Social</span>-[? if not stegerwald_path: <span style="color: #000000;">Catholic</span>?][? if stegerwald_path: <span style="color: #000000;">Christian</span>?] Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span> and the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]! This type of coalition has never been tested before[? if ddp_relation < 40: and is only possible as a last resort after our fallout with the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?].
+우리는 <span style="color: #c00000;">**SPD**</span>와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]으로 구성된 "<span style="color: #c00000;">사회</span>-[? if not stegerwald_path: <span style="color: #000000;">가톨릭</span>?][? if stegerwald_path: <span style="color: #000000;">기독교</span>?] 연정" 정부를 구성하기에 충분한 표를 확보했습니다! 이러한 형태의 연정은 이전에 시도된 적이 없으며[? if ddp_relation < 40:, [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]와의 관계가 결렬된 후 최후의 수단으로서만 가능합니다?].
 # add achievement for ts
 
-Who should be the chancellor?
+누가 총리가 되어야 합니까?
 
 - @muller
 - @braun
@@ -3175,19 +3175,19 @@ Who should be the chancellor?
 - @z_chancellor_wirth
 
 @social_liberal_coalition
-title: Can we form a <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition?
+title: 우리가 <span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정을 구성할 수 있을까?
 subtitle: <span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] ([+ social_liberal_coalition +]%)
 view-if: social_liberal_coalition >= 50 and liberal_parliament == 0 and bourgeois_parliament_ddp == 0 and (return_to_normalcy or not z_r) and not cvp_formed
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] ([+ social_liberal_coalition +]%) [? if not ((z_relation < 40 and z_ideology == "Right") or (z_relation < 25 and z_leader == "Joos") or (z_relation < 20 and z_leader == "Kaiser")) and z_r: - The [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] wants the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?] to be included in order to form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> coalition, strengthening the bourgeois counterweight. ?] [? if not ((ddp_relation >= 55 and ddp_ideology == "Right") or (ddp_relation >= 45 and ddp_ideology == "Moderate") or (ddp_relation >= 35 and ddp_ideology == "Left")) and not lvp_formed: - We do not have the adequate relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?] [? if not ((lvp_relation >= 65 and lvp_ideology == "Right") or (lvp_relation >= 55 and lvp_ideology == "Moderate") or (lvp_relation >= 45 and lvp_ideology == "Left")) and lvp_formed: - We do not have adequate relations with the <span style="color: #FFCC00;">**LVP**</span>. ?] [? if rubicon: - President Hindenburg will not support a return to <span style="color: #c00000;">socialist</span> governance. ?][? if president_ideology == "Right": - President [+ president +] is fiercely opposed to <span style="color: #c00000;">socialist</span> governance. ?]
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] ([+ social_liberal_coalition +]%) [? if not ((z_relation < 40 and z_ideology == "Right") or (z_relation < 25 and z_leader == "Joos") or (z_relation < 20 and z_leader == "Kaiser")) and z_r: - [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?]는 부르주아 세력의 균형추를 강화하기 위해 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정을 형성하도록 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]이 포함되기를 원합니다. ?] [? if not ((ddp_relation >= 55 and ddp_ideology == "Right") or (ddp_relation >= 45 and ddp_ideology == "Moderate") or (ddp_relation >= 35 and ddp_ideology == "Left")) and not lvp_formed: - 우리는 <span style="color: #D3C24D;">[+ ddp_name +]</span>과 적절한 관계를 맺고 있지 않습니다. ?] [? if not ((lvp_relation >= 65 and lvp_ideology == "Right") or (lvp_relation >= 55 and lvp_ideology == "Moderate") or (lvp_relation >= 45 and lvp_ideology == "Left")) and lvp_formed: - 우리는 <span style="color: #FFCC00;">**LVP**</span>와 적절한 관계를 맺고 있지 않습니다. ?] [? if rubicon: - 힌덴부르크 대통령은 <span style="color: #c00000;">사회주의</span> 통치로의 복귀를 지지하지 않을 것입니다. ?][? if president_ideology == "Right": - [+ president +] 대통령은 <span style="color: #c00000;">사회주의</span> 통치에 맹렬히 반대합니다. ?]
 choose-if: ((z_relation < 40 and z_ideology == "Right") or (z_relation < 25 and z_leader == "Joos") or (z_relation < 20 and z_leader == "Kaiser") or not z_r) and ((((ddp_relation >= 55 and ddp_ideology == "Right") or (ddp_relation >= 45 and ddp_ideology == "Moderate") or (ddp_relation >= 35 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 65 and lvp_ideology == "Right") or (lvp_relation >= 55 and lvp_ideology == "Moderate") or (lvp_relation >= 45 and lvp_ideology == "Left")) and lvp_formed)) and not rubicon and president_ideology != "Right"
 on-arrival: leverage += 10; leverage += 5 if not lvp_formed; leverage += 5 if lvp_formed and lvp_ideology == "Left"; leverage -= 5 if lvp_formed and lvp_ideology != "Left"; leverage -= 5 if not lvp_formed and ddp_ideology != "Left"; in_weimar_coalition = 1; in_social_liberal_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = ddp_name; interior_minister_party = ddp_name; justice_minister_party = ddp_name; labor_minister_party = ddp_name; reichswehr_minister_party = "I"; finance_minister_party = ddp_name; economic_minister_party = ddp_name; agriculture_minister_party = ddp_name; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "LVP" if lvp_formed; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "LVP" if lvp_formed; finance_minister_party = "LVP" if lvp_formed; economic_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "LVP" if lvp_formed; foreign_minister = "Prittwitz"; interior_minister = "Külz"; justice_minister = "Koch-Weser"; labor_minister = "Lemmer"; reichswehr_minister = "Groener"; economic_minister = "Trendelenburg"; finance_minister = "Reinhold"; agriculture_minister = "Dietrich"; dvp_right += 3; ddp_left += 3; ddp_cohesion += 1; bourgeois_cooperation += 5; lvp_left += 3; hindenburg_angry = 50; liberal_cooperation -= 2
 achievement: sozialliberale_koalition
 go-to: soc_lib_chancellor_menu if not (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175); kulturkampf if (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175)
 
-We have enough votes to form a "<span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span> and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] party! This type of coalition has never been tested before and is only possible as a last resort after our fallout with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+우리는 <span style="color: #c00000;">**SPD**</span>와 [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] 당으로 구성된 "<span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정" 정부를 구성하기에 충분한 표를 확보했습니다! 이러한 형태의 연정은 이전에 시도된 적이 없으며 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과의 관계가 결렬된 후 최후의 수단으로서만 가능합니다.
 # add achievement for ts
 
-Who should be the chancellor?
+누가 총리가 되어야 합니까?
 
 @soc_lib_chancellor_menu
 
@@ -3201,28 +3201,28 @@ achievement: kulturkampf
 go-to: soc_lib_chancellor_menu
 
 @social_liberal_coalition_cvp
-title: We can form a <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition.
+title: 우리는 <span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정을 구성할 수 있다.
 subtitle: <span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] ([+ social_liberal_coalition +]%)
 view-if: social_liberal_coalition >= 50 and liberal_parliament == 0 and bourgeois_parliament_ddp == 0 and cvp_formed
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] ([+ social_liberal_coalition +]%) [? if not ((ddp_relation >= 65 and ddp_ideology == "Right") or (ddp_relation >= 55 and ddp_ideology == "Moderate") or (ddp_relation >= 45 and ddp_ideology == "Left")) and not lvp_formed: - We do not have the adequate relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?] [? if not ((lvp_relation >= 75 and lvp_ideology == "Right") or (lvp_relation >= 65 and lvp_ideology == "Moderate") or (lvp_relation >= 55 and lvp_ideology == "Left")) and lvp_formed: - We do not have adequate relations with the <span style="color: #FFCC00;">**LVP**</span> ?]
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?] ([+ social_liberal_coalition +]%) [? if not ((ddp_relation >= 65 and ddp_ideology == "Right") or (ddp_relation >= 55 and ddp_ideology == "Moderate") or (ddp_relation >= 45 and ddp_ideology == "Left")) and not lvp_formed: - 우리는 <span style="color: #D3C24D;">[+ ddp_name +]</span>과 적절한 관계를 맺고 있지 않습니다. ?] [? if not ((lvp_relation >= 75 and lvp_ideology == "Right") or (lvp_relation >= 65 and lvp_ideology == "Moderate") or (lvp_relation >= 55 and lvp_ideology == "Left")) and lvp_formed: - 우리는 <span style="color: #FFCC00;">**LVP**</span>와 적절한 관계를 맺고 있지 않습니다 ?]
 choose-if: ((((ddp_relation >= 65 and ddp_ideology == "Right") or (ddp_relation >= 55 and ddp_ideology == "Moderate") or (ddp_relation >= 45 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 75 and lvp_ideology == "Right") or (lvp_relation >= 65 and lvp_ideology == "Moderate") or (lvp_relation >= 55 and lvp_ideology == "Left")) and lvp_formed))
 on-arrival: leverage += 5; leverage += 5 if not lvp_formed; leverage += 5 if lvp_formed and lvp_ideology == "Left"; leverage -= 5 if lvp_formed and lvp_ideology != "Left"; leverage -= 5 if not lvp_formed and ddp_ideology != "Left"; in_weimar_coalition = 1; in_social_liberal_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = ddp_name; interior_minister_party = ddp_name; justice_minister_party = ddp_name; labor_minister_party = ddp_name; reichswehr_minister_party = "I"; finance_minister_party = ddp_name; economic_minister_party = ddp_name; agriculture_minister_party = ddp_name; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "LVP" if lvp_formed; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "LVP" if lvp_formed; finance_minister_party = "LVP" if lvp_formed; economic_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "LVP" if lvp_formed; foreign_minister = "Prittwitz"; interior_minister = "Külz"; justice_minister = "Koch-Weser"; labor_minister = "Lemmer"; reichswehr_minister = "Groener"; economic_minister = "Trendelenburg"; finance_minister = "Reinhold"; agriculture_minister = "Dietrich"; dvp_right += 3; ddp_left += 3; ddp_cohesion += 1; bourgeois_cooperation += 3; lvp_left += 3; hindenburg_angry = 50; liberal_cooperation -= 4
 achievement: sozialliberale_koalition
 go-to: soc_lib_chancellor_menu if not (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175); kulturkampf if (secularized and abortion_rights and womens_work and family_law and trans_rights and reformed_183 and repealed_175)
 
-We have enough votes to form a "<span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span> and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] party! This coalition has never been tested before and is only possible because the behemoth right-wing <span style="color: #000000;">**[+ z_party_name +]**</span> includes certain <span style="color: #3E88B3;">**DNVP**</span> elements.
+우리는 <span style="color: #c00000;">**SPD**</span>와 [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] 당으로 구성된 "<span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정" 정부를 구성하기에 충분한 표를 확보했습니다! 이 연정은 이전에 시도된 적이 없으며 거대한 우익 <span style="color: #000000;">**[+ z_party_name +]**</span>이 특정 <span style="color: #3E88B3;">**DNVP**</span> 요소들을 포함하고 있기 때문에만 가능합니다.
 
-Who should be the chancellor?
+누가 총리가 되어야 합니까?
 
 @social_catholic_coalition_cvp
-title: Can we form a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition?
+title: 우리가 <span style="color: #c00000;">사회</span>-<span style="color: #000000;">기독교</span> 연정을 구성할 수 있을까?
 subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> ([+ social_catholic_coalition +]%)
 view-if: social_catholic_coalition >= 50 and cvp_formed
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> ([+ social_catholic_coalition +]%) [? if not ((z_relation >= 70 and cvp_ideology == "Moderate") or (z_relation >= 60 and cvp_ideology == "Left")) and cvp_ideology != "Right": - We do not have the adequate relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]. ?][? if cvp_ideology == "Right": - Under its current leadership, the <span style="color: #000000;">[+ z_party_name +]</span> will never agree to a coalition with us. ?]
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> ([+ social_catholic_coalition +]%) [? if not ((z_relation >= 70 and cvp_ideology == "Moderate") or (z_relation >= 60 and cvp_ideology == "Left")) and cvp_ideology != "Right": - 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]과 적절한 관계를 맺고 있지 않습니다. ?][? if cvp_ideology == "Right": - 현재 지도부 하에서, <span style="color: #000000;">[+ z_party_name +]</span>은 우리와의 연정에 결코 동의하지 않을 것입니다. ?]
 choose-if: ((z_relation >= 70 and cvp_ideology == "Moderate") or (z_relation >= 60 and cvp_ideology == "Left")) and cvp_ideology != "Right"
 go-to: social_catholic_coalition_cvp_negotiations
 
-We have enough votes to form a "<span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span> and the <span style="color: #000000;">**CVP**</span>.  However, whether the <span style="color: #000000;">**[+ z_party_name +]**</span>—filled with <span style="color: #3E88B3;">nationalist</span> and staunchly anti-<span style="color: #9B0000;">Marxist</span> elements—would ever truly accept such a coalition is another matter entirely. Still, the mere fact that they are even willing to engage in talks is an encouraging early sign.
+우리는 <span style="color: #c00000;">**SPD**</span>와 <span style="color: #000000;">**CVP**</span>로 구성된 "<span style="color: #c00000;">사회</span>-<span style="color: #000000;">기독교</span> 연정" 정부를 구성하기에 충분한 표를 확보했습니다. 하지만, <span style="color: #3E88B3;">민족주의적</span>이고 확고한 반<span style="color: #9B0000;">마르크스주의</span> 요소들로 채워진 <span style="color: #000000;">**[+ z_party_name +]**</span>이 그러한 연정을 진정으로 받아들일지는 완전히 다른 문제입니다. 그럼에도 불구하고, 그들이 대화에 참여할 의향이라도 있다는 단순한 사실은 고무적인 초기 신호입니다.
 
 @social_catholic_coalition_cvp_negotiations
 on-arrival: {!
@@ -3260,9 +3260,9 @@ Q.cvp_negotiations_points = 0;
 !}
 go-to: cvp_demands_menu
 
-We've met with the leadership of the <span style="color: #000000;">**[+ z_party_name +]**</span>, primarily those formerly from the <span style="color: #000000;">Center</span>, who have now presented their demands. There is some wiggle room regarding which demands we accept, and it’s up to us to use it wisely. Our previous actions also influence how lenient they are willing to be in pushing their demands.
+우리는 주로 이전에 <span style="color: #000000;">중앙당</span> 출신인 <span style="color: #000000;">**[+ z_party_name +]**</span>의 지도부를 만났고, 그들은 이제 그들의 요구 사항을 제시했습니다. 우리가 어떤 요구를 받아들일지에 관해 약간의 여지가 있으며, 그것을 현명하게 사용하는 것은 우리에게 달려 있습니다. 우리의 이전 행동들도 그들이 그들의 요구를 밀어붙이는 데 있어 얼마나 관대할지에 영향을 미칩니다.
 
-The demands are listed in descending order of importance to the <span style="color: #000000;">**[+ z_party_name +]**</span>.
+요구 사항들은 <span style="color: #000000;">**[+ z_party_name +]**</span>에게 중요한 순서대로 나열되어 있습니다.
 
 @cvp_demands_menu
 
@@ -3272,101 +3272,102 @@ The demands are listed in descending order of importance to the <span style="col
 - #drop_cvp_demands
 
 @cvp_ministers
-title: Forfeit our rights to the Agriculture, Reichswehr, and Justice Ministry.
-subtitle: This will bring an end to our efforts to reform the most backward and <span style="color: #808080;">reactionary</span> parts of Germany.
+title: 농업부, 국방부, 그리고 법무부 장관직에 대한 권리를 포기한다.
+subtitle: 이것은 독일의 가장 낙후되고 <span style="color: #808080;">반동적인</span> 부분들을 개혁하려는 우리의 노력에 초를 칠 것입니다.
 tags: cvp_demands
 view-if: cvp_ministers_accepted = 0
 on-arrival: cvp_ministers_accepted = 1; cvp_negotiations_points += 15
 go-to: cvp_demands_menu
 
-A demand put forth by their <span style="color: #3E88B3;">nationalist</span> wing, meeting this has secured us significant progress in negotiations.
+그들의 <span style="color: #3E88B3;">민족주의</span> 파벌에 의해 제기된 요구이며, 이것을 충족시키는 것은 협상에서 상당한 진전을 확보했습니다.
 
 @cvp_economy
-title: Reject any form of socialization to the German economy, and maintain a budgetary surplus at all times.
-subtitle: This will limit our ability to reform the German economy. [? if budget < 0: The state currently has a deficit, and austerity measures are required. ?]
+title: 독일 경제에 대한 어떤 형태의 사회화도 거부하고, 항상 예산 흑자를 유지하라.
+subtitle: 이것은 독일 경제를 개혁할 우리의 능력을 제한할 것입니다. [? if budget < 0: 국가는 현재 적자 상태이며, 긴축 조치가 요구됩니다. ?]
 tags: cvp_demands
 view-if: cvp_economy_accepted = 0
 on-arrival: cvp_economy_accepted = 1; cvp_negotiations_points += 15;
 go-to: cvp_demands_menu
 
-A demand put forth by their <span style="color: #3E88B3;">nationalist</span> and <span style="color: #C0A054;">industrial</span> wing, meeting this has secured us significant progress in negotiations.
+그들의 <span style="color: #3E88B3;">민족주의</span> 및 <span style="color: #C0A054;">산업계</span> 파벌에 의해 제기된 요구이며, 이것을 충족시키는 것은 협상에서 상당한 진전을 확보했습니다.
 
 @cvp_chancellor
-title: Forfeit our right to the Chancellorship.
-subtitle: This will limit our ability to conduct government policy. [? if budget < 0 : We will be inheriting a deficit, so we will have to implement temporary austerity. ?]
+title: 총리직에 대한 권리를 포기한다.
+subtitle: 이것은 정부 정책을 수행할 우리의 능력을 제한할 것입니다. [? if budget < 0 : 우리는 적자를 물려받을 것이므로, 일시적인 긴축을 시행해야 할 것입니다. ?]
 tags: cvp_demands
 view-if: cvp_chancellor_accepted = 0
 on-arrival: cvp_chancellor_accepted = 1; cvp_negotiations_points += 10;
 go-to: cvp_demands_menu
 
-A demand put forth by their <span style="color: #3E88B3;">nationalist</span> Right-<span style="color: #000000;">Catholic</span>, and <span style="color: #C0A054;">industrial</span> wing, meeting this has secured us substantial progress in negotiations.
+그들의 <span style="color: #3E88B3;">민족주의적</span> 우파-<span style="color: #000000;">가톨릭</span>, 그리고 <span style="color: #C0A054;">산업</span> 파벌에 의해 제기된 요구이며, 이것을 충족시키는 것은 협상에서 상당한 진전을 확보했습니다.
 
 @cvp_reichsbanner
-title: We must disarm the Reichsbanner.
+title: 우리는 국기단을 무장 해제해야 합니다.
 subtitle: The <span style="color: #000000;">**[+ z_party_name +]**</span> insist that they pose a threat to the stability of the government—and that the job should be left to the police.
 tags: cvp_demands
 view-if: cvp_reichsbanner_accepted = 0
 on-arrival: cvp_reichsbanner_accepted = 1; cvp_negotiations_points += 10;
 go-to: cvp_demands_menu
 
-A demand put forth by their <span style="color: #3E88B3;">nationalist</span> and right-<span style="color: #000000;">Catholic</span> wing, meeting this has secured us substantial progress in negotiations.
+
+그들의 <span style="color: #3E88B3;">민족주의</span> 및 우파-<span style="color: #000000;">가톨릭</span> 파벌에 의해 제기된 요구이며, 이것을 충족시키는 것은 협상에서 상당한 진전을 확보했습니다.
 
 @cvp_women
-title: Abandon our efforts toward Women's and <span style="color: red;">Ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights.
-subtitle: We will face backlash from advocacy groups.
+title: 여성 및 <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span><span style="color: blue;">의</span> <span style="color: purple;">권리</span>를 향한 우리의 노력을 포기하라.
+subtitle: 우리는 옹호 단체들로부터 반발에 직면할 것입니다.
 tags: cvp_demands
 view-if: cvp_women_accepted = 0
 on-arrival: cvp_women_accepted = 1; cvp_negotiations_points += 5;
 go-to: cvp_demands_menu
 
-A demand put forth by their <span style="color: #8ED8E4;">Christian</span> wing, meeting this has secured us some progress in negotiations.
+그들의 <span style="color: #8ED8E4;">기독교</span> 파벌에 의해 제기된 요구이며, 이것을 충족시키는 것은 협상에서 약간의 진전을 확보했습니다.
 
 @drop_cvp_ministers
-title: Drop our promise to forfeit the Agriculture, Reichswehr, and Justice Ministry.
+title: 농업부, 국방부, 그리고 법무부를 포기하겠다는 우리의 약속을 철회한다.
 tags: drop_cvp_demands
 view-if: cvp_ministers_accepted = 1
 on-arrival: cvp_ministers_accepted = 0; cvp_negotiations_points -= 15
 go-to: cvp_demands_menu
 
 @drop_cvp_economy
-title: Drop our promise to reject any form of socialization to the German economy.
+title: 독일 경제에 대한 어떤 형태의 사회화도 거부하겠다는 우리의 약속을 철회한다.
 tags: drop_cvp_demands
 view-if: cvp_economy_accepted = 1
 on-arrival: cvp_economy_accepted = 0; cvp_negotiations_points -= 15
 go-to: cvp_demands_menu
 
 @drop_cvp_chancellor
-title: Drop our promise to forfeit the Chancellorship.
+title: 총리직을 포기하겠다는 우리의 약속을 철회한다.
 tags: drop_cvp_demands
 view-if: cvp_chancellor_accepted = 1
 on-arrival: cvp_chancellor_accepted = 0; cvp_negotiations_points -= 10
 go-to: cvp_demands_menu
 
 @drop_cvp_reichsbanner
-title: Drop our promise to disarm the Reichsbanner.
+title: 국기단을 무장 해제하겠다는 우리의 약속을 철회한다.
 tags: drop_cvp_demands
 view-if: cvp_reichsbanner_accepted = 1
 on-arrival: cvp_reichsbanner_accepted = 0; cvp_negotiations_points -= 10
 go-to: cvp_demands_menu
 
 @drop_cvp_women
-title: Drop our promise to abandon efforts toward Women's and <span style="color: red;">Ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights.
+title: 여성 및 <span style="color: red;">동</span><span style="color: orange;">성</span><span style="color: yellow;">애</span><span style="color: green;">자</span><span style="color: blue;">의</span> <span style="color: purple;">권리</span>를 향한 노력을 포기하겠다는 우리의 약속을 철회한다.
 tags: drop_cvp_demands
 view-if: cvp_women_accepted = 1
 on-arrival: cvp_women_accepted = 0; cvp_negotiations_points -= 5;
 go-to: cvp_demands_menu
 
 @refuse_cvp_demands
-title: These demands are ridiculous! 
-subtitle: We have to find another way to form a government.
+title: 이 요구들은 터무니없다!
+subtitle: 우리는 정부를 구성할 다른 방법을 찾아야 합니다.
 on-departure: cvp_negotiations_fail = 1
 go-to: coalition_menu 
 
 @finalize_cvp_demands
-title: We have come to an agreement with the <span style="color: #000000;">**[+ z_party_name +]**</span>.
-subtitle: This is an unstable arrangement, but it will set a historic precedent.
+title: 우리는 <span style="color: #000000;">**[+ z_party_name +]**</span>과 합의에 도달했다.
+subtitle: 이것은 불안정한 합의지만, 역사적 선례를 세울 것입니다.
 choose-if: cvp_negotiations_points >= cvp_negotiations_min
-unavailable-subtitle: The <span style="color: #000000;">[+ z_party_name +]</span> is not satisfied with our current promises.
+unavailable-subtitle: <span style="color: #000000;">[+ z_party_name +]</span>은 우리의 현재 약속들에 만족하지 않습니다.
 on-arrival: {!
 if (Q.cvp_reichsbanner_accepted) {
     Q.rb_militancy = 0.02;
@@ -3406,9 +3407,9 @@ achievement: frahm_und_brandt
 on-arrival: leverage -= 10; leverage += 5 if cvp_ideology == "Left"; in_weimar_coalition = 1; in_social_catholic_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; finance_minister_party = "Z"; economic_minister_party = "Z"; agriculture_minister_party = "Z"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Guérard"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Brüning"; finance_minister = "Köhler"; agriculture_minister = "Hermes"; dvp_right += 2; ddp_right += 4; ddp_cohesion -= 3; lvp_right += 3; hindenburg_angry = 30; liberal_cooperation += 5; z_relation += 10; workers_z += 3; unemployed_z += 3; new_middle_z -= 6; old_middle_z -= 10; rural_z -= 6; catholics_z += 4; new_middle_dnf += 2; new_middle_dvp += 2; new_middle_ddp += 2; new_middle_lvp += 4; old_middle_dnf += 6; old_middle_dvp += 4; old_middle_dvp += 4; rural_dnf += 4; rural_dvp += 2; rural_lvp += 2
 achievement: sozialchristliche_koalition
 
-We have somehow convinced the <span style="color: #000000;">**[+ z_party_name +]**</span> to enter in a <span style="color: #c00000;">Social</span>-<span style="color: #000000;">Christian</span> Coalition with us! The <span style="color: #3E88B3;">nationalist</span> elements within the <span style="color: #000000;">**[+ z_party_name +]**</span> are disgusted by this, never actually expecting the negotiations to have a successful conclusion. They're refusing to participate in government through cabinet positions as to not be associated with the <span style="color: #c00000;">socialists</span>.
+우리는 어떻게든 <span style="color: #000000;">**[+ z_party_name +]**</span>이 우리와 함께 <span style="color: #c00000;">사회</span>-<span style="color: #000000;">기독교</span> 연정에 참여하도록 설득했습니다! <span style="color: #000000;">**[+ z_party_name +]**</span> 내의 <span style="color: #3E88B3;">민족주의</span> 요소들은 이에 혐오감을 느끼며, 협상이 성공적으로 끝날 것이라고는 전혀 예상하지 않았습니다. 그들은 <span style="color: #c00000;">사회주의자들</span>과 연관되지 않기 위해 내각 직위를 통해 정부에 참여하는 것을 거부하고 있습니다.
 
-Who should be the chancellor?
+누가 총리가 되어야 합니까?
 
 - @muller
 - @braun
@@ -3417,32 +3418,32 @@ Who should be the chancellor?
 
 @weimar_coalition_liberal_parliament
 title: We can form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
-subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">**SAPD**</span> toleration ?] ([+ weimar_coalition +]%)
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">SAPD</span> toleration?] ([+ weimar_coalition +]%) [? if not ((z_relation >= 30 and z_ideology == "Right" and year < 1930) or (z_relation >= 40 and z_ideology == "Right" and year >= 1930) or (z_relation >= 25 and z_leader == "Joos") or (z_relation >= 20 and z_leader == "Kaiser")): - We do not have the adequate relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]. ?] [? if not ((ddp_relation >= 30 and ddp_ideology == "Right") or (ddp_relation >= 25 and ddp_ideology == "Moderate") or (ddp_relation >= 20 and ddp_ideology == "Left")) and not lvp_formed: - We do not have the adequate relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?] [? if not ((lvp_relation >= 40 and lvp_ideology == "Right") or (lvp_relation >= 35 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and lvp_formed: - We do not have adequate relations with the <span style="color: #FFCC00;">**LVP**</span> ?] [? if rubicon: - President Hindenburg will not allow a return to <span style="color: #c00000;">socialist</span> governance. ?][? if president_ideology == "Right": - President [+ president +] is fiercely opposed to <span style="color: #c00000;">socialist</span> governance. ?]
+subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">**SAPD**</span> 묵인 ?] ([+ weimar_coalition +]%)
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">SAPD</span> 묵인?] ([+ weimar_coalition +]%) [? if not ((z_relation >= 30 and z_ideology == "Right" and year < 1930) or (z_relation >= 40 and z_ideology == "Right" and year >= 1930) or (z_relation >= 25 and z_leader == "Joos") or (z_relation >= 20 and z_leader == "Kaiser")): - 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]과 적절한 관계를 맺고 있지 않습니다. ?] [? if not ((ddp_relation >= 30 and ddp_ideology == "Right") or (ddp_relation >= 25 and ddp_ideology == "Moderate") or (ddp_relation >= 20 and ddp_ideology == "Left")) and not lvp_formed: - 우리는 <span style="color: #D3C24D;">[+ ddp_name +]</span>과 적절한 관계를 맺고 있지 않습니다. ?] [? if not ((lvp_relation >= 40 and lvp_ideology == "Right") or (lvp_relation >= 35 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and lvp_formed: - 우리는 <span style="color: #FFCC00;">**LVP**</span>와 적절한 관계를 맺고 있지 않습니다 ?] [? if rubicon: - 힌덴부르크 대통령은 <span style="color: #c00000;">사회주의</span> 통치로의 복귀를 허용하지 않을 것입니다. ?][? if president_ideology == "Right": - [+ president +] 대통령은 <span style="color: #c00000;">사회주의</span> 통치에 맹렬히 반대합니다. ?]
 choose-if: ((z_relation >= 30 and z_ideology == "Right" and year < 1930) or (z_relation >= 40 and z_ideology == "Right" and year >= 1930) or (z_relation >= 25 and z_leader == "Joos") or (z_relation >= 20 and z_leader == "Kaiser")) and ((((ddp_relation >= 30 and ddp_ideology == "Right") or (ddp_relation >= 25 and ddp_ideology == "Moderate") or (ddp_relation >= 20 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 40 and lvp_ideology == "Right") or (lvp_relation >= 35 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and lvp_formed)) and not rubicon and president_ideology != "Right"
 on-arrival: weimar_coalition_failed = 1
 view-if: (weimar_coalition >= 50 or (weimar_coalition >= 49.5 and other_r >= 8 and (year < 1930 or year > 1932))) and (liberal_parliament == 1 or bourgeois_parliament_ddp == 1) and not lvp_formed and not cvp_formed
 
-We have enough votes to form a "<span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] parties. However the [? if liberal_parliament: liberals?][? if bourgeois_parliament_ddp: bourgeois?] are in a parliamentary group which prevents the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> from being included in our coalition by themselves.
+우리는 <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 그리고 [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] 당들로 구성된 "<span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 연정" 정부를 구성하기에 충분한 표를 확보했습니다. 하지만 [? if liberal_parliament: 자유주의자들?][? if bourgeois_parliament_ddp: 부르주아?]은 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>이 우리 연정에 단독으로 참여하는 것을 막는 의회 교섭단체에 속해 있습니다.
 
-We can either spend resources to convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to break away from this arrangement, or to find another governing arrangement.
+우리는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>이 이 합의에서 이탈하도록 설득하기 위해 자원을 소비하거나, 다른 정부 합의를 찾을 수 있습니다.
 
 - @use_resources_weimar
-- @coalition_menu: Try a different governing arrangement.
+- @coalition_menu: 다른 정부 합의를 시도한다.
 
 @use_resources_weimar
-title: Use our resources to smooth over the creation of a coalition.
-subtitle: -2 resources
-unavailable-subtitle: Not enough resources (need 2).
+title: 연정의 구성을 원활하게 하기 위해 우리의 자원을 사용한다.
+subtitle: -2 자원
+unavailable-subtitle: 자원이 충분하지 않음 (2 필요).
 choose-if: resources >= 2
 on-arrival: resources -= 2; liberal_cooperation -= 3 if liberal_parliament > 0; liberal_parliament = 0 if liberal_parliament > 0; bourgeois_cooperation -= 3 if bourgeois_parliament_ddp; bourgeois_parliament_ddp = 0 if bourgeois_parliament_ddp > 0; weimar_coalition_failed = 0
 go-to: weimar_coalition
 
 @weimar_coalition
-title: We can form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
-subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">**SAPD**</span> toleration ?] ([+ weimar_coalition +]%)
+title: 우리는 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정을 구성할 수 있습니다.
+subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">**SAPD**</span> 묵인 ?] ([+ weimar_coalition +]%)
 view-if: (weimar_coalition >= 50 or (weimar_coalition >= 49.5 and other_r >= 8 and (year < 1930 or year > 1932))) and liberal_parliament == 0 and bourgeois_parliament_ddp == 0 and not cvp_formed
-unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">SAPD</span> toleration?] ([+ weimar_coalition +]%) [? if not ((z_relation >= 30 and z_ideology == "Right" and year < 1930) or (z_relation >= 40 and z_ideology == "Right" and year >= 1930) or (z_relation >= 25 and z_leader == "Joos") or (z_relation >= 20 and z_leader == "Kaiser")): - We do not have the adequate relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]. ?] [? if not ((ddp_relation >= 30 and ddp_ideology == "Right") or (ddp_relation >= 25 and ddp_ideology == "Moderate") or (ddp_relation >= 20 and ddp_ideology == "Left")) and not lvp_formed: - We do not have the adequate relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?] [? if not ((lvp_relation >= 40 and lvp_ideology == "Right") or (lvp_relation >= 35 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and lvp_formed: - We do not have adequate relations with the <span style="color: #FFCC00;">**LVP**</span> ?] [? if rubicon: - President Hindenburg will not allow a return to <span style="color: #c00000;">socialist</span> governance. ?][? if president_ideology == "Right": - President [+ president +] is fiercely opposed to <span style="color: #c00000;">socialist</span> governance. ?]
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed:<span style="color: #FFCC00;">LVP</span>?][? if sapd_formed and kpd_relation >= 30 :&nbsp;+ <span style="color: #9B0000;">SAPD</span> 묵인?] ([+ weimar_coalition +]%) [? if not ((z_relation >= 30 and z_ideology == "Right" and year < 1930) or (z_relation >= 40 and z_ideology == "Right" and year >= 1930) or (z_relation >= 25 and z_leader == "Joos") or (z_relation >= 20 and z_leader == "Kaiser")): - 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]과 적절한 관계를 맺고 있지 않습니다. ?] [? if not ((ddp_relation >= 30 and ddp_ideology == "Right") or (ddp_relation >= 25 and ddp_ideology == "Moderate") or (ddp_relation >= 20 and ddp_ideology == "Left")) and not lvp_formed: - 우리는 <span style="color: #D3C24D;">[+ ddp_name +]</span>과 적절한 관계를 맺고 있지 않습니다. ?] [? if not ((lvp_relation >= 40 and lvp_ideology == "Right") or (lvp_relation >= 35 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and lvp_formed: - 우리는 <span style="color: #FFCC00;">**LVP**</span>와 적절한 관계를 맺고 있지 않습니다 ?] [? if rubicon: - 힌덴부르크 대통령은 <span style="color: #c00000;">사회주의</span> 통치로의 복귀를 허용하지 않을 것입니다. ?][? if president_ideology == "Right": - [+ president +] 대통령은 <span style="color: #c00000;">사회주의</span> 통치에 맹렬히 반대합니다. ?]
 choose-if: ((z_relation >= 30 and z_ideology == "Right" and year < 1930) or (z_relation >= 40 and z_ideology == "Right" and year >= 1930) or (z_relation >= 25 and z_leader == "Joos") or (z_relation >= 20 and z_leader == "Kaiser")) and ((((ddp_relation >= 30 and ddp_ideology == "Right") or (ddp_relation >= 25 and ddp_ideology == "Moderate") or (ddp_relation >= 20 and ddp_ideology == "Left")) and not lvp_formed) or (((lvp_relation >= 40 and lvp_ideology == "Right") or (lvp_relation >= 35 and lvp_ideology == "Moderate") or (lvp_relation >= 30 and lvp_ideology == "Left")) and lvp_formed)) and not rubicon and president_ideology != "Right"
 on-arrival: leverage += 5 if not lvp_formed; leverage += 5 if z_ideology == "Left"; in_weimar_coalition = 1; spd_in_government = 1; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = ddp_name; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "Z"; agriculture_minister_party = "Z"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Koch-Weser"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Dietrich"; finance_minister = "Köhler"; agriculture_minister = "Hermes"; dvp_right += 2; ddp_left += 2; ddp_cohesion += 2; bourgeois_cooperation += 2; lvp_left += 2; hindenburg_angry = 40; liberal_cooperation -= 2 if not liberal_parliament_seen; grosse_weimarer_koalition = 1 if z_leader == "Kaiser" and lvp_leader == "Heuss" and lvp_formed
 achievement: weimar_coalition
@@ -3458,11 +3459,11 @@ go-to: weimar_coalition_2
 @weimar_coalition_2
 go-to: weimar_spd_lead if (z_leader != "Stegerwald" or (z_leader == "Stegerwald" and (z_r - bvp_r) < 16)) or president_ideology == "Left"; weimar_z_lead if (z_leader == "Stegerwald" and (z_r - bvp_r) >= 16) and president_ideology != "Left"
 
-We have enough votes to form a "<span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition" government consisting of the <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] parties! This has been our preferred governing coalition since 1919. [? if weimar_coalition < 50: We are able to form a minority coalition, thanks to the toleration of the <span style="color: #63C489;">German-Hanoverian Party</span>. 🙏🙏🙏 ?]
+우리는 <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 그리고 [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?] 당들로 구성된 "<span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정" 정부를 구성하기에 충분한 표를 확보했습니다! 이것은 1919년 이래 우리가 선호해 온 통치 연정입니다. [? if weimar_coalition < 50: 우리는 <span style="color: #63C489;">독일-하노버 당</span>의 묵인 덕분에 소수 연정을 구성할 수 있습니다. 🙏🙏🙏 ?]
 
 @weimar_spd_lead
 
-Who should be the chancellor?
+누가 총리가 되어야 합니까?
 
 - @muller
 - @braun
@@ -3475,44 +3476,44 @@ Who should be the chancellor?
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage -= 5; coalition_dissent = 1; hindenburg_angry -= 10
 go-to: ministries
 
-Normally, the <span style="color: #c00000;">**SPD**</span> takes the lead in forming such a coalition, however, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], under Stegerwald, has become a significant force in German politics. This development has led President [+ president +] to ask the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to take the lead role in forming government.
+보통은 <span style="color: #c00000;">**SPD**</span>가 그러한 연정을 구성하는 데 주도권을 잡지만, 슈테거발트 하의 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 독일 정치에서 중요한 세력이 되었습니다. 이러한 상황은 [+ president +] 대통령이 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에게 정부 구성의 주도적 역할을 맡도록 요청하게 만들었습니다.
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chancellor is likely to be Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?][? if chancellor = "Brüning" : &nbsp;again?]. He is known for his conservatism and sympathy for monarchism, being on the [? if not cvp_formed: right wing?][? if cvp_formed: left wing?] of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and Stegerwald's protege. 
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 총리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝이 될 가능성이 높습니다[? if chancellor = "Brüning" : &nbsp;또다시?]. 그는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 [? if not cvp_formed: 우익?][? if cvp_formed: 좌익?]에 있으며 슈테거발트의 제자로서 보수주의와 군주제에 대한 동정심으로 알려져 있습니다.
 
 @breitscheid_coalition_chancellor
-title: Rudolf Breitscheid for Chancellor
-subtitle: Breitscheid is viewed as friendlier towards the left of the <span style="color: #c00000;">**SPD**</span>.
+title:  루돌프 브라이트샤이트를 총리로
+subtitle: 브라이트샤이트는 <span style="color: #c00000;">**SPD**</span>의 좌파에게 더 우호적인 것으로 보입니다.
 view-if: year >= 1930
 choose-if: not cvp_chancellor_accepted
-unavailable-subtitle: We've promised to forfeit the Chancellorship to the <span style="color: #000000;">[+ z_party_name +]</span>.
+unavailable-subtitle: 우리는 <span style="color: #000000;">[+ z_party_name +]</span>에게 총리직을 양보하겠다고 약속했습니다.
 on-arrival: chancellor = "Breitscheid"; chancellor_party = "SPD"; hindenburg_angry += 5
 go-to: ministries
 
-Rudolf Breitscheid has been appointed chancellor.
+루돌프 브라이트샤이트가 총리로 임명되었습니다.
 
 
 @grand_coalition
-title: We can form a Grand Coalition.
+title: 우리는 대연정을 구성할 수 있습니다.
 view-if: grand_coalition >= 50 and grand_coalition_failed == 0 and dvp_exist and not cvp_formed and not rubicon
 choose-if: ((black_thursday_seen == 0 or (black_thursday_seen == 1 and dvp_ideology != "Right")) or lvp_formed) and president_ideology != "Right" 
-unavailable-subtitle: [? if black_thursday_seen == 1 and dvp_ideology = "Right": The <span style="color: #C0A054;">**DVP**</span> refuses to work with us. ?][? if president_ideology == "Right": - President [+ president +] is fiercely opposed to <span style="color: #c00000;">socialist</span> governance. ?]
+unavailable-subtitle: [? if black_thursday_seen == 1 and dvp_ideology = "Right": <span style="color: #C0A054;">**DVP**</span>는 우리와 함께 일하기를 거부합니다. ?][? if president_ideology == "Right": - [+ president +] 대통령은 <span style="color: #c00000;">사회주의</span> 통치에 맹렬히 반대합니다. ?]
 subtitle: <span style="color: #c00000;">**SPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] ([+ grand_coalition +]%)
 go-to: grand_coalition_spd_lead if ((n_elections <= 1 and largest_party == "SPD") or (largest_party == "SPD" and spd_r >= 30 and (z_r - bvp_r) < 15) or (largest_party == "SPD" and spd_r >= 35 and (z_r - bvp_r) >= 15) or president_ideology == "Left") and (not bourgeois_parliament or lvp_formed); grand_coalition_z_lead if president_ideology != "Left" and ((n_elections > 1 and spd_r < 30 and (z_r - bvp_r) < 15) or (n_elections > 1 and spd_r < 35 and (z_r - bvp_r) >= 15) or (n_elections <= 1 and largest_party != "SPD")) and (not bourgeois_parliament or lvp_formed); grand_coalition_bourgeois_parliament if bourgeois_parliament and not lvp_formed
 
 @grand_coalition_bourgeois_parliament
 on-arrival: grand_coalition_failed = 1
 
-There are enough votes to form a majority coalition consisting of the <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>), <span style="color: #A2D8E0;">**Bavarian People's**</span> (<span style="color: #A2D8E0;">**BVP**</span>), [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?][? if not lvp_formed: , and <span style="color: #C0A054;">**People's**</span> (<span style="color: #C0A054;">**DVP**</span>)?] parties.
+<span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>), <span style="color: #A2D8E0;">**바이에른 인민**</span> (<span style="color: #A2D8E0;">**BVP**</span>), [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?][? if not lvp_formed: , 그리고 <span style="color: #C0A054;">**인민**</span> (<span style="color: #C0A054;">**DVP**</span>)?] 당들로 구성된 과반 연정을 구성하기에 충분한 표가 있습니다.
 
-However the bourgeois are in a parliamentary group which prevents the liberal parties from from being included in our coalition by themselves. We can either spend resources to convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and <span style="color: #C0A054;">**DVP**</span> to break away from this arrangement, or to find another governing arrangement. The <span style="color: #C0A054;">**DVP**</span> is very reluctant to this step.
+하지만 부르주아는 자유주의 정당들이 우리 연정에 단독으로 참여하는 것을 막는 의회 교섭단체에 속해 있습니다. 우리는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>과 <span style="color: #C0A054;">**DVP**</span>가 이 합의에서 이탈하도록 설득하기 위해 자원을 소비하거나, 다른 정부 합의를 찾을 수 있습니다. <span style="color: #C0A054;">**DVP**</span>는 이 조치에 대해 매우 꺼려하고 있습니다.
 
 - @use_resources_groko
-- @coalition_menu: Try a different governing arrangement.
+- @coalition_menu: 다른 정부 합의를 시도한다.
 
 @use_resources_groko
-title: Use our resources to smooth over the creation of a coalition.
-subtitle: -5 resources
-unavailable-subtitle: Not enough resources (need 5).
+title: 연정의 구성을 원활하게 하기 위해 우리의 자원을 사용한다.
+subtitle: -5 자원
+unavailable-subtitle: 자원이 충분하지 않음 (5 필요).
 choose-if: resources >= 5
 on-arrival: resources -= 5; bourgeois_cooperation -= 5 if bourgeois_parliament > 0; bourgeois_parliament = 0 if bourgeois_parliament > 0; bourgeois_cooperation -= 3 if bourgeois_parliament_ddp; bourgeois_parliament_ddp = 0 if bourgeois_parliament_ddp > 0; dvp_relation = 30 if dvp_relation < 30; grand_coalition_failed = 0
 go-to: grand_coalition
@@ -3522,19 +3523,19 @@ go-to: grand_coalition
 @grand_coalition_z_lead
 go-to: grand_coalition_z_lead_2 if ((dvp_relation >= 30 and not lvp_formed) or (lvp_relation >= 30 and lvp_formed)); grand_coalition_fail if ((dvp_relation < 30 and not lvp_formed) or (lvp_relation < 30 and lvp_formed))
 
-There are enough votes to form a majority coalition consisting of the <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>), <span style="color: #A2D8E0;">**Bavarian People's**</span> (<span style="color: #A2D8E0;">**BVP**</span>), [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?][? if not lvp_formed: , and <span style="color: #C0A054;">**People's**</span> (<span style="color: #C0A054;">**DVP**</span>)?] parties. Given our rather weak electoral performance, [? if spd_no_confidence = 1 : and our previous vote of no confidence against the government, ?][? if no_confidence_against_spd = 1 : and the vote of no confidence against us, ?] President [+ president +] has asked the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to take the lead role in forming a government.
+<span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>), <span style="color: #A2D8E0;">**바이에른 인민**</span> (<span style="color: #A2D8E0;">**BVP**</span>), [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?][? if not lvp_formed: , 그리고 <span style="color: #C0A054;">**인민**</span> (<span style="color: #C0A054;">**DVP**</span>)?] 당들로 구성된 과반 연정을 구성하기에 충분한 표가 있습니다. 우리의 다소 약한 선거 성과를 감안할 때, [? if spd_no_confidence = 1 : 그리고 정부에 대한 우리의 이전 불신임 투표, ?][? if no_confidence_against_spd = 1 : 그리고 우리에 대한 불신임 투표, ?] [+ president +] 대통령은 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에게 정부를 구성하는 데 주도적 역할을 맡도록 요청했습니다.
 
 
 @grand_coalition_z_lead_2
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] chancellor is likely to be Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?][? if chancellor = "Brüning" : &nbsp;again. ?][? if chancellor != "Brüning": . ?] He is known for his conservatism and sympathy for monarchism, being on the right wing of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. [? if austerity >= 2 : Due to the government's austerity policies, many of our members are reluctant to participate in this coalition again. Some support a "toleration" arrangement in which we will provide outside support to prevent the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> from either entering government or calling a successful no-confidence vote. Others support entering into pure opposition, and letting the right do what it wishes. ?]
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 총리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝이 될 가능성이 높습니다[? if chancellor = "Brüning" : &nbsp;또다시. ?][? if chancellor != "Brüning": . ?] 그는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 우익에 있으며 보수주의와 군주제에 대한 동정심으로 알려져 있습니다. [? if austerity >= 2 : 정부의 긴축 정책들 때문에, 우리 당원 중 다수는 이 연정에 다시 참여하기를 꺼려합니다. 일부는 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 정부에 들어오거나 성공적인 불신임 투표를 소집하는 것을 막기 위해 우리가 외부 지원을 제공하는 "묵인" 합의를 지지합니다. 다른 이들은 순수 야당으로 남아서, 우파가 원하는 대로 하게 두는 것을 지지합니다. ?]
 
-Brüning is not opposed to a coalition with us. Alternatively, we could enter a "toleration" agreement. [? if (right_coalition >= 50 and dnvp_ideology == "Moderate") or (center_right_coalition >= 50 and dnvp_ideology == "Moderate") : If we enter opposition, it is likely that Brüning will enlist the support of the <span style="color: #3E88B3;">**DNVP**</span> [? if (right_coalition < 50 and center_right_coalition >= 50) and not lvp_formed: and the <span style="color: #D3C24D;">**[+ ddp_name +]** </span> ?]to create a functioning majority. ?]
+브뤼닝은 우리와의 연정에 반대하지 않습니다. 대안적으로, 우리는 "묵인" 협정에 들어갈 수 있습니다. [? if (right_coalition >= 50 and dnvp_ideology == "Moderate") or (center_right_coalition >= 50 and dnvp_ideology == "Moderate") : 만약 우리가 야당으로 남는다면, 브뤼닝은 기능하는 과반을 만들기 위해 <span style="color: #3E88B3;">**DNVP**</span> [? if (right_coalition < 50 and center_right_coalition >= 50) and not lvp_formed: 그리고 <span style="color: #D3C24D;">**[+ ddp_name +]** </span> ?]의 지지를 요청할 가능성이 높습니다. ?]
 
-- @join_bruning: Join the Brüning coalition[? if (right_coalition >= 50 and dnvp_ideology == "Moderate") or (center_right_coalition >= 50 and dnvp_ideology == "Moderate"): , to prevent a right coalition from forming?].
-- @bruning_oppo: Join the opposition.
-- @toleration_bruning: We will "tolerate" a minority Brüning government.
-- @toleration_bruning_right: We will "tolerate" a minority Brüning right coalition government.
+- @join_bruning: 브뤼닝 연정에 합류한다[? if (right_coalition >= 50 and dnvp_ideology == "Moderate") or (center_right_coalition >= 50 and dnvp_ideology == "Moderate"): , 우파 연정이 형성되는 것을 막기 위해?].
+- @bruning_oppo: 야당에 합류한다.
+- @toleration_bruning: 우리는 소수 브뤼닝 정부를 "묵인"할 것이다.
+- @toleration_bruning_right: 우리는 소수 브뤼닝 우파 연정 정부를 "묵인"할 것이다.
 - @unity_government
 
 @join_bruning
@@ -3542,22 +3543,22 @@ view-if: grand_coalition >= 50 or neo_weimar_coalition >= 50 and dvp_exist
 on-arrival: spd_in_government = 1; spd_toleration = 0; spd_toleration_right = 0; in_grand_coalition = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; leverage = 25 if leverage >= 25; leverage -= 5 if bourgeois_parliament; leverage += 5 if in_grand_coalition_prussia and in_grand_coalition and dvp_prussia_asked = 0; hindenburg_angry = 50
 go-to: ministries
 
-Heinrich Brüning welcomes us into his new cabinet. Now, we have our pick of ministries. [? if in_grand_coalition_prussia and dvp_prussia_asked = 0: The <span style="color: #C0A054;">**DVP**</span> are willing to grant us more cabinet posts as a result of including them in the Prussian cabinet. ?]
+하인리히 브뤼닝은 그의 새 내각에 우리를 환영합니다. 이제, 우리는 부처를 고를 수 있습니다. [? if in_grand_coalition_prussia and dvp_prussia_asked = 0: <span style="color: #C0A054;">**DVP**</span>는 그들을 프로이센 내각에 포함시킨 결과로 우리에게 더 많은 내각 직위를 기꺼이 부여할 것입니다. ?]
 
 @bruning_oppo
 on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "Z"; finance_minister_party = "Z"; agriculture_minister_party = "Z"; grand_coalition_failed = 1
 
-By refusing to join the grand coalition or tolerating it, we essentially throw the balance of government to the right wing. [? if right_coalition >= 50 and dnvp_ideology == "Radical" : There are enough votes to form a right-wing coalition that includes the <span style="color: #3E88B3;">**DNVP**</span>. However, the <span style="color: #3E88B3;">**DNVP**</span> leader, Hugenberg, is opposed to a coalition with the "November criminals" of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. And of course, the <span style="color: #7A3C00;">**NSDAP**</span> is not interested in coalition government. This means that there will not be enough votes to form a majority coalition. ?][? if right_coalition >= 50 and dnvp_ideology == "Moderate" : There are enough votes to form a right-wing coalition that includes the <span style="color: #3E88B3;">**DNVP**</span>, and a collection of minor conservative parties. The <span style="color: #3E88B3;">**DNVP**</span> is happy to join the government as to prevent the Brüning cabinet from being dependent on our votes in a potential toleration agreement. ?][? if right_coalition < 50 and center_right_coalition >= 50 and dnvp_ideology == "Moderate" and not lvp_formed : There are not enough votes to form a right-wing coalition that includes the <span style="color: #3E88B3;">**DNVP**</span>, and a collection of minor conservative parties. However, this has been circumvented by the entrance of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> into the coalition. The <span style="color: #3E88B3;">**DNVP**</span> is happy to join the government as to prevent the Brüning cabinet from being dependent on our votes in a potential toleration agreement. ?][? if right_coalition < 50 and dnvp_ideology == "Radical" : There are not enough votes to form a right-wing coalition that includes the <span style="color: #3E88B3;">**DNVP**</span>, and they are not interested in joining in a coalition with the "November criminals" of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], anyhow. And of course, the <span style="color: #7A3C00;">**NSDAP**</span> is not interested in coalition government. This means that there is no route to a majority coalition. ?][? if right_coalition < 50 and center_right_coalition < 50 and dnvp_ideology == "Moderate" and not lvp_formed : There are not enough votes to form a right-wing coalition that includes the <span style="color: #3E88B3;">**DNVP**</span>, and a collection of minor conservative parties, nor would there be enough votes if the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> participated too, Although, they both do enter Brüning's presidential cabinet. And of course, the <span style="color: #7A3C00;">**NSDAP**</span> is not interested in coalition government. This means that there is no route to a majority coalition. ?][? if right_coalition < 50 and center_right_coalition < 50 and dnvp_ideology == "Moderate" and lvp_formed: There are not enough votes to form a right-wing coalition that includes the <span style="color: #3E88B3;">**DNVP**</span>, and the collection of minor conservative parties. Although, they both do enter Brüning's presidential cabinet. And of course, the <span style="color: #7A3C00;">**NSDAP**</span> is not interested in coalition government. This means that there is no route to a majority coalition. ?]
+대연정 참여나 묵인을 거부함으로써, 우리는 사실상 정부의 주도권을 우파에게 넘겨주게 되었습니다. [? if right_coalition >= 50 and dnvp_ideology == "Radical" : <span style="color: #3E88B3;">**DNVP**</span>를 포함한 우파 연정을 구성하기에 충분한 표가 있습니다. 그러나 <span style="color: #3E88B3;">**DNVP**</span>의 지도자 후겐베르크는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 "11월의 범죄자들"과 연정을 맺는 것에 반대하고 있습니다. 물론 <span style="color: #7A3C00;">**NSDAP**</span>는 연립 정부 구성에 관심이 없습니다. 이는 과반수 연정을 구성하기에 충분한 표가 모이지 않을 것임을 의미합니다. ?][? if right_coalition >= 50 and dnvp_ideology == "Moderate" : <span style="color: #3E88B3;">**DNVP**</span>와 소수 보수 정당들을 포함한 우파 연정을 구성하기에 충분한 표가 있습니다. <span style="color: #3E88B3;">**DNVP**</span>는 잠재적인 묵인 협정 하에서 브뤼닝 내각이 우리의 표에 의존하는 상황을 막기 위해 정부에 기꺼이 합류할 것입니다. ?][? if right_coalition < 50 and center_right_coalition >= 50 and dnvp_ideology == "Moderate" and not lvp_formed : <span style="color: #3E88B3;">**DNVP**</span>와 소수 보수 정당들을 포함한 우파 연정을 구성하기에 충분한 표가 없습니다. 그러나 이는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 연정에 참여함으로써 해결되었습니다. <span style="color: #3E88B3;">**DNVP**</span>는 잠재적인 묵인 협정 하에서 브뤼닝 내각이 우리의 표에 의존하는 상황을 막기 위해 정부에 기꺼이 합류할 것입니다. ?][? if right_coalition < 50 and dnvp_ideology == "Radical" : <span style="color: #3E88B3;">**DNVP**</span>를 포함한 우파 연정을 구성하기에 충분한 표가 없으며, 그들은 어차피 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 "11월의 범죄자들"과 연정을 맺는 데 관심이 없습니다. 물론 <span style="color: #7A3C00;">**NSDAP**</span>는 연립 정부 구성에 관심이 없습니다. 이는 과반수 연정으로 가는 길이 없음을 의미합니다. ?][? if right_coalition < 50 and center_right_coalition < 50 and dnvp_ideology == "Moderate" and not lvp_formed : <span style="color: #3E88B3;">**DNVP**</span>와 소수 보수 정당들을 포함한 우파 연정을 구성하기에 충분한 표가 없으며, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 참여한다고 해도 표는 부족할 것입니다. 비록 두 당 모두 브뤼닝의 대통령 내각에는 입각하겠지만 말입니다. 물론 <span style="color: #7A3C00;">**NSDAP**</span>는 연립 정부 구성에 관심이 없습니다. 이는 과반수 연정으로 가는 길이 없음을 의미합니다. ?][? if right_coalition < 50 and center_right_coalition < 50 and dnvp_ideology == "Moderate" and lvp_formed: <span style="color: #3E88B3;">**DNVP**</span>와 소수 보수 정당들을 포함한 우파 연정을 구성하기에 충분한 표가 없습니다. 비록 두 당 모두 브뤼닝의 대통령 내각에는 입각하겠지만 말입니다. 물론 <span style="color: #7A3C00;">**NSDAP**</span>는 연립 정부 구성에 관심이 없습니다. 이는 과반수 연정으로 가는 길이 없음을 의미합니다. ?]
 
-[? if not (right_coalition < 50 and center_right_coalition >= 50 and dnvp_ideology == "Moderate" and not lvp_formed) or (right_coalition >= 50 and dnvp_ideology == "Moderate") : If we do not at least "tolerate" the government, there will be new elections in a few months. In the meantime, the President and Chancellor may use the emergency powers granted by Article 48 of the constitution to essentially govern by decree. And it is not at all clear that we will do any better in the next election. ?]
+[? if not (right_coalition < 50 and center_right_coalition >= 50 and dnvp_ideology == "Moderate" and not lvp_formed) or (right_coalition >= 50 and dnvp_ideology == "Moderate") : 만약 우리가 최소한 정부를 "묵인"하지 않는다면, 몇 달 안에 재선거가 치러질 것입니다. 그동안 대통령과 총리는 헌법 제48조에 부여된 비상대권을 사용하여 사실상 칙령에 의한 통치를 할 수 있습니다. 그리고 우리가 다음 선거에서 더 나은 결과를 얻으리라는 보장은 전혀 없습니다. ?]
 
-- @join_bruning: Join the Brüning coalition[? if (right_coalition >= 50 and dnvp_ideology == "Moderate") or (center_right_coalition >= 50 and dnvp_ideology == "Moderate"): , to prevent a right coalition from forming?].
-- @toleration_bruning: We will tolerate Brüning after all.
-- @toleration_bruning_right: We will tolerate Brüning's right coalition government after all.
-- @right_coalition_2: We will join the opposition.
-- @center_right_coalition_2: We will join the opposition.
+- @join_bruning: [? if (right_coalition >= 50 and dnvp_ideology == "Moderate") or (center_right_coalition >= 50 and dnvp_ideology == "Moderate"): , 우파 연정이 형성되는 것을 막기 위해?] 브뤼닝 연정에 참여한다.
+- @toleration_bruning: 결국 브뤼닝을 묵인하기로 한다.
+- @toleration_bruning_right: 결국 브뤼닝의 우파 연정 정부를 묵인하기로 한다.
+- @right_coalition_2: 야당에 합류한다.
+- @center_right_coalition_2: 야당에 합류한다.
 - @brauns_dilemma
-- @new_elections: New elections, it is!
+- @new_elections: 새 선거다!
 
 
 @new_elections
@@ -3607,9 +3608,9 @@ if (Q.far_right_coalition >= 50) {
 }
 !}
 
-There is no path to a workable Reichstag majority or minority government. The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+제국의회 과반수나 소수 정부를 구성할 수 있는 방안이 전무합니다. 다음 선거는 [+ next_election_year +]년 [+ next_election_month : month +]로 확정되었습니다.
 
-The people's faith in democracy is shaken by this ordeal. Of course, the <span style="color: #7A3C00;">Nazis</span> are exploiting the instability to claim that democracy is unworkable, and that Germany needs a strong leader.
+이번 사태로 인해 민주주의에 대한 국민들의 신뢰가 흔들리고 있습니다. 물론 <span style="color: #7A3C00;">나치</span>는 이러한 불안정을 이용해 민주주의는 작동 불가능하며 독일에는 강력한 지도자가 필요하다고 선전하고 있습니다.
 
 @no_majority_goerdeler
 on-arrival: {!
@@ -3623,13 +3624,13 @@ Q.pro_republic -= 5;
 !}
 face-image: img/portraits/goerdeler.jpg
 
-The prospect of new elections has proved daunting for the bourgeois parties—and for President Hindenburg himself. Disillusioned with Brüning, Hindenburg and his Camarilla have cast him aside and appointed Carl Friedrich Goerdeler, the Mayor of Leipzig, as Chancellor.
+재선거에 대한 전망은 부르주아 정당들에게, 그리고 힌덴부르크 대통령 본인에게도 벅찬 일이었습니다. 힌덴부르크와 그의 측근들은 브뤼닝에게 환멸을 느끼고 그를 내친 뒤, 라이프치히 시장 카를 프리드리히 괴르델러를 총리로 임명했습니다.
 
-With [+ nsdap_leader +] and Hugenberg refusing to join any reformed Brüning cabinet, Hindenburg has sidestepped the issue by turning to the staunchly conservative Goerdeler, who renounced his affiliation with the <span style="color: #3E88B3;">**DNVP**</span> to accept the post.
+[+ nsdap_leader +]와 후겐베르크가 개편된 브뤼닝 내각에 합류하기를 거부하자, 힌덴부르크는 총리직 수락을 위해 <span style="color: #3E88B3;">**DNVP**</span> 탈당까지 감행한 확고한 보수주의자 괴르델러에게 의지함으로써 문제를 회피했습니다.
 
-Upon taking office, however, Goerdeler has yet to secure formal support from the <span style="color: #7A3C00;">**NSDAP**</span> or [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?]—support he needs, given that the <span style="color: #c00000;">**SPD**</span>[? if not lvp_formed:&nbsp;and likely the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?] will not back his government.
+그러나 취임 직후 괴르델러는 아직 <span style="color: #7A3C00;">**NSDAP**</span>나 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?]로부터 공식적인 지지를 확보하지 못했습니다. <span style="color: #c00000;">**SPD**</span>[? if not lvp_formed:&nbsp;그리고 아마도 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?]가 그의 정부를 지지하지 않을 것이 확실시되는 상황에서 이는 그에게 꼭 필요한 지지입니다.
 
-The coming months will reveal whether Goerdeler can govern—and if the <span style="color: #7A3C00;">**NSDAP**</span> is truly serious about entering government.
+다가오는 몇 달은 괴르델러가 국정을 운영할 수 있을지, 그리고 <span style="color: #7A3C00;">**NSDAP**</span>가 정말로 정부 참여에 진지한지를 드러낼 것입니다.
 
 @no_majority_goerdeler_2
 on-arrival: {!
@@ -3647,18 +3648,18 @@ on-arrival: {!
 Q.z_in_gov_mini = 1;
 !}
 
-Despite the prevailing belief that the <span style="color: #7A3C00;">Nazis</span> have peaked, they remain a dominant force in the Reichstag. Under Schleicher’s influence—having now betrayed Goerdeler—President Hindenburg has appointed [+ nsdap_chancellor +] as Chancellor. The cabinet remains mostly unchanged, save for Wilhelm Frick taking over the Interior Ministry.
+<span style="color: #7A3C00;">나치</span>의 기세가 꺾였다는 지배적인 견해에도 불구하고, 그들은 여전히 제국의회의 지배적인 세력으로 남아 있습니다. 괴르델러를 배신한 슐라이허의 영향력 하에, 힌덴부르크 대통령은 [+ nsdap_chancellor +]를 총리로 임명했습니다. 내각은 빌헬름 프리크가 내무부를 맡는 것을 제외하고는 대부분 변경되지 않았습니다.
 
-Schleicher sees this as the only viable path forward. [+ nsdap_leader +] continues to pursue an all-or-nothing strategy, even after the election setback. Schleicher also believes he can shape cabinet policy from within, having already "convinced" Groener to resign and cleared the way for his own appointment as Defense Minister.
+슐라이허는 이것을 유일한 실행 가능한 길로 보고 있습니다. [+ nsdap_leader +]는 선거 패배 후에도 여전히 '전부 아니면 전무' 전략을 고수하고 있습니다. 슐라이허는 또한 그뢰너가 사임하도록 "설득"하여 국방부 장관으로서 자신의 입지를 다진 후, 내부에서 내각 정책을 좌지우지할 수 있다고 믿고 있습니다.
 
 @no_majority_goerdeler_3_alt
 on-arrival: {!
 Q.z_in_gov_mini = 0;
 !}
 
-Despite the prevailing belief that the <span style="color: #7A3C00;">Nazis</span> have peaked, they remain a dominant force in the Reichstag. Under Schleicher’s influence—having now betrayed Goerdeler—President Hindenburg has appointed [+ nsdap_chancellor +] as Chancellor. However, [+ z_leader +], staunchly opposed to serving under [+ nsdap_chancellor +] as Chancellor, has withdrawn from the government and will vote against it in any confidence motion.
+<span style="color: #7A3C00;">나치</span>의 기세가 꺾였다는 지배적인 견해에도 불구하고, 그들은 여전히 제국의회의 지배적인 세력으로 남아 있습니다. 괴르델러를 배신한 슐라이허의 영향력 하에, 힌덴부르크 대통령은 [+ nsdap_chancellor +]를 총리로 임명했습니다. 그러나 총리로서의 [+ nsdap_chancellor +] 밑에서 복무하는 것을 강력히 반대하는 [+ z_leader +]는 정부에서 철수했으며 모든 신임안에서 반대표를 던질 것입니다.
 
-Schleicher sees this as the only viable path forward. [+ nsdap_leader +] continues to pursue an all-or-nothing strategy, even after the election setback. Schleicher also believes he can shape cabinet policy from within, having already "convinced" Groener to resign and cleared the way for his own appointment as Defense Minister.
+슐라이허는 이것을 유일한 실행 가능한 길로 보고 있습니다. [+ nsdap_leader +]는 선거 패배 후에도 여전히 '전부 아니면 전무' 전략을 고수하고 있습니다. 슐라이허는 또한 그뢰너가 사임하도록 "설득"하여 국방부 장관으로서 자신의 입지를 다진 후, 내부에서 내각 정책을 좌지우지할 수 있다고 믿고 있습니다.
 
 @toleration_bruning
 view-if: dnvp_ideology == "Radical" or dnvp_defect or cvp_formed or (year = 1929 and month >= 7)
@@ -3666,7 +3667,7 @@ choose-if: bruning_coalition >= 50
 unavailable-subtitle: The parties supporting Brüning do not have a majority.
 on-arrival: spd_in_government = 0; spd_toleration = 1; minority_government = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; dvp_right += 2; ddp_right += 1; lvp_right += 2; liberal_cooperation += 0.5
 
-We have decided to tolerate Brüning's government. This means that we will vote against no-confidence votes to make sure they fail, but also that we will not be directly participating as ministers in the government. Thus, we can prevent a new election and stop the <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span> from entering government.
+우리는 브뤼닝 정부를 묵인하기로 결정했습니다. 이는 불신임 투표가 부결되도록 반대표를 던지되, 정부 내각에 장관으로서 직접 참여하지는 않겠다는 뜻입니다. 이를 통해 우리는 새로운 선거를 막고 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 정부에 들어오는 것을 저지할 수 있습니다.
 
 @toleration_bruning_right
 view-if: dnvp_ideology == "Moderate" and not dnvp_defect and not cvp_formed and not (year = 1929 and month >= 7)
@@ -3674,20 +3675,20 @@ choose-if: bruning_coalition >= 50 and center_right_coalition < 50
 unavailable-subtitle: [? if bruning_coalition < 50: The parties supporting Brüning do not have a majority. ?][? if center_right_coalition > 50 and not (year = 1929 and month >= 7): The bourgeois parties don't need us. ?]
 on-arrival: spd_in_government = 0; spd_toleration = 1; minority_government = 1; spd_toleration_right = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "DNVP"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "DNVP"; dvp_right += 3; ddp_right += 1.5; liberal_cooperation += 0.5; bourgeois_cooperation += 1; lvp_right += 3
 
-We have decided to tolerate Brüning's government. This means that we will vote against no-confidence votes to make sure they fail, but also that we will not be directly participating as ministers in the government. Thus, we can prevent a new election and stop the <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span> from entering government. This government consists of support from all parties from the <span style="color: #c00000;">**SPD**</span> to the <span style="color: #3E88B3;">**DNVP**</span>.
+우리는 브뤼닝 정부를 묵인하기로 결정했습니다. 이는 불신임 투표가 부결되도록 반대표를 던지되, 정부 내각에 장관으로서 직접 참여하지는 않겠다는 뜻입니다. 이를 통해 우리는 새로운 선거를 막고 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 정부에 들어오는 것을 저지할 수 있습니다. 이 정부는 <span style="color: #c00000;">**SPD**</span>에서 <span style="color: #3E88B3;">**DNVP**</span>에 이르는 모든 정당의 지지로 구성됩니다.
 
 @grand_coalition_fail
 on-arrival: grand_coalition_failed = 1
 
-Unfortunately, the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: right <span style="color: #FFCC00;">**LVP**</span>?] and <span style="color: #A2D8E0;">**BVP**</span> are unwilling to enter into another coalition with the <span style="color: #c00000;">**SPD**</span>, so the grand coalition is unable to be formed.
+유감스럽게도, [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: 우파 <span style="color: #FFCC00;">**LVP**</span>?]와 <span style="color: #A2D8E0;">**BVP**</span>는 <span style="color: #c00000;">**SPD**</span>와 다시 연정을 맺기를 꺼리고 있어, 대연정 구성이 불가능합니다.
 
-- @no_majority: Thus, there is no clear majority.
+- @no_majority: 따라서 명확한 과반수가 없다.
 - @brauns_dilemma
-- @right_coalition_2: Perhaps a right-wing coalition may form.
-- @beg_dvp: Perhaps we could ask the <span style="color: #C0A054;">**DVP**</span> to change their minds?
-- @beg_lvp: Perhaps we could ask the <span style="color: #FFCC00;">**LVP**</span> to change their minds?
+- @right_coalition_2: 아마도 우파 연정이 형성될 수 있을 것이다.
+- @beg_dvp: <span style="color: #C0A054;">**DVP**</span>에게 마음을 바꾸라고 요청할 수 있을까?
+- @beg_lvp: <span style="color: #FFCC00;">**LVP**</span>에게 마음을 바꾸라고 요청할 수 있을까?
 - @unity_government
-- @coalition_menu: What are the other governing arrangements?
+- @coalition_menu: 다른 정부 합의는 뭐지?
 
 
 @beg_dvp
@@ -3701,54 +3702,54 @@ go-to: dvp_conservative if stresemann_dead == 1; dvp_majority if stresemann_dead
 @dvp_majority
 go-to: join_bruning
 
-Under the influence of Gustav Stresemann, the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] agrees to allow us into the coalition, and so does the <span style="color: #A2D8E0;">**BVP**</span>.
+구스타프 슈트레제만의 영향력 덕분에, [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]는 우리가 연정에 합류하는 것을 허용하기로 동의했으며, <span style="color: #A2D8E0;">**BVP**</span> 또한 마찬가지입니다.
 
 
 @dvp_conservative
 
-The [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] asks us to adhere to their conservative economic policies (that is, extreme austerity and labor discipline) in exchange for us joining the coalition.
+[? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]는 우리가 연정에 합류하는 조건으로 그들의 보수적인 경제 정책(즉, 극단적인 긴축 재정과 노동 통제)을 따를 것을 요구하고 있습니다.
 
-- @beg_dvp_2: But they would not have a majority without the <span style="color: #c00000;">**SPD**</span>! The [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span> ?][? if dnf_formed: <span style="color: #003755;">**DNF**</span> ?] and <span style="color: #7A3C00;">**NSDAP**</span> have no interest in participating in government.
-- @dvp_prussia: We will offer them participation in the Prussian government.
-- @no_majority: There is no chance that we would agree.
+- @beg_dvp_2: 하지만 <span style="color: #c00000;">**SPD**</span> 없이는 과반수를 확보할 수 없다! [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span> ?][? if dnf_formed: <span style="color: #003755;">**DNF**</span> ?]와 <span style="color: #7A3C00;">**NSDAP**</span>는 정부 참여에 관심이 없다.
+- @dvp_prussia: 그들에게 프로이센 주 정부 참여를 제안한다.
+- @no_majority: 우리가 동의할 가능성은 없다.
 - @brauns_dilemma
-- @coalition_menu: What are the other governing arrangements?
+- @coalition_menu: 다른 정부 합의는 뭐지?
 
 
 @beg_dvp_2
 go-to: beg_dvp_fail
 
-We make the case that without the <span style="color: #c00000;">**SPD**</span>, there is no parliamentary majority, given the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span> ?][? if dnf_formed: <span style="color: #003755;">**DNF**</span> ?] and <span style="color: #7A3C00;">**NSDAP**</span>'s hostility to constitutional government.
+우리는 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span> ?][? if dnf_formed: <span style="color: #003755;">**DNF**</span> ?]와 <span style="color: #7A3C00;">**NSDAP**</span>의 입헌 정부에 대한 적대감을 고려할 때, <span style="color: #c00000;">**SPD**</span> 없이는 의회 과반수가 불가능하다는 점을 피력했습니다.
 
 @beg_dvp_succeed
 go-to: join_bruning
 
-Somehow, we succeed in convincing them! We are now in a coalition.
+어떻게든, 우리는 그들을 설득하는 데 성공했습니다! 이제 연정에 참여하게 되었습니다.
 
 
 @beg_dvp_fail
 go-to: no_majority
 
-As expected, the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] is too set in their anti-democratic ways.
+예상대로, [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]는 그들의 반민주적인 태도에 너무 깊이 빠져 있습니다.
 
 @dvp_prussia
-subtitle: This will restrict our actions in Prussia.
+subtitle: 이건 프로이센에서의 우리 행동을 제한할 것입니다.
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and dvp_was_in_prussia == 0 and not lvp_formed and dvp_exist
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 1; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; leverage += 5; dvp_relation += 10; z_relation -= 5; ddp_relation += 3; coalition_dissent = -1; left_dissent += 5; dvp_left += 3; new_middle_dvp += 3; dvp_prussia_asked = 1
 go-to: join_bruning
 
-Letting the <span style="color: #C0A054;">**DVP**</span> into the Prussian government is an offer too good for them to refuse, no matter their leadership. However, this will negatively impact our actions involving the Prussian police force due to the <span style="color: #C0A054;">**DVP**</span> has ties to right-wing organizations such as the <span style="color: #3E88B3;">Stahlhelm</span>.
+<span style="color: #C0A054;">**DVP**</span>를 프로이센 주 정부에 참여시키는 것은 지도부의 성향과 무관하게 그들이 거절하기 힘든 매력적인 제안입니다. 그러나 <span style="color: #C0A054;">**DVP**</span>가 <span style="color: #3E88B3;">Stahlhelm</span>과 같은 우파 조직과 연계되어 있기 때문에, 이는 프로이센 경찰력과 관련된 우리의 활동에 제약을 줄 것입니다.
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] also is against this change because of the <span style="color: #C0A054;">**DVP**</span>'s opposition to a Prussian concordat.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 또한 <span style="color: #C0A054;">**DVP**</span>가 프로이센 정교협약에 반대한다는 이유로 이 변화에 반대하고 있습니다.
 
 @grand_coalition_spd_lead
 on-arrival: leverage -= 15 if (dvp_relation < 25 or dvp_ideology == "Right") and not lvp_formed; leverage -= 10 if (lvp_relation < 25 or lvp_ideology == "Right") and lvp_formed; hindenburg_angry = 60
 
-As expected, the <span style="color: #c00000;">**SPD**</span> is the largest party, and this time, we are expected to take the lead role in the formation of the next government, including selecting the chancellor. President [+ president +] has asked us to form a majority coalition with the <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>), <span style="color: #A2D8E0;">**Bavarian People's**</span> (<span style="color: #A2D8E0;">**BVP**</span>), [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**Democratic**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**State**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Liberal People's**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?][? if not lvp_formed: , and <span style="color: #C0A054;">**People's**</span> (<span style="color: #C0A054;">**DVP**</span>)?] parties.
+예상대로 <span style="color: #c00000;">**SPD**</span>가 제1당이 되었으며, 이번에는 차기 정부 구성과 총리 선출에 있어 우리가 주도적인 역할을 맡게 되었습니다. [+ president +] 대통령은 우리에게 <span style="color: #c00000;">**SPD**</span>, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>), <span style="color: #A2D8E0;">**바이에른 인민당**</span> (<span style="color: #A2D8E0;">**BVP**</span>), [? if ddp_name == "DDP" and not lvp_formed: <span style="color: #D3C24D;">**민주당**</span>?][? if ddp_name == "DStP" and not lvp_formed: <span style="color: #D3C24D;">**국가당**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**자유 인민당**</span>?] [? if not lvp_formed: (<span style="color: #D3C24D;">**[+ ddp_name +]**</span>)?][? if lvp_formed: (<span style="color: #FFCC00;">**LVP**</span>)?][? if not lvp_formed: , 그리고 <span style="color: #C0A054;">**인민당**</span> (<span style="color: #C0A054;">**DVP**</span>)?]과 함께 과반수 연정을 구성할 것을 요청했습니다.
 
-[? if dvp_relation < 25 or dvp_ideology == "Right" and not lvp_formed: As our relation with the <span style="color: #C0A054;">**DVP**</span> is poor, they are demanding more minister posts in order to remain part of the coalition. ?][? if lvp_relation < 25 or lvp_ideology == "Right" and lvp_formed: As our relation with the <span style="color: #FFCC00;">**LVP**</span> is poor, they are demanding more minister posts in order to remain part of the coalition. ?] [? if in_grand_coalition_prussia: The <span style="color: #C0A054;">**DVP**</span> are willing to grant us more cabinet posts as a result of including them in the Prussian cabinet. ?]
+[? if dvp_relation < 25 or dvp_ideology == "Right" and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>와의 관계가 좋지 않기 때문에, 그들은 연정에 남는 조건으로 더 많은 장관직을 요구하고 있습니다. ?][? if lvp_relation < 25 or lvp_ideology == "Right" and lvp_formed: <span style="color: #FFCC00;">**LVP**</span>와의 관계가 좋지 않기 때문에, 그들은 연정에 남는 조건으로 더 많은 장관직을 요구하고 있습니다. ?] [? if in_grand_coalition_prussia: <span style="color: #C0A054;">**DVP**</span>는 프로이센 내각에 포함된 대가로 우리에게 더 많은 내각 직책을 기꺼이 양보할 것입니다. ?]
 
-Who should be the chancellor?
+누가 총리가 되어야 할까요?
 
 - @muller
 - @braun
@@ -3759,105 +3760,105 @@ Who should be the chancellor?
 
 
 @muller
-title: Hermann Müller for Chancellor
+title: 헤르만 뮐러를 총리로
 view-if: muller_dead = 0
-subtitle: Müller is popular within the party, and is the preferred candidate of the [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?] and other parties.
+subtitle: 뮐러는 당내에서 인기가 높으며, [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?] 및 다른 정당들이 선호하는 후보입니다.
 choose-if: not cvp_chancellor_accepted
 unavailable-subtitle: We've promised to forfeit the Chancellorship to the <span style="color: #000000;">[+ z_party_name +]</span>.
 on-arrival: spd_in_government = 1; chancellor = "Müller"; chancellor_party = "SPD"; in_grand_coalition = 1 if in_weimar_coalition == 0; leverage += 5 if (in_grand_coalition_prussia and in_grand_coalition)
 go-to: ministries
 
-Müller's appointment as chancellor is approved by all our potential allies.
+뮐러의 총리 임명은 우리의 모든 잠재적 동맹들에 의해 승인되었습니다.
 
 @wels
-title: Otto Wels for Chancellor
+title: 오토 벨스를 총리로
 view-if: muller_dead = 1
-subtitle: Otto Wels is a party leader, but can he also be chancellor?
+subtitle: 오토 벨스는 당의 지도자이지만, 과연 총리직도 수행할 수 있을까요?
 choose-if: not cvp_chancellor_accepted
 unavailable-subtitle: We've promised to forfeit the Chancellorship to the <span style="color: #000000;">[+ z_party_name +]</span>.
 on-arrival: spd_in_government = 1; chancellor = "Wels"; chancellor_party = "SPD"; in_grand_coalition = 1 if in_weimar_coalition == 0; leverage += 5 if (in_grand_coalition_prussia and in_grand_coalition)
 go-to: ministries
 
-Otto Wels's appointment as chancellor is approved by our potential allies.
+오토 벨스의 총리 임명은 우리의 잠재적 동맹들에 의해 승인되었습니다.
 
 @braun
-title: Otto Braun for Chancellor
+title: 오토 브라운을 총리로
 view-if: not historical_mode or prussia_leader != "Braun"
-subtitle: [? if prussia_leader == "Braun": Braun is currently the Minister-President of Prussia, and is one of our most popular leaders. However, other parties may have qualms about concentrating too much power in one man. ?][? if prussia_leader != "Braun": Braun, the long-time Minister-President of Prussia, remains one of our most popular leaders. ?]
+subtitle: [? if prussia_leader == "Braun": 브라운은 현재 프로이센의 주 총리이며, 우리의 가장 인기 있는 지도자 중 한 명입니다. 그러나 다른 정당들은 한 사람에게 권력이 지나치게 집중되는 것을 우려할 수 있습니다. ?][? if prussia_leader != "Braun": 오랫동안 프로이센의 주 총리였던 브라운은 우리의 가장 인기 있는 지도자 중 한 명으로 남아 있습니다. ?]
 choose-if: not cvp_chancellor_accepted
-unavailable-subtitle: We've promised to forfeit the Chancellorship to the <span style="color: #000000;">[+ z_party_name +]</span>.
+unavailable-subtitle: 우리는 총리직을 <span style="color: #000000;">[+ z_party_name +]</span>에게 양보하기로 약속했습니다.
 go-to: braun_2 if prussia_leader == "Braun"; braun_4 if prussia_leader != "Braun"
 
 
 @braun_2
 
-The [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?] has significant qualms about appointing Braun as chancellor, given that he is already Minister-President of Prussia. They ask for either more cabinet positions, or for Braun to resign his state government role. The latter is completely unacceptable.
+[? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?]은 브라운이 이미 프로이센의 주 총리라는 점을 들어 그를 총리로 임명하는 것에 대해 상당한 우려를 표하고 있습니다. 그들은 더 많은 내각 직책을 요구하거나, 브라운이 주 정부 직책을 사임할 것을 요구합니다. 후자는 절대 받아들일 수 없습니다.
 
 - @muller
 - @wels
-- @braun_3: Let the [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?] have their cabinet positions.
+- @braun_3: [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?]이 그들의 내각 직책을 갖게 한다.
 
 @braun_3
-subtitle: Otto Braun will be Chancellor.
+subtitle: 오토 브라운이 총리가 될 것입니다.
 view-if: not historical_mode
 on-arrival: spd_in_government = 1; chancellor = "Braun"; chancellor_party = "SPD"; leverage -= 10; in_grand_coalition = 1 if in_weimar_coalition == 0; leverage += 5 if (in_grand_coalition_prussia and in_grand_coalition); hindenburg_angry += 10
 go-to: ministries
 
-We have promised to let the [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?] have more influence in the government in response to the appointment of Braun as chancellor.
+우리는 브라운을 총리로 임명하는 대가로 [? if not in_social_liberal_coalition: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if in_social_liberal_coalition: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?]?]이 정부 내에서 더 많은 영향력을 갖도록 허용하기로 약속했습니다.
 
 @braun_4
 on-arrival: spd_in_government = 1; chancellor = "Braun"; chancellor_party = "SPD"; in_grand_coalition = 1 if in_weimar_coalition == 0; leverage += 5 if (in_grand_coalition_prussia and in_grand_coalition)
 go-to: ministries
 
-Braun's appointment as chancellor is approved by all our potential allies.
+브라운의 총리 임명은 우리의 모든 잠재적 동맹들에 의해 승인되었습니다.
 
 
 @z_chancellor
-title: Let the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] have their chancellor.
-subtitle: [? if not return_to_normalcy or not stegerwald_path: Heinrich Brüning?][? if return_to_normalcy and stegerwald_path: Konrad Adenauer?] will be chancellor. This is unexpected and will cause internal dissent, but may give us a better position in negotiating for other cabinet positions.
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 총리를 맡게 한다.
+subtitle: [? if not return_to_normalcy or not stegerwald_path: 하인리히 브뤼닝이?][? if return_to_normalcy and stegerwald_path: 콘라트 아데나워가?] 총리가 될 것입니다. 이것은 예상치 못한 일이며 내부 불만을 야기하겠지만, 다른 내각 직책을 협상하는 데 있어 우리에게 더 유리한 위치를 선점하게 해줄 수 있습니다.
 on-arrival: left_dissent += 5; center_dissent += 5; labor_dissent += 5; z_relation += 10; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; kpd_relation -= 5; in_grand_coalition = 1 if in_weimar_coalition == 0; chancellor = "Brüning"; chancellor = "Adenauer" if stegerwald_path and return_to_normalcy; chancellor_party = "Z"; spd_in_government = 1; leverage += 5; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 1; lvp_left += 1; hindenburg_angry -= 10
 go-to: ministries
 
-This is highly unexpected, and many in the left and center of our party are criticizing this decision.
+이것은 매우 예상치 못한 일이며, 우리 당의 좌파와 중도파의 많은 사람들이 이 결정을 비판하고 있습니다.
 
-[? if year == 1928 : Since Wilhelm Marx resigned, Heinrich Brüning has been appointed chancellor. ?]
-[? if year > 1928 and (not return_to_normalcy or not stegerwald_path): Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has been appointed chancellor. ?]
-[? if year > 1928 and return_to_normalcy and stegerwald_path: Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has been appointed chancellor. With Brüning too unpopular, the newly <span class="tooltip-text" title="good mod">dynamic</span> [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] seeks to preserve its electoral strength. ?]
+[? if year == 1928 : 빌헬름 마르크스가 사임했기 때문에, 하인리히 브뤼닝이 총리로 임명되었습니다. ?]
+[? if year > 1928 and (not return_to_normalcy or not stegerwald_path): [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝이 총리로 임명되었습니다. ?]
+[? if year > 1928 and return_to_normalcy and stegerwald_path: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워가 총리로 임명되었습니다. 브뤼닝이 너무 인기가 없어서, 새로이 <span class="tooltip-text" title="good mod">역동적인</span> [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 선거력을 보존하려고 합니다. ?]
 
 @z_chancellor_wirth
-title: Let Joseph Wirth of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] be chancellor.
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 요제프 비르트가 총리가 되게 한다.
 view-if: z_ideology == "Left"
-subtitle: Wirth is on the left wing of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. This may give us a better position in negotiating for other cabinet positions.
+subtitle: 비르트는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 내 좌파에 속합니다. 이것은 다른 내각 직책을 협상하는 데 있어 우리에게 더 유리한 위치를 선점하게 해줄 수 있습니다.
 on-arrival: left_dissent += 2; z_relation += 6; ddp_relation += 5; ddp_relation += 5; lvp_relation += 5; kpd_relation -= 5; in_grand_coalition = 1 if in_weimar_coalition == 0; chancellor = "Wirth"; chancellor_party = "Z"; spd_in_government = 1; leverage += 5; dvp_left += 0.5; ddp_left += 0.5; ddp_cohesion += 1.5; lvp_left += 1; hindenburg_angry -= 10
 go-to: ministries
 
 @z_chancellor_cvp
-title: Let the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] have their chancellor.
-subtitle: [? if cvp_chancellor_accepted: Our coalition agreement stipulates that the chancellor must be from the <span style="color: #000000;">**[+ z_party_name +]**</span>, with Heinrich Brüning likely being their choice. ?][? if not cvp_chancellor_accepted: The <span style="color: #000000;">**[+ z_party_name +]**</span> would be happy with one of their own as chancellor, with Heinrich Brüning likely being their choice. ?]
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 총리를 맡게 한다.
+subtitle: [? if cvp_chancellor_accepted: 우리의 연정 합의는 총리가 <span style="color: #000000;">**[+ z_party_name +]**</span> 출신이어야 한다고 규정하고 있으며, 하인리히 브뤼닝이 그들의 선택일 가능성이 높습니다. ?][? if not cvp_chancellor_accepted: <span style="color: #000000;">**[+ z_party_name +]**</span>은 그들 중 한 명이 총리가 되는 것을 기뻐할 것이며, 하인리히 브뤼닝이 그들의 선택일 가능성이 높습니다. ?]
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 1; z_relation += 5 if not cvp_chancellor_accepted; coalition_dissent = -1 if cvp_chancellor_accepted
 go-to: ministries
 
-Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has been appointed chancellor. He is approved by most factions of his party.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝이 총리로 임명되었습니다. 그는 당내 대부분의 파벌로부터 승인을 받았습니다.
 
 @no_govt
-title: We do not form the government.
-subtitle: This will cause significant internal dissent, and will lead to increased distrust from the bourgeois parties.
+title: 정부를 구성하지 않는다.
+subtitle: 이것은 상당한 내부 불만을 야기할 것이며, 부르주아 정당들의 불신을 키우게 될 것입니다.
 on-arrival: reformist_dissent += 5; center_dissent += 5; labor_dissent += 5; neorevisionist_dissent += 5
 
-Are we sure about not participating in government? This will cause significant internal dissent, and will lead to increased distrust from the bourgeois parties. Even debating this option causes internal backlash. In addition, it is possible that the bourgeois and right-wing parties will also be unable to form a coalition government, leading to a regime appointed by President [+ president +].
+정부 참여를 거부하는 것이 확실합니까? 이는 상당한 내부 불만을 야기할 것이며, 부르주아 정당들의 불신을 키우게 될 것입니다. 이 옵션을 논의하는 것만으로도 당내 반발이 일어납니다. 게다가 부르주아 및 우파 정당들도 연립 정부를 구성하지 못해, 결국 [+ president +] 대통령이 임명한 정권이 들어설 가능성도 있습니다.
 
 - @muller
 - @braun
 - @z_chancellor
-- @no_govt_goals: Yes, we're sure.
+- @no_govt_goals: 그래, 우린 확신한다.
 
 @no_govt_goals
 
-What are our goals here, exactly?
+정확히 우리의 목표는 무엇입니까?
 
-- @majority: We hope to reach a <span style="color: #c00000;">socialist</span> majority in the next election.
-- @trap: It is a trap to form a government now. We would be unable to accomplish our goals.
-- @socialism: <span style="color: #9b0000;">Revolutionary</span> <span style="color: #c00000;">socialism</span> is our goal.
+- @majority: 다음 선거에서 <span style="color: #c00000;">사회주의</span> 과반수 확보를 희망한다.
+- @trap: 지금 정부를 구성하는 것은 함정이다. 우리는 목표를 달성할 수 없을 것이다.
+- @socialism: <span style="color: #9b0000;">혁명적</span> <span style="color: #c00000;">사회주의</span>가 우리의 목표다.
 
 @majority
 go-to: no_govt_2
@@ -3880,119 +3881,118 @@ go-to: right_coalition_2
 @new_elections_spd
 on-arrival: next_election_time = time+3; next_election_month = month + 3; next_election_year = year; next_election_year = year + 1 if next_election_month > 12; next_election_month = next_election_month - 12 if next_election_month > 12; new_middle_spd -= 5; old_middle_spd -= 5; workers_spd -= 3; catholics_spd -= 3; in_election = 1
 
-Since the remaining bourgeois and right-wing parties cannot form a tolerable governing agreement, new elections have been called for [+ next_election_month : month +] [+ next_election_year +]. The previous chancellor has resigned, and has been replaced by Heinrich Brüning, also of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], ruling as part of a presidential cabinet. 
+남은 부르주아 및 우파 정당들이 용인 가능한 정부 합의를 도출하지 못했기에, [+ next_election_month : month +] [+ next_election_year +]년에 새로운 선거가 소집되었습니다. 이전 총리는 사임했고, 대통령 내각의 일부로 통치하는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 하인리히 브뤼닝으로 대체되었습니다.
 
-We are seen as responsible for the failure to form a government, and many of our middle-class and even some working-class supporters have deserted the party.
+우리는 정부 구성 실패에 대한 책임이 있는 것으로 간주되어, 중산층 지지자들은 물론 일부 노동 계급 지지자들마저 당을 떠났습니다.
 
 
 @ministries
 
-We can pick from any number of ministries. Controlling a ministry allows us to directly effect policy in that area. [? if in_left_front : Any ministry that we do not take will be given to the <span style="color: #700000;">**KPD**</span>. ?] [? if in_left_front and reichswehr_minister_party == "KPD" : If the <span style="color: #700000;">**KPD**</span> controls the Reichswehr Ministry, the army will most likely revolt. ?]
+우리는 수많은 부처 중에서 선택할 수 있습니다. 부처를 통제함으로써 해당 분야의 정책에 직접적인 영향을 미칠 수 있습니다. [? if in_left_front : 우리가 맡지 않는 모든 부처는 <span style="color: #700000;">**KPD**</span>에게 넘어갈 것입니다. ?] [? if in_left_front and reichswehr_minister_party == "KPD" : 만약 <span style="color: #700000;">**KPD**</span>가 국방부를 장악한다면, 군대는 반란을 일으킬 가능성이 높습니다. ?]
 
-- @dvp_prussia_1: Offer the <span style="color: #C0A054;">**DVP**</span> a spot in the Prussian government for more leverage.
+- @dvp_prussia_1: 더 많은 영향력을 확보하기 위해 <span style="color: #C0A054;">**DVP**</span>에게 프로이센 정부 내 자리를 제안한다.
 - #mins_1928
 - #drop_mins_1928
 
 @labor
-title: Labor Ministry
-subtitle: Taking the Labor Ministry is expected of us.
-unavailable-subtitle: We do not have enough leverage.
+title: 노동부
+subtitle: 노동부 장관직을 맡는 것은 당연한 수순입니다.
+unavailable-subtitle: 우리에게는 충분한 영향력이 없습니다.
 tags: mins_1928
 choose-if: leverage >= 5
 view-if: labor_minister_party != "SPD"
 on-arrival: leverage -= 5; labor_minister_party = "SPD"; labor_minister = "Wissell"
 go-to: ministries
 
-Rudolf Wissell of the <span style="color: #c00000;">**SPD**</span> has been appointed labor minister.
+<span style="color: #c00000;">**SPD**</span>의 루돌프 비젤이 노동부 장관으로 임명되었습니다.
 
 @interior
-title: Interior Ministry
-subtitle: Taking the Interior Ministry is expected of us. The Interior Ministry controls domestic security.
-unavailable-subtitle: We do not have enough leverage.
+title: 내무부
+subtitle: 내무부 장관직을 맡는 것은 당연한 수순입니다. 내무부는 국내 치안을 담당합니다.
+unavailable-subtitle: 우리에게는 충분한 영향력이 없습니다.
 tags: mins_1928
 choose-if: leverage >= 5
 view-if: interior_minister_party != "SPD"
 on-arrival: leverage -= 5; interior_minister_party = "SPD"; interior_minister = "Severing"
 go-to: ministries
 
-Carl Severing of the <span style="color: #c00000;">**SPD**</span> has been appointed Interior Minister.
+<span style="color: #c00000;">**SPD**</span>의 카를 제베링이 내무부 장관으로 임명되었습니다.
 
 @finance
-title: Finance Ministry
-subtitle: The Finance Ministry controls the government budget and taxes.
-unavailable-subtitle: We do not have enough leverage.
+title: 재무부
+subtitle: 재무부는 정부 예산과 세금을 통제합니다.
+unavailable-subtitle: 우리에게는 충분한 영향력이 없습니다.
 tags: mins_1928
 choose-if: leverage >= 10 
 view-if: finance_minister_party != "SPD"
 on-arrival: leverage -= 10; finance_minister_party = "SPD"; finance_minister = "Hilferding"
 go-to: ministries
 
-Rudolf Hilferding of the <span style="color: #c00000;">**SPD**</span> has been appointed Finance Minister.
+<span style="color: #c00000;">**SPD**</span>의 루돌프 힐퍼딩이 재무부 장관으로 임명되었습니다.
 
 @economic
-title: Economic Ministry
-subtitle: The Economic Ministry controls broader economic policy.
-unavailable-subtitle: We do not have enough leverage.
+title: 경제부
+subtitle: 경제부는 광범위한 경제 정책을 통제합니다.
+unavailable-subtitle: 우리에게는 충분한 영향력이 없습니다.
 tags: mins_1928
 choose-if: leverage >= 10 
 view-if: economic_minister_party != "SPD"
 on-arrival: leverage -= 10; economic_minister_party = "SPD"; economic_minister = "Schmidt"
 go-to: ministries
 
-Robert Schmidt of the <span style="color: #c00000;">**SPD**</span> has been appointed Economic Minister.
+<span style="color: #c00000;">**SPD**</span>의 로베르트 슈미트가 경제부 장관으로 임명되었습니다.
 
 @justice
-title: Justice Ministry
-subtitle: The Justice Ministry controls the courts.
-unavailable-subtitle: [? if leverage < 10: We do not have enough leverage. ?] [? if cvp_ministers_accepted: Our coalition agreement stipulates that we must forfeit the Justice Ministry. ?]
+title: 법무부
+subtitle: 법무부는 법원을 통제합니다.
+unavailable-subtitle: [? if leverage < 10: 우리에게는 충분한 영향력이 없습니다. ?] [? if cvp_ministers_accepted: 연정 합의에 따라 우리는 법무부를 포기해야 합니다. ?]
 tags: mins_1928
 choose-if: leverage >= 10 and not cvp_ministers_accepted
 view-if: justice_minister_party != "SPD"
 on-arrival: leverage -= 10; justice_minister_party = "SPD"; justice_minister = "Radbruch"
 go-to: ministries
 
-Gustav Radbruch of the <span style="color: #c00000;">**SPD**</span> has been appointed Justice Minister.
+<span style="color: #c00000;">**SPD**</span>의 구스타프 라트브루흐가 법무부 장관으로 임명되었습니다.
 
 @foreign
-title: Foreign Ministry
-subtitle: [? if stresemann_dead = 0: This is usually the domain of Gustav Stresemann of the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?][? if stresemann_dead = 1: This is usually the domain of the [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: former <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] ?].
-unavailable-subtitle: We do not have enough leverage.
+title: 외무부
+subtitle: [? if stresemann_dead = 0: 이곳은 보통 [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]의 구스타프 슈트레제만의 영역입니다. ?][? if stresemann_dead = 1: 이곳은 보통 [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: 전 <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]의 영역입니다. ?].
+unavailable-subtitle: 우리에게는 충분한 영향력이 없습니다.
 tags: mins_1928
 choose-if: leverage >= 10 
 view-if: foreign_minister_party != "SPD"
 on-arrival: leverage -= 10; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"
 go-to: ministries
 
-Rudolf Breitscheid of the <span style="color: #c00000;">**SPD**</span> has been appointed Foreign Minister.
+<span style="color: #c00000;">**SPD**</span>의 루돌프 브라이트샤이트가 외무부 장관으로 임명되었습니다.
 
 
 @agriculture
-title: Agricultural Ministry
-subtitle: This is not our usual domain.
-unavailable-subtitle: [? if leverage < 10: We do not have enough leverage. ?] [? if cvp_ministers_accepted: Our coalition agreement stipulates that we must forfeit the Agricultural Ministry. ?]
-choose-if: leverage >= 10 and not cvp_ministers_accepted
+title: 농업부
+subtitle: 이곳은 우리가 주로 맡는 영역이 아닙니다.
+unavailable-subtitle: [? if leverage < 10: 우리에게는 충분한 영향력이 없습니다. ?] [? if cvp_ministers_accepted: 연정 합의에 따라 우리는 농업부를 포기해야 choose-if: leverage >= 10 and not cvp_ministers_accepted
 view-if: agriculture_minister_party != "SPD"
 on-arrival: leverage -= 10; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"
 go-to: ministries
 tags: mins_1928
 
-Fritz Baade of the <span style="color: #c00000;">**SPD**</span> has been appointed Agriculture Minister.
+<span style="color: #c00000;">**SPD**</span>의 프리츠 바데가 농업부 장관으로 임명되었습니다.
 
 @reichswehr
-title: Reichswehr Ministry
-subtitle: The Ministry responsible for the armed forces is not typically our domain; General Groener and the bourgeois-conservatives will be displeased[? if president = "Hindenburg" or president_ideology != "Left":&nbsp;along with President [+ president +]?].
-unavailable-subtitle: [? if leverage < 15: We do not have enough leverage. ?] [? if cvp_ministers_accepted: Our coalition agreement stipulates that we must forfeit the Reichswehr Ministry. ?]
+title: 국방부
+subtitle: 군을 책임지는 부처는 일반적으로 우리의 영역이 아닙니다. 그뢰너 장군과 부르주아 보수주의자들은 [? if president = "Hindenburg" or president_ideology != "Left":&nbsp;[+ president +] 대통령과 함께?] 이를 탐탁지 않아 할 것입니다.
+unavailable-subtitle: [? if leverage < 15: 우리에게는 충분한 영향력이 없습니다. ?] [? if cvp_ministers_accepted: 연정 합의에 따라 우리는 국방부를 포기해야 합니다. ?]
 tags: mins_1928
 choose-if: leverage >= 15 and not cvp_ministers_accepted
 view-if: reichswehr_minister_party != "SPD"
 on-arrival: leverage -= 15; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; hindenburg_angry += 10
 go-to: ministries
 
-Julius Leber of the <span style="color: #c00000;">**SPD**</span> has been appointed Reichswehr Minister.
+<span style="color: #c00000;">**SPD**</span>의 율리우스 레버가 국방부 장관으로 임명되었습니다.
 
 
 @no_more
-title: No more ministries.
+title: 더 이상의 장관직은 없다.
 on-arrival: {!
 if (Q.labor_minister_party !== "SPD") Q.labor_minister_party = "Z";
 if (Q.labor_minister !== "Wissell") Q.labor_minister = "Stegerwald";
@@ -4129,12 +4129,12 @@ if (Q.in_wholesome_coalition) {
 }
 
 !}
-subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
+subtitle: [? if leverage >= 10 : 우리에게는 장관직을 확보할 수 있는 영향력이 아직 조금 남아 있습니다. ?][? if leverage < 10 : 우리에게 남은 영향력이 많지 않습니다. ?]
 tags: mins_1928
 
-This coalition arrangement is tolerable to all.
+이 연정 합의안은 모두가 용인할 수 있는 수준입니다.
 
-- @prussian_coalition_form: Negotiate a new Prussian coalition.
+- @prussian_coalition_form: 새로운 프로이센 연정을 협상한다.
 
 @prussian_coalition_form
 view-if: prussia_negotiations_trigger == 1
@@ -4142,67 +4142,67 @@ on-arrival: prussia_negotiations_trigger = 0
 go-to: prussian_coalition_formation
 
 @drop_labor
-title: Drop the Labor Ministry.
+title: 노동부를 포기한다.
 view-if: labor_minister_party = "SPD"
 on-arrival: labor_minister_party = "Z"; labor_minister = "Stegerwald"; leverage += 5;
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_interior
-title: Drop the Interior Ministry.
+title: 내무부를 포기한다.
 view-if: interior_minister_party = "SPD"
 on-arrival: interior_minister_party = "Z"; interior_minister = "Wirth"; leverage += 5;
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_finance
-title: Drop the Finance Ministry.
+title: 재무부를 포기한다.
 view-if: finance_minister_party = "SPD"
 on-arrival: finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; finance_minister = "Moldenhauer"; leverage += 10; finance_minister_party = "Z" if in_weimar_coalition or in_popular_front; finance_minister = "Köhler" if in_weimar_coalition or in_popular_front
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_economic
-title: Drop the Economic Ministry.
+title: 경제부를 포기한다.
 view-if: economic_minister_party = "SPD"
 on-arrival: economic_minister_party = "DVP"; economic_minister_party = "LVP" if lvp_formed; economic_minister = "Curtius"; leverage += 10; economic_minister_party = ddp_name if in_weimar_coalition or in_popular_front; economic_minister = "Dietrich" if in_weimar_coalition or in_popular_front;
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_justice
-title: Drop the Justice Ministry.
+title: 법무부를 포기한다.
 view-if: justice_minister_party = "SPD"
 on-arrival: justice_minister_party = ddp_name; justice_minister = "Koch-Weser"; leverage += 10;
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_foreign
-title: Drop the Foreign Ministry.
+title: 외무부를 포기한다.
 view-if: foreign_minister_party = "SPD"
 on-arrival: foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; foreign_minister = "Stresemann"; foreign_minister = "Curtius" if streseman_dead; leverage += 10; foreign_minister_party = "Z" if in_weimar_coalition or in_popular_front; foreign_minister = "Wirth" if in_weimar_coalition or in_popular_front;
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_agriculture
-title: Drop the Agriculture Ministry.
+title: 농업부를 포기한다.
 view-if: agriculture_minister_party = "SPD"
 on-arrival: agriculture_minister_party = ddp_name; agriculture_minister = "Dietrich"; leverage += 10; agriculture_minister_party = "Z" if in_weimar_coalition; agriculture_minister = "Hermes" if in_weimar_coalition
 tags: drop_mins_1928
 go-to: ministries
 
 @drop_reichswehr
-title: Drop the Reichswehr Ministry.
+title: 국방부를 포기한다.
 view-if: reichswehr_minister_party = "SPD"
 on-arrival: reichswehr_minister_party = "I"; reichswehr_minister = "Groener"; leverage += 15; hindenburg_angry -= 10
 tags: drop_mins_1928
 go-to: ministries
 
 @dvp_prussia_1
-subtitle: This will restrict our actions in Prussia.
+subtitle: 이는 프로이센에서의 우리 활동을 제한하게 될 것입니다.
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and not in_left_front and not in_popular_front and not in_weimar_coalition and not in_emergency_government and dvp_was_in_prussia == 0 and not lvp_formed and dvp_exist
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; leverage += 5; dvp_relation += 7; z_relation -= 5; coalition_dissent = -1; left_dissent += 5; dvp_left += 3; new_middle_dvp += 3
 go-to: ministries
 
-Letting the <span style="color: #C0A054;">**DVP**</span> into the Prussian government is an offer too good for them to refuse, no matter their leadership. However, this will negatively impact our actions involving the Prussian police force due to the <span style="color: #C0A054;">**DVP**</span> has ties to right-wing organizations such as the <span style="color: #3E88B3;">Stahlhelm</span>.
+<span style="color: #C0A054;">**DVP**</span>를 프로이센 정부에 참여시키는 것은 그들의 지도부가 누구이든 간에 거절하기 힘든 매력적인 제안입니다. 그러나 <span style="color: #C0A054;">**DVP**</span>는 <span style="color: #3E88B3;">철모단</span>과 같은 우파 조직과 연계되어 있기 때문에, 이는 프로이센 경찰과 관련된 우리의 활동에 부정적인 영향을 미칠 것입니다.
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] also is against this change because of the <span style="color: #C0A054;">**DVP**</span>'s opposition to a Prussian concordat.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 또한 <span style="color: #C0A054;">**DVP**</span>가 프로이센 정교조약에 반대하고 있기 때문에 이러한 변화를 반대하고 있습니다.
