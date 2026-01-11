@@ -1,5 +1,5 @@
-title: Goerdeler I Collapses
-subtitle: Mission failed.
+title: 괴르델러 1기 내각 붕괴
+subtitle: 임무 실패.
 view-if: chancellor == "Goerdeler" and goerdeler_pre_time >= 3 and goerdeler_right_coalition < 50
 new-page: true
 tags: event
@@ -17,14 +17,14 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= Goerdeler I Collapses
+= 괴르델러 1기 내각 붕괴
 
-With Hugenberg and [+ nsdap_leader +]'s intransigence—and their irreconcilable differences with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and President Hindenburg—Goerdeler’s position is untenable. In a vote of no confidence, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has abandoned him, leaving only the minor parties between the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?] backing his government.
+후겐베르크와 [+ nsdap_leader +]의 비타협적인 태도, 그리고 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 및 힌덴부르크 대통령과의 좁혀지지 않는 이견으로 인해, 괴르델러의 입지는 더 이상 유지될 수 없게 되었습니다. 불신임 투표에서 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 그를 버렸고, 결국 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?] 사이의 군소 정당들만이 그의 정부를 지지하는 초라한 상황이 되었습니다.
 
 - @goerdeler
 
 @goerdeler
-title: The Reichstag is dissolved.
+title: 제국의회가 해산된다.
 on-arrival: {!
 Q.next_election_month = Q.month + 2;
 Q.next_election_time = Q.time + 2;
@@ -61,6 +61,6 @@ Q.unemployed_kpd += 4;
 Q.unemployed_spd += 2;
 !}
 
-Despite this embarrassment and show of unpopularity by the Goerdeler government, Schleicher and the Camarilla see this as an opportunity. He expects that, with the exodus of voters from the <span style="color: #7A3C00;">**NSDAP**</span> and the certainty of their collapse next election, they will be forced to become more sensible. 
+괴르델러 정부가 보여준 이러한 망신과 인기 없음에도 불구하고, 슐라이허와 측근들은 이를 기회로 보고 있습니다. 그는 <span style="color: #7A3C00;">**NSDAP**</span>에서 유권자들이 이탈하고 다음 선거에서 그들이 몰락할 것이 확실시됨에 따라, 그들이 어쩔 수 없이 더 온건한 태도를 취하게 될 것이라고 기대하고 있습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
