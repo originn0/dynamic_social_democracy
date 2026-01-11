@@ -559,6 +559,7 @@ Unfortunately for the Hindenburg campaign, the pro-<span style="color: #7A3C00;"
 @westarp
 title: Westarp, one of Hindenburg's close friends, will attempt to rally conservative forces for Hindenburg.
 on-arrival: westarp_used = 1; hindenburg_support += 1
+view-if: not spd_campaign_1932
 max-visits: 1
 go-to: bourgeois_campaign_menu
 
@@ -567,7 +568,7 @@ Of course, the main goal of the United Hindenburg Committees is to dispel the no
 @organizational_endorsements
 title: What about the endorsements of the non-partisan organizations?
 subtitle: Influential groups such as the RLB, DHV, and the Pan-Germans, have been growing a rift between themselves and Hindenburg.
-view-if: eckener_used and industry_used and (religion_used or not religion_available) and westarp_used
+view-if: eckener_used and industry_used and (religion_used or not religion_available) and (westarp_used or spd_candidate_1932)
 on-arrival: {!
 if (Q.hindenburg_support) {
     Q.new_middle_kvp += Q.hindenburg_support;
@@ -827,6 +828,7 @@ Unfortunately for the Hindenburg campaign, the pro-<span style="color: #7A3C00;"
 @westarp_op
 title: Westarp, one of Hindenburg's close friends, will attempt to rally conservative forces for Hindenburg.
 on-arrival: westarp_used = 1; hindenburg_support += 1
+view-if: not spd_campaign_1932
 max-visits: 1
 go-to: bourgeois_campaign_menu_op
 
@@ -835,7 +837,7 @@ Of course, the main goal of the United Hindenburg Committees is to dispel the no
 @organizational_endorsements_op
 title: What about the endorsements of the non-partisan organizations?
 subtitle: Influential groups such as the RLB, DHV, and the Pan-Germans, have been growing a rift between themselves and Hindenburg.
-view-if: eckener_used and industry_used and (religion_used or not religion_available) and westarp_used
+view-if: eckener_used and industry_used and (religion_used or not religion_available) and nd (westarp_used or spd_candidate_1932)
 on-arrival: {!
 if (Q.hindenburg_support) {
     Q.new_middle_kvp += Q.hindenburg_support;
@@ -889,6 +891,6 @@ Kyffhäuser League - <span style="color: #808080;">**[+ reactionary_candidate_19
 
 [? if not rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members.<br><br> However, this approach has failed with the RLB. Under Schiele's leadership, the organization remains skeptical of the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> and has successfully blocked a <span style="color: #7A3C00;">Nazi</span> appointee from joining the presidium. Despite this, strong <span style="color: #7A3C00;">Nazi</span> sympathies among the rank-and-file have led to defections to the <span style="color: #7A3C00;">Nazi</span>'s alternative organization. ?]
 
-[? if rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members. <br><br> This approach has proven successful within the RLB, as its new leader, Kalckreuth, is notably friendly toward the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. He has even appointed a <span style="color: #7A3C00;">Nazi</span> agricultural official to the presidium. However, this shift has sparked significant backlash from the <span style="color: #7FCEB1;">**CNBLP**</span>-aligned factions within the organization and from state affiliates in Bavaria, Thuringia, and Wurttemberg. These groups have rejected the RLB's endorsement and instead urged their members to vote for [+ reactionary_candidate_1932 +][? if dnvp_candidate_1932: or [+ dnvp_candidate_1932 +]?].?]
+[? if rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members. <br><br> This approach has proven successful within the RLB, as its new leader, Kalckreuth, is notably friendly toward the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. He has even appointed a <span style="color: #7A3C00;">Nazi</span> agricultural official to the presidium. However, this shift has sparked significant backlash from the <span style="color: #7FCEB1;">**CNBLP**</span>-aligned factions within the organization and from state affiliates in Bavaria, Thuringia, and Wurttemberg. These groups have rejected the RLB's endorsement and instead urged their members to vote for [+ reactionary_candidate_1932 +][? if dnvp_candidate_1932:&nbsp;or [+ dnvp_candidate_1932 +]?].?]
 
 - @hope: Let's hope Germany will make the correct choice.
