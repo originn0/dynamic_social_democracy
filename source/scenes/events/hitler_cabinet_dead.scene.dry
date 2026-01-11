@@ -1,29 +1,29 @@
-title: [+ chancellor +] is Sacked!
+title: [+ chancellor +] 해임되다!
 view-if: chancellor_party == "NSDAP" and rubicon_mini and president != "Hindenburg" and president != "Hitler" and president != "Göring" and president != "Frick"
 new-page: true
 tags: event
 max-visits: 1
 
-= [+ chancellor +] is Sacked
+= [+ chancellor +] 해임되다!
 
-The newly elected president, [+ president +], holds little sympathy for [+ chancellor +] or his party, and has compelled his resignation as Chancellor. The <span style="color: #7A3C00;">**NSDAP**</span>, however, refuses to yield—denouncing the move as “anti-democratic,” insisting that [+ chancellor +] is still the head of government, and openly threatening armed resistance.
+새로 선출된 대통령 [+ president +]는 [+ chancellor +]나 그의 당에 대해 거의 동정심을 가지고 있지 않으며, 총리직 사임을 강요했습니다. 그러나 <span style="color: #7A3C00;">**NSDAP**</span>는 굴복하기를 거부합니다—이 조치를 "반민주적"이라고 비난하고, [+ chancellor +]가 여전히 정부 수반이라고 주장하며, 무장 저항을 공개적으로 위협하고 있습니다.
 
-What are we to do now?
+우리는 지금 무엇을 해야 합니까?
 
-- @fight: We will fight on the streets to prevent Hitler from retaining power.
-- @give_up: We will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+- @fight: 히틀러가 권력을 유지하는 것을 막기 위해 거리에서 싸운다.
+- @give_up: 제국의회에서 <span style="color: #7A3C00;">나치들</span>에게 반대 투표한다.
 
 @fight
 
-Do we realize that this means civil war, against the full force of the state?
+이것이 국가의 모든 전력에 맞서는 내전을 의미한다는 것을 깨닫고 있습니까?
 
-- @civil_war: Yes.
-- @give_up: We are not ready for war. Instead, we will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+- @civil_war: 그렇다.
+- @give_up: 우리는 전쟁할 준비가 되지 않았다. 대신, 제국의회에서 <span style="color: #7A3C00;">나치들</span>에게 반대 투표한다.
 
 @give_up
 go-to: give_up_1 if president_ideology != "Left" or reichswehr_loyalty > 0.2; give_up_2 if (president_ideology == "Left" and reichswehr_loyalty <= 0.2)
 
-The President is on our side, but the Reichswehr remains divided.
+대통령은 우리 편이지만, 국방군은 분열된 상태입니다.
 
 @give_up_1
 on-arrival: {!
@@ -88,18 +88,18 @@ Q.rubicon_mini = 0;
 Q.rubicon_mini_leave = 1;
 !}
 
-Still, they place more trust in [+ president +] than in Chancellor [+ old_chancellor +], and under this influence, [+ old_chancellor +] was forced to accept his defeat. His removal, along with the replacement of many <span style="color: #7A3C00;">Nazi</span> cabinet ministers, has stopped Germany's slippery slope into dictatorship.
+여전히, 그들은 [+ old_chancellor +] 총리보다 [+ president +]를 더 신뢰했고, 이러한 영향력 하에서 [+ old_chancellor +]는 패배를 받아들일 수밖에 없었습니다. 그의 해임은, 많은 <span style="color: #7A3C00;">나치</span> 내각 장관들의 교체와 함께, 독재로 향하는 독일의 파멸적인 질주를 멈췄습니다.
 
-[? if chancellor == "Brüning": Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is appointed as interim chancellor. ?][? if chancellor == "Wels": Otto Wels of the <span style="color: #c00000;">**SPD**</span> is selected as appointed chancellor. ?]
+[? if chancellor == "Brüning": [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>의?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>의?] 하인리히 브뤼닝이 임시 총리로 임명되었습니다. ?][? if chancellor == "Wels": <span style="color: #c00000;">**SPD**</span>의 오토 벨스가 임명 총리로 선택되었습니다. ?]
 
-The next elections are set for [+ next_election_month : month +] [+ next_election_year +].
+다음 선거는 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @give_up_2
 
-Unfortunately, the President’s left-wing leanings make him an unacceptable figure to the <span style="color: #808080;">reactionary</span> strongholds of the state. The Reichswehr refuses to take his side over that of [+ chancellor +]. Despite holding the highest office in the land, the President finds himself powerless, outmaneuvered by [+ chancellor +].
+불행히도, 대통령의 좌파 성향은 국가의 <span style="color: #808080;">반동적</span> 요새들이 그를 받아들일 수 없게 만듭니다. 국방군은 [+ chancellor +] 대신 그의 편을 들기를 거부합니다. 나라에서 가장 높은 직책을 맡고 있음에도 불구하고, 대통령은 [+ chancellor +]에게 허를 찔려 무력해진 자신을 발견합니다.
 
-Eventually, he is ousted through legally questionable means, and new elections are held under the watchful eye of <span style="color: #7A3C00;">**SA**</span> troopers—securing Hitler’s rise to absolute power.
+결국, 그는 법적으로 의심스러운 수단을 통해 축출되고, <span style="color: #7A3C00;">**SA**</span> 대원들의 감시 하에 새로운 선거가 열립니다—히틀러의 절대 권력 장악을 확정 지으면서 말입니다.
 
-Germany is lost.
+독일은 끝났습니다.
 
-- @game_over: Game over.
+- @game_over: 게임 오버.

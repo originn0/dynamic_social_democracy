@@ -1,36 +1,36 @@
-title: Hitler appointed Chancellor!
+title: 히틀러 총리 임명!
 subtitle: The beginning of the end...
 view-if: year >= 1933 and president = "Hindenburg" and (chancellor = "Papen" or chancellor = "Schleicher") and schleicher_chancellor_timer == 1 and in_grand_coalition = 0 and spd_in_government = 0 and largest_party = "NSDAP" and hitler_deported = 0 and not presidential_powers and not schleichers_scheme_success
 on-departure: chancellor = "Hitler"; chancellor_party = "NSDAP"
 #tags: event
 new-page: true
 
-= Hitler Appointed Chancellor!
+= 히틀러 총리 임명!
 
-Internal scheming by the camarilla surrounding the president has caused President Hindenburg to appoint Hitler as chancellor, replacing the unpopular [+ chancellor +]. [? if hitler_deported : Despite his earlier deportation, the <span style="color: #7A3C00;">Nazi</span> leaders and their <span style="color: #3E88B3;">reactionary</span> allies have connived for the president to give him German citizenship after all. ?] Some of the <span style="color: #808080;">reactionaries</span> surrounding Hindenburg believe that he will restore Germany to its supposed former glory, while others believe that they can control him and his movement.
+대통령을 둘러싼 측근 세력의 내부 음모는 힌덴부르크 대통령이 인기 없는 [+ chancellor +]를 경질하고 히틀러를 총리로 임명하게 만들었습니다. [? if hitler_deported : 그의 이전 추방에도 불구하고, <span style="color: #7A3C00;">나치</span> 지도자들과 그들의 <span style="color: #3E88B3;">반동적</span> 동맹들은 대통령이 결국 그에게 독일 시민권을 주도록 공모했습니다. ?] 힌덴부르크를 둘러싼 일부 <span style="color: #808080;">반동주의자들</span>은 그가 독일을 소위 과거의 영광으로 되돌릴 것이라고 믿는 반면, 다른 이들은 그들이 그와 그의 운동을 통제할 수 있다고 믿습니다.
 
-He has promised a campaign of revenge against the <span style="color: #c00000;">socialists</span>, and the <span style="color: #7A3C00;">Nazis</span> have already spilled blood. In his published manifesto, he promises a campaign of <span style="color: #7e0000;">**unspeakable**</span> <span style="color: #3f0000;">**horror**</span> against <span style="color: #005EB8;">Jews</span>, and endless wars of violent expansion that will ruin all of Europe.
+그는 <span style="color: #c00000;">사회주의자들</span>에 대한 복수를 공언했고, <span style="color: #7A3C00;">나치들</span>은 이미 피를 흘렸습니다. 그의 출판된 선언문에서, 그는 <span style="color: #005EB8;">유대인들</span>에 대한 <span style="color: #7e0000;">**형용할 수 없는**</span> <span style="color: #3f0000;">**공포**</span>의 캠페인과, 전 유럽을 파멸로 몰아넣을 끝없는 정복 전쟁을 약속하고 있습니다.
 
-What are we to do now?
+우리는 지금 무엇을 해야 합니까?
 
-- @fight: We will fight on the streets to prevent Hitler from taking power.
-- @give_up: We will vote against the <span style="color: #7A3C00;">Nazis</span> in the Reichstag.
+- @fight: 히틀러의 집권을 막기 위해 거리에서 싸운다.
+- @give_up: 제국의회에서 <span style="color: #7A3C00;">나치들</span>에게 반대 투표한다.
 
 
 @fight
 
-Do we realize that this means civil war, against the full force of the state?
+이것이 국가의 모든 전력에 맞서는 내전을 의미한다는 것을 깨닫고 있습니까?
 
-- @civil_war: Yes.
-- @give_up: We are not ready for war. Instead, we will vote against the nazis in the Reichstag.
+- @civil_war: 그렇다.
+- @give_up: 우리는 전쟁할 준비가 되지 않았다. 대신, 제국의회에서 나치들에게 반대 투표한다.
 
 @give_up
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; prussia_leader = "Papen"
 
-Speeches are made. Votes are held. Bullets fly in the streets. Some <span style="color: #c00000;">socialists</span> are killed or jailed. Others flee the country. What can votes even do at this juncture?
+연설이 행해집니다. 투표가 진행됩니다. 거리에는 총알이 날아다닙니다. 일부 <span style="color: #c00000;">사회주의자들</span>은 살해당하거나 투옥됩니다. 다른 이들은 나라를 탈출합니다. 이 시점에 투표가 무슨 소용이 있겠습니까?
 
-The Reichstag is burned, ostensibly by a foreign <span style="color: #700000;">communist</span>. In the wake, the <span style="color: #7A3C00;">Nazis</span> pass decrees giving them unlimited power. They, combined with the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>?], will win a majority at the next elections.
+제국의회는 표면상 외국인 <span style="color: #700000;">공산주의자</span>의 소행으로 보이는 화재로 불타오릅니다. 그 여파로, <span style="color: #7A3C00;">나치들</span>은 자신들에게 무제한의 권력을 부여하는 법령들을 통과시킵니다. 그들은 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>와?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>와?] 결합하여, 다음 선거에서 과반수를 차지할 것입니다.
 
-Germany is lost.
+독일은 끝났습니다.
 
 - @game_over

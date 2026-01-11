@@ -1,6 +1,6 @@
-title: Naturalization of Adolf Hitler
+title: 아돌프 히틀러의 귀화
 new-page: true
-subtitle: Hitler still hadn't achieved German citizenship yet...
+subtitle: 히틀러는 아직 독일 시민권을 취득하지 못했었습니다...
 view-if: year = 1932 and month == 2 and not hitler_deported and chancellor != "Hitler"
 on-arrival: hitler_citizenship_seen = 1; workers_nsdap *= 0.9; new_middle_nsdap *= 0.95; old_middle_nsdap *= 0.95; rural_nsdap *= 0.95; unemployed_nsdap *= 0.9; catholics_nsdap *= 0.9
 max-visits: 1
@@ -19,39 +19,39 @@ on-display: {!
 !}
 tags: event
 
-= Naturalization of Adolf Hitler
+= 아돌프 히틀러의 귀화
 
-The leader of the <span style="color: #7A3C00;">Nazis</span>, Adolf Hitler, remains a stateless person after renouncing his Austrian citizenship in 1925. Numerous attempts have been made by him and his supporters to secure a civil service appointment, as this would automatically grant him German citizenship under existing law—making it the easiest path to naturalization. Citizenship is a prerequisite for Hitler to become President or Chancellor and would bolster his image as the "Führer of the Germans."
+<span style="color: #7A3C00;">나치</span>의 지도자인 아돌프 히틀러는 1925년에 오스트리아 시민권을 포기한 후 무국적자로 남아 있습니다. 그와 그의 지지자들은 공직 임명을 확보하기 위해 수많은 시도를 해왔는데, 이는 현행법상 그에게 자동으로 독일 시민권을 부여하여—귀화로 가는 가장 쉬운 길이 되기 때문입니다. 시민권은 히틀러가 대통령이나 총리가 되기 위한 전제 조건이며 "독일인들의 총통"으로서의 그의 이미지를 강화할 것입니다.
 
-[? if thuringia_nsdap: Wilhelm Frick, former <span style="color: #7A3C00;">**NSDAP**</span> minister in Thuringia, has managed to appoint Hitler as Gendarmerie Commissioner in a small Thuringian town. However, for reasons unknown, Hitler tore up his own certificate of appointment. ?][? if brunswick_hitler: In the small Free State of Brunswick, a <span style="color: #7A3C00;">**NSDAP**</span>-<span style="color: #3E88B3;">**DNVP**</span> coalition has been governing with the support of the bourgeois parties. In an attempt to secure Hitler's citizenship, they sought to appoint him as a professor in secret. However, the scheme was exposed and halted due to his lack of academic qualifications. A parliamentary inquiry is now in progress, but further legal prosecution is blocked by the bourgeois parties. This revelation has tarnished his reputation across Germany. ?]
+[? if thuringia_nsdap: 튀링겐의 전 <span style="color: #7A3C00;">**NSDAP**</span> 장관인 빌헬름 프리크는 히틀러를 튀링겐의 작은 마을 헌병대 위원으로 임명하는 데 성공했습니다. 하지만, 알 수 없는 이유로, 히틀러는 자신의 임명장을 찢어버렸습니다. ?][? if brunswick_hitler: 브라운슈바이크 자유주라는 작은 곳에서, <span style="color: #7A3C00;">**NSDAP**</span>-<span style="color: #3E88B3;">**DNVP**</span> 연정이 부르주아 정당들의 지지로 통치하고 있습니다. 히틀러의 시민권을 확보하려는 시도로, 그들은 비밀리에 그를 교수로 임명하려고 했습니다. 하지만, 그 계획은 폭로되었고 학업 자격 부족으로 인해 중단되었습니다. 의회 조사가 현재 진행 중이지만, 추가적인 법적 기소는 부르주아 정당들에 의해 차단되었습니다. 이 폭로는 독일 전역에서 그의 평판을 더럽혔습니다. ?]
 
-With the presidential elections approaching, it is likely that Hitler will make one final attempt to obtain citizenship.
+대통령 선거가 다가옴에 따라, 히틀러가 시민권을 얻기 위해 마지막 시도를 할 가능성이 높습니다.
 
-- @brunswick: The [? if dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not dvp_exist:[? if not cvp_formed:<span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed:<span style="color: #000000;">**[+ z_party_name +]**</span>?]?], in collaboration with the <span style="color: #7A3C00;">**NSDAP**</span> in Brunswick, appoints Hitler to the civil service.
-- @brunswick_fail: The government of Brunswick attempts once more to appoint Hitler to the civil service.
-- @nothing: With the <span style="color: #7A3C00;">Nazis</span> being excluded from every state government, Hitler remains unable to be naturalized.
+- @brunswick: [? if dvp_exist: <span style="color: #C0A054;">**DVP**</span>는?][? if not dvp_exist:[? if not cvp_formed:<span style="color: #3E88B3;">**DNVP**</span>는?][? if cvp_formed:<span style="color: #000000;">**[+ z_party_name +]**</span>는?]?] 브라운슈바이크의 <span style="color: #7A3C00;">**NSDAP**</span>와 협력하여, 히틀러를 공직에 임명한다.
+- @brunswick_fail: 브라운슈바이크 정부는 히틀러를 공직에 임명하려고 한 번 더 시도한다.
+- @nothing: <span style="color: #7A3C00;">나치들</span>이 모든 주 정부에서 배제됨에 따라, 히틀러는 귀화할 수 없는 상태로 남는다.
 
 @brunswick
 view-if: brunswick_hitler and dvp_ideology == "Right" and dvp_leader == "Dingeldey" and not lvp_formed and not cvp_formed
 on-arrival: hitler_citizen = 1; workers_nsdap += 3; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 4; unemployed_nsdap += 3; catholics_nsdap += 2; pro_republic -= 3
 
-In order for the <span style="color: #7A3C00;">**NSDAP**</span> to quickly and discreetly grant Hitler citizenship, they had to collaborate with the [? if dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not dvp_exist: <span style="color: #3E88B3;">**DNVP**</span>?], who, while supportive of these efforts, insisted on maintaining an appearance of legality. During a meeting between the two parties, they agreed to give Hitler a position in the Brunswick embassy to the Reichsrat.
+<span style="color: #7A3C00;">**NSDAP**</span>가 빠르고 은밀하게 히틀러에게 시민권을 부여하기 위해서는, [? if dvp_exist: <span style="color: #C0A054;">**DVP**</span>와?][? if not dvp_exist: <span style="color: #3E88B3;">**DNVP**</span>와?] 협력해야 했는데, 그들은 이러한 노력들을 지지하면서도, 합법적인 모양새를 갖출 것을 주장했습니다. 두 당 사이의 회의 끝에, 그들은 히틀러에게 제국참의원 브라운슈바이크 대사관의 직책을 주기로 합의했습니다.
 
-Following this agreement, a heated debate erupted about whether Hitler would actually fulfill his obligations once he became a civil servant. However, after further reassurances, Hitler was sworn in and officially granted citizenship.
+이 합의에 이어, 히틀러가 공무원이 되면 실제로 그의 의무를 이행할 것인지에 대한 격렬한 논쟁이 일어났습니다. 하지만, 추가적인 확약 후에, 히틀러는 선서했고 공식적으로 시민권을 부여받았습니다.
 
 @brunswick_fail
 view-if: brunswick_hitler and (((dvp_ideology != "Right" or dvp_leader != "Dingeldey") or lvp_formed) or cvp_formed)
 on-arrival: hitler_citizen = 0; pro_republic += 3
 
-In order for the <span style="color: #7A3C00;">**NSDAP**</span> to quickly and discreetly grant Hitler citizenship, they had to collaborate with the [? if not lvp_formed and dvp_exist:<span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist:[? if not cvp_formed:<span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed:<span style="color: #000000;">**[+ z_party_name +]**</span>?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?], whose radical right-wing elements are in support, but the party as a whole opposes this move. During a meeting between the two parties, no agreement is reached.
+<span style="color: #7A3C00;">**NSDAP**</span>가 빠르고 은밀하게 히틀러에게 시민권을 부여하기 위해서는, [? if not lvp_formed and dvp_exist:<span style="color: #C0A054;">**DVP**</span>와?][? if not lvp_formed and not dvp_exist:[? if not cvp_formed:<span style="color: #3E88B3;">**DNVP**</span>와?][? if cvp_formed:<span style="color: #000000;">**[+ z_party_name +]**</span>와?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>와?] 협력해야 했는데, 그들의 급진 우파 세력은 지지하지만, 당 전체는 이 조치에 반대합니다. 두 당 사이의 회의 끝에, 어떤 합의도 도달되지 않습니다.
 
-As a result, Hitler will remain a stateless person, and this will damage his reputation as the Führer of the Germans.
+결과적으로, 히틀러는 무국적자로 남을 것이며, 이것은 독일인들의 총통으로서의 그의 평판을 손상시킬 것입니다.
 
 @nothing
 choose-if: not brunswick_hitler
-unavailable-subtitle: The <span style="color: #7A3C00;">NSDAP</span> is in control of Brunswick.
+unavailable-subtitle: <span style="color: #7A3C00;">NSDAP</span>가 브라운슈바이크를 통제하고 있습니다.
 on-arrival: hitler_citizen = 0; pro_republic += 3; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2
 
-With the <span style="color: #7A3C00;">Nazis</span> being excluded from all *Länders* and *Freistaats*, they are unable to convince their governments to appoint Hitler to civil service.
+<span style="color: #7A3C00;">나치</span>가 모든 *주들*과 *자유주들*에서 배제됨에 따라, 그들은 주 정부들이 히틀러를 공직에 임명하도록 설득할 수 없었습니다.
 
-As a result, Hitler will remain a stateless person, and this will damage his reputation as the Führer of the Germans.
+결과적으로, 히틀러는 무국적자로 남을 것이며, 이것은 독일인들의 총통으로서의 그의 평판을 손상시킬 것입니다.
