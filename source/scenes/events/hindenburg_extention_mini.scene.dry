@@ -1,5 +1,5 @@
-title: Resolution to Extend Hindenburg's Term
-subtitle: The [+ chancellor +] cabinet attempts to push through an extension...
+title: 힌덴부르크의 임기 연장 결의안
+subtitle: [+ chancellor +] 내각이 임기 연장을 강행하려 시도합니다...
 new-page: true
 on-arrival: {!
 Q.hindenburg_extension_seen = 1;
@@ -11,25 +11,25 @@ priority: 10
 face-image: img/portraits/Hindenburg.jpg
 max-visits: 1
 
-= Resolution to Extend Hindenburg's Term
+= 힌덴부르크의 임기 연장 결의안
 
-The <span style="color: #7A3C00;">**NSDAP**</span> seeks to amend the constitution to extend Hindenburg’s term by two years. But with a two-thirds majority required, they may need our votes to pull it off.
+<span style="color: #7A3C00;">**NSDAP**</span>는 힌덴부르크의 임기를 2년 연장하기 위해 헌법을 개정하려고 합니다. 하지만 3분의 2 다수가 필요하기 때문에, 그들은 이를 성사시키기 위해 우리의 표가 필요할지도 모릅니다.
 
-After witnessing Hindenburg try to appoint [+ chancellor +] of all people, why in hell would we lift a finger to help him? The choice is obvious.
+힌덴부르크가 하필이면 [+ chancellor +]를 임명하려고 시도하는 것을 목격한 후, 도대체 우리가 왜 그를 돕기 위해 손가락 하나라도 까딱해야 합니까? 선택은 명백합니다.
 
-- @oppose_resolution: We will vote against the resolution, insisting that an election be held in accordance with the constitution.
+- @oppose_resolution: 헌법에 따라 선거가 열려야 한다고 주장하며, 결의안에 반대 투표한다.
 
 @oppose_resolution
 go-to: hindenburg_extended if goerdeler_right_coalition + nsdap_r >= 66.6; hindenburg_failed if goerdeler_right_coalition + nsdap_r < 66.6
 
-Of course, we will oppose this undemocratic act—the people should decide whether Hindenburg receives another term or not. 
+물론, 우리는 이 비민주적인 행위에 반대할 것입니다—국민이 힌덴부르크가 또 다른 임기를 받을지 말지를 결정해야 합니다.
 
 @hindenburg_extended
 on-arrival: hindenburg_term_extended = 1
 
-Despite opposition from the <span style="color: #c00000;">left-wing</span> parties, the resolution passes with the support of all parties to our right[? if not lvp_formed:, except for the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if not z_in_gov_mini: and <span style="color: #000000;">Center Party</span>?]?][? if lvp_formed and not z_in_gov_mini: except for the <span style="color: #000000;">Center Party</span>?].
+<span style="color: #c00000;">좌파</span> 정당들의 반대에도 불구하고, 결의안은 [? if not lvp_formed:, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if not z_in_gov_mini: 그리고 <span style="color: #000000;">중앙당</span>?]?]을 제외하고[? if lvp_formed and not z_in_gov_mini: <span style="color: #000000;">중앙당</span>을 제외하고?] 우리보다 오른쪽에 있는 모든 정당들의 지지로 통과되었습니다.
 
 @hindenburg_failed
 on-arrival: hindenburg_term_extended = 0
 
-We’ve successfully defeated the motion in the Reichstag—elections will be held! The result has also sown dissent within the governing coalition.
+우리는 제국의회에서 발의안을 성공적으로 부결시켰습니다—선거가 열릴 것입니다! 그 결과는 또한 집권 연정 내에 불화를 심었습니다.

@@ -1,5 +1,5 @@
-title: Resolution to Extend Hindenburg's Term
-subtitle: An amendment to the constitution can be made...
+title: 힌덴부르크의 임기 연장 결의안
+subtitle: 헌법 개정이 가능합니다...
 new-page: true
 on-arrival: hindenburg_extension_seen = 1; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 1; lvp_left += 1
 tags: event
@@ -7,32 +7,32 @@ view-if: year = 1932 and month == 1 and ((neo_weimar_coalition + kvp_r >= 66.6 a
 face-image: img/portraits/Hindenburg.jpg
 max-visits: 1
 
-= Resolution to Extend Hindenburg's Term
+= 힌덴부르크의 임기 연장 결의안
 
-A resolution has been introduced by the [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical" and bruning_time: [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]?][? if dnvp_ideology == "Radical" and not bruning_time: [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?] to amend the constitution and extend Hindenburg's term by two years. If all parties apart from those in the <span style="color: #7A3C00;">national</span> [? if dnvp_ideology == "Moderate": <span style="color: #003755;">opposition</span>?][? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">opposition</span>?] and the <span style="color: #700000;">**Communists**</span> were to vote in favor, it would surpass the required two-thirds majority.
+헌법을 개정하고 힌덴부르크의 임기를 2년 연장하기 위한 결의안이 [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>에 의해?][? if dnvp_ideology == "Radical" and bruning_time: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>에 의해?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>에 의해?]?][? if dnvp_ideology == "Radical" and not bruning_time: [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>에 의해?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>에 의해?]?] 발의되었습니다. 만약 <span style="color: #7A3C00;">민족주의</span> [? if dnvp_ideology == "Moderate": <span style="color: #003755;">야당</span>?][? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">야당</span>?]과 <span style="color: #700000;">**공산주의자들**</span>에 속한 정당들을 제외한 모든 정당들이 찬성 투표를 한다면, 그것은 필요한 3분의 2 다수를 넘어설 것입니다.
 
-Despite Hindenburg being the candidate of the right and strenuously opposed by the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition parties in 1925, he has, contrary to our fears, not used his office to subvert the constitution and the republic as a whole. This has put him at odds with his more conservative supporters who backed him in 1925.
+힌덴부르크가 우파의 후보이고 1925년에 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 정당들에 의해 격렬하게 반대되었음에도 불구하고, 그는 우리의 두려움과는 반대로, 헌법과 공화국 전체를 전복시키기 위해 그의 직책을 사용하지 않았습니다. 이것은 그를 1925년에 지지했던 더 보수적인 지지자들과 불화하게 만들었습니다.
 
-We can either support this resolution, postponing elections in what many in the party believe to be an anti-democratic act, or vote with the extremists against it.
+우리는 이 결의안을 지지하여 당내 많은 사람들이 반민주적 행위라고 믿는 선거 연기를 받아들이거나, 아니면 극단주의자들과 함께 그것에 반대 투표할 수 있습니다.
 
 
-- @support_resolution: We will vote for the resolution, arguing that Hindenburg is the lesser evil.
-- @oppose_resolution: We will vote against the resolution, insisting that an election be held in accordance with the constitution.
+- @support_resolution: 힌덴부르크가 차악이라고 주장하며, 결의안에 찬성 투표한다.
+- @oppose_resolution: 헌법에 따라 선거가 열려야 한다고 주장하며, 결의안에 반대 투표한다.
 
 @support_resolution
 choose-if: (reformist_strength >= left_strength) or schleicher_spd
-unavailable-subtitle: We do not have the full support of our Reichstag delegation.
+unavailable-subtitle: 우리 제국의회 대표단의 완전한 지지를 얻지 못했습니다.
 on-arrival: hindenburg_term_extended = 1; left_dissent += 30; center_dissent += 20; labor_dissent += 15; workers_kpd += workers_spd*0.1; unemployed_spd *= 0.9; unemployed_kpd += unemployed_spd*0.1; workers_spd *= 0.9; workers_nsdap += 3; unemployed_nsdap += 5; new_middle_spd -= 3; old_middle_spd += 3; pro_republic -= (spd_votes / 2); hindenburg_angry -= 80; hindenburg_angry_bruning -= 80
 
-In a contentious vote, ridden with heckling from the <span style="color: #7A3C00;">far</span>-[? if dnvp_ideology == "Moderate":<span style="color: #003755;">right</span>?][? if dnvp_ideology == "Radical":<span style="color: #3E88B3;">right</span>?] and <span style="color: #700000;">left</span>, the resolution has passed.
+<span style="color: #7A3C00;">극</span>-[? if dnvp_ideology == "Moderate":<span style="color: #003755;">우</span>?][? if dnvp_ideology == "Radical":<span style="color: #3E88B3;">우</span>?]와 <span style="color: #700000;">좌파</span>로부터의 야유로 가득 찬 논쟁적인 투표 끝에, 결의안은 통과되었습니다.
 
-We are forced to impose party discipline, greatly angering the Left and Center of our party, who still haven’t come around to supporting Hindenburg. Furthermore, as expected, we have lost a significant amount of support to the <span style="color: #700000;">**Communists**</span>, who have used this event to proclaim themselves as the only true left-wing party.
+우리는 당론을 강제할 수밖에 없었고, 여전히 힌덴부르크 지지로 돌아서지 않은 당내 좌파와 중도파를 크게 분노하게 했습니다. 게다가, 예상대로, 우리는 <span style="color: #700000;">**공산주의자들**</span>에게 상당한 지지를 잃었으며, 그들은 이 사건을 자신들이 유일한 진정한 좌파 정당임을 선포하는 데 이용했습니다.
 
 @oppose_resolution
 choose-if: not schleicher_spd
-unavailable-subtitle: As part of our deal with Schleicher, we are now forced to support the resolution.
+unavailable-subtitle: 슐라이허와의 거래 조건으로 인해, 우리는 이제 결의안을 지지하도록 강요받았습니다.
 on-arrival: reformist_dissent += 5; left_dissent -= 10; old_middle_spd -= 3; lvp_relation -= 3; dvp_relation -= 5; dvp_right += 3
 
-Of course, we will oppose this undemocratic act—the people should decide whether Hindenburg receives another term or not. 
+물론, 우리는 이 비민주적인 행위에 반대할 것입니다—국민이 힌덴부르크가 또 다른 임기를 받을지 말지를 결정해야 합니다.
 
-The bourgeois parties to the right of us are understandably annoyed at our choice.
+우리 오른쪽의 부르주아 정당들은 우리의 선택에 이해할 만하게도 짜증이 났습니다.

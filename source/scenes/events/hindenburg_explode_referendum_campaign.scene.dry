@@ -1,5 +1,5 @@
-title: Hindenburg Referendum campaign
-subtitle: How should we campaign for the referendum?
+title: 힌덴부르크 국민투표 선거 운동
+subtitle: 국민투표에서 어떻게 선거 운동을 진행해야 할까요?
 new-page: true
 tags: event
 view-if: (impeachment_ref_time - 2) == rubicon_time
@@ -17,73 +17,73 @@ on-display: {!
 !}
 max-visits: 1
 
-= Hindenburg Referendum campaign
+= 힌덴부르크 국민투표 선거 운동
 
-With the referendum fast approaching, we have a chance to intensify our campaign and tip the scales in our favor. President Hindenburg’s health has deteriorated significantly since the last election, leaving him unable to participate—delegating the campaign effort to Treviranus and the <span style="color: #3E88B3;">nationalists</span>. The <span style="color: #fe9e00;">**ASPD**</span> have declared their full support for Hindenburg, while the <span style="color: #6A1E1E;">**DSU**</span> backs him more quietly.
+국민투표가 빠르게 다가옴에 따라, 우리는 선거 운동을 강화하고 판세를 우리에게 유리하게 뒤집을 기회를 맞이했습니다. 힌덴부르크 대통령의 건강은 지난 선거 이후 상당히 악화되어 직접 참여할 수 없게 되었고—선거 운동의 전권을 트레비라누스와 <span style="color: #3E88B3;">민족주의자들</span>에게 위임했습니다. <span style="color: #fe9e00;">**ASPD**</span>는 힌덴부르크에 대한 전폭적인 지지를 선언했고, <span style="color: #6A1E1E;">**DSU**</span>는 그를 조용히 후원하고 있습니다.
 
-This fragmented and feeble campaign on the Right may offer us a chance to win through sheer voter turnout. That said, we must not grow complacent.
+우파의 이 분열되고 미약한 캠페인은 우리가 압도적인 투표율을 통해 승리할 기회를 제공할지도 모릅니다. 그렇긴 하지만, 방심해서는 안 됩니다.
 
-- @do_campaign: Let’s review our campaign options.
-- @no_campaign: We shouldn't allocate resources to this.
+- @do_campaign: 선거 운동 방안을 검토한다.
+- @no_campaign: 이 일에 자원을 할당하지 않는다.
 
 @do_campaign
 
-We have a variety of options to choose from.
+선택할 수 있는 다양한 방안들이 있습니다.
 
 - @bourgeois
 - @prussia
 - @reichsbanner
-- @hope: We have done enough.
-- @no_campaign_2: We shouldn't allocate resources to this.
+- @hope: 할 만큼 했다.
+- @no_campaign_2: 이 일에 자원을 할당하지 않는다.
 
 @bourgeois
-title: Set up an inter-party campaign committee with the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
+title: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정과 정당 간 선거 대책 위원회를 구성한다.
 view-if: not reichsbanner_campaign_hindenburg
 choose-if: impeachment_z and ((impeachment_ddp and not lvp_formed) or (impeachment_lvp and lvp_formed)) and z_relation >= 50 and ((ddp_relation >= 50 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))
-unavailable-subtitle: [? if not impeachment_z: The <span style="color: #000000;">Center Party</span> is not on our side. ?][? if not impeachment_ddp and not lvp_formed: The <span style="color: #D3C24D;">[+ ddp_name +]</span> is not on our side. ?][? if not impeachment_lvp and lvp_formed: The <span style="color: #FFCC00;">LVP</span> is not on our side. ?][? if z_relation < 50 and impeachment_z: We need higher relations with the <span style="color: #000000;">Center Party</span>. ?][? if ddp_relation < 50 and impeachment_ddp: We need higher relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?][? if lvp_relation < 50 and impeachment_lvp: We need higher relations with the <span style="color: #FFCC00;">LVP</span>. ?]
+unavailable-subtitle: [? if not impeachment_z: <span style="color: #000000;">중앙당</span>은 우리 편이 아님. ?][? if not impeachment_ddp and not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>은 우리 편이 아님. ?][? if not impeachment_lvp and lvp_formed: <span style="color: #FFCC00;">LVP</span>는 우리 편이 아님. ?][? if z_relation < 50 and impeachment_z: <span style="color: #000000;">중앙당</span>과 더 높은 관계도가 필요함. ?][? if ddp_relation < 50 and impeachment_ddp: <span style="color: #D3C24D;">[+ ddp_name +]</span>와 더 높은 관계도가 필요함. ?][? if lvp_relation < 50 and impeachment_lvp: <span style="color: #FFCC00;">LVP</span>와 더 높은 관계도가 필요함. ?]
 on-arrival: pro_republic += 3; catholics_nsdap -= 4; catholics_z += 3; catholics_spd += 1; z_relation += 3; dvp_relation += 3; ddp_relation += 3; ddp_left += 2; ddp_cohesion += 2; dvp_left += 3; bourgeois_campaign_hindenburg = 1
 face-image: img/weimar_coalition.jpg
 go-to: do_campaign
 max-visits: 1
 
-The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition has reunited to defend the very constitution we forged together—holding joint rallies and coordinating their messaging in a show of unity. This helps dismantle the Right’s narrative that the referendum is a <span style="color: #c00000;">socialist</span> power grab.
+<span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정은 우리가 함께 이룩한 헌법을 수호하기 위해 다시 뭉쳤습니다—합동 유세를 열고 단결된 메시지를 내보내면서 말입니다. 이것은 국민투표가 <span style="color: #c00000;">사회주의자</span>의 권력 장악을 위한 것이라는 우파의 선동을 분쇄하는 데 도움이 됩니다.
 
 @prussia
-title: We will utilize the Prussian government to discretely fund the campaign.
+title: 프로이센 주 정부를 활용하여 은밀하게 선거 자금을 지원한다.
 choose-if: spd_prussia and (prussia_leader == "Rosenfeld" or prussia_leader == "Braun")
-unavailable-subtitle: We are not in full control of Prussia.
+unavailable-subtitle: 프로이센을 완전히 장악하지 못했습니다.
 on-arrival: workers_spd += 4; new_middle_spd += 2; old_middle_spd += 2; rural_spd += 2; new_middle_ddp += 2 if impeachment_ddp; old_middle_ddp += 2 if impeachment_ddp; new_middle_dvp += 2 if impeachment_dvp; old_middle_dvp += 2 if impeachment_dvp; new_middle_lvp += 4 if impeachment_lvp; old_middle_lvp += 4 if impeachment_lvp; workers_z += 2 if impeachment_z; new_middle_z += 2 if impeachment_z; old_middle_z += 2 if impeachment_z; catholics_z += 2 if impeachment_z; pro_republic += 5; ddp_relation += 5; lvp_relation += 5; dvp_relation += 5; z_relation += 5; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; prussia_campaign_hindenburg = 1; rb_militancy += 0.03; rb_strength += 100
 face-image: img/weimar_coalition_3.jpg
 go-to: do_campaign
 max-visits: 1
 
-We manage to funnel state funds into the coffers of the Reichsbanner and various supporting <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties and organizations. Still, it pales in comparison to the mountains of silver and gold flowing to Hindenburg from the Reichswehr.
+우리는 국기단과 다양한 지지 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 정당 및 단체들의 금고로 프로이센 주 자금을 흘려보내는 데 성공했습니다. 하지만, 국방군으로부터 힌덴부르크에게 흘러가는 막대한 자금에 비하면 초라한 수준입니다.
 
 @reichsbanner
-title: It’s time for the Reichsbanner to get a little more <i>active</i>.
-subtitle: -2 resource
+title: 국기단이 조금 더 <i>적극적</i>으로 움직일 시간이다.
+subtitle: -2 자원
 view-if: not bourgeois_campaign_hindenburg
 choose-if: resources >= 2 and neorevisionist_strength >= reformist_strength
-unavailable-subtitle: [? if resources < 2: Not enough resources. ?][? if neorevisionist_strength < reformist_strength: The Neorevisionist faction needs to be more powerful than the Reformists. ?]
+unavailable-subtitle: [? if resources < 2: 자원이 충분하지 않습니다. ?][? if neorevisionist_strength < reformist_strength: 신수정주의 파벌이 개혁주의자들보다 더 강력해야 합니다. ?]
 on-arrival: resources -= 2; rb_strength += 150; rb_militancy += 0.1; sa_strength *= 0.9; sh_strength *= 0.9; workers_nsdap -= 2; workers_spd += 4; unemployed_nsdap -= 4; unemployed_spd += 6; new_middle_spd += 2; old_middle_spd -= 4; rural_spd -= 4; catholics_spd -= 4; pro_republic -= 5; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; lvp_relation -= 10; dvp_right += 3; ddp_right += 3; ddp_cohesion -= 3; reichsbanner_campaign_hindenburg = 1
 face-image: img/reichsbanner_2.jpg
 go-to: do_campaign
 max-visits: 1
 
-The <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">**SA**</span> have harassed us long enough—it’s time to strike back. The bourgeois parties are criticizing us turning the Reichsbanner into a <span style="color: #c00000;">socialist</span> militia.
+<span style="color: #3E88B3;">**철모단**</span>과 <span style="color: #7A3C00;">**SA**</span>는 우리를 충분히 오랫동안 괴롭혔습니다—이제 반격할 때입니다. 부르주아 정당들은 우리가 국기단을 <span style="color: #c00000;">사회주의</span> 민병대로 변질시키고 있다고 비난하고 있습니다.
 
 @hope
 view-if: bourgeois_campaign_hindenburg or prussia_campaign_hindenburg or bourgeois_campaign_hindenburg
 
-We can only hope for the best.
+우리는 오직 최선을 희망할 뿐입니다.
 
 @no_campaign_2
 view-if: not bourgeois_campaign_hindenburg and not prussia_campaign_hindenburg and not bourgeois_campaign_hindenburg
 on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3
 
-With or without a strong campaign, we believe the wave of support we gained after toppling Schleicher’s regime will be enough to carry us to victory in the referendum. The Right remains too fractured to fully exploit our relative absence from the field—though we’ve begun to notice a troubling uptick in opposition activity, with expenses being covered by an unknown source.
+강력한 선거 운동이 있든 없든, 우리는 슐라이허 정권을 무너뜨린 후 얻은 지지의 물결이 국민투표에서 우리를 승리로 이끌기에 충분할 것이라고 믿습니다. 우파는 현장에서의 우리의 상대적 부재를 완전히 이용하기에는 너무 분열된 상태로 남아 있습니다—비록 자금 출처를 알 수 없는 반대파의 활동이 골치 아프게 증가하는 것을 감지하기 시작했지만 말입니다.
 
 @no_campaign
 on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3
 
-With or without a strong campaign, we believe the wave of support we gained after toppling Schleicher’s regime will be enough to carry us to victory in the referendum. The Right remains too fractured to fully exploit our relative absence from the field—though we’ve begun to notice a troubling uptick in opposition activity, with expenses being covered by an unknown source.
+강력한 선거 운동이 있든 없든, 우리는 슐라이허 정권을 무너뜨린 후 얻은 지지의 물결이 국민투표에서 우리를 승리로 이끌기에 충분할 것이라고 믿습니다. 우파는 현장에서의 우리의 상대적 부재를 완전히 이용하기에는 너무 분열된 상태로 남아 있습니다—비록 자금 출처를 알 수 없는 반대파의 활동이 골치 아프게 증가하는 것을 감지하기 시작했지만 말입니다.

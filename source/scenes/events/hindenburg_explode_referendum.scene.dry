@@ -1,5 +1,5 @@
-title: Referendum to Recall President Hindenburg
-subtitle: The results have come in.
+title: 힌덴부르크 대통령 소환 국민투표
+subtitle: 결과가 나왔습니다.
 new-page: true
 tags: event
 view-if: impeachment_ref_week == week and impeachment_ref_month == month and impeachment_ref_year == year
@@ -24,13 +24,13 @@ Q.hindenburg_ref_votes = parseFloat(Q.hindenburg_ref_votes.toFixed(1));
 !}
 max-visits: 1
 
-= Referendum to Recall President Hindenburg
+= 힌덴부르크 대통령 소환 국민투표
 
-After a month of intense, violence-filled campaigning and relentless propaganda from both sides, the German people now vote on Hindenburg’s fate—a decision that may determine the future of the Republic itself.
+한 달간의 격렬하고 폭력으로 얼룩진 선거 운동과 양측의 끊임없는 선전 끝에, 독일 국민은 이제 힌덴부르크의 운명에 대해 투표합니다—공화국 자체의 미래를 결정할지도 모르는 선택입니다.
 
-Unlike previous referendums, this one requires only a majority of those voting—not of all eligible voters—to succeed.
+이전의 국민투표들과 달리, 이번 투표는 전체 유권자가 아닌 투표 참여자의 과반수만 확보하면 성공합니다.
 
-- @results: The nation votes...
+- @results: 전 국민이 투표한다...
 
 @results
 go-to: hindenburg_ref_win if hindenburg_ref_votes >= 50; hindenburg_ref_lose if hindenburg_ref_votes < 50
@@ -70,22 +70,22 @@ if (Q.aspd_other) {
 }
 !}
 
-The referendum succeeds with [+ hindenburg_ref_votes +]% of the vote—Germany is saved! If the current coalition holds, we may finally elect a democratic president capable of guiding the nation out of the chaos left by Hindenburg and Schleicher.
+국민투표는 [+ hindenburg_ref_votes +]%의 득표율로 성공했습니다—독일은 구원받았습니다! 만약 현재의 연정이 유지된다면, 우리는 마침내 힌덴부르크와 슐라이허가 남긴 혼란 밖으로 국가를 인도할 수 있는 민주적인 대통령을 선출할 수 있을지도 모릅니다.
 
-Disgraced and isolated, Hindenburg is forced to resign from the presidency. In his place, [? if president == "Bumke (acting)": Erwin Bumke?][? if president == "Großmann (acting)": Hermann Großmann?], President of the Reich Court, has been elevated to acting president until new elections are held.
+명예거 실추되고 고립된 채, 힌덴부르크는 대통령직에서 사임할 수밖에 없었습니다. 그의 자리에, 제국법원장 [? if president == "Bumke (acting)": 에르빈 붐케가?][? if president == "Großmann (acting)": 헤르만 그로스만이?] 새로운 선거가 열릴 때까지 대통령 권한대행으로 승격되었습니다.
 
-Presidential elections are scheduled for Week [+ rubicon_president_week +] of [+ rubicon_president_month : month +], [+ rubicon_president_year +].
+대통령 선거는 [+ rubicon_president_year +]년 [+ rubicon_president_month : month +] [+ rubicon_president_week +]주차로 예정되어 있습니다.
 
 @hindenburg_ref_lose
 
-Unfortunately, the referendum has failed with [+ hindenburg_ref_votes +]% of the vote. So much for nothing.
+불행히도, 국민투표는 [+ hindenburg_ref_votes +]%의 득표율로 실패했습니다. 모든 노력이 허사가 되었습니다.
 
-Hindenburg has been agitated by the weakness of the incumbent government and, under the influence of his Camarilla, will decide on Treviranus's successor himself, as he considers another set of Reichstag elections unacceptable.
+힌덴부르크는 현 정부의 나약함에 동요했고, 그의 측근들의 영향 하에, 또 다른 제국의회 선거는 용납할 수 없다고 판단하여 트레비라누스의 후임자를 직접 결정할 것입니다.
 
 - @schizo
 
 @schizo
-title: Crown Prince Wilhelm...?
+title: 빌헬름 황태자...?
 on-arrival: {!
 Q.chancellor = "Hohenzollern";
 Q.vice_chancellor = "Papen";
@@ -103,10 +103,10 @@ const header = document.querySelector('header');
 header.style.color = '#ffffff';
 !}
 
-Under the influence of Franz von Papen—and apparently Schleicher as well—Hindenburg has appointed Wilhelm III, eldest son of the last German Emperor, as Chancellor, reportedly with his father’s blessing.
+프란츠 폰 파펜의—그리고 보아하니 슐라이허 또한—영향 하에, 힌덴부르크는 마지막 독일 황제의 장남인 빌헬름 3세를 총리로 임명했으며, 전하는 바에 따르면 그의 아버지의 축복이 있었다고 합니다.
 
-It is clear the chaos of the past year has taken its toll. In the end, Hindenburg now trusts no one but his dearest friend, Papen. It's unknown of the former chancellor's reasoning behind such a pick, but perhaps he would've hoped that reinstating a monarchy, the people can rally around him as they once rallied around Hindenburg. 
+지난해의 혼란이 대가를 치르게 했다는 것은 명백합니다. 결국, 힌덴부르크는 이제 그의 가장 친애하는 친구인 파펜 외에는 아무도 믿지 않습니다. 그러한 선택 뒤에 있는 전 총리의 의중은 알 수 없지만, 아마도 그는 군주제를 복원함으로써, 사람들이 한때 힌덴부르크 주위에 결집했던 것처럼 그를 중심으로 결집할 수 있기를 희망했을 것입니다.
 
-A bloody three-way civil war is inevitable.
+피비린내 나는 삼파전 내전은 피할 수 없습니다.
 
 - @papen_civil_war
