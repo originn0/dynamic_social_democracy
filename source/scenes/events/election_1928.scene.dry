@@ -4,7 +4,7 @@ tags: event
 priority: -2
 view-if: (year = next_election_year and month >= next_election_month and (next_election_week == week or not rubicon)) or (year > next_election_year)
 on-arrival: election_boycott = 0
-on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48; hindenburg_angry_old = hindenburg_angry
+on-departure: in_election = 0; next_election_year = next_election_year + 4; n_elections += 1; next_election_time = time + 48
 set-jump: post_election_1928
 set-bg: img/map_2.jpg
 #face-image: img/Rothe_Wahlen_1903.jpg
@@ -1204,7 +1204,10 @@ Q.grand_coalition_failed = 0;
 // Reset government and ministers... Based on Brüning's 1930 govt
 Q.coalition_dissent = 0;
 Q.kpd_coalition_dissent = 0;
-if (!Q.spd_in_government) Q.hindenburg_angry = 0;
+if (!Q.spd_in_government) {
+    Q.hindenburg_angry = 0;
+    Q.hindenburg_angry_old = 0;
+}
 if (Q.spd_in_government) Q.hindenburg_angry_old = Q.hindenburg_angry;
 Q.spd_in_government = 0;
 Q.in_weimar_coalition = 0;
@@ -4127,7 +4130,7 @@ if (Q.in_wholesome_coalition) {
     }
 });
 }
-
+if (Q.hindenburg_angry_old > 0) Q.hindenburg_angry = Q.hindenburg_angry_old;
 !}
 subtitle: [? if leverage >= 10 : We still have some more leverage to gain ministries. ?][? if leverage < 10 : We do not have much leverage left. ?]
 tags: mins_1928
