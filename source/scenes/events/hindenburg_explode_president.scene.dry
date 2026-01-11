@@ -1,4 +1,4 @@
-title: [+ year +] Presidential Elections
+title:  [+ year +]년 대통령 선거
 new-page: true
 view-if: rubicon_president_week == week and rubicon_president_month == month and rubicon_president_year == year
 on-arrival: round = 0; spd_candidate = "Eckener"; kpd_candidate = "Boycott"; z_candidate = "Adenauer"; ddp_candidate = "Gessler"; lvp_candidate = "Gessler"; nsdap_candidate = "Seeckt"; dnvp_candidate = "Seeckt"; dvp_candidate = "Gessler"; other_candidate = "Seeckt"; is_unity_candidate = 0; sapd_candidate = kpd_candidate; kvp_candidate = dnvp_candidate; dnf_candidate = dnvp_candidate
@@ -17,81 +17,81 @@ on-display: {!
 !}
 tags: event
 
-= [+ year +] Presidential Elections
+=  [+ year +]년 대통령 선거
 
-An era of history is closing, and the future remains to be seen.
+역사의 한 시대가 저물고 있으며, 미래는 아직 알 수 없습니다.
 
-- @candidates: Who are the candidates so far?
+- @candidates: 현재까지의 후보는?
 
 @candidates
 go-to: candidate_menu
 
-The <span style="color: #3E88B3;">nationalists</span> and Chancellor [+ chancellor +] have chosen to nominate Hans von Seeckt—former Chief of the German Army from 1920 to 1926, and a staunch conservative monarchist, infamous for his refusal to suppress the Kapp Putsch with the remark: "Reichswehr do not fire on Reichswehr". In recent years, he was elected to parliament under the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], gradually drifting further to the radical right. He even appeared as a featured speaker at the Harzburg Rally. Now returned from a military advisory mission in China, Seeckt enters the race for the presidency—backed by many of Hindenburg’s former allies and the disgraced Schleicher.
+<span style="color: #3E88B3;">민족주의자들</span>과 [+ chancellor +] 총리는 1920년부터 1926년까지 독일 육군 참모총장을 역임했으며, 카프 폭동 당시 "국방군은 국방군에게 발포하지 않는다"는 발언으로 진압을 거부해 악명을 떨친 확고한 보수적 왕당파 한스 폰 젝트를 지명하기로 결정했습니다. 최근 몇 년간 그는 [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] 소속으로 의회에 진출하여 점차 급진 우파로 기울었습니다. 심지어 하르츠부르크 집회에 주요 연사로 등장하기도 했습니다. 중국 군사 자문 임무를 마치고 돌아온 젝트는 힌덴부르크의 옛 동맹들과 불명예스럽게 물러난 슐라이허의 지원을 받으며 대권 레이스에 뛰어들었습니다.
 
-The <span style="color: #7A3C00;">Nazis</span>, recognizing the precariousness of their position, have swallowed their pride and endorsed Seeckt for the presidency. [? if not hindenburg_term_extended: They deem him sufficiently right-wing—after all, he once wrote to his sister urging her to vote for [+ nsdap_candidate_1932 +] in 1932. ?]
+<span style="color: #7A3C00;">나치</span>는 자신들의 입지가 불안정함을 인식하고, 자존심을 굽히며 젝트를 대통령으로 지지했습니다. [? if not hindenburg_term_extended: 그들은 젝트가 충분히 우익적이라고 판단했습니다. 어쨌든 그는 1932년에 여동생에게 보낸 편지에서 [+ nsdap_candidate_1932 +]에게 투표할 것을 종용한 바 있으니까요. ?]
 
-The <span style="color: #700000;">**Communists**</span> are too disorganized following Schleicher's crackdown, and are unable to field a candidate for president. They will be backing whoever we choose to back, provided it's a <span style="color: #c00000;">socialist</span>.
+<span style="color: #700000;">**공산당**</span>은 슐라이허의 탄압 이후 조직이 지나치게 와해되어 독자적인 대통령 후보를 낼 수 없습니다. 그들은 우리가 누구를 지지하든, 그 후보가 <span style="color: #c00000;">사회주의자</span>라면 지지를 보낼 것입니다.
 
-Many <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">icans</span> of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], and <span style="color: #c00000;">**SPD**</span> float the idea of running Hugo Eckener, a nationally renowed Zeppelin captain, as a unity candidate. While he has some nationalistic views, he is also ardently opposed to <span style="color: #7A3C00;">Nazism</span>.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], 그리고 <span style="color: #c00000;">**SPD**</span> 내의 많은 <span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자들</span>은 국민적 명망이 높은 체펠린 비행선 선장 휴고 에케너를 통합 후보로 내세우는 방안을 제시하고 있습니다. 그는 다소 민족주의적인 견해를 가지고 있지만, <span style="color: #7A3C00;">나치즘</span>에는 결사적으로 반대합니다.
 
-Barring that, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] are planning to run separate candidates in the first round if the <span style="color: #c00000;">**SPD**</span> runs its own candidate. The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is considering nominating Konrad Adenauer, mayor of Köln and member of the Prussian state legislature. He calls for an alliance of conservative Christian democrats that encompasses both Catholics and Protestants. The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] might nominate Otto Gessler, former defense minister, who has crossover appeal to conservatives in the moderate right and other parties who dislike the renewed <span style="color: #3E88B3;">nationalist</span>-<span style="color: #7A3C00;">Nazi</span> alliance.
+그렇지 않을 경우, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]은 <span style="color: #c00000;">**SPD**</span>가 독자 후보를 낼 시 1차 투표에서 별도의 후보를 낼 계획입니다. [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 쾰른 시장이자 프로이센 주 의회 의원인 콘라트 아데나워를 후보로 고려하고 있습니다. 그는 가톨릭과 개신교를 아우르는 보수적 기독교 민주주의자들의 연합을 주창합니다. [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]은 전 국방장관 오토 게슬러를 지명할 수도 있습니다. 그는 부활한 <span style="color: #3E88B3;">민족주의</span>-<span style="color: #7A3C00;">나치</span> 동맹을 혐오하는 온건 우파 및 타 정당의 보수주의자들에게도 소구력이 있습니다.
 
-As for the <span style="color: #c00000;">**SPD**</span>, we could support a joint <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition candidate or run our own.
+<span style="color: #c00000;">**SPD**</span>의 경우, 우리는 공동 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 후보를 지지하거나 독자 후보를 낼 수 있습니다.
 
-A leading candidate is Albert Grzesinski of our Reformist faction. Former Interior Minister of Prussia and currently Berlin’s Police Chief, he has played a central role in combating both <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> and <span style="color: #700000;">left</span>-wing extremism. Most notably, he helped organize the general strike that brought down Schleicher. However, his hardline stance against the <span style="color: #700000;">**Communists**</span>—including his suppression of their demonstrations—has made him unacceptable to them.
+유력한 후보 중 하나는 우리 당 개혁파의 알베르트 그제진스키입니다. 전 프로이센 내무장관이자 현 베를린 경찰청장인 그는 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>와 <span style="color: #700000;">좌</span>익 극단주의 모두에 맞서 싸우는 데 핵심적인 역할을 했습니다. 특히 그는 슐라이허를 실각시킨 총파업을 조직하는 데 기여했습니다. 그러나 시위 진압을 포함한 <span style="color: #700000;">**공산주의자들**</span>에 대한 그의 강경한 태도는 그들이 그를 받아들일 수 없게 만들었습니다.
 
-Alternatively, we could nominate Otto Wels, our party chairman and leader of the Centrist faction. He is palatable to the bourgeois parties and the <span style="color: #700000;">Communists</span>, who may begrudgingly tolerate his candidacy.
+대안으로, 우리는 당 의장이자 중도파의 지도자인 오토 벨스를 지명할 수 있습니다. 그는 부르주아 정당들과 <span style="color: #700000;">공산주의자들</span>에게도 어느 정도 받아들여질 만한 인물이며, 그들은 마지못해 그의 출마를 묵인할지도 모릅니다.
 
 @candidate_menu
 
-- @eckener_r1: Support Hugo Eckener as a joint <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition candidate.
-- @adenauer_r1: Support Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
-- @gessler_r1: Support Otto Gessler of the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
-- @grzesinski_r1: Support Albert Grzesinski.
-- @wels_r1: Support Otto Wels.
+- @eckener_r1: 휴고 에케너를 공동 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 후보로 지지한다.
+- @adenauer_r1: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워를 지지한다.
+- @gessler_r1: [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]의 오토 게슬러를 지지한다.
+- @grzesinski_r1: 알베르트 그제진스키를 지지한다.
+- @wels_r1: 오토 벨스를 지지한다.
 
 @eckener_r1
-subtitle: -1 resource - After nominating him, we still have to convince the other parties to support him.
-unavailable-subtitle: [? if resources < 1 : -1 resource - Not enough resources. ?]
+subtitle: -1 자원 - 그를 지명한 후에도, 우리는 여전히 다른 정당들이 그를 지지하도록 설득해야 합니다.
+unavailable-subtitle: [? if resources < 1 : -1 자원 - 자원이 부족합니다. ?]
 choose-if: resources >= 1
 on-arrival: spd_candidate = "Eckener"; is_unity_candidate = 1
 go-to: r1_menu
 
-We have convinced Hugo Eckener to run on behalf of the <span style="color: #c00000;">**SPD**</span>, and hopefully the rest of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition as well.
+우리는 휴고 에케너가 <span style="color: #c00000;">**SPD**</span>를 대신하여 출마하도록 설득했으며, <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정의 나머지 정당들도 그를 지지하기를 바랍니다.
 
 @adenauer_r1
 on-arrival: spd_candidate = "Adenauer"; z_relation += 4; Adenauer_bonus -= 2.5 if not impeachment_bvp; Seeckt_bonus += 2.5 if not impeachment_bvp; is_unity_candidate = 1
 go-to: r1_menu
 
-We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워를 지지했습니다.
 
-[? if not impeachment_bvp: With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to the <span style="color: #808080;">reactionary</span> Seeckt. Hopefully it doesn't lead to a repeat of the 1925 Presidential election. ?]
+[? if not impeachment_bvp: 아데나워에 대한 우리의 지지로 인해, <span style="color: #A2D8E0;">바이에른 인민당</span> 내의 가장 보수적인 세력 일부가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에서 이탈하여 <span style="color: #808080;">반동적인</span> 젝트에게 지지를 보내고 있습니다. 부디 이것이 1925년 대통령 선거의 재림이 되지 않기를 바랍니다. ?]
 
 @gessler_r1
 on-arrival: spd_candidate = "Gessler"; ddp_relation += 4; dvp_candidate = "Seeckt" if not impeachment_dvp; is_unity_candidate = 1
 go-to: r1_menu
 
-We have endorsed Otto Gessler, independent formerly of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>.
+우리는 과거 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 소속이었던 무소속 오토 게슬러를 지지했습니다.
 
-[? if impeachment_dvp and dvp_exist and not lvp_formed: With our support of Gessler, the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now shifting their support to Seeckt. ?]
+[? if impeachment_dvp and dvp_exist and not lvp_formed: 게슬러에 대한 우리의 지지로 인해, 그를 지지하던 <span style="color: #C0A054;">**DVP**</span> 세력들이 이탈하여 이제 젝트에게 지지를 보내고 있습니다. ?]
 
 @grzesinski_r1
-subtitle: -2 resources.
-unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?]
+subtitle: -2 자원.
+unavailable-subtitle: [? if resources < 2 : -2 자원 - 자원이 부족합니다. ?]
 choose-if: grzesinski_campaign = 0 and resources >= 2
 on-arrival: spd_candidate = "Grzesinski"; resources -= 2; is_unity_candidate = 0; z_relation += 5; ddp_relation += 5; dvp_relation += 5; lvp_relation += 5
 go-to: r1_menu
 
-We have convinced Albert Grzesinski to run for president.
+우리는 알베르트 그제진스키가 대통령에 출마하도록 설득했습니다.
 
 @wels_r1
-subtitle: -2 resources.
-unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?]
+subtitle: -2 자원.
+unavailable-subtitle: [? if resources < 2 : -2 자원 - 자원이 부족합니다. ?]
 choose-if: resources >= 2
 on-arrival: spd_candidate = "Wels"; resources -= 2; is_unity_candidate = 0
 go-to: r1_menu
 
-We have nominated Otto Wels to be our presidential candidate.
+우리는 오토 벨스를 우리의 대통령 후보로 지명했습니다.
 
 @r1_menu
 view-if: round = 0
@@ -104,12 +104,12 @@ view-if: round = 0
 - @convince_lvp_spd
 - @convince_dvp_unity
 - @convince_kpd_spd
-- @round_1: Let the voting begin.
+- @round_1: 투표를 시작하자.
 
 
 # convincing Z to support a unity candidate
 @convince_z_unity
-title: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +].
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 [+ spd_candidate +]를 지지하도록 설득한다.
 view-if: (spd_candidate = "Eckener" or spd_candidate = "Gessler") and z_candidate != spd_candidate
 on-arrival: {!
 Q.z_support_grzesinski = 0;
@@ -124,12 +124,12 @@ if (Q.z_relation >= 40 || (Q.z_relation > 20 && Q.z_leader == "Joos")) {
 max-visits: 1
 go-to: z_failed if z_support_grzesinski = 0; z_success if z_support_grzesinski = 1; z_partial if z_support_grzesinski = 2
 
-We implore the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +] as a unity candidate against <span style="color: #7A3C00;">fascism</span>, arguing that together, the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition can defeat the <span style="color: #7A3C00;">Nazis</span> and return Germany to its democratic path. [? if z_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
+우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에게 [+ spd_candidate +]를 <span style="color: #7A3C00;">파시즘</span>에 대항하는 통합 후보로 지지해 달라고 간청하며, <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정이 뭉치면 <span style="color: #7A3C00;">나치</span>를 꺾고 독일을 민주주의의 길로 되돌릴 수 있다고 주장했습니다. [? if z_relation >= 50 : 또한 1918년부터 이어져 온 양당 간 협력의 역사를 상기시켰습니다. ?]
 
 @convince_z_spd
-title: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +].
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 [+ spd_candidate +]를 지지하도록 설득한다.
 choose-if: spd_votes >= z_votes
-unavailable-subtitle: [? if spd_votes < z_votes: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate. ?]
+unavailable-subtitle: [? if spd_votes < z_votes: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 자신들이 우리보다 지지율이 높다는 것을 알고 있습니다. 그들은 우리 후보를 지지할 이유를 찾지 못합니다. ?]
 view-if: (spd_candidate = "Grzesinski" or spd_candidate = "Wels") and z_candidate != spd_candidate
 on-arrival: {!
 Q.z_support_grzesinski = 0;
@@ -145,124 +145,124 @@ if (Q.z_relation >= 60 || (Q.z_relation > 50 && Q.z_leader == "Joos")) {
 max-visits: 1
 go-to: z_failed if z_support_grzesinski = 0; z_success if z_support_grzesinski = 1; z_partial if z_support_grzesinski = 2
 
-We implore the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +]. We attempt to convince them of the necessity for unity in the face of <span style="color: #7A3C00;">fascism</span>: that if we were divided, we would fall to the <span style="color: #7A3C00;">Nazis</span> led by Seeckt. [? if z_relation >= 50 : We also remind them of the history of cooperation between our parties, dating back to 1918. ?]
+우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에게 [+ spd_candidate +]를 지지해 달라고 간청했습니다. 우리는 <span style="color: #7A3C00;">파시즘</span>에 맞서 단결해야 할 필요성을 역설했습니다. 만약 우리가 분열된다면, 젝트가 이끄는 <span style="color: #7A3C00;">나치</span>에게 무너질 것이라고 말입니다. [? if z_relation >= 50 : 또한 1918년부터 이어져 온 양당 간 협력의 역사를 상기시켰습니다. ?]
 
 @z_failed
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-Unfortunately, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is not convinced.
+안타깝게도, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 설득되지 않았습니다.
 
 @z_success
 on-arrival: z_candidate = spd_candidate; Seeckt_bonus += 2.5 if not impeachment_bvp
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is convinced! They will be supporting [+ spd_candidate +] for the election.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 설득되었습니다! 그들은 이번 선거에서 [+ spd_candidate +]를 지지할 것입니다.
 
-[? if not impeachment_bvp : Unfortunately, the <span style="color: #A2D8E0;">**BVP**</span> is breaking with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] on this election, supporting Seeckt instead. ?]
+[? if not impeachment_bvp : 안타깝게도, <span style="color: #A2D8E0;">**BVP**</span>는 이번 선거에서 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 결별하고 대신 젝트를 지지하고 있습니다. ?]
 
 @z_partial
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are not satisfied with our arguments, but they are open to being convinced. They are willing to run a joint campaign if we front the resources.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 우리의 주장에 완전히 만족하지는 않지만, 설득될 여지는 있습니다. 그들은 우리가 자금을 지원한다면 합동 선거 운동을 펼칠 의향이 있습니다.
 
-- @pay_z: Give them the resources they need.
-- @r1_menu: Forget about the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
-- @r2_campaigning: Forget about the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+- @pay_z: 그들에게 필요한 자원을 제공한다.
+- @r1_menu: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 포기한다.
+- @r2_campaigning: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 포기한다.
 
 @pay_z
 choose-if: resources >= 2
-subtitle: -2 resources
+subtitle: -2 자원
 on-arrival: resources -= 2; z_candidate = spd_candidate; Seeckt_bonus += 2.5 if not impeachment_bvp
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-With our resources, the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] are convinced to support [+ spd_candidate +]. Konrad Adenauer will drop out of the race.
+우리의 자금 지원으로, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 [+ spd_candidate +]를 지지하기로 했습니다. 콘라트 아데나워는 후보에서 사퇴할 것입니다.
 
-[? if not impeachment_bvp: Unfortunately, the <span style="color: #A2D8E0;">**BVP**</span> is breaking with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] on this election, supporting Seeckt instead.  ?]
+[? if not impeachment_bvp: 안타깝게도, <span style="color: #A2D8E0;">**BVP**</span>는 이번 선거에서 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 결별하고 대신 젝트를 지지하고 있습니다.  ?]
 
 
 @convince_ddp_unity
-title: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to support [+ spd_candidate +].
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>이 [+ spd_candidate +]를 지지하도록 설득한다.
 view-if: (spd_candidate = "Eckener" or spd_candidate = "Adenauer") and ddp_candidate != spd_candidate and not lvp_formed
 on-arrival: ddp_candidate = spd_candidate if ddp_relation >= 40
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
-[? if ddp_candidate = spd_candidate: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is easily persuaded to support [+ spd_candidate +]! ?]
-[? if ddp_candidate != spd_candidate: Unfortunately, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is unwilling to support [+ spd_candidate +]. The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition seems to be fracturing. ?]
+[? if ddp_candidate = spd_candidate: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 [+ spd_candidate +]를 지지하도록 쉽게 설득되었습니다! ?]
+[? if ddp_candidate != spd_candidate: 안타깝게도, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 [+ spd_candidate +]를 지지할 의향이 없습니다. <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정에 균열이 생기고 있는 것 같습니다. ?]
 
 
 @convince_ddp_spd
-title: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to support [+ spd_candidate +].
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>이 [+ spd_candidate +]를 지지하도록 설득한다.
 view-if: (spd_candidate = "Grzesinski" or spd_candidate = "Wels") and ddp_candidate != spd_candidate and not lvp_formed
 on-arrival: ddp_candidate = spd_candidate if ddp_relation >= 60
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
-[? if ddp_candidate = spd_candidate: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is easily persuaded to support [+ spd_candidate +]! ?]
-[? if ddp_candidate != spd_candidate: Unfortunately, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is unwilling to support [+ spd_candidate +]. ?]
+[? if ddp_candidate = spd_candidate: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 [+ spd_candidate +]를 지지하도록 쉽게 설득되었습니다! ?]
+[? if ddp_candidate != spd_candidate: 안타깝게도, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>은 [+ spd_candidate +]를 지지할 의향이 없습니다. ?]
 
 @convince_lvp_unity
-title: Convince the <span style="color: #FFCC00;">**LVP**</span> to support [+ spd_candidate +].
+title: <span style="color: #FFCC00;">**LVP**</span>가 [+ spd_candidate +]를 지지하도록 설득한다.
 view-if: (spd_candidate = "Eckener" or spd_candidate = "Adenauer") and lvp_candidate != spd_candidate and lvp_formed
 on-arrival: lvp_candidate = spd_candidate if lvp_relation >= 50
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
-[? if lvp_candidate = spd_candidate: The <span style="color: #FFCC00;">**LVP**</span> is easily persuaded to support [+ spd_candidate +]! ?]
-[? if lvp_candidate != spd_candidate: Unfortunately, the <span style="color: #FFCC00;">**LVP**</span> is unwilling to support [+ spd_candidate +]. The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition seems to be fracturing. ?]
+[? if lvp_candidate = spd_candidate: <span style="color: #FFCC00;">**LVP**</span>는 [+ spd_candidate +]를 지지하도록 쉽게 설득되었습니다! ?]
+[? if lvp_candidate != spd_candidate: 안타깝게도, <span style="color: #FFCC00;">**LVP**</span>는 [+ spd_candidate +]를 지지할 의향이 없습니다. <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정에 균열이 생기고 있는 것 같습니다. ?]
 
 
 @convince_lvp_spd
-title: Convince the <span style="color: #FFCC00;">**LVP**</span> to support [+ spd_candidate +].
+title: <span style="color: #FFCC00;">**LVP**</span>가 [+ spd_candidate +]를 지지하도록 설득한다.
 view-if: (spd_candidate = "Grzesinski" or spd_candidate = "Wels") and lvp_candidate != spd_candidate and lvp_formed
 on-arrival: lvp_candidate = spd_candidate if lvp_relation >= 65
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
-[? if lvp_candidate = spd_candidate: The <span style="color: #FFCC00;">**LVP**</span> is easily persuaded to support [+ spd_candidate +]! ?]
-[? if lvp_candidate != spd_candidate: Unfortunately, the <span style="color: #FFCC00;">**LVP**</span> is unwilling to support [+ spd_candidate +]. ?]
+[? if lvp_candidate = spd_candidate: <span style="color: #FFCC00;">**LVP**</span>는 [+ spd_candidate +]를 지지하도록 쉽게 설득되었습니다! ?]
+[? if lvp_candidate != spd_candidate: 안타깝게도, <span style="color: #FFCC00;">**LVP**</span>는 [+ spd_candidate +]를 지지할 의향이 없습니다. ?]
 
 @convince_kpd_spd
-title: Convince the <span style="color: #700000;">**KPD**</span> to support [+ spd_candidate +].
+title: <span style="color: #700000;">**KPD**</span>가 [+ spd_candidate +]를 지지하도록 설득한다.
 view-if: spd_candidate = "Wels" and kpd_candidate != spd_candidate
 choose-if: spd_votes >= kpd_votes
-unavailable-subtitle: The <span style="color: #700000;">KPD</span> knows that they are more popular than us; they do not see a reason to support our candidate.
+unavailable-subtitle: <span style="color: #700000;">KPD</span>는 자신들이 우리보다 지지율이 높다는 것을 알고 있습니다. 그들은 우리 후보를 지지할 이유를 찾지 못합니다.
 max-visits: 1
 
-The <span style="color: #700000;">**KPD**</span> isn't supporting anyone at the moment. [? if kpd_relation >= 50 : However, they are willing to be convinced to drop their campaign and support [+ spd_candidate +]; how do we convince them? ?][? if kpd_relation < 50 or kpd_leader != "Conciliators" : They do not seem willing to be convinced. ?]
+<span style="color: #700000;">**KPD**</span>는 현재 아무도 지지하고 있지 않습니다. [? if kpd_relation >= 50 : 그러나 그들은 선거 운동을 중단하고 [+ spd_candidate +]를 지지하도록 설득될 의향이 있습니다. 어떻게 그들을 설득해야 할까요? ?][? if kpd_relation < 50 or kpd_leader != "Conciliators" : 그들은 설득될 의향이 없어 보입니다. ?]
 
-- @kpd_resources: Use our resources.
-- @kpd_relations: Use our good relations.
-- @r1_menu: Forget about the <span style="color: #700000;">**KPD**</span>.
-- @r2_campaigning: Forget about the <span style="color: #700000;">**KPD**</span>.
+- @kpd_resources: 우리의 자원을 사용한다.
+- @kpd_relations: 우리의 좋은 관계를 활용한다.
+- @r1_menu: <span style="color: #700000;">**KPD**</span>는 포기한다.
+- @r2_campaigning: <span style="color: #700000;">**KPD**</span>는 포기한다.
 
 @kpd_resources
 view-if: kpd_relation >= 40 
 choose-if: resources >= 2
-subtitle: -2 resources
-unavailable-subtitle: Not enough resources (need 2).
+subtitle:  -2 자원
+unavailable-subtitle:자원이 부족합니다 (2 필요).
 on-arrival: resources -= 3; kpd_candidate = spd_candidate; sapd_candidate = spd_candidate;
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-The <span style="color: #700000;">**KPD**</span> now endorses [+ spd_candidate +] in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+<span style="color: #700000;">**KPD**</span>는 이제 대통령 선거에서 [+ spd_candidate +]를 지지합니다! 우리는 부르주아 유권자들의 이탈을 막기 위해 그들에게 지지를 너무 드러내지 말아 달라고 요청했습니다.
 
 @kpd_relations
 view-if: kpd_relation >= 50 or (kpd_leader == "Conciliators" and kpd_relation >= 35)
-unavailable-subtitle: Our relations are not good enough.
+unavailable-subtitle: 우리의 관계가 충분히 좋지 않습니다.
 on-arrival: kpd_candidate = spd_candidate; sapd_candidate = spd_candidate;
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 
-The <span style="color: #700000;">**KPD**</span> now endorses [+ spd_candidate +] in the presidential election! We ask them to keep their support low-key, so as to not alienate the bourgeois voters.
+<span style="color: #700000;">**KPD**</span>는 이제 대통령 선거에서 [+ spd_candidate +]를 지지합니다! 우리는 부르주아 유권자들의 이탈을 막기 위해 그들에게 지지를 너무 드러내지 말아 달라고 요청했습니다.
 
 @convince_dvp_unity
-title: Convince the <span style="color: #C0A054;">**DVP**</span> to support [+ spd_candidate +].
-unavailable-subtitle: The <span style="color: #C0A054;">DVP</span> is not willing to support our candidate.
+title: <span style="color: #C0A054;">**DVP**</span>가 [+ spd_candidate +]를 지지하도록 설득한다.
+unavailable-subtitle: <span style="color: #C0A054;">DVP</span>는 우리 후보를 지지할 의향이 없습니다.
 view-if: (spd_candidate = "Adenauer" or spd_candidate = "Gessler" or spd_candidate = "Eckener") and dvp_candidate != spd_candidate and not lvp_formed and dvp_exist
 choose-if: impeachment_dvp
 on-arrival: dvp_candidate = spd_candidate
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
-[? if dvp_candidate = spd_candidate: Thanks to our good relations, and the fact that our candidate is a unity candidate not affiliated with the <span style="color: #c00000;">**SPD**</span>, the <span style="color: #C0A054;">**DVP**</span> is persuaded to support [+ spd_candidate +]. ?]
+[? if dvp_candidate = spd_candidate: 우리의 좋은 관계와 우리 후보가 <span style="color: #c00000;">**SPD**</span> 소속이 아닌 통합 후보라는 사실 덕분에, <span style="color: #C0A054;">**DVP**</span>는 [+ spd_candidate +]를 지지하기로 했습니다. ?]
 
 
 @round_1
@@ -273,12 +273,12 @@ set-jump: post_election
 @post_election
 on-arrival: {!
 var candidate_descs = {
-Seeckt: "Hans von Seeckt, an independent formerly of the <span style='color: #C0A054; font-weight: bold;'>DVP</span>",
-Eckener: "the independent <span style='color: #000000;'>rep</span><span style='color: #DD0000;'>ubl</span><span style='color: #FFCC00;'>ican</span> candidate Hugo Eckener",
-Adenauer: "Konrad Adenauer of the <span style='color: #000000; font-weight: bold;'>Center Party</span>",
-Gessler: "Otto Gessler, independent formerly of the <span style='color: #D3C24D; font-weight: bold;'>DDP</span>",
-Wels: "Otto Wels of the <span style='color: #c00000; font-weight: bold;'>SPD</span>",
-Grzesinski: "Albert Grzesinski of the <span style='color: #c00000; font-weight: bold;'>SPD</span>"
+Seeckt: "전 <span style='color: #C0A054; font-weight: bold;'>DVP</span> 소속 무소속 한스 폰 제크",
+Eckener: "무소속 <span style='color: #000000;'>공</span><span style='color: #DD0000;'>화</span><span style='color: #FFCC00;'>주의</span> 후보 휴고 에케너",
+Adenauer: "<span style='color: #000000; font-weight: bold;'>중앙당</span>의 콘라트 아데나워",
+Gessler: "전 <span style='color: #D3C24D; font-weight: bold;'>DDP</span> 소속 무소속 오토 게슬러",
+Wels: "<span style='color: #c00000; font-weight: bold;'>SPD</span>의 오토 벨스",
+Grzesinski: "<span style='color: #c00000; font-weight: bold;'>SPD</span>의 알베르트 그제진스키"
 }
 for (var k in candidate_descs) {
     Q[k + '_running'] = 0;
@@ -331,20 +331,20 @@ Q.round += 1
 !}
 go-to: r2_start if round = 1 and not has_majority; election_end if round > 1; r1_winner if has_majority
 
-Election results:
+선거 결과:
 
-[? if Seeckt_running : <span style="color: #808080;">**Seeckt**</span> - [+ Seeckt_votes_disp +]% ?]
+[? if Seeckt_running : <span style="color: #808080;">**제크**</span> - [+ Seeckt_votes_disp +]% ?]
 
-[? if Adenauer_running : <span style="color: #000000;">**Adenauer**</span> - [+ Adenauer_votes_disp +]% ?]
+[? if Adenauer_running : <span style="color: #000000;">**아데나워**</span> - [+ Adenauer_votes_disp +]% ?]
 
-[? if Gessler_running : [? if not lvp_formed: <span style="color: #D3C24D;">**Gessler**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**Gessler**</span>?] - [+ Gessler_votes_disp +]% ?]
+[? if Gessler_running : [? if not lvp_formed: <span style="color: #D3C24D;">**게슬러**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**게슬러**</span>?] - [+ Gessler_votes_disp +]% ?]
 
-[? if Eckener_running : <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span> - [+ Eckener_votes_disp +]% ?]
+[? if Eckener_running : <span style="color: #000000;">**에**</span><span style="color: #DD0000;">**케**</span><span style="color: #FFCC00;">**너**</span> - [+ Eckener_votes_disp +]% ?]
 
-[? if Grzesinski_running : <span style="color: #c00000;">**Grzesinski**</span> - [+ Grzesinski_votes_disp +]% ?]
-[? if Wels_running : <span style="color: #c00000;">**Wels**</span> - [+ Wels_votes_disp +]% ?]
+[? if Grzesinski_running : <span style="color: #c00000;">**그제진스키**</span> - [+ Grzesinski_votes_disp +]% ?]
+[? if Wels_running : <span style="color: #c00000;">**벨스**</span> - [+ Wels_votes_disp +]% ?]
 
-[? if sapd_candidate == "Boycott" or kpd_candidate == "Boycott" : Spoiled Ballots - [+ boycott_votes +]% ?]
+[? if sapd_candidate == "Boycott" or kpd_candidate == "Boycott" : 무효표 - [+ boycott_votes +]% ?]
 
 @r2_start
 on-arrival: {!
@@ -373,57 +373,57 @@ if (Q.dvp_candidate != Q.spd_candidate && Q.dvp_candidate != Q.ddp_candidate && 
 !}
 go-to: r2_menu
 
-In the lead is [+ winner_desc +]. There is no majority in the first round. In the second round, any candidate who wins a plurality will win overall.
+선두는 [+ winner_desc +]입니다. 1차 투표에서 과반 득표자가 나오지 않았습니다. 2차 투표에서는, 최다 득표자가 최종 승리하게 됩니다.
 
-[? if gessler_drops_out : The <span style="color: #FFCC00;">liberal</span> candidate Otto Gessler has dropped out in favor of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]'s Konrad Adenauer. This consolidates the votes of the moderate bürgerblock. ?]
-[? if adenauer_drops_out : The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] candidate Konrad Adenauer has dropped out in favor of Otto Gessler. This consolidates the votes of the moderate bürgerblock. ?]
+[? if gessler_drops_out : <span style="color: #FFCC00;">자유주의</span> 후보 오토 게슬러가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워를 지지하며 사퇴했습니다. 이것은 온건 부르주아 블록의 표를 결집시킵니다. ?]
+[? if adenauer_drops_out : [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 후보 콘라트 아데나워가 오토 게슬러를 지지하며 사퇴했습니다. 이것은 온건 시민 블록의 표를 결집시킵니다. ?]
 
-What should we do?
+우리는 어떻게 해야 할까요?
 
 @r2_menu
 
 - @r2_endorse_adenauer
 - @r2_endorse_gessler
 - @r2_endorse_eckener
-- @r2_campaigning: Can we convince any of the parties to change their endorsements?
-- @r2_vote: Let the voting begin.
+- @r2_campaigning: 다른 정당들을 설득해 지지 후보를 바꾸게 할 수 있는가?
+- @r2_vote: 투표를 시작하자.
 
 @r2_endorse_adenauer
-title: Switch our support to Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워로 지지 후보를 변경한다.
 view-if: z_candidate = "Adenauer" and spd_candidate != z_candidate
 on-departure: kpd_candidate = "Boycott" if kpd_candidate == spd_candidate; sapd_candidate = kpd_candidate; spd_candidate = "Adenauer"; z_relation += 4; Seeckt_bonus += 2.5 if not impeachment_bvp; is_unity_candidate = 1
 go-to: r2_campaigning
 
-We have endorsed Konrad Adenauer of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워를 지지했습니다.
 
-[? if not impeachment_bvp: With our support of Adenauer, some of the most conservative parts of the <span style="color: #A2D8E0;">Bavarian People's Party</span> have broken away from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], shifting their support to Seeckt. ?]
+[? if not impeachment_bvp: 우리의 아데나워 지지와 함께, <span style="color: #A2D8E0;">바이에른 인민당</span>의 가장 보수적인 계파 일부가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에서 이탈하여 제크트 지지로 돌아섰습니다. ?]
 
-[? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and supporting no one.  ?]
+[? if kpd_candidate = spd_candidate: <span style="color: #700000;">**KPD**</span>는 이제 우리의 이전 연정에서 이탈하여 독자 노선을 걷고 있습니다. 
 
 @r2_endorse_gessler
-title: Switch our support to Otto Gessler.
+title: 오토 게슬러로 지지 후보를 변경한다.
 view-if: ddp_candidate = "Gessler" and spd_candidate != ddp_candidate
 on-departure: kpd_candidate = "Boycott" if kpd_candidate == spd_candidate; sapd_candidate = kpd_candidate; spd_candidate = "Gessler"; ddp_relation += 4; dvp_candidate = "Seeckt" if not impeachment_dvp; is_unity_candidate = 1
 go-to: r2_campaigning
 
-We have endorsed Otto Gessler, independent formerly of the <span style="color: #D3C24D;">**DDP**</span>.
+우리는 이전에 <span style="color: #D3C24D;">**DDP**</span> 소속이었던 무소속 오토 게슬러를 지지했습니다.
 
-[? if not impeachment_dvp and dvp_exist and not lvp_formed : With our support of Gessler, the <span style="color: #C0A054;">**DVP**</span> components supporting him have broken away and are now shifting their support to Seeckt. ?]
+[? if not impeachment_dvp and dvp_exist and not lvp_formed : 우리의 게슬러 지지와 함께, 그를 지지하던 <span style="color: #C0A054;">**DVP**</span> 세력들이 이탈하여 제크트 지지로 돌아섰습니다. ?]
 
-[? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and supporting no one. ?]
+[? if kpd_candidate = spd_candidate: <span style="color: #700000;">**KPD**</span>는 이제 우리의 이전 연정에서 이탈하여 독자 노선을 걷고 있습니다. ?]
 
 @r2_endorse_eckener
-title: Convince the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition parties to unite behind Hugo Eckener.
-subtitle: -2 resources
-unavailable-subtitle: [? if resources < 2 : -2 resources - Not enough resources. ?][? if (z_relation < 55 and z_ideology == "Right") or (z_relation < 35 and z_ideology == "Left") : We need higher relations with the <span style="color: #000000;">Center Party</span>. ?][? if ddp_relation < 35 and not lvp_formed : We need higher relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. ?][? if lvp_relation < 45 and lvp_formed : We need higher relations with the <span style="color: #FFCC00;">LVP</span>. ?]
+title: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 정당들이 휴고 에케너 뒤로 단결하도록 설득한다.
+subtitle: -2 자원
+unavailable-subtitle: [? if resources < 2 : -2 자원 - 자원이 충분하지 않음. ?][? if (z_relation < 55 and z_ideology == "Right") or (z_relation < 35 and z_ideology == "Left") : <span style="color: #000000;">중앙당</span>과 더 높은 관계도가 필요함. ?][? if ddp_relation < 35 and not lvp_formed : <span style="color: #D3C24D;">[+ ddp_name +]</span>와 더 높은 관계도가 필요함. ?][? if lvp_relation < 45 and lvp_formed : <span style="color: #FFCC00;">LVP</span>와 더 높은 관계도가 필요함. ?]
 choose-if: resources >= 2 and ((z_relation >= 55 and z_ideology == "Right") or (z_relation >= 45 and z_ideology = "Left")) and ((ddp_relation >= 35 and not lvp_formed) or lvp_relation >= 45 and lvp_formed)
 view-if: z_candidate = "Adenauer" and ((ddp_candidate = "Gessler" and not lvp_formed) or (lvp_candidate = "Gessler" and lvp_formed)) and spd_candidate != "Eckener"
 on-departure: kpd_candidate = "Boycott" if kpd_candidate == spd_candidate; sapd_candidate = kpd_candidate; spd_candidate = "Eckener"; z_candidate = "Eckener"; ddp_candidate = "Eckener"; lvp_candidate = "Eckener"; resources -= 2; is_unity_candidate = 1
 go-to: r2_campaigning
 
-We have successfully united all of the parties of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition behind Hugo Eckener!
+우리는 성공적으로 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정의 모든 정당들을 휴고 에케너 뒤로 단결시켰습니다!
 
-[? if kpd_candidate = spd_candidate: The <span style="color: #700000;">**KPD**</span> is now breaking from our previous coalition and supporting no one. ?]
+[? if kpd_candidate = spd_candidate: <span style="color: #700000;">**KPD**</span>는 이제 우리의 이전 연정에서 이탈하여 독자 노선을 걷고 있습니다. ?]
 
 @r2_campaigning
 view-if: round = 1
@@ -436,7 +436,7 @@ view-if: round = 1
 - @convince_lvp_spd
 - @convince_dvp_unity
 - @convince_kpd_spd
-- @r2_vote: Let the voting begin.
+- @r2_vote: 투표를 시작하자.
 
 
 
@@ -452,15 +452,15 @@ go-to: election_end
 @seeckt_victory
 on-arrival: chancellor = "Frick"; chancellor_party = "DSU"
 
-With Seeckt's victory, the balance of power passes to the <span style="color: #7A3C00;">Nazis</span> once more, who expect a reward for their support for him. He has gone ahead with appointing Wilhelm Frick of the <span style="color: #6A1E1E;">**DSU**</span> as chancellor, which will inevitably start a full-scale civil war.
+제크의 승리와 함께, 권력의 균형이 다시 한번 <span style="color: #7A3C00;">나치</span>에게 넘어가며, 그들은 지지에 대한 보상을 기대하고 있습니다. 그는 <span style="color: #6A1E1E;">**DSU**</span>의 빌헬름 프리크를 총리로 임명하는 것을 강행했고, 이것은 필연적으로 전면적인 내전을 촉발할 것입니다.
 
-- @fight: Did we do all this for nothing? Fight!
+- @fight: 이 모든 것을 헛되이 할 셈인가? 싸운다!
 
 @fight
 
-Do we realize that this means civil war, against the full force of the state?
+이것이 국가의 전력을 상대로 한 내전을 의미한다는 것을 자각하고 있습니까?
 
-- @civil_war: Yes.
+- @civil_war: 그렇다.
 
 @election_end
 go-to: eckener_win if winner = "Eckener"; bundesrepublik_win if winner = "Adenauer"; seeckt_victory if winner = "Seeckt"; nazis_lose if winner = "Grzesinski" or winner == "Wels" or winner = "Gessler"
@@ -479,7 +479,7 @@ if (Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president ==
 }
 !}
 
-The election has been won by [+ winner_desc +].
+선거에서 [+ winner_desc +]가 승리했습니다.
 
 @eckener_win
 achievement: zeppelin_kapitan
@@ -494,6 +494,6 @@ go-to: nazis_lose
 
 @nazis_lose
 
-After its electoral defeat, the so-called "new Harzburg Front" is collapsing into infighting and financial ruin. The <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>'s moment has seemingly passed, and the path to democratic restoration under President [+ president +] now begins. What a close call.
+선거 패배 후, 소위 "새로운 하르츠부르크 전선"은 내분과 재정적 파탄으로 붕괴하고 있습니다. <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>의 전성기는 겉보기에 지나갔고, [+ president +] 대통령 하의 민주적 회복으로 가는 길이 이제 시작됩니다. 정말 아슬아슬한 순간이었습니다.
 
 - @game_over
