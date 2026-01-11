@@ -1,64 +1,63 @@
-title: The <span style="color: #700000;">**KPD**</span> calls a vote of no confidence against the current government!
-subtitle: We have angered the <span style="color: #700000;">**KPD**</span> too much...
+title: <span style="color: #700000;">**KPD**</span>가 현 정부에 대해 불신임 투표를 소집함!
+subtitle: 우리는 <span style="color: #700000;">**KPD**</span>를 너무 많이 자극했습니다...
 new-page: true
 view-if: spd_in_government = 1 and ((in_popular_front = 1 and kpd_coalition_dissent >= 3) or (in_left_front = 1 and kpd_coalition_dissent >= 4)) and spd_r < 50 and not constructive_vonc
 tags: event
 go-to: menu
 
-= Vote of No Confidence
+= 불신임 투표
 
-The <span style="color: #700000;">**KPD**</span> has called a vote of no confidence against us, due to our various policies and disagreements. If this succeeds, there will be an election in a few months.
+<span style="color: #700000;">**KPD**</span>는 우리의 다양한 정책들과 의견 불일치로 인해 우리에 대한 불신임 투표를 소집했습니다. 만약 이것이 가결된다면, 몇 달 안에 선거가 치러질 것입니다.
 
 @menu
 
-- @try_assuage: Try to assuage them somehow.
-- @support_center: Could we form a new government based on the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (and possibly <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?
-- @let_it_happen: Let the vote happen.
+- @try_assuage: 어떻게든 그들을 달래려고 시도한다.
+- @support_center: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 그리고 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (그리고 아마도 <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?을 기반으로 새로운 정부를 구성할 수 있을까?
+- @let_it_happen: 투표가 진행되도록 둔다.
 
 @try_assuage
 
-How do we assuage the <span style="color: #700000;">**KPD**</span>?
+우리가 어떻게 <span style="color: #700000;">**KPD**</span>를 달래야 할까요?
 
-- @resources: Use our resources to reduce dissent within the coalition.
-- @thalmann: Appoint Thälmann as chancellor instead of [+ chancellor +].
-- @support_center: Could we form a new government based on the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (and possibly <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?
-- @let_it_happen: Never mind. Let the vote happen.
+- @resources: 연정 내의 불만을 줄이기 위해 우리의 자원을 사용한다.
+- @thalmann: [+ chancellor +] 대신 텔만을 총리로 임명한다.
+- @support_center: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 그리고 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (그리고 아마도 <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?을 기반으로 새로운 정부를 구성할 수 있을까?
+- @let_it_happen: 신경 쓰지 마라. 투표가 진행되도록 둔다.
 
 @thalmann
 choose-if: president_ideology == "Left"
-subtitle: This would be pretext for a right-wing coup.
-unavailable-subtitle: [? if president == "Hindenburg" : President Hindenburg would never allow this. ?]
+subtitle: 이것은 우익 쿠데타를 위한 구실이 될 것입니다.
+unavailable-subtitle: [? if president == "Hindenburg" : 힌덴부르크 대통령은 이것을 절대 허락하지 않을 것입니다. ?]
 on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"
 
-With great reluctance, President [+ president +] appoints [+ chancellor +] as chancellor.
+크게 꺼림칙하며, [+ president +] 대통령은 [+ chancellor +]를 총리로 임명합니다.
 
-Immediately, [+ chancellor +] goes to work building a "<span style="color: #750e0e;">Soviet Germany</span>": consolidating as much power as possible in the <span style="color: #700000;">**KPD**</span>, purging state institutions of anti-<span style="color: #700000;">communists</span>, and sending street fighters against the "enemies of the people".
+즉시, [+ chancellor +]는 "<span style="color: #750e0e;">소비에트 독일</span>"을 건설하기 위한 작업에 착수합니다. <span style="color: #700000;">**KPD**</span>에 가능한 한 많은 권력을 집중시키고, 국가 기관에서 반<span style="color: #700000;">공산주의자</span>들을 숙청하며, "인민의 적들"에 대항하여 거리의 투사들을 내보냅니다.
 
-In response to [+ chancellor +] being appointed Chancellor, the right-wing forces launches almost immediately launch an attempted coup. Troops of the <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> enter Berlin and immediately begin clashing with our supporters! <span style="color: #808080;">Reactionary</span> officers within the Reichswehr have taken their troops out of the barracks and joined them with the <span style="color: #3E88B3;">**Stahlhelm**</span> to stop the <span style="color: #700000;">**KPD**</span> from taking power. We are forced to be on the same side as the <span style="color: #700000;">**KPD**</span>, whether we want to or not.
+[+ chancellor +]가 총리로 임명된 것에 대응하여, 우익 세력은 거의 즉시 쿠데타 시도를 감행합니다. <span style="color: #3E88B3;">**Stahlhelm**</span>과 <span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span> 병력들이 베를린에 진입하여 즉시 우리의 지지자들과 충돌하기 시작합니다! 국방군 내의 <span style="color: #808080;">반동</span> 장교들은 병력을 막사 밖으로 이끌고 나와 <span style="color: #700000;">**KPD**</span>의 집권을 막기 위해 <span style="color: #3E88B3;">**Stahlhelm**</span>에 합류했습니다. 우리는 우리의 의지와 상관없이 <span style="color: #700000;">**KPD**</span>와 같은 편에 서도록 강요받고 있습니다.
 
 - @civil_war
 
 
 @resources
 choose-if: resources >= 3 and kpd_ultimatum_seen = 0
-unavailable-subtitle: -3 resources - [? if resources < 3 : We do not have enough resources. ?][? if kpd_ultimatum_seen : This is beyond the point when resources could fix. ?]
-subtitle: -3 resources
+unavailable-subtitle: -3 자원 - [? if resources < 3 : 우리는 충분한 자원을 가지고 있지 않습니다. ?][? if kpd_ultimatum_seen : 자원으로 해결할 수 있는 단계를 지났습니다. ?]
+subtitle: -3 자원
 on-arrival: resources -= 3; kpd_coalition_dissent -= 1;
 
-By transferring resources to our coalition partners, we can reduce their dissent against our policies. This is a crude, but effective solution.
+연정 파트너들에게 자원을 지원함으로써, 우리는 정책에 대한 그들의 불만을 줄일 수 있습니다. 이것은 투박하지만, 효과적인 해결책입니다.
 
 
 @support_center
 choose-if: (weimar_coalition >= 50 and z_relation >= 40 and (ddp_relation >= 35 or lvp_relation >= 35)) or (grand_coalition >= 50 and z_relation >= 45 and ((dvp_relation >= 30 and ddp_relation >= 40) or lvp_relation >= 40))
-unavailable-subtitle: [? if grand_coalition < 50 : This would not give us a majority. ?] [? if z_relation < 45 : After working with the <span style="color: #700000;">Communists</span>, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not wish to form a coalition with us. ?] [? if dvp_relation < 30 and not lvp_formed and dvp_exist : The <span style="color: #C0A054;">**DVP**</span> would rather see the government fall than rescue us from the <span style="color: #700000;">Communists</span>. ?] [? if ddp_relation < 40 and not lvp_formed : The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is no longer our ally. ?] [? if lvp_relation < 40 and lvp_formed : The <span style="color: #FFCC00;">**LVP**</span> is no longer our ally. ?]
+unavailable-subtitle:  [? if grand_coalition < 50 : 이것은 우리에게 과반수를 주지 않을 것입니다. ?] [? if z_relation < 45 : <span style="color: #700000;">공산주의자들</span>과 협력한 이후로, [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 우리와 연정을 구성하기를 원하지 않습니다. ?] [? if dvp_relation < 30 and not lvp_formed and dvp_exist : <span style="color: #C0A054;">**DVP**</span>는 우리를 <span style="color: #700000;">공산주의자들</span>로부터 구하느니 차라리 정부가 무너지는 것을 지켜볼 것입니다. ?] [? if ddp_relation < 40 and not lvp_formed : <span style="color: #D3C24D;">**[+ ddp_name +]**</span>는 더 이상 우리의 동맹이 아닙니다. ?] [? if lvp_relation < 40 and lvp_formed : <span style="color: #FFCC00;">**LVP**</span>는 더 이상 우리의 동맹이 아닙니다. ?]
 
-We could try to boot the <span style="color: #700000;">**KPD**</span> from our governing coalition, and form a new government with the bourgeois parties.
+우리는 집권 연정에서 <span style="color: #700000;">**KPD**</span>를 축출하고, 부르주아 정당들과 새로운 정부를 구성하려고 시도할 수 있습니다.
 
-- @election_1928.weimar_coalition: Form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition?
-- @election_1928.weimar_coalition_liberal_parliament: Form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition?
-- @election_1928.grand_coalition: Form a Grand Coalition?
-- @let_it_happen: There is nothing we can do.
-
+- @election_1928.weimar_coalition: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정을 구성한다?
+- @election_1928.weimar_coalition_liberal_parliament: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정을 구성한다?
+- @election_1928.grand_coalition:  대연정을 구성한다?
+- @let_it_happen: 우리가 할 수 있는 것은 아무것도 없다.
 
 @let_it_happen
 view-if: not constructive_vonc
@@ -70,25 +69,25 @@ go-to: let_it_happen_braun if president_ideology == "Left"; let_it_happen_hinden
 @let_it_happen_braun
 on-arrival: next_election_time = time + 3 if next_election_time >= time + 3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "I"; interior_minister_party = "I"; justice_minister_party = "I"; labor_minister_party = "I"; reichswehr_minister_party = "I"; economic_minister_party = "I"; finance_minister_party = "I"; agriculture_minister_party = "I";
 
-The vote succeeds, and our coalition has collapsed. Chancellor [+ chancellor +] will lead a caretaker government until the next election.
+투표는 가결되었고, 우리 연정은 붕괴했습니다. [+ chancellor +] 총리는 다음 선거까지 관리 내각을 이끌 것입니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @let_it_happen_hindenburg
 on-arrival: time_to_election = 3; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; coalition_dissent = 0; kpd_coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50
 go-to: elections if bruning_event_seen or year < 1930
 
-The vote succeeds, and our government has resigned. Chancellor Brüning has been appointed as the head of an acting government, consisting solely of the bourgeois parties.
+투표는 가결되었고, 우리 정부는 사임했습니다. 브뤼닝 총리가 오로지 부르주아 정당들로만 구성된 과도 정부의 수장으로 임명되었습니다.
 
-[? if not bruning_event_seen and year >= 1930: New elections haven't been called yet but it's likely that they will be soon, considering Brüning most likely doesn't have the majority of the Reichstag behind him. ?]
+[? if not bruning_event_seen and year >= 1930: 새로운 선거는 아직 소집되지 않았지만, 브뤼닝이 제국의회의 과반수 지지를 얻지 못했을 가능성이 높다는 점을 고려할 때 조만간 소집될 것으로 보입니다. ?]
 
 @let_it_happen_other
 on-arrival: time_to_election = 3; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; coalition_dissent = 0; kpd_coalition_dissent = 0; pro_republic -= 3; old_middle_spd -= 2; new_middle_spd -= 2; workers_spd -= 2 if pro_republic < 50; workers_spd -= 3 if pro_republic < 40; old_middle_nsdap += 3 if pro_republic < 50; new_middle_nsdap += 2 if pro_republic < 50
 go-to: elections
 
-The vote succeeds, and our government has resigned. Chancellor Brüning has been appointed as the head of an acting government, consisting solely of the bourgeois parties.
+투표는 가결되었고, 우리 정부는 사임했습니다. 브뤼닝 총리가 오로지 부르주아 정당들로만 구성된 과도 정부의 수장으로 임명되었습니다.
 
 @elections
 call: set_next_election_time
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.

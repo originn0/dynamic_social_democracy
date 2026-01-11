@@ -1,5 +1,5 @@
-title: <span style="color: #700000;">**KPD**</span> policy
-subtitle: The <span style="color: #700000;">**KPD**</span> ministers are carrying out their policy portfolios.
+title: <span style="color: #700000;">**KPD**</span> 정책
+subtitle: <span style="color: #700000;">**KPD**</span> 장관들이 그들의 정책 포트폴리오를 수행하고 있습니다.
 new-page: true
 view-if: (in_popular_front or in_left_front) and (labor_minister_party = "KPD" or economic_minister_party = "KPD" or finance_minister_party = "KPD") and (kpd_policy_timer = 0)
 on-arrival: kpd_policy_timer = 5
@@ -14,7 +14,7 @@ on-arrival: kpd_policy_timer = 5
 # LaPorte, Norman H. “The German Communist Party in Saxony, 1924-1933 : Factionalism, Fratricide and Political Failure,” 1998. http://dspace.stir.ac.uk/handle/1893/3259.
 
 
-= <span style="color: #700000;">**KPD**</span> Policy
+= <span style="color: #700000;">**KPD**</span> 정책
 
 # The Communist-run ministries are pursuing their own policy course. It is up to us whether to support or oppose these policies.
 
@@ -27,84 +27,84 @@ on-arrival: kpd_policy_timer = 5
 - @interior
 
 @labor
-title: Labor Ministry
-subtitle: The Labor Ministry is giving significant concessions to organized labor.
+title:  노동부
+subtitle: 노동부는 조직 노동자들에게 상당한 양보를 하고 있습니다.
 view-if: labor_minister_party = "KPD"
 
-The <span style="color: #700000;">**KPD**</span>-controlled Labor Ministry is taking a policy of supporting labor in every dispute between workers and employees, leading to a proliferation of strikes across the country. Given the economic circumstances, there are worries that this could harm any potential economic recovery, not to mention the conflicts this may engender with the bourgeois parties.
+<span style="color: #700000;">**KPD**</span>가 장악한 노동부는 노사 간의 모든 분쟁에서 노동자 측을 지지하는 정책을 취하고 있으며, 이는 전국적인 파업 확산으로 이어지고 있습니다. 경제적 상황을 감안할 때, 이것이 잠재적인 경제 회복을 해칠 수 있다는 우려가 있으며, 부르주아 정당들과의 갈등은 말할 것도 없습니다.
 
-Do we support their radical labor policy?
+우리는 그들의 급진적인 노동 정책을 지지합니까?
 
-- @labor_support: Of course we support labor.
-- @labor_oppose: No, this is too radical.
+- @labor_support: 물론 우리는 노동자를 지지한다.
+- @labor_oppose: 아니다, 이것은 너무 급진적이다.
 
 @labor_support
 on-arrival: capital_strike_progress += 2; workers_kpd += 5; workers_spd += 3*(1-dissent); kpd_labor_support += 1; coalition_dissent += 1; z_relation -= 6; unemployment += 2; kpd_influence += 2
 
-The pro-labor policy is popular among workers and is bringing the <span style="color: #700000;">**KPD**</span> more support, but in response businesses are laying off more workers and reducing hours. This is setting the government up for a confrontation with the capitalists.
+친노동 정책은 노동자들 사이에서 인기가 있고 <span style="color: #700000;">**KPD**</span>에게 더 많은 지지를 가져다주고 있지만, 이에 대한 반응으로 기업들은 더 많은 노동자를 해고하고 노동 시간을 줄이고 있습니다. 이것은 정부와 자본가들 간의 대결 구도를 형성하고 있습니다.
 
 @labor_oppose
 on-arrival: kpd_coalition_dissent += 1; workers_spd -= 5; workers_kpd += 5; kpd_relation -= 6
 
-We oppose the <span style="color: #700000;">**KPD**</span>'s policy, and prevent it from being enacted. The <span style="color: #700000;">**KPD**</span> is displeased, as are the workers who would have stood to benefit.
+우리는 <span style="color: #700000;">**KPD**</span>의 정책에 반대하여, 이것들이 실행되는 것을 막고 있습니다. <span style="color: #700000;">**KPD**</span>는 불쾌해하며, 혜택을 받을 수 있었던 노동자들도 마찬가지로 불쾌해합니다.
 
 @economy
-title: Economy Ministry
-subtitle: The Economy Ministry is pursuing a policy of nationalizations.
+title: 경제부
+subtitle: 경제부는 국유화 정책을 추구하고 있습니다.
 view-if: economic_minister_party = "KPD"
 
-The <span style="color: #700000;">**KPD**</span>-controlled Economy Ministry is planning a policy of mass nationalizations. [? if budget < 3 : They plan to use deficit spending to finance state takeovers of underutilized industrial enterprises, and run them for the benefit of the workers. ?] [? if budget >= 3 : They plan to buy out closed and underutilized industrial enterprises, and run them at full capacity for the benefit of the workers. ?] 
+<span style="color: #700000;">**KPD**</span>가 장악한 경제부는 대규모 국유화 정책을 계획하고 있습니다. [? if budget < 3 : 그들은 적자 지출을 사용하여 가동률이 낮은 산업체들의 국가 인수를 위한 자금을 조달하고, 노동자들의 이익을 위해 그것들을 운영할 계획입니다. ?] [? if budget >= 3 : 그들은 폐쇄되거나 가동률이 낮은 산업체들을 매입하고, 노동자들의 이익을 위해 그것들을 최대 가동률로 운영할 계획입니다. ?]
 
-Do we support this policy?
+우리는 이 정책을 지지합니까?
 
-- @economy_support: Yes, support the nationalization policy.
-- @economy_oppose: No, this must be stopped.
+- @economy_support: 그렇다, 국유화 정책을 지지한다.
+- @economy_oppose: 아니다, 이것은 중단되어야 한다.
 
 @economy_support
 on-arrival: nationalization_progress += 1; capital_strike_progress += 4; unemployed -= 2.5 if unemployed >= 6; unemployed -= 1.2 if works_councils >= 3; budget -= 3; works_program += 1; workers_spd += 4*(1-dissent); workers_kpd += 8*(1-dissent); unemployed_kpd += 4*(1-dissent); coalition_dissent += 2; dvp_relation -= 6; lvp_relation -= 6; z_relation -= 4; new_middle_spd -= 3; old_middle_spd -= 3; economy_goal_completed += 1; kpd_influence += 2
 
-The <span style="color: #700000;">**KPD**</span> has gained credit with the workers for enabling many to keep their jobs. Meanwhile, the bourgeois parties and middle-class voters blame the <span style="color: #c00000;">**SPD**</span> for enabling the nationalizations.
+<span style="color: #700000;">**KPD**</span>는 많은 이들이 일자리를 유지할 수 있게 해준 공로로 노동자들의 신망을 얻었습니다. 한편, 부르주아 정당들과 중산층 유권자들은 국유화를 용인한 것에 대해 <span style="color: #c00000;">**SPD**</span>를 비난합니다.
 
 @economy_oppose
 on-arrival: kpd_coalition_dissent += 1; workers_spd -= 5; workers_kpd += 5; kpd_relation -= 6
 
-After opposing the nationalization policy, the <span style="color: #700000;">**KPD**</span> has commenced a propaganda campaign against us, accusing the <span style="color: #c00000;">**SPD**</span> of yet another perfidy.
+국유화 정책에 반대한 후, <span style="color: #700000;">**KPD**</span>는 우리에 대항하여 선전 캠페인을 시작했으며, <span style="color: #c00000;">**SPD**</span>의 또 다른 배신이라며 비난하고 있습니다.
 
 @finance
-title: Finance Ministry
-subtitle: The Finance Ministry is increasing taxes on the rich.
+title: 재무부
+subtitle: 재무부는 부유세 인상을 추진하고 있습니다.
 view-if: finance_minister_party = "KPD"
 
-The <span style="color: #700000;">**KPD**</span>-controlled Finance Ministry
+<span style="color: #700000;">**KPD**</span>가 장악한 재무부는
 
-- @finance_support: Yes, we support increasing taxes on the rich.
-- @finance_oppose: No, now is not the right time.
+- @finance_support: 그렇다, 우리는 부자 증세를 지지한다.
+- @finance_oppose: 아니다, 지금은 적절한 때가 아니다.
 
 @finance_support
 
 @finance_oppose
 
 @foreign
-title: Foreign Ministry
-subtitle: The Foreign Ministry is aiding the <span style="color: #750e0e;">Soviet Union</span>.
+title: 외무부
+subtitle: 외무부는 <span style="color: #750e0e;">소련</span>을 지원하고 있습니다.
 view-if: foreign_minister_party = "KPD"
 
-The <span style="color: #700000;">**KPD**</span>-controlled Foreign Ministry is planning to send economic aid to the <span style="color: #750e0e;">Soviet Union</span>.
+<span style="color: #700000;">**KPD**</span>가 장악한 외무부는 <span style="color: #750e0e;">소련</span>에 경제적 원조를 보낼 계획을 하고 있습니다.
 
-- @foreign_support: Yes, we support aiding the <span style="color: #750e0e;">Soviet Union</span>.
-- @foreign_oppose: No, this must be stopped.
+- @foreign_support: 그렇다, 우리는 <span style="color: #750e0e;">소련</span> 원조를 지지한다.
+- @foreign_oppose: 아니다, 이것은 중단되어야 한다.
 
 @foreign_support
 
 @foreign_oppose
 
 @interior
-title: Interior Ministry
-subtitle: The Interior Ministry is engaged in a purge of the security services.
+title: 내무부
+subtitle: 내무부는 보안 기관 숙청에 관여하고 있습니다.
 view-if: interior_minister_party = "KPD"
 
-- @interior_support: Yes, we support purging the security services.
-- @interior_oppose: No, this seems to be a pretext for a <span style="color: #700000;">**KPD**</span> power grab.
+- @interior_support: 그렇다, 우리는 보안 기관 숙청을 지지한다.
+- @interior_oppose: 아니다, 이것은 <span style="color: #700000;">**KPD**</span>의 권력 장악을 위한 구실로 보인다.
 
 @interior_support
 

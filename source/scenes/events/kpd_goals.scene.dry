@@ -1,27 +1,27 @@
-title: The <span style="color: #700000;">**KPD**</span> presents its list of goals for the coalition.
+title: <span style="color: #700000;">**KPD**</span>가 연정을 위한 목표 목록을 제시함.
 view-if: (in_popular_front = 1 or in_left_front = 1) and kpd_goals_seen = 0 and kpd_coalition_success = 0 and next_election_time - time > 12 and spd_in_government
 on-arrival: kpd_goals_seen = 1; welfare_goal = 1; foreign_goal = 0; agriculture_goal = 1 if agriculture_minister_party != "KPD"; economy_goal = 1 if economic_minister_party != "KPD"; finance_goal = 1 if finance_minister_party != "KPD"; labor_goal = 1 if labor_minister_party != "KPD"; reichswehr_goal = 1 if reichswehr_minister_party != "KPD"; kpd_ultimatum_timer = 12; kpd_ultimatum_timer = 16 if kpd_relation >= 60; kpd_ultimatum_timer = 24 if kpd_leader == "Conciliators" or constructive_vonc; kpd_ultimatum_timer = next_election_time - time - 1 if next_election_time - time <= 12;
 new-page: true
 tags: event
 
-= <span style="color: #700000;">**KPD**</span> Goals
+= <span style="color: #700000;">**KPD**</span> 목표
 
-The <span style="color: #700000;">**KPD**</span> presents us with a list of goals for the coalition:
+<span style="color: #700000;">**KPD**</span>는 우리에게 연정을 위한 목표 목록을 제시했습니다:
 
-[? if welfare_goal = 1 : - Expand social welfare programs. ?]
+[? if welfare_goal = 1 : - 사회 복지 프로그램을 확장하기. ?]
 
-[? if agriculture_goal = 1 : - Enact a land reform program. ?]
+[? if agriculture_goal = 1 : - 토지 개혁 프로그램을 제정하기. ?]
 
-[? if economy_goal = 1 : - Start substantial nationalization of the economy. ?]
+[? if economy_goal = 1 : - 경제의 상당한 국유화를 시작하기. ?]
 
-[? if finance_goal = 1 : - Make taxes more progressive. ?]
+[? if finance_goal = 1 : - 세금의 누진성을 강화하기. ?]
 
-[? if labor_goal = 1 : - Support workers in labor disputes. ?]
+[? if labor_goal = 1 : - 노동 분쟁에서 노동자들을 지지하기. ?]
 
-[? if foreign_goal = 1 : - Improve our relations with the <span style="color: #750e0e;">Soviet Union</span>. ?]
+[? if foreign_goal = 1 : - <span style="color: #750e0e;">소련</span>과의 관계를 개선하기. ?]
 
-#[? if interior_goal = 1 : - Ban the <span style="color: #7A3C00;">**SA**</span> and <span style="color: #3E88B3;">**Stahlhelm**</span>. ?]
+#[? if interior_goal = 1 : - <span style="color: #7A3C00;">**SA**</span>와 <span style="color: #3E88B3;">**철모단**</span>을 금지하기. ?]
 
-[? if reichswehr_goal = 1 : - Reduce funding for the Reichswehr. ?]
+[? if reichswehr_goal = 1 : - 국방군 예산을 삭감하기. ?]
 
-They say that they expect to see these goals fulfilled in [+ kpd_ultimatum_timer +] months. Otherwise, they will vote to dissolve the coalition.
+그들은 이 목표들이 [+ kpd_ultimatum_timer +]개월 안에 이행되기를 기대한다고 말합니다. 그렇지 않으면, 그들은 연정 해산에 투표할 것입니다.

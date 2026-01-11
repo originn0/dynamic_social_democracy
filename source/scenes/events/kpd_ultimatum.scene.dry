@@ -1,4 +1,4 @@
-title: The <span style="color: #700000;">**KPD**</span> checks upon our progress in accomplishing the coalition's goals...
+title: <span style="color: #700000;">**KPD**</span>가 연정 목표 달성에 대한 우리의 진척 상황을 확인합니다...
 view-if: (in_popular_front or in_left_front) and (kpd_ultimatum_timer = 0 or (welfare_goal_completed and agriculture_goal_completed and economy_goal_completed and finance_goal_completed and labor_goal_completed and reichswehr_goal_completed)) and kpd_goals_seen = 1 and kpd_ultimatum_seen = 0 and spd_in_government
 on-arrival: {!
 Q.kpd_ultimatum_seen = 1;
@@ -40,48 +40,48 @@ new-page: true
 tags: event
 go-to: goals_success if kpd_goals_completed; goals_failed if not kpd_goals_completed
 
-= <span style="color: #700000;">**KPD**</span> Goals
+= <span style="color: #700000;">**KPD**</span> 목표
 
-At the start of this government, the <span style="color: #700000;">**KPD**</span> presented a list of goals for the coalition:
+이 정부가 출범할 때, <span style="color: #700000;">**KPD**</span>는 연정을 위한 목표 목록을 제시했습니다:
 
-[? if welfare_goal = 1 : - Expand social welfare programs - [? if welfare_goal_completed : success ?][? if not welfare_goal_completed: failed ?] ?]
+[? if welfare_goal = 1 : - 사회 복지 프로그램을 확장하기 - [? if welfare_goal_completed : 성공 ?][? if not welfare_goal_completed: 실패 ?] ?]
 
-[? if agriculture_goal = 1 : - Enact a land reform program. - [? if agriculture_goal_completed : success ?][? if not agriculture_goal_completed: failed ?] ?]
+[? if agriculture_goal = 1 : - 토지 개혁 프로그램을 제정하기. - [? if agriculture_goal_completed : 성공 ?][? if not agriculture_goal_completed: 실패 ?] ?]
 
-[? if economy_goal = 1 : - Start substantial nationalization of the economy. - [? if economy_goal_completed : success ?][? if not economy_goal_completed: failed ?] ?]
+[? if economy_goal = 1 : - 경제의 상당한 국유화를 시작하기. - [? if economy_goal_completed : 성공 ?][? if not economy_goal_completed: 실패 ?] ?]
 
-[? if finance_goal = 1 : - Make taxes more progressive. - [? if finance_goal_completed : success ?][? if not finance_goal_completed: failed ?] ?]
+[? if finance_goal = 1 : - 세금의 누진성을 강화하기. - [? if finance_goal_completed : 성공 ?][? if not finance_goal_completed: 실패 ?] ?]
 
-[? if labor_goal = 1 : - Support workers in labor disputes. - [? if labor_goal_completed : success ?][? if not labor_goal_completed: failed ?] ?]
+[? if labor_goal = 1 : - 노동 분쟁에서 노동자들을 지지하기. - [? if labor_goal_completed : 성공 ?][? if not labor_goal_completed: 실패 ?] ?]
 
-[? if foreign_goal = 1 : - Improve our relations with the <span style="color: #750e0e;">Soviet Union</span>. - [? if foreign_goal_completed : success ?][? if not foreign_goal_completed: failed ?] ?]
+[? if foreign_goal = 1 : - <span style="color: #750e0e;">소련</span>과의 관계를 개선하기. - [? if foreign_goal_completed : 성공 ?][? if not foreign_goal_completed: 실패 ?] ?]
 
-[? if reichswehr_goal = 1 : - Reduce funding for the Reichswehr. - [? if reichswehr_goal_completed : success ?][? if not reichswehr_goal_completed: failed ?] ?]
+[? if reichswehr_goal = 1 : - 국방군 예산을 삭감하기. - [? if reichswehr_goal_completed : 성공 ?][? if not reichswehr_goal_completed: 실패 ?] ?]
 
 @goals_failed
 on-arrival: kpd_relation -= 10; workers_spd -= 8; unemployed_spd -= 8;
 
-Unfortunately, we have failed to accomplish all of the goals the <span style="color: #700000;">**KPD**</span> set out. They plan to call a vote of no confidence against our government, and have already begun mounting a propaganda campaign to delegitimize our government in the eyes of the workers.
+불행하게도, 우리는 <span style="color: #700000;">**KPD**</span>가 설정한 목표들을 모두 달성하는 데 실패했습니다. 그들은 우리 정부에 대한 불신임 투표를 소집할 계획이며, 노동자들의 눈에 우리 정부의 정당성을 훼손하기 위해 이미 선전 캠페인을 시작했습니다.
 
-- @appeal: Appeal to the <span style="color: #700000;">Communists</span> to have patience - we are trying!
-- @kpd_vote_of_no_confidence.support_center: Could we form a new government based on the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (and possibly <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?
-- @kpd_vote_of_no_confidence.let_it_happen: Let the vote happen.
-- @no_vonc: They cannot call a vote of no confidence due to the constitutional reforms, but they can obstruct our government at every opportunity.
-- @spd_majority: We have a majority without them.
+- @appeal: <span style="color: #700000;">공산당</span>에게 인내심을 가지라고 호소한다 - 우리는 노력하고 있다!
+- @kpd_vote_of_no_confidence.support_center: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 그리고 [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (그리고 아마도 <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?을 기반으로 새로운 정부를 구성할 수 있을까?
+- @kpd_vote_of_no_confidence.let_it_happen: 투표가 진행되도록 둔다.
+- @no_vonc: 그들은 헌법 개혁 때문에 불신임 투표를 소집할 수 없지만, 기회가 될 때마다 우리 정부를 방해할 수 있다.
+- @spd_majority: 우리는 그들 없이도 과반 의석을 가지고 있다.
 
 @appeal
 choose-if: (kpd_score >= 4 and kpd_relation > 50 and kpd_appeal_seen = 0) or kpd_leader = "Conciliators"
-unavailable-subtitle: [? if kpd_score < 4: They do not see us as serious in trying to achieve the goals of the coalition. ?] [? if kpd_relation < 50: Our relations are too poor. ?] [? if kpd_appeal_seen = 1: we do not have any more time. ?]
+unavailable-subtitle: [? if kpd_score < 4: 그들은 우리가 연정의 목표를 달성하려는 노력을 진지하게 보지 않습니다. ?] [? if kpd_relation < 50: 우리의 관계가 너무 나쁩니다. ?] [? if kpd_appeal_seen = 1: 우리에게는 더 이상의 시간이 없습니다. ?]
 on-arrival: kpd_ultimatum_seen = 0; kpd_ultimatum_timer += 6; kpd_appeal_seen = 1
 
-We argue that we are working hard to achieve the coalition's goals, and in the name of proletarian solidarity, we must make this coalition function. Surprisingly, the <span style="color: #700000;">**KPD**</span> hears our pleas, and is willing to give us six more months before the coalition goals must be achieved.
+우리는 연정의 목표를 달성하기 위해 열심히 일하고 있다고 주장하며, 프롤레타리아 연대의 이름으로 이 연정이 기능하게 만들어야 한다고 호소합니다. 놀랍게도, <span style="color: #700000;">**KPD**</span>는 우리의 간청을 받아들여, 연정 목표 달성 시한을 6개월 더 연장해 주기로 했습니다.
 
 
 @goals_success
 on-arrival: workers_spd += 8; unemployed_spd += 8; kpd_relation += 10; workers_kpd += 5; kpd_coalition_success += 1
 go-to: popular_front_achievement if in_popular_front; united_front_achievement if in_left_front
 
-Against all expectations, the <span style="color: #700000;">**KPD**</span>'s goals have all been met! Apparently the <span style="color: #700000;">**Communists**</span> did not prepare for this eventuality, a worker's government successfully built through democratic means. They will continue to "tolerate" our government for the rest of our term, while still acting as a watchdog against bourgeois backsliding.
+모든 예상을 뒤엎고, <span style="color: #700000;">**KPD**</span>의 목표가 모두 충족되었습니다! 분명히 <span style="color: #700000;">**공산주의자들**</span>은 민주적 수단을 통해 성공적으로 수립된 노동자 정부라는 이 상황에 대비하지 않았던 것 같습니다. 그들은 여전히 부르주아적 반동에 대한 감시견 역할을 자처하면서도, 우리 임기의 남은 기간 동안 우리 정부를 계속 "묵인"할 것입니다.
 
 
 @popular_front_achievement
@@ -96,10 +96,10 @@ achievement: einheitsfront_2
 view-if: constructive_vonc
 on-arrival: in_popular_front = 0; in_left_front = 0; in_minority_government = 1;
 
-We have been effectively made a minority government, and the <span style="color: #700000;">**KPD**</span> intends to obstruct our attempts to pass policy.
+우리는 사실상 소수 정부가 되었으며, <span style="color: #700000;">**KPD**</span>는 정책을 통과시키려는 우리의 시도를 사사건건 방해할 작정입니다.
 
 @spd_majority
 view-if: spd_r >= 50
 on-arrival: in_popular_front = 0; in_left_front = 0; in_spd_majority = 1;
 
-We were so kind.
+우리가 너무 관대했습니다.

@@ -1,32 +1,32 @@
-title: <span style="color: #700000;">**KPD**</span> Party Conference
-subtitle: The <span style="color: #700000;">**KPD**</span> chooses their new central committee - will the Wittorf Affair have an influence on their choice?
+title: <span style="color: #700000;">**KPD**</span> 당 대회
+subtitle: <span style="color: #700000;">**KPD**</span>가 새로운 중앙 위원회를 선출합니다 - 비토르프 사건이 그들의 선택에 영향을 미칠까요?
 new-page: true
 view-if: kpd_relation >= 50 and wittorf_soviet_union = 1 and year = 1929 and month >= 6 and month <= 8
 max-visits: 1
 on-arrival: kpd_party_conference_seen = 1
 tags: event
 
-= <span style="color: #700000;">**KPD**</span> Party Conference
+=  <span style="color: #700000;">**KPD**</span> 당 대회
 
-Now is the <span style="color: #700000;">**KPD**</span>'s national party conference, where they will choose their new leadership. The shadow of the Wittorf Affair hangs over it. On one hand are the hardline supporters of Thälmann, who support a "<span style="color: #c00000;">social</span> <span style="color: #7A3C00;">fascists</span>" policy that places the <span style="color: #c00000;">**SPD**</span> as equivalent to the <span style="color: #7A3C00;">Nazis</span>. On the other hand is the "Conciliator" faction, who support a more cooperative policy towards the <span style="color: #c00000;">**SPD**</span>.
+지금은 <span style="color: #700000;">**KPD**</span>의 전국 당 대회 기간이며, 이곳에서 그들은 새로운 지도부를 선출할 것입니다. 비토르프 사건의 여파가 짙게 드리워져 있습니다. 한편에는 텔만의 강경파 지지자들이 있는데, 그들은 <span style="color: #c00000;">**SPD**</span>를 <span style="color: #7A3C00;">나치</span>와 동등하게 취급하는 "<span style="color: #c00000;">사회</span> <span style="color: #7A3C00;">파시스트</span>" 정책을 지지합니다. 다른 한편에는 "화해파" 분파가 있는데, 그들은 <span style="color: #c00000;">**SPD**</span>를 향한 더 협력적인 정책을 지지합니다.
 
-After our discussion with the <span style="color: #940000;">Soviets</span>, we are inclined to believe that <span style="color: #8B0000;">Stalin</span> is at least open to the Conciliators. In order to affect the <span style="color: #700000;">**KPD**</span>'s leadership elections, we have to influence both the <span style="color: #D50000;">Comintern</span> leaders as as well as the <span style="color: #700000;">**KPD**</span> membership.
+<span style="color: #940000;">소련</span>과의 논의 후, 우리는 <span style="color: #8B0000;">스탈린</span>이 적어도 화해파들에게 열려 있다고 믿게 되었습니다. <span style="color: #700000;">**KPD**</span>의 지도부 선거에 영향을 미치기 위해서, 우리는 <span style="color: #D50000;">코민테른</span> 지도자들뿐만 아니라 <span style="color: #700000;">**KPD**</span> 당원들에게도 영향력을 행사해야 합니다.
 
 - @conciliator_success
 - @conciliator_fail
 
 
 @conciliator_success
-title: The Conciliators are the new leadership of the <span style="color: #700000;">**KPD**</span>.
+title: 화해파들이 <span style="color: #700000;">**KPD**</span>의 새로운 지도부가 되었다.
 choose-if: (levi_advisor or rosenfeld_advisor) and (left_strength >= reformist_strength) and (kpd_relation >= 50) 
-unavailable-subtitle: [?  if not levi_advisor and not rosenfeld_advisor: Our party leadership is not left-wing enough. ?] [? if left_strength < reformist_strength: The <span style="color: #D50000;">Comintern</span> doubts our commitment to <span style="color: #c00000;">socialism</span>. ?]
+unavailable-subtitle: [? if not levi_advisor and not rosenfeld_advisor: 우리 당 지도부가 충분히 좌파적이지 않습니다. ?] [? if left_strength < reformist_strength: <span style="color: #D50000;">코민테른</span>이 <span style="color: #c00000;">사회주의</span>에 대한 우리의 헌신을 의심합니다. ?]
 on-arrival: kpd_leader = "Conciliators"; communist_coalition += 3; kpd_relation += 10*(1-dissent); left_strength += 5; left_dissent -= 8; pro_republic += (kpd_votes / 2)
 achievement: versohnler
 
-With our support, the Conciliators have won the leadership contest! The new leadership is a group of Conciliators, including Arthur Ewert, Hugo Eberlein, and Ernst Meyer. Thälmann remains, but largely as a figurehead only, it seems. We hope that the new leadership will be more inclined towards cooperation.
+우리의 지원으로, 화해파들이 지도부 경선에서 승리했습니다! 새로운 지도부는 아르투어 에베르트, 후고 에버라인, 그리고 에른스트 마이어를 포함한 화해파 그룹입니다. 텔만은 자리를 지켰지만, 대개 명목상의 지도자로만 남은 것 같습니다. 우리는 새로운 지도부가 협력 쪽으로 더 기울기를 희망합니다.
 
 
 @conciliator_fail
-title: Thälmann retains his leadership position.
+title: 텔만이 지도자 지위를 유지한다.
 
-Unfortunately, we could not influence the <span style="color: #700000;">**KPD**</span> leadership election against the hardliners. Thälmann quickly moves to consolidate absolute leadership, expelling or exiling his opponents.
+불행하게도, 우리는 강경파들에 대항하여 <span style="color: #700000;">**KPD**</span> 지도부 선거에 영향을 미칠 수 없었습니다. 텔만은 빠르게 절대적인 지도력을 공고히 하기 위해 움직이며, 반대파를 제명하거나 추방하고 있습니다.
