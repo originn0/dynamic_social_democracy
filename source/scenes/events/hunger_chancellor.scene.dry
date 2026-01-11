@@ -1,5 +1,5 @@
-title: The Hunger Chancellor
-subtitle: Popular discontent with Chancellor [+ chancellor +] rises.
+title: 기아 총리
+subtitle: [+ chancellor +] 총리에 대한 대중의 불만이 고조되고 있습니다.
 new-page: true
 view-if: year >= 1931 and month >= 2 and unemployed >= 18 and welfare < 0 and works_program == 0
 on-arrival: workers_spd *= 0.9 if chancellor_party == "SPD"; workers_spd *= 0.9 if spd_in_government == 1; workers_nsdap += 5 if spd_in_government; workers_kpd += 4 if spd_in_government; unemployed_nsdap += 5 if spd_in_government; hindenburg_angry += 10; hindenburg_angry_bruning += 10
@@ -7,28 +7,28 @@ tags: event
 max-visits: 1
 face-image: img/Kollwitz_Hospital.jpg
 
-= The Hunger Chancellor
+= 기아 총리
 
-People are calling Chancellor [+ chancellor +] the Hunger Chancellor because of his perceived callousness in the face of the depression. [? if chancellor_party == "SPD" : This is obviously a very bad sign for us. ?]
+사람들은 대공황에 직면한 [+ chancellor +] 총리의 냉담함 때문에 그를 '기아 총리'라고 부르고 있습니다. [? if chancellor_party == "SPD" : 이것은 명백히 우리에게 매우 나쁜 징조입니다. ?]
 
-[? if spd_toleration == 1 : As we are currently tolerating the [+ chancellor +] government, this could very well reflect badly on us. ?]
+[? if spd_toleration == 1 : 우리가 현재 [+ chancellor +] 정부를 묵인하고 있으므로, 이것은 우리에게 악영향을 미칠 가능성이 매우 높습니다. ?]
 
-- @maintain_toleration: Maintain the current governing arrangement.
-- @break_toleration: Break toleration; vote against this government.
+- @maintain_toleration: 현 통치 체제를 유지한다.
+- @break_toleration: 묵인 정책을 철회한다; 이 정부에 반대 투표한다.
 
 @maintain_toleration
-subtitle: It is necessary to preserve democracy.
+subtitle: 민주주의를 지키는 것이 더 중요합니다.
 view-if: spd_toleration == 1
 on-arrival: workers_nsdap += 2; workers_kpd += 2; unemployed_nsdap += 2; workers_spd -= 2; pro_republic -= 2; kpd_relation -= 2; ddp_left += 0.5
 
-Our policy of toleration continues.
+우리의 묵인 정책은 계속됩니다.
 
 
 @break_toleration
-subtitle: This is likely to result in new elections.
+subtitle: 재선거로 이어질 가능성이 높습니다.
 view-if: spd_toleration == 1
 on-arrival: next_election_time = time+3 if next_election_time >= time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; dvp_right += 1; ddp_right += 1; lvp_right += 1
 
-We have definitively broken with the [+ chancellor +] government, and have voted against them in a vote of no confidence.
+우리는 [+ chancellor +] 정부와 결정적으로 결별했고, 불신임 투표에서 그들에게 반대표를 던졌습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.

@@ -1,5 +1,5 @@
-title: 1930 [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference 
-subtitle: The party seeks to oust Jakob Kaiser...
+title: 1930년 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 회의
+subtitle: 당이 야코프 카이저를 축출하려 합니다...
 view-if: ((year == 1930 and month >= 11) or kaiser_time == time) and z_leader == "Kaiser"
 new-page: true
 on-arrival: pro_republic += 3
@@ -7,53 +7,53 @@ max-visits: 1
 tags: event
 face-image: img/zentrum_3.jpg
 
-= 1930 [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference
+= 1930년 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 회의
 
-The election of Jakob Kaiser to the leadership of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has stalled any progress toward transforming the party into a true <span style="color: #000000;">Christian People's Party</span>. His left-leaning stances have alienated potential voters on the Protestant Right, leaving the party adrift—uncertain of its identity. Is it to remain a predominantly Catholic, left-leaning party of labor and social reform, or evolve into a broader, right-of-center *Volkspartei*?
+야코프 카이저가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 지도자로 선출되면서 당을 진정한 <span style="color: #000000;">기독교 인민당</span>으로 탈바꿈시키려는 진전은 중단되었습니다. 그의 좌파적 성향은 개신교 우파의 잠재적 유권자들을 소외시켰고, 당은 정체성의 불확실성 속에 표류하게 되었습니다. 주로 가톨릭 신자로 구성된 노동과 사회 개혁을 위한 좌파 성향의 정당으로 남을 까dy, 아니면 더 폭넓은 중도 우파 *국민정당*으로 진화할 RKdy?
 
-Despite Kaiser himself supporting Stegerwald’s original vision of Christian unity, he has paradoxically become the chief obstacle in the eyes of the party’s right wing—figures like Stegerwald and Adenauer now seek to remove him, hoping to steer the party back toward its previous course. However, we retain significant influence within the party’s <span style="color: #FF7F00;">Christian Left</span> faction and its affiliated trade unions—leverage that could tip the scales back in Kaiser’s favor, should we choose to intervene.
+카이저 자신이 슈테거발트의 기독교 통합이라는 원래 비전을 지지함에도 불구하고, 그는 역설적으로 당 우파의 눈에 주된 장애물이 되었습니다—슈테거발트와 아데나워 같은 인물들은 이제 그를 제거하고 당을 이전의 노선으로 되돌리려 합니다. 하지만, 우리는 당의 <span style="color: #FF7F00;">기독교 좌파</span> 파벌과 그 산하 노동조합 내에서 상당한 영향력을 유지하고 있습니다—우리가 개입하기로 한다면 카이저에게 유리하게 판세를 뒤집을 수 있는 지렛대입니다.
 
-- @adenauer: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] elects Konrad Adenauer as the party chair, ousting Kaiser.
-- @kaiser: Influence the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to select Jakob Kaiser as the party chair.
-- @kaiser_campaign: We will hold a campaign in support of Jakob Kaiser as party chair.
+- @adenauer: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>은?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>는?] 콘라트 아데나워를 당 의장으로 선출하고 카이저를 축출한다.
+- @kaiser: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>에?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>에?] 영향력을 행사하여 야코프 카이저를 당 의장으로 선택하게 한다.
+- @kaiser_campaign: 우리는 야코프 카이저를 당 의장으로 지지하는 캠페인을 벌일 것이다.
 
 @adenauer
-subtitle: The Mayor of Cologne, and a strong supporter of 'leaving the tower'. Situated on the right-wing of the party.
+subtitle: 쾰른 시장이자 '상아탑을 떠나기'의 강력한 지지자입니다. 당 내 우익에 위치해 있습니다.
 on-arrival: z_relation -= 15; z_ideology = "Right"; z_leader = "Adenauer"; workers_z -= 6; workers_spd += 6; unemployed_z -= 6; unemployed_spd += 6; rural_z += 6; old_middle_z += 10; rural_dnvp -= 4 if dnvp_ideology == "Moderate"; old_middle_dnvp -= 8 if dnvp_ideology == "Moderate"; catholics_dnvp -= 4 if dnvp_ideology == "Moderate"; rural_kvp -= 4 if kvp_formed; old_middle_kvp -= 8 if kvp_formed; catholics_kvp -= 4 if kvp_formed; rural_other -= 4 if not kvp_formed and dnvp_ideology == "Radical"; old_middle_other -= 8 if not kvp_formed and dnvp_ideology == "Radical"; catholics_other -= 4 if not kvp_formed and dnvp_ideology == "Radical"; z_party_name = "CVP"; stegerwald_skibidi_time = time + 11
 face-image: img/portraits/adenauer.jpg
 
-The influx of Protestant conservatives into the <span style="color: #000000;">Center Party</span> has rendered Jakob Kaiser’s leadership untenable. In a decisive internal vote of no confidence, Kaiser has been ousted—replaced by Stegerwald ally and long-serving Mayor of Cologne, Konrad Adenauer. Adenauer seeks to carry forward Stegerwald’s vision: transforming the party into the dominant force of the German Right.
+개신교 보수주의자들이 <span style="color: #000000;">중앙당</span>으로 유입되면서 야코프 카이저의 리더십은 유지하기 어렵게 되었습니다. 결정적인 내부 불신임 투표에서, 카이저는 축출되었고—슈테거발트의 동맹이자 오랫동안 재임한 쾰른 시장, 콘라트 아데나워로 교체되었습니다. 아데나워는 슈테거발트의 비전을 계승하여 당을 독일 우파의 지배적인 세력으로 변모시키려 합니다.
 
-Unsurprisingly, this development has sparked outrage among the <span style="color: #FF7F00;">Christian Left</span> and Kaiser’s supporters, many of whom have resigned their posts in protest. The party’s close ties to left-leaning unions have been severely strained, plunging the organization into temporary disarray as labor-aligned factions voice their anger. 
+놀랍지 않게도, 이 전개는 <span style="color: #FF7F00;">기독교 좌파</span>와 카이저의 지지자들 사이에서 분노를 촉발했고, 그들 중 다수는 항의의 표시로 직책을 사임했습니다. 당의 좌파 성향 노조들과의 긴밀한 유대는 심각하게 훼손되었고, 노동 성향 파벌들이 분노를 표출함에 따라 조직은 일시적인 혼란에 빠졌습니다.
 
-Yet despite this internal upheaval, the party remains poised to continue its cannibalization of the fragmented right—especially the beleaguered <span style="color: #3E88B3;">**DNVP**</span>. This shift is symbolized by the party's rebranding as the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>).
+그러나 이 내부 격변에도 불구하고, 당은 분열된 우파—특히 곤경에 처한 <span style="color: #3E88B3;">**DNVP**</span>—를 잠식해 들어갈 태세를 갖추고 있습니다. 이 변화는 당이 <i>Christliche Volkspartei</i> (<span style="color: #000000;">기독교 인민당</span>)로 당명을 변경한 것으로 상징됩니다.
 
-[? if dnvp_ideology == "Moderate": Talks of a merger with the <span style='color: #3E88B3;'>**DNVP**</span> are becoming increasingly common—though support is limited to their <span style='color: #0087DC;'>People's Conservatives</span> and <span style='color: #6D5298;'>Christian Socials</span>. A merger remains impossible without one of those factions having strong, centralized leadership within their party. At the same time, we must prevent any government cooperation between them and the <span style='color: #000000;'>Center</span>—lest we allow conditions for such a union to emerge. ?]
+[? if dnvp_ideology == "Moderate": <span style='color: #3E88B3;'>**DNVP**</span>와의 합병 논의가 점점 더 빈번해지고 있습니다—비록 지지는 그들의 <span style='color: #0087DC;'>인민 보수주의자들</span>과 <span style='color: #6D5298;'>기독교 사회주의자들</span>에 한정되어 있지만요. 합병은 그 파벌들 중 하나가 당 내에서 강력하고 중앙집권화된 리더십을 갖지 않는 한 불가능한 상태로 남아 있습니다. 동시에, 우리는 그들과 <span style='color: #000000;'>중앙당</span> 사이의 어떤 정부 협력도 막아야 합니다—우리가 그러한 결합이 나타날 조건을 허용하지 않으려면요. ?]
 
 @kaiser
 choose-if: z_relation >= 80 and pro_republic >= 80 and (in_weimar_coalition or in_popular_front) and (in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia)
-unavailable-subtitle: [? if z_relation < 80 : Our relations are not high enough. ?] [? if pro_republic < 80 : The party isn't left-wing enough for someone like him. ?] [? if not in_weimar_coalition and not in_popular_front : Our cooperation must be further strengthened in a federal <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> or Popular Front Coalition. ?] [? if not in_weimar_coalition_prussia and not in_grand_coalition_prussia and not in_popular_front_prussia: Our cooperation must be further strengthened by governing together in Prussia. ?]
+unavailable-subtitle: [? if z_relation < 80 : 우리의 관계가 충분히 높지 않습니다. ?] [? if pro_republic < 80 : 당이 그와 같은 사람에겐 충분히 좌파적이지 않습니다.  ?] [? if not in_weimar_coalition and not in_popular_front : <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 또는 인민전선 연정 을 통해 우리의 협력이 더욱 강화되어야 합니다. ?] [? if not in_weimar_coalition_prussia and not in_grand_coalition_prussia and not in_popular_front_prussia: 프로이센에서 함께 통치함으로써 우리의 협력을 더욱 강화해야 합니다. ?]
 on-arrival: z_relation += 5; z_ideology = "Left"; z_leader = "Kaiser"; liberal_cooperation += 2; workers_z += 4; unemployed_z += 4; workers_nsdap -= 2; unemployed_nsdap -= 4; rural_z -= 4; old_middle_z -= 6; rural_dnvp += 4 if dnvp_ideology == "Moderate"; old_middle_dnvp += 6 if dnvp_ideology == "Moderate"; rural_kvp += 4 if kvp_formed; old_middle_kvp += 6 if kvp_formed; rural_other += 4 if not kvp_formed and dnvp_ideology == "Radical"; old_middle_other += 6 if not kvp_formed and dnvp_ideology == "Radical"; catholics_z += 4; catholics_spd -= 4; z_party_name = "CVP"
 face-image: img/portraits/kaiser.jpg
 achievement: fur_gott_und_kaiser
 
-Through our grassroots connections and sheer determination, we have somehow managed to secure the reelection of Jakob Kaiser as chairman of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. His removal had once seemed all but inevitable—yet, by some miracle, the present conditions have convinced a majority of the party to rally behind him once more.
+우리의 풀뿌리 조직과 굳은 결의를 통해, 우리는 어떻게든 야코프 카이저의 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 의장 재선을 확보해 냈습니다. 그의 축출은 한때 거의 불가피해 보였습니다—하지만, 어떤 기적에 의해, 현재의 상황은 당의 과반수가 그를 다시 지지하도록 설득했습니다.
 
-As a gesture of compromise, however, Kaiser has agreed to officially rename the party to the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>). Beyond this cosmetic change—given the historic Catholic association with the '<span style="color: #000000;">Center</span>' label—the party's platform remains largely unchanged.
+하지만, 타협의 제스처로서, 카이저는 당의 이름을 공식적으로 <i>Christliche Volkspartei</i> (<span style="color: #000000;">기독교 인민당</span>)로 바꾸는 데 동의했습니다. 이 표면적인 변화를 넘어—'<span style="color: #000000;">중앙</span>'이라는 명칭이 역사적으로 가톨릭과 연관되어 있음을 감안할 때—당의 강령은 대체로 변하지 않은 채로 남아 있습니다.
 
-Even so, this outcome has enraged the party’s right wing. Many of its Protestant conservatives have resigned in protest, retreating to their party of <span class="tooltip-text" title="that's me! the modman!">origin</span>.
+그렇다 하더라도, 이 결과는 당의 우파를 격분시켰습니다. 많은 개신교 보수주의자들은 항의의 표시로 사임했고, 그들의 <span class="tooltip-text" title="that's me! the modman!">출신</span> 정당으로 복귀했습니다.
 
 @kaiser_campaign
 view-if: z_relation < 80
 choose-if: z_relation >= 70 and pro_republic >= 80 and resources >= 3 and (in_weimar_coalition or in_popular_front) and (in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia)
 subtitle: -3 resources.
-unavailable-subtitle: [? if z_relation < 70 : Our relations are not high enough. ?] [? if pro_republic < 80 : The party isn't left-wing enough for someone like him. ?] [? if not in_weimar_coalition and not in_popular_front : Our cooperation must be further strengthened in a federal <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> or Popular Front Coalition. ?] [? if not in_weimar_coalition_prussia and not in_grand_coalition_prussia and not in_popular_front_prussia: Our cooperation must be further strengthened by governing together in Prussia. ?] [? if resources < 3 : We do not have enough resources. ?]
+unavailable-subtitle: [? if z_relation < 70 : 우리의 관계가 충분히 높지 않습니다. ?] [? if pro_republic < 80 : 당은 그와 같은 사람에겐 충분히 좌파적이지 않습니다.  ?] [? if not in_weimar_coalition and not in_popular_front : <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 또는 인민전선 연정을 통해 우리의 협력이 더욱 강화되어야 합니다.?] [? if not in_weimar_coalition_prussia and not in_grand_coalition_prussia and not in_popular_front_prussia: 프로이센에서 함께 통치함으로써 우리의 협력을 더욱 강화해야 합니다. ?] [? if resources < 3 : 우리는 충분한 자원이 없습니다. ?]
 on-arrival: resources -= 3; z_relation += 5; z_ideology = "Left"; z_leader = "Kaiser"; liberal_cooperation += 2; workers_z += 4; unemployed_z += 4; workers_nsdap -= 2; unemployed_nsdap -= 4; rural_z -= 4; old_middle_z -= 6; rural_dnvp += 4 if dnvp_ideology == "Moderate"; old_middle_dnvp += 6 if dnvp_ideology == "Moderate"; rural_kvp += 4 if kvp_formed; old_middle_kvp += 6 if kvp_formed; rural_other += 4 if not kvp_formed and dnvp_ideology == "Radical"; old_middle_other += 6 if not kvp_formed and dnvp_ideology == "Radical"; catholics_z += 4; catholics_spd -= 4; z_party_name = "CVP"
 face-image: img/portraits/kaiser.jpg
 achievement: fur_gott_und_kaiser
 
-Through our grassroots connections, and an official campaign, we have somehow managed to secure the reelection of Jakob Kaiser as chairman of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. His removal had once seemed all but inevitable—yet, by some miracle, the present conditions have convinced a majority of the party to rally behind him once more.
+우리의 풀뿌리 조직과 공식적인 캠페인을 통해, 우리는 어떻게든 야코프 카이저의 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 의장 재선을 확보해 냈습니다. 그의 축출은 한때 거의 불가피해 보였습니다—하지만, 어떤 기적에 의해, 현재의 상황은 당의 과반수가 그를 다시 지지하도록 설득했습니다.
 
-As a gesture of compromise, however, Kaiser has agreed to officially rename the party to the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>). Beyond this cosmetic change—given the historic Catholic association with the '<span style="color: #000000;">Center</span>' label—the party's platform remains largely unchanged.
+하지만, 타협의 제스처로서, 카이저는 당의 이름을 공식적으로 <i>Christliche Volkspartei</i> (<span style="color: #000000;">기독교 인민당</span>)로 바꾸는 데 동의했습니다. 이 표면적인 변화를 넘어—'<span style="color: #000000;">중앙</span>'이라는 명칭이 역사적으로 가톨릭과 연관되어 있음을 감안할 때—당의 강령은 대체로 변하지 않은 채로 남아 있습니다.
 
-Even so, this outcome has enraged the party’s right wing. Many of its Protestant conservatives have resigned in protest, retreating to their party of <span class="tooltip-text" title="that's me! the modman!">origin</span>.
+그렇다 하더라도, 이 결과는 당의 우파를 격분시켰습니다. 많은 개신교 보수주의자들은 항의의 표시로 사임했고, 그들의 <span class="tooltip-text" title="that's me! the modman!">출신</span> 정당으로 복귀했습니다.

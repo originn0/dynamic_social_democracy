@@ -1,19 +1,19 @@
-title: Kellogg-Briand Pact
+title: 켈로그-브리앙 조약
 new-page: true
-subtitle: An international treaty for peace
+subtitle: 평화를 위한 국제 조약
 view-if: year = 1928 and month == 8
 max-visits: 1
 on-arrival: kellogg_briand_seen = 1; kellogg_briand_signed = 1 if foreign_minister_party = "DVP" or foreign_minister_party == "Z"
 tags: event
 #face-image: img/portraits/StresemannGustav.jpg
 
-= Kellogg-Briand Pact
+= 켈로그-브리앙 조약
 
-An international treaty has been negotiated which promises an end to war. The treaty, negotiated by American Secretary of State Frank Kellogg and French foreign minister Aristide Briand, promises that its signatories will renounce the use of war, and will promise to settle their disputes peacefully. Countries throughout the world are lining up to sign this idealistic agreement. Its detractors argue that it has no enforcement mechanism, and thus is merely a worthless piece of paper.
+전쟁의 종식을 약속하는 국제 조약이 협상되었습니다. 미국의 프랭크 켈로그 국무장관과 프랑스의 아리스티드 브리앙 외무장관이 주도한 이 조약은, 서명국들이 전쟁이라는 수단을 포기하고 분쟁을 평화롭게 해결할 것을 약속하는 내용을 담고 있습니다. 전 세계 국가들이 이 이상주의적인 합의안에 서명하기 위해 줄을 서고 있습니다. 비판론자들은 강제 수단이 없으므로 단순히 쓸모없는 종이 조각에 불과하다고 주장합니다.
 
-[? if foreign_minister_party = "DVP": Our foreign Minister Gustav Stresemann has signed the treaty. The reaction is generally muted; both pacifists and militarists are skeptical about the efficacy of the treaty. Additionally, during [+ foreign_minister +]'s trip to Paris, there has been success in bringing the <span style="color: #002654;">French</span> to consider withdrawing from the Rhineland early and to agree to another review of our reparations by foreign experts. ?][? if foreign_minister_party = "Z": Our foreign Minister Joseph Wirth has signed the treaty. The reaction is generally muted; both pacifists and militarists are skeptical about the efficacy of the treaty. Additionally, during [+ foreign_minister +]'s trip to Paris, there has been success in bringing the <span style="color: #002654;">French</span> to consider withdrawing from the Rhineland early and to agree to another review of our reparations by foreign experts. ?]
+[? if foreign_minister_party = "DVP": 우리의 외무장관 구스타프 슈트레제만은 조약에 서명했습니다. 반응은 대체로 미온적입니다; 평화주의자들과 군국주의자들 모두 조약의 실효성에 대해 회의적입니다. 게다가, [+ foreign_minister +]의 파리 방문 기간 동안, <span style="color: #002654;">프랑스</span>가 라인란트 조기 철수를 고려하게 하고 외국 전문가들에 의한 배상금 재검토에 동의하게 하는 성과가 있었습니다. ?][? if foreign_minister_party = "Z": 우리의 외무장관 요제프 비르트는 조약에 서명했습니다. 반응은 대체로 미온적입니다; 평화주의자들과 군국주의자들 모두 조약의 실효성에 대해 회의적입니다. 게다가, [+ foreign_minister +]의 파리 방문 기간 동안, <span style="color: #002654;">프랑스</span>가 라인란트 조기 철수를 고려하게 하고 외국 전문가들에 의한 배상금 재검토에 동의하게 하는 성과가 있었습니다. ?]
 
-- @sign_treaty: Foreign Minister Breitscheid will sign the treaty, of course.
+- @sign_treaty: 브라이트샤이트 외무장관은 당연히 조약에 서명할 것이다.
 - @step_forward
 - @not_enough
 
@@ -21,9 +21,9 @@ An international treaty has been negotiated which promises an end to war. The tr
 view-if: spd_in_government and foreign_minister_party = "SPD"
 on-arrival: kellogg_briand_signed = 1
 
-Foreign Minister Breitscheid will sign the treaty, of course. The reaction is generally muted; both pacifists and militarists are skeptical about the efficacy of the treaty.
+브라이트샤이트 외무장관은 당연히 조약에 서명할 것입니다. 반응은 대체로 미온적입니다; 평화주의자들과 군국주의자들 모두 조약의 실효성에 대해 회의적입니다.
 
-Additionally, during [+ foreign_minister +]'s trip to Paris, there has been success in bringing the <span style="color: #002654;">French</span> to consider withdrawing from the Rhineland early and to agree to another review of our reparations by foreign experts.
+게다가, [+ foreign_minister +]의 파리 방문 기간 동안, <span style="color: #002654;">프랑스</span>가 라인란트 조기 철수를 고려하게 하고 외국 전문가들에 의한 배상금 재검토에 동의하게 하는 성과가 있었습니다.
 
 - @step_forward
 - @not_enough
@@ -32,10 +32,10 @@ Additionally, during [+ foreign_minister +]'s trip to Paris, there has been succ
 view-if: kellogg_briand_signed
 title: The treaty is a step forward for peace.
 
-Despite our misgivings about the treaty, it still represents a step forward for the cause of international peace.
+조약에 대한 우리의 불안감에도 불구하고, 그것은 여전히 국제 평화의 대의를 위한 진일보를 의미합니다.
 
 @not_enough
 view-if: kellogg_briand_signed
 title: The treaty is not enough.
 
-Despite the idealism behind the treaty, it is inadequate for its goal of preventing wars. There must be some enforcement mechanism, perhaps automatic trade sanctions, or an intervention force controlled by the League of Nations. As it stands, the League of Nations and this treaty is toothless.
+조약에 담긴 이상주의에도 불구하고, 전쟁을 예방한다는 목표를 달성하기에는 불충분합니다. 자동 무역 제재나 국제연맹이 통제하는 개입군 같은 강제 수단이 반드시 있어야 합니다. 현재 상태로는, 국제연맹과 이 조약은 이빨 빠진 호랑이에 불과합니다.
