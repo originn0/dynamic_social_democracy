@@ -1,4 +1,4 @@
-title: Local Elections
+title: 지방 선거
 view-if: year == 1932 and month == 4
 new-page: true
 tags: event
@@ -18,11 +18,11 @@ on-display: {!
 !}
 max-visits: 1
 
-= Local Elections, [+ month : month +] [+ year +]
+= [+ year +]년 [+ month +]월 지방 선거
 
-The majority of Landtag elections are to be held now.
+대다수의 주의회 선거가 지금 치러질 예정입니다.
 
-- @new_elections: May we do our best...
+- @new_elections: 우리가 최선을 다했기를...
 
 @new_elections
 on-arrival: {!  
@@ -52,7 +52,7 @@ go-to: election_menu
 - @results_overall
 
 @results_overall
-title: Overall Results
+title: 전체 결과
 view-if: bavaria_seen and wurttemberg_seen
 on-arrival: {!
 if (Q.liberal_wurttemberg_defeat) {
@@ -189,10 +189,10 @@ if (Q.z_local_elections_vote + Q.ddp_local_elections_vote + Q.dvp_local_election
 
 !}
 
-**Overall results:**
+**전체 결과:**
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_local_elections_vote +]%** {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_local_elections_vote +]% {!</td></tr>!} ?]
@@ -207,7 +207,7 @@ if (Q.z_local_elections_vote + Q.ddp_local_elections_vote + Q.dvp_local_election
 
 [? if not lvp_formed and dvp_exist: {!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_local_elections_vote +]% {!</td></tr>!} ?]
  
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ other_local_elections_vote +]% {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} 기타: {!</td><td>!} [+ other_local_elections_vote +]% {!</td></tr>!}
 
 [? if kvp_formed : {!<tr><td><div class="box" style='background-color:#0087DC'> </div> !}KVP: {!</td><td>!} [+ kvp_local_elections_vote +]% {!</td></tr>!} ?]
 
@@ -218,21 +218,21 @@ if (Q.z_local_elections_vote + Q.ddp_local_elections_vote + Q.dvp_local_election
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_local_elections_vote +]% {!</td></tr>!}
 {!</table>!}
 
-[? if nsdap_local_elections_vote >= 20: The strong performance of the <span style="color: #7A3C00;">**NSDAP**</span> leaves little room for a democratic coalition in many Landtags, and may force the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to negotiate with them as a last resort. ?]
+[? if nsdap_local_elections_vote >= 20: <span style="color: #7A3C00;">**NSDAP**</span>의 약진은 많은 주의회에서 민주적 연정을 구성할 여지를 거의 남기지 않았으며, 최후의 수단으로 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 그들과 협상하도록 강요할지도 모릅니다. ?]
 
-[? if spd_local_elections_vote >= 30: We have maintained a strong performance, maintaining many of our seats we've won in 1928. Hopefully our coalition partners have won enough votes as well, to continue our stable and democratic coalitions. ?]
+[? if spd_local_elections_vote >= 30: 우리는 1928년에 획득한 의석의 상당수를 지켜내며 강력한 성과를 유지했습니다. 우리의 연정 파트너들도 충분한 표를 얻어, 안정적이고 민주적인 연정을 지속할 수 있기를 희망합니다. ?]
 
-[? if kpd_local_elections_vote + sapd_local_elections_vote >= 16: The gains made by the <span style="color: #700000;">**KPD**</span> have left our grassroots clamoring for a United Left coalition, as our local-level relations are far more cooperative than those between our national leaderships. ?]
+[? if kpd_local_elections_vote + sapd_local_elections_vote >= 16: <span style="color: #700000;">**KPD**</span>가 거둔 성과는 우리의 일선 당원들이 통합 좌파 연정을 강력히 요구하게 만들었습니다. 지방 수준에서의 우리 관계는 중앙 지도부 간의 관계보다 훨씬 더 협력적이기 때문입니다. ?]
 
-[? if bourgeois_local_win: The bourgeois parties have performed unexpectedly well in these elections, despite expectations that the economic crisis would push voters toward the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. This is expected to revitalize the bourgeois parties on the national stage. ?]
+[? if bourgeois_local_win: 경제 위기가 유권자들을 <span style="color: #7A3C00;">극</span>-<span style="color: #3E88B3;">우</span>로 몰아갈 것이라는 예상에도 불구하고, 부르주아 정당들은 이번 선거에서 예상 밖의 선전을 거두었습니다. 이는 전국 무대에서 부르주아 정당들에게 새로운 활력을 불어넣을 것으로 예상됩니다. ?]
 
-[? if bourgeois_local_cvp_win: The bourgeois parties, especially the <span style="color: #000000;">**[+ z_party_name +]**</span>, have performed unexpectedly well in these elections, defying expectations that the economic crisis would drive voters toward the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. As one of their first electoral tests, the <span style="color: #000000;">**[+ z_party_name +]**</span> has enjoyed clear success so far. ?]
+[? if bourgeois_local_cvp_win: 부르주아 정당들, 특히 <span style="color: #000000;">**[+ z_party_name +]**</span>은 경제 위기가 유권자들을 <span style="color: #7A3C00;">극</span>-<span style="color: #3E88B3;">우</span>로 몰아갈 것이라는 예상을 뒤엎고 이번 선거에서 예상 밖의 선전을 거두었습니다. 첫 번째 선거 시험대 중 하나로서, <span style="color: #000000;">**[+ z_party_name +]**</span>은 지금까지 분명한 성공을 누리고 있습니다. ?]
 
-[? if bruning_time and nsdap_local_elections_vote >= 20 and president == "Hindenburg": These results are likely the final nail in the coffin for Brüning's government, as President Hindenburg loses confidence in him. It is likely that someone even more right-wing than Brüning will replace him, given the nation's continued political shift to the right. ?]
+[? if bruning_time and nsdap_local_elections_vote >= 20 and president == "Hindenburg": 힌덴부르크 대통령이 브뤼닝에 대한 신뢰를 잃게 됨에 따라, 이 결과는 브뤼닝 정부에 종지부를 찍는 결정타가 될 가능성이 높습니다. 국가가 정치적으로 계속해서 우경화되고 있음을 감안할 때, 브뤼닝보다 훨씬 더 우파 성향인 인물이 그를 대체할 가능성이 큽니다. ?]
 
 @bavaria
-title: <span style="color: #00CCFF;">Bavaria</span>'s Landtag Election
-subtitle: Perhaps the <span style="color: #A2D8E0;">**BVP**</span> will finally be unseated?
+title: <span style="color: #00CCFF;">바이에른</span> 주의회 선거
+subtitle: 마침내 <span style="color: #A2D8E0;">**BVP**</span>가 실각하게 될까요?
 view-if: not bavaria_seen
 on-arrival: {!
 
@@ -574,12 +574,12 @@ if (window && d3) {
 go-to: bavaria_coalition_menu
 
 
-**Bavarian results:**
+**바이에른 선거 결과:**
 
 {!<svg id="bavaria_landtag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>Landtag Seats</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>주의회 의석</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_bavaria_elections_vote +]%** {!</td><td>!} [+ spd_r_bavaria +]% {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_bavaria_elections_vote +]% {!</td><td>!} [+ sapd_r_bavaria +]% {!</td></tr>!} ?]
@@ -594,9 +594,9 @@ go-to: bavaria_coalition_menu
 
 [? if not lvp_formed and dvp_exist: {!<tr><td><div class="box" style='background-color:#D5AC27'> </div> !} DVP: {!</td><td>!} [+ dvp_bavaria_elections_vote +]% {!</td><td>!} [+ dvp_r_bavaria +]%  {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#38C538'> </div> !} Peasants: {!</td><td>!} [+ farm_bavaria_elections_vote +]% {!</td><td>!} [+ farm_r_bavaria +]%  {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#38C538'> </div> !} 농민동맹: {!</td><td>!} [+ farm_bavaria_elections_vote +]% {!</td><td>!} [+ farm_r_bavaria +]%  {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ non_farm_bavaria_elections_vote +]% {!</td><td>!} [+ non_farm_r_bavaria +]%  {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} 기타: {!</td><td>!} [+ non_farm_bavaria_elections_vote +]% {!</td><td>!} [+ non_farm_r_bavaria +]%  {!</td></tr>!}
 
 [? if kvp_formed : {!<tr><td><div class="box" style='background-color:#0087DC'> </div> !}KVP: {!</td><td>!} [+ kvp_bavaria_elections_vote +]% {!</td><td>!} [+ kvp_r_bavaria +]%  {!</td></tr>!} ?]
 
@@ -607,15 +607,15 @@ go-to: bavaria_coalition_menu
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_bavaria_elections_vote +]% {!</td><td>!} [+ nsdap_r_bavaria +]%  {!</td></tr>!}
 {!</table>!}
 <hr id="read-marker">
-The <span style="color: #38C538;">Bavarian Peasants’ League</span> serves as the nucleus of the federal <span style="color: #007A00;">German Peasants' Party</span> and is surprisingly liberal and <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> compared to other agricultural parties and organizations, such as the <span style="color: #7FCEB1;">**CNBLP**</span>. Recently, they even exited the <span style="color: #A2D8E0;">**BVP**</span>'s cabinet over a dispute about taxes. [? if cvp_formed: <br><br> With the formation of the <span style="color: #000000;">**[+ z_party_name +]**</span>, the <span style="color: #3E88B3;">**DNVP**</span>'s Bavarian branch has largely merged into the <span style="color: #A2D8E0;">**BVP**</span>, although some elements have instead chosen to align with the <span style="color: #003755;">**DNF**</span>. ?]
+<span style="color: #38C538;">바이에른 농민동맹</span>은 연방 <span style="color: #007A00;">독일 농민당</span>의 핵심 세력으로, <span style="color: #7FCEB1;">**CNBLP**</span>와 같은 다른 농업 정당이나 조직에 비해 놀랍도록 자유주의적이고 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의적</span>입니다. 최근 그들은 세금 문제로 인한 분쟁 끝에 <span style="color: #A2D8E0;">**BVP**</span> 내각에서 탈퇴하기까지 했습니다. [? if cvp_formed: <br><br> <span style="color: #000000;">**[+ z_party_name +]**</span>의 창당과 함께, <span style="color: #3E88B3;">**DNVP**</span>의 바이에른 지부는 대부분 <span style="color: #A2D8E0;">**BVP**</span>로 흡수되었으나, 일부 세력은 대신 <span style="color: #003755;">**DNF**</span>와 제휴하기를 선택했습니다. ?]
 <hr id="read-marker">
-United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:  + <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_bavaria +]% 
+통합 좌파 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:  + <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_bavaria +]%
 
-Traffic Light Coalition (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #38C538;">Bavarian Peasants’ League</span>): [+ spd_coalition_bavaria +]% 
+신호등 연정 (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #38C538;">바이에른 농민동맹</span>): [+ spd_coalition_bavaria +]%
 
-[? if not kvp_formed: Bourgeois Coalition (<span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + **Others**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ bourgeois_coalition_bavaria +]% ?]
+[? if not kvp_formed: 부르주아 연정 (<span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + **기타**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ bourgeois_coalition_bavaria +]% ?]
 
-[? if kvp_formed: Bourgeois Coalition (<span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **Others** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition_bavaria +]% ?]
+[? if kvp_formed: 부르주아 연정 (<span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **기타** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition_bavaria +]% ?]
 
 @bavaria_coalition_menu
 
@@ -630,82 +630,82 @@ Traffic Light Coalition (<span style="color: #c00000;">**SPD**</span> + [? if no
 
 
 @bvp_toleration
-title: The <span style="color: #A2D8E0;">**BVP**</span> has fallen short of a majority, but continue to rule in caretaker capacity.
-subtitle: Electing a new Minister-President—or dissolving the Landtag—requires an absolute majority. Deep antagonism between the opposition parties has made clearing that hurdle all but impossible.
+title: <span style="color: #A2D8E0;">**BVP**</span>가 과반 확보에 실패했으나, 관리 정부 자격으로 통치를 지속하다.
+subtitle: 새로운 주총리를 선출하거나 주의회를 해산하려면 절대 과반수가 필요합니다. 야당 간의 깊은 적대감으로 인해 이 장애물을 넘는 것은 거의 불가능해졌습니다.
 view-if: bourgeois_coalition_bavaria < 50
 on-arrival: bavaria_minority_bvp = 1; pro_republic -= 2; catholics_nsdap -= 2
 go-to: election_menu
 
-Despite the <span style="color: #A2D8E0;">**BVP**</span> falling short of a majority, even with the inclusion of other bourgeois parties, they continue to rule in as a caretaker government. [? if nsdap_bavaria_elections_vote >= 15: Negotiations with the <span style="color: #7A3C00;">**NSDAP**</span> has collapsed, due to their disdain for Catholics. ?]
+<span style="color: #A2D8E0;">**BVP**</span>는 다른 부르주아 정당들을 포함하더라도 과반수에 미치지 못했으나, 관리 정부로서 통치를 이어갑니다. [? if nsdap_bavaria_elections_vote >= 15: <span style="color: #7A3C00;">**NSDAP**</span>와의 협상은 가톨릭교도에 대한 그들의 경멸 때문에 결렬되었습니다. ?]
 
-Heinrich Held, the incumbent Minister-President and a pro-democratic member of the <span style="color: #A2D8E0;">**BVP**</span> remains in power.
+현직 주총리이자 <span style="color: #A2D8E0;">**BVP**</span>의 친민주적 인사인 하인리히 헬트가 권력을 유지합니다.
 
 @bvp_majority
-title: The <span style="color: #A2D8E0;">**BVP**</span> has captured another majority.
-subtitle: As expected?
+title: <span style="color: #A2D8E0;">**BVP**</span>가 또다시 과반을 확보하다.
+subtitle: 예상대로?
 view-if: z_r_bavaria >= 50
 on-arrival: bavaria_bvp = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; catholics_nsdap -= 2; new_middle_z += 2; old_middle_z += 2; catholics_other += 2; rural_z += 2; pro_republic += 1
 go-to: election_menu
 
-The <span style="color: #A2D8E0;">**BVP**</span> has surprisingly won an outright majority, and no longer needs the support of the bourgeois parties. This has cemented Bavaria as one of the most stable state governments, maybe not "democratic" though.
+<span style="color: #A2D8E0;">**BVP**</span>는 놀랍게도 단독 과반을 차지하여, 더 이상 부르주아 정당들의 지지가 필요 없게 되었습니다. 이는 바이에른을 가장 안정적인 주 정부 중 하나로 굳건히 했지만, "민주적"이라고 보기는 어려울지도 모릅니다.
 
-Heinrich Held, the incumbent Minister-President and a pro-democratic member of the <span style="color: #A2D8E0;">**BVP**</span> remains in power.
+현직 주총리이자 <span style="color: #A2D8E0;">**BVP**</span>의 친민주적 인사인 하인리히 헬트가 권력을 유지합니다.
 
 @nsdap_majority
-title: The <span style="color: #7A3C00;">**NSDAP**</span> wins a majority?
-subtitle: How did it come to this...?
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 과반을 차지하다?
+subtitle: 어쩌다 이 지경이 되었나...?
 view-if: (nsdap_r_bavaria + dnf_r_bavaria >= 50 and dnvp_ideology == "Moderate") or (nsdap_r_bavaria + dnvp_r_bavaria >= 50 and dnvp_ideology == "Radical")
 on-arrival: bavaria_nsdap = 1; new_middle_nsdap += 6; old_middle_nsdap += 6; rural_nsdap += 6; new_middle_z -= 4; old_middle_z -= 4; rural_z -= 4; pro_republic -= 10
 go-to: election_menu
 
-How the hell.
+도대체 어떻게.
 
 @bvp_coalition
-title: The <span style="color: #A2D8E0;">**BVP**</span> coalitions with the <span style="color: #38C538;">Bavarian Peasants’ League</span> and various bourgeois parties.
-subtitle: The <span style="color: #A2D8E0;">BVP</span> will make amends with the <span style="color: #38C538;">farmers</span>.
+title: <span style="color: #A2D8E0;">**BVP**</span>가 <span style="color: #38C538;">바이에른 농민동맹</span> 및 여러 부르주아 정당과 연정을 맺다.
+subtitle: <span style="color: #A2D8E0;">BVP</span>는 <span style="color: #38C538;">농민들</span>과 화해할 것입니다.
 view-if: bourgeois_coalition_bavaria >= 50
 on-arrival: bavaria_bvp = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; catholics_nsdap -= 2; rural_nsdap -= 3; rural_other += 3; pro_republic += 3
 go-to: election_menu
 
-The former incumbent coalition consisting of the <span style="color: #A2D8E0;">**BVP**</span>, <span style="color: #38C538;">Bavarian Peasants’ League</span>, and the various smaller bourgeois parties has continued. This show of stability will weaken the <span style="color: #7A3C00;">Nazis</span>.
+<span style="color: #A2D8E0;">**BVP**</span>, <span style="color: #38C538;">바이에른 농민동맹</span>, 그리고 여러 군소 부르주아 정당들로 구성된 기존 연정이 지속됩니다. 이러한 안정적인 모습은 <span style="color: #7A3C00;">나치</span>의 세력을 약화시킬 것입니다.
 
-Heinrich Held, the incumbent Minister-President and a pro-democratic member of the <span style="color: #A2D8E0;">**BVP**</span> remains in power.
+현직 주총리이자 <span style="color: #A2D8E0;">**BVP**</span>의 친민주적 인사인 하인리히 헬트가 권력을 유지합니다.
 
 @spd_majority
-title: The <span style="color: #c00000;">**SPD**</span> forms a majority government.
-subtitle: Congratulations.
+title: <span style="color: #c00000;">**SPD**</span>가 단독 과반 정부를 구성하다.
+subtitle: 축하합니다.
 view-if: spd_r_bavaria >= 50
 on-arrival: bavaria_spd = 1; new_middle_nsdap -= 3; old_middle_nsdap -= 3; rural_nsdap -= 2; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_spd += 5; old_middle_spd += 6; rural_spd += 4; catholics_z -= 6; catholics_spd += 6; pro_republic += 5; prussian_police_loyalty += 0.1; sa_strength -= 100; sa_strength -= 50 if sa_nationwide_ban;
 achievement: rotes_bayern
 go-to: election_menu
 
-We have somehow managed to capture a majority in the Landtag, and have put our Minister-President as the head of the most conservative state in the country. Hopefully this doesn't end badly like last time. Bavaria has been governed by the political right ever since 1921, and the <span style="color: #A2D8E0;">**BVP**</span> has often covered for reactionary political activity. Now, we are able to change that and aggressively counter the <span style="color: #7A3C00;">**SA**</span> thugs roaming the streets [? if sa_nationwide_ban: and more aggressively enforce the national ban of the organization that the conservative Held government had mostly ignored ?].
+우리는 어떻게든 주의회에서 과반수를 확보하여, 독일에서 가장 보수적인 주의 수장으로 우리 당의 주총리를 세웠습니다. 부디 이번에는 지난번처럼 비극으로 끝나지 않기를 바랍니다. 바이에른은 1921년 이래 줄곧 정치적 우파에 의해 통치되었고, <span style="color: #A2D8E0;">**BVP**</span>는 종종 반동적인 정치 활동을 묵인해 왔습니다. 이제 우리는 이를 바꾸고 거리를 배회하는 <span style="color: #7A3C00;">**SA**</span> 깡패들에게 적극적으로 대응할 수 있습니다 [? if sa_nationwide_ban: 또한 보수적인 헬트 정부가 사실상 무시했던 해당 조직에 대한 전국적 금지 조치를 더욱 강력하게 집행할 수 있습니다 ?].
 
 @spd_coalition
-title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the bourgeois parties.
-subtitle: The <span style="color: #38C538;">Bavarian Peasants’ League</span> had a falling out right? Let's utilize our contacts with their left wing. -1 resource
-unavailable-subtitle: [? if spd_coalition_bavaria < 50: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?] + <span style="color: #38C538;">Bavarian Peasants’ League</span> ([+ spd_coalition_bavaria +]%)  ?][? if resources < 1: - Not enough resources (need 1). ?]
+title: <span style="color: #c00000;">**SPD**</span>가 부르주아 정당들과 연립 정부를 구성하다.
+subtitle: <span style="color: #38C538;">바이에른 농민동맹</span>은 사이가 틀어졌었죠? 그들 내부의 좌파 인맥을 활용합시다. 자원 -1
+unavailable-subtitle: [? if spd_coalition_bavaria < 50: <span style="color: #c00000;">SPD</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?] + <span style="color: #38C538;">Bavarian Peasants’ League</span> ([+ spd_coalition_bavaria +]%)  ?][? if resources < 1: - 자원이 부족합니다 (1 필요). ?]
 choose-if: spd_coalition_bavaria >= 50 and resources >= 1
 on-arrival: resources -= 1; bavaria_spd = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_spd += 3; old_middle_spd += 3; rural_spd += 1; rural_other += 3; catholics_z -= 4; catholics_spd += 4; z_relation -= 5; pro_republic += 3; prussian_police_loyalty += 0.05; sa_strength -= 50; sa_strength -= 50 if sa_nationwide_ban;
 go-to: election_menu
 achievement: ampelkoalition
 
-Somehow, we have brought the [? if not lvp_formed and ddp_r_bavaria: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and?][? if lvp_formed and lvp_r_bavaria: <span style="color: #FFCC00;">**LVP**</span> and?] <span style="color: #38C538;">Bavarian Peasants’ League</span> to the negotiating table, despite their preference for working with the <span style="color: #A2D8E0;">**BVP**</span>. Through connections with the left-wing and liberal factions within the <span style="color: #38C538;">Bavarian Peasants’ League</span>, we have overcome their reluctance—and now, we are in government! Bavaria has been governed by the political right ever since 1921, and the <span style="color: #A2D8E0;">**BVP**</span> has often covered for reactionary political activity. Now, we are able to change that and counter the <span style="color: #7A3C00;">**SA**</span> thugs roaming the streets [? if sa_nationwide_ban: and more aggressively enforce the national ban of the organization that the conservative Held government had mostly ignored ?].
+어떻게든 우리는 [? if not lvp_formed and ddp_r_bavaria: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와?][? if lvp_formed and lvp_r_bavaria: <span style="color: #FFCC00;">**LVP**</span>와?] <span style="color: #38C538;">바이에른 농민동맹</span>을 협상 테이블로 끌어냈습니다. <span style="color: #A2D8E0;">**BVP**</span>와 협력하려는 그들의 선호에도 불구하고 말입니다. <span style="color: #38C538;">바이에른 농민동맹</span> 내 좌파 및 자유주의 파벌과의 연줄을 통해 우리는 그들의 거부감을 극복했고, 이제 우리는 집권당이 되었습니다! 바이에른은 1921년 이래 줄곧 정치적 우파에 의해 통치되었고, <span style="color: #A2D8E0;">**BVP**</span>는 종종 반동적인 정치 활동을 묵인해 왔습니다. 이제 우리는 이를 바꾸고 거리를 배회하는 <span style="color: #7A3C00;">**SA**</span> 깡패들에게 대응할 수 있습니다 [? if sa_nationwide_ban: 또한 보수적인 헬트 정부가 사실상 무시했던 해당 조직에 대한 전국적 금지 조치를 더욱 강력하게 집행할 수 있습니다 ?].
 
 
 @united_left
-title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>?
-subtitle: History will repeat itself.
+title: <span style="color: #c00000;">**SPD**</span>가 <span style="color: #700000;">**KPD**</span>와 연립 정부를 구성하다?
+subtitle: 역사는 반복될 것입니다.
 view-if: left_coalition_bavaria >= 50 and (kpd_relation >= 60 and kpd_leader == "Conciliators") or (kpd_relation >= 80 and kpd_leader != "Conciliators")
 on-arrival: bavaria_spd = 1; bavaria_kpd = 1; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; coup_progress += 10
 go-to: election_menu
 
-The conservative stronghold of the republic, home to the largest concentration of Catholics and general forces of <span style="color: #808080;">reaction</span> has finally fallen to the forces of the <span style="color: #700000;">Left</span>. Few could have expected the seeds of <span style="color: #c00000;">socialism</span>, much less <span style="color: #700000;">communism</span> to once again take root in Bavaria, but the election results showed have made this impossibility into a living nightmare for the right. <span style="color: #3E88B3;">**Stahlhelm**</span> brigands, along with the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> are already rushing to prepare a coup against what they see as a <span style="color: #700000;">communist</span> takeover in progress, and we may soon have a civil war on our hands.
-The legacy of the Bavarian Worker’s Republic has been avenged, but at what cost?
+공화국의 보수적 요새이자 가톨릭교도들과 일반적인 <span style="color: #808080;">반동</span> 세력의 최대 집결지가 마침내 <span style="color: #700000;">좌파</span> 세력에게 함락되었습니다. <span style="color: #c00000;">사회주의</span>는커녕 <span style="color: #700000;">공산주의</span>가 바이에른에 다시 뿌리내릴 것이라 예상한 사람은 거의 없었지만, 선거 결과는 이 불가능한 일을 우파에게 생생한 악몽으로 만들어주었습니다. <span style="color: #3E88B3;">**철모단**</span> 도적들은 <span style="color: #7A3C00;">나치</span> <span style="color: #7A3C00;">**SA**</span>와 함께 그들이 보기에 진행 중인 <span style="color: #700000;">공산주의</span> 탈취에 맞서 쿠데타를 준비하려 서두르고 있으며, 우리는 곧 내전을 맞이하게 될지도 모릅니다.
+바이에른 소비에트 공화국의 유산에 대한 복수는 이루어졌지만, 그 대가는 과연 무엇입니까?
 
 @wurttemberg
-title: <span style="color: #000000;">Württ</span><span style="color: #c00025;">emberg</span>'s Landtag Election
-subtitle: Will the <span style="color: #FFCC00;">liberal</span> stronghold survive?
+title: <span style="color: #000000;">뷔르템</span><span style="color: #c00025;">베르크</span> 주의회 선거
+subtitle: <span style="color: #FFCC00;">자유주의</span>의 요새가 살아남을 수 있을까요?
 view-if: not wurttemberg_seen
 on-arrival: {!
 
@@ -1049,12 +1049,12 @@ if (((Q.ddp_wurttemberg_elections_vote + Q.dvp_wurttemberg_elections_vote < 8 &&
 go-to: wurttemberg_coalition_menu
 
 
-**Württemberg results:**
+**뷔르템베르크 선거 결과:**
 
 {!<svg id="wurttemberg_landtag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>Landtag Seats</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>주의회 의석</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_wurttemberg_elections_vote +]%** {!</td><td>!} [+ spd_r_wurttemberg +]% {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_wurttemberg_elections_vote +]% {!</td><td>!} [+ sapd_r_wurttemberg +]% {!</td></tr>!} ?]
@@ -1071,7 +1071,7 @@ go-to: wurttemberg_coalition_menu
  
 {!<tr><td><div class="box" style='background-color:#006400'> </div> !} WBWB: {!</td><td>!} [+ farm_wurttemberg_elections_vote +]% {!</td><td>!} [+ farm_r_wurttemberg +]%  {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} Others: {!</td><td>!} [+ non_farm_wurttemberg_elections_vote +]% {!</td><td>!} [+ non_farm_r_wurttemberg +]%  {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#a0a0a0'> </div> !} 기타: {!</td><td>!} [+ non_farm_wurttemberg_elections_vote +]% {!</td><td>!} [+ non_farm_r_wurttemberg +]%  {!</td></tr>!}
 
 [? if kvp_formed : {!<tr><td><div class="box" style='background-color:#0087DC'> </div> !}KVP: {!</td><td>!} [+ kvp_wurttemberg_elections_vote +]% {!</td><td>!} [+ kvp_r_wurttemberg +]%  {!</td></tr>!} ?]
 
@@ -1082,23 +1082,23 @@ go-to: wurttemberg_coalition_menu
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_wurttemberg_elections_vote +]% {!</td><td>!} [+ nsdap_r_wurttemberg +]%  {!</td></tr>!}
 {!</table>!}
 <hr id="read-marker">
-The <span style="color: #006400;">Württemberg Farmers' and Winegrowers' Association</span> (<span style="color: #006400;">**WBWB**</span>) is a regional branch of the National Rural League (RLB), and closely cooperates with the regional party of the <span style="color: #3E88B3;">**DNVP**</span>, the <span style="color: #3E88B3;">Württemberg Citizens' Party</span>.[? if cvp_formed: However, the formation of the <span style="color: #000000;">**[+ z_party_name +]**</span> has prompted a merger between the <span style="color: #3E88B3;">Citizens' Party</span> and the <span style="color: #000000;">Center Party</span>. ?]
+<span style="color: #006400;">뷔르템베르크 농민 및 포도재배업자 협회</span>(<span style="color: #006400;">**WBWB**</span>)는 전국농촌연맹의 지역 지부이며, <span style="color: #3E88B3;">**DNVP**</span>의 지역 정당인 <span style="color: #3E88B3;">뷔르템베르크 시민당</span>과 긴밀히 협력하고 있습니다. [? if cvp_formed: 그러나 <span style="color: #000000;">**[+ z_party_name +]**</span>의 창당은 <span style="color: #3E88B3;">시민당</span>과 <span style="color: #000000;">중앙당</span> 간의 합병을 촉발했습니다. ?]
 <hr id="read-marker">
-United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:  + <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_wurttemberg +]% 
+통합 좌파 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:  + <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_wurttemberg +]%
 
-[? if not cvp_formed: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #000000;">**[+ z_party_name +]**</span>): [+ spd_coalition_wurttemberg +]% ?][? if cvp_formed: <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]): [+ spd_coalition_wurttemberg +]% ?]
+[? if not cvp_formed: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정 (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #000000;">**[+ z_party_name +]**</span>): [+ spd_coalition_wurttemberg +]% ?][? if cvp_formed: <span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정 (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]): [+ spd_coalition_wurttemberg +]% ?]
 
-[? if not kvp_formed: Bourgeois Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #006400;">**WBWB**</span> + **Others**[? if dnvp_ideology == "Moderate" and not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ bourgeois_coalition_wurttemberg +]% ?]
+[? if not kvp_formed: 부르주아 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #006400;">**WBWB**</span> + **기타**[? if dnvp_ideology == "Moderate" and not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ bourgeois_coalition_wurttemberg +]% ?]
 
-[? if kvp_formed: Bourgeois Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #006400;">**WBWB**</span> + **Others** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition_wurttemberg +]% ?]
+[? if kvp_formed: 부르주아 연정 (<span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #006400;">**WBWB**</span> + **기타** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition_wurttemberg +]% ?]
 
-[? if( ddp_wurttemberg_elections_vote + dvp_wurttemberg_elections_vote < 8 and not lvp_formed) or (lvp_wurttemberg_elections_vote < 12 and lvp_formed): The [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> [? if dvp_exist: and <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] have suffered a major defeat, losing a significant number of seats compared to 1928. This will severely demoralize the <span style="color: #FFCC00;">liberals</span>, who had hoped to maintain their traditional stronghold over Württemberg. Combined with other local elections, the <span style="color: #FFCC00;">liberal parties</span> are essentially dead as an effective political force. ?]
+[? if( ddp_wurttemberg_elections_vote + dvp_wurttemberg_elections_vote < 8 and not lvp_formed) or (lvp_wurttemberg_elections_vote < 12 and lvp_formed): [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> [? if dvp_exist: 그리고 <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]는 1928년에 비해 상당수의 의석을 잃으며 참패를 겪었습니다. 이는 뷔르템베르크를 자신들의 전통적인 요새로 유지하려던 <span style="color: #FFCC00;">자유주의자들</span>의 사기를 심각하게 꺾어놓을 것입니다. 다른 지방 선거 결과들과 맞물려, <span style="color: #FFCC00;">자유주의 정당들</span>은 효과적인 정치 세력으로서 사실상 사망 선고를 받았습니다. ?]
 
 @wurttemberg_coalition_menu
 
-The <span style="color: #000000;">Center Party</span> in Württemberg has historically been unfriendly toward us, opting to continue governing in a minority coalition with the <span style="color: #3E88B3;">**DNVP**</span> as they view us as incapable of governing, even when a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition was possible in 1928.
+뷔르템베르크의 <span style="color: #000000;">중앙당</span>은 역사적으로 우리에게 비우호적이었습니다. 1928년에 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정이 가능했을 때조차 우리가 통치 능력이 없다고 판단하여 <span style="color: #3E88B3;">**DNVP**</span>와의 소수 연정을 지속하는 길을 택했기 때문입니다.
 
-Under the stable leadership of <span style="color: #000000;">Eugen Bolz</span> and <span style="color: #3E88B3;">Wilhelm Bazille</span>, Württemberg has surprisingly managed to mitigate the worst effects of the economic depression. However, its police force is notorious for its anti-<span style="color: #c00000;">socialist</span> bias, targeting us more aggressively than the more violent <span style="color: #7A3C00;">Nazis</span>.
+<span style="color: #000000;">오이겐 볼츠</span>와 <span style="color: #3E88B3;">빌헬름 바질레</span>의 안정적인 지도력 아래, 뷔르템베르크는 놀랍게도 경제 대공황의 최악의 여파를 완화해 냈습니다. 그러나 그들의 경찰력은 반-<span style="color: #c00000;">사회주의</span> 편향으로 악명 높아, 폭력적인 <span style="color: #7A3C00;">나치</span>보다 우리를 더 공격적으로 탄압하고 있습니다.
 
 - @z_toleration_wurttemberg
 - @nsdap_majority_wurttemberg
@@ -1111,76 +1111,76 @@ Under the stable leadership of <span style="color: #000000;">Eugen Bolz</span> a
 
 
 @z_toleration_wurttemberg
-title: The incumbent [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] government has fallen short of a majority, but continue to rule in caretaker capacity.
-subtitle: Electing a new Minister-President—or dissolving the Landtag—requires an absolute majority. Deep antagonism between the opposition parties has made clearing that hurdle all but impossible.
+title: 현직 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 정부가 과반 확보에 실패했으나, 관리 정부 자격으로 통치를 지속하다.
+subtitle: 새로운 주총리를 선출하거나 주의회를 해산하려면 절대 과반수가 필요합니다. 야당 간의 깊은 적대감으로 인해 이 장애물을 넘는 것은 거의 불가능해졌습니다.
 view-if: bourgeois_coalition_wurttemberg < 50
 on-arrival: wurttemberg_right = 1; wurttemberg_vonc = 1; pro_republic -= 1; catholics_nsdap -= 1
 go-to: election_menu
 
-Despite the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and its Protestant conservative partners falling short of a majority, they continue to rule as a caretaker government. This outcome mirrors the one of the 1928 elections, so perhaps this outcome is to be expected.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 그들의 개신교 보수주의 파트너들은 과반 확보에 실패했음에도 불구하고, 관리 정부로서 통치를 이어갑니다. 이 결과는 1928년 선거의 결과와 판박이이므로, 어쩌면 예상된 결과일지도 모릅니다.
 
 @nsdap_majority_wurttemberg
-title: The <span style="color: #7A3C00;">**NSDAP**</span> wins a majority?
-subtitle: How did it come to this...?
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 과반을 차지하다?
+subtitle: 어쩌다 이 지경이 되었나...?
 view-if: (nsdap_r_wurttemberg + dnf_r_wurttemberg >= 50 and dnvp_ideology == "Moderate") or (nsdap_r_wurttemberg + dnvp_r_wurttemberg >= 50 and dnvp_ideology == "Radical")
 on-arrival: wurttemberg_nsdap = 1; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 4; new_middle_z -= 2; old_middle_z -= 2; rural_z -= 2; new_middle_dnvp -= 2; old_middle_dnvp -= 2; catholics_z -= 3; catholics_spd -= 3; catholics_nsdap += 6; rural_other -= 6; pro_republic -= 6
 go-to: election_menu
 
-Damn that's crazy. Look dude I don't know what to write for this.
+젠장 미쳤군요. 이봐요 친구, 난 여기에 뭘 써야 할지 모르겠어요.
 
 @bourgeois_coalition_wurttemberg
-title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] coalitions with the <span style="color: #006400;">**WBWB**</span>, the <span style="color: #FFCC00;">liberals</span>, and other minor bourgeois parties.
-subtitle: This is the incumbent coalition.
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 <span style="color: #006400;">**WBWB**</span>, <span style="color: #FFCC00;">자유주의자들</span>, 그리고 다른 소수 부르주아 정당들과 연정을 맺다.
+subtitle: 이것은 현재 연정입니다.
 view-if: bourgeois_coalition_wurttemberg >= 50
 on-arrival: wurttemberg_right = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; rural_other += 4; pro_republic += 2; catholics_nsdap -= 3; catholics_z += 2; catholics_other += 1;
 go-to: election_menu
 
-The incumbent coalition consisting of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?],[? if not cvp_formed:&nbsp;<span style="color: #3E88B3;">**DNVP**</span>,?] <span style="color: #FFCC00;">liberals</span> and toleration from the <span style="color: #006400;">**WBWB**</span> has won another majority. The continuation of the stable leadership over Württemberg will weaken the <span style="color: #7A3C00;">Nazis</span>.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], [? if not cvp_formed:&nbsp;<span style="color: #3E88B3;">**DNVP**</span>,?] <span style="color: #FFCC00;">자유주의자들</span>, 그리고 <span style="color: #006400;">**WBWB**</span>의 묵인으로 구성된 현직 연정이 또다시 과반을 확보했습니다. 뷔르템베르크의 안정적인 지도력이 지속됨에 따라 <span style="color: #7A3C00;">나치</span>의 세력은 약화될 것입니다.
 
 @spd_majority_wurttemberg
-title: The <span style="color: #c00000;">**SPD**</span> forms a majority government.
-subtitle: Congratulations.
+title: <span style="color: #c00000;">**SPD**</span>가 단독 과반 정부를 구성하다.
+subtitle: 축하합니다.
 view-if: spd_r_wurttemberg >= 50
 on-arrival: wurttemberg_spd = 1; new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; new_middle_z -= 1; old_middle_z -= 1; rural_z -= 1; new_middle_spd += 3; old_middle_spd += 3; rural_spd += 2; catholics_nsdap -= 2; catholics_z -= 2; catholics_spd += 4; pro_republic += 4
 go-to: election_menu
 
-Somehow, we have captured the majority of seats, bypassing the coalition negotiation process and appointing an <span style="color: #c00000;">**SPD**</span> Minister-President for the first time in a decade.
+어떻게든 우리는 의석 과반을 차지했고, 연정 협상 과정을 건너뛰고 10년 만에 처음으로 <span style="color: #c00000;">**SPD**</span> 주총리를 임명했습니다.
 
-Kurt Schumacher is elected as Minister-President.
+쿠르트 슈마허가 주총리로 선출됩니다.
 
 @weimar_coalition_wurttemberg
-title: A <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition is formed!
-subtitle: We have somehow convinced the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to let us into government.
-unavailable-subtitle: [? if z_relation < 60: We need higher relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if (ddp_relation < 40 and not lvp_formed) or (lvp_relation < 40 and lvp_formed): We need higher relations with the [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?]
+title: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정이 형성되다!
+subtitle: 우리는 어떻게든 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]을 설득하여 정부에 참여했습니다.
+unavailable-subtitle: [? if z_relation < 60: 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 더 높은 관계가 필요합니다. ?][? if (ddp_relation < 40 and not lvp_formed) or (lvp_relation < 40 and lvp_formed): 우리는 [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]와 더 높은 관계가 필요합니다. ?]
 view-if: spd_coalition_wurttemberg >= 50 and not cvp_formed
 choose-if: z_relation >= 60 and ((ddp_relation >= 40 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed))
 on-arrival: wurttemberg_spd = 1; wurttemberg_weimar = 1; rural_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; rural_other += 4; z_relation += 3; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; catholics_nsdap -= 2; catholics_spd += 2; catholics_z += 1; catholics_other += 1; sa_strength -= 25
 go-to: election_menu
 
-Despite the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in Württemberg being historically hostile, we've managed to convince them to form a majority <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition. We will now focus on eliminating the <span style="color: #3E88B3;">nationalist</span> and anti-democratic biases in the police force.
+뷔르템베르크의 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 역사적으로 적대적이었음에도 불구하고, 우리는 그들을 설득하여 과반 <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 연정을 구성했습니다. 이제 우리는 경찰 내의 <span style="color: #3E88B3;">민족주의적</span>이고 반민주적인 편향을 제거하는 데 집중할 것입니다.
 
-<span style="color: #000000;">Eugen Bolz</span> retains the Minister-President position, as part of our agreement.
+합의의 일환으로 <span style="color: #000000;">오이겐 볼츠</span>가 주총리직을 유지합니다.
 
 @social_liberal_coalition_wurttemberg
-title: A <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] Coalition is formed!
-subtitle: We have bypassed the <span style="color: #000000;">**[+ z_party_name +]**</span>, negotiating with the <span style="color: #FFCC00;">liberals</span> instead.
-unavailable-subtitle:[? if (ddp_relation < 55 and not lvp_formed) or (lvp_relation < 65 and lvp_formed): We need higher relations with the [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?]
+title: <span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정이 형성되다!
+subtitle: 우리는 <span style="color: #000000;">**[+ z_party_name +]**</span>을 배제하고 <span style="color: #FFCC00;">자유주의자들</span>과 협상했습니다.
+unavailable-subtitle:[? if (ddp_relation < 55 and not lvp_formed) or (lvp_relation < 65 and lvp_formed): 우리는 [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]와 더 높은 관계가 필요합니다. ?]
 view-if: spd_coalition_wurttemberg >= 50 and cvp_formed
 choose-if: (ddp_relation >= 55 and not lvp_formed) or (lvp_relation >= 65 and lvp_formed)
 on-arrival: wurttemberg_spd = 1; wurttemberg_weimar = 1; rural_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; new_middle_ddp += 2; old_middle_ddp += 2; new_middle_lvp += 2; old_middle_lvp += 2; rural_other += 4; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; sa_strength -= 25
 go-to: election_menu
 
-With the formation of the <span style="color: #000000;">**[+ z_party_name +]**</span>, combined with the state <span style="color: #000000;">Center Party</span>'s longstanding hostility toward our participation in government, a coalition with them is entirely out of the question. The trend of <span style="color: #c00000;">Social</span>-[? if not lvp_formed: <span style="color: #D3C24D;">Liberal</span>?][? if lvp_formed: <span style="color: #FFCC00;">Liberal</span>?] coalitions has thus continued—for now, it remains the only viable path for us to enter government without relying on the <span style="color: #700000;">**Communists**</span>.
+<span style="color: #000000;">**[+ z_party_name +]**</span>의 창당과 더불어, 우리의 정부 참여에 대한 주 <span style="color: #000000;">중앙당</span>의 오랜 적대감 때문에 그들과의 연정은 완전히 불가능합니다. 따라서 <span style="color: #c00000;">사회</span>-[? if not lvp_formed: <span style="color: #D3C24D;">자유</span>?][? if lvp_formed: <span style="color: #FFCC00;">자유</span>?] 연정의 흐름이 계속되었습니다. 현재로서는 이것이 우리가 <span style="color: #700000;">**공산주의자들**</span>에게 의존하지 않고 정부에 참여할 수 있는 유일한 현실적인 길입니다.
 
-With this new government, our priority will be to root out the <span style="color: #3E88B3;">nationalist</span> and anti-democratic elements entrenched within the police force.
+이 새로운 정부와 함께, 우리의 최우선 과제는 경찰 내에 뿌리 깊은 <span style="color: #3E88B3;">민족주의적</span>이고 반민주적인 요소들을 척결하는 것이 될 것입니다.
 
-Kurt Schumacher is elected as Minister-President.
+쿠르트 슈마허가 주총리로 선출됩니다.
 
 @united_left_wurttemberg
-title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>?
-subtitle: History will repeat itself.
+title: <span style="color: #c00000;">**SPD**</span>가 <span style="color: #700000;">**KPD**</span>와 연립 정부를 구성한다?
+subtitle: 역사는 반복될 것이다.
 view-if: left_coalition_wurttemberg >= 50 and (kpd_relation >= 50 and kpd_leader == "Conciliators") or (kpd_relation >= 70 and kpd_leader != "Conciliators")
 on-arrival: wurttemberg_spd = 1; wurttemberg_kpd = 1; z_relation -= 3; ddp_relation -= 3; dvp_relation -= 3; lvp_relation -= 3; coup_progress += 3
 go-to: election_menu
 
-Even as the forces of the bourgeoisie have remained numerous in the Landtag, the newly unified <span style="color: #700000;">Left</span> has triumphed over the reigning coalition and inserted ourselves into a new <span style="color: #c00000;">Red</span> Württemburg. Of course, the rabidly anti-<span style="color: #c00000;">socialist</span> nature of the previous government does not make this transition easy, with mass purges of the police force to ensure that we can retain our influence with <span style="color: #700000;">communist</span> assistance. We can expect that <span style="color: #3E88B3;">**Stahlhelm**</span> units, met with such a loss in the elections, will soon bring their fury to the stairs of the Reichstag.
+부르주아 세력이 주의회에서 여전히 수적으로 우세함에도 불구하고, 새롭게 통합된 <span style="color: #700000;">좌파</span>는 기존 집권 연정을 누르고 새로운 <span style="color: #c00000;">붉은</span> 뷔르템베르크를 수립했습니다. 물론 이전 정부의 극단적인 반-<span style="color: #c00000;">사회주의</span>적 성향 때문에 이 전환은 순탄치 않을 것이며, <span style="color: #700000;">공산주의자</span>들의 도움으로 영향력을 유지하기 위해 경찰 조직에 대한 대대적인 숙청이 진행되고 있습니다. 선거에서 패배를 맛본 <span style="color: #3E88B3;">**철모단**</span> 부대들이 곧 제국의회 계단으로 분노를 표출하러 올 것임을 예상할 수 있습니다.

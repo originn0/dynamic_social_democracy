@@ -1,5 +1,5 @@
-title: Prussian Landtag referendum
-subtitle: How should we campaign against the referendum?
+title: 프로이센 주의회 국민투표
+subtitle: 이 국민투표에 맞서 어떻게 선거 운동을 펼쳐야 합니까?
 new-page: true
 tags: event
 view-if: year = 1931 and month >= 7 and landtag_ref_signatures_passed
@@ -18,16 +18,16 @@ on-display: {!
 !}
 max-visits: 1
 
-= Prussian Landtag referendum
+= 프로이센 주의회 국민투표
 
-[? if landtag_ref_kpd: The <span style="color: #700000;">**KPD**</span> has reversed its position and now supports the referendum! It’s astonishing that the <span style="color: #700000;">**KPD**</span>, which labels us <span style="color: #c00000;">social</span> <span style="color: #7A3C00;">fascists</span>, is now collaborating with [+ nsdap_leader +] and Hugenberg. They have rebranded the referendum as the "red plebiscite" following an unacceptable ultimatum to the Prussian government. The <span style="color: #700000;">**Communists**</span> have mobilized so extensively that many now believe they have "taken the lead" in directing the campaign from the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. ?][? if not landtag_ref_kpd: Fortunately, the <span style="color: #700000;">**KPD**</span>[? if kpd_leader == "Thälmann": &nbsp;despite its <span style="color: #c00000;">social</span> <span style="color: #7A3C00;">fascist</span> stance toward us,?] has refrained from taking a position on the referendum. The relatively low signature count of only [+ landtag_ref_signatures +]% is a positive sign, making a victory for the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> highly unlikely. ?]
+[? if landtag_ref_kpd: <span style="color: #700000;">**KPD**</span>가 입장을 뒤집고 국민투표 지지를 선언했습니다! 우리를 <span style="color: #c00000;">사회</span> <span style="color: #7A3C00;">파시스트</span>라고 매도하던 <span style="color: #700000;">**KPD**</span>가 이제 [+ nsdap_leader +] 및 후겐베르크와 협력하고 있다는 사실은 놀라울 따름입니다. 그들은 프로이센 정부에 수용 불가능한 최후통첩을 보낸 뒤, 국민투표를 "적색 국민투표"로 재포장했습니다. <span style="color: #700000;">**공산주의자들**</span>의 동원력이 워낙 거세어, 많은 이들은 이제 그들이 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>로부터 선거 운동의 "주도권을 빼앗았다"고 믿고 있습니다. ?][? if not landtag_ref_kpd: 다행히도, <span style="color: #700000;">**KPD**</span>는[? if kpd_leader == "Thälmann": &nbsp;우리를 향한 <span style="color: #c00000;">사회</span> <span style="color: #7A3C00;">파시스트</span> 노선에도 불구하고,?] 국민투표에 대해 입장을 표명하는 것을 자제했습니다. 서명 수가 [+ landtag_ref_signatures +]%로 상대적으로 저조하다는 점은 긍정적인 신호이며, <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>가 승리할 가능성은 매우 낮아 보입니다. ?]
 
-[? if landtag_ref_kpd: The <span style="color: #700000;">**KPD**</span>’s newfound support for the referendum has dramatically altered the situation, crushing earlier optimism stemming from the low number of signatures gathered in the first phase. Fortunately, many <span style="color: #700000;">**Communist**</span> workers are disgusted by the "<span style="color: #700000;">red</span>-<span style="color: #7A3C00;">brown</span>" plebiscite. Likewise, many <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> voters are reluctant to cast their ballots in alignment with the <span style="color: #700000;">**Communists**</span>.?][? if not landtag_ref_kpd: Even though this referendum is doomed to fail, it still provides the German Right with an opportunity to deepen political polarization, as evidenced by the anti-democratic rightwards shift of the bourgeois parties.?]
+[? if landtag_ref_kpd: <span style="color: #700000;">**KPD**</span>의 갑작스러운 국민투표 지지는 상황을 극적으로 바꾸어 놓았으며, 1차 서명 수가 저조했던 데서 비롯된 초기 낙관론을 짓밟았습니다. 다행히도, 많은 <span style="color: #700000;">**공산주의자**</span> 노동자들은 이 "<span style="color: #700000;">적</span><span style="color: #7A3C00;">갈</span>색" 국민투표에 혐오감을 느끼고 있습니다. 마찬가지로, 많은 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 유권자들도 <span style="color: #700000;">**공산주의자들**</span>과 나란히 투표하는 것을 꺼리고 있습니다.?][? if not landtag_ref_kpd: 비록 이 국민투표가 실패할 운명이라 할지라도, 부르주아 정당들의 반민주적인 우경화에서 볼 수 있듯이, 이는 여전히 독일 우파에게 정치적 양극화를 심화시킬 기회를 제공하고 있습니다.?]
 
-With our control of the Prussian government, we can campaign using state resources.
+우리가 프로이센 정부를 장악하고 있으므로, 국가 자원을 활용해 선거 운동을 펼칠 수 있습니다.
 
-- @do_campaign: Let’s review our campaign options.
-- @no_campaign: We shouldn't allocate resources to this.
+- @do_campaign: 선거 운동 선택지를 검토한다.
+- @no_campaign: 여기에 자원을 낭비해서는 안 된다.
 
 @do_campaign
 
@@ -38,83 +38,83 @@ We have a variety of options to choose from.
 - @media
 - @urge_paramilitary
 - @kpd
-- @hope: We have done enough.
-- @no_campaign_2: We shouldn't allocate resources to this.
+- @hope: 할 만큼 했다.
+- @no_campaign_2: 여기에 자원을 낭비해서는 안 된다.
 
 @bourgeois
-title: Request assistance from our coalition partners.
+title: 연정 파트너들에게 지원을 요청한다.
 view-if: spd_prussia and not bourgeois_campaign_landtag
 choose-if: not in_popular_front_prussia and not in_left_front_prussia and z_relation >= 50
-unavailable-subtitle: [? if in_popular_front_prussia or in_left_front_prussia: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] sees no reason to intervene in saving the incumbent government. ?] [? if z_relation < 50: We lack sufficient relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?]
+unavailable-subtitle: [? if in_popular_front_prussia or in_left_front_prussia: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 현 정부를 구하는 데 개입할 이유가 없다고 봅니다. ?] [? if z_relation < 50: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과의 관계가 충분하지 않습니다. ?]
 on-arrival: pro_republic += 3; catholics_nsdap -= 4; catholics_z += 3; catholics_spd += 1; z_relation += 3; dvp_relation += 3; ddp_relation += 3; ddp_left += 2; ddp_cohesion += 2; dvp_left += 3; bourgeois_campaign_landtag = 1
 face-image: img/weimar_coalition.jpg
 go-to: do_campaign
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has joined our efforts with its own propaganda campaign, doing their part in targeting Catholics and urging them to stay home.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 독자적인 선전 선거 운동으로 우리의 노력에 합류했으며, 가톨릭 신자들을 대상으로 투표 불참을 호소하는 데 제 몫을 다하고 있습니다.
 
 @communist_prussia
-title: Request assistance from the <span style="color: #700000;">**KPD**</span>.
-subtitle: The bourgeois parties will not be pleased by our cooperation.
+title: <span style="color: #700000;">**KPD**</span>에게 지원을 요청한다.
+subtitle: 부르주아 정당들은 우리의 협력을 달가워하지 않을 것입니다.
 view-if: spd_prussia and not landtag_ref_kpd and not communist_campaign_landtag
 choose-if: in_popular_front_prussia or in_left_front_prussia
-unavailable-subtitle: The <span style="color: #700000;">KPD</span> sees no reason to intervene in saving a government in which they have no involvement.
+unavailable-subtitle: <span style="color: #700000;">KPD</span>는 자신들이 참여하지 않은 정부를 구하는 데 개입할 이유가 없다고 봅니다.
 on-arrival: pro_republic += 3; workers_kpd += 2; workers_spd += 2; workers_nsdap -= 2; unemployed_nsdap -= 4; unemployed_kpd += 4; kpd_relation += 10; z_relation -= 5; dvp_relation -= 5; ddp_relation -= 3; ddp_right += 2; ddp_cohesion -= 2; dvp_right += 5; communist_campaign_landtag = 1
 face-image: img/kpd_march.jpg
 go-to: do_campaign
 
-Great news! The <span style="color: #D50000;">Comintern</span> has approved the <span style="color: #700000;">**KPD**</span>'s participation in our propaganda campaign against the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
+좋은 소식입니다! <span style="color: #D50000;">코민테른</span>이 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>에 맞서는 우리의 선전 선거 운동에 <span style="color: #700000;">**KPD**</span>가 참여하는 것을 승인했습니다.
 
-However, this display of left-wing unity has frightened the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #D3C24D;">liberals</span>, with some even choosing to support the referendum to protest.
+하지만, 이러한 좌파 단결의 과시는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 <span style="color: #D3C24D;">자유주의자들</span>을 겁먹게 했으며, 일부는 이에 항의하기 위해 국민투표를 지지하기로 돌아섰습니다.
 
 @media
-title: Use Vorwärts and our radio stations to broadcast against the plebiscite.
-subtitle: -1 resource
+title: 포르베르츠와 라디오 방송국을 활용해 국민투표 반대 방송을 내보낸다.
+subtitle: -1 자원
 view-if: not radio_campaign_landtag
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 충분하지 않습니다.
 on-arrival: resources -= 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += campaign_media; unemployed_spd += campaign_media; new_middle_nsdap -= (radio + commercialized_media); old_middle_nsdap -= (radio + commercialized_media); workers_nsdap -= campaign_media; unemployed_nsdap -= campaign_media; socialism += 3; nationalism -= 1; nationalism -= 2 if pacifism > 1; pro_republic += (radio + commercialized_media); radio_campaign_landtag = 1
 face-image: img/vorwarts_2.jpg
 go-to: do_campaign
 
-The effect of this campaign depends on the strength of our already established media empire. [? if commercialized_media: Our commercialized newspapers and radio stations have been effective in persuading the middle classes to stay home. ?][? if radio: Our radio station has played a crucial role in reaching middle-class voters. ?][? if campaign_media: The widespread presence of <span style="color: #c00000;">socialist</span> propaganda among the working-class has helped sway some to our side. ?]
+이 선거 운동의 효과는 우리가 구축한 미디어 제국의 영향력에 달려 있습니다. [? if commercialized_media: 우리의 상업화된 신문들과 라디오 방송국들은 중산층이 투표장에 가지 않도록 설득하는 데 효과적이었습니다. ?][? if radio: 우리의 라디오 방송국은 중산층 유권자들에게 도달하는 데 결정적인 역할을 했습니다. ?][? if campaign_media: 노동 계급 사이에 널리 퍼진 <span style="color: #c00000;">사회주의</span> 선전은 일부를 우리 편으로 돌려세우는 데 도움이 되었습니다. ?]
 
 @urge_paramilitary
 view-if: not political_decree_landtag_2 and political_decree == 1 and chancellor == "Brüning" and spd_toleration
 choose-if: spd_prussia and z_relation >= 35
-unavailable-subtitle: [? if not spd_prussia: We don't control the Prussian government. ?] [? if z_relation < 35: We lack sufficient relations with Brüning. ?]
-title: Urge Brüning to pass a second decree against "political excesses", further restricting press freedoms.
+unavailable-subtitle:  [? if not spd_prussia: 우리는 프로이센 정부를 통제하고 있지 않습니다. ?] [? if z_relation < 35: 브뤼닝과의 관계가 충분하지 않습니다. ?]
+title: 브뤼닝에게 "정치적 과잉"에 대응하는 2차 칙령을 통과시켜, 언론의 자유를 더욱 제한하도록 촉구한다.
 on-arrival: political_decree += 1; prussian_police_loyalty += 0.04; prussian_police_strength += 5; kpd_relation -= 6; rfb_militancy *= 0.9; rfb_strength *= 0.85; sa_militancy *= 0.96; sa_strength *= 0.96; sh_militancy *= 0.98; sh_strength *= 0.98; workers_kpd -= 2; workers_nsdap -= 2; unemployed_kpd -= 4; unemployed_nsdap -= 4; new_middle_nsdap -= 3; hindenburg_angry_bruning += 5; political_decree_landtag_2 = 1
 face-image: img/stahlhelm_poster.jpg
 go-to: do_campaign
 
-Carl Severing and Otto Braun have successfully persuaded Brüning to issue another emergency decree, forcing 2,500 newspapers—regardless of their political stance or position on the plebiscite—to publish a government statement urging the public to abstain from voting.
+카를 제베링과 오토 브라운은 브뤼닝이 또 다른 비상 칙령을 발표하도록 설득하는 데 성공했습니다. 이 칙령은 정치적 성향이나 국민투표에 대한 입장과 관계없이 2,500개의 신문사가 대중에게 기권을 촉구하는 정부 성명을 게재하도록 강제합니다.
 
-This decision has further inflamed the already volatile political climate, prompting President Hindenburg to promise a review of the decree following strong backlash from the supporters of Hugenberg and Hitler.
+이 결정은 이미 불안정한 정치적 상황에 기름을 부었으며, 후겐베르크와 히틀러 지지자들의 거센 반발에 직면한 힌덴부르크 대통령이 칙령 재검토를 약속하게 만들었습니다.
 
 @kpd
-title: We will attempt to cause a general strike of <span style="color: #700000;">**Communist**</span> voters.
-subtitle: -1 resource
+title: <span style="color: #700000;">**공산주의자**</span> 유권자들의 총파업을 유도한다.
+subtitle: -1 자원
 view-if: landtag_ref_kpd and not kpd_campaign_landtag
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 충분하지 않습니다.
 on-arrival: resources -= 1; workers_kpd -= 2; workers_nsdap -= 1; workers_spd += 3; unemployed_kpd -= 3; unemployed_nsdap -= 1; unemployed_spd += 4; pro_republic += 4; kpd_relation -= 15; dvp_left += 1; ddp_left += 1; ddp_cohesion += 1; kpd_campaign_landtag = 1
 face-image: img/red-brown.jpg
 go-to: do_campaign
 
-Pointing out the obvious always helps, even some <span style="color: #8B0000;">**RFB**</span> men are disgusted by their own party collaborating with the <span style="color: #7A3C00;">fascists</span>. 
+뻔한 사실을 지적하는 것은 언제나 도움이 됩니다. 심지어 일부 <span style="color: #8B0000;">**RFB**</span> 대원들조차 자신들의 당이 <span style="color: #7A3C00;">파시스트들</span>과 협력하는 것에 혐오감을 느끼고 있습니다.
 
 @hope
 view-if: kpd_campaign_landtag or political_decree_landtag_2 or radio_campaign_landtag or communist_campaign_landtag or bourgeois_campaign_landtag
 
-We can only hope for the best.
+우리는 최선의 결과를 바랄 뿐입니다.
 
 @no_campaign_2
 view-if: not kpd_campaign_landtag and not political_decree_landtag_2 and not radio_campaign_landtag and not communist_campaign_landtag and not bourgeois_campaign_landtag
 on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3;
 
-The referendum is likely going to fail with or without our presence in the campaign. However, anti-democratic sentiment is inflamed, and the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> is using our silence to spread their radicalizing propaganda to the people.
+우리가 선거 운동에 참여하든 안 하든 국민투표는 실패할 가능성이 높습니다. 하지만 반민주적 정서는 들끓고 있으며, <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>는 우리의 침묵을 이용해 급진적인 선전을 대중에게 퍼뜨리고 있습니다.
 
 @no_campaign
 on-arrival: workers_spd -= 3; old_middle_spd -= 3; new_middle_spd -= 3; workers_nsdap += 3; new_middle_nsdap += 3; old_middle_nsdap += 3; pro_republic -= 5; catholics_spd -= 2; catholics_nsdap += 2; workers_kpd += 3; unemployed_spd -= 5; unemployed_nsdap += 5; unemployed_kpd += 3;
 
-The referendum is likely going to fail with or without our presence in the campaign. However, anti-democratic sentiment is inflamed, and the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> is using our silence to spread their radicalizing propaganda to the people.
+우리가 선거 운동에 참여하든 안 하든 국민투표는 실패할 가능성이 높습니다. 하지만 반민주적 정서는 들끓고 있으며, <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>는 우리의 침묵을 이용해 급진적인 선전을 대중에게 퍼뜨리고 있습니다.

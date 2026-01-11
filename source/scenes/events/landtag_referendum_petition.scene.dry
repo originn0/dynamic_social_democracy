@@ -1,5 +1,5 @@
-title: Prussian Landtag referendum
-subtitle: A petition for the dissolution of the Landtag is launched.
+title: 프로이센 주의회 국민투표
+subtitle: 주의회 해산을 위한 청원이 시작되었습니다.
 new-page: true
 tags: event
 view-if: year = 1931 and month >= 3 and next_election_time_prussia - time >= 6 and spd_prussia
@@ -18,46 +18,46 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= Prussian Landtag referendum
+= 프로이센 주의회 국민투표
 
-The <span style="color: #3E88B3;">**Stahlhelm**</span> has officially presented its plan for a referendum to dissolve the Reichstag to Prussian Interior Minister Carl Severing, aiming to strengthen the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> presence in the Landtag, arguing that it no longer reflects the national mood. [? if not hitler_deported: Adolf Hitler’s?][? if hitler_deported: The?] <span style="color: #7A3C00;">**NSDAP**</span> remains non-committal, [? if dnvp_ideology == "Radical": despite Hugenberg’s pleas, ?]dismissing the effort as a waste of resources for a government that will collapse within a year anyway.
+<span style="color: #3E88B3;">**Stahlhelm**</span>은 프로이센 내무부 장관 카를 제베링에게 주의회 해산을 위한 국민투표 계획을 공식 제출했습니다. 그들은 현재의 주의회가 더 이상 국민 정서를 반영하지 못한다고 주장하며, 주의회 내 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 세력을 강화하려 합니다. [? if not hitler_deported: 아돌프 히틀러의?][? if hitler_deported: 그?] <span style="color: #7A3C00;">**NSDAP**</span>는, [? if dnvp_ideology == "Radical": 후겐베르크의 간청에도 불구하고, ?]어차피 1년 안에 무너질 정부에 자원을 낭비하는 짓이라며 일축하고, 확답을 피하고 있습니다.
 
-For the petition to proceed to a plebiscite, it must gather signatures from over 20% of eligible voters—a significantly higher bar than the Young Plan referendum. Given the <span style="color: #7A3C00;">**NSDAP**</span>[? if not in_popular_front_prussia and not in_left_front_prussia:&nbsp;and <span style="color: #700000;">**KPD**</span>?]’s hesitation, success is far from guaranteed. [? if dnvp_ideology == "Moderate": Furthermore, the <span style="color: #3E88B3;">**DNVP**</span>, acting independently of the <span style="color: #3E88B3;">**Stahlhelm**</span>, is not fully committed to the plan, arguing that a dissolution would primarily benefit the <span style="color: #7A3C00;">**NSDAP**</span> at their own expense. ?]
+청원이 국민투표로 이어지려면 유권자의 20% 이상 서명을 받아야 하는데, 이는 영 안 국민투표 때보다 훨씬 높은 기준입니다. <span style="color: #7A3C00;">**NSDAP**</span>[? if not in_popular_front_prussia and not in_left_front_prussia:&nbsp;및 <span style="color: #700000;">**KPD**</span>?]의 미온적인 태도를 고려할 때, 성공은 결코 보장되지 않았습니다. [? if dnvp_ideology == "Moderate": 게다가 <span style="color: #3E88B3;">**철모단**</span>과 독자 노선을 걷는 <span style="color: #3E88B3;">**DNVP**</span>는 주의회 해산이 자신들의 희생을 대가로 <span style="color: #7A3C00;">**NSDAP**</span>에게만 이득이 될 것이라며 계획에 전적으로 동참하지 않고 있습니다. ?]
 
 - @PLR_launched
 
 @PLR_launched
-title: The collection of signatures will begin next month.
+title: 서명 운동은 다음 달부터 시작될 것입니다.
 on-arrival: political_decree_landtag = 1 if political_decree == 1
 
-As we are in control of the democratic bulwark for now, we can attempt to use our position to our advantage.
+우리가 당분간 민주주의의 보루를 장악하고 있으므로, 우리의 지위를 유리하게 활용할 수 있습니다.
 
-- @campaign: Campaign against the referendum, and for democracy.
+- @campaign: 국민투표에 반대하고 민주주의를 수호하는 선거 운동을 벌인다.
 - @urge_paramilitary
-- @hope: We have done enough.
+- @hope: 할 만큼 했다.
 
 @campaign
-subtitle: -2 resources
+subtitle: -2 자원
 view-if: not campaigned_democracy
 choose-if: resources >= 2
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 충분하지 않습니다.
 on-arrival: resources -= 2; pro_republic += 6; new_middle_nsdap -= pro_republic / 25; old_middle_nsdap -= pro_republic / 25; workers_nsdap -= pro_republic / 25; campaigned_democracy = 1
 go-to: PLR_launched
 
-We have campaigned against the referendum, but our success ultimately depends on the people's faith in democracy.
+우리는 국민투표 반대 운동을 벌였지만, 성공 여부는 궁극적으로 민주주의에 대한 국민들의 믿음에 달려 있습니다.
 
 @urge_paramilitary
 view-if: not political_decree_landtag and spd_toleration
 choose-if: spd_prussia and strife >= 3 and z_relation >= 35
-unavailable-subtitle: [? if not spd_prussia: We don't control the Prussian government. ?] [? if strife < 3: Paramilitary violence isn't severe enough to justify an emergency decree. ?] [? if z_relation < 35: We lack sufficient relations with Brüning. ?]
-title: Urge Brüning to grant us stronger actions against political extremists, and to restrict certain rights.
+unavailable-subtitle: [? if not spd_prussia: 우리는 프로이센 정부를 통제하고 있지 않습니다. ?] [? if strife < 3: 준군사조직의 폭력이 비상 칙령을 정당화할 만큼 심각하지 않습니다. ?] [? if z_relation < 35: 브뤼닝과의 관계가 충분하지 않습니다. ?]
+title: 브뤼닝에게 정치적 극단주의자들에 대한 더 강력한 조치 권한을 부여하고, 특정 권리를 제한하도록 촉구한다.
 on-arrival: political_decree += 1; prussian_police_loyalty += 0.04; prussian_police_strength += 5; kpd_relation -= 6; rfb_militancy *= 0.9; rfb_strength *= 0.85; sa_militancy *= 0.96; sa_strength *= 0.96; sh_militancy *= 0.98; sh_strength *= 0.98; workers_kpd -= 1; workers_nsdap -= 1; unemployed_kpd -= 3; unemployed_nsdap -= 3; new_middle_nsdap -= 2; hindenburg_angry_bruning += 5; political_decree_landtag = 1
 go-to: PLR_launched
 
-Carl Severing and other Prussian officials have successfully urged Brüning to issue an emergency decree expanding police authority to suppress political extremism. The decree imposes restrictions on political meetings, organizations, newspapers, and posters, all of which now require police approval beforehand.
+카를 제베링과 다른 프로이센 관리들은 브뤼닝에게 정치적 극단주의를 억압하기 위해 경찰 권한을 확대하는 비상 칙령을 발표하도록 성공적으로 촉구했습니다. 이 칙령은 정치 집회, 조직, 신문, 포스터에 제한을 가하며, 이 모든 것은 이제 사전에 경찰 승인을 받아야 합니다.
 
-As a result, several <span style="color: #7A3C00;">Nazi</span> and <span style="color: #700000;">Communist</span> newspapers have been banned, triggering violent clashes between their supporters and the police. [? if president == "Hindenburg": President Hindenburg has reluctantly signed the decree, but is losing patience with Brüning for yielding to our demands. ?]
+그 결과, 몇몇 <span style="color: #7A3C00;">나치</span>와 <span style="color: #700000;">공산주의자</span> 신문들이 폐간되었고, 지지자들과 경찰 간에 폭력적인 충돌이 발생했습니다. [? if president == "Hindenburg": 힌덴부르크 대통령은 마지못해 칙령에 서명했지만, 우리의 요구에 굴복하는 브뤼닝에 대해 인내심을 잃어가고 있습니다. ?]
 
 @hope
 
-Hopefully a victory here could demoralize the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
+바라건대 여기서의 승리가 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>의 사기를 꺾을 수 있기를 바랍니다.

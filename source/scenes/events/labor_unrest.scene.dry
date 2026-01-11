@@ -1,37 +1,37 @@
-title: Labor Unrest
-subtitle: Clashes between workers and employers in the Ruhr...
+title: 노동 소요
+subtitle: 루르 지역의 노동자와 고용주 간 충돌...
 view-if: year = 1928 and month = 12 and spd_in_government and labor_minister_party != "SPD"
 max-visits: 1
 new-page: true
 face-image: img/Kollwitz_Weavers.jpg
 tags: event
 
-= Labor Unrest
+= 노동 소요
 
-The mining and metals industry of the Ruhr region is beset by a wave of strikes against cuts to wages and benefits. Meanwhile, employers have started a retaliatory lockout to force their workers to accept these cuts. Both the strikers and the employers look to the <span style="color: #c00000;">**SPD**</span> in the government to resolve this crisis.
+루르 지역의 광업 및 금속 산업이 임금 및 수당 삭감에 반대하는 파업의 물결에 휩싸였습니다. 한편, 고용주들은 노동자들이 삭감안을 받아들이도록 강요하기 위해 보복적인 직장 폐쇄를 단행했습니다. 파업 노동자와 고용주 모두 이 위기를 해결해 줄 것을 기대하며 정부 내의 <span style="color: #c00000;">**SPD**</span>를 주시하고 있습니다.
 
-- @support_labor: Support labor in their demands.
-- @support_employers: Support the employers in their demands.
-- @balance: Try to strike a compromise between the sides.
+- @support_labor: 노동자들의 요구를 지지한다.
+- @support_employers: 고용주들의 요구를 지지한다.
+- @balance: 양측 간의 타협을 시도한다.
 
 @support_labor
-subtitle: We don't own the Labor Ministry.
+subtitle: 우리는 노동부를 장악하고 있지 않습니다.
 on-arrival: labor_dissent += 5; left_dissent += 5; workers_spd -= 4; coalition_dissent += 1; dvp_relation -= 4; ddp_relation -= 2; lvp_relation -= 3; kpd_relation -= 4; workers_kpd += 3; capital_strike_progress += 1 if unemployed > 15; capital_strike_progress += 1 if unemployed > 24; dvp_right += 1; ddp_left += 0.5; ddp_cohesion -= 1; lvp_right += 1; goal_spd_cancel += 1; pro_labor -= 1; economic_growth -= 0.2
 
-Unfortunately, Labor Minister [+ labor_minister +] (**<span style="color: #000000;">**[+ z_party_name +]**</span>**) overrules our decision and sided with the employers instead.
+불행하게도, 노동부 장관 [+ labor_minister +] (**<span style="color: #000000;">**[+ z_party_name +]**</span>**)는 우리의 결정을 기각하고 고용주들의 편을 들었습니다.
 
-Many workers are unhappy at the government's decision, and our concession of the Labor Ministry to the bourgeois parties. There is deep bitterness developing against the <span style="color: #c00000;">**SPD**</span>, especially among the more radical workers. The <span style="color: #700000;">**Communists**</span> stand to gain.
+많은 노동자들은 정부의 결정과, 우리가 노동부를 부르주아 정당들에게 양보한 것에 대해 불만을 품고 있습니다. <span style="color: #c00000;">**SPD**</span>에 대한 깊은 반감이 자라나고 있으며, 특히 급진적인 노동자들 사이에서 더욱 그렇습니다. <span style="color: #700000;">**공산주의자들**</span>이 이득을 볼 상황입니다.
 
 @support_employers
-subtitle: This will alienate the workers.
+subtitle: 이것은 노동자들을 등돌리게 할 것입니다.
 on-arrival: labor_dissent += 8; left_dissent += 8; workers_spd -= 6; coalition_dissent -= 1; dvp_relation += 5; z_relation += 5; ddp_relation += 4; lvp_relation += 5; coalition_dissent -= 1; workers_kpd += 5; kpd_coalition_dissent += 1; kpd_relation -= 8; capital_strike_progress -= 1 if capital_strike_progress > 1; capital_strike_progress -= 1 if capital_strike_progress > 8; dvp_left += 1; ddp_right += 0.5; lvp_left += 0.5; ddp_cohesion -= 1; goal_spd_cancel += 1; labor_goal_spd_peoples += 1; pro_labor -= 1
 
-Even though most workers grudgingly accept the our intervention, there is deep bitterness developing against the <span style="color: #c00000;">**SPD**</span>, especially among the more radical workers. The <span style="color: #700000;">**Communists**</span> stand to gain.
+비록 대부분의 노동자들이 마지못해 우리의 개입을 받아들이지만, <span style="color: #c00000;">**SPD**</span>에 대한 깊은 반감이 자라나고 있으며, 특히 급진적인 노동자들 사이에서 더욱 그렇습니다. <span style="color: #700000;">**공산주의자들**</span>이 이득을 볼 상황입니다.
 
 @balance
-subtitle: Both sides need to share the pain in the current crisis.
+subtitle: 양측 모두 현재의 위기에서 고통을 분담해야 합니다.
 on-arrival: labor_dissent += 4; workers_spd -= 1; kpd_coalition_dissent += 1; kpd_relation -= 5; workers_kpd += 1; ddp_cohesion += 1; ddp_relation += 4; labor_goal_spd_peoples += 1
 
-We manage to convince Labor Minister [+ labor_minister +] (**<span style="color: #000000;">**[+ z_party_name +]**</span>**) to strike a compromise between both sides.
+우리는 노동부 장관 [+ labor_minister +] (**<span style="color: #000000;">**[+ z_party_name +]**</span>**)가 양측 간의 타협을 이끌어내도록 설득하는 데 성공했습니다.
 
-Many workers are unhappy at our compromises, but they will learn to accept that we are all in a shared struggle against economic forces. This is perhaps the best we could do given the present circumstances.
+많은 노동자들은 우리의 타협안에 불만을 품고 있지만, 그들은 우리가 모두 거대한 경제적 흐름에 맞서 함께 투쟁하고 있다는 사실을 받아들이게 될 것입니다. 이것이 아마도 현재 상황에서 우리가 할 수 있는 최선일 것입니다.

@@ -1,5 +1,5 @@
-title: Lausanne Conference
-subtitle: On the question of reparations...
+title: 로잔 회의
+subtitle: 배상금 문제에 관하여...
 view-if: year = 1932 and month >= 7 and hoover_moratorium_seen and foreign_minister_party != "SPD" and not reparations_resolved and chancellor != "Papen"
 on-arrival: {!
 Q.reparations = -2;
@@ -109,35 +109,35 @@ new-page: true
 max-visits: 1
 tags: event
 
-= Lausanne Conference
+= 로잔 회의
 
-At the Lausanne Conference, the Allies met with German representatives to resolve the issue of war reparations once and for all. Given the ongoing economic crisis, they concluded that Germany would be unable to resume payments after the moratorium ends.
+로잔 회의에서 연합국은 전쟁 배상금 문제를 완전히 해결하기 위해 독일 대표단과 만났습니다. 지속되는 경제 위기를 고려할 때, 그들은 독일이 모라토리엄 종료 후에도 지불을 재개할 수 없을 것이라고 결론지었습니다.
 
-Therefore, our reparations have been reduced by 90%! In the end, Germany is required to make only a final payment of three billion marks, effectively ending future reparation obligations. This has greatly boosted investor confidence and sparked a new wave of capital inflows to Germany. This should reduce the strain on our budget. [? if spd_in_government and foreign_minister_party == "SPD": Even though this is not our accomplishment, our foreign ministry is eager to take credit for this accomplishment. ?][? if not spd_in_government and foreign_minister_party != "SPD": Even though this is not the work of the foreign ministry, it is eager to take credit for this accomplishment. ?]
+따라서 우리의 배상금은 90%까지 삭감되었습니다! 결국 독일은 30억 마르크의 마지막 지불만 하면 되며, 사실상 미래의 배상금 의무는 종료됩니다. 이는 투자자들의 신뢰를 크게 높였고 독일로의 새로운 자본 유입을 촉발했습니다. 이는 우리 예산의 부담을 덜어줄 것입니다. [? if spd_in_government and foreign_minister_party == "SPD": 비록 이것이 전적으로 우리의 성과는 아닐지라도, 우리 외무부는 이 업적에 대한 공로를 차지하고 싶어 합니다. ?][? if not spd_in_government and foreign_minister_party != "SPD": 비록 이것이 외무부의 단독 성과는 아닐지라도, 그들은 이 업적에 대한 공로를 차지하고 싶어 합니다. ?]
 
-[? if bruning_time: Brüning, having skillfully leveraged the issues of foreign policy and reparations, stands to gain significantly. He has long argued that his austerity and deflationary measures were justified if they led to the abolition of reparations—and now, that vision has been realized. President Hindenburg is ecstatic at this outcome, lauding Brüning’s diplomatic prowess alongside his inner circle. Meanwhile, the urgency to bring the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> into government has waned, with many believing their support has reached their peak. ?]
+[? if bruning_time: 외교 정책과 배상금 문제를 능숙하게 활용해 온 브뤼닝은 상당한 이득을 보게 되었습니다. 그는 자신의 긴축 및 디플레이션 정책이 배상금 폐지로 이어진다면 정당화될 수 있다고 오랫동안 주장해 왔으며, 이제 그 비전이 실현되었습니다. 힌덴부르크 대통령은 이 결과에 기뻐하며 측근들과 함께 브뤼닝의 외교적 수완을 칭송하고 있습니다. 한편, <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>을 정부에 참여시켜야 한다는 절박함은 약해졌으며, 많은 이들은 그들의 지지세가 정점에 달했다고 믿고 있습니다. ?]
 
 - @military_parity
 - @military_parity_bruning
 
 @military_parity
-title: But of course, Schleicher stipulates that we demand military parity.
-subtitle: This will be a severe betrayal of our values!
+title: 하지만 물론, 슐라이허는 우리가 군사적 평등을 요구해야 한다고 규정한다.
+subtitle: 이것은 우리의 가치에 대한 심각한 배신이 될 것입니다!
 view-if: schleicher_spd and president == "Hindenburg" and foreign_minister_party == "SPD"
 on-arrival: military_parity = 1 if eu or (west_relation >= 6 and reformist_strength >= left_strength + center_strength and soviet_relation == 0 and kpd_relation < 30); reichswehr_strength += 300 if military_parity; sh_strength -= 100 if military_parity; sa_strength -= 50 if military_parity; rb_strength -= 150 if military_parity; reichswehr_militancy += 2 if military_parity; workers_spd -= 6; old_middle_spd -= 2; new_middle_spd -= 4; rural_spd -= 2; catholics_spd -= 2; unemployed_spd -= 4; workers_kpd += 6; old_middle_ddp += 2; new_middle_ddp += 4; rural_ddp += 2; catholics_kpd += 2; unemployed_kpd += 4; old_middle_spd += 20 if military_parity; workers_nsdap -= 3 if military_parity; unemployed_nsdap -= 4 if military_parity; new_middle_nsdap -= 3 if military_parity; old_middle_nsdap -= 15 if military_parity; rural_nsdap -= 3 if military_parity; catholics_nsdap -= 3 if military_parity; left_dissent += 50; center_dissent += 40; labor_dissent += 30; reformist_dissent += 20; neorevisionist_dissent += 20; left_strength -= 20; center_strength -= 10; ddp_relation -= 5; dvp_relation += 15; dvp_left += 5; ddp_left += 10; ddp_cohesion += 5; lvp_relation += 5; new_middle_ddp += 10 if ddp_leader == "Lüders"; new_middle_spd -= 10 if ddp_leader == "Lüders"; workers_ddp += 5 if ddp_leader == "Lüders"; workers_spd -= 5 if ddp_leader == "Lüders"; west_relation -= 3; eu_progress -= 2
 
-General Schleicher has demanded that we raise the issue of rearmament, which remains restricted under the Treaty of Versailles. However, <span style="color: #002654;">French</span> Premier Édouard Herriot seized on this as an admission that Germany is, in fact, capable of paying its reparations and would simply redirect freed-up funds toward rearmament.
+슐라이허 장군은 베르사유 조약 하에서 여전히 제한되어 있는 재무장 문제를 제기할 것을 요구했습니다. 그러나 <span style="color: #002654;">프랑스</span> 수상 에두아르 에리오는 이를 독일이 사실상 배상금을 지불할 능력이 있으며, 단지 여유 자금을 재무장으로 돌리려는 것이라는 시인으로 받아들였습니다.
 
-[? if military_parity:[? if eu: However, with the formation of the <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span> and its defense agreements, preventing Germany’s rearmament has become increasingly irrelevant. As a result, military restrictions are lifted!?][? if not eu: However, our exceptionally friendly relations with the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> have led them to begrudgingly grant us flexibility in rearmament, believing that we could serve as a bulwark against the <span style="color: #700000;">Bolsheviks</span>.?] As a result, the <span style="color: #7A3C00;">**NSDAP**</span> has lost yet another propaganda tool. However, we continue to suffer heavy losses to the <span style="color: #700000;">**Communists**</span>[? if not lvp_formed: and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, who we have suffered serious defections to?]. ?]
+[? if military_parity:[? if eu: 하지만 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">연합</span>과 그 방위 협정들이 결성됨에 따라, 독일의 재무장을 막는 것은 점점 무의미해졌습니다. 그 결과, 군사적 제한이 해제되었습니다!?][? if not eu: 하지만 <span style="color: #0A3161;">서방</span> <span style="color: #C8102E;">연합국</span>과의 이례적으로 우호적인 관계 덕분에, 그들은 우리가 <span style="color: #700000;">볼셰비키</span>에 대항하는 방파제 역할을 할 수 있다고 믿으며 마지못해 재무장에 유연성을 부여했습니다.?] 결과적으로 <span style="color: #7A3C00;">**NSDAP**</span>는 또 하나의 선전 도구를 잃었습니다. 하지만 우리는 <span style="color: #700000;">**공산주의자들**</span>[? if not lvp_formed: 그리고 심각한 이탈을 겪고 있는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?]에게 계속해서 큰 손실을 입고 있습니다. ?]
 
-[? if not military_parity: This has caused great embarrassment to our pacifist and democratic image, both at home and abroad. Damn you, Schleicher! ?]
+[? if not military_parity: 이것은 국내외에서 우리의 평화주의적이고 민주적인 이미지에 큰 타격을 주었습니다. 빌어먹을, 슐라이허! ?]
 
 @military_parity_bruning
-title: [? if not cvp_formed: But of course, the <span style="color: #3E88B3;">**DNVP**</span>, in Brüning's coalition demands the right to rearm. ?][? if cvp_formed: But of course, the <span style="color: #3E88B3;">nationalists</span> in the <span style="color: #000000;">**[+ z_party_name +]**</span> demands the right to rearm. ?]
+title: [? if not cvp_formed: 하지만 물론, 브뤼닝 연정 내의 <span style="color: #3E88B3;">**DNVP**</span>는 재무장 권리를 요구합니다. ?][? if cvp_formed: 하지만 물론, <span style="color: #000000;">**[+ z_party_name +]**</span> 내의 <span style="color: #3E88B3;">민족주의자들</span>은 재무장 권리를 요구합니다. ?]
 view-if: bruning_time and (in_right_coalition or in_center_right_coalition or spd_toleration_right or cvp_formed) and president == "Hindenburg" and not cvp_reparations_left
 on-arrival: west_relation -= 2; eu_progress -= 1; bruning_coalition_dissent += 2; dnvp_angry += 3; old_middle_dnvp -= 5; old_middle_dnf += 3; old_middle_nsdap += 3; rural_dnvp -= 3; rural_dnf += 3; workers_dnvp -= 2; workers_nsdap += 2; unemployed_dnvp -= 2; unemployed_nsdap += 2; catholics_dnvp -= 2; catholics_nsdap += 2
 
-General Schleicher, [? if president == "Hindenburg": the [? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed: <span style="color: #3E88B3;">nationalists</span>?], and President Hindenburg?][? if president != "Hindenburg": and the [? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed: <span style="color: #3E88B3;">nationalists</span>?]?] have pressured Brüning to raise the issue of rearmament, which remains restricted under the Treaty of Versailles, and the hated "war guilt" clause. However, <span style="color: #002654;">French</span> Premier Édouard Herriot seized on this as an admission that Germany is indeed capable of paying reparations and would simply redirect any freed-up funds toward rearmament.
+슐라이허 장군, [? if president == "Hindenburg": [? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed: <span style="color: #3E88B3;">민족주의자들</span>?], 그리고 힌덴부르크 대통령은?][? if president != "Hindenburg": 그리고 [? if not cvp_formed: <span style="color: #3E88B3;">**DNVP**</span>?][? if cvp_formed: <span style="color: #3E88B3;">민족주의자들</span>?]?] 브뤼닝에게 재무장 문제와 증오스러운 "전쟁 책임" 조항 문제를 제기하도록 압력을 가했습니다. 그러나 <span style="color: #002654;">프랑스</span> 수상 에두아르 에리오는 이를 독일이 실제로 배상금을 지불할 능력이 있으며, 단지 여유 자금을 재무장으로 돌리려는 것이라는 시인으로 받아들였습니다.
 
-Already wary of the right-wing elements in Brüning’s cabinet, the <span style="color: #002654;">French</span> have good reason to reject these demands. The controversy has only increased tensions within Brüning’s government.    
+이미 브뤼닝 내각의 우익 요소들을 경계하고 있던 <span style="color: #002654;">프랑스</span>는 이러한 요구를 거부할 충분한 명분을 가지고 있습니다. 이 논란은 브뤼닝 정부 내의 긴장을 고조시켰을 뿐입니다.
 
