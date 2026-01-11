@@ -1,4 +1,4 @@
-title: 1932 French Legislative Elections
+title: 1932년 프랑스 총선
 view-if: year == 1932 and month == 5
 new-page: true
 tags: event
@@ -19,11 +19,11 @@ on-display: {!
 max-visits: 1
 set-bg: img/france_map.jpg
 
-= Elections, [+ month : month +] [+ year +]
+= [+ year +]년 [+ month : month +]월 총선
 
-The French Third Republic are to hold their legislative elections now.
+프랑스 제3공화국이 이제 총선을 치릅니다.
 
-- @france: May our <span style="color: #ff0000;">socialist</span> comrades do their best...
+- @france: 우리의 <span style="color: #ff0000;">사회주의자</span> 동지들이 선전하기를...
 
 @france
 on-arrival: {!
@@ -464,53 +464,53 @@ if (window && d3) {
 go-to: france_coalition_menu
 
 
-**French results:**
+**프랑스 선거 결과:**
 
 {!<svg id="france_chamber" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>% Change</td><td>Assembly Seats</td><td>% Change</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>변동폭</td><td>의석수</td><td>변동폭</td></tr>!}
 
-<tr><td colspan="5" style="text-align: center;"><strong>Left Cartel</strong></td></tr>
+<tr><td colspan="5" style="text-align: center;"><strong>좌파 연합</strong></td></tr>
 
-{!<tr><td><div class="box" style='background-color:#ff0000; outline: 2px; outline-style: solid;'> </div> !} <span class="tooltip-text" title="French Section of the Workers' International">SFIO</span> {!</td><td>!} **[+ sfio_france_elections_vote +]%** {!</td><td>!} **[+ str_votes_change_sfio_france +]** {!</td><td>!} **[+ sfio_r_france +]%** {!</td><td>!} **[+ str_change_sfio_france +]** {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ff0000; outline: 2px; outline-style: solid;'> </div> !} <span class="tooltip-text" title="노동자 인터내셔널 프랑스 지부">SFIO</span> {!</td><td>!} **[+ sfio_france_elections_vote +]%** {!</td><td>!} **[+ str_votes_change_sfio_france +]** {!</td><td>!} **[+ sfio_r_france +]%** {!</td><td>!} **[+ str_change_sfio_france +]** {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#FF6699'> </div> !} <span class="tooltip-text" title="Republican-Socialist Party">PRS</span>: {!</td><td>!} [+ prs_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_prs_france +] {!</td><td>!} [+ prs_r_france +]% {!</td><td>!} [+ str_change_prs_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#FF6699'> </div> !} <span class="tooltip-text" title="공화사회당">PRS</span>: {!</td><td>!} [+ prs_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_prs_france +] {!</td><td>!} [+ prs_r_france +]% {!</td><td>!} [+ str_change_prs_france +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#E0B0FF'> </div> !} <span class="tooltip-text" title="Republican, Radical and Radical-Socialist Party">PRRRS</span>: {!</td><td>!} [+ disp_rad_votes_france +]% {!</td><td>!} [+ str_votes_change_rad_france +] {!</td><td>!} [+ disp_rad_r_france +]% {!</td><td>!} [+ str_change_rad_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#E0B0FF'> </div> !} <span class="tooltip-text" title="공화급진급진사회당">PRRRS</span>: {!</td><td>!} [+ disp_rad_votes_france +]% {!</td><td>!} [+ str_votes_change_rad_france +] {!</td><td>!} [+ disp_rad_r_france +]% {!</td><td>!} [+ str_change_rad_france +] {!</td></tr>!}
 
-<tr><td colspan="5" style="text-align: center;"><strong>Republican and Democratic Union</strong></td></tr>
+<tr><td colspan="5" style="text-align: center;"><strong>공화 민주 연합</strong></td></tr>
 
-{!<tr><td><div class="box" style='background-color:#FFBF00'> </div> !} <span class="tooltip-text" title="Democratic Alliance">AD</span>: {!</td><td>!} [+ ad_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_ad_france +] {!</td><td>!} [+ ad_r_france +]% {!</td><td>!} [+ str_change_ad_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#FFBF00'> </div> !} <span class="tooltip-text" title="민주동맹">AD</span>: {!</td><td>!} [+ ad_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_ad_france +] {!</td><td>!} [+ ad_r_france +]% {!</td><td>!} [+ str_change_ad_france +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#005ACA'> </div> !} <span class="tooltip-text" title=" Republican Federation">FR</span>: {!</td><td>!} [+ disp_fr_votes_france +]% {!</td><td>!} [+ str_votes_change_fr_france +] {!</td><td>!} [+ disp_fr_r_france +]% {!</td><td>!} [+ str_change_fr_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#005ACA'> </div> !} <span class="tooltip-text" title=" 공화연방">FR</span>: {!</td><td>!} [+ disp_fr_votes_france +]% {!</td><td>!} [+ str_votes_change_fr_france +] {!</td><td>!} [+ disp_fr_r_france +]% {!</td><td>!} [+ str_change_fr_france +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#aa4fff'> </div> !} <span class="tooltip-text" title="Independent Radicals">RI</span>: {!</td><td>!} [+ disp_ind_rad_votes_france +]% {!</td><td>!} [+ str_votes_change_rad2_france +] {!</td><td>!} [+ disp_ind_rad_r_france +]% {!</td><td>!} [+ str_change_rad2_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#aa4fff'> </div> !} <span class="tooltip-text" title="독립 급진파">RI</span>: {!</td><td>!} [+ disp_ind_rad_votes_france +]% {!</td><td>!} [+ str_votes_change_rad2_france +] {!</td><td>!} [+ disp_ind_rad_r_france +]% {!</td><td>!} [+ str_change_rad2_france +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#00CCCC'> </div> !} <span class="tooltip-text" title="Popular Democratic Party">PDP</span>: {!</td><td>!} [+ pdp_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_ad_france +] {!</td><td>!} [+ pdp_r_france +]% {!</td><td>!} [+ str_change_pdp_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#00CCCC'> </div> !} <span class="tooltip-text" title="인민민주당">PDP</span>: {!</td><td>!} [+ pdp_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_ad_france +] {!</td><td>!} [+ pdp_r_france +]% {!</td><td>!} [+ str_change_pdp_france +] {!</td></tr>!}
  
-{!<tr><td><div class="box" style='background-color:#ADC1FD'> </div> !} <span class="tooltip-text" title="Miscellaneous Right">DVD</span>: {!</td><td>!} [+ disp_ind_fr_votes_france +]% {!</td><td>!} [+ str_votes_change_fr2_france +] {!</td><td>!} [+ disp_ind_fr_r_france +]% {!</td><td>!} [+ str_change_fr2_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#ADC1FD'> </div> !} <span class="tooltip-text" title="기타 우파">DVD</span>: {!</td><td>!} [+ disp_ind_fr_votes_france +]% {!</td><td>!} [+ str_votes_change_fr2_france +] {!</td><td>!} [+ disp_ind_fr_r_france +]% {!</td><td>!} [+ str_change_fr2_france +] {!</td></tr>!}
 
-<tr><td colspan="5" style="text-align: center;"><strong>French Section of the Communist International</strong></td></tr>
+<tr><td colspan="5" style="text-align: center;"><strong>공산주의 인터내셔널 프랑스 지부</strong></td></tr>
 
-{!<tr><td><div class="box" style='background-color:#700000'> </div> !}<span class="tooltip-text" title="French Communist Party">PCF</span>: {!</td><td>!} [+ pcf_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_pcf_france +] {!</td><td>!} [+ pcf_r_france +]% {!</td><td>!} [+ str_change_pcf_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#700000'> </div> !}<span class="tooltip-text" title="프랑스 공산당">PCF</span>: {!</td><td>!} [+ pcf_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_pcf_france +] {!</td><td>!} [+ pcf_r_france +]% {!</td><td>!} [+ str_change_pcf_france +] {!</td></tr>!}
 
-{!<tr><td><div class="box" style='background-color:#B22222'> </div> !}<span class="tooltip-text" title="Proletarian Unity Party">PUP</span>: {!</td><td>!} [+ pup_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_pup_france +] {!</td><td>!} [+ pup_r_france +]% {!</td><td>!} [+ str_change_pup_france +] {!</td></tr>!}
+{!<tr><td><div class="box" style='background-color:#B22222'> </div> !}<span class="tooltip-text" title="프롤레타리아 통일당">PUP</span>: {!</td><td>!} [+ pup_france_elections_vote +]% {!</td><td>!} [+ str_votes_change_pup_france +] {!</td><td>!} [+ pup_r_france +]% {!</td><td>!} [+ str_change_pup_france +] {!</td></tr>!}
 
 {!</table>!}
 <hr id="read-marker">
-Popular Front (<span style="color: #700000;" class="tooltip-text" title="French Communist Party">**PCF**</span> + <span style="color: #B22222;" class="tooltip-text" title="Proletarian Unity Party">**PUP**</span> + <span style="color: #F0001C;" class="tooltip-text" title="French Section of the Workers' International">**SFIO**</span> + <span style="color: #FF6699;" class="tooltip-text" title="Republican-Socialist Party">**PRS**</span>): [+ pop_front_france +]% 
+인민 전선 (<span style="color: #700000;" class="tooltip-text" title="프랑스 공산당">**PCF**</span> + <span style="color: #B22222;" class="tooltip-text" title="프롤레타리아 통일당">**PUP**</span> + <span style="color: #F0001C;" class="tooltip-text" title="노동자 인터내셔널 프랑스 지부">**SFIO**</span> + <span style="color: #FF6699;" class="tooltip-text" title="공화사회당">**PRS**</span>): [+ pop_front_france +]% 
 
-Left Cartel (<span style="color: #F0001C;" class="tooltip-text" title="French Section of the Workers' International">**SFIO**</span> + <span style="color: #FF6699;" class="tooltip-text" title="Republican-Socialist Party">**PRS**</span> + <span style="color: #E0B0FF;" class="tooltip-text" title="Republican, Radical and Radical-Socialist Party">**PRRRS**</span>): [+ left_coalition_france +]% 
+좌파 연합 (<span style="color: #F0001C;" class="tooltip-text" title="노동자 인터내셔널 프랑스 지부">**SFIO**</span> + <span style="color: #FF6699;" class="tooltip-text" title="공화사회당">**PRS**</span> + <span style="color: #E0B0FF;" class="tooltip-text" title="공화급진급진사회당">**PRRRS**</span>): [+ left_coalition_france +]% 
 
-Right-wing Coalition (<span style="color: #aa4fff;" class="tooltip-text" title="Independent Radicals">**RI**</span> + <span style="color: #00CCCC;" class="tooltip-text" title="Popular Democratic Party">**PDP**</span> + <span style="color: #FFBF00;" class="tooltip-text" title="Democratic Alliance">**AD**</span> + <span style="color: #005ACA;" class="tooltip-text" title="Republican Federation">**FR**</span>): [+ bourgeois_coalition_france +]% 
+우익 연정 (<span style="color: #aa4fff;" class="tooltip-text" title="독립 급진파">**RI**</span> + <span style="color: #00CCCC;" class="tooltip-text" title="인민민주당">**PDP**</span> + <span style="color: #FFBF00;" class="tooltip-text" title="민주동맹">**AD**</span> + <span style="color: #005ACA;" class="tooltip-text" title="공화연방">**FR**</span>): [+ bourgeois_coalition_france +]% 
 
-Republican Concentration (<span style="color: #FF6699;" class="tooltip-text" title="Republican-Socialist Party">**PRS**</span> + <span style="color: #E0B0FF;" class="tooltip-text" title="Republican, Radical and Radical-Socialist Party">**PRRRS**</span> + <span style="color: #aa4fff;" class="tooltip-text" title="Independent Radicals">**RI**</span> + <span style="color: #FFBF00;" class="tooltip-text" title="Democratic Alliance">**AD**</span>): [+ republican_coalition_france +]%
+우익 연정  (<span style="color: #FF6699;" class="tooltip-text" title="공화사회당">**PRS**</span> + <span style="color: #E0B0FF;" class="tooltip-text" title="공화급진급진사회당">**PRRRS**</span> + <span style="color: #aa4fff;" class="tooltip-text" title="독립 급진파">**RI**</span> + <span style="color: #FFBF00;" class="tooltip-text" title="민주동맹">**AD**</span>): [+ republican_coalition_france +]%
 
 @france_coalition_menu
 
 <hr id="read-marker">
-<span style="color: #002654;">France</span> is known for its historically unstable governments, with most cabinets lasting a few months at best. The last four years have been governed by various groupings of parties to the right of the <span style="color: #F0001C;">**SFIO**</span>, our <span style="color: #c00000;">socialist</span> comrades. Perhaps it's their turn to rule now, with the return of the Left-Cartel alliance. However, concerns over their radical economic policies may push the <span style="color: #FF6699;">**PRS**</span> and <span style="color: #E0B0FF;">**PRRRS**</span> to form a coalition with the <span style="color: #FFBF00;">**AD**</span> instead.
+<span style="color: #002654;">프랑스</span>는 역사적으로 정부가 불안정하기로 유명하며, 대부분의 내각은 기껏해야 몇 달을 버티는 수준입니다. 지난 4년 동안은 우리 <span style="color: #c00000;">사회주의자</span> 동지들인 <span style="color: #F0001C;">**SFIO**</span>보다 우파에 있는 다양한 정당 연합이 통치했습니다. 좌파 연합이 복귀함에 따라 이제 그들이 통치할 차례가 될지도 모릅니다. 하지만 그들의 급진적인 경제 정책에 대한 우려로 인해 <span style="color: #FF6699;">**PRS**</span>와 <span style="color: #E0B0FF;">**PRRRS**</span>는 대신 <span style="color: #FFBF00;">**AD**</span>와 연정을 구성하려 할 수도 있습니다.
 
 - @pop_front_france
 - @left_cartel_france
@@ -518,42 +518,42 @@ Republican Concentration (<span style="color: #FF6699;" class="tooltip-text" tit
 - @right_wing_france
 
 @pop_front_france
-title: The <span style="color: #c00000;">**SFIO**</span> abandons the <span style="color: #E0B0FF;">**PRRRS**</span> and forms a government with the <span style="color: #700000;">**PCF**</span>!
-subtitle: Cheater.
+title: <span style="color: #c00000;">**SFIO**</span>가 <span style="color: #E0B0FF;">**PRRRS**</span>를 버리고 <span style="color: #700000;">**PCF**</span>와 정부를 구성하다!
+subtitle: 치터.
 unavailable-subtitle: <span style="color: #700000;">PCF</span> + <span style="color: #B22222;">PUP</span> + <span style="color: #F0001C;">SFIO</span> + <span style="color: #FF6699;">PRS</span> ([+ pop_front_france +]%)
 choose-if: pop_front_france >= 50
 on-arrival: dataminer_detected = 1
 
-ok.
+알겠음.
 
 @center_right_france
-title: The <span style="color: #FF6699;">**PRS**</span> and <span style="color: #E0B0FF;">**PRRRS**</span> enter government with the right-liberal <span style="color: #FFBF00;">**AD**</span>.
-subtitle: The economically right-wing <span style="color: #E0B0FF;">**PRRRS**</span> and <span style="color: #aa4fff;">**RI**</span> are opposed to the <span style="color: #F0001C;">**SFIO**</span>'s socialistic policies.
-unavailable-subtitle: The <span style="color: #E0B0FF;">**PRRRS**</span> would rather work with their electoral allies.
+title: <span style="color: #FF6699;">**PRS**</span>와 <span style="color: #E0B0FF;">**PRRRS**</span>가 우파-자유주의 <span style="color: #FFBF00;">**AD**</span>와 함께 정부에 참여하다.
+subtitle: 경제적으로 우파인 <span style="color: #E0B0FF;">**PRRRS**</span>와 <span style="color: #aa4fff;">**RI**</span>는 <span style="color: #F0001C;">**SFIO**</span>의 사회주의 정책에 반대합니다.
+unavailable-subtitle: <span style="color: #E0B0FF;">**PRRRS**</span>는 차라리 그들의 선거 동맹들과 일하려 할 것입니다.
 choose-if: left_coalition_france < republican_coalition_france
 on-arrival: west_relation += 2; reparations_negotiation += 1
 set-bg: img/map_2.jpg
 
-While not the best outcome, the return of the <span style="color: #E0B0FF;">Radical</span> Édouard Herriot to the Prime Minister position is excellent news for our relations with <span style="color: #002654;">France</span>, as he is much more open to renegotiating Germany's reparation payments compared to the previous government.
+최상의 결과는 아니지만, <span style="color: #E0B0FF;">급진당</span>의 에두아르 에리오가 총리직에 복귀한 것은 <span style="color: #002654;">프랑스</span>와의 관계에 있어 훌륭한 소식입니다. 그는 이전 정부에 비해 독일의 배상금 재협상에 훨씬 더 개방적이기 때문입니다.
 
 @left_cartel_france
-title: The <span style="color: #FFC0C0;">Left-Cartel</span> shall enter government.
-subtitle: The strong electoral results of the <span style="color: #F0001C;">**SFIO**</span> and <span style="color: #FF6699;">**PRS**</span> have pressured the <span style="color: #E0B0FF;">**PRRRS**</span> to enter government with their electoral allies.
-unavailable-subtitle: The <span style="color: #E0B0FF;">**PRRRS**</span> would rather work pursue an agreement with the <span style="color: #FFBF00;">**AD**</span>.
+title: <span style="color: #FFC0C0;">좌파 연합</span>이 정부에 참여하다.
+subtitle: <span style="color: #F0001C;">**SFIO**</span>와 <span style="color: #FF6699;">**PRS**</span>의 강력한 선거 결과는 <span style="color: #E0B0FF;">**PRRRS**</span>가 그들의 선거 동맹들과 정부에 참여하도록 압박했습니다.
+unavailable-subtitle: <span style="color: #E0B0FF;">**PRRRS**</span>는 차라리 <span style="color: #FFBF00;">**AD**</span>와의 합의를 추구하려 할 것입니다.
 choose-if: left_coalition_france >= republican_coalition_france
 on-arrival: west_relation += 3; reparations_negotiation += 2; eu_progress += 1; left_cartel_france = 1
 achievement: vive_le_cartel
 set-bg: img/map_2.jpg
 
-Surprisingly, the <span style="color: #E0B0FF;">**PRRRS**</span> have decided to enter government with the <span style="color: #F0001C;">**SFIO**</span>, despite their concerns over economic matters. <span style="color: #E0B0FF;">Radical</span> Édouard Herriot has been appointed as the new Prime Minister.
+놀랍게도 <span style="color: #E0B0FF;">**PRRRS**</span>는 경제 문제에 대한 우려에도 불구하고 <span style="color: #F0001C;">**SFIO**</span>와 함께 정부에 참여하기로 결정했습니다. <span style="color: #E0B0FF;">급진당</span>의 에두아르 에리오가 신임 총리로 임명되었습니다.
 
-This is excellent news for our relations with <span style="color: #002654;">France</span>, as he and our <span style="color: #F0001C;">socialist</span> comrades are much more open to renegotiating Germany's reparation payments compared to the previous government. There are even talks of a <span style="color: #FFDD00;">United States</span> of <span style="color: #001489;">Europe</span> within their new left-wing cabinet.
+이는 <span style="color: #002654;">프랑스</span>와의 관계에 있어 훌륭한 소식입니다. 그와 우리의 <span style="color: #F0001C;">사회주의자</span> 동지들은 이전 정부에 비해 독일의 배상금 재협상에 훨씬 더 개방적이기 때문입니다. 심지어 그들의 새로운 좌파 내각 내에서는 <span style="color: #001489;">유럽</span> <span style="color: #FFDD00;">합중국</span>에 대한 논의도 나오고 있습니다.
 
 @right_wing_france
-title: A Right-wing Coalition is somehow formed, without needing the <span style="color: #E0B0FF;">**PRRRS**</span>.
-subtitle: Cheater.
+title: <span style="color: #E0B0FF;">**PRRRS**</span> 없이도 어떻게든 우익 연정이 형성되다.
+subtitle: 치터.
 unavailable-subtitle: <span style="color: #aa4fff;">**RI**</span> + <span style="color: #00CCCC;">**PDP**</span> + <span style="color: #FFBF00;">**AD**</span> + <span style="color: #005ACA;">**FR**</span> ([+ bourgeois_coalition_france +]%)
 choose-if: bourgeois_coalition_france >= 50
 on-arrival: dataminer_detected = 1
 
-ok.
+알겠다.
