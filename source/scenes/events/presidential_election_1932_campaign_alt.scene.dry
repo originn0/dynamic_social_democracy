@@ -1,5 +1,5 @@
-title: Presidential Election campaigning
-subtitle: It's campaign season.
+title: 대통령 선거 캠페인
+subtitle: 선거철입니다.
 new-page: true
 on-arrival: {!
 Q.presidential_election_campaigning_seen = 1;
@@ -41,15 +41,15 @@ max-visits: 1
 go-to: candidate_selection
 
 
-= Presidential Election campaigning
+= 대통령 선거 캠페인
 
-[? if nsdap_candidate_1932: The <span style="color: #7A3C00;">**NSDAP**</span>, standing alone in the electoral fight to elect [+ nsdap_candidate_1932_disp +], has little chance of winning—at least according to our advisors. However, this does not mean the election is inconsequential. The extensive <span style="color: #7A3C00;">Nazi</span> propaganda campaign, orchestrated by the infamous Joseph Goebbels, combined with the upcoming local elections just a month after the first round, could significantly shift public opinion. This, in turn, may pressure President Hindenburg and his entourage to adopt a more antagonistic stance toward the current government and push for a reorganization of the national government to include the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. [? if nsdap_candidate_1932 == "Hitler": Furthermore, Adolf Hitler possesses a remarkable charismatic ability, and his strategy of flying across Germany to deliver speeches to hundreds of thousands of otherwise indifferent voters each day rivals even that of Hindenburg. ?][? if nsdap_candidate_1932 == "Göring": With Hitler ineligible, Hermann Göring has taken up the mantle as the <span style="color: #7A3C00;">**NSDAP**</span>'s candidate. As aw staunch figure of the party’s right wing and an opponent of Strasser’s more radical policies, Göring will find it easier to attract industrial support, securing crucial funding for their extensive propaganda network. ?] ?]
+[? if nsdap_candidate_1932: 우리 고문들에 따르면, [+ nsdap_candidate_1932_disp +]를 당선시키기 위해 홀로 선거전을 치르는 <span style="color: #7A3C00;">**NSDAP**</span>이 승리할 가능성은 거의 없습니다. 하지만, 그렇다고 해서 이번 선거가 중요하지 않은 것은 아닙니다. 악명 높은 요제프 괴벨스가 지휘하는 광범위한 <span style="color: #7A3C00;">나치</span> 선전 캠페인은, 1차 투표 후 불과 한 달 뒤에 있을 지방 선거와 맞물려 여론을 크게 뒤흔들 수 있습니다. 이는 결과적으로 힌덴부르크 대통령과 그 측근들을 압박하여 현 정부에 더욱 적대적인 태도를 취하게 하고, <span style="color: #7A3C00;">국가적</span> <span style="color: #3E88B3;">반대파</span>를 포함하는 방향으로 내각 개편을 추진하게 만들 수 있습니다. [? if nsdap_candidate_1932 == "Hitler": 게다가, 아돌프 히틀러는 놀라운 카리스마를 지니고 있으며, 매일 수십만 명의 무관심한 유권자들에게 연설하기 위해 비행기로 독일 전역을 누비는 그의 전략은 힌덴부르크의 그것과 견줄 만합니다. ?][? if nsdap_candidate_1932 == "Göring": 히틀러의 출마 자격이 박탈됨에 따라, 헤르만 괴링이 <span style="color: #7A3C00;">**NSDAP**</span>의 후보로 나섰습니다. 당 우파의 확고한 인물이자 슈트라서의 급진적인 정책에 반대하는 괴링은 산업계의 지원을 끌어내기 더 쉬울 것이며, 이를 통해 그들의 광범위한 선전 네트워크를 위한 막대한 자금을 확보할 것입니다. ?] ?]
 
-[? if spd_support_reactionary: With our support for [+ spd_choice +], we are excluded from their campaign committees. Our support is unwelcome by [+ spd_choice +] himself, and he will attempt to distance themselves from us as much as possible to secure moderate right-wing and industrial backing. As a result, our role in the campaign will be to rally the German Left, who remain reluctant to vote for a conservative like him. ?][? if braun_campaign: We are running Otto Braun, one of our most renowned and respected statesmen. His reformist stance has given us a chance to attract some crossover support from the bourgeois parties. However, many outside our party would sooner die than support a <span style="color: #c00000;">socialist</span>. Our only viable path to expanding our vote share lies in winning back disaffected <span style="color: #700000;">**Communists**</span> and mobilizing worker enthusiasm. ?][? if spd_support_thalmann: Our controversial decision to support [+ communist_candidate_1932_disp +] as a leftist unity candidate has deeply polarized German politics, setting the stage for a final showdown between <span style="color: #9B0000;">Marxist</span> and Capitalism. A civil war is not even out of the question, regardless of which candidate emerges victorious. With the German Left united behind [+ communist_candidate_1932 +], our electoral base has little room to grow—we can only hope that the workers turn out in full force at the polls. ?][? if rosenfeld_campaign: We are running Kurt Rosenfeld, a lesser-known figure from our left wing. His leftist stances have given us a chance to attract the support of the <span style="color: #700000;">**Communists**</span>, but have completely closed the door to support from the bourgeois parties. Our only viable path to expanding our vote share lies in winning back disaffected workers, mobilizing their enthusiasm, and persuading our more reformist middle-class and rural elements to stick with the plan. ?][? if eckener_campaign: We are running Hugo Eckener, a famed non-partisan Zeppelin captain and personally conservative figure. His rightist stances have left the <span style="color: #c00000;">**SPD**</span> vulnerable to defections to the <span style="color: #700000;">**Communists**</span>, but have completely opened the door to unified support from the bourgeois parties. We can either shore up support for Eckener within the <span style="color: #c00000;">**SPD**</span> itself, or focus on maximizing crossover support and strengthening our cooperation with bourgeois allies. ?]
+[? if spd_support_reactionary: 우리가 [+ spd_choice +]를 지지하기로 함에 따라, 우리는 그들의 선거 대책 위원회에서 배제되었습니다. 우리의 지지는 [+ spd_choice +] 본인에게도 환영받지 못하며, 그는 온건 우파와 산업계의 지원을 확보하기 위해 가능한 한 우리와 거리를 두려 할 것입니다. 결과적으로 이번 캠페인에서 우리의 역할은 그와 같은 보수주의자에게 투표하기를 꺼리는 독일 좌파를 결집하는 데 그칠 것입니다. ?][? if braun_campaign: 우리는 가장 저명하고 존경받는 정치인 중 한 명인 오토 브라운을 후보로 내세웠습니다. 그의 개혁주의적 성향 덕분에 부르주아 정당들로부터 일부 교차 투표를 끌어낼 기회가 생겼습니다. 하지만 당 외부의 많은 이들은 <span style="color: #c00000;">사회주의자</span>를 지지하느니 차라리 죽음을 택할 것입니다. 득표율을 높일 수 있는 유일한 길은 불만을 품은 <span style="color: #700000;">**공산주의자들**</span>을 되찾고 노동자들의 열정을 다시 불러일으키는 것뿐입니다. ?][? if spd_support_thalmann: 좌파 통합 후보로 [+ communist_candidate_1932_disp +]를 지지하기로 한 우리의 논란 많은 결정은 독일 정계를 극단적으로 양극화시켰고, <span style="color: #9B0000;">마르크스주의</span>와 자본주의 간의 최후의 결전을 위한 무대를 마련했습니다. 누가 승리하든 내전이 발발할 가능성도 배제할 수 없습니다. 독일 좌파가 [+ communist_candidate_1932 +]를 중심으로 단결한 이상, 우리의 지지 기반을 더 확장할 여지는 거의 없습니다. 우리는 그저 노동자들이 투표소로 쏟아져 나오기를 바랄 뿐입니다. ?][? if rosenfeld_campaign: 우리는 당내 좌파의 덜 알려진 인물인 쿠르트 로젠펠트를 후보로 내세웠습니다. 그의 좌파적 성향은 <span style="color: #700000;">**공산주의자들**</span>의 지지를 끌어낼 기회를 주었지만, 부르주아 정당들의 지지 가능성은 완전히 차단해 버렸습니다. 득표율을 높일 수 있는 유일한 길은 불만을 품은 노동자들을 되찾아 그들의 열정을 동원하고, 당내의 더 개혁적인 중산층과 농촌 지지자들이 이 계획을 따르도록 설득하는 것뿐입니다. ?][? if eckener_campaign: 우리는 유명한 비행선 선장이자 개인적으로는 보수 성향인 무소속 휴고 에케너를 후보로 내세웠습니다. 그의 우파적 성향은 <span style="color: #c00000;">**사회민주당(SPD)**</span> 지지자들이 <span style="color: #700000;">**공산당**</span>으로 이탈하게 만들 위험이 있지만, 부르주아 정당들의 통합된 지지를 얻을 길은 확실히 열어주었습니다. 우리는 <span style="color: #c00000;">**SPD**</span> 내부에서 에케너에 대한 지지를 다지거나, 교차 투표를 극대화하고 부르주아 동맹들과의 협력을 강화하는 데 집중해야 합니다. ?]
 
 @candidate_selection
 
-- @view_candidates: View the running candidates.
+- @view_candidates: 출마한 후보들을 확인한다.
 
 @view_candidates
 
@@ -71,11 +71,11 @@ go-to: candidate_selection
 
 [? if dvp_support_spd == 1 and spd_campaign: - <span style="color: #C0A054;">**DVP**</span> ?]
 
-[? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
+[? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - 지지 세력: ?]
 
 [? if (spd_support_reactionary_1 or (spd_support_reactionary and hindenburg_run)) and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
 
-[? if z_support_spd != 1 and (z_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
+[? if z_support_spd != 1 and (z_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
 
 [? if (z_choice == reactionary_candidate_1932 or hindenburg_run) and not bvp_support_spd and reactionary_candidate_1932: - <span style="color: #A2D8E0;">**BVP**</span> ?]
 
@@ -89,13 +89,13 @@ go-to: candidate_selection
 
 [? if (dnvp_choice == reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate" and not cvp_formed: - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
-[? if (other_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - **Others** ?]
+[? if (other_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - **기타** ?]
 
-[? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
+[? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - 지지 세력: ?]
 
 [? if spd_support_reactionary_2 and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
 
-[? if z_support_spd != 1 and (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
+[? if z_support_spd != 1 and (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
 
 [? if (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and not bvp_support_spd and secondary_reactionary_candidate_1932: - <span style="color: #A2D8E0;">**BVP**</span> ?]
 
@@ -123,43 +123,43 @@ go-to: candidate_selection
 
 [? if spd_support_thalmann == 1: - <span style="color: #c00000;">**SPD**</span> ?]
 
-[? if dnvp_candidate_1932: [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932_disp +]**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932_disp +]**</span>?] - supported by: ?]
+[? if dnvp_candidate_1932: [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932_disp +]**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932_disp +]**</span>?] - 지지 세력: ?]
 
 [? if dnvp_candidate_1932 and dnvp_ideology == "Radical": - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
 [? if dnvp_candidate_1932 and dnvp_ideology == "Moderate": - <span style="color: #003755;">**DNF**</span> ?]
 
-- @campaigning_braun: Time to hit the campaign trail! 
-- @campaigning_rosenfeld: Time to hit the campaign trail! 
-- @campaigning_eckener: Time to hit the campaign trail! 
-- @campaigning_reactionary: Time to hit the campaign trail! 
-- @campaigning_thalmann: Time to hit the campaign trail! 
+- @campaigning_braun: 유세 현장으로 나갈 시간이다!
+- @campaigning_rosenfeld: 유세 현장으로 나갈 시간이다!
+- @campaigning_eckener: 유세 현장으로 나갈 시간이다!
+- @campaigning_reactionary: 유세 현장으로 나갈 시간이다!
+- @campaigning_thalmann: 유세 현장으로 나갈 시간이다!
 
 @campaigning_braun
 view-if: braun_campaign
 
-We have a plethora of campaign options at our disposal.
+우리가 활용할 수 있는 캠페인 선택지는 아주 많습니다.
 
 - @iron_front
 - @media
 - @center_glaze
 - @communist_glaze
 - @campaigning
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망한다.
 
 @iron_front
-title: Rally the full strength of the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> to support Braun.
+title: 브라운을 지지하기 위해 <span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>의 전력을 총동원한다.
 view-if: iron_front_formed
 on-arrival: radicalization = 3 if radicalization > 3; workers_spd += radicalization + 3; new_middle_spd += radicalization + 2; unemployed_spd += radicalization + 2; pro_republic += 3; nationalism -= 3; neorevisionist_dissent -= 10; neorevisionist_strength += 10; left_dissent -= 10; rb_strength += 100; workers_nsdap -= 3 if strife >= 5 and far_right_paramilitary; new_middle_nsdap -= 3 if strife >= 5 and far_right_paramilitary; unemployed_nsdap -= 3 if strife >= 5 and far_right_paramilitary
 max-visits: 1
 face-image: img/iron_front_poster.png
 go-to: campaigning_braun
 
-The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> immediately gets to work, rallying around its slogan of opposing <span style="color: #7A3C00;">Fascism</span>, <span style="color:rgb(90, 0, 0);">Stalinism</span>, and <span style="color: #808080;">Monarchism</span>, which is especially relevant in this election.
+<span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>은 즉시 행동에 돌입하여, 이번 선거에서 특히 중요한 <span style="color: #7A3C00;">파시즘</span>, <span style="color:rgb(90, 0, 0);">스탈린주의</span>, 그리고 <span style="color: #808080;">군주주의</span>에 반대한다는 슬로건 아래 결집합니다.
 
 @media
-title: Use our radio stations to broadcast in favor of Braun.
-subtitle: -1 resource
+title: 라디오 방송국을 이용해 브라운을 지지하는 방송을 내보낸다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
 unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
 on-arrival: resources -= 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_nsdap -= (radio + commercialized_media); old_middle_nsdap -= (radio + commercialized_media); workers_nsdap -= (campaign_media + radio - 2); unemployed_nsdap -= (campaign_media + radio); socialism += 3; nationalism -= 1; nationalism -= 2 if pacifism > 1; pro_republic += (radio + commercialized_media)
@@ -167,40 +167,40 @@ face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_braun
 
-We are able to broadcast radio addresses urging turnout for Braun, spreading our message to the middle classes in hopes of overcoming their antipathy toward <span style="color: #c00000;">socialism</span>.
+우리는 브라운에게 투표할 것을 촉구하는 라디오 연설을 방송하여, 중산층에게 우리의 메시지를 전파하고 그들이 가진 <span style="color: #c00000;">사회주의</span>에 대한 반감을 극복할 수 있기를 희망합니다.
 
 @center_glaze
-title: We persuade the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to take a more active role in our campaign efforts.
-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] isn't pulling their weight. -1 resource
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]을 설득하여 우리 선거 운동에 더 적극적으로 참여하게 한다.
+subtitle: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 제 몫을 다하고 있지 않습니다. 자원 -1
 choose-if: z_support_spd == 1 and ((z_relation >= 60 and z_ideology == "Right") or (z_relation >= 45 and z_ideology == "Left")) and resources >= 1
-unavailable-subtitle: [? if z_support_spd != 1: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] doesn't support Braun. ?][? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 45 and z_ideology == "Left"): Our relations aren't good enough. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if z_support_spd != 1: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 오토 브라운을 지지하지 않습니다. ?][? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 45 and z_ideology == "Left"): 관계가 충분히 좋지 않습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; pro_republic += 3; z_glaze_spd = 1; catholics_nsdap -= 3; catholics_spd += 3; catholics_z += 2; rural_spd += 1; z_relation += 5; ddp_left += 2; dvp_left += 3; ddp_cohesion += 1; lvp_left += 2
 face-image: img/center_poster.jpg
 max-visits: 1
 go-to: campaigning_braun
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has not been the most enthusiastic supporter of Braun. However, by leveraging our connections with their left wing and trade unions, we push them toward a more active role in the campaign. This should help Braun secure more votes from their base.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 오토 브라운의 가장 열성적인 지지자가 아니었습니다. 그러나 당내 좌파 및 노동조합과의 연줄을 활용하여, 우리는 그들이 선거 운동에서 더 적극적인 역할을 맡도록 압박합니다. 이는 오토 브라운이 그들의 지지 기반으로부터 더 많은 표를 확보하는 데 도움이 될 것입니다.
 
 @communist_glaze
-title: We persuade the <span style="color: #700000;">**Communists**</span> to take a more active role in our campaign efforts.
-subtitle: This will alienate bourgeois voters! -2 resources
+title: <span style="color: #700000;">**공산당**</span>을 설득하여 우리 선거 운동에 더 적극적으로 참여하게 한다.
+subtitle: 부르주아 유권자들을 등돌리게 만들 것입니다! 자원 -2
 choose-if: kpd_support_spd == 1 and (kpd_relation >= 70 or (kpd_relation >= 55 and kpd_leader == "Conciliators")) and resources >= 2
-unavailable-subtitle: [? if kpd_support_spd != 1: The <span style="color: #700000;">KPD</span> doesn't support Braun. ?][? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 2: Not enough resources. (need 2) ?]
+unavailable-subtitle: [? if kpd_support_spd != 1: <span style="color: #700000;">공산당</span>은 오토 브라운을 지지하지 않습니다. ?][? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): 관계가 충분히 좋지 않습니다. ?] [? if resources < 2: 자원이 부족합니다. (2 필요) ?]
 on-arrival: resources -= 2; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; lvp_relation -= 10; dvp_right += 5; ddp_right += 3; ddp_cohesion -= 2; lvp_right += 5; z_support_spd = 0 if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"); new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_braun
 
-Despite our earlier insistence on keeping the <span style="color: #700000;">**Communists**</span>' support low-key, we have now decided that their full backing in the upcoming election is worth the risk of alienating bourgeois <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span>. As a result, we are now openly participating in joint rallies in support of Braun.
+<span style="color: #700000;">**공산당**</span>의 지지를 눈에 띄지 않게 유지하려던 이전의 방침에도 불구하고, 우리는 이제 다가오는 선거에서 그들의 전폭적인 지원을 받는 것이 부르주아 <span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자들</span>을 소외시킬 위험을 감수할 가치가 있다고 판단했습니다. 그 결과, 우리는 이제 오토 브라운을 지지하는 합동 집회에 공개적으로 참여하고 있습니다.
 
-[? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"): The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has withdrawn their endorsement of Braun. ?]
+[? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"): [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 오토 브라운에 대한 지지를 철회했습니다. ?]
 
 @campaigning
-title: Accelerate campaign efforts in general.
-subtitle: This will cost us 1 resource.
+title: 전반적인 선거 운동에 박차를 가한다.
+subtitle: 자원 1이 소모됩니다.
 view-if: not campaigning_seen
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; campaigning_seen = 1; campaigning_count = 0
 max-visits: 1
 go-to: campaign_menu
@@ -209,13 +209,13 @@ go-to: campaign_menu
 @campaign_menu
 
 
-Since it's election season, we are able to accelerate campaigning efforts. Buy one campaign, get another one completely free of charge!
+선거철이므로 선거 운동에 박차를 가할 수 있습니다. 선거 운동 하나를 사면 다른 하나는 완전히 무료입니다!
 
-- @workers: Add 1 "Worker" to the cart.
-- @middle_class: Add 1 "Middle Class" to the cart.
-- @rural: Add 1 "Rural" to the cart.
-- @unemployed: Add "Unemployed" to the cart.
-- @catholics: Add "Catholic" to the cart.
+- @workers: 장바구니에 "노동자" 1을 추가한다.
+- @middle_class: 장바구니에 "중산층" 1을 추가한다.
+- @rural: 장바구니에 "농민" 1을 추가한다.
+- @unemployed: 장바구니에 "실업자"를 추가한다.
+- @catholics: 장바구니에 "가톨릭"을 추가한다.
 - @checkout
 
 @workers
@@ -255,105 +255,105 @@ go-to: campaigning_braun if braun_campaign; campaigning_eckener if eckener_campa
 
 @hope
 
-Where has hope got us the past few years?
+지난 몇 년간 희망이 우리를 어디로 이끌었습니까?
 
 @campaigning_rosenfeld
 view-if: rosenfeld_campaign
 
-We have a plethora of campaign options at our disposal.
+우리에게는 수많은 선거 운동 옵션이 있습니다.
 
 - @iron_front_rosenfeld
 - @media_rosenfeld
 - @party_discipline_rosenfeld
 - @communist_glaze_rosenfeld
 - @campaigning
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망한다.
 
 @iron_front_rosenfeld
-title: Rally the full strength of the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> to support Rosenfeld.
+title: <span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>의 전력을 결집하여 루돌프 로젠펠트를 지지한다.
 view-if: iron_front_formed
 on-arrival: radicalization = 3 if radicalization > 3; workers_spd += radicalization + 3; new_middle_spd += radicalization + 2; unemployed_spd += radicalization + 2; pro_republic += 3; nationalism -= 3; neorevisionist_dissent -= 10; neorevisionist_strength += 10; left_dissent -= 10; rb_strength += 100; workers_nsdap -= 3 if strife >= 5 and far_right_paramilitary; new_middle_nsdap -= 3 if strife >= 5 and far_right_paramilitary; unemployed_nsdap -= 3 if strife >= 5 and far_right_paramilitary
 max-visits: 1
 face-image: img/iron_front_poster.png
 go-to: campaigning_rosenfeld
 
-The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> immediately gets to work, rallying around its slogan of opposing <span style="color: #7A3C00;">Fascism</span> and <span style="color: #808080;">Monarchism</span>, which is especially relevant in this election. This will help us shore up support among more reluctant workers.
+<span style="color: #c00000;">**강철**</span> <span style="color: #1A1A1A;">**전선**</span>은 즉시 활동을 개시하여, 이번 선거에서 특히 중요한 <span style="color: #7A3C00;">파시즘</span> 및 <span style="color: #808080;">왕정복고주의</span> 반대 구호를 중심으로 결집합니다. 이는 우리가 다소 주저하는 노동자들 사이에서 지지를 굳히는 데 도움이 될 것입니다.
 
 @media_rosenfeld
-title: Use our radio stations to broadcast in favor of Rosenfeld.
-subtitle: -1 resource
+title: 당 라디오 방송국을 활용하여 루돌프 로젠펠트 지지 방송을 내보낸다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; media_rosenfeld_seen = 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_kpd += 3; socialism += 3; nationalism -= 3
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld
 
-We are able to broadcast radio addresses urging turnout for Rosenfeld, spreading our message to the middle classes in hopes of overcoming their antipathy toward <span style="color: #c00000;">socialism</span> and Rosenfeld especially.
+우리는 루돌프 로젠펠트에 대한 투표 참여를 촉구하는 라디오 연설을 송출하여, 중산층이 가진 <span style="color: #c00000;">사회주의</span>와 로젠펠트 개인에 대한 반감을 극복하기를 기대하며 우리의 메시지를 전파합니다.
 
 @party_discipline_rosenfeld
-title: Impose party discipline.
-subtitle: Some reformist local organizations haven't been putting in the work.
+title: 당 규율을 강화한다.
+subtitle: 일부 개혁주의 지역 조직들이 태업하고 있습니다.
 choose-if: dissent < 0.15
-unavailable-subtitle: [? if dissent >= 0.15: Internal dissent is too high. ?]
+unavailable-subtitle: [? if dissent >= 0.15: 당내 반발이 너무 심합니다. ?]
 on-arrival: party_rosenfeld_seen = 1
 face-image: img/poster_2.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld
 
-We need a united front to win this election—internal factional politics must be set aside.
+이번 선거에서 승리하려면 통일된 전선이 필요합니다. 내부 파벌 정치는 잠시 접어두어야 합니다.
 
 @communist_glaze_rosenfeld
-title: We persuade the <span style="color: #700000;">**Communists**</span> to take a more active role in our campaign efforts.
-subtitle: This will alienate the bourgeois parties! -1 resource
+title: <span style="color: #700000;">**공산당**</span>을 설득하여 우리 선거 운동에 더 적극적으로 참여하게 한다.
+subtitle: 부르주아 정당들을 등돌리게 만들 것입니다! 자원 -1
 choose-if: kpd_support_spd == 1 and (kpd_relation >= 60 or (kpd_relation >= 40 and kpd_leader == "Conciliators")) and resources >= 1
-unavailable-subtitle: [? if kpd_support_spd != 1: The <span style="color: #700000;">KPD</span> doesn't support Rosenfeld. ?][? if (kpd_relation < 60 or (kpd_relation < 40 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if kpd_support_spd != 1: <span style="color: #700000;">공산당</span>은 루돌프 로젠펠트를 지지하지 않습니다. ?][? if (kpd_relation < 60 or (kpd_relation < 40 and kpd_leader == "Conciliators")): 관계가 충분히 좋지 않습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 3; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 3; new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld
 
-As a result, we are now openly participating in joint rallies supporting Rosenfeld. This display of <span style="color: #9B0000;">Marxist</span> unity understandably alarms the bourgeois parties—and may, counterproductively, drive more voters to rally behind their candidate.
+그 결과, 우리는 이제 루돌프 로젠펠트를 지지하는 합동 집회에 공개적으로 참여하고 있습니다. 이러한 <span style="color: #9B0000;">마르크스주의</span>적 단결의 과시는 당연하게도 부르주아 정당들을 경악하게 만들며, 오히려 역효과를 낳아 더 많은 유권자들이 그들의 후보 뒤로 결집하게 만들 수도 있습니다.
 
 @campaigning_eckener
 view-if: eckener_campaign
 
-We have a plethora of campaign options at our disposal.
+우리에게는 수많은 선거 운동 옵션이 있습니다.
 
 - @media_eckener
 - @against_communists_eckener
 - @party_discipline_eckener
 - @bourgeois_glaze_eckener
 - @campaigning
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망한다.
 
 @media_eckener
-title: Use our radio stations to broadcast in favor of Eckener.
-subtitle: -1 resource
+title: 당 라디오 방송국을 활용하여 에케너 지지 방송을 내보낸다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; media_eckener_seen = 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_kpd += 3; socialism += 3; nationalism -= 3
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_eckener
 
-We are able to broadcast radio addresses urging turnout for Eckener, spreading our message to the middle classes in hopes of overcoming their radicalization caused by the economic crisis.
+우리는 에케너에 대한 투표 참여를 촉구하는 라디오 연설을 송출하여, 경제 위기로 급진화된 중산층에게 우리의 메시지를 전파합니다.
 
 @against_communists_eckener
-title: Focus our campaign against the <span style="color: #700000;">**Communist**</span> [+ communist_candidate_1932 +].
-subtitle: He has gained a significant amount of support by positioning himself as the "only left candidate." -1 resource
+title: <span style="color: #700000;">**공산당**</span>의 [+ communist_candidate_1932 +] 후보를 견제하는 데 선거 운동을 집중한다.
+subtitle: 그는 "유일한 좌파 후보"를 자처하며 상당한 지지를 얻었습니다. 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; left_dissent -= 10; workers_spd += 2; workers_kpd -= 2; kpd_relation -= 10; hindenburg_angry -= 10; hindenburg_angry_bruning -= 10
 face-image: img/social_fascist.jpg
 max-visits: 1
 go-to: campaigning_eckener
 
-We have lost an alarming number of voters to the <span style="color: #700000;">**Communists**</span> due to our support for the bourgeois Eckener. To ensure Eckener secures most of the democratic vote, we must prevent further defections.
+우리는 부르주아인 에케너를 지지한다는 이유로 놀라울 정도로 많은 유권자를 <span style="color: #700000;">**공산당**</span>에 빼앗겼습니다. 에케너가 민주 진영 표의 대부분을 확보하게 하려면, 추가적인 이탈을 막아야 합니다.
 
 @party_discipline_eckener
-title: Impose party discipline.
-subtitle: Some leftist local organizations haven't been putting in the work.
+title: 당 규율을 강화한다.
+subtitle: 일부 좌파 지역 조직들이 태업하고 있습니다.
 choose-if: dissent < 0.15
 unavailable-subtitle: [? if dissent >= 0.15: Internal dissent is too high. ?]
 on-arrival: party_eckener_seen = 1
@@ -361,19 +361,19 @@ face-image: img/poster_2.jpg
 max-visits: 1
 go-to: campaigning_eckener
 
-We need a united front to win this election—internal factional politics must be set aside.
+이번 선거에서 승리하려면 통일된 전선이 필요합니다. 내부 파벌 정치는 잠시 접어두어야 합니다.
 
 @bourgeois_glaze_eckener
-title: Persuade the bourgeois parties to let us into their campaign committees.
-subtitle: This will allow for a more coordinated effort.
+title: 부르주아 정당들을 설득하여 우리를 그들의 선거 대책 위원회에 참여시키게 한다.
+subtitle: 이를 통해 더 조직적인 노력이 가능해질 것입니다.
 choose-if: z_support_spd == 1 and ((z_relation >= 55 and z_ideology == "Right") or (z_relation >= 45 and z_ideology == "Left")) and ((ddp_relation >= 55 and not lvp_formed) or (lvp_relation >= 55 and lvp_formed)) and resources >= 1
-unavailable-subtitle: [? if z_support_spd != 1: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?] doesn't support Eckener. ?][? if ddp_support_spd != 1 and not lvp_formed: The <span style="color: #D3C24D;">[+ ddp_name +]</span> doesn't support Eckener. ?][? if lvp_support_spd != 1 and lvp_formed: The <span style="color: #FFCC00;">LVP</span> doesn't support Eckener. ?][? if (z_relation < 50 and z_ideology == "Right") or (z_relation < 40 and z_ideology == "Left"): Our relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?] aren't good enough. ?][? if ddp_relation < 55 and not lvp_formed: Our relations with the <span style="color: #D3C24D;">[+ ddp_name +]</span> aren't good enough. ?][? if lvp_relation < 55 and lvp_formed: Our relations with the <span style="color: #FFCC00;">LVP</span> aren't good enough. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if z_support_spd != 1: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]은 에케너를 지지하지 않습니다. ?][? if ddp_support_spd != 1 and not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>은 에케너를 지지하지 않습니다. ?][? if lvp_support_spd != 1 and lvp_formed: <span style="color: #FFCC00;">LVP</span>는 에케너를 지지하지 않습니다. ?][? if (z_relation < 50 and z_ideology == "Right") or (z_relation < 40 and z_ideology == "Left"): [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">CVP</span>?]과의 관계가 충분히 좋지 않습니다. ?][? if ddp_relation < 55 and not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>과의 관계가 충분히 좋지 않습니다. ?][? if lvp_relation < 55 and lvp_formed: <span style="color: #FFCC00;">LVP</span>와의 관계가 충분히 좋지 않습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; pro_republic += 5; bourgeois_glaze_spd = 1; catholics_nsdap -= 2; catholics_spd += 2; catholics_z += 2; rural_spd += 2; new_middle_spd += 4; old_middle_spd += 4; z_relation += 5; ddp_relation += 5; lvp_relation += 5; dvp_relation += 5; ddp_left += 2; dvp_left += 3; ddp_cohesion += 1; lvp_left += 2
 face-image: img/center_poster.jpg
 max-visits: 1
 go-to: campaigning_eckener
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and the <span style="color: #FFCC00;">liberals</span> have been excluding us from their local campaign committees. However, by leveraging our ties to their left wings and affiliated trade unions, we manage to pressure them into allowing some <span style="color: #c00000;">socialists</span> to participate.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 <span style="color: #FFCC00;">자유주의자들</span>은 지역 선거 대책 위원회에서 우리를 배제해 왔습니다. 그러나 당내 좌파 및 산하 노동조합과의 유대를 활용하여, 우리는 그들이 일부 <span style="color: #c00000;">사회주의자들</span>의 참여를 허용하도록 압박하는 데 성공합니다.
 
 @campaigning_reactionary
 view-if: spd_support_reactionary
@@ -409,104 +409,104 @@ if (Q.reactionary_funds >= 5 && !Q.industrial_reactionary) {
 Q.industrial_reactionary = 1;
 !}
 
-We have a plethora of campaign options at our disposal.
+우리에게는 수많은 선거 운동 옵션이 있습니다.
 
 - @party_discipline_reactionary
 - @media_reactionary
 - @for_democracy
 - @against_communists
 - @campaigning
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망한다.
 
 @party_discipline_reactionary
-title: Impose party discipline.
-subtitle: Some leftist local organizations haven't been putting in the work.
+title: 당 규율을 강화한다.
+subtitle: 일부 좌파 지역 조직들이 태업하고 있습니다.
 choose-if: dissent < 0.15
-unavailable-subtitle: [? if dissent >= 0.15: Internal dissent is too high. ?]
+unavailable-subtitle: [? if dissent >= 0.15: 당내 반발이 너무 심합니다. ?]
 on-arrival: party_reactionary_seen = 1
 face-image: img/poster_2.jpg
 max-visits: 1
 go-to: campaigning_reactionary
 
-With our support for the bourgeois [+ spd_choice +], many of our leftist local organizations—such as those in Saxony—have been less active in the presidential campaign. We must work to correct this.
+부르주아인 [+ spd_choice +]에 대한 우리의 지지로 인해, 작센과 같은 지역의 많은 좌파 조직들이 대통령 선거 운동에 소극적이었습니다. 우리는 이를 바로잡기 위해 노력해야 합니다.
 
 @media_reactionary
-title: Use our radio stations to broadcast in favor of [+ spd_choice +].
-subtitle: -1 resource
+title: 당 라디오 방송국을 활용하여 [+ spd_choice +] 지지 방송을 내보낸다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); socialism += 3; nationalism -= 1; nationalism -= 2 if pacifism > 1; pro_republic += (radio + commercialized_media)
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_reactionary
 
-We are able to broadcast radio addresses urging turnout for [+ spd_choice +], spreading our message to the middle classes in hopes of overcoming their radicalization caused by the economic crisis.
+우리는 [+ spd_choice +]에 대한 투표 참여를 촉구하는 라디오 연설을 송출하여, 경제 위기로 급진화된 중산층에게 우리의 메시지를 전파합니다.
 
 @for_democracy
-title: Rally in favor of democracy, and the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic.
-subtitle: This may help ease reservations about supporting [+ spd_choice +].
+title: 민주주의와 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 공화국 수호를 위해 결집한다.
+subtitle: [+ spd_choice +] 지지에 대한 거부감을 완화하는 데 도움이 될 수 있습니다.
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; reactionary_democracy_bonus = 1; pro_republic += 5; center_dissent -= 5; labor_dissent -= 5; neorevisionist_dissent -= 5; reformist_dissent -= 5; left_dissent -= 5; workers_spd += 3*(1-dissent) if democratization >= 3; unemployed_spd += 3*(1-dissent) if democratization >= 3; pro_republic += 2*(1 - dissent) if democratization >= 3; new_middle_spd += 3*(1-dissent) if democratization >= 3; z_relation += 3; ddp_relation += 3; lvp_relation += 3
 face-image: img/weimar_coalition.jpg
 max-visits: 1
 go-to: campaigning_reactionary
 
-We argue to our base that, despite [+ spd_choice +]'s more conservative beliefs, they remain our best hope for preserving German democracy in the long run. This helps ease internal dissent slightly and may encourage [+ spd_choice +] to adopt a more cooperative stance.
+우리는 지지자들에게 [+ spd_choice +]의 보수적인 신념에도 불구하고, 그들이 장기적으로 독일 민주주의를 보존할 최선의 희망이라고 호소합니다. 이는 당내 불만을 다소 진정시키고, [+ spd_choice +]가 더 협력적인 태도를 취하도록 장려할 수도 있습니다.
 
 @against_communists
-title: Focus our campaign against the <span style="color: #700000;">**Communist**</span> [+ communist_candidate_1932 +].
-subtitle: He has gained a significant amount of support by positioning himself as the "only left candidate." -1 resource
+title: <span style="color: #700000;">**공산당**</span>의 [+ communist_candidate_1932 +] 후보를 견제하는 데 선거 운동을 집중한다.
+subtitle: 그는 "유일한 좌파 후보"를 자처하며 상당한 지지를 얻었습니다. 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; left_dissent -= 10; workers_spd += 3; workers_kpd -= 3; kpd_relation -= 10; hindenburg_angry -= 10; hindenburg_angry_bruning -= 10
 face-image: img/social_fascist.jpg
 max-visits: 1
 go-to: campaigning_reactionary
 
-We have lost an alarming number of voters to the <span style="color: #700000;">**Communists**</span> due to our support for the conservative [+ spd_choice +]. To ensure [+ spd_choice +] prevails over even more <span style="color: #808080;">reactionary</span> forces, we must move quickly to prevent further defections.
+우리는 보수적인 [+ spd_choice +]를 지지한다는 이유로 놀라울 정도로 많은 유권자를 <span style="color: #700000;">**공산당**</span>에 빼앗겼습니다. [+ spd_choice +]가 더 <span style="color: #808080;">반동적인</span> 세력에게 승리하도록 보장하려면, 추가적인 이탈을 막기 위해 신속히 움직여야 합니다.
 
 @campaigning_thalmann
 view-if: spd_support_thalmann
 
-We have a plethora of campaign options at our disposal.
+우리에게는 수많은 선거 운동 옵션이 있습니다.
 
 - @paramilitary
 - @media_communist
 - @united_left
 - @campaigning
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망한다.
 
 @paramilitary
-title: Ally with the <span style="color: #700000;">Communist</span> <span style="color: #700000;">**RFB**</span> on the streets, to fight against the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
-subtitle: This will permanently alienate the bourgeois parties!
+title: 거리에서 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우파</span>에 맞서 싸우기 위해 <span style="color: #700000;">공산당</span>의 <span style="color: #700000;">**RFB**</span>과 연대한다.
+subtitle: 부르주아 정당들과는 영원히 척을 지게 될 것입니다!
 on-arrival: kpd_truce = 1; kpd_relation += 5; rfb_strength += 100; rb_strength += 100; rfb_militancy += 0.1; rb_militancy += 0.04; neorevisionist_dissent += 10; reformist_dissent += 10; hindenburg_angry += 150; z_relation -= 20; ddp_relation -= 20; dvp_relation -= 20; lvp_relation -= 20; ddp_cohesion -= 5; ddp_right += 6; dvp_right += 10; lvp_right += 10
 face-image: img/reichsbanner_2.jpg
 max-visits: 1
 go-to: campaigning_thalmann
 
-Closer ties between the Reichsbanner and the <span style="color: #700000;">**RFB**</span> are established, protecting local party officials from political violence.
+국기단과 <span style="color: #700000;">**RFB**</span> 간에 더 긴밀한 유대가 형성되어, 정치적 폭력으로부터 지역 당 간부들을 보호합니다.
 
 @media_communist
-title: Use our radio stations to broadcast in favor of [+ communist_candidate_1932 +].
-subtitle: This may help in overcoming their antagonism against <span style="color: #700000;">Communists</span>. -1 resource
+title: 당 라디오 방송국을 활용하여 [+ communist_candidate_1932 +] 지지 방송을 내보낸다.
+subtitle: <span style="color: #700000;">공산주의자</span>에 대한 반감을 극복하는 데 도움이 될 수 있습니다. 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; media_communist_seen = 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_kpd += 3; socialism += 3; nationalism -= 3
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_thalmann
 
-Let's face it, the middle class is never going to support someone like [+ communist_candidate_1932 +], no matter how hard we try. However, we do manage to convince some of our own in the <span style="color: #c00000;">socialist</span> white-collar unions to come around.
+솔직히 말해서, 중산층은 우리가 아무리 노력해도 [+ communist_candidate_1932 +] 같은 인물을 절대 지지하지 않을 것입니다. 하지만 <span style="color: #c00000;">사회주의</span> 성향의 화이트칼라 노조원 일부를 설득하여 마음을 돌리게 하는 데는 성공합니다.
 
 @united_left
-title: We persuade the <span style="color: #700000;">**Communists**</span> to let us take a more active role in their campaign efforts.
-subtitle: They have been putting themselves at the forefront. -1 resources
+title: <span style="color: #700000;">**공산당**</span>을 설득하여 우리가 그들의 선거 운동에 더 적극적으로 참여하게 한다.
+subtitle: 그들은 자신들을 너무 앞세우고 있습니다. 자원 -1
 choose-if: (kpd_relation >= 70 or (kpd_relation >= 55 and kpd_leader == "Conciliators")) and resources >= 2
-unavailable-subtitle: [? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 2: Not enough resources. (need 2) ?]
+unavailable-subtitle: [? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): 관계가 충분히 좋지 않습니다. ?] [? if resources < 2: 자원이 부족합니다. (2 필요) ?]
 on-arrival: resources -= 1; spd_glaze_thalmann = 1; workers_spd += 3; workers_kpd += 3; workers_nsdap -= 3; unemployed_spd += 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 4; ddp_right += 2; ddp_cohesion -= 2; lvp_right += 4; new_middle_kpd = 1
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_thalmann
 
-For some reason, the <span style="color: #700000;">**Communists**</span> aren't particularly grateful for our endorsement of [+ communist_candidate_1932 +]; perhaps it's due to orders from Moscow. Anyhow, we have managed to convince their leadership to allow us to participate together in joint rallies and other efforts.
+어떤 이유에서인지, <span style="color: #700000;">**공산당**</span>은 [+ communist_candidate_1932 +]에 대한 우리의 지지를 특별히 고마워하지 않습니다. 아마도 모스크바의 지령 때문일 것입니다. 어쨌든, 우리는 그들의 지도부를 설득하여 합동 집회와 기타 활동에 함께 참여하도록 만들었습니다.
