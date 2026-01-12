@@ -1,4 +1,4 @@
-title: Saxony Landtag Election
+title: 작센 주 의회 선거
 view-if: (year == 1930 and month >= 6 and not saxony_election_1930_seen and saxony_1930_trigger) or (saxony_election_3_trigger_time == time and saxony_election_seen_2_time != time)
 new-page: true
 tags: event
@@ -17,13 +17,13 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= Elections, [+ month : month +] [+ year +]
+= [+ year +]년 [+ month : month +]선거
 
-The Saxon state elections are to be held now.
+작센 주 의회 선거가 지금 개최됩니다.
 
 # 1932 ref to dissolve saxony
 
-- @saxony: May we do our best...
+- @saxony: 우리가 최선을 다했길...
 
 @saxony
 on-arrival: {!
@@ -597,12 +597,12 @@ if (window && d3) {
 go-to: saxony_coalition_menu
 
 
-**Saxony results:**
+**작센 선거 결과:**
 
 {!<svg id="saxony_landtag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>Landtag Seats</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>주 의회 의석</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_saxony_elections_vote +]%** {!</td><td>!} [+ spd_r_saxony +]% {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_saxony_elections_vote +]% {!</td><td>!} [+ sapd_r_saxony +]% {!</td></tr>!} ?]
@@ -642,17 +642,17 @@ go-to: saxony_coalition_menu
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_saxony_elections_vote +]% {!</td><td>!} [+ nsdap_r_saxony +]%  {!</td></tr>!}
 {!</table>!}
 <hr id="read-marker">
-The [+ saxony_leader +] Cabinet has collapsed a few months ago due to a dispute involving the Saxon Reichrat delegation voting for the Young Plan, which has resulted in the loss of confidence from the <span style="color: #3E88B3;">**DNVP**</span>, <span style="color: #11DD11;">**SLV**</span>, and <span style="color: #7A3C00;">**NSDAP**</span>. However, they do elect the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]'s Walther Schieck as Minister-President in a caretaker cabinet of experts, before the <span style="color: #7A3C00;">**NSDAP**</span> ultimately voted for dissolving parliament. The political climate has greatly changed from last year, and the extremist parties are expected to gain. 
+[+ saxony_leader +] 내각은 몇 달 전, 작센의 제국참의원 대표단이 영 안에 찬성표를 던진 것과 관련된 분쟁으로 인해 붕괴되었습니다. 이로 인해 <span style="color: #3E88B3;">**DNVP**</span>, <span style="color: #11DD11;">**SLV**</span>, 그리고 <span style="color: #7A3C00;">**NSDAP**</span>로부터 신임을 잃었습니다. 그러나 이들은 <span style="color: #7A3C00;">**NSDAP**</span>가 결국 의회 해산에 표를 던지기 전, 전문가들로 구성된 관리 내각의 주총리로 [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]의 발터 쉬크를 선출했습니다. 정치적 기류는 작년과 크게 달라졌으며, 극단주의 정당들이 득세할 것으로 예상됩니다.
 <hr id="read-marker">
-United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_saxony +]% 
+통합 좌파 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_saxony +]% 
 
-Grand Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #fe9e00;">**ASPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_saxony:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_saxony +]% 
+대연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #fe9e00;">**ASPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_saxony:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_saxony +]% 
 
-[? if dnvp_ideology == "Moderate": Bourgeois Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
+[? if dnvp_ideology == "Moderate": 부르주아 연정 ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
 
-[? if dnvp_ideology == "Radical": Bourgeois Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?][? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?]): [+ true_bourgeois_coalition_saxony +]% ?]
+[? if dnvp_ideology == "Radical": 부르주아 연정 ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?][? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?]): [+ true_bourgeois_coalition_saxony +]% ?]
 
-[? if saxony_no_majority_2: Right-wing Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #3E88B3;">**DNVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
+[? if saxony_no_majority_2: 우파 연정 ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #3E88B3;">**DNVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
 
 @saxony_coalition_menu
 on-arrival: {!
@@ -695,11 +695,11 @@ if ((Q.dvp_relation < (dvp_toleration_threshold + 5) && !Q.lvp_formed) || (Q.lvp
 !}
 
 <hr id="read-marker">
-The rapid rise of the <span style="color: #7A3C00;">**NSDAP**</span> is alarming, as the economic depression continues to radicalize voters toward the right. Their support largely comes from the bourgeois right, whose vote is splintered across various bourgeois and special interest parties. Lacking a strong, unified right-of-center alternative, many have turned to the <span style="color: #7A3C00;">**NSDAP**</span> as a protest vote.
+<span style="color: #7A3C00;">**NSDAP**</span>의 급격한 부상은 우려스럽습니다. 경제 대공황이 유권자들을 우경화시키고 있기 때문입니다. 그들의 지지 기반은 주로 부르주아 우파에서 나오는데, 이들의 표는 다양한 부르주아 정당 및 특수 이익 정당들로 분산되어 있습니다. 강력하고 통합된 중도 우파의 대안이 부재한 상황에서, 많은 이들이 항의의 표시로 <span style="color: #7A3C00;">**NSDAP**</span>에 투표했습니다.
 
-Meanwhile, the <span style="color: #fe9e00;">**ASPD**</span> is essentially dead, having secured a negligible [+ aspd_saxony_elections_vote +]% of the vote. While discussions of a merger with the Saxon <span style="color: #c00000;">**SPD**</span> have emerged, but our party's leftist tilt has so far stalled any meaningful progress.
+한편, <span style="color: #fe9e00;">**ASPD**</span>는 사실상 소멸 상태이며, 고작 [+ aspd_saxony_elections_vote +]%의 득표율을 기록했습니다. 작센 <span style="color: #c00000;">**SPD**</span>와의 합당 논의가 있긴 했으나, 우리 당의 좌파적 성향으로 인해 지금까지 의미 있는 진전은 없었습니다.
 
-With Schieck elected as Minister-President, he remains in power as a caretaker government, staying in office unless an alternative majority emerges. However, a majority vote can still dissolve the Landtag, making toleration a crucial factor in maintaining stability.
+쉬크가 주총리로 선출됨에 따라, 그는 관리 정부로서 권력을 유지하고 있으며 대안적인 과반수가 형성되지 않는 한 재임할 것입니다. 그러나 과반수의 투표로 여전히 주 의회를 해산할 수 있으므로, 안정을 유지하기 위해서는 묵인(toleration)이 결정적인 요소가 됩니다.
 
 - @true_bourgeois_coalition_saxony
 - @grand_coalition_saxony
@@ -709,54 +709,54 @@ With Schieck elected as Minister-President, he remains in power as a caretaker g
 
 
 @toleration_saxony
-title: We will enter a toleration agreement with the incumbent government.
+title: 현 정부와 묵인 협정을 맺는다.
 choose-if: mega_bourgeois_coalition_saxony >= 50
-unavailable-subtitle: Our votes won't matter, as the anti-democratic parties hold a majority.
+unavailable-subtitle: 반민주적 정당들이 과반수를 차지하고 있으므로 우리의 표는 의미가 없습니다.
 on-arrival: saxony_toleration = 1; pro_republic += 2
 
-Together with the bourgeois parties, we've successfully blocked the <span style="color: #7A3C00;">**NSDAP**</span>'s vote for new elections. This marks one of the first uses of toleration to prevent the <span style="color: #7A3C00;">Nazis</span> from gaining more influence.
+부르주아 정당들과 함께, 우리는 <span style="color: #7A3C00;">**NSDAP**</span>가 새로운 선거를 위해 투표하는 것을 성공적으로 저지했습니다. 이는 <span style="color: #7A3C00;">나치</span>가 더 많은 영향력을 얻는 것을 막기 위해 묵인 정책을 활용한 첫 번째 사례 중 하나가 될 것입니다.
 
-The Schieck Cabinet will remain unchanged, composed only of the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span> and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+쉬크 내각은 [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>와 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]로만 구성된 채 현 상태를 유지할 것입니다.
 
 @far_right_coalition_saxony
-title: We will enter a toleration agreement with the incumbent government.
+title: 현 정부와 묵인 협정을 맺는다.
 view-if: saxony_no_majority_2
 choose-if: mega_bourgeois_coalition_saxony < 50 and far_right_coalition_saxony >= 50
-unavailable-subtitle: Even when including the <span style="color: #7A3C00;">NSDAP</span>, the bourgeois government can't find a majority.
+unavailable-subtitle: <span style="color: #7A3C00;">NSDAP</span>를 포함하더라도, 부르주아 정부는 과반수를 확보할 수 없습니다.
 on-arrival: saxony_nsdap = 1; nsdap_left += 5; hitler_explode = time + 36; data_miner_detected = 1; workers_nsdap += 6; workers_kpd -= 3; workers_spd -= 2; unemployed_nsdap += 6; unemployed_kpd -= 3; unemployed_spd -= 2; new_middle_nsdap += 4; new_middle_ddp -= 1; new_middle_lvp -= 1; new_middle_spd -= 3; sa_strength += 100; sa_militancy += 0.05; prussian_police_loyalty -= 0.05; pro_republic -= 5
 face-image: img/portraits/strasser.jpg
 
-After a failed negotiation previously, the bourgeois parties are now willing to offer a ministerial position to the <span style="color: #7A3C00;">**NSDAP**</span> in exchange for their support. Gregor Strasser, leader of the <span style="color: #7A3C00;">**NSDAP**</span>'s left wing, has been appointed as the new Interior Minister, a role he had been denied in the past due to his more radical anti-capitalist views.
+이전의 협상이 실패로 돌아간 후, 부르주아 정당들은 이제 지지를 대가로 <span style="color: #7A3C00;">**NSDAP**</span>에게 장관직을 제공할 의향을 보이고 있습니다. <span style="color: #7A3C00;">**NSDAP**</span> 좌파의 지도자인 그레고어 슈트라서가 새로운 내무부 장관으로 임명되었는데, 이는 과거에 그의 급진적인 반자본주의적 성향 때문에 거부되었던 직책입니다.
 
-Saxony, once a stronghold of <span style="color: #c00000;">socialism</span> and democracy, is now being dismantled by the <span style="color: #7A3C00;">Nazis</span>. The "democratic" aspect more so, as Strasser has pushed for the cabinet to adopt pro-worker and anti-capitalist policies in an attempt to win their votes. The state police, now largely comprised of <span style="color: #7A3C00;">Nazis</span>, are actively suppressing <span style="color: #c00000;">socialist</span> and <span style="color: #700000;">communist</span> organizations and meetings. Socialist newspapers critical of the government have been banned, and civil servants with suspected <span style="color: #c00000;">socialist</span> or <span style="color: #D3C24D;">democratic</span> leanings are being purged in large numbers.
+한때 <span style="color: #c00000;">사회주의</span>와 민주주의의 요새였던 작센은 이제 <span style="color: #7A3C00;">나치</span>에 의해 해체되고 있습니다. "민주적" 측면은 더욱 심각하게 훼손되고 있는데, 슈트라서가 표심을 얻기 위해 내각이 친노동자 및 반자본주의 정책을 채택하도록 압박했기 때문입니다. 이제 주로 <span style="color: #7A3C00;">나치</span> 당원들로 채워진 주 경찰은 <span style="color: #c00000;">사회주의</span> 및 <span style="color: #700000;">공산주의</span> 조직과 집회를 적극적으로 탄압하고 있습니다. 정부에 비판적인 사회주의 신문들은 폐간되었고, <span style="color: #c00000;">사회주의</span> 또는 <span style="color: #D3C24D;">민주주의</span> 성향이 의심되는 공무원들은 대규모로 숙청되고 있습니다.
 
-However, there is a real possibility that Strasser could be removed from his position by his coalition partners, as they were never a huge fan of him.
+그러나 슈트라서가 연정 파트너들에 의해 해임될 가능성은 여전히 남아 있습니다. 그들은 애초에 슈트라서를 탐탁지 않게 여겼기 때문입니다.
 
 @true_bourgeois_coalition_saxony
-title: The Schieck government has garnered a majority to rule via parliament.
-subtitle: The bourgeois parties have survived the onslaught from the <span style="color: #7A3C00;">Nazis</span>, at least for now.
+title: 쉬크 정부가 의회를 통해 통치할 과반수를 확보했다.
+subtitle: 부르주아 정당들은 적어도 지금은 <span style="color: #7A3C00;">나치</span>의 맹공을 버텨냈습니다.
 view-if: true_bourgeois_coalition_saxony >= 50
 on-arrival: saxony_right_2 = 1; pro_republic += 2; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_other += 2 if dnvp_ideology == "Radical"; old_middle_other += 2 if dnvp_ideology == "Radical"; rural_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_dnvp += 2 if dnvp_ideology == "Moderate"
 
-Surprisingly, the bourgeois parties have held their ground, 
+놀랍게도, 부르주아 정당들은 굳건히 버텨냈습니다.
 
-The <span style="color: #7A3C00;">**NSDAP**</span> is heavily demoralized by this defeat, as they are relegated to the powerless opposition role. They had expected the national political climate to benefit them, and to allow them to influence government.
+<span style="color: #7A3C00;">**NSDAP**</span>는 이번 패배로 사기가 크게 꺾였습니다. 그들은 무력한 야당 신세로 전락했기 때문입니다. 그들은 국가적인 정치 기류가 자신들에게 유리하게 작용하여 정부에 영향력을 행사할 수 있을 것이라 기대했었습니다.
 
 @grand_coalition_saxony
-title: A [? if lvp_formed and stegerwald_path: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed or not stegerwald_path: Grand?] Coalition is formed!
-subtitle: We have somehow reconciled with the bourgeois parties, that they're willing to govern with us again.
-unavailable-subtitle: [? if z_relation < 50 and stegerwald_path: We need higher relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if dvp_toleration_threshold_fail_saxony: We need higher relations with the [? if not lvp_formed: <span style="color: #C0A054;">DVP</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?][? if left_strength >= 20: Our Saxon organization is too left-wing to even consider this as an option—after all, their stubborn refusal in the past led to the expulsion of the majority of the parliamentary faction and the subsequent formation of the <span style="color: #fe9e00;">ASPD</span>. ?]
+title: [? if lvp_formed and stegerwald_path: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span>?][? if not lvp_formed or not stegerwald_path: 대?]연정이 결성되다!
+subtitle: 우리는 어떻게든 부르주아 정당들과 화해했고, 그들은 다시 우리와 함께 통치할 의향이 있습니다.
+unavailable-subtitle: [? if z_relation < 50 and stegerwald_path: 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 더 높은 관계도가 필요합니다. ?][? if dvp_toleration_threshold_fail_saxony: 우리는 [? if not lvp_formed: <span style="color: #C0A054;">DVP</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]와 더 높은 관계도가 필요합니다. ?][? if left_strength >= 20: 우리의 작센 지부는 이 선택지를 고려하기엔 너무 좌파적입니다—결국, 과거 그들의 완고한 거부가 의회 파벌 대다수의 제명과 그에 따른 <span style="color: #fe9e00;">ASPD</span>의 창당으로 이어졌기 때문입니다. ?]
 view-if: spd_coalition_saxony >= 50
 choose-if: spd_coalition_possible_saxony and left_strength < 20
 on-arrival: saxony_spd = 1; saxony_groko = 1; workers_nsdap -= 3; unemployed_nsdap -= 3; workers_spd += 3; unemployed_spd += 3; workers_nsdap -= 3; unemployed_nsdap -= 3; z_relation += 3; ddp_relation += 3; lvp_relation += 3; dvp_relation += 5; pro_republic += 3; reformist_dissent -= 15; reformist_strength += 10; aspd_dead = 1
 
-Somehow, the bourgeois parties are willing to form a [? if lvp_formed and stegerwald_path: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed or not stegerwald_path: Grand?] Coalition with us, rather than continuing their current government with Max Heldt and the right-wing parties.
+어떻게 된 일인지, 부르주아 정당들은 막스 헬트 및 우파 정당들과의 현 정부를 지속하기보다는 우리와 [? if lvp_formed and stegerwald_path: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span>?][? if not lvp_formed or not stegerwald_path: 대?]연정을 구성할 의향을 보이고 있습니다.
 
-With the <span style="color: #fe9e00;">**ASPD**</span> (whose Saxon chapter is notably more sane) now convinced of our reformist path, they have rejoined the Saxon <span style="color: #c00000;">**SPD**</span>! This development has weakened the <span style="color: #7A3C00;">**NSDAP**</span>, who are now relegated to the powerless opposition.
+(작센 지부가 눈에 띄게 더 이성적인) <span style="color: #fe9e00;">**ASPD**</span>가 이제 우리의 개혁주의적 노선을 신뢰하게 됨에 따라, 그들은 작센 <span style="color: #c00000;">**SPD**</span>에 재합류했습니다! 이러한 전개는 <span style="color: #7A3C00;">**NSDAP**</span>를 약화시켰으며, 그들은 이제 힘없는 야당으로 전락했습니다.
 
 @united_left_saxony
-title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>.
-subtitle: History will repeat itself.
+title: <span style="color: #c00000;">**SPD**</span>는 <span style="color: #700000;">**KPD**</span>와 연립 정부를 구성할 것이다.
+subtitle: 역사는 반복될 것입니다.
 view-if: left_coalition_saxony >= 50 and (kpd_relation >= 35 and kpd_leader == "Conciliators") or (kpd_relation >= 55 and kpd_leader != "Conciliators")
 on-arrival: red_saxony = 1; z_relation -= 7; ddp_relation -= 7; dvp_relation -= 7; lvp_relation -= 7; coup_progress += 5; hindenburg_angry += 60; rfb_militancy += 0.08; rfb_strength += 150; sa_strength += 80; sh_strength += 80; strife += 1; workers_spd += 5; workers_kpd += 5; unemployed_spd += 5; new_middle_spd -= 5; old_middle_spd -= 5; rural_spd -= 5; communist_coalition += 3; kpd_relation += 15
 on-display: {!  
@@ -772,34 +772,34 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-Surprisingly, despite reluctance on both sides due to fears that the <span style="color: #808080;">reactionary</span> Hindenburg will order a <i>Reichsexekution</i> if a coalition were to form, <span style="color: #c00000;">Red</span> Saxony is restored! 
+놀랍게도, 연정이 형성될 경우 <span style="color: #808080;">반동적인</span> 힌덴부르크가 <i>제국행정집행</i>을 명령할 것이라는 두려움 때문에 양측 모두 꺼려했음에도 불구하고, <span style="color: #c00000;">붉은</span> 작센이 부활했습니다!
 
-As one of the most left-wing and industrial states in Germany, we will use our leverage to implement comprehensive reforms and transform Saxony into a stronghold of <span style="color: #c00000;">socialism</span>. Hindenburg’s patience is especially thin. Tread carefully.
+독일에서 가장 좌파적이고 산업화된 주 중 하나로서, 우리는 우리의 영향력을 사용하여 포괄적인 개혁을 단행하고 작센을 <span style="color: #c00000;">사회주의</span>의 요새로 변모시킬 것입니다. 힌덴부르크의 인내심은 바닥을 드러내고 있습니다. 각별히 주의하십시오.
 
 @no_majority
-title: No majority can be found!
-subtitle: [? if true_bourgeois_coalition_saxony < 50 and spd_coalition_saxony < 50: All possible coalitions lack a majority. ?][? if spd_coalition_saxony >= 50 and not spd_coalition_possible_saxony: The bourgeois parties are antagonistic to our Saxon organization. ?][? if spd_coalition_saxony >= 50 and left_strength >= 20: Our party itself rejects the possibility of a majority coalition with the liberals. ?]
+title: 과반수를 확보할 수 없다!
+subtitle: [? if true_bourgeois_coalition_saxony < 50 and spd_coalition_saxony < 50: 모든 가능한 연정이 과반수에 미치지 못합니다. ?][? if spd_coalition_saxony >= 50 and not spd_coalition_possible_saxony: 부르주아 정당들은 우리의 작센 조직에 적대적입니다. ?][? if spd_coalition_saxony >= 50 and left_strength >= 20: 우리 당 자체가 자유주의자들과의 과반수 연정 가능성을 거부합니다. ?]
 view-if: true_bourgeois_coalition_saxony < 50 and (spd_coalition_saxony < 50 or (not spd_coalition_possible_saxony or left_strength >= 20))
 
-With the bourgeois parties unable to secure a majority, and the <span style="color: #7A3C00;">**NSDAP**</span> refusing to enter government, the Landtag is in a deadlock. The Schieck Cabinet remains in power as a caretaker government, but a simple majority vote can still dissolve the Landtag, making toleration a necessity.
+부르주아 정당들이 과반수를 확보하지 못하고, <span style="color: #7A3C00;">**NSDAP**</span>가 정부 참여를 거부함에 따라, 주 의회는 교착 상태에 빠졌습니다. 쉬크 내각은 관리 정부로서 권력을 유지하고 있지만, 단순 과반수 투표만으로도 주 의회를 해산할 수 있기 때문에 묵인은 필수적입니다.
 
-[? if mega_bourgeois_coalition_saxony >= 50: The coalition of parties in between the <span style="color: #700000;">**KPD**</span> and the anti-democratic Right constitute a majority, but it is our decision whether or not to tolerate the incumbent government, to prevent new elections from being called. ?][? if mega_bourgeois_coalition_saxony < 50: The coalition of parties in between the <span style="color: #700000;">**KPD**</span> and the anti-democratic Right don't even constitute a majority, making any majority government impossible. ?]
+[? if mega_bourgeois_coalition_saxony >= 50: <span style="color: #700000;">**KPD**</span>와 반민주적 우파 사이의 정당들이 과반수를 구성하고 있지만, 새로운 선거가 소집되는 것을 막기 위해 현 정부를 묵인할지 여부는 우리의 결정에 달려 있다. ?][? if mega_bourgeois_coalition_saxony < 50: <span style="color: #700000;">**KPD**</span>와 반민주적 우파 사이의 정당들이 과반수조차 구성하지 못하여, 어떤 과반수 정부도 불가능합니다. ?]
 
 - @toleration_saxony
 - @no_majority_2
 
 @no_majority_2
-title: A majority still can't be found!
-subtitle: [? if mega_bourgeois_coalition_saxony < 50: Even with our votes, it is still joever for the coalition. ?][? if mega_bourgeois_coalition_saxony >= 5: We will refuse to tolerate the bourgeois government, forcing new elections. ?]
+title: 여전히 과반수를 찾을 수 없다!
+subtitle: [? if mega_bourgeois_coalition_saxony < 50: 우리의 표가 있어도, 연정은 여전히 가망이 없습니다. ?][? if mega_bourgeois_coalition_saxony >= 5: 우리는 부르주아 정부 묵인을 거부하고, 재선거를 강행할 것입니다. ?]
 view-if: not saxony_no_majority_2 or far_right_coalition_saxony < 50
 on-arrival: saxony_election_3_trigger_time = time + 3; saxony_no_majority_2 = 1; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; unemployed_nsdap += 3; pro_republic -= 3; new_middle_spd -= 2 if toleration_possible_saxony; old_middle_spd -= 2 if toleration_possible_saxony; rural_spd -= 1 if toleration_possible_saxony; reformist_dissent += 10 if toleration_possible_saxony; left_dissent -= 5 if toleration_possible_saxony
 
-With no viable alternatives, the Landtag faces dissolution, triggering new elections—an opportunity the <span style="color: #7A3C00;">**NSDAP**</span> hopes to exploit by capitalizing on political instability and the perceived failure of parliamentary democracy.
+실행 가능한 대안이 없으므로 주 의회는 해산 위기에 처해 있으며, 이는 재선거를 촉발할 것입니다. 이는 <span style="color: #7A3C00;">**NSDAP**</span>가 정치적 불안정과 의회 민주주의의 실패 인식을 이용하여 이득을 취하려 노리는 기회입니다.
 
 @spd_majority
-title: Form an SPD only goverment!
-subtitle: Sweat...
+title: SPD 단독 정부를 구성한다!
+subtitle: 식은땀이...
 view-if: spd_r_saxony >= 50 
 on-arrival: saxony_spd = 1; reformist_dissent -= 5; left_dissent -= 30; left_strength += 10; center_dissent -= 10; labor_dissent -= 10; aspd_dead = 1; workers_spd += 7; workers_kpd -= 4; new_middle_spd += 3; old_middle_spd += 2; unemployed_spd += 4; unemployed_nsdap -=3; pro_republic += 5
 
-Unexpectedly, we've found ourselves controlling a majority of the Saxony landtag and being able to form a goverment of just the <span style="color: #c00000;">**SPD**</span>! It is unclear how the bourgeois and <span style="color: #808080;">reactionaries</span> will react to a <span style="color: #c00000;">Red</span> Saxony but without the communists... [? if aspd_share > 0: The ASPD seeing as we no longer require on coalition negoations to form goverment has decided to join us. ?] 
+예상치 못하게, 우리는 작센 주 의회의 과반수를 장악하고 오직 <span style="color: #c00000;">**SPD**</span>만으로 구성된 정부를 수립할 수 있게 되었습니다! 부르주아와 <span style="color: #808080;">반동주의자들</span>이 공산주의자가 없는 <span style="color: #c00000;">적색</span> 작센에 어떻게 반응할지는 불분명합니다... [? if aspd_share > 0: 우리가 정부를 구성하는 데 더 이상 연정 협상이 필요 없다는 것을 본 ASPD는 우리와 합류하기로 결정했습니다. ?]

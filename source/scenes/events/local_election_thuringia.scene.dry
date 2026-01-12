@@ -1,4 +1,4 @@
-title: Thuringian Landtag Election
+title: 튀링겐 주 의회 선거
 view-if: (year == 1929 and month == 12 and not thuringia_election_seen) or (thuringia_election_2_trigger_time == time and thuringia_election_seen_time != time)
 new-page: true
 tags: event
@@ -17,11 +17,11 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= Elections, [+ month : month +] [+ year +]
+= [+ year +]년 [+ month : month +]선거
 
-The Thuringian state elections are to be held now.
+튀링겐 주 의회 선거가 지금 개최됩니다.
 
-- @thuringia: May we do our best...
+- @thuringia: 우리가 최선을 다했길...
 
 @thuringia
 on-arrival: {!
@@ -417,12 +417,12 @@ if (window && d3) {
 go-to: thuringia_coalition_menu
 
 
-**Thuringia results:**
+**튀링겐 선거 결과:**
 
 {!<svg id="thuringia_landtag" style="width: 500px; height: 250px;"> </svg>!}
 
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>Landtag Seats</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>주 의회 의석</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_thuringia_elections_vote +]%** {!</td><td>!} [+ spd_r_thuringia +]% {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_thuringia_elections_vote +]% {!</td><td>!} [+ sapd_r_thuringia +]% {!</td></tr>!} ?]
@@ -454,17 +454,17 @@ go-to: thuringia_coalition_menu
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_thuringia_elections_vote +]% {!</td><td>!} [+ nsdap_r_thuringia +]%  {!</td></tr>!}
 {!</table>!}
 <hr id="read-marker">
-Thuringia is currently governed by a broad center-right coalition, which holds exactly half of the Landtag's seats. This coalition includes all parties to the right of us, along with the special interest parties, the <span style="color: #b8996f;">**WP**</span> and <span style="color: #7FCEB1;">**CNBLP**</span>, both of which have a significant presence in state politics.
+튀링겐은 현재 광범위한 중도 우파 연정에 의해 통치되고 있으며, 이는 주 의회 의석의 정확히 절반을 차지하고 있습니다. 이 연정은 우리보다 우파에 있는 모든 정당들과 함께, 주 정치에서 상당한 존재감을 가진 특수 이익 정당들인 <span style="color: #b8996f;">**WP**</span>와 <span style="color: #7FCEB1;">**CNBLP**</span>를 포함합니다.
 <hr id="read-marker">
-United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_thuringia +]% 
+통합 좌파 연정 (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_thuringia +]% 
 
-Grand Coalition (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_thuringia:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_thuringia +]% 
+대연정 (<span style="color: #c00000;">**SPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_thuringia:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_thuringia +]% 
 
-Bourgeois Coalition ([? if z_r_thuringia: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #7FCEB1;">**CNBLP**</span> + <span style="color: #b8996f;">**WP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ bourgeois_coalition_thuringia +]%
+부르주아 연정 ([? if z_r_thuringia: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #7FCEB1;">**CNBLP**</span> + <span style="color: #b8996f;">**WP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ bourgeois_coalition_thuringia +]%
 
-Right-wing Coalition ([? if z_r_thuringia: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #7FCEB1;">**CNBLP**</span> + <span style="color: #b8996f;">**WP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>[? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #003755;">**DNF**</span> ?] + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition_thuringia +]%
+우파 연정 ([? if z_r_thuringia: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #7FCEB1;">**CNBLP**</span> + <span style="color: #b8996f;">**WP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>[? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #003755;">**DNF**</span> ?] + <span style="color: #7A3C00;">**NSDAP**</span>): [+ far_right_coalition_thuringia +]%
 
-[? if nsdap_thuringia_elections_vote >= 8: The rapid rise of the <span style="color: #7A3C00;">**NSDAP**</span> in state and local elections is certainly worth keeping an eye on. ?]
+[? if nsdap_thuringia_elections_vote >= 8: 주 및 지방 선거에서 <span style="color: #7A3C00;">**NSDAP**</span>의 급격한 부상은 확실히 주시할 가치가 있습니다. ?]
 
 @thuringia_coalition_menu
 on-arrival: {!
@@ -495,9 +495,9 @@ if ((Q.dvp_relation < (dvp_toleration_threshold + 5) && !Q.lvp_formed) || (Q.lvp
 !}
 
 <hr id="read-marker">
-The bourgeois parties have historically been hostile to us in state politics, especially after the notorious <span style="color: #c00000;">**SPD**</span>-<span style="color: #D47B9B;">**USPD**</span>-<span style="color: #700000;">**KPD**</span> United Left government faced a <i>Reichsexekution</i> six years ago. They still haven't forgiven the <span style="color: #c00000;">**SPD**</span> for this. 
+부르주아 정당들은 역사적으로 주 정치에서 우리에게 적대적인 태도를 보여왔으며, 특히 악명 높은 <span style="color: #c00000;">**SPD**</span>-<span style="color: #D47B9B;">**USPD**</span>-<span style="color: #700000;">**KPD**</span> 통합 좌파 정부가 6년 전 <i>제국행정집행</i>을 당한 이후 더욱 그렇습니다. 그들은 여전히 이 사건에 대해 <span style="color: #c00000;">**SPD**</span>를 용서하지 않았습니다.
 
-Meanwhile, the surging <span style="color: #7A3C00;">**NSDAP**</span>, now controlling [+ nsdap_r_thuringia +]% of the Landtag, is no longer content with mere toleration and demands a role in government. With the bourgeois parties determined to exclude us from power, Thuringia may well become the first state to appoint a <span style="color: #7A3C00;">Nazi</span> minister.
+한편, 급성장하는 <span style="color: #7A3C00;">**NSDAP**</span>는 이제 주 의회의 [+ nsdap_r_thuringia +]%를 장악하며, 더 이상 단순한 묵인에 만족하지 않고 정부 내 역할을 요구하고 있습니다. 부르주아 정당들이 우리를 권력에서 배제하기로 결심함에 따라, 튀링겐은 <span style="color: #7A3C00;">나치</span> 장관을 임명하는 첫 번째 주가 될 위기에 처해 있습니다.
 
 - @toleration_thuringia
 - @far_right_coalition_thuringia
@@ -509,51 +509,51 @@ Meanwhile, the surging <span style="color: #7A3C00;">**NSDAP**</span>, now contr
 
 
 @toleration_thuringia
-title: The incumbent bourgeois-right government has fallen short of a majority.
-subtitle: We will offer our toleration to them, to prevent their dependence on the <span style="color: #7A3C00;">**NSDAP**</span>.
-unavailable-subtitle: The bourgeois would rather work with <span style="color: #7A3C00;">Nazis</span> than accept our toleration.
+title: 현직 부르주아-우파 정부가 과반수 확보에 실패했다.
+subtitle: 우리는 그들이 <span style="color: #7A3C00;">**NSDAP**</span>에 의존하는 것을 막기 위해 묵인 협정을 제안할 것입니다.
+unavailable-subtitle: 부르주아는 우리의 묵인을 받아들이느니 차라리 <span style="color: #7A3C00;">나치</span>와 손을 잡을 것입니다.
 choose-if: toleration_possible
 view-if: bourgeois_coalition_thuringia < 50
 on-arrival: thuringia_right = 1; pro_republic -= 1; rural_nsdap += 2; old_middle_nsdap += 2; rural_other -= 2; old_middle_dnvp -= 2
 
-Surprisingly, through our reconciliation with the bourgeois parties, they have accepted our toleration to prevent the <span style="color: #7A3C00;">**NSDAP**</span> from entering government. However, this provides valuable propaganda for the <span style="color: #7A3C00;">Nazis</span>, who gain support at the expense of the <span style="color: #3E88B3;">**DNVP**</span> and <span style="color: #7FCEB1;">**CNBLP**</span>, who are now tainted by their association with us.
+놀랍게도, 부르주아 정당들과의 화해를 통해, 그들은 <span style="color: #7A3C00;">**NSDAP**</span>의 정부 참여를 막기 위해 우리의 묵인을 받아들였습니다. 그러나 이는 <span style="color: #7A3C00;">나치</span>에게 훌륭한 선전 거리를 제공했으며, 그들은 우리와의 연관성으로 인해 이미지가 실추된 <span style="color: #3E88B3;">**DNVP**</span>와 <span style="color: #7FCEB1;">**CNBLP**</span>를 희생양 삼아 지지를 얻고 있습니다.
 
 @far_right_coalition_thuringia
-title: The incumbent coalition is expanded to include the <span style="color: #7A3C00;">**NSDAP**</span>.
-subtitle: A testament to how biased the "democratic" parties are when it comes to working with us.
+title: 현직 연정은 <span style="color: #7A3C00;">**NSDAP**</span>를 포함하도록 확장된다.
+subtitle: 우리와 협력하는 문제에 있어 "민주적" 정당들이 얼마나 편향되어 있는지 보여주는 증거입니다.
 view-if: far_right_coalition_thuringia >= 50 and bourgeois_coalition_thuringia < 50
 on-arrival: thuringia_nsdap = 1; workers_nsdap += 2; new_middle_nsdap += 4; old_middle_nsdap += 6; rural_nsdap += 2; unemployed_kpd -= 2; unemployed_nsdap += 2; sa_strength += 20; sa_militancy += 0.05; prussian_police_loyalty -= 0.05; pro_republic -= 5
 face-image: img/portraits/frick.jpg
 
-Wilhelm Frick, a convicted Beer Hall Putsch participant, becomes the first <span style="color: #7A3C00;">Nazi</span> to hold a ministerial-level post in Germany. He is given control of the Interior and Education Ministries, and by passing an "Enabling Act" through a simple majority as an emergency decree, granting him the power to radically transform Thuringia.
+맥주홀 폭동 가담으로 유죄 판결을 받았던 빌헬름 프릭은 독일에서 장관급 직책을 맡은 최초의 <span style="color: #7A3C00;">나치</span>가 되었습니다. 그는 내무부 및 교육부 장관직을 맡았고, 긴급 명령을 통해 단순 과반수로 "수권법"을 통과시킴으로써 튀링겐을 급진적으로 개조할 권한을 손에 넣었습니다.
 
-Gone are the days of <span style="color: #c00000;">Red</span> Thuringia. Suspected <span style="color: #c00000;">socialists</span> and <span style="color: #D3C24D;">democrats</span> are purged en masse from the civil service. A state police force is established, with Frick preferentially employing <span style="color: #7A3C00;">Nazi</span> officials. All <span style="color: #700000;">communist</span> teachers and mayors are dismissed, and newspapers critical of government policy are banned. [? if prussia_leader == "Braun" and interior_minister_party == "SPD": Fortunately, Carl Severing is able to halt the recruitment of <span style="color: #7A3C00;">Nazis</span> into the police force by suspending state subsidies, effectively ending the practice. ?]
+<span style="color: #c00000;">붉은</span> 튀링겐의 시대는 갔습니다. 의심스러운 <span style="color: #c00000;">사회주의자들</span>과 <span style="color: #D3C24D;">민주주의자들</span>은 공무원직에서 대거 숙청되고 있습니다. 주 경찰이 창설되었고, 프릭은 <span style="color: #7A3C00;">나치</span> 관리들을 우선적으로 채용했습니다. 모든 <span style="color: #700000;">공산주의</span> 교사들과 시장들은 해임되었고, 정부 정책에 비판적인 신문들은 폐간되었습니다. [? if prussia_leader == "Braun" and interior_minister_party == "SPD": 다행히도, 카를 제베링은 주 보조금을 끊어버림으로써 경찰 내 <span style="color: #7A3C00;">나치</span> 채용을 중단시킬 수 있었고, 사실상 그 관행을 끝장냈습니다. ?]
 
-With control of the Education Ministry, Frick appoints racial researchers and known <span style="color: #7A3C00;">Nazis</span> to top positions at many universities and bans the anti-war book *All Quiet on the Western Front* from being read or played. His attempts to grant Hitler German citizenship have so far failed, forcing Hitler to look elsewhere.
+교육부를 장악한 프릭은 인종 연구자들과 저명한 <span style="color: #7A3C00;">나치</span>들을 많은 대학의 요직에 임명하고 반전 소설 *서부 전선 이상 없다*를 읽거나 상영하는 것을 금지했습니다. 히틀러에게 독일 시민권을 부여하려는 그의 시도는 지금까지 실패하여, 히틀러는 다른 방도를 찾아야만 했습니다.
 
 @bourgeois_coalition_thuringia
-title: The incumbent center-right coalition continues governing.
-subtitle: The incumbent coalition holds a majority, one without the <span style="color: #7A3C00;">**NSDAP**</span>.
+title: 현직 중도 우파 연정이 통치를 이어간다.
+subtitle: 현직 연정은 과반수를 보유하고 있으며, 이는 <span style="color: #7A3C00;">**NSDAP**</span>가 없는 과반수입니다.
 view-if: bourgeois_coalition_thuringia >= 50
 on-arrival: thuringia_right = 1; new_middle_dvp += 2; old_middle_dvp += 2; new_middle_other += 2; old_middle_other += 2; rural_other += 2
 
-Unexpectedly, the parties involved in the incumbent government have gained votes, and now no longer require the votes of the <span style="color: #7A3C00;">**NSDAP**</span>. The continuation of the stable leadership over Thuringia will weaken the <span style="color: #7A3C00;">Nazis</span>.
+예상치 못하게, 현직 정부에 참여한 정당들은 득표율을 높였고, 이제 더 이상 <span style="color: #7A3C00;">**NSDAP**</span>의 표를 필요로 하지 않게 되었습니다. 튀링겐에 대한 안정적인 리더십의 지속은 <span style="color: #7A3C00;">나치</span>의 세력을 약화시킬 것입니다.
 
 @grand_coalition_thuringia
-title: A [? if lvp_formed: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed: Grand?] Coalition is formed!
-subtitle: We have somehow reconciled with the bourgeois parties, that they're willing to govern with us again.
-unavailable-subtitle: [? if z_relation < 60 and stegerwald_path: We need higher relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if dvp_toleration_threshold_fail: We need higher relations with the [? if not lvp_formed: <span style="color: #C0A054;">DVP</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?]
+title: [? if lvp_formed: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span>?][? if not lvp_formed: 대?]연정이 결성되다!
+subtitle: 우리는 어떻게든 부르주아 정당들과 화해했고, 그들은 다시 우리와 함께 통치할 의향이 있습니다.
+unavailable-subtitle: [? if z_relation < 60 and stegerwald_path: 우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 더 높은 관계도가 필요합니다. ?][? if dvp_toleration_threshold_fail: 우리는 [? if not lvp_formed: <span style="color: #C0A054;">DVP</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]와 더 높은 관계도가 필요합니다. ?]
 view-if: spd_coalition_thuringia >= 50
 choose-if: spd_coalition_possible
 on-arrival: thuringia_spd = 1; rural_nsdap -= 2; new_middle_nsdap -= 2; old_middle_nsdap -= 2; new_middle_spd += 2; old_middle_spd += 2; rural_spd += 2; z_relation += 3; ddp_relation += 3; lvp_relation += 3; pro_republic += 3; prussian_police_loyalty += 0.03; sa_strength -= 25
 
-Somehow, the bourgeois parties are willing to form a [? if lvp_formed: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed: Grand?] Coalition with us, rather than continuing their current government.
+어떻게 된 일인지, 부르주아 정당들은 현 정부를 지속하기보다는 우리와 [? if lvp_formed: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span>?][? if not lvp_formed: 대?]연정을 구성할 의향을 보이고 있습니다.
 
-We will use our positions in government to root out right-wing and <span style="color: #3E88B3;">nationalist</span> sympathies within the civil service and to strengthen <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> sentiment.
+우리는 정부 내 지위를 활용하여 공직 사회 내의 우파 및 <span style="color: #3E88B3;">민족주의적</span> 성향을 뿌리 뽑고 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 정서를 강화할 것입니다.
 
 @united_left_thuringia
-title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>.
-subtitle: History will repeat itself.
+title: <span style="color: #c00000;">**SPD**</span>는 <span style="color: #700000;">**KPD**</span>와 연립 정부를 구성할 것이다.
+subtitle: 역사는 반복될 것입니다.
 view-if: left_coalition_thuringia >= 50 and (kpd_relation >= 40 and kpd_leader == "Conciliators") or (kpd_relation >= 60 and kpd_leader != "Conciliators")
 on-arrival: red_thuringia = 1; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; coup_progress += 3; hindenburg_angry += 40; rfb_militancy += 0.05; rfb_strength += 100; sa_strength += 50; sh_strength += 50; strife += 1; workers_spd += 3; workers_kpd += 3; unemployed_spd += 3; new_middle_spd -= 3; old_middle_spd -= 3; rural_spd -= 3; communist_coalition += 3; kpd_relation += 10
 on-display: {!  
@@ -569,23 +569,23 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-Surprisingly, despite reluctance on both sides due to fears that the <span style="color: #808080;">reactionary</span> Hindenburg will order a <i>Reichsexekution</i> if a coalition were to form. <span style="color: #c00000;">Red</span> Thuringia is restored! 
+놀랍게도, 연정이 형성될 경우 <span style="color: #808080;">반동적인</span> 힌덴부르크가 <i>제국행정집행</i>을 명령할 것이라는 두려움 때문에 양측 모두 꺼려했음에도 불구하고, <span style="color: #c00000;">붉은</span> 튀링겐이 부활했습니다!
 
-Hindenburg’s patience is especially thin. Tread carefully.
+힌덴부르크의 인내심은 바닥을 드러내고 있습니다. 각별히 주의하십시오.
 
 @spd_majority
-title: The <span style="color: #c00000;">**SPD**</span> forms a majority government.
-subtitle: Congratulations.
+title: <span style="color: #c00000;">**SPD**</span> 단독 과반 정부를 구성한다.
+subtitle: 축하합니다.
 view-if: spd_r_thuringia >= 50
 on-arrival: thuringia_spd = 1; rural_nsdap -= 3; new_middle_nsdap -= 4; old_middle_nsdap -= 4; workers_kpd -= 2; unemployed_kpd -= 2; workers_spd += 2; unemployed_spd += 2; new_middle_spd += 4; old_middle_spd += 4; rural_spd += 3; pro_republic += 5; prussian_police_loyalty += 0.05; sa_strength -= 50
 
-To the sheer horror of the right-wing parties in Thuringia, an unforeseen occurrence has swept over the state: a complete SPD majority. Members of the far-right cry foul; voter fraud, other forms of subterfuge, and attacks ranging to outright conspiracy is hurled at the results. Nonetheless, <span style="color: #c00000;">Red</span> Thuringia is restored, without the revolutionary concerns of the <span style="color: #D47B9B;">**USPD**</span>/<span style="color: #700000;">**KPD**</span>’s presence in the landtag.
+튀링겐 우파 정당들에겐 경악스럽게도, 예기치 못한 사건이 주를 휩쓸었습니다. 바로 SPD의 완전한 과반수 확보입니다. 극우파 구성원들은 부정선거라며 비명을 지릅니다; 유권자 사기, 각종 속임수, 그리고 노골적인 음모론까지 결과에 퍼부어지고 있습니다. 그럼에도 불구하고, 주 의회 내 <span style="color: #D47B9B;">**USPD**</span>/<span style="color: #700000;">**KPD**</span>의 존재에 대한 혁명적 우려 없이, <span style="color: #c00000;">붉은</span> 튀링겐은 복원되었습니다.
 
-We have undertaken the purging of reactionary sentiments within the police, and revamped the state’s school curriculum to move away from the nationalistic values that remain prevalent. More work is set to be done, but at least Hindenburg’s gaze has been turned away… for now.
+우리는 경찰 내의 반동적 정서를 숙청하는 작업에 착수했고, 여전히 만연한 민족주의적 가치에서 벗어나도록 주의 학교 커리큘럼을 개편했습니다. 더 많은 작업이 예정되어 있지만, 적어도 힌덴부르크의 시선은 딴 곳으로 돌려졌습니다... 지금은 말입니다.
 
 @no_majority
-title: No majority can be found!
-subtitle: [? if bourgeois_coalition_thuringia < 50 and far_right_coalition_thuringia < 50 and spd_coalition_thuringia < 50: All possible coalitions lack a majority. ?][? if (bourgeois_coalition_thuringia < 50 and not toleration_possible) or (spd_coalition_thuringia >= 50 and not spd_coalition_possible): The bourgeois parties still haven't forgiven us. ?]
+title: 과반수를 확보할 수 없다!
+subtitle: [? if bourgeois_coalition_thuringia < 50 and far_right_coalition_thuringia < 50 and spd_coalition_thuringia < 50: 모든 가능한 연정이 과반수에 미치지 못합니다. ?][? if (bourgeois_coalition_thuringia < 50 and not toleration_possible) or (spd_coalition_thuringia >= 50 and not spd_coalition_possible): 부르주아 정당들은 여전히 우리를 용서하지 않았습니다. ?]
 view-if: bourgeois_coalition_thuringia < 50 and far_right_coalition_thuringia < 50 and not toleration_possible and not spd_coalition_possible
 on-arrival: {!
 let dvp_toleration_threshold = 30;
@@ -616,18 +616,18 @@ if (Q.thuringia_no_majority) {
 if ((Q.dvp_relation >= dvp_toleration_threshold && !Q.lvp_formed) || (Q.lvp_relation >= lvp_toleration_threshold && Q.lvp_formed)) Q.toleration_possible = 1;
 !}
 
-With the bourgeois parties unable to secure a majority even with the inclusion of the <span style="color: #7A3C00;">**NSDAP**</span>, and their refusal to form a coalition with us, no viable majority can be established. The ruling coalition fears that calling new elections will only accelerate their decline and further erode their support.
+부르주아 정당들이 <span style="color: #7A3C00;">**NSDAP**</span>를 포함하더라도 과반수를 확보하지 못하고, 우리와 연정을 형성하는 것도 거부함에 따라, 실행 가능한 과반수 정부가 수립될 수 없습니다. 집권 연정은 새로운 선거를 소집하는 것이 자신들의 쇠퇴를 가속화하고 지지 기반을 더욱 잠식할 뿐이라고 우려하고 있습니다.
 
-In an effort to avoid this, they are more open to negotiating a toleration agreement.
+이를 피하기 위해, 그들은 묵인 협정을 협상하는 데 더 개방적인 태도를 보이고 있습니다.
 
 - @toleration_thuringia
 - @no_majority_2
 
 @no_majority_2
-title: A majority still can't be found!
-subtitle: [? if not toleration_possible: This is getting ridiculous. ?][? if toleration_possible: We will refuse to tolerate the bourgeois government, forcing new elections. ?]
+title: 여전히 과반수를 찾을 수 없다!
+subtitle: [? if not toleration_possible: 이건 정말 말도 안 됩니다. ?][? if toleration_possible: 우리는 부르주아 정부 묵인을 거부하고, 재선거를 강행할 것입니다. ?]
 on-arrival: thuringia_election_2_trigger_time = time + 3; thuringia_no_majority = 1; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 2; unemployed_nsdap += 4; pro_republic -= 3; new_middle_spd -= 3 if toleration_possible; old_middle_spd -= 3 if toleration_possible; rural_spd -= 2 if toleration_possible
 
-[? if not toleration_possible: The bourgeois parties remain unwilling to accept our offer of toleration. [? if far_right_coalition_thuringia + ddp_r_thuringia >= 50: One option the incumbent coalition has considered is including both the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and the <span style="color: #7A3C00;">**NSDAP**</span>, but for obvious reasons, both parties have vetoed this proposal. ?]?][? if toleration_possible: By refusing to enter any toleration agreement, and with the bourgeois parties unwilling to let us lead the government, no majority can be found. As a result, we have shouldered much of the blame for the deadlock and are likely to suffer in the next elections. ?]
+[? if not toleration_possible: 부르주아 정당들은 여전히 우리의 묵인 제안을 받아들이기를 꺼리고 있습니다. [? if far_right_coalition_thuringia + ddp_r_thuringia >= 50: 현직 연정이 고려한 한 가지 방안은 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와 <span style="color: #7A3C00;">**NSDAP**</span> 모두를 포함하는 것이었지만, 명백한 이유들로 인해 두 정당 모두 이 제안을 거부했습니다. ?]?][? if toleration_possible: 어떤 묵인 협정도 거부하고, 부르주아 정당들이 우리가 정부를 주도하는 것을 허용하지 않으려 함에 따라, 과반수를 찾을 수 없습니다. 결과적으로, 우리는 교착 상태에 대한 비난의 상당 부분을 뒤집어썼고 다음 선거에서 타격을 입을 가능성이 높습니다. ?]
 
-With no viable alternatives, the Landtag faces dissolution, triggering new elections—an opportunity the <span style="color: #7A3C00;">**NSDAP**</span> hopes to exploit by capitalizing on political instability and the perceived failure of parliamentary democracy.
+실행 가능한 대안이 없으므로 주 의회는 해산 위기에 처해 있으며, 이는 재선거를 촉발할 것입니다. 이는 <span style="color: #7A3C00;">**NSDAP**</span>가 정치적 불안정과 의회 민주주의의 실패 인식을 이용하여 이득을 취하려 노리는 기회입니다.
