@@ -1,4 +1,4 @@
-title: Lippe Landtag Election
+title: 리페 자유주 주 의회 선거
 subtitle: 
 view-if: rubicon and chancellor == "Schleicher" and year == 1933 and month == 1 and week == 3
 new-page: true
@@ -19,11 +19,11 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= Elections, [+ month : month +] [+ year +]
+= [+ year +]년 [+ month : month +]선거
 
-The state elections for the Free State of Lippe are to take place.
+리페 자유주 주 의회 선거가 실시될 예정입니다.
 
-- @lippe: May we do our best...
+- @lippe: 우리가 최선을 다했기를...
 
 @lippe
 on-arrival: {!
@@ -490,12 +490,12 @@ if (window && d3) {
 go-to: lippe_coalition_menu
 
 
-**Lippe results:**
+**리페 선거 결과:**
 
 {!<svg id="lippe_landtag" style="width: 500px; height: 250px;"> </svg>!}
-Vote % changes are compared to the last *Reichstag* election. <br> Seat % changes are compared to the last *Landtag* election.
+득표율 변화는 지난 *제국의회* 선거와 비교한 것입니다. <br> 의석 비율 변화는 지난 *주 의회* 선거와 비교한 것입니다.
 {!<table>!} 
-{!<tr><td>Party</td><td>Vote share</td><td>% Change</td><td>Landtag Seats</td><td>% Change</td></tr>!}
+{!<tr><td>정당</td><td>득표율</td><td>변동폭</td><td>주 의회 의석</td><td>변동폭</td></tr>!}
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_lippe_elections_vote +]%** {!</td><td>!} **[+ str_votes_change_spd_lippe +]** {!</td><td>!} **[+ spd_r_lippe +]%** {!</td><td>!} **[+ str_change_spd_lippe +]** {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_lippe_elections_vote +]% {!</td><td>!} [+ str_votes_change_sapd_lippe +] {!</td><td>!} [+ sapd_r_lippe +]% {!</td><td>!} [+ str_change_sapd_lippe +] ?]
@@ -525,11 +525,11 @@ Vote % changes are compared to the last *Reichstag* election. <br> Seat % change
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_lippe_elections_vote +]% {!</td><td>!} [+ str_votes_change_nsdap_lippe +] {!</td><td>!} [+ nsdap_r_lippe +]% {!</td><td>!} [+ str_change_nsdap_lippe +] {! </td></tr>!}
 {!</table>!}
 <hr id="read-marker">
-Lippe has been governed for the past four years by a coalition of the <span style="color: #c00000;">**SPD**</span>, [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], and <span style="color: #0075EB;">**VRP**</span>, with the local <span style="color: #c00000;">**SPD**</span> maintaining a more moderate image.
+리페는 지난 4년 동안 <span style="color: #c00000;">**SPD**</span>, [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], 그리고 <span style="color: #0075EB;">**VRP**</span>의 연립 정부에 의해 통치되어 왔으며, 지역 <span style="color: #c00000;">**SPD**</span>는 더 온건한 이미지를 유지하고 있습니다.
 <hr id="read-marker">
-But the real question isn’t the future of Lippe—it’s what the election says about the nation. A <span style="color: #7A3C00;">Nazi</span> victory could prove the party still has life. But a defeat, even after throwing everything into their campaign, would be a crushing blow. With no local elections until the fall, the <span style="color: #7A3C00;">Nazis</span> won’t get another moment like this to remotivate their party.
+하지만 진짜 문제는 리페의 미래가 아니라, 이 선거가 국가에 대해 무엇을 말해주느냐입니다. <span style="color: #7A3C00;">나치</span>의 승리는 당이 여전히 생명력을 가지고 있음을 증명할 수 있습니다. 하지만 그들의 캠페인에 모든 것을 쏟아부은 후의 패배는 치명적인 타격이 될 것입니다. 가을까지 지방 선거가 없으므로, <span style="color: #7A3C00;">나치</span>는 당에 다시 동기를 부여할 이런 순간을 다시는 얻지 못할 것입니다.
 
-Who cares what coalition forms here?
+여기서 어떤 연정이 구성되든 누가 신경 쓰겠습니까?
 
 @lippe_coalition_menu
 
@@ -540,95 +540,95 @@ Who cares what coalition forms here?
 - @nsdap_explode
 
 @nsdap_big_win
-title: The <span style="color: #7A3C00;">**NSDAP**</span> score a crushing victory.
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 압도적인 승리를 거두다.
 view-if: change_nsdap_votes_lippe >= 6
 on-arrival: lippe_big_win = 1; hindenburg_hitler_r += 2; hindenburg_schleicher_r -= 2; workers_nsdap += 2; unemployed_nsdap += 2; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 4; nazi_funds += 1; lippe_good = 1
 
-Unexpectedly, the <span style="color: #7A3C00;">**NSDAP**</span> matched their peak electoral performance—proof that the movement isn’t dying, but growing.
+예상치 못하게, <span style="color: #7A3C00;">**NSDAP**</span>는 역대 최고 선거 성과를 재현했습니다. 이는 운동이 죽지 않고 오히려 성장하고 있다는 증거입니다.
 
-This is a major propaganda win for the <span style="color: #7A3C00;">**NSDAP**</span>, sure to energize the party and reinforce the belief that [+ nsdap_leader +]’s all-or-nothing strategy is paying off. It’s only a matter of time before Hindenburg acknowledges the <span style="color: #7A3C00;">Nazi</span> surge.
+이것은 <span style="color: #7A3C00;">**NSDAP**</span>에게 있어 주요한 선전 승리이며, 당에 활력을 불어넣고 [+ nsdap_leader +]의 '전부 아니면 전무' 전략이 성과를 거두고 있다는 믿음을 강화할 것이 확실합니다. 힌덴부르크가 <span style="color: #7A3C00;">나치</span>의 급부상을 인정하는 것은 시간문제일 뿐입니다.
 
 @nsdap_moderate_win
-title: The <span style="color: #7A3C00;">**NSDAP**</span> score a dubious triumph.
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 미심쩍은 승리를 거두다.
 view-if: change_nsdap_votes_lippe >= 3 and change_nsdap_votes_lippe < 6
 on-arrival: hindenburg_hitler_r += 1; hindenburg_schleicher_r -= 1; new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; lippe_good = 1
 
-The <span style="color: #7A3C00;">Nazis</span> fell short of their peak results—but still gained votes compared to the last election. To the casual observer, the <span style="color: #7A3C00;">**NSDAP**</span> looks like it’s back on the rise, and they’ve seized on the outcome as a cheap propaganda boost to reenergize their disillusioned base.
+<span style="color: #7A3C00;">나치</span>는 최고 성과에는 미치지 못했지만, 지난 선거에 비해서는 득표율이 상승했습니다. 무심코 지켜보는 이들에게 <span style="color: #7A3C00;">**NSDAP**</span>는 다시 상승세에 있는 것처럼 보이며, 그들은 이 결과를 값싼 선전 도구로 삼아 환멸을 느낀 지지층을 재결집하려 하고 있습니다.
 
-But if we were to look closer. The <span style="color: #7A3C00;">**NSDAP**</span> cannot replicate the scale of its Lippe campaign—conducted in a state with barely a quarter of a percent of Germany’s population—across the country, especially given its financial troubles. The victory feels artificial.
+하지만 자세히 들여다보면 실상은 다릅니다. <span style="color: #7A3C00;">**NSDAP**</span>는 독일 인구의 0.25%에 불과한 주에서 수행된 리페 캠페인의 규모를 전국적으로 재현할 수 없으며, 특히 현재의 재정적 어려움을 고려할 때 더욱 그렇습니다. 이 승리는 인위적으로 느껴집니다.
 
-Still, pressure to bring [+ nsdap_chancellor +] into government is once again rising.
+그럼에도 불구하고, [+ nsdap_chancellor +]를 내각에 참여시키라는 압력은 다시 한번 거세지고 있습니다.
 
 - @hitler_good
 
 @nothing_ever_happens
-title: The <span style="color: #7A3C00;">**NSDAP**</span> fails to make a breakthrough.
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 돌파구를 마련하는 데 실패하다.
 view-if: change_nsdap_votes_lippe >= 0 and change_nsdap_votes_lippe < 3
 on-arrival: new_middle_nsdap -= 2; old_middle_nsdap -= 2; rural_nsdap -= 2; lippe_good = 1
 
-The <span style="color: #7A3C00;">**NSDAP**</span>, despite going all-out on this campaign, only managed to achieve gains of [+ change_nsdap_votes_lippe +]%. This serves as evidence that the movement is in decline, though slowly.
+<span style="color: #7A3C00;">**NSDAP**</span>는 이번 선거 운동에 전력을 다했음에도 불구하고, 고작 [+ change_nsdap_votes_lippe +]%의 득표율 상승을 얻는 데 그쳤습니다. 이는 비록 속도는 느리지만 운동이 쇠퇴하고 있다는 증거입니다.
 
-Nevertheless, the <span style="color: #7A3C00;">**NSDAP**</span> continues to use their modest gains as cheap propaganda, though few are swayed. Replicating the success of their Lippe campaign—conducted in a state that comprises barely a quarter of a percent of Germany’s population—across the entire country is not feasible, particularly given their financial troubles. The victory feels artificial.
+그럼에도 불구하고 <span style="color: #7A3C00;">**NSDAP**</span>는 이 미미한 성과를 값싼 선전 도구로 계속 활용하고 있지만, 이에 동요하는 사람은 거의 없습니다. 독일 인구의 0.25%에 불과한 주에서 거둔 리페 선거 운동의 성공을 전국적으로 재현하는 것은 불가능하며, 특히 그들의 재정난을 고려할 때 더욱 그렇습니다. 이 승리는 인위적으로 느껴집니다.
 
 - @hitler_eh
 
 @nsdap_joever
-title: The <span style="color: #7A3C00;">**NSDAP**</span>'s suffers a crushing defeat!
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 참담한 패배를 겪다!
 view-if: change_nsdap_votes_lippe < 0 and change_nsdap_votes_lippe > -4
 on-arrival: hindenburg_hitler_r -= 1; workers_nsdap -= 2; unemployed_nsdap -= 2; new_middle_nsdap -= 4; old_middle_nsdap -= 4; rural_nsdap -= 4; catholics_nsdap -= 2; nazi_funds -= 1
 
-The <span style="color: #7A3C00;">**NSDAP**</span> has suffered a crushing defeat! Despite throwing everything into this campaign, their vote share has actually declined. This is clear evidence that the movement is collapsing rapidly—and that new elections would be disastrous for the <span style="color: #7A3C00;">Nazi</span> cause.
+<span style="color: #7A3C00;">**NSDAP**</span>가 참담한 패배를 겪었습니다! 이번 선거 운동에 모든 것을 쏟아부었음에도 불구하고 득표율은 오히려 감소했습니다. 이는 운동이 빠르게 붕괴하고 있으며, 새로운 선거가 <span style="color: #7A3C00;">나치</span>의 대의에 재앙이 될 것이라는 명백한 증거입니다.
 
-Donations are drying up, party membership is plummeting, defections are soaring, and the political pressure on Schleicher has eased. Land is in sight.
+기부금은 말라가고, 당원 수는 급감하고, 탈당은 치솟고 있으며, 슐라이허에 대한 정치적 압박은 완화되었습니다. 드디어 육지가 보이기 시작했습니다.
 
 - @hitler_bad
 
 @nsdap_explode
-title: The <span style="color: #7A3C00;">**NSDAP**</span> is rapidly imploding!
+title: <span style="color: #7A3C00;">**NSDAP**</span>가 급격히 붕괴하고 있다!
 view-if: change_nsdap_votes_lippe <= -4
 on-arrival: hindenburg_hitler_r -= 2; workers_nsdap -= 4; unemployed_nsdap -= 4; new_middle_nsdap -= 8; old_middle_nsdap -= 8; rural_nsdap -= 6; catholics_nsdap -= 4; nazi_funds -= 2
 
-The <span style="color: #7A3C00;">**NSDAP**</span> is in free fall! Despite throwing everything they had into this campaign, their vote share has actually declined—a humiliating blow that confirms the movement’s rapid implosion.
+<span style="color: #7A3C00;">**NSDAP**</span>가 자유 낙하 중입니다! 가용 자원을 총동원했음에도 불구하고 득표율은 오히려 감소했습니다. 이는 운동이 내부로부터 빠르게 붕괴하고 있음을 확인시켜 주는 굴욕적인 타격입니다.
 
-Donors are abandoning them, defections are accelerating, and local organizations are collapsing. Even fanatics at the highest levels of the party are starting to lose faith. The threat they once posed is rapidly fading, and with the pressure on Schleicher easing, the worst may finally be over.
+후원자들은 등을 돌리고, 탈당은 가속화되고 있으며, 지역 조직들은 와해되고 있습니다. 당의 최고위층 광신도들조차 믿음을 잃기 시작했습니다. 그들이 한때 보여주었던 위협은 빠르게 사라지고 있으며, 슐라이허에 대한 압박이 완화됨에 따라 최악의 상황은 마침내 끝났을지도 모릅니다.
 
 - @hitler_explode
 
 @hitler_good
-title: How will this affect [+ nsdap_leader +] and his party?
+title: 이것이 [+ nsdap_leader +]와 그의 당에 어떤 영향을 미칠까?
 
-In a meeting between [+ nsdap_leader +] and the <span style="color: #7A3C00;">Nazi</span> gauleiters, immediately after the Lippe results were known, things could have turned disastrous if the results had been worse, with unrest already rising among the grassroots. However, the <span style="color: #7A3C00;">Nazi</span> gains have alleviated their concerns about his all-or-nothing strategy, and [+ nsdap_leader +] used the opportunity to finally address the Strasser issue.
+리페 선거 결과가 발표된 직후 열린 [+ nsdap_leader +]와 <span style="color: #7A3C00;">나치</span> 가울라이터들의 회의 분위기는, 만약 결과가 더 나빴다면 재앙이 될 뻔했습니다. 이미 풀뿌리 당원들 사이에서 불안감이 고조되고 있었기 때문입니다. 그러나 <span style="color: #7A3C00;">나치</span>의 득표율 상승은 '전부 아니면 전무' 전략에 대한 그들의 우려를 완화시켰고, [+ nsdap_leader +]는 이 기회를 틈타 마침내 슈트라서 문제를 매듭지었습니다.
 
-He unleashed the full force of his anger against Strasser, condemning the person responsible for his rise to power as a traitor and accusing him of numerous offenses stretching back many years. [+ nsdap_leader +] implied that anyone expressing doubts about his all-or-nothing strategy was an accomplice of the disgraced Strasser. This appears to have silenced dissent among the gauleiters.
+그는 슈트라서에게 분노를 쏟아내며, 자신의 권력 상승에 기여했던 인물을 배신자로 규정하고 수년 전의 일들까지 들추어내어 수많은 죄목으로 비난했습니다. [+ nsdap_leader +]는 자신의 '전부 아니면 전무' 전략에 의구심을 표하는 자는 누구든 불명예스러운 슈트라서의 공범이라고 암시했습니다. 이는 가울라이터들 사이의 반대 의견을 침묵시킨 것으로 보입니다.
 
-His denunciation of his former ally has been kept out of the press, deliberately by [+ nsdap_leader +] to shield the party from political fallout due to rumors of a split within its ranks. However, the bad news eventually reaches Chancellor von Schleicher, as the only person willing to cooperate with him in the party is, in fact, 'finished.'
+옛 동지에 대한 그의 비난은 언론에 보도되지 않았는데, 이는 당 내부 분열에 대한 소문으로 인한 정치적 파장을 막기 위해 [+ nsdap_leader +]가 의도적으로 통제한 것입니다. 그러나 이 나쁜 소식은 결국 슐라이허 총리에게 전해졌습니다. 당 내에서 그와 기꺼이 협력할 유일한 인물이 사실상 '끝장'났기 때문입니다.
 
 @hitler_eh
-title: How will this affect [+ nsdap_leader +] and his party?
+title: 이것이 [+ nsdap_leader +]와 그의 당에 어떤 영향을 미칠까?
 on-arrival: nazi_explode += 1
 
-In a meeting between [+ nsdap_leader +] and the <span style="color: #7A3C00;">Nazi</span> gauleiters, immediately after the Lippe results were known, things could have turned disastrous if the results had been worse, with unrest already rising among the grassroots. While the <span style="color: #7A3C00;">Nazi</span> gains somewhat mitigated the unrest, the gauleiters still voiced concerns about [+ nsdap_leader +]'s strategy. Leaks of discontent continue to reach the press.
+리페 선거 결과가 발표된 직후 열린 [+ nsdap_leader +]와 <span style="color: #7A3C00;">나치</span> 가울라이터들의 회의 분위기는, 만약 결과가 더 나빴다면 재앙이 될 뻔했습니다. 이미 풀뿌리 당원들 사이에서 불안감이 고조되고 있었기 때문입니다. <span style="color: #7A3C00;">나치</span>의 득표율 상승이 불안을 다소 진정시키긴 했지만, 가울라이터들은 여전히 [+ nsdap_leader +]의 전략에 우려를 표했습니다. 불만의 목소리는 계속해서 언론으로 새어 나가고 있습니다.
 
-In an attempt to suppress dissent, he unleashed the full force of his anger against Strasser, condemning the person responsible for his rise to power as a traitor and accusing him of numerous offenses stretching back many years. [+ nsdap_leader +] implied that anyone expressing doubts about his all-or-nothing strategy was an accomplice of the disgraced Strasser. This appears to have silenced dissent among the gauleiters.
+반대 의견을 억누르기 위해, 그는 슈트라서에게 분노를 쏟아내며, 자신의 권력 상승에 기여했던 인물을 배신자로 규정하고 수년 전의 일들까지 들추어내어 수많은 죄목으로 비난했습니다. [+ nsdap_leader +]는 자신의 '전부 아니면 전무' 전략에 의구심을 표하는 자는 누구든 불명예스러운 슈트라서의 공범이라고 암시했습니다. 이는 가울라이터들 사이의 반대 의견을 침묵시킨 것으로 보입니다.
 
-His denunciation of his former ally has been kept out of the press, deliberately by [+ nsdap_leader +] to shield the party from political fallout due to rumors of a split within its ranks. However, the bad news eventually reaches Chancellor von Schleicher, as the only person willing to cooperate with him in the party is, in fact, 'finished.'
+옛 동지에 대한 그의 비난은 언론에 보도되지 않았는데, 이는 당 내부 분열에 대한 소문으로 인한 정치적 파장을 막기 위해 [+ nsdap_leader +]가 의도적으로 통제한 것입니다. 그러나 이 나쁜 소식은 결국 슐라이허 총리에게 전해졌습니다. 당 내에서 그와 기꺼이 협력할 유일한 인물이 사실상 '끝장'났기 때문입니다.
 
 @hitler_bad
-title: How will this affect [+ nsdap_leader +] and his party?
+title: 이것이 [+ nsdap_leader +]와 그의 당에 어떤 영향을 미칠까?
 on-arrival: nazi_explode += 2
 
-In a meeting between [+ nsdap_leader +] and the <span style="color: #7A3C00;">Nazi</span> gauleiters immediately after the Lippe results became known, it was clear—they were not pleased. The consensus among the leadership was that [+ nsdap_leader +]’s all-or-nothing strategy is failing. They cannot simply wait for Hindenburg to have a sudden change of heart, nor can they rely on a victory at the ballot box.
+리페 선거 결과가 발표된 직후 열린 [+ nsdap_leader +]와 <span style="color: #7A3C00;">나치</span> 가울라이터들의 회의에서, 그들이 만족하지 못했다는 것은 명백했습니다. 지도부의 중론은 [+ nsdap_leader +]의 '전부 아니면 전무' 전략이 실패하고 있다는 것이었습니다. 그들은 힌덴부르크가 갑자기 마음을 바꾸기만을 기다릴 수도, 선거 승리에만 의존할 수도 없는 상황입니다.
 
-In an attempt to crush dissent, [+ nsdap_leader +] unleashed the full force of his anger on Strasser—denouncing the man who once helped elevate him as a traitor and accusing him of long-standing subversion. He warned that anyone questioning his strategy was aligning themselves with the disgraced Strasser. But many in the room still sympathized with Strasser’s arguments, and the tirade only deepened their disillusionment with the man they had once seen as a prophet.
+반대 의견을 묵살하기 위해, [+ nsdap_leader +]는 슈트라서에게 분노를 쏟아냈습니다. 한때 자신의 승진을 도왔던 인물을 배신자로 규정하고 오랫동안 전복 활동을 해왔다고 비난했습니다. 그는 자신의 전략에 의문을 제기하는 자는 누구든 불명예스러운 슈트라서와 한패가 되는 것이라고 경고했습니다. 하지만 회의실의 많은 이들은 여전히 슈트라서의 주장에 공감했고, 그 장광설은 한때 예언자로 여겼던 인물에 대한 환멸을 깊게 할 뿐이었습니다.
 
-The denunciation—and the evident unrest among the <span style="color: #7A3C00;">Nazi</span> leadership—quickly leaked to the press. Word soon reached Chancellor von Schleicher, who was elated at their collapse and hopeful that it might finally compel [+ nsdap_leader +] to act more rationally.
+이 비난과 <span style="color: #7A3C00;">나치</span> 지도부 내의 명백한 불안감은 빠르게 언론에 유출되었습니다. 소식은 곧 슐라이허 총리에게 전해졌고, 그는 그들의 붕괴에 기뻐하며 이것이 마침내 [+ nsdap_leader +]가 더 이성적으로 행동하도록 강요할지도 모른다는 희망을 품었습니다.
 
 @hitler_explode
-title: How will this affect [+ nsdap_leader +] and his party?
+title: 이것이 [+ nsdap_leader +]와 그의 당에 어떤 영향을 미칠까?
 on-arrival: nazi_explode += 3
 
-In a meeting between [+ nsdap_leader +] and the <span style="color: #7A3C00;">Nazi</span> gauleiters immediately after the Lippe results became known, it was clear—they were outraged. The consensus among the leadership was that [+ nsdap_leader +]’s all-or-nothing strategy was failing, and the party was collapsing fast. They could no longer wait for Hindenburg to have a sudden change of heart, nor could they rely on a victory at the ballot box.
+리페 선거 결과가 발표된 직후 열린 [+ nsdap_leader +]와 <span style="color: #7A3C00;">나치</span> 가울라이터들의 회의에서, 그들이 격분했다는 것은 명백했습니다. 지도부의 중론은 [+ nsdap_leader +]의 '전부 아니면 전무' 전략이 실패했으며, 당이 빠르게 붕괴하고 있다는 것이었습니다. 그들은 더 이상 힌덴부르크가 갑자기 마음을 바꾸기만을 기다릴 수도, 선거 승리에 의존할 수도 없었습니다.
 
-In a fit of rage, [+ nsdap_leader +] launched into a long and incoherent tirade against Strasser—denouncing the man who once helped elevate him as a traitor and accusing him of long-standing subversion. Many in the room still sympathized with Strasser’s arguments, and the outburst only deepened their disillusionment with the man they had once regarded as a prophet.
+분노에 휩싸인 [+ nsdap_leader +]는 슈트라서에 대해 길고 두서없는 비난을 쏟아냈습니다. 한때 자신의 승진을 도왔던 인물을 배신자로 규정하고 오랫동안 전복 활동을 해왔다고 비난했습니다. 회의실의 많은 이들은 여전히 슈트라서의 주장에 공감했고, 이 폭발은 한때 예언자로 여겼던 인물에 대한 환멸을 깊게 할 뿐이었습니다.
 
-After [+ nsdap_leader +] seemingly lost control, a growing minority within the party now openly call for a reconciliation with Strasser and the <span style="color: #7A3C00;">**NSDAP**</span> entering the Schleicher cabinet. The unrest within the party has quickly leaked to the press, with numerous local <span style="color: #7A3C00;">**NSDAP**</span> and <span style="color: #7A3C00;">**SA**</span> leaders now at each other’s throats, accelerating the party's collapse.
+[+ nsdap_leader +]가 통제력을 상실한 듯 보이자, 당 내에서 점점 늘어나는 소수파가 이제 공개적으로 슈트라서와의 화해와 <span style="color: #7A3C00;">**NSDAP**</span>의 슐라이허 내각 참여를 요구하고 있습니다. 당 내의 불안은 빠르게 언론에 유출되었고, 수많은 지역 <span style="color: #7A3C00;">**NSDAP**</span>와 <span style="color: #7A3C00;">**SA**</span> 지도자들이 서로 으르렁거리며 당의 붕괴를 가속화하고 있습니다.
