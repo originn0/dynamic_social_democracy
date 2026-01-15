@@ -1,5 +1,5 @@
-title: Presidential Election campaigning
-subtitle: It's campaign season.
+title: 대통령 선거 선거운동
+subtitle: 선거철이 다가왔습니다.
 new-page: true
 on-arrival: {!
 Q.presidential_election_campaigning_seen = 1;
@@ -43,19 +43,19 @@ max-visits: 1
 go-to: candidate_selection
 
 
-= Presidential Election campaigning
+= 대통령 선거 선거운동
 
-[? if nsdap_candidate_1932: The <span style="color: #7A3C00;">**NSDAP**</span>, standing alone in the electoral fight to elect [+ nsdap_candidate_1932_disp +], has little chance of winning—at least according to our advisors. However, this does not mean the election is inconsequential. The extensive <span style="color: #7A3C00;">Nazi</span> propaganda campaign, orchestrated by the infamous Joseph Goebbels, combined with the upcoming local elections just a month after the first round, could significantly shift public opinion. This, in turn, may pressure President Hindenburg and his entourage to adopt a more antagonistic stance toward the current government and push for a reorganization of the national government to include the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. [? if nsdap_candidate_1932 == "Hitler": Furthermore, Adolf Hitler possesses a remarkable charismatic ability, and his strategy of flying across Germany to deliver speeches to hundreds of thousands of otherwise indifferent voters each day rivals even that of Hindenburg. ?][? if nsdap_candidate_1932 == "Göring": With Hitler ineligible, Hermann Göring has taken up the mantle as the <span style="color: #7A3C00;">**NSDAP**</span>'s candidate. As aw staunch figure of the party’s right wing and an opponent of Strasser’s more radical policies, Göring will find it easier to attract industrial support, securing crucial funding for their extensive propaganda network. ?] ?]
+[? if nsdap_candidate_1932: 우리 고문들의 분석에 따르면, [+ nsdap_candidate_1932_disp +]를 당선시키기 위해 홀로 고군분투 중인 <span style="color: #7A3C00;">**NSDAP**</span>가 승리할 가능성은 희박합니다. 하지만 그렇다고 해서 이번 선거가 중요하지 않은 것은 아닙니다. 악명 높은 요제프 괴벨스가 지휘하는 광범위한 <span style="color: #7A3C00;">나치</span>의 선전 선거운동은, 1차 투표 후 불과 한 달 뒤에 있을 지방 선거와 맞물려 여론을 크게 뒤흔들 수 있습니다. 이는 결과적으로 힌덴부르크 대통령과 그의 측근들을 압박하여 현 정부에 더욱 적대적인 태도를 취하게 하고, <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>을 포함하는 방향으로 내각 개편을 추진하게 만들 수도 있습니다. [? if nsdap_candidate_1932 == "Hitler": 게다가 아돌프 히틀러는 놀라운 카리스마를 지니고 있으며, 매일 비행기를 타고 독일 전역을 돌며 수십만 명의 무관심한 유권자들에게 연설하는 그의 전략은 힌덴부르크의 위상에 견줄 만합니다. ?][? if nsdap_candidate_1932 == "Göring": 히틀러의 출마 자격이 박탈됨에 따라, 헤르만 괴링이 <span style="color: #7A3C00;">**NSDAP**</span>의 후보로 나섰습니다. 당내 우파의 거물이자 슈트라서의 급진 노선에 반대하는 인물로서, 괴링은 산업계의 지지를 끌어내고 그들의 방대한 선전망을 가동할 자금을 확보하는 데 훨씬 유리한 위치에 있습니다. ?] ?]
 
-[? if spd_support_reactionary: With our support for President Hindenburg, we are excluded from the United Hindenburg Committees, the main organization promoting his candidacy. Our support is unwelcome by Hindenburg himself, while Westarp and Gereke, the key leaders of the United Hindenburg Committees, will attempt to distance themselves from us as much as possible to secure moderate right-wing and industrial backing. As a result, our role in the campaign will be to rally the German Left, who remain reluctant to vote for a reactionary like him. ?][? if braun_campaign: We are running Otto Braun, one of our most renowned and respected statesmen. His reformist stance has given us a chance to attract some crossover support from the bourgeois parties. However, many outside our party would sooner die than support a <span style="color: #c00000;">socialist</span>. Our only viable path to expanding our vote share lies in winning back disaffected <span style="color: #700000;">**Communists**</span> and mobilizing worker enthusiasm. ?][? if spd_support_thalmann: Our controversial decision to support [+ communist_candidate_1932_disp +] as a leftist unity candidate has deeply polarized German politics, setting the stage for a final showdown between <span style="color: #9B0000;">Marxist</span> and Capitalism. A civil war is not even out of the question, regardless of which candidate emerges victorious. With the German Left united behind [+ communist_candidate_1932 +], our electoral base has little room to grow—we can only hope that the workers turn out in full force at the polls. ?][? if rosenfeld_campaign: We are running Kurt Rosenfeld, a lesser-known figure from our left wing. His leftist stances have given us a chance to attract the support of the <span style="color: #700000;">**Communists**</span>, but have completely closed the door to support from the bourgeois parties. Our only viable path to expanding our vote share lies in winning back disaffected workers, mobilizing their enthusiasm, and persuading our more reformist middle-class and rural elements to stick with the plan. ?][? if eckener_campaign: We are running Hugo Eckener, a famed non-partisan Zeppelin captain and personally conservative figure. His rightist stances have left the <span style="color: #c00000;">**SPD**</span> vulnerable to defections to the <span style="color: #700000;">**Communists**</span>, but have completely opened the door to unified support from the bourgeois parties. We can either shore up support for Eckener within the <span style="color: #c00000;">**SPD**</span> itself, or focus on maximizing crossover support and strengthening our cooperation with bourgeois allies. ?]
+[? if spd_support_reactionary: 힌덴부르크 대통령을 지지하기로 결정했음에도 불구하고, 우리는 그의 재선을 추진하는 핵심 조직인 '통합 힌덴부르크 위원회'에서 배제되었습니다. 힌덴부르크 본인조차 우리의 지지를 달가워하지 않으며, 위원회의 핵심 인물인 베스타르프와 게레케는 온건 우파와 산업계의 지원을 확보하기 위해 우리와 최대한 거리를 두려 할 것입니다. 결국 이번 선거운동에서 우리의 역할은 힌덴부르크 같은 반동주의자에게 투표하기를 꺼리는 독일 좌파 세력을 결집시키는 데 국한될 것입니다. ?][? if braun_campaign: 우리는 가장 저명하고 존경받는 정치인 중 한 명인 오토 브라운을 후보로 내세웠습니다. 그의 개혁주의적 성향 덕분에 부르주아 정당 지지층 일부를 흡수할 기회가 생겼습니다. 하지만 당 외부의 많은 이들에게 <span style="color: #c00000;">사회주의자</span>를 지지하는 것은 죽기보다 싫은 일일 것입니다. 득표율을 높일 수 있는 유일한 현실적인 길은 <span style="color: #700000;">**공산당**</span>으로 이탈한 지지층을 되찾고 노동자들의 열정을 다시금 불어넣는 것입니다. ?][? if spd_support_thalmann: 좌파 단일 후보로 [+ communist_candidate_1932_disp +]를 지지하기로 한 우리의 논란 많은 결정은 독일 정계를 극단적으로 양극화시켰고, <span style="color: #9B0000;">마르크스주의</span>와 자본주의 간의 최후의 결전을 위한 무대를 마련했습니다. 누가 승리하든 내전이 발발할 가능성도 배제할 수 없습니다. 독일 좌파가 [+ communist_candidate_1932 +]를 중심으로 결집한 이상, 우리의 지지 기반을 더 확장할 여지는 거의 없습니다. 우리는 오직 노동자들이 투표소로 쏟아져 나오기만을 바랄 뿐입니다. ?][? if rosenfeld_campaign: 우리는 당내 좌파에 속하는 덜 알려진 인물인 쿠르트 로젠펠트를 후보로 내세웠습니다. 그의 좌파적 성향은 <span style="color: #700000;">**공산당**</span> 지지자들을 끌어들일 기회를 주었지만, 부르주아 정당들의 지지를 얻을 가능성은 완전히 차단해 버렸습니다. 득표율을 높일 수 있는 유일한 현실적인 길은 불만을 품은 노동자들을 되찾아 그들의 열정을 동원하고, 당내 개혁주의 성향의 중산층과 농촌 지지자들이 이탈하지 않도록 설득하는 것입니다. ?][? if eckener_campaign: 우리는 유명한 제펠린 선장이자 보수적 성향의 무소속 인사인 휴고 에케너를 후보로 내세웠습니다. 그의 우파적 성향은 <span style="color: #c00000;">**SPD**</span> 지지층이 <span style="color: #700000;">**공산당**</span>으로 이탈할 위험을 키웠지만, 부르주아 정당들의 통합된 지지를 얻을 길은 활짝 열어주었습니다. 우리는 <span style="color: #c00000;">**SPD**</span> 내부의 에케너 지지를 단속하거나, 아니면 부르주아 동맹과의 협력을 강화하여 교차 투표를 극대화하는 전략 중 하나를 선택해야 합니다. ?]
 
 @candidate_selection
 
-- @view_candidates: View the running candidates.
+- @view_candidates: 출마한 후보들을 확인한다.
 
 @view_candidates
 
-[? if spd_campaign: [? if spd_candidate_1932 != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932_disp +]**</span>?][? if spd_candidate_1932 == "Eckener": <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span> ?] - supported by: ?]
+[? if spd_campaign: [? if spd_candidate_1932 != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932_disp +]**</span>?][? if spd_candidate_1932 == "Eckener": <span style="color: #000000;">**에**</span><span style="color: #DD0000;">**케**</span><span style="color: #FFCC00;">**너**</span> ?] - 지지 세력: ?]
 
 [? if spd_campaign: - <span style="color: #c00000;">**SPD**</span> ?]
 
@@ -63,7 +63,7 @@ go-to: candidate_selection
 
 [? if kpd_support_spd == 1 and spd_campaign: - <span style="color: #700000;">**KPD**</span> ?]
 
-[? if z_support_spd == 1 and spd_campaign: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
+[? if z_support_spd == 1 and spd_campaign: - [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
 
 [? if bvp_support_spd and spd_campaign: - <span style="color: #A2D8E0;">**BVP**</span> ?]
 
@@ -73,7 +73,7 @@ go-to: candidate_selection
 
 [? if dvp_support_spd == 1 and spd_campaign: - <span style="color: #C0A054;">**DVP**</span> ?]
 
-[? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
+[? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - 지지 세력: ?]
 
 [? if (spd_support_reactionary_1 or (spd_support_reactionary and hindenburg_run)) and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
 
@@ -93,11 +93,11 @@ go-to: candidate_selection
 
 [? if (other_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - **Others** ?]
 
-[? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
+[? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald": <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - 지지 세력:: ?]
 
 [? if spd_support_reactionary_2 and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
 
-[? if z_support_spd != 1 and (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
+[? if z_support_spd != 1 and (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
 
 [? if (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and not bvp_support_spd and secondary_reactionary_candidate_1932: - <span style="color: #A2D8E0;">**BVP**</span> ?]
 
@@ -111,13 +111,13 @@ go-to: candidate_selection
 
 [? if (dnvp_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and dnvp_ideology == "Moderate" and not cvp_formed and secondary_reactionary_candidate_1932: - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
-[? if (other_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - **Others** ?]
+[? if (other_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - **기타** ?]
 
 [? if nsdap_candidate_1932: <span style="color: #7A3C00;">**[+ nsdap_candidate_1932_disp +]**</span> - supported by: ?]
 
 [? if nsdap_candidate_1932: - <span style="color: #7A3C00;">**NSDAP**</span> ?]
 
-[? if kpd_support_spd == 0 and communist_candidate_1932: <span style="color: #700000;">**[+ communist_candidate_1932_disp +]**</span> - supported by: ?]
+[? if kpd_support_spd == 0 and communist_candidate_1932: <span style="color: #700000;">**[+ communist_candidate_1932_disp +]**</span> - 지지 세력: ?]
 
 [? if kpd_support_spd == 0 and communist_candidate_1932: - <span style="color: #700000;">**KPD**</span> ?]
 
@@ -125,80 +125,80 @@ go-to: candidate_selection
 
 [? if spd_support_thalmann == 1: - <span style="color: #c00000;">**SPD**</span> ?]
 
-[? if dnvp_candidate_1932: [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932_disp +]**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932_disp +]**</span>?] - supported by: ?]
+[? if dnvp_candidate_1932: [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932_disp +]**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932_disp +]**</span>?] - 지지 세력: ?]
 
 [? if dnvp_candidate_1932 and dnvp_ideology == "Radical": - <span style="color: #3E88B3;">**DNVP**</span> ?]
 
 [? if dnvp_candidate_1932 and dnvp_ideology == "Moderate": - <span style="color: #003755;">**DNF**</span> ?]
 
-- @campaigning_braun: Time to hit the campaign trail! 
-- @campaigning_rosenfeld: Time to hit the campaign trail! 
-- @campaigning_hindenburg: Time to hit the campaign trail! 
-- @campaigning_thalmann: Time to hit the campaign trail! 
+- @campaigning_braun: 본격적인 선거 유세에 나설 시간이다!
+- @campaigning_rosenfeld: 본격적인 선거 유세에 나설 시간이다!
+- @campaigning_hindenburg: 본격적인 선거 유세에 나설 시간이다!
+- @campaigning_thalmann: 본격적인 선거 유세에 나설 시간이다! 
 
 @campaigning_braun
 view-if: braun_campaign
 
-We have a plethora of campaign options at our disposal.
+우리가 사용할 수 있는 수많은 선거운동 선택지가 있습니다.
 
 - @iron_front
 - @media
 - @center_glaze
 - @communist_glaze
 - @campaigning
-- @campaigning_hindenburg_op: It's Hindenburg's turn to campaign.
+- @campaigning_hindenburg_op: 힌덴부르크가 선거 운동 할 차례다.
 
 @iron_front
-title: Rally the full strength of the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> to support Braun.
+title: 브라운을 지지하기 위해 <span style="color: #c00000;">**강철**</span><span style="color: #1A1A1A;">**전선**</span>의 모든 역량을 총동원한다.
 view-if: iron_front_formed
 on-arrival: radicalization = 3 if radicalization > 3; workers_spd += radicalization + 3; new_middle_spd += radicalization + 2; unemployed_spd += radicalization + 2; pro_republic += 3; nationalism -= 3; neorevisionist_dissent -= 10; neorevisionist_strength += 10; left_dissent -= 10; rb_strength += 100; workers_nsdap -= 3 if strife >= 5 and far_right_paramilitary; new_middle_nsdap -= 3 if strife >= 5 and far_right_paramilitary; unemployed_nsdap -= 3 if strife >= 5 and far_right_paramilitary
 max-visits: 1
 face-image: img/iron_front_poster.png
 go-to: campaigning_braun
 
-The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> immediately gets to work, rallying around its slogan of opposing <span style="color: #7A3C00;">Fascism</span>, <span style="color:rgb(90, 0, 0);">Stalinism</span>, and <span style="color: #808080;">Monarchism</span>, which is especially relevant in this election.
+<span style="color: #c00000;">**강철**</span><span style="color: #1A1A1A;">**전선**</span>은 즉시 행동에 돌입하여, 이번 선거에서 특히 중요한 의미를 갖는 <span style="color: #7A3C00;">파시즘</span>, <span style="color:rgb(90, 0, 0);">스탈린주의</span>, 그리고 <span style="color: #808080;">군주제</span> 타도라는 슬로건을 중심으로 세를 결집했습니다.
 
 @media
-title: Use our radio stations to broadcast in favor of Braun.
-subtitle: -1 resource
+title: 브라운을 지지하는 방송을 송출하기 위해 라디오 방송국을 활용한다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_nsdap -= (radio + commercialized_media); old_middle_nsdap -= (radio + commercialized_media); workers_nsdap -= (campaign_media + radio - 2); unemployed_nsdap -= (campaign_media + radio); socialism += 3; nationalism -= 1; nationalism -= 2 if pacifism > 1; pro_republic += (radio + commercialized_media)
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_braun
 
-We are able to broadcast radio addresses urging turnout for Braun, spreading our message to the middle classes in hopes of overcoming their antipathy toward <span style="color: #c00000;">socialism</span>.
+우리는 브라운을 위한 투표 독려 연설을 라디오로 송출하여, 중산층이 가진 <span style="color: #c00000;">사회주의</span>에 대한 반감을 극복하고자 우리의 메시지를 널리 전파합니다.
 
 @center_glaze
-title: We persuade the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to take a more active role in our campaign efforts.
-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] isn't pulling their weight. -1 resource
+title: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]이 선거 운동에 더 적극적으로 나서도록 설득한다.
+subtitle: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 제 역할을 다하지 않고 있습니다. 자원 -1
 choose-if: z_support_spd == 1 and ((z_relation >= 60 and z_ideology == "Right") or (z_relation >= 45 and z_ideology == "Left")) and resources >= 1
-unavailable-subtitle: [? if z_support_spd != 1: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] doesn't support Braun. ?][? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 45 and z_ideology == "Left"): Our relations aren't good enough. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if z_support_spd != 1: [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 브라운을 지지하지 않습니다. ?][? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 45 and z_ideology == "Left"): 관계가 충분히 좋지 않습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; pro_republic += 3; z_glaze_spd = 1; catholics_nsdap -= 3; catholics_spd += 3; catholics_z += 2; rural_spd += 1; z_relation += 5; ddp_left += 2; dvp_left += 3; ddp_cohesion += 1; lvp_left += 2
 face-image: img/center_poster.jpg
 max-visits: 1
 go-to: campaigning_braun
 
-The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has not been the most enthusiastic supporter of Braun. However, by leveraging our connections with their left wing and trade unions, we push them toward a more active role in the campaign. This should help Braun secure more votes from their base.
+[? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 브라운을 지지하는 데 있어 미온적인 태도를 보여왔습니다. 하지만 우리는 그들 내부의 좌파 세력 및 노동조합과의 연줄을 활용하여, 그들이 선거운동에서 더 적극적인 역할을 맡도록 압박합니다. 이는 브라운이 그들의 지지 기반에서 더 많은 표를 얻는 데 도움이 될 것입니다.
 
 @communist_glaze
-title: We persuade the <span style="color: #700000;">**Communists**</span> to take a more active role in our campaign efforts.
-subtitle: This will alienate bourgeois voters! -2 resources
+title: <span style="color: #700000;">**공산당**</span>이 선거 운동에 더 적극적으로 나서도록 설득한다.
+subtitle: 이는 부르주아 유권자들을 등돌리게 할 것입니다! 자원 -2
 choose-if: kpd_support_spd == 1 and (kpd_relation >= 70 or (kpd_relation >= 55 and kpd_leader == "Conciliators")) and resources >= 2
-unavailable-subtitle: [? if kpd_support_spd != 1: The <span style="color: #700000;">KPD</span> doesn't support Braun. ?][? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 2: Not enough resources. (need 2) ?]
+unavailable-subtitle: [? if kpd_support_spd != 1: <span style="color: #700000;">KPD</span>는 브라운을 지지하지 않습니다. ?][? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): 관계가 충분히 좋지 않습니다. ?] [? if resources < 2: 자원이 부족합니다. (2 필요) ?]
 on-arrival: resources -= 2; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; lvp_relation -= 10; dvp_right += 5; ddp_right += 3; ddp_cohesion -= 2; lvp_right += 5; z_support_spd = 0 if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"); new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_braun
 
-Despite our earlier insistence on keeping the <span style="color: #700000;">**Communists**</span>' support low-key, we have now decided that their full backing in the upcoming election is worth the risk of alienating bourgeois <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span>. As a result, we are now openly participating in joint rallies in support of Braun.
+<span style="color: #700000;">**공산당**</span>의 지지를 조용히 유지하려던 당초 방침에도 불구하고, 우리는 다가오는 선거에서 그들의 전폭적인 지원을 받는 것이 부르주아 <span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자들</span>을 소외시킬 위험을 감수할 만큼 가치 있다고 판단했습니다. 그 결과, 우리는 이제 브라운을 지지하는 합동 유세에 공개적으로 참여하고 있습니다.
 
-[? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"): The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has withdrawn their endorsement of Braun. ?]
+[? if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"): [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]은 브라운에 대한 지지를 철회했습니다. ?]
 
 @campaigning
-title: Accelerate campaign efforts in general.
-subtitle: This will cost us 1 resource.
+title: 전반적인 선거 운동을 가속화한다.
+subtitle: 자원 1이 소모됩니다.
 view-if: not campaigning_seen
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
@@ -210,13 +210,13 @@ go-to: campaign_menu
 @campaign_menu
 
 
-Since it's election season, we are able to accelerate campaigning efforts. Buy one campaign, get another one completely free of charge!
+선거철을 맞아 선거 운동에 박차를 가할 수 있습니다. 선거 운동 하나를 구매하시면, 다른 하나는 완전히 공짜로 드립니다!
 
-- @workers: Add 1 "Worker" to the cart.
-- @middle_class: Add 1 "Middle Class" to the cart.
-- @rural: Add 1 "Rural" to the cart.
-- @unemployed: Add "Unemployed" to the cart.
-- @catholics: Add "Catholic" to the cart.
+- @workers: 장바구니에 "노동자" 1개를 추가한다.
+- @middle_class: 장바구니에 "중산층" 1개를 추가한다.
+- @rural: 장바구니에 "농촌" 1개를 추가한다.
+- @unemployed: 장바구니에 "실업자"를 추가한다.
+- @catholics: 장바구니에 "가톨릭"을 추가한다.
 - @checkout
 
 @workers
@@ -250,71 +250,71 @@ go-to: campaign_menu
 
 
 @checkout
-title: Checkout your order.
+title: 주문이 결제되었습니다.
 go-to: campaigning_braun if braun_campaign; campaigning_rosenfeld if rosenfeld_campaign; campaigning_thalmann if spd_support_thalmann; campaigning_hindenburg_2 if spd_support_reactionary
 
 
 @hope
 
-Where has hope got us the past few years?
+지난 몇 년간 희망이 우리에게 뭘 가져다주었습니까?
 
 @campaigning_rosenfeld
 view-if: rosenfeld_campaign
 
-We have a plethora of campaign options at our disposal.
+우리가 사용할 수 있는 수많은 선거 운동 선택지가 있습니다.
 
 - @iron_front_rosenfeld
 - @media_rosenfeld
 - @party_discipline_rosenfeld
 - @communist_glaze_rosenfeld
 - @campaigning
-- @campaigning_hindenburg_op: It's Hindenburg's turn to campaign.
+- @campaigning_hindenburg_op: 힌덴부르크가 선거 운동할 차례다.
 
 @iron_front_rosenfeld
-title: Rally the full strength of the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> to support Rosenfeld.
+title: 로젠펠트를 지지하기 위해 <span style="color: #c00000;">**강철**</span><span style="color: #1A1A1A;">**전선**</span>의 모든 역량을 총동원한다.
 view-if: iron_front_formed
 on-arrival: radicalization = 3 if radicalization > 3; workers_spd += radicalization + 3; new_middle_spd += radicalization + 2; unemployed_spd += radicalization + 2; pro_republic += 3; nationalism -= 3; neorevisionist_dissent -= 10; neorevisionist_strength += 10; left_dissent -= 10; rb_strength += 100; workers_nsdap -= 3 if strife >= 5 and far_right_paramilitary; new_middle_nsdap -= 3 if strife >= 5 and far_right_paramilitary; unemployed_nsdap -= 3 if strife >= 5 and far_right_paramilitary
 max-visits: 1
 face-image: img/iron_front_poster.png
 go-to: campaigning_rosenfeld
 
-The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> immediately gets to work, rallying around its slogan of opposing <span style="color: #7A3C00;">Fascism</span> and <span style="color: #808080;">Monarchism</span>, which is especially relevant in this election. This will help us shore up support among more reluctant workers.
+<span style="color: #c00000;">**강철**</span><span style="color: #1A1A1A;">**전선**</span>은 즉시 행동에 돌입하여, 이번 선거에서 특히 중요한 의미를 갖는 <span style="color: #7A3C00;">파시즘</span>과 <span style="color: #808080;">군주제</span> 타도라는 슬로건을 중심으로 세를 결집합니다. 이는 주저하는 노동자들 사이에서 지지세를 굳히는 데 도움이 될 것입니다.
 
 @media_rosenfeld
-title: Use our radio stations to broadcast in favor of Rosenfeld.
-subtitle: -1 resource
+title: 로젠펠트를 지지하는 방송을 송출하기 위해 라디오 방송국을 활용한다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; media_rosenfeld_seen = 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_kpd += 3; socialism += 3; nationalism -= 3
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld
 
-We are able to broadcast radio addresses urging turnout for Rosenfeld, spreading our message to the middle classes in hopes of overcoming their antipathy toward <span style="color: #c00000;">socialism</span> and Rosenfeld especially.
+우리는 로젠펠트를 위한 투표 독려 연설을 라디오로 송출하여, 중산층이 가진 <span style="color: #c00000;">사회주의</span>와 특히 로젠펠트 개인에 대한 반감을 극복하고자 우리의 메시지를 널리 전파합니다.
 
 @party_discipline_rosenfeld
-title: Impose party discipline.
-subtitle: Some reformist local organizations haven't been putting in the work.
+title: 당 규율을 확립한다.
+subtitle: 일부 개혁주의 지역 조직들이 제대로 협조하지 않고 있습니다.
 choose-if: dissent < 0.15
-unavailable-subtitle: [? if dissent >= 0.15: Internal dissent is too high. ?]
+unavailable-subtitle: [? if dissent >= 0.15: 내부 불만이 너무 높습니다. ?]
 on-arrival: party_rosenfeld_seen = 1
 face-image: img/poster_2.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld
 
-We need a united front to win this election—internal factional politics must be set aside.
+이번 선거에서 승리하려면 단결된 전선이 필요합니다. 내부 파벌 싸움은 잠시 접어두어야 합니다.
 
 @communist_glaze_rosenfeld
-title: We persuade the <span style="color: #700000;">**Communists**</span> to take a more active role in our campaign efforts.
-subtitle: This will alienate the bourgeois parties! -1 resource
+title: <span style="color: #700000;">**공산당**</span>이 선거 운동에 더 적극적으로 나서도록 설득한다.
+subtitle: 이는 부르주아 정당들을 등돌리게 할 것입니다! 자원 -1
 choose-if: kpd_support_spd == 1 and (kpd_relation >= 60 or (kpd_relation >= 40 and kpd_leader == "Conciliators")) and resources >= 1
-unavailable-subtitle: [? if kpd_support_spd != 1: The <span style="color: #700000;">KPD</span> doesn't support Rosenfeld. ?][? if (kpd_relation < 60 or (kpd_relation < 40 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if kpd_support_spd != 1: <span style="color: #700000;">KPD</span>는 로젠펠트를 지지하지 않습니다. ?][? if (kpd_relation < 60 or (kpd_relation < 40 and kpd_leader == "Conciliators")): 관계가 충분히 좋지 않습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 3; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 3; new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld
 
-As a result, we are now openly participating in joint rallies supporting Rosenfeld. This display of <span style="color: #9B0000;">Marxist</span> unity understandably alarms the bourgeois parties—and may, counterproductively, drive more voters to rally behind their candidate.
+그 결과, 우리는 이제 로젠펠트를 지지하는 합동 유세에 공개적으로 참여하고 있습니다. 이러한 <span style="color: #9B0000;">마르크스주의</span> 진영의 단결 과시는 당연히 부르주아 정당들에게 경각심을 주며, 역효과를 낳아 더 많은 유권자들이 그들의 후보 뒤로 결집하게 만들 수도 있습니다.
 
 @campaigning_hindenburg
 on-arrival: {!
@@ -331,7 +331,7 @@ Q.hindenburg_funds_old = Q.hindenburg_funds;
 view-if: spd_support_reactionary
 go-to: embezzlement_options
 
-The finances of the Hindenburg campaign are in disarray. Influential industrialists and business leaders are withholding significant donations due to his perceived betrayal of the Right. A lingering debt of five million Reichsmarks from his 1925 campaign remains unpaid, while additional funds are needed to cover organizational costs. [? if hindenburg_funds < 5: Efforts to raise money from the parties backing Hindenburg’s reelection are further complicated by their own financial struggles. Many have already depleted their resources and are carefully preserving what little remains for the upcoming state elections at the end of April. ?][? if hindenburg_funds >= 5: Fundraising efforts are further hindered by the parties backing Hindenburg’s reelection, as they prefer to reserve their funds for the upcoming state elections in late April, believing his victory is already assured. ?]
+힌덴부르크 선거운동의 재정 상태가 엉망입니다. 영향력 있는 산업가들과 재계 지도자들은 그가 우파를 배신했다고 여겨 상당한 기부금을 보류하고 있습니다. 1925년 선거 때 생긴 500만 라이히스마르크의 부채가 여전히 미지급 상태이며, 조직 운영비를 충당하기 위해 추가 자금이 절실합니다. [? if hindenburg_funds < 5: 힌덴부르크의 재선을 지지하는 정당들로부터 자금을 모으려는 노력은 그들 자신의 재정난으로 인해 더욱 어려워졌습니다. 많은 정당이 이미 자원을 소진했고, 4월 말에 있을 주 선거를 위해 남은 자금을 아끼고 있습니다. ?][? if hindenburg_funds >= 5: 힌덴부르크의 재선을 지지하는 정당들은 그의 승리가 이미 확실하다고 믿고 4월 말에 있을 주 선거를 위해 자금을 비축하려 하기 때문에, 모금 활동은 더욱 난항을 겪고 있습니다. ?]
 
 @embezzlement_options
 
@@ -339,49 +339,49 @@ The finances of the Hindenburg campaign are in disarray. Influential industriali
 - @embezzle_2
 - @embezzle_3
 - @embezzle_4
-- @campaigning_hindenburg_2: The funding situation is solved.
+- @campaigning_hindenburg_2: 자금 문제가 해결되었다.
 
 @embezzle
-title: Gunther Gereke has miraculously presented millions of Reichsmarks from an unknown source.
+title: 귄터 게레케가 출처 불명의 수백만 라이히스마르크를 기적적으로 조달해 왔다.
 view-if: bruning_time or chancellor == "Goerdeler"
 max-visits: 1
 on-arrival: hindenburg_funds += 3; new_middle_kvp += 2; old_middle_kvp += 2; rural_kvp += 4; new_middle_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_dnvp += 2 if dnvp_ideology == "Moderate"; rural_dnvp += 4 if dnvp_ideology == "Moderate"; rural_other += 4 if not kvp_formed; rural_nsdap -= 4 if rural_nsdap_normalized >= 35; pro_republic += 3; embezzle_1 = 1
 go-to: embezzlement_options
 
-Gunther Gereke, [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] member responsible for raising funds for the Hindenburg campaign, has managed to secure and disburse seven million marks to the campaign—though some of these funds have been diverted to his own party. The volume of private and corporate donations alone would have been insufficient to cover the campaign's expenses, making it evident that state financing played a role.
+힌덴부르크 선거운동의 자금 조달을 담당하는 [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] 의원 귄터 게레케는 선거운동에 700만 마르크를 확보하여 집행하는 데 성공했습니다. 비록 그중 일부는 자신의 정당으로 흘러들어갔지만 말입니다. 개인 및 기업 기부금만으로는 선거운동 비용을 감당하기 어려웠을 것이므로, 국가 자금이 투입되었음이 분명합니다.
 
 @embezzle_2
-title: Meet with the Brüning cabinet, and lobby for state financing toward the Prussian government, with the goal of securing Hindenburg's reelection.
-subtitle: [? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?] member and Vice-Chancellor Hermann Dietrich has shown a friendliness toward us. +3 resources 
-unavailable-subtitle: The <span style="color: #c00000;">SPD</span> doesn't control Prussia.
+title: 브뤼닝 내각과 접촉하여, 힌덴부르크 재선을 명분으로 프로이센 정부에 대한 국고 지원을 로비한다.
+subtitle: [? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?] 의원이자 부총리인 헤르만 디트리히는 우리에게 우호적인 태도를 보였습니다. 자원 +3
+unavailable-subtitle: <span style="color: #c00000;">SPD</span>는 프로이센을 장악하고 있지 않습니다.
 view-if: bruning_time
 choose-if: spd_prussia
 on-arrival: hindenburg_funds += 1; resources += 3; ddp_relation += 5; z_relation += 3; lvp_relation += 3; ddp_left += 1; pro_republic += 3; new_middle_ddp += 2; old_middle_ddp += 2; new_middle_dvp += 2 if dvp_ideology != "Right"; old_middle_dvp += 2 if dvp_ideology != "Right"; new_middle_lvp += 2; old_middle_lvp += 2; new_middle_nsdap -= 2 if new_middle_nsdap_normalized >= 40; old_middle_nsdap -= 2 if old_middle_nsdap_normalized >= 40; prussian_police_loyalty += 0.05; prussian_police_strength += 20; rb_militancy += 0.05; sa_strength -= 50; embezzle_2 = 1
 max-visits: 1
 go-to: embezzlement_options
 
-In a meeting with Chancellor Brüning, Defense Minister Groener, General Schleicher, Finance Minister and Vice-Chancellor Hermann Dietrich, and our own Carl Severing, discussions focused on the upcoming presidential election and the organization of an effective propaganda campaign for Hindenburg. Severing outlined the threat that <span style="color: #7A3C00;">Nazism</span>—particularly the <span style="color: #7A3C00;">**SA**</span>—posed to state authority and emphasized the election's critical role in keeping the <span style="color: #7A3C00;">Nazis</span> in check.
+브뤼닝 총리, 그뢰너 국방장관, 슐라이허 장군, 재무장관이자 부총리인 헤르만 디트리히, 그리고 우리 측의 카를 제베링이 모인 회의에서 논의는 다가오는 대통령 선거와 힌덴부르크를 위한 효과적인 선전 선거운동 조직에 집중되었습니다. 제베링은 <span style="color: #7A3C00;">나치즘</span>—특히 <span style="color: #7A3C00;">**SA**</span>—이 국가 공권력에 가하는 위협을 설명하며, <span style="color: #7A3C00;">나치</span>를 억제하는 데 있어 이번 선거가 얼마나 중요한지 역설했습니다.
 
-All present agreed that a decisive victory for Hindenburg and a campaign free from violent disturbances would greatly accelerate Germany’s economic recovery and domestic political stabilization. Achieving this, however, would require the use of state funds. Dietrich himself passionately advocated for this, having secretly transferred 1.8 million marks to Severing and the Prussian government with the understanding that the funds would be distributed among various pro-Hindenburg organizations in the State of Prussia. This approach allowed Dietrich and the government to support pro-Hindenburg groups outside the right-wing United Hindenburg Committees.
+참석자 전원은 힌덴부르크의 압도적인 승리와 폭력 사태 없는 선거 운동이 독일의 경제 회복과 정치적 안정을 크게 앞당길 것이라는 데 동의했습니다. 그러나 이를 달성하기 위해서는 국고 사용이 불가피했습니다. 디트리히 장관이 이를 적극 지지하며, 자금이 프로이센 내의 다양한 친힌덴부르크 조직에 분배될 것이라는 양해 하에 180만 마르크를 제베링과 프로이센 정부에 비밀리에 송금했습니다. 이로써 디트리히와 정부는 우파 중심의 '통합 힌덴부르크 위원회' 외곽에 있는 친힌덴부르크 단체들을 지원할 수 있게 되었습니다.
 
 @embezzle_3
-title: We will use the state to finance Hindenburg's reelection.
+title: 힌덴부르크의 재선을 위해 국고를 사용한다.
 view-if: spd_in_government and not bruning_time
 max-visits: 1
 on-arrival: hindenburg_funds += 3; new_middle_kvp += 2; old_middle_kvp += 2; rural_kvp += 4; new_middle_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_dnvp += 2 if dnvp_ideology == "Moderate"; rural_dnvp += 4 if dnvp_ideology == "Moderate"; rural_other += 4 if not kvp_formed; rural_nsdap -= 4 if rural_nsdap_normalized >= 35; pro_republic += 3; embezzle_1 = 1
 go-to: embezzlement_options
 
-We have contacted Gunther Gereke, [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] member responsible for raising funds for the Hindenburg campaign, and provided him with a sizable donation to secure and disburse five million marks to the campaign—though some of these funds have been diverted to his own party. This development has pleased both Schleicher and Hindenburg himself, who never expected us to prioritize state funds for a political campaign over feeding children. Not that the public will ever find out.
+우리는 힌덴부르크 선거운동의 자금 조달을 담당하는 [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] 의원 귄터 게레케에게 연락하여, 선거운동에 500만 마르크를 확보하고 집행할 수 있도록 상당한 규모의 기부금을 제공했습니다. 비록 그중 일부는 그의 정당으로 흘러들어갔지만 말입니다. 이 일로 슐라이허와 힌덴부르크 본인은 매우 흡족해했습니다. 그들은 우리가 굶주린 아이들을 먹이는 것보다 정치 선거운동에 국고를 우선 사용할 줄은 꿈에도 몰랐을 테니까요. 물론 대중은 이 사실을 영원히 모를 것입니다.
 
 @embezzle_4
-title: Our government in Prussia will distribute funds to pro-Hindenburg organizations.
-subtitle: This would involve financing the bourgeois parties.
+title: 프로이센 주 정부가 친힌덴부르크 단체들에 자금을 분배한다.
+subtitle: 이는 부르주아 정당들에 자금을 지원하는 것을 포함합니다.
 view-if: spd_prussia and not bruning_time
 max-visits: 1
 on-arrival: hindenburg_funds += 1; ddp_relation += 5; z_relation += 5; lvp_relation += 5; ddp_left += 1; pro_republic += 3; new_middle_ddp += 3; old_middle_ddp += 3; new_middle_dvp += 3 if dvp_ideology != "Right"; old_middle_dvp += 3 if dvp_ideology != "Right"; new_middle_lvp += 3; old_middle_lvp += 3; new_middle_nsdap -= 3 if new_middle_nsdap_normalized >= 40; old_middle_nsdap -= 3 if new_middle_nsdap_normalized >= 40; rural_other += 3; rb_militancy += 0.06; sa_strength -= 50; embezzle_2 = 1
 go-to: embezzlement_options
 
-We have met with politicians from the [? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?][? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?], the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Party, the Reichsbanner, and even some <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> peasant unions. We have agreed to allocate Prussian state funds to their groups, strengthening the Hindenburg campaign among those excluded from the official committee while also improving our relationship with these factions.
+우리는 [? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?][? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span>?], [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?],  국기단, 심지어 일부 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span> 농민 조합의 정치인들과 회동했습니다. 우리는 프로이센 주 자금을 그들의 단체에 할당하기로 합의했습니다. 이는 공식 위원회에서 배제된 이들 사이에서 힌덴부르크 선거 운동을 강화하는 동시에, 이들 파벌과의 관계를 개선할 것입니다.
 
 @campaigning_hindenburg_2
 on-arrival: {!
@@ -408,40 +408,40 @@ Q.industrial_hindenburg = 1;
 !}
 view-if: hindenburg_funds >= hindenburg_funds_old + 3
 
-We have a plethora of campaign options at our disposal.
+우리에게는 수많은 선거 운동 선택지가 있습니다.
 
 - @iron_front_hindenburg
 - @media_hindenburg
 - @for_democracy
 - @against_communists
 - @campaigning
-- @bourgeois_campaign: Let's hope the bourgeois parties will pick up the slack.
+- @bourgeois_campaign: 부르주아 정당들이 빈틈을 메워주길 희망하자.
 
 @iron_front_hindenburg
-title: Rally the full strength of the <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> to support Hindenburg.
+title: <span style="color: #c00000;">**강철**</span><span style="color: #1A1A1A;">**전선**</span>의 전력을 총동원하여 힌덴부르크를 지지한다.
 view-if: iron_front_formed
 on-arrival: radicalization = 3 if radicalization > 3; workers_spd += radicalization + 2; new_middle_spd += radicalization + 1; unemployed_spd += radicalization + 1; pro_republic += 3; nationalism -= 3; neorevisionist_dissent -= 10; neorevisionist_strength += 10; rb_strength += 100; workers_nsdap -= 2 if strife >= 5 and far_right_paramilitary; new_middle_nsdap -= 2 if strife >= 5 and far_right_paramilitary; unemployed_nsdap -= 2 if strife >= 5 and far_right_paramilitary
 max-visits: 1
 face-image: img/iron_front_poster.png
 go-to: campaigning_hindenburg_2
 
-The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> immediately gets to work, rallying around its slogan of opposing <span style="color: #7A3C00;">Fascism</span> and <span style="color:rgb(90, 0, 0);">Stalinism</span>. Although many leftists in the alliance are reluctant to support the <span style="color: #808080;">reactionary</span> Hindenburg.
+<span style="color: #c00000;">**강철**</span><span style="color: #1A1A1A;">**전선**</span>은 즉시 작업에 착수하여, <span style="color: #7A3C00;">파시즘</span>과 <span style="color:rgb(90, 0, 0);">스탈린주의</span>에 반대한다는 슬로건 아래 결집했습니다. 비록 동맹 내의 많은 좌파들이 <span style="color: #808080;">반동적인</span> 힌덴부르크를 지지하는 것을 꺼리고 있지만 말입니다.
 
 @media_hindenburg
-title: Use our radio stations to broadcast in favor of Hindenburg.
-subtitle: -1 resource
+title: 우리의 라디오 방송국을 활용해 힌덴부르크 지지 방송을 내보낸다.
+subtitle: 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 아직 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); socialism += 3; nationalism -= 1; nationalism -= 2 if pacifism > 1; pro_republic += (radio + commercialized_media)
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_hindenburg_2
 
-We are able to broadcast radio addresses urging turnout for Hindenburg, spreading our message to the middle classes in hopes of overcoming their radicalization caused by the economic crisis.
+우리는 힌덴부르크에 대한 투표 참여를 촉구하는 라디오 연설을 방송할 수 있습니다. 경제 위기로 인해 급진화된 중산층에게 우리의 메시지가 닿기를 희망하면서 말입니다.
 
 @for_democracy
-title: Rally in favor of democracy, and the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic.
-subtitle: We might alienate some of Hindenburg's more <span style="color: #808080;">reactionary</span> supporters. -1 resource
+title: 민주주의와 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 공화국을 위해 행진한다.
+subtitle: 힌덴부르크의 더 <span style="color: #808080;">반동적인</span> 지지자들 일부를 소외시킬 수도 있습니다. 자원 -1
 choose-if: resources >= 1
 unavailable-subtitle: Not enough resources.
 on-arrival: resources -= 1; hindenburg_democracy_bonus = 1; pro_republic += 5; center_dissent -= 5; labor_dissent -= 5; neorevisionist_dissent -= 5; reformist_dissent -= 5; left_dissent -= 5; workers_spd += 3*(1-dissent) if democratization >= 3; unemployed_spd += 3*(1-dissent) if democratization >= 3; pro_republic += 2*(1 - dissent) if democratization >= 3; new_middle_spd += 3*(1-dissent) if democratization >= 3; hindenburg_angry += 10; hindenburg_angry_bruning += 10; z_relation += 3; ddp_relation += 3; lvp_relation += 3
@@ -449,19 +449,19 @@ face-image: img/weimar_coalition.jpg
 max-visits: 1
 go-to: campaigning_hindenburg_2
 
-We argue to our base that, despite Hindenburg's well-known <span style="color: #808080;">reactionary</span> beliefs, he has refrained from outright dismantling our democracy, and supporting him as the lesser evil is necessary. However, our strong campaign in favor of President Hindenburg has discredited him in the eyes of his <span style="color: #808080;">reactionary</span> supporters who initially voted for him in 1925. This has increased Hindenburg's desire to distance himself from our support by shifting further to the right.
+우리는 지지 기반에게, 힌덴부르크의 잘 알려진 <span style="color: #808080;">반동적</span> 신념에도 불구하고 그가 우리 민주주의를 완전히 해체하는 것은 삼가해 왔으며, 차악으로서 그를 지지하는 것이 필요하다고 주장합니다. 그러나 힌덴부르크 대통령을 지지하는 우리의 강력한 선거운동은 1925년에 그에게 처음 투표했던 <span style="color: #808080;">반동적</span> 지지자들의 눈에 그를 불신하게 만들었습니다. 이는 힌덴부르크가 더 우측으로 이동함으로써 우리의 지지와 거리를 두려는 욕구를 부추겼습니다.
 
 @against_communists
-title: Focus our campaign against the <span style="color: #700000;">**Communist**</span> [+ communist_candidate_1932 +].
-subtitle: He has gained a significant amount of support by positioning himself as the "only left candidate." -1 resource
+title: <span style="color: #700000;">**공산당**</span>의 [+ communist_candidate_1932 +]에 반대하는 데 선거운동을 집중한다.
+subtitle: 그는 자신을 "유일한 좌파 후보"로 내세워 상당한 지지를 얻었습니다. 자원 -1
 choose-if: resources >= 1
-unavailable-subtitle: Not enough resources.
+unavailable-subtitle: 자원이 부족합니다.
 on-arrival: resources -= 1; left_dissent -= 10; workers_spd += 3; workers_kpd -= 3; kpd_relation -= 10; hindenburg_angry -= 10; hindenburg_angry_bruning -= 10
 face-image: img/social_fascist.jpg
 max-visits: 1
 go-to: campaigning_hindenburg_2
 
-We have lost an alarming number of voters to the <span style="color: #700000;">**Communists**</span> due to our support for the <span style="color: #808080;">reactionary</span> President Hindenburg. To ensure Hindenburg secures an outright majority in the first round, we must prevent further defections.
+우리는 <span style="color: #808080;">반동적인</span> 힌덴부르크 대통령을 지지한다는 이유로 놀라울 정도로 많은 유권자를 <span style="color: #700000;">**공산당**</span>에게 빼앗겼습니다. 힌덴부르크가 1차 투표에서 확실한 과반수를 확보하게 하려면, 더 이상의 이탈을 막아야 합니다.
 
 @bourgeois_campaign
 on-arrival: {!
@@ -478,11 +478,11 @@ if (Q.spd_campaign || Q.spd_support_thalmann || Q.kpd_support_spd) Q.hindenburg_
 !}
 go-to: bourgeois_campaign_menu
 
-The United Hindenburg Committees have set to work improving the perception of moderate right-wing German voters toward President Hindenburg, whose reputation as the Hero of Tannenberg has been tarnished by his support for the hated <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> system. Despite this, the <span class="tooltip-text" title="Following Hindenburg's overseeing of Germany's crushing victory at Tannenberg in the Great War, Hindenburg has become the center of a massive personality cult, lauded as the living ideal of German masculinity and patriotism. He is the embodiment of the best virtues of Prussian tradition.">Hindenburg Mythos</span> remains intact[? if nsdap_candidate_1932 == "Hitler":, and may be the only thing that rivals Hitler's charisma?].
+통합 힌덴부르크 위원회는 온건 우파 독일 유권자들에게 힌덴부르크 대통령에 대한 인식을 개선하기 위해 작업에 착수했습니다. 탄넨베르크의 영웅으로서의 그의 명성은 혐오스러운 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 체제에 대한 지지로 인해 실추되었습니다. 그럼에도 불구하고, <span class="tooltip-text" title="대전쟁에서 독일의 압도적인 승리인 탄넨베르크 전투를 힌덴부르크가 감독한 이후, 힌덴부르크는 거대한 개인 숭배의 중심이 되었으며, 독일의 남성성과 애국심의 살아있는 이상으로 칭송받았습니다. 그는 프로이센 전통의 최고의 미덕의 화신입니다.">힌덴부르크 신화</span>는 건재합니다[? if nsdap_candidate_1932 == "Hitler":, 그리고 아마도 히틀러의 카리스마에 대적할 수 있는 유일한 것일지도 모릅니다?].
 
-It's their turn to campaign.
+이제 그들이 선거 운동을 할 차례입니다.
 
-Hindenburg camp unity level: [+ hindenburg_unity : hindenburg_unity +]
+힌덴부르크 진영 단결도: [+ hindenburg_unity : hindenburg_unity +]
 
 @bourgeois_campaign_menu
 on-arrival: {!
@@ -496,8 +496,8 @@ if (Q.z_support_spd != 1) Q.religion_available = 1;
 - @organizational_endorsements
 
 @eckener
-title: Famed Zeppelin Captain Hugo Eckener is recruited for the campaign.
-subtitle: Being a stanch support of the President, he will utilize the *Graf Zeppelin* for the campaign.
+title: 유명한 제펠린 선장 휴고 에케너가 선거운동에 영입되었다.
+subtitle: 대통령의 확고한 지지자로서, 그는 선거운동에 *그라프 제펠린*을 활용할 것입니다.
 on-arrival: eckener_used = 1
 max-visits: 1
 go-to: eckener_2 if hindenburg_unity >= 8; eckener_3 if hindenburg_unity < 8
@@ -506,67 +506,67 @@ go-to: eckener_2 if hindenburg_unity >= 8; eckener_3 if hindenburg_unity < 8
 on-arrival: hindenburg_support += 2
 go-to: bourgeois_campaign_menu
 
-In an attempt to rival the <span class="tooltip-text" title="good mod">dynamism</span> of the <span style="color: #7A3C00;">Nazi</span> campaign, which has utilized aircraft to quickly transport high-profile <span style="color: #7A3C00;">Nazi</span> leaders to deliver up to four speeches per day, Hugo Eckener has been convinced to take flight across Germany to drum up popular support for Hindenburg. 
+하루에 최대 4번의 연설을 위해 고위 <span style="color: #7A3C00;">나치</span> 지도자들을 항공기로 빠르게 수송하는 <span style="color: #7A3C00;">나치</span> 선거운동의 <span class="tooltip-text" title="good mod">역동성</span>에 대항하고자, 휴고 에케너는 힌덴부르크에 대한 대중적 지지를 끌어모으기 위해 독일 전역을 비행하도록 설득되었습니다.
 
 @eckener_3
 on-arrival: unemployed_nsdap += 6; unemployed_kpd -= 3; unemployed_spd -= 3
 go-to: bourgeois_campaign_menu
 
-In an attempt to rival the dynamism of the <span style="color: #7A3C00;">Nazi</span> campaign, the Hindenburg campaign initially tried to convince Graf Zeppelin pilot Hugo Eckener to fly across Germany in support of Hindenburg. However, with Eckener already scheduled for a flight to South America, the campaign had to pivot to an alternative approach. They opted to rent airplanes to drop twenty million leaflets over the German population. However, this isn't enough to counteract the <span style="color: #7A3C00;">Nazi</span> style of campaigning.
+<span style="color: #7A3C00;">나치</span> 선거운동의 역동성에 대항하고자, 힌덴부르크 선거운동은 처음에 그라프 제펠린 조종사 휴고 에케너에게 힌덴부르크를 지지하여 독일 전역을 비행하도록 설득하려 했습니다. 그러나 에케너가 이미 남미 비행 일정이 잡혀 있었기에, 선거운동은 대안을 찾아야 했습니다. 그들은 비행기를 임대하여 독일 인구 위로 2천만 장의 전단지를 살포하는 것을 선택했습니다. 그러나 이는 <span style="color: #7A3C00;">나치</span> 스타일의 선거 운동에 대응하기에는 역부족입니다.
 
 @industrial
-title: Carl Duisberg of IG Farben will attempt to gain support of key industrialists.
-subtitle: Hindenburg has lost the favor of many of his former backers, maybe they can be convinced again?
+title: IG 파르벤의 카를 뒤스베르크가 주요 산업가들의 지지를 얻으려 시도할 것이다.
+subtitle: 힌덴부르크는 이전 후원자들 중 많은 이들의 호의를 잃었습니다. 어쩌면 그들이 다시 설득될 수 있을까요?
 on-arrival: industry_used = 1
 max-visits: 1
 go-to: industrial_2 if hindenburg_unity >= 5; industrial_3 if hindenburg_unity < 5
 
-Carl Duisberg, the chairman of the United Hindenburg Committees have largely been unsuccessful in convincing big business leaders to sign the petition for Hindenburg's reelection, but perhaps the gravity of this race would help convince them?
+통합 힌덴부르크 위원회의 의장인 카를 뒤스베르크는 대기업 지도자들에게 힌덴부르크의 재선을 위한 청원서에 서명하도록 설득하는 데 대체로 실패했지만, 이번 경선의 중대함이 그들을 설득할 수 있을지도 모릅니다.
 
 @industrial_2
 on-arrival: hindenburg_support += 2
 go-to: bourgeois_campaign_menu
 
-Duisberg, being the former chairman of the National Federation of German Industry (RDI) and one of the more moderate members, has been successful in soliciting donations from many business leaders who had reservations about backing Hindenburg again. The radical revolutionary and socialistic policies of <span style="color: #7A3C00;">**NSDAP**</span> have greatly discouraged them from donating to [+ nsdap_candidate_1932 +]. It now looks like the Hindenburg campaign finally has the resources to properly establish a campaign infrastructure that can rival Goebbels' efforts and the <span style="color: #7A3C00;">Nazis</span>.
+독일산업전국연맹(RDI)의 전 의장이자 비교적 온건한 인물인 뒤스베르크는 힌덴부르크를 다시 지지하는 것에 유보적이었던 많은 비즈니스 리더들로부터 기부금을 받아내는 데 성공했습니다. <span style="color: #7A3C00;">**NSDAP**</span>의 급진적인 혁명적, 사회주의적 정책들은 그들이 [+ nsdap_candidate_1932 +]에게 기부하는 것을 크게 주저하게 만들었습니다. 이제 힌덴부르크 선거운동은 괴벨스의 노력과 <span style="color: #7A3C00;">나치</span>에 대적할 수 있는 선거운동 인프라를 제대로 구축할 자원을 마침내 확보한 것으로 보입니다.
 
 @industrial_3
 on-arrival: old_middle_nsdap += 4; old_middle_kvp -= 2; old_middle_dnvp -= 2 if industrial_dnvp_backing >= 2 and dnvp_ideology == "Moderate"; old_middle_other -= 4; rural_nsdap += 2
 go-to: bourgeois_campaign_menu
 
-Despite the antipathy the industrialists have toward [? if not hitler_deported: Hitler and the ?]<span style="color: #7A3C00;">**NSDAP**</span> due to their crypto-<span style="color: #c00000;">socialist</span> policies, a large part of them are firmly opposed to Hindenburg, and will withhold their donations. The Hindenburg campaign is beginning to heavily fall behind the <span style="color: #7A3C00;">**NSDAP**</span> in more rural areas, primarily due to the lack of resources.
+산업가들이 그들의 은밀한 <span style="color: #c00000;">사회주의적</span> 정책 때문에 [? if not hitler_deported: 히틀러와 ?]<span style="color: #7A3C00;">**NSDAP**</span>에 반감을 가지고 있음에도 불구하고, 그들 중 상당수는 힌덴부르크에 확고히 반대하며 기부금을 내지 않을 것입니다. 힌덴부르크 선거운동은 주로 자원 부족으로 인해 농촌 지역에서 <span style="color: #7A3C00;">**NSDAP**</span>에 크게 뒤처지기 시작하고 있습니다.
 
 @religion
-title: The Catholic Church and Lutheran Church have long held political neutrality, perhaps that will change?
+title: 가톨릭 교회와 루터교회는 오랫동안 정치적 중립을 지켜왔습니다. 어쩌면 바뀔지도?
 view-if: z_support_spd != 1
 on-arrival: religion_used = 1; catholics_z += 4 if catholics_z_normalized < 50; catholics_nsdap -= 4 if catholics_z_normalized < 50 and catholics_nsdap_normalized >= 8;
 max-visits: 1
 go-to: religion_2 if hindenburg_unity >= 3; religion_3 if hindenburg_unity < 3
 
-Prominent leaders of the Lutheran Church have endorsed President Hindenburg, arguing that despite their historical political neutrality, his reelection is a pressing necessity. Meanwhile, the Catholic Church is even more united in support of Hindenburg than it was for Wilhelm Marx in 1925. Catholic leaders, historically skeptical of <span style="color: #7A3C00;">Nazism</span>, have actively discouraged their members from joining <span style="color: #7A3C00;">Nazi</span> paramilitary organizations. This, combined with the strong support of Catholic-affiliated trade unions, will prove enormously significant in rallying a skeptical Catholic population behind a candidate whom most instinctively associate with Lutheran orthodoxy and Prussian authoritarianism.
+루터교회의 저명한 지도자들은 역사적인 정치적 중립에도 불구하고, 그의 재선이 시급한 과제라며 힌덴부르크 대통령을 지지했습니다. 한편, 가톨릭 교회는 1925년 빌헬름 마르크스 때보다 힌덴부르크 지지에 더욱 단결되어 있습니다. 역사적으로 <span style="color: #7A3C00;">나치즘</span>에 회의적인 가톨릭 지도자들은 신도들이 <span style="color: #7A3C00;">나치</span> 준군사 조직에 가입하는 것을 적극적으로 만류해 왔습니다. 이는 가톨릭 계열 노동조합의 강력한 지지와 결합되어, 대부분이 본능적으로 루터교 정통주의 및 프로이센 권위주의와 연관 짓는 후보 뒤에 회의적인 가톨릭 인구를 결집시키는 데 엄청난 중요성을 가질 것입니다.
 
 @religion_2
 on-arrival: hindenburg_support += 1
 go-to: bourgeois_campaign_menu
 
-Despite strong opposition from state and local Protestant church organizations—many of whose members sympathize with [+ nsdap_candidate_1932 +] and the <span style="color: #7A3C00;">**NSDAP**</span>—they have taken a public stand and will be campaigning in favor of Hindenburg, even amid growing calls for them to withdraw their endorsements.
+주 및 지역 개신교 교회 조직들의 강력한 반대에도 불구하고—그 구성원 중 다수는 [+ nsdap_candidate_1932 +]와 <span style="color: #7A3C00;">**NSDAP**</span>에 동조합니다—교회 지도자들은 공개적인 입장을 취했으며, 지지를 철회하라는 거센 요구 속에서도 힌덴부르크를 위해 선거 운동을 할 것입니다.
 
 @religion_3
 on-arrival: new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; new_middle_kvp -= 2; old_middle_kvp -= 2; rural_kvp -= 2; new_middle_dnvp -= 2 if dnvp_ideology == "Moderate"; old_middle_dnvp -= 2 if dnvp_ideology == "Moderate"; rural_dnvp -= 2 if dnvp_ideology == "Moderate"; new_middle_other -= 2 if not kvp_formed; old_middle_other -= 2 if not kvp_formed; rural_other -= 2 if not kvp_formed
 go-to: bourgeois_campaign_menu
 
-Unfortunately for the Hindenburg campaign, the pro-<span style="color: #7A3C00;">Nazi</span> sentiment within state and local churches has prevented church leaders from taking a public stand for Hindenburg. Many devout Protestants will now be voting for [+ nsdap_candidate_1932 +] as a result, as the church now claims that intervening in a presidential election would be against its nature.
+불행히도 힌덴부르크 선거운동에게는, 주 및 지역 교회 내의 친<span style="color: #7A3C00;">나치</span> 정서가 교회 지도자들이 힌덴부르크를 위해 공개적인 입장을 취하는 것을 막았습니다. 많은 독실한 개신교도들은 교회가 대통령 선거에 개입하는 것은 본분에 어긋난다는 주장에 따라 결과적으로 [+ nsdap_candidate_1932 +]에게 투표할 것입니다.
 
 @westarp
-title: Westarp, one of Hindenburg's close friends, will attempt to rally conservative forces for Hindenburg.
+title: 힌덴부르크의 절친한 친구인 베스타르프가 힌덴부르크를 위해 보수 세력을 결집하려 시도할 것이다.
 on-arrival: westarp_used = 1; hindenburg_support += 1
 max-visits: 1
 go-to: bourgeois_campaign_menu
 
-Of course, the main goal of the United Hindenburg Committees is to dispel the notion that Hindenburg is supported by the <span style="color: #000000;">Black</span>-<span style="color: #c00000;">Red</span> parties. To this end, Westarp has sent a letter to 750 conservative elites who supported Hindenburg's election in 1925, with 500 reaffirming their support of Hindenburg today. [? if dnvp_ideology == "Moderate": He has also played a key role in rallying the <span style="color: #3E88B3;">**DNVP**</span> around his candidacy. ?]
+물론, 통합 힌덴부르크 위원회의 주된 목표는 힌덴부르크가 <span style="color: #000000;">흑</span>-<span style="color: #c00000;">적</span> 정당들에 의해 지지받는다는 인식을 불식시키는 것입니다. 이를 위해, 베스타르프는 1925년 힌덴부르크의 당선을 지지했던 750명의 보수 엘리트들에게 서한을 보냈으며, 그중 500명이 오늘날 힌덴부르크에 대한 지지를 재확인했습니다. [? if dnvp_ideology == "Moderate": 그는 또한 <span style="color: #3E88B3;">**DNVP**</span>를 힌덴부르크 지지로 결집시키는 데 핵심적인 역할을 했습니다. ?]
 
 @organizational_endorsements
-title: What about the endorsements of the non-partisan organizations?
-subtitle: Influential groups such as the RLB, DHV, and the Pan-Germans, have been growing a rift between themselves and Hindenburg.
+title: 비정당 조직들의 지지는 어떤가?
+subtitle: RLB, DHV, 그리고 범독일연맹과 같은 영향력 있는 그룹들은 그들 자신과 힌덴부르크 사이의 균열을 키워왔습니다.
 view-if: eckener_used and industry_used and (religion_used or not religion_available) and westarp_used
 on-arrival: {!
 if (Q.hindenburg_support) {
@@ -607,68 +607,68 @@ if (Q.rlb_nazi) {
 }
 !}
 
-National Rural League (RLB) - [? if rlb_hindenburg: <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> ?][? if not rlb_hindenburg: <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;or [? if dnvp_candidate_1932 != "Hugenberg" or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 == "Hugenberg" and dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932 +]**</span>?]?] ?]
+전국농촌연맹 (RLB) - [? if rlb_hindenburg: <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> ?][? if not rlb_hindenburg: <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;또는 [? if dnvp_candidate_1932 != "Hugenberg" or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 == "Hugenberg" and dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932 +]**</span>?]?] ?]
 
-Stahlhelm - [? if dnvp_candidate_1932 and dnvp_candidate_1932 != "Hugenberg":<span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if not dnvp_candidate_1932 or dnvp_candidate_1932 == "Hugenberg": <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> ?]
+철모단 - [? if dnvp_candidate_1932 and dnvp_candidate_1932 != "Hugenberg":<span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if not dnvp_candidate_1932 or dnvp_candidate_1932 == "Hugenberg": <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> ?]
 
-German National Association of Commercial Employees (DHV) - <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span>
+독일민족상업직원협회 (DHV) - <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span>
 
-Pan-German League (ADV) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;or [? if dnvp_candidate_1932 != "Hugenberg" or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 == "Hugenberg" and dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932 +]**</span>?]?]
+범독일연맹 (ADV) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;또는 [? if dnvp_candidate_1932 != "Hugenberg" or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 == "Hugenberg" and dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932 +]**</span>?]?]
 
-United Patriotic Leagues (VVVD) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;or [? if dnvp_candidate_1932 != "Hugenberg" or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 == "Hugenberg" and dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932 +]**</span>?]?]
+통합애국연맹 (VVVD) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;또는 [? if dnvp_candidate_1932 != "Hugenberg" or dnvp_ideology == "Radical": <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 == "Hugenberg" and dnvp_ideology == "Moderate": <span style="color: #003755;">**[+ dnvp_candidate_1932 +]**</span>?]?]
 
-Kyffhäuser League - <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span>
+키프호이저 연맹 - <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span>
 
-[? if not rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members.<br><br> However, this approach has failed with the RLB. Under Schiele's leadership, the organization remains skeptical of the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> and has successfully blocked a <span style="color: #7A3C00;">Nazi</span> appointee from joining the presidium. Despite this, strong <span style="color: #7A3C00;">Nazi</span> sympathies among the rank-and-file have led to defections to the <span style="color: #7A3C00;">Nazi</span>'s alternative organization. ?]
+[? if not rlb_nazi: 다양한 우익 이익 단체들 중에서, 백만 명의 회원과 수많은 영향력 있는 주 조직을 가진 독일 최대의 경제 이익 그룹인 RLB의 지지는 의심할 여지 없이 가장 중요합니다. 이 단체들에 대한 <span style="color: #7A3C00;">나치</span>의 전략은 그들을 직접 공격하는 것이 아니라 평회원들에게 영향을 미치는 것입니다. 이 압력은 지도부가 <span style="color: #7A3C00;">나치</span>를 지지하거나 회원들의 눈에 자신들을 불신하게 만들 위험을 감수하도록 강요합니다.<br><br> 그러나 이 접근 방식은 RLB에서 실패했습니다. 쉴레의 지도 하에, 이 조직은 <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>에 회의적인 태도를 유지하며 <span style="color: #7A3C00;">나치</span> 인사가 상임간부회에 합류하는 것을 성공적으로 막았습니다. 그럼에도 불구하고, 평회원들 사이의 강력한 <span style="color: #7A3C00;">나치</span> 동조는 <span style="color: #7A3C00;">나치</span>의 대안 조직으로의 이탈로 이어졌습니다. ?]
 
-[? if rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members. <br><br> This approach has proven successful within the RLB, as its new leader, Kalckreuth, is notably friendly toward the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. He has even appointed a <span style="color: #7A3C00;">Nazi</span> agricultural official to the presidium. However, this shift has sparked significant backlash from the <span style="color: #7FCEB1;">**CNBLP**</span>-aligned factions within the organization and from state affiliates in Bavaria, Thuringia, and Wurttemberg. These groups have rejected the RLB's endorsement and instead urged their members to vote for [+ reactionary_candidate_1932 +][? if dnvp_candidate_1932:&nbsp;or [+ dnvp_candidate_1932 +]?].?]
+[? if rlb_nazi: 다양한 우익 이익 단체들 중에서, 백만 명의 회원과 수많은 영향력 있는 주 조직을 가진 독일 최대의 경제 이익 그룹인 RLB의 지지는 의심할 여지 없이 가장 중요합니다. 이 단체들에 대한 <span style="color: #7A3C00;">나치</span>의 전략은 그들을 직접 공격하는 것이 아니라 평회원들에게 영향을 미치는 것입니다. 이 압력은 지도부가 <span style="color: #7A3C00;">나치</span>를 지지하거나 회원들의 눈에 자신들을 불신하게 만들 위험을 감수하도록 강요합니다. <br><br> 이 접근 방식은 RLB 내에서 성공적인 것으로 판명되었는데, 그 새로운 지도자인 칼크로이트가 <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>에 눈에 띄게 우호적이기 때문입니다. 그는 심지어 <span style="color: #7A3C00;">나치</span> 농업 관리를 상임간부회에 임명했습니다. 그러나 이러한 변화는 조직 내의 <span style="color: #7FCEB1;">**CNBLP**</span>와 제휴한 파벌들과 바이에른, 튀링겐, 뷔르템베르크의 주 계열사들로부터 상당한 반발을 불러일으켰습니다. 이 그룹들은 RLB의 지지를 거부하고 대신 회원들에게 [+ reactionary_candidate_1932 +][? if dnvp_candidate_1932:&nbsp;또는 [+ dnvp_candidate_1932 +]?]에게 투표할 것을 촉구했습니다.?]
 
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망하자.
 
 @campaigning_thalmann
 view-if: spd_support_thalmann
 
-We have a plethora of campaign options at our disposal.
+우리에게는 수많은 선거 운동 선택지가 있습니다.
 
 - @paramilitary
 - @media_communist
 - @united_left
 - @campaigning
-- @campaigning_hindenburg_op: It's Hindenburg's turn to campaign.
+- @campaigning_hindenburg_op: 힌덴부르크가 선거 운동을 할 차례다.
 
 @paramilitary
-title: Ally with the <span style="color: #700000;">Communist</span> <span style="color: #700000;">**RFB**</span> on the streets, to fight against the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
-subtitle: This will permanently alienate the bourgeois parties!
+title:<span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>에 맞서 싸우기 위해 거리에서 <span style="color: #700000;">공산주의</span> <span style="color: #700000;">**RFB**</span>와 동맹을 맺는다.
+subtitle: 이것은 부르주아 정당들을 영구적으로 소외시킬 것입니다!
 on-arrival: kpd_truce = 1; kpd_relation += 5; rfb_strength += 100; rb_strength += 100; rfb_militancy += 0.1; rb_militancy += 0.04; neorevisionist_dissent += 10; reformist_dissent += 10; hindenburg_angry += 150; z_relation -= 20; ddp_relation -= 20; dvp_relation -= 20; lvp_relation -= 20; ddp_cohesion -= 5; ddp_right += 6; dvp_right += 10; lvp_right += 10
 face-image: img/reichsbanner_2.jpg
 max-visits: 1
 go-to: campaigning_thalmann
 
-Closer ties between the Reichsbanner and the <span style="color: #700000;">**RFB**</span> are established, protecting local party officials from political violence.
+국기단과 <span style="color: #700000;">**RFB**</span> 사이의 더 긴밀한 유대가 확립되어, 정치적 폭력으로부터 지역 당 간부들을 보호합니다.
 
 @media_communist
-title: Use our radio stations to broadcast in favor of [+ communist_candidate_1932 +].
-subtitle: This may help in overcoming their antagonism against <span style="color: #700000;">Communists</span>. -1 resource
+title: 우리의 라디오 방송국을 활용해 [+ communist_candidate_1932 +] 지지 방송을 내보낸다.
+subtitle: 이는 <span style="color: #700000;">공산주의자들</span>에 대한 그들의 적대감을 극복하는 데 도움이 될지도 모릅니다. 자원 -1
 choose-if: radio >= 2 and resources >= 1
-unavailable-subtitle: [? if radio < 2: We haven't sufficiently built up our radio infrastructure yet. ?] [? if resources < 1: Not enough resources. ?]
+unavailable-subtitle: [? if radio < 2: 아직 라디오 인프라가 충분히 구축되지 않았습니다. ?] [? if resources < 1: 자원이 부족합니다. ?]
 on-arrival: resources -= 1; media_communist_seen = 1; new_middle_spd += (radio + commercialized_media); old_middle_spd += (radio + commercialized_media); workers_spd += (campaign_media + radio - 2); unemployed_spd += (campaign_media + radio); new_middle_kpd += 3; socialism += 3; nationalism -= 3
 face-image: img/poster_0.jpg
 max-visits: 1
 go-to: campaigning_thalmann
 
-Let's face it, the middle class is never going to support someone like [+ communist_candidate_1932 +], no matter how hard we try. However, we do manage to convince some of our own in the <span style="color: #c00000;">socialist</span> white-collar unions to come around.
+솔직히 말해서, 중산층은 우리가 아무리 노력해도 [+ communist_candidate_1932 +] 같은 인물을 결코 지지하지 않을 것입니다. 그러나 우리는 <span style="color: #c00000;">사회주의</span> 화이트칼라 노조 내의 우리 편 일부를 설득하는 데 성공합니다.
 
 @united_left
-title: We persuade the <span style="color: #700000;">**Communists**</span> to let us take a more active role in their campaign efforts.
-subtitle: They have been putting themselves at the forefront. -1 resources
+title: 우리는 <span style="color: #700000;">**공산주의자들**</span>에게 그들의 선거운동 활동에서 우리가 더 적극적인 역할을 맡도록 설득한다.
+subtitle: 그들은 자신들을 최전선에 내세우고 있습니다. 자원 -1
 choose-if: (kpd_relation >= 70 or (kpd_relation >= 55 and kpd_leader == "Conciliators")) and resources >= 2
-unavailable-subtitle: [? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 2: Not enough resources. (need 2) ?]
+unavailable-subtitle: [? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): 우리의 관계가 충분히 좋지 않습니다. ?] [? if resources < 2: 자원이 부족합니다. (2 필요) ?]
 on-arrival: resources -= 1; spd_glaze_thalmann = 1; workers_spd += 3; workers_kpd += 3; workers_nsdap -= 3; unemployed_spd += 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 4; ddp_right += 2; ddp_cohesion -= 2; lvp_right += 4; new_middle_kpd = 1
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_thalmann
 
-For some reason, the <span style="color: #700000;">**Communists**</span> aren't particularly grateful for our endorsement of [+ communist_candidate_1932 +]; perhaps it's due to orders from Moscow. Anyhow, we have managed to convince their leadership to allow us to participate together in joint rallies and other efforts.
+어떤 이유에서인지, <span style="color: #700000;">**공산주의자들**</span>은 우리의 [+ communist_candidate_1932 +] 지지에 대해 특별히 고마워하지 않습니다. 아마도 모스크바로부터의 지령 때문일 것입니다. 어쨌든, 우리는 그들의 지도부가 합동 집회와 다른 활동들에 우리가 함께 참여하도록 설득하는 데 성공했습니다.
 
 @campaigning_hindenburg_op
 on-arrival: {!
@@ -685,31 +685,31 @@ Q.hindenburg_funds_old = Q.hindenburg_funds;
 view-if: not spd_support_reactionary
 go-to: embezzlement_options_op
 
-The finances of the Hindenburg campaign are in disarray. Influential industrialists and business leaders are withholding significant donations due to his perceived betrayal of the Right. A lingering debt of five million Reichsmarks from his 1925 campaign remains unpaid, while additional funds are needed to cover organizational costs. [? if hindenburg_funds < 5: Efforts to raise money from the parties backing Hindenburg’s reelection are further complicated by their own financial struggles. Many have already depleted their resources and are carefully preserving what little remains for the upcoming state elections at the end of April. ?][? if hindenburg_funds >= 5: Fundraising efforts are further hindered by the parties backing Hindenburg’s reelection, as they prefer to reserve their funds for the upcoming state elections in late April, believing his victory is already assured. ?]
+힌덴부르크 선거운동의 재정은 혼란 상태에 있습니다. 영향력 있는 산업가들과 비즈니스 리더들은 우파에 대한 그의 배신감 때문에 상당한 기부금을 보류하고 있습니다. 그의 1925년 선거운동에서 남은 500만 라이히스마르크의 빚은 미지급 상태로 남아 있으며, 조직 비용을 충당하기 위해 추가 자금이 필요합니다. [? if hindenburg_funds < 5: 힌덴부르크의 재선을 지지하는 정당들로부터 자금을 모으려는 노력은 그들 자신의 재정적 어려움으로 인해 더욱 복잡해집니다. 많은 이들이 이미 자원을 고갈시켰으며 4월 말에 있을 주 선거를 위해 남은 자금을 조심스럽게 아끼고 있습니다. ?][? if hindenburg_funds >= 5: 힌덴부르크의 재선을 지지하는 정당들이 그의 승리가 이미 확실하다고 믿고 4월 말에 있을 주 선거를 위해 자금을 비축하는 것을 선호함에 따라 모금 노력은 더욱 난항을 겪고 있습니다. ?]
 
 @embezzlement_options_op
 
 - @embezzle_op
 - @embezzle_op_2
-- @bourgeois_campaign_op: The funding situation is solved.
+- @bourgeois_campaign_op: 자금 상황이 해결되었다.
 
 @embezzle_op
-title: Gunther Gereke has miraculously presented millions of Reichsmarks from an unknown source.
+title: 귄터 게레케가 기적적으로 출처 불명의 수백만 라이히스마르크를 제시했다.
 view-if: bruning_time
 max-visits: 1
 on-arrival: hindenburg_funds += 3; new_middle_kvp += 2; old_middle_kvp += 2; rural_kvp += 4; new_middle_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_dnvp += 2 if dnvp_ideology == "Moderate"; rural_dnvp += 4 if dnvp_ideology == "Moderate"; rural_other += 4 if not kvp_formed; rural_nsdap -= 4 if rural_nsdap_normalized >= 35; pro_republic += 3; embezzle_1_op = 1
 go-to: embezzlement_options_op
 
-Gunther Gereke, [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] member responsible for raising funds for the Hindenburg campaign, has managed to secure and disburse seven million marks to the campaign—though some of these funds have been diverted to his own party. The volume of private and corporate donations alone would have been insufficient to cover the campaign's expenses, making it evident that state financing, particularly from the Reichswehr, played a role.
+힌덴부르크 선거운동을 위한 자금 모금을 담당하는 [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] 의원 귄터 게레케는 선거운동에 700만 마르크를 확보하고 지출하는 데 성공했습니다—비록 이 자금 중 일부는 자신의 당으로 전용되었지만 말입니다. 개인 및 기업 기부금의 규모만으로는 선거운동 비용을 충당하기에 불충분했을 것이므로, 국가 자금 조달, 특히 국방군이 역할을 했다는 것이 분명합니다.
 
 @embezzle_op_2
-title: Gunther Gereke has miraculously presented millions of Reichsmarks from an unknown source.
+title: 귄터 게레케가 기적적으로 출처 불명의 수백만 라이히스마르크를 제시했다.
 view-if: not bruning_time
 max-visits: 1
 on-arrival: hindenburg_funds += 1
 go-to: embezzlement_options_op
 
-Gunther Gereke, [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] member responsible for raising funds for the Hindenburg campaign, has managed to secure and disburse two million marks to the campaign—though some of these funds have been diverted to his own party. The volume of private and corporate donations alone would have been insufficient to cover the campaign's expenses, so we suspect the million or so marks that suddenly materialized was provided by Schleicher from the Reichswehr’s secret funds.
+힌덴부르크 선거운동을 위한 자금 모금을 담당하는 [? if dnvp_ideology == "Moderate": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Radical": <span style="color: #7FCEB1;">**CNBLP**</span>?] 의원 귄터 게레케는 선거운동에 200만 마르크를 확보하고 지출하는 데 성공했습니다—비록 이 자금 중 일부는 자신의 당으로 전용되었지만 말입니다. 개인 및 기업 기부금의 규모만으로는 선거운동 비용을 충당하기에 불충분했을 것이므로, 우리는 갑자기 나타난 백만 마르크 정도가 슐라이허에 의해 국방군의 비밀 자금에서 제공되었다고 의심합니다.
 
 @bourgeois_campaign_op
 on-arrival: {!
@@ -746,11 +746,11 @@ if (Q.spd_campaign || Q.spd_support_thalmann || Q.kpd_support_spd) Q.hindenburg_
 view-if: hindenburg_funds > hindenburg_funds_old
 go-to: bourgeois_campaign_menu_op
 
-The United Hindenburg Committees have set to work improving the perception of moderate right-wing German voters toward President Hindenburg, whose reputation as the Hero of Tannenberg has been tarnished by his support for the hated <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> system. Despite this, the <span class="tooltip-text" title="Following Hindenburg's overseeing of Germany's crushing victory at Tannenberg in the Great War, Hindenburg has become the center of a massive personality cult, lauded as the living ideal of German masculinity and patriotism. He is the embodiment of the best virtues of Prussian tradition.">Hindenburg Mythos</span> remains intact[? if nsdap_candidate_1932 == "Hitler":, and may be the only thing that rivals Hitler's charisma?].
+통합 힌덴부르크 위원회는 온건 우파 독일 유권자들에게 힌덴부르크 대통령에 대한 인식을 개선하기 위해 작업에 착수했습니다. 탄넨베르크의 영웅으로서의 그의 명성은 혐오스러운 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 체제에 대한 지지로 인해 실추되었습니다. 그럼에도 불구하고, <span class="tooltip-text" title="대전쟁에서 독일의 압도적인 승리인 탄넨베르크 전투를 힌덴부르크가 감독한 이후, 힌덴부르크는 거대한 개인 숭배의 중심이 되었으며, 독일의 남성성과 애국심의 살아있는 이상으로 칭송받았습니다. 그는 프로이센 전통의 최고의 미덕의 화신입니다.">힌덴부르크 신화</span>는 건재합니다[? if nsdap_candidate_1932 == "Hitler":, 그리고 아마도 히틀러의 카리스마에 대적할 수 있는 유일한 것일지도 모릅니다?].
 
-It's their turn to campaign.
+이제 그들이 선거 운동을 할 차례입니다.
 
-Hindenburg camp unity level: [+ hindenburg_unity : hindenburg_unity +]
+힌덴부르크 진영 단결도: [+ hindenburg_unity : hindenburg_unity +]
 
 @bourgeois_campaign_menu_op
 on-arrival: {!
@@ -764,8 +764,8 @@ if (Q.z_support_spd != 1) Q.religion_available = 1;
 - @organizational_endorsements_op
 
 @eckener_op
-title: Famed Zeppelin Captain Hugo Eckener is recruited for the campaign.
-subtitle: Being a stanch support of the President, he will utilize the *Graf Zeppelin* for the campaign.
+title: 유명한 제펠린 선장 휴고 에케너가 선거운동에 영입되었다.
+subtitle: 대통령의 확고한 지지자로서, 그는 선거운동에 *그라프 제펠린*을 활용할 것입니다.
 on-arrival: eckener_used = 1
 max-visits: 1
 go-to: eckener_2_op if hindenburg_unity >= 8; eckener_3_op if hindenburg_unity < 8
@@ -774,67 +774,67 @@ go-to: eckener_2_op if hindenburg_unity >= 8; eckener_3_op if hindenburg_unity <
 on-arrival: hindenburg_support += 2
 go-to: bourgeois_campaign_menu_op
 
-In an attempt to rival the <span class="tooltip-text" title="good mod">dynamism</span> of the <span style="color: #7A3C00;">Nazi</span> campaign, which has utilized aircraft to quickly transport high-profile <span style="color: #7A3C00;">Nazi</span> leaders to deliver up to four speeches per day, Hugo Eckener has been convinced to take flight across Germany to drum up popular support for Hindenburg. 
+하루에 최대 4번의 연설을 위해 고위 <span style="color: #7A3C00;">나치</span> 지도자들을 항공기로 빠르게 수송하는 <span style="color: #7A3C00;">나치</span> 선거운동의 <span class="tooltip-text" title="good mod">역동성</span>에 대항하고자, 휴고 에케너는 힌덴부르크에 대한 대중적 지지를 끌어모으기 위해 독일 전역을 비행하도록 설득되었습니다.
 
 @eckener_3_op
 on-arrival: unemployed_nsdap += 6; unemployed_kpd -= 3; unemployed_spd -= 3
 go-to: bourgeois_campaign_menu_op
 
-In an attempt to rival the dynamism of the <span style="color: #7A3C00;">Nazi</span> campaign, the Hindenburg campaign initially tried to convince Graf Zeppelin pilot Hugo Eckener to fly across Germany in support of Hindenburg. However, with Eckener already scheduled for a flight to South America, the campaign had to pivot to an alternative approach. They opted to rent airplanes to drop twenty million leaflets over the German population. However, this isn't enough to counteract the <span style="color: #7A3C00;">Nazi</span> style of campaigning.
+<span style="color: #7A3C00;">나치</span> 선거운동의 역동성에 대항하고자, 힌덴부르크 선거운동은 처음에 그라프 제펠린 조종사 휴고 에케너에게 힌덴부르크를 지지하여 독일 전역을 비행하도록 설득하려 했습니다. 그러나 에케너가 이미 남미 비행 일정이 잡혀 있었기에, 선거운동은 대안을 찾아야 했습니다. 그들은 비행기를 임대하여 독일 인구 위로 2천만 장의 전단지를 살포하는 것을 선택했습니다. 그러나 이는 <span style="color: #7A3C00;">나치</span> 스타일의 선거 운동에 대응하기에는 역부족입니다.
 
 @industrial_op
-title: Carl Duisberg of IG Farben will attempt to gain support of key industrialists.
-subtitle: Hindenburg has lost the favor of many of his former backers, maybe they can be convinced again?
+title: IG 파르벤의 카를 뒤스베르크가 주요 산업가들의 지지를 얻으려 시도할 것이다.
+subtitle: 힌덴부르크는 이전 후원자들 중 많은 이들의 호의를 잃었습니다. 어쩌면 그들이 다시 설득될 수 있을까요?
 on-arrival: industry_used = 1
 max-visits: 1
 go-to: industrial_2_op if hindenburg_unity >= 5; industrial_3_op if hindenburg_unity < 5
 
-Carl Duisberg, the chairman of the United Hindenburg Committees have largely been unsuccessful in convincing big business leaders to sign the petition for Hindenburg's reelection, but perhaps the gravity of this race would help convince them?
+통합 힌덴부르크 위원회의 의장인 카를 뒤스베르크는 대기업 지도자들에게 힌덴부르크의 재선을 위한 청원서에 서명하도록 설득하는 데 대체로 실패했지만, 이번 경선의 중대함이 그들을 설득할 수 있을지도 모릅니다.
 
 @industrial_2_op
 on-arrival: hindenburg_support += 2
 go-to: bourgeois_campaign_menu_op
 
-Duisberg, being the former chairman of the National Federation of German Industry (RDI) and one of the more moderate members, has been successful in soliciting donations from many business leaders who had reservations about backing Hindenburg again. The radical revolutionary and socialistic policies of <span style="color: #7A3C00;">**NSDAP**</span> have greatly discouraged them from donating to [+ nsdap_candidate_1932 +]. It now looks like the Hindenburg campaign finally has the resources to properly establish a campaign infrastructure that can rival Goebbels' efforts and the <span style="color: #7A3C00;">Nazis</span>.
+독일산업전국연맹(RDI)의 전 의장이자 비교적 온건한 인물인 뒤스베르크는 힌덴부르크를 다시 지지하는 것에 유보적이었던 많은 비즈니스 리더들로부터 기부금을 받아내는 데 성공했습니다. <span style="color: #7A3C00;">**NSDAP**</span>의 급진적인 혁명적, 사회주의적 정책들은 그들이 [+ nsdap_candidate_1932 +]에게 기부하는 것을 크게 주저하게 만들었습니다. 이제 힌덴부르크 캠페인은 괴벨스의 노력과 <span style="color: #7A3C00;">나치</span>에 대적할 수 있는 캠페인 인프라를 제대로 구축할 자원을 마침내 확보한 것으로 보입니다.
 
 @industrial_3_op
 on-arrival: old_middle_nsdap += 4; old_middle_kvp -= 2; old_middle_dnvp -= 2 if industrial_dnvp_backing >= 2 and dnvp_ideology == "Moderate"; old_middle_other -= 4; rural_nsdap += 2
 go-to: bourgeois_campaign_menu_op
 
-Despite the antipathy the industrialists have toward [? if not hitler_deported: Hitler and the ?]<span style="color: #7A3C00;">**NSDAP**</span> due to their crypto-<span style="color: #c00000;">socialist</span> policies, a large part of them are firmly opposed to Hindenburg, and will withhold their donations. The Hindenburg campaign is beginning to heavily fall behind the <span style="color: #7A3C00;">**NSDAP**</span> in more rural areas, primarily due to the lack of resources.
+산업가들이 그들의 은밀한 <span style="color: #c00000;">사회주의적</span> 정책 때문에 [? if not hitler_deported: 히틀러와 ?]<span style="color: #7A3C00;">**NSDAP**</span>에 반감을 가지고 있음에도 불구하고, 그들 중 상당수는 힌덴부르크에 확고히 반대하며 기부금을 내지 않을 것입니다. 힌덴부르크 캠페인은 주로 자원 부족으로 인해 농촌 지역에서 <span style="color: #7A3C00;">**NSDAP**</span>에 크게 뒤처지기 시작하고 있습니다.
 
 @religion_op
-title: The Catholic Church and Lutheran Church have long held political neutrality, perhaps that will change?
+title: 가톨릭 교회와 루터교회는 오랫동안 정치적 중립을 지켜왔습니다. 어쩌면 바뀔지도?
 view-if: z_support_spd != 1
 on-arrival: religion_used = 1; catholics_z += 4 if catholics_z_normalized < 50; catholics_nsdap -= 4 if catholics_z_normalized < 50 and catholics_nsdap_normalized >= 8
 max-visits: 1
 go-to: religion_2_op if hindenburg_unity >= 3; religion_3_op if hindenburg_unity < 3
 
-Prominent leaders of the Lutheran Church have endorsed President Hindenburg, arguing that despite their historical political neutrality, his reelection is a pressing necessity. Meanwhile, the Catholic Church is even more united in support of Hindenburg than it was for Wilhelm Marx in 1925. Catholic leaders, historically skeptical of <span style="color: #7A3C00;">Nazism</span>, have actively discouraged their members from joining <span style="color: #7A3C00;">Nazi</span> paramilitary organizations. This, combined with the strong support of Catholic-affiliated trade unions, will prove enormously significant in rallying a skeptical Catholic population behind a candidate whom most instinctively associate with Lutheran orthodoxy and Prussian authoritarianism.
+루터교회의 저명한 지도자들은 역사적인 정치적 중립에도 불구하고, 그의 재선이 시급한 과제라며 힌덴부르크 대통령을 지지했습니다. 한편, 가톨릭 교회는 1925년 빌헬름 마르크스 때보다 힌덴부르크 지지에 더욱 단결되어 있습니다. 역사적으로 <span style="color: #7A3C00;">나치즘</span>에 회의적인 가톨릭 지도자들은 신도들이 <span style="color: #7A3C00;">나치</span> 준군사 조직에 가입하는 것을 적극적으로 만류해 왔습니다. 이는 가톨릭 계열 노동조합의 강력한 지지와 결합되어, 대부분이 본능적으로 루터교 정통주의 및 프로이센 권위주의와 연관 짓는 후보 뒤에 회의적인 가톨릭 인구를 결집시키는 데 엄청난 중요성을 가질 것입니다.
 
 @religion_2_op
 on-arrival: hindenburg_support += 1
 go-to: bourgeois_campaign_menu_op
 
-Despite strong opposition from state and local Protestant church organizations—many of whose members sympathize with [+ nsdap_candidate_1932 +] and the <span style="color: #7A3C00;">**NSDAP**</span>—they have taken a public stand and will be campaigning in favor of Hindenburg, even amid growing calls for them to withdraw their endorsements.
+주 및 지역 개신교 교회 조직들의 강력한 반대에도 불구하고—그 구성원 중 다수는 [+ nsdap_candidate_1932 +]와 <span style="color: #7A3C00;">**NSDAP**</span>에 동조합니다—교회 지도자들은 공개적인 입장을 취했으며, 지지를 철회하라는 거센 요구 속에서도 힌덴부르크를 위해 선거 운동을 할 것입니다.
 
 @religion_3_op
 on-arrival: new_middle_nsdap += 2; old_middle_nsdap += 2; rural_nsdap += 2; new_middle_kvp -= 2; old_middle_kvp -= 2; rural_kvp -= 2; new_middle_dnvp -= 2 if dnvp_ideology == "Moderate"; old_middle_dnvp -= 2 if dnvp_ideology == "Moderate"; rural_dnvp -= 2 if dnvp_ideology == "Moderate"; new_middle_other -= 2 if not kvp_formed; old_middle_other -= 2 if not kvp_formed; rural_other -= 2 if not kvp_formed
 go-to: bourgeois_campaign_menu_op
 
-Unfortunately for the Hindenburg campaign, the pro-<span style="color: #7A3C00;">Nazi</span> sentiment within state and local churches has prevented church leaders from taking a public stand for Hindenburg. Many devout Protestants will now be voting for [+ nsdap_candidate_1932 +] as a result, as the church now claims that intervening in a presidential election would be against its nature.
+불행히도 힌덴부르크 캠페인에게는, 주 및 지역 교회 내의 친<span style="color: #7A3C00;">나치</span> 정서가 교회 지도자들이 힌덴부르크를 위해 공개적인 입장을 취하는 것을 막았습니다. 많은 독실한 개신교도들은 교회가 대통령 선거에 개입하는 것은 본분에 어긋난다는 주장에 따라 결과적으로 [+ nsdap_candidate_1932 +]에게 투표할 것입니다.
 
 @westarp_op
-title: Westarp, one of Hindenburg's close friends, will attempt to rally conservative forces for Hindenburg.
+title: 힌덴부르크의 절친한 친구인 베스타르프가 힌덴부르크를 위해 보수 세력을 결집하려 시도할 것이다.
 on-arrival: westarp_used = 1; hindenburg_support += 1
 max-visits: 1
 go-to: bourgeois_campaign_menu_op
 
-Of course, the main goal of the United Hindenburg Committees is to dispel the notion that Hindenburg is supported by the <span style="color: #000000;">Black</span>-<span style="color: #c00000;">Red</span> parties. To this end, Westarp has sent a letter to 750 conservative elites who supported Hindenburg's election in 1925, with 500 reaffirming their support of Hindenburg today. [? if dnvp_ideology == "Moderate": He has also played a key role in rallying the <span style="color: #3E88B3;">**DNVP**</span> around his candidacy. ?]
+물론, 통합 힌덴부르크 위원회의 주된 목표는 힌덴부르크가 <span style="color: #000000;">흑</span>-<span style="color: #c00000;">적</span> 정당들에 의해 지지받는다는 인식을 불식시키는 것입니다. 이를 위해, 베스타르프는 1925년 힌덴부르크의 당선을 지지했던 750명의 보수 엘리트들에게 서한을 보냈으며, 그중 500명이 오늘날 힌덴부르크에 대한 지지를 재확인했습니다. [? if dnvp_ideology == "Moderate": 그는 또한 <span style="color: #3E88B3;">**DNVP**</span>를 힌덴부르크 지지로 결집시키는 데 핵심적인 역할을 했습니다. ?]
 
 @organizational_endorsements_op
-title: What about the endorsements of the non-partisan organizations?
-subtitle: Influential groups such as the RLB, DHV, and the Pan-Germans, have been growing a rift between themselves and Hindenburg.
+title: 비정당 조직들의 지지는 어떤가?
+subtitle: RLB, DHV, 그리고 범독일연맹과 같은 영향력 있는 그룹들은 그들 자신과 힌덴부르크 사이의 균열을 키워왔습니다.
 view-if: eckener_used and industry_used and (religion_used or not religion_available) and westarp_used
 on-arrival: {!
 if (Q.hindenburg_support) {
@@ -875,20 +875,20 @@ if (Q.rlb_nazi) {
 }
 !}
 
-National Rural League (RLB) - [? if rlb_hindenburg: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span> ?][? if not rlb_hindenburg: <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;or <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?] ?]
+전국농촌연맹 (RLB) - [? if rlb_hindenburg: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span> ?][? if not rlb_hindenburg: <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;또는 <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?] ?]
 
-Stahlhelm - [? if dnvp_candidate_1932 == "Duesterberg":<span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 != "Duesterberg": <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span> ?]
+철모단 - [? if dnvp_candidate_1932 == "Duesterberg":<span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?][? if dnvp_candidate_1932 != "Duesterberg": <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span> ?]
 
-German National Association of Commercial Employees (DHV) - <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>
+독일민족상업직원협회 (DHV) - <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>
 
-Pan-German League (ADV) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;or <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?]
+범독일연맹 (ADV) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;또는 <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?]
 
-United Patriotic Leagues (VVVD) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;or <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?]
+통합애국연맹 (VVVD) - <span style="color: #7A3C00;">**[+ nsdap_candidate_1932 +]**</span>[? if dnvp_candidate_1932:&nbsp;또는 <span style="color: #3E88B3;">**[+ dnvp_candidate_1932 +]**</span>?]
 
-Kyffhäuser League - <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>
+키프호이저 연맹 - <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>
 
-[? if not rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members.<br><br> However, this approach has failed with the RLB. Under Schiele's leadership, the organization remains skeptical of the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> and has successfully blocked a <span style="color: #7A3C00;">Nazi</span> appointee from joining the presidium. Despite this, strong <span style="color: #7A3C00;">Nazi</span> sympathies among the rank-and-file have led to defections to the <span style="color: #7A3C00;">Nazi</span>'s alternative organization. ?]
+[? if not rlb_nazi: 다양한 우익 이익 단체들 중에서, 백만 명의 회원과 수많은 영향력 있는 주 조직을 가진 독일 최대의 경제 이익 그룹인 RLB의 지지는 의심할 여지 없이 가장 중요합니다. 이 단체들에 대한 <span style="color: #7A3C00;">나치</span>의 전략은 그들을 직접 공격하는 것이 아니라 평회원들에게 영향을 미치는 것입니다. 이 압력은 지도부가 <span style="color: #7A3C00;">나치</span>를 지지하거나 회원들의 눈에 자신들을 불신하게 만들 위험을 감수하도록 강요합니다.<br><br> 그러나 이 접근 방식은 RLB에서 실패했습니다. 쉴레의 지도 하에, 이 조직은 <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>에 회의적인 태도를 유지하며 <span style="color: #7A3C00;">나치</span> 인사가 상임간부회에 합류하는 것을 성공적으로 막았습니다. 그럼에도 불구하고, 평회원들 사이의 강력한 <span style="color: #7A3C00;">나치</span> 동조는 <span style="color: #7A3C00;">나치</span>의 대안 조직으로의 이탈로 이어졌습니다. ?]
 
-[? if rlb_nazi: Out of all the various right-wing interest organizations, the endorsement of Germany's largest economic interest group, the RLB, with its million members and numerous influential state organizations, is undoubtedly the most significant. The <span style="color: #7A3C00;">Nazi</span> strategy toward these organizations is not to attack them directly but to influence their rank-and-file members. This pressure forces leadership to either support the <span style="color: #7A3C00;">Nazis</span> or risk discrediting themselves in the eyes of their members. <br><br> This approach has proven successful within the RLB, as its new leader, Kalckreuth, is notably friendly toward the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span>. He has even appointed a <span style="color: #7A3C00;">Nazi</span> agricultural official to the presidium. However, this shift has sparked significant backlash from the <span style="color: #7FCEB1;">**CNBLP**</span>-aligned factions within the organization and from state affiliates in Bavaria, Thuringia, and Wurttemberg. These groups have rejected the RLB's endorsement and instead urged their members to vote for [+ reactionary_candidate_1932 +][? if dnvp_candidate_1932: or [+ dnvp_candidate_1932 +]?].?]
+[? if rlb_nazi: 다양한 우익 이익 단체들 중에서, 백만 명의 회원과 수많은 영향력 있는 주 조직을 가진 독일 최대의 경제 이익 그룹인 RLB의 지지는 의심할 여지 없이 가장 중요합니다. 이 단체들에 대한 <span style="color: #7A3C00;">나치</span>의 전략은 그들을 직접 공격하는 것이 아니라 평회원들에게 영향을 미치는 것입니다. 이 압력은 지도부가 <span style="color: #7A3C00;">나치</span>를 지지하거나 회원들의 눈에 자신들을 불신하게 만들 위험을 감수하도록 강요합니다. <br><br> 이 접근 방식은 RLB 내에서 성공적인 것으로 판명되었는데, 그 새로운 지도자인 칼크로이트가 <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>에 눈에 띄게 우호적이기 때문입니다. 그는 심지어 <span style="color: #7A3C00;">나치</span> 농업 관리를 상임간부회에 임명했습니다. 그러나 이러한 변화는 조직 내의 <span style="color: #7FCEB1;">**CNBLP**</span>와 제휴한 파벌들과 바이에른, 튀링겐, 뷔르템베르크의 주 계열사들로부터 상당한 반발을 불러일으켰습니다. 이 그룹들은 RLB의 지지를 거부하고 대신 회원들에게 [+ reactionary_candidate_1932 +][? if dnvp_candidate_1932: 또는 [+ dnvp_candidate_1932 +]?]에게 투표할 것을 촉구했습니다.?]
 
-- @hope: Let's hope Germany will make the correct choice.
+- @hope: 독일이 올바른 선택을 하기를 희망하자.
