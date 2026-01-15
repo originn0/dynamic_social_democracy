@@ -498,8 +498,12 @@ max-visits: 1
 go-to: campaigning_thalmann
 
 솔직히 말해서, 중산층은 우리가 아무리 노력해도 [+ communist_candidate_1932 +] 같은 인물을 절대 지지하지 않을 것입니다. 하지만 <span style="color: #c00000;">사회주의</span> 성향의 화이트칼라 노조원 일부를 설득하여 마음을 돌리게 하는 데는 성공했습니다.
+
+@united_left
+title: 우리는 <span style="color: #700000;">**공산주의자들**</span>에게 그들의 선거운동 활동에서 우리가 더 적극적인 역할을 맡도록 설득한다.
+subtitle: 그들은 자신들을 최전선에 내세우고 있습니다. 자원 -1
 choose-if: (kpd_relation >= 70 or (kpd_relation >= 55 and kpd_leader == "Conciliators")) and resources >= 2
-unavailable-subtitle: [? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): 관계가 충분히 좋지 않습니다. ?] [? if resources < 2: 자원이 부족합니다. (2 필요) ?]
+unavailable-subtitle: [? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): 우리의 관계가 충분히 좋지 않습니다. ?] [? if resources < 2: 자원이 부족합니다. (2 필요) ?]
 on-arrival: resources -= 1; spd_glaze_thalmann = 1; workers_spd += 3; workers_kpd += 3; workers_nsdap -= 3; unemployed_spd += 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 4; ddp_right += 2; ddp_cohesion -= 2; lvp_right += 4; new_middle_kpd = 1
 face-image: img/kpd_poster.jpg
 max-visits: 1
