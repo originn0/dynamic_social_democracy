@@ -371,7 +371,7 @@ go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
 [? if lvp_candidate = spd_candidate:  <span style="color: #FFCC00;">**LVP**</span>는 마지못해 [+ spd_candidate +]를 지지하도록 설득되었습니다! 이건 주로 [+ spd_candidate +]가 <span style="color: #c00000;">**SPD**</span>가 아니라 <span style="color: #000000;">중앙당</span>의 후보이기 때문입니다. ?]
-[? if lvp_candidate != spd_candidate: 불행히도, <span style="color: #FFCC00;">**LVP**</span>는 [+ spd_candidate +]를 지지하기를 꺼립니다. <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 연정은 슐라이허가 의심할 여지 없이 역할을 하면서 균열이 생기는 것 같습니다. ?]
+[? if lvp_candidate != spd_candidate: 불행히도, <span style="color: #FFCC00;">**LVP**</span>는 [+ spd_candidate +]를 지지하기를 꺼립니다. <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span>연정은 슐라이허가 의심할 여지 없이 역할을 하면서 균열이 생기는 것 같습니다. ?]
 
 @convince_dvp_unity
 title: <span style="color: #C0A054;">**DVP**</span>가 [+ spd_candidate +]를 지지하도록 설득한다.
@@ -551,7 +551,7 @@ view-if: z_candidate = "Adenauer" and spd_candidate != z_candidate
 on-departure: kpd_candidate = "Boycott"; sapd_candidate = "Boycott"; spd_candidate = "Adenauer"; z_relation += 5; center_bvp_votes = 1 if z_relation < 50; is_unity_candidate = 1
 go-to: r2_campaigning
 
-우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워를 지지했습니다. 아마도 슐라이허에 대항하여 <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 블록을 형성할 수 있을 것입니다.
+우리는 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]의 콘라트 아데나워를 지지했습니다. 아마도 슐라이허에 대항하여 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span>블록을 형성할 수 있을 것입니다.
 
 [? if z_relation < 50 : 아데나워에 대한 우리의 지지로, <span style="color: #A2D8E0;">바이에른 인민당</span>의 가장 보수적인 부분 중 일부가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]에서 떨어져 나와, 그들의 지지를 [+ dnef_candidate +]에게 옮겼습니다. 부디 이것이 1925년 대통령 선거의 반복으로 이어지지 않기를 바랍니다. ?]
 

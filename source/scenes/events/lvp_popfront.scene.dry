@@ -1,5 +1,5 @@
-title: The <span style="color: #FFCC00;">**LVP**</span> leaves the Popular Front government[? if in_popular_front_prussia and not in_popular_front:&nbsp;in Prussia?]!
-subtitle: As expected.
+title: [? if in_popular_front_prussia and not in_popular_front:&nbsp;프로이센에서?]<span style="color: #FFCC00;">**LVP**</span>가 인민 전선 정부를 떠나다!
+subtitle: 예상대로입니다.
 new-page: true
 on-arrival: lvp_relation -= 6; lvp_right += 3 {! 
 if (Q.lvp_formed) {
@@ -21,23 +21,23 @@ if (Q.lvp_formed) {
 view-if: ((in_popular_front and ddp_in_popular_front and not constructive_vonc) or (in_popular_front_prussia and ddp_in_popular_front_prussia)) and lvp_formed 
 tags: event
 
-= The <span style="color: #FFCC00;">**LVP**</span> leaves the Popular Front government!
+= <span style="color: #FFCC00;">**LVP**</span>가 인민 전선 정부를 떠나다!
 
-With the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> dissolving itself and joining with the <span style="color: #C0A054;">**DVP**</span> in a significantly more right-wing party, they have expectedly withdrawn their support of our incumbent Popular Front[? if in_popular_front_prussia and not in_popular_front:&nbsp;in Prussia?][? if in_popular_front_prussia and in_popular_front:&nbsp;in Prussia, and nationally?]. 
+<span style="color: #D3C24D;">**[+ ddp_name +]**</span>가 스스로를 해산하고 <span style="color: #C0A054;">**DVP**</span>와 함께 상당히 더 우파적인 정당으로 합당함에 따라, 그들은 예상대로 우리의 현직 인민 전선[? if in_popular_front_prussia and not in_popular_front:&nbsp;프로이센에서?][? if in_popular_front_prussia and in_popular_front:&nbsp;프로이센에서, 그리고 전국적으로?]에 대한 지지를 철회했습니다.
 
-[? if in_popular_front: [? if popular_front_coalition >= 50: Fortunately, we still possess a majority without their votes, and they are able to leave government without causing much of a ruckus. ?][? if popular_front_coalition < 50: Unfortunately, the former <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s votes was key for the survival of the Popular Front, and now our government lacks a majority without them. ?] ?]
+[? if in_popular_front: [? if popular_front_coalition >= 50: 다행히도, 우리는 그들의 표 없이도 여전히 과반수를 보유하고 있으며, 그들은 큰 소란을 일으키지 않고 정부를 떠날 수 있습니다. ?][? if popular_front_coalition < 50: 불행히도, 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 표는 인민 전선의 생존을 위한 열쇠였으며, 이제 우리 정부는 그들 없이 과반수가 부족합니다. ?] ?]
 
-[? if in_popular_front_prussia: [? if popular_front_coalition_prussia >= 50: In Prussia, we luckily possess a majority without their votes, and they are able to leave the state government while we still govern with the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if popular_front_coalition_prussia < 50: In Prussia, the former <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s votes was key for the survival of its Popular Front, and now our government lacks a majority without them. ?] ?]
+[? if in_popular_front_prussia: [? if popular_front_coalition_prussia >= 50: 프로이센에서, 우리는 운 좋게도 그들의 표 없이 과반수를 보유하고 있으며, 우리가 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]과 함께 통치하는 동안 그들은 주 정부를 떠날 수 있습니다. ?][? if popular_front_coalition_prussia < 50: 프로이센에서, 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 표는 그곳의 인민 전선의 생존을 위한 열쇠였으며, 이제 우리 정부는 그들 없이 과반수가 부족합니다. ?] ?]
 
-- @popular_front_lives: Ok then.
-- @collapse: Our government faces a vote of no confidence!
-- @collapse_prussia: Our Prussian government faces a vote of no confidence!
+- @popular_front_lives: 알겠다.
+- @collapse: 우리 정부가 불신임 투표에 직면한다!
+- @collapse_prussia: 우리 프로이센 정부가 불신임 투표에 직면한다!
 
 @popular_front_lives
 view-if: ((popular_front_coalition >= 50 or not ddp_in_popular_front) and (popular_front_coalition_prussia >= 50 or not ddp_in_popular_front_prussia)) and not (popular_front_coalition >= 50 and popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia)
 on-arrival: ddp_in_popular_front = 0; ddp_in_popular_front_prussia = 0
 
-Their former cabinet positions [? if in_popular_front and in_popular_front_prussia: nationally and in Prussia?][? if not in_popular_front and in_popular_front_prussia: in Prussia?] (if they had any) have been transferred to the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
+그들의 이전 내각 직책들은 [? if in_popular_front and in_popular_front_prussia: 전국적으로 그리고 프로이센에서?][? if not in_popular_front and in_popular_front_prussia: 프로이센에서?] (만약 그들이 가졌다면) [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]으로 이관되었습니다.
 
 @collapse
 view-if: popular_front_coalition < 50 and ddp_in_popular_front
@@ -48,28 +48,28 @@ go-to: let_it_happen_hindenburg if president_ideology != "Left"; let_it_happen_b
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; welfare -= 2; bruning_event_timer = 6 if not bruning_event_seen and year >= 1930
 go-to: elections if bruning_event_seen or year < 1930
 
-The vote succeeds with [+ 100 - popular_front_coalition +]% of the vote, and our government has resigned. Chancellor Brüning has been appointed as the head of a new cabinet, consisting solely of the bourgeois parties. He immediately proceeds to cut welfare spending substantially.
+투표는 [+ 100 - popular_front_coalition +]%의 찬성으로 가결되었고, 우리 정부는 사임했습니다. 브뤼닝 총리가 오직 부르주아 정당들로만 구성된 새로운 내각의 수장으로 임명되었습니다. 그는 즉시 복지 지출을 대폭 삭감하는 절차에 착수했습니다.
 
-[? if not bruning_event_seen and year >= 1930: New elections haven't been called yet but it's likely that they will be soon, considering Brüning most likely doesn't have the majority of the Reichstag behind him. ?]
+[? if not bruning_event_seen and year >= 1930: 새로운 선거는 아직 소집되지 않았지만, 브뤼닝이 제국의회의 과반수를 확보하지 못했을 가능성이 높다는 점을 고려하면 곧 소집될 가능성이 높습니다. ?]
 
 @elections
 call: set_next_election_time
 go-to: collapse_prussia if (popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia)
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @let_it_happen_braun
 on-arrival: spd_caretaker = 1
 call: set_next_election_time
 go-to: collapse_prussia if (popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia)
 
-The vote succeeds, and our government has resigned. Chancellor [+ chancellor +] remains as the head of a caretaker government, but no longer has the power to enact new policies.
+투표는 가결되었고, 우리 정부는 사임했습니다. [+ chancellor +] 총리는 관리 내각의 수장으로 남지만, 더 이상 새로운 정책을 입안할 권한이 없습니다.
 
-New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+새로운 선거가 [+ next_election_year +]년 [+ next_election_month : month +]로 예정되었습니다.
 
 @collapse_prussia
 view-if: (popular_front_coalition_prussia < 50 and ddp_in_popular_front_prussia) and not (in_popular_front and ddp_in_popular_front and popular_front_coalition < 50)
 on-arrival: was_in_social_catholic_coalition_prussia = 0; was_in_social_liberal_coalition_prussia = 0; was_in_weimar_coalition_prussia = 0; was_in_grand_coalition_prussia = 0; was_in_social_catholic_coalition_prussia = 1 if in_social_catholic_coalition_prussia == 1 or in_minority_social_catholic_coalition_prussia == 1; was_in_social_liberal_coalition_prussia = 1 if in_social_liberal_coalition_prussia == 1 or in_minority_social_liberal_coalition_prussia == 1; was_in_weimar_coalition_prussia = 1 if ((in_weimar_coalition_prussia == 1 or in_minority_weimar_coalition_prussia == 1) or (in_grand_coalition_prussia == 1 and lvp_formed)); was_in_grand_coalition_prussia = 1 if (in_grand_coalition_prussia == 1 or in_minority_grand_coalition_prussia == 1); in_right_coalition_prussia = 0; in_social_catholic_coalition_prussia = 0; in_social_liberal_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 0; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; in_minority_social_catholic_coalition_prussia = 0; in_minority_social_liberal_coalition_prussia = 0; spd_prussia = 0; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0
 call: set_next_election_time_prussia
 
-New Prussian elections have been set for [+ next_election_month_prussia : month +] [+ next_election_year_prussia +]. 
+새로운 프로이센 선거가 [+ next_election_year_prussia +]년 [+ next_election_month_prussia : month +]로 예정되었습니다.

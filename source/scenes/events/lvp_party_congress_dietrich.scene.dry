@@ -1,5 +1,5 @@
-title: <span style="color: #FFCC00;">**LVP**</span> Party Vote
-subtitle: Hermann Dietrich has resigned!
+title: <span style="color: #FFCC00;">**LVP**</span> 당내 투표
+subtitle: 헤르만 디트리히가 사임했습니다!
 view-if: time >= dietrich_lvp_explode_time and (lvp_votes_start - lvp_votes > 4 or (change_lvp_votes < -3 and (last_election_time >= dietrich_election_time))) and lvp_leader == "Dietrich" and lvp_formed
 on-arrival: {!
 
@@ -113,13 +113,13 @@ tags: event
 face-image: img/weimar_coalition_3.jpg
 new-page: true
 
-= <span style="color: #FFCC00;">**LVP**</span> Party Vote
+= <span style="color: #FFCC00;">**LVP**</span> 당내 투표
 
-Hermann Dietrich has failed to meet the expectations of many within the party, with the <span style="color: #FFCC00;">**LVP**</span> experiencing a sharp decline in recent local elections. His focus on governance has left him unable to personally manage party affairs, prompting the need for a more active leader.
+헤르만 디트리히는 당내 많은 이들의 기대를 충족시키는 데 실패했고, <span style="color: #FFCC00;">**LVP**</span>는 최근 지방 선거에서 득표율 급락을 겪었습니다. 국정 운영에 대한 그의 집중은 그가 당무를 직접 관리할 수 없게 만들었고, 더 활동적인 지도자의 필요성을 불러일으켰습니다.
 
-Dietrich has endorsed Reinhold Maier, a former <span style="color: #D3C24D;">**[+ ddp_name +]**</span> member and rising star. Like Dietrich, Maier was part of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s business wing and now enjoys the support of the <span style="color: #FFCC00;">**LVP**</span>'s Pragmatic Center. Meanwhile, Heuss and Dingeldey have once again entered the race, representing the party’s left and right factions, respectively.
+디트리히는 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당원이자 떠오르는 샛별인 라인홀트 마이어를 지지했습니다. 디트리히처럼, 마이어는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 기업파 출신이었으며 이제 <span style="color: #FFCC00;">**LVP**</span>의 실용적 중도파의 지지를 누리고 있습니다. 한편, 호이스와 딩겔데이는 다시 한번 경선에 뛰어들어 각각 당의 좌파와 우파 계파를 대표합니다.
 
-With all candidates relatively young, this leadership contest is expected to inject a sense of <span class="tooltip-text" title="good mod">dynamism</span> into the party.
+모든 후보가 비교적 젊기 때문에, 이 지도부 경쟁은 당에 <span class="tooltip-text" title="good mod">역동성</span>을 불어넣을 것으로 예상됩니다.
 
 - @heuss
 - @maier
@@ -127,57 +127,57 @@ With all candidates relatively young, this leadership contest is expected to inj
 - @deadlock
 
 @heuss
-title: Theodor Heuss is elected!
-subtitle: Heuss is a <span style="color: #c00000;">Social</span> <span style="color: #000000;">Rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>, and a member of the former <span style="color: #D3C24D;">**[+ ddp_name +]**</span>.
-unavailable-subtitle: The wider <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, despite his previous affiliation with the <span style="color: #D3C24D;">[+ ddp_name +]</span>'s business wing.
+title: 테오도어 호이스가 선출되었다!
+subtitle: 호이스는 <span style="color: #c00000;">사회</span><span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자</span>이며, 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 당원입니다.
+unavailable-subtitle: <span style="color: #FFCC00;">LVP</span> 주류는 그가 <span style="color: #D3C24D;">[+ ddp_name +]</span>의 기업파와 이전에 제휴했음에도 불구하고 그를 너무 좌파적이라고 인식합니다.
 choose-if: heuss_lead
 on-arrival: lvp_relation += 15; lvp_left += 8; lvp_leader = "Heuss"; pro_republic += (lvp_votes / 2); workers_lvp += 2; workers_spd -= 2; new_middle_lvp += 8; old_middle_lvp -= 3; old_middle_other += 5 if (dnvp_ideology == "Radical"); old_middle_dnvp += 5 if dnvp_ideology == "Moderate"; old_middle_kvp += 5; rural_lvp -= 5; rural_other += 5 if (dnvp_ideology == "Radical" and not kvp_formed); rural_dnvp += 5 if dnvp_ideology == "Moderate"; rural_kvp += 5; catholics_lvp += 3; catholics_spd -= 3; coalition_dissent -= 1; heuss_explode_time = time + 8; heuss_election_time = time
 face-image: img/portraits/heuss.jpg
 
-Theodor Heuss, a rising star and former member of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, has been elected chairman of the <span style="color: #FFCC00;">Liberal People's Party</span>. Backed primarily by the 'Social Republican Circle,' composed of former <span style="color: #D3C24D;">**[+ ddp_name +]**</span> members and liberal intellectuals and newspapers, Heuss has also garnered support from the broader party due to his decently conservative stances on economic and national issues.
+떠오르는 샛별이자 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 당원인 테오도어 호이스가 <span style="color: #FFCC00;">자유인민당</span>의 의장으로 선출되었습니다. 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당원들과 자유주의 지식인 및 신문들로 구성된 '사회공화주의 서클'의 전폭적인 지지를 받는 호이스는, 경제 및 국가 문제에 대한 꽤 보수적인 입장 덕분에 당내 주류로부터도 지지를 모았습니다.
 
-Heuss's victory empowers the '<span style="color: #c00000;">Social</span> <span style="color: #000000;">Rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span>' wing, strengthening our cooperation. Despite his personal leanings toward the right, Heuss remains one of the most committed and genuine supporters for <span style="color: #FFCC00;">liberal</span> <span style="color: #586593;">democracy</span> within the <span style="color: #FFCC00;">**LVP**</span>.
+호이스의 승리는 '<span style="color: #c00000;">사회</span><span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자</span>' 계파에 힘을 실어주어, 우리와의 협력을 강화합니다. 그의 개인적인 성향이 우파에 가까움에도 불구하고, 호이스는 <span style="color: #FFCC00;">**LVP**</span> 내에서 <span style="color: #FFCC00;">자유</span> <span style="color: #586593;">민주주의</span>에 대한 가장 헌신적이고 진실한 지지자 중 하나로 남아 있습니다.
 
 @maier
-title: Reinhold Maier is elected!
-subtitle: A major player in Württemberg politics, he is now due for a promotion.
-unavailable-subtitle: [? if not heuss_lead: The wider <span style="color: #FFCC00;">LVP</span> perceive him as too left-wing, despite his previous affiliation with the <span style="color: #D3C24D;">[+ ddp_name +]</span>'s business wing. ?][? if heuss_lead: The Social Republicans prefer to elect Heuss instead. ?]
+title: 라인홀트 마이어가 선출되었다!
+subtitle: 뷔르템베르크 정치의 거물인 그는 이제 승진할 때가 되었습니다.
+unavailable-subtitle: [? if not heuss_lead: <span style="color: #FFCC00;">LVP</span> 주류는 그가 <span style="color: #D3C24D;">[+ ddp_name +]</span>의 기업파와 이전에 제휴했음에도 불구하고 그를 너무 좌파적이라고 인식합니다. ?][? if heuss_lead: 사회공화주의자들은 대신 호이스를 선출하는 것을 선호합니다. ?]
 choose-if: maier_lead
 on-arrival: lvp_relation += 5; lvp_left += 3; lvp_leader = "Maier"; pro_republic += 3; new_middle_lvp += 2; old_middle_lvp += 2; rural_lvp += 4; catholics_lvp += 6
 face-image: img/portraits/maier.jpg
 
-Reinhold Maier, a major figure in Württemberg politics and a rising star in the struggling party, has been elected chairman of the <span style="color: #FFCC00;">**LVP**</span>. Youthful and energetic, he is less bound by dogma than many veteran members, making him a strong choice for a party plagued by defeatism and internal strife.
+뷔르템베르크 정치의 주요 인물이자 고전하는 당의 유망주인 라인홀트 마이어가 <span style="color: #FFCC00;">**LVP**</span>의 의장으로 선출되었습니다. 젊고 에너지가 넘치는 그는 많은 원로 당원들보다 교리에 덜 얽매여 있어, 패배주의와 내부 갈등에 시달리는 당을 위한 강력한 선택이 됩니다.
 
-For us, however, his closeness to Dietrich means cooperation has yet to improve significantly compared to his predecessor’s tenure. Perhaps this is for the best, as the <span style="color: #FFCC00;">**LVP**</span>'s decline was expected to push it further to the right.
+그러나 우리에게 있어, 디트리히와의 친밀함은 전임자의 재임 기간에 비해 협력이 아직 크게 개선되지 않았음을 의미합니다. 아마도 이것이 최선일지도 모릅니다. <span style="color: #FFCC00;">**LVP**</span>의 하락세가 당을 더 우측으로 밀어낼 것으로 예상되었기 때문입니다.
 
 @dingeldey
-title: Eduard Dingeldey is elected.
-subtitle: Dingeldey was a member of the former <span style="color: #C0A054;">**DVP**</span>, and commonly associated with the industrial-right of the party.
-unavailable-subtitle: The right-industrial faction of the <span style="color: #FFCC00;">LVP</span> lack the power necessary to install their candidate.
+title: 에두아르트 딩겔데이가 선출되었다.
+subtitle: 딩겔데이는 전 <span style="color: #C0A054;">**DVP**</span>의 당원이었으며, 흔히 당의 산업 우파와 연관됩니다.
+unavailable-subtitle: <span style="color: #FFCC00;">LVP</span>의 우파-산업 계파는 그들의 후보를 당선시킬 힘이 부족합니다.
 choose-if: dingeldey_lead
 on-arrival: lvp_relation -= 12; lvp_right += 6; lvp_leader = "Dingeldey"; new_middle_lvp -= 4; workers_lvp -= 4; old_middle_lvp += 2; coalition_dissent += 1; dingeldey_explode_time = time + 8; dingeldey_election_time = time
 face-image: img/portraits/dingeldey.jpg
 
-Eduard Dingeldey, previously part of the movement for bourgeois unity, has now been elected chairman of the <span style="color: #FFCC00;">**LVP**</span>. Dingeldey is backed by the industrial forces on the right of the party, alongside former <span style="color: #C0A054;">**DVP**</span> members. He appears to be focused on fostering closer cooperation with the array of parties between the <span style="color: #FFCC00;">**LVP**</span> and the <span style="color: #3E88B3;">**DNVP**</span>.
+이전에 부르주아 통합 운동의 일원이었던 에두아르트 딩겔데이가 이제 <span style="color: #FFCC00;">**LVP**</span>의 의장으로 선출되었습니다. 딩겔데이는 전 <span style="color: #C0A054;">**DVP**</span> 당원들과 함께 당 우파의 산업 세력에 의해 지지받습니다. 그는 <span style="color: #FFCC00;">**LVP**</span>와 <span style="color: #3E88B3;">**DNVP**</span> 사이의 정당들과 더 긴밀한 협력을 조성하는 데 집중하는 것으로 보입니다.
 
-However, Dingeldey has thus far proven to be an ineffectual leader, often capitulating to the right wing of the <span style="color: #FFCC00;">**LVP**</span>. Recently, we’ve observed a deterioration in relations with his party, alongside a noticeable rightward shift in the <span style="color: #FFCC00;">**LVP**</span>'s internal politics.
+그러나, 딩겔데이는 지금까지 <span style="color: #FFCC00;">**LVP**</span>의 우파에게 자주 휘둘리며 무능한 지도자임이 입증되었습니다. 최근, 우리는 그의 당과의 관계 악화와 함께 <span style="color: #FFCC00;">**LVP**</span> 내부 정치의 눈에 띄는 우경화를 목격했습니다.
 
 @deadlock
-title: The vote has been deadlocked!
-subtitle: No candidate is able to gather a sufficient amount of votes.
+title: 투표가 교착 상태에 빠졌다!
+subtitle: 어떤 후보도 충분한 표를 확보하지 못했습니다.
 view-if: lvp_deadlock
 
-The vote has been deadlocked, with no candidate ahead by enough to constitute a majority. A new secret candidate has been unlocked.
+투표가 교착 상태에 빠졌으며, 과반수를 구성할 만큼 앞선 후보가 없습니다. 새로운 비밀 후보가 잠금 해제되었습니다.
 
 - @baumer
 
 
 @baumer
-title: Gertrud Bäumer is elected!
-subtitle: Leader of the <span style="color: #FFCC00;">**LVP**</span>'s women's wing, and a moderate feminist. Has questionable views on the "national questions".
+title: 게르트루트 보이머가 선출되었습니다!
+subtitle: <span style="color: #FFCC00;">**LVP**</span> 여성부의 지도자이자 온건 페미니스트입니다. "민족 문제"에 대해 의문스러운 견해를 가지고 있습니다.
 on-arrival: lvp_leader = "Bäumer"; lvp_relation += 5; nationalism += lvp_votes; workers_lvp += 6; workers_other -= 2; workers_spd -= 4; new_middle_lvp += 20; new_middle_spd -= 15; new_middle_kpd -= 5; old_middle_lvp -= 20; old_middle_dnvp += 5; old_middle_dnvp += 10 if dnvp_ideology == "Moderate"; old_middle_nsdap += 5; old_middle_kvp += 10; old_middle_other += 5; rural_lvp *= 0.5; rural_nsdap += 5; rural_dnvp += 5 if not kvp_formed; rural_kvp += 5; pro_republic -= 5
 face-image: img/portraits/baumer.jpg
 
-Somehow, Gertrud Bäumer, long-time deputy leader of the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and now the leader of the <span style="color: #FFCC00;">**LVP**</span>'s women's wing, has been elected to the leadership of the <span style="color: #FFCC00;">**LVP**</span>. This is quite a bizarre development, but her victory can be attributed to her passionate nationalism and romanticism, as well as her questionable views on <span style="color: #005EB8;">Jews</span> and race, which have garnered the support of nationalists within the party. Additionally, some within the party cynically believe that by electing a woman, they can appeal to a broader female electorate.
+어떻게 된 일인지, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 오랜 부지도자이자 현재 <span style="color: #FFCC00;">**LVP**</span> 여성부의 지도자인 게르트루트 보이머가 <span style="color: #FFCC00;">**LVP**</span>의 지도부로 선출되었습니다. 이것은 꽤 기이한 전개이지만, 그녀의 승리는 그녀의 열정적인 민족주의와 낭만주의, 그리고 당내 민족주의자들의 지지를 얻은 <span style="color: #005EB8;">유대인</span>과 인종에 대한 그녀의 의문스러운 견해 덕분이라고 할 수 있습니다. 게다가, 당내 일부는 여성을 선출함으로써 더 넓은 여성 유권자들에게 호소할 수 있다고 냉소적으로 믿습니다.
 
-For us, Bäumer's background as a former <span style="color: #D3C24D;">**[+ ddp_name +]**</span> member may work in our favor, improving our relationship with the <span style="color: #FFCC00;">**LVP**</span>. However, it remains to be seen whether she will gain more votes than she loses due to her moderate feminist stance, as many refuse to support her purely out of misogyny.
+우리에게 있어, 전 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당원으로서의 보이머의 배경은 우리에게 유리하게 작용하여 <span style="color: #FFCC00;">**LVP**</span>와의 관계를 개선할 수 있습니다. 그러나, 많은 이들이 순전히 여성혐오 때문에 그녀를 지지하기를 거부함에 따라, 그녀가 온건 페미니스트 입장으로 인해 잃는 표보다 더 많은 표를 얻을지는 두고 봐야 합니다.

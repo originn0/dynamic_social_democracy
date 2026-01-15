@@ -1,33 +1,33 @@
-title: First <span style="color: #FFCC00;">**LVP**</span> Congress
-subtitle: The future of this new party will be decided here.
+title: 제1차 <span style="color: #FFCC00;">**LVP**</span> 전당대회
+subtitle: 신생 정당의 미래가 이곳에서 결정될 것입니다.
 view-if: lvp_trigger_time == time
 max-visits: 1
 tags: event
 face-image: img/weimar_coalition.jpg
 new-page: true
 
-= First <span style="color: #FFCC00;">**LVP**</span> Party Congress
+= 제1차 <span style="color: #FFCC00;">**LVP**</span> 전당대회
 
-The <span style="color: #FFCC00;">Liberal People's Party</span> (<span style="color: #FFCC00;">**LVP**</span>) has officially been founded! Hans Luther, former chancellor and <span style="color: #C0A054;">**DVP**</span> member, has been chosen as the interim leader of the new party.
+<span style="color: #FFCC00;">자유 인민당</span> (<span style="color: #FFCC00;">**LVP**</span>)이 공식적으로 창당되었습니다! 전 총리이자 <span style="color: #C0A054;">**인민당**</span> 의원인 한스 루터가 새 정당의 임시 지도자로 선출되었습니다.
 
-The <span style="color: #FFCC00;">**LVP**</span>'s inaugural congress will play a major role in shaping the direction of the newly founded party, and most importantly, decide who will lead the liberal movement forward.
+<span style="color: #FFCC00;">**LVP**</span>의 창립 전당대회는 신생 정당의 방향을 설정하는 데 중요한 역할을 할 것이며, 무엇보다도 누가 자유주의 운동을 이끌어갈지 결정하게 될 것입니다.
 
-- @luther: The party votes...
+- @luther: 당내 투표가 진행된다...
 
 @luther
 call: lvp_formed
 on-arrival: lvp_relation += 5; lvp_left += 3; new_middle_dnvp += 2; old_middle_dnvp += 2
 face-image: img/portraits/luther.jpg
 
-Hans Luther is once again chosen to lead the <span style="color: #FFCC00;">**LVP**</span>, a long-time advocate for liberal and bourgeois unity, and a figure acceptable to both wings of the newly unified party. 
+자유주의와 부르주아 세력 통합의 오랜 옹호자이자, 신생 통합 정당의 양쪽 파벌 모두에게 받아들여질 수 있는 인물인 한스 루터가 다시 한번 <span style="color: #FFCC00;">**LVP**</span>의 대표로 선출되었습니다.
 
-Meanwhile, the right wing of the <span style="color: #C0A054;">**DVP**</span>, despite their initial resistance to the merger, is now focusing on shifting the <span style="color: #FFCC00;">**LVP**</span> further right, leveraging the support of the party's industrial backers.
+한편, <span style="color: #C0A054;">**인민당**</span>의 우파는 합병에 대한 초기 저항에도 불구하고, 이제 당의 산업계 후원자들의 지지를 활용하여 <span style="color: #FFCC00;">**LVP**</span>를 더욱 우경화시키는 데 집중하고 있습니다.
 
 - @lvp_weimar
 - @lvp_groko
 
 @lvp_weimar
-title: Renegotiate the ruling coalition.
+title: 집권 연정을 재협상한다.
 view-if: in_weimar_coalition and not in_social_catholic_coalition and spd_in_government
 on-arrival: {!
 Q.leverage = Q.spd_r;
@@ -45,30 +45,30 @@ if (!Q.lvp_formed) Q.finance_minister_party = 'DVP';
 Q.agriculture_minister_party = 'Z';
 !}
 
-As a result of the left-liberal <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and conservative-liberal <span style="color: #C0A054;">**DVP**</span> having merged, they demand that their members that were formerly apart of the <span style="color: #C0A054;">**DVP**</span> to be included in the government. We will have to reshuffle the cabinet.
+좌파 자유주의 성향의 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>과 보수 자유주의 성향의 <span style="color: #C0A054;">**인민당**</span>이 합병함에 따라, 그들은 과거 <span style="color: #C0A054;">**인민당**</span> 소속이었던 의원들을 정부에 포함시킬 것을 요구하고 있습니다. 내각 개편이 불가피해 보입니다.
 
-- @election_1928.ministries: Shuffle the cabinet.
+- @election_1928.ministries: 내각을 개편한다.
 
 @lvp_groko
-title: Renegotiate the ruling coalition.
+title: 집권 연정을 재협상한다.
 view-if: in_grand_coalition and spd_in_government
 
-As a result of the left-liberal <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and conservative-liberal <span style="color: #C0A054;">**DVP**</span> having merged, we could go ahead with kicking the small <span style="color: #A2D8E0;">**BVP**</span> out of government. This will leave us with a majority <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
+좌파 자유주의 성향의 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>과 보수 자유주의 성향의 <span style="color: #C0A054;">**인민당**</span>이 합병함에 따라, 우리는 군소 정당인 <span style="color: #A2D8E0;">**바이에른 인민당**</span>을 정부에서 축출하는 방안을 추진할 수 있게 되었습니다. 이렇게 되면 과반 의석을 확보한 <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정이 남게 됩니다.
 
-- @weimar: Form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition.
-- @groko: Maintain the Grand Coalition.
+- @weimar: <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 연정을 구성한다.
+- @groko: 대연정을 유지한다.
 
 @weimar
 on-arrival: lvp_relation -= 3; z_relation -= 3; lvp_right += 1; in_weimar_coalition = 1; in_grand_coalition = 0; coalition_dissent += 1
 go-to: cabinet_reformation
 
-Expected, but the bourgeois parties are displeased by the exclusion of the <span style="color: #A2D8E0;">**BVP**</span> from the ruling coalition.
+예상했던 대로지만, 부르주아 정당들은 집권 연정에서 <span style="color: #A2D8E0;">**바이에른 인민당**</span>이 배제된 것에 불쾌감을 드러내고 있습니다.
 
 @groko
 on-arrival: lvp_relation += 3; z_relation += 3; lvp_left += 1
 go-to: cabinet_reformation
 
-The bourgeois parties are pleased and somewhat surprised by this move.
+부르주아 정당들은 이 움직임에 기뻐하면서도 다소 놀라워하는 눈치입니다.
 
 @cabinet_reformation
 on-arrival: {!
