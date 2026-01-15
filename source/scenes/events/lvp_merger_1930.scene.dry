@@ -1,5 +1,5 @@
-title: <span style="color: #C0A054;">**DVP**</span> & <span style="color: #D3C24D;">**[+ ddp_name +]**</span> Congress
-subtitle: The future of the liberal movement will be decided here.
+title: <span style="color: #C0A054;">**DVP**</span> & <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 전당대회
+subtitle: 자유주의 운동의 미래가 이곳에서 결정될 것입니다.
 view-if: lvp_merger_2_timer == 1 and lvp_timer_2_trigger
 on-arrival: {!
 Q.lvp_formation_points = 0;
@@ -44,23 +44,23 @@ priority: 2
 face-image: img/dvp.jpg
 new-page: true
 
-= <span style="color: #C0A054;">**DVP**</span> Congress
+= <span style="color: #C0A054;">**DVP**</span> 전당대회
 
-The <span style="color: #C0A054;">**DVP**</span>, under the leadership of [+ dvp_leader +], is locked in conflict with the party’s right wing and industrial backers over the proposed merger with the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>. With no other choice, [+ dvp_leader +] has called for an emergency party congress to formally vote on the merger. [? if dvp_leader == "Scholz" or dvp_leader == "Dingeldey": Since the leader of the <span style="color: #C0A054;">**DVP**</span> is a rightist himself, he will help convince reluctant party members that it is an alliance of necessity. ?][? if dvp_leader == "Luther": Hans Luther has been a long-time supporter for liberal unity, and will essentially use his sizable influence among the German bourgeoisie to almost guarantee the passage of the vote. ?]
+[+ dvp_leader +]의 지도 하에 있는 <span style="color: #C0A054;">**DVP**</span>는 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와의 합당 제안을 두고 당내 우파 및 산업계 후원자들과 갈등을 빚고 있습니다. 다른 선택지가 없는 상황에서, [+ dvp_leader +]는 합당에 대한 공식 표결을 위해 비상 전당대회를 소집했습니다. [? if dvp_leader == "Scholz" or dvp_leader == "Dingeldey": <span style="color: #C0A054;">**DVP**</span>의 지도자가 본인 스스로 우파이기 때문에, 그는 꺼리는 당원들에게 이것이 필요에 의한 동맹임을 설득하는 데 도움을 줄 것입니다. ?][? if dvp_leader == "Luther": 한스 루터는 오랫동안 자유주의 통합을 지지해 왔으며, 독일 부르주아지 사이에서 그의 상당한 영향력을 행사하여 투표 통과를 거의 보장할 것입니다. ?]
 
-Meanwhile, the Liberal Association has made significant progress in preparing for a unified liberal party, establishing a national framework and drafting a middle-class-oriented policy platform that enjoys broad support from both sides. However, a defeat at this congress would spell the end of liberal cooperation for the foreseeable future, and will greatly demoralize the German middle.
+그동안 자유주의 연합은 통합된 자유주의 정당을 준비하는 데 상당한 진전을 이루었으며, 국가적 조직의 틀을 마련하고 양측 모두에게 폭넓은 지지를 받는 중산층 지향적 정책 강령 초안을 작성했습니다. 그러나 이번 전당대회에서의 패배는 당분간 자유주의 협력의 종말을 의미할 것이며, 독일 중산층의 사기를 크게 꺾어놓을 것입니다.
 
-- @dvp_success: The party votes... 
-- @dvp_fail: The party votes...
+- @dvp_success: 당이 투표를 진행한다...
+- @dvp_fail: 당이 투표를 진행한다...
 
 @dvp_success
 view-if: lvp_formation_points >= 4
 on-arrival: dvp_relation += 2; dvp_left += 2
 face-image: img/weimar_coalition_3.jpg
 
-The momentum towards liberal unity has proven too great for the holdouts within the <span style="color: #C0A054;">**DVP**</span>'s right wing to stand against. The party has officially voted to approve the merger with the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, although the latter has yet to reach a final decision.
+자유주의 통합을 향한 기세는 <span style="color: #C0A054;">**DVP**</span> 우파 내 반대파가 막아내기에는 너무 거셌습니다. 당은 공식적으로 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>와의 합병을 승인하기로 의결했으나, 상대 당은 아직 최종 결정을 내리지 않았습니다.
 
-Despite this victory, many are halfhearted in their support of liberal unity, only viewing it as an alliance of necessity, which could spark some problems in the proposed wider party.
+이러한 승리에도 불구하고, 많은 이들은 자유주의 통합에 대한 지지에 성의가 없으며 단지 필요에 의한 동맹으로만 여기고 있어, 향후 제안된 거대 정당 내에서 문제를 일으킬 소지가 있습니다.
 
 - @lvp_merger_1930_2
 
@@ -69,4 +69,4 @@ view-if: lvp_formation_points < 4
 on-arrival: dvp_relation -= 3; dvp_right += 5; new_middle_dvp -= 2; old_middle_dvp -= 2; pro_republic -= 3; liberal_cooperation -= 10
 face-image: img/portraits/hitler.jpg
 
-Unfortunately, the efforts to unify the liberal parties have ended in failure. The right wing and industrial backers of the <span style="color: #C0A054;">**DVP**</span> successfully swayed a narrow majority to reject the merger proposal. This outcome has greatly demoralized the German middle and has forced the disbandment of the Liberal Association.
+불행히도 자유주의 정당들을 통합하려는 노력은 실패로 돌아갔습니다. <span style="color: #C0A054;">**DVP**</span>의 우파와 산업계 후원자들은 근소한 차이로 과반수를 움직여 합병 제안을 거부하는 데 성공했습니다. 이 결과는 독일 중산층의 사기를 크게 꺾어놓았고 자유주의 연합의 해산을 초래했습니다.

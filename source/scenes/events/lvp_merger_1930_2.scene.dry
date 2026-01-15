@@ -1,5 +1,5 @@
-title:  <span style="color: #D3C24D;">**[+ ddp_name +]**</span> Congress
-subtitle: The future of the liberal movement will be decided here.
+title: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 전당대회
+subtitle: 자유주의 운동의 미래가 이곳에서 결정될 것입니다.
 on-arrival: {!
 Q.lvp_formation_points = 0;
 if (Q.ddp_relation < 50) {
@@ -36,27 +36,27 @@ max-visits: 1
 face-image: img/ddp.jpg
 new-page: true
 
-= <span style="color: #D3C24D;">**[+ ddp_name +]**</span> Congress
+=  <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 전당대회
 
-The <span style="color: #C0A054;">**DVP**</span> has made its decision in favor of merging the two parties; now, the fate of the unification rests with the <span style="color: #D3C24D;">[+ ddp_name +]</span>. The most prominent proponents within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> in favor of the merger are those in the business wing, who have pursued this goal for years.
+<span style="color: #C0A054;">**DVP**</span>는 두 당의 합당에 찬성하는 결정을 내렸습니다. 이제 통합의 운명은 <span style="color: #D3C24D;">[+ ddp_name +]</span>에게 달려 있습니다. <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내에서 합당을 가장 적극적으로 찬성하는 이들은 비즈니스 파벌에 속한 사람들로, 그들은 수년간 이 목표를 추구해 왔습니다.
 
-On the other hand, leftists within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> strongly oppose the merger citing obvious concerns, but the flagging vote share of the German liberal parties has convinced the majority of the party to 'do something'. A defeat in this decision would spell the end of liberal cooperation for the foreseeable future, severely demoralizing the German middle class, with the blame falling on the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>.
+반면, <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내 좌파들은 명백한 우려를 표하며 합당에 강력히 반대하고 있습니다. 하지만 독일 자유주의 정당들의 득표율이 줄어들면서 당의 대다수는 '무언가 해야 한다'는 확신을 갖게 되었습니다. 이번 결정에서의 패배는 당분간 자유주의 협력의 종말을 의미할 것이며, 독일 중산층의 사기를 심각하게 꺾어놓고 그 비난은 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>에게 쏟아질 것입니다.
 
-- @ddp_success: The party votes...
-- @ddp_fail: The party votes...
+- @ddp_success: 당이 투표를 진행한다...
+- @ddp_fail: 당이 투표를 진행한다...
 
 @ddp_success
 view-if: lvp_formation_points >= 3
 on-arrival: ddp_relation -= 5; ddp_right += 2; lvp_trigger_2_time = time + 1
 face-image: img/weimar_coalition_3.jpg
 
-Perhaps surprisingly, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has followed the <span style="color: #C0A054;">**DVP**</span>'s decision and affirmed their support for a united <span style="color: #FFCC00;">Liberal People's Party</span>. It seems that the leftists within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> have finally lost their battle to maintain the position of a '<span style="color: #c00000;">Social</span> and <span style="color: #000000;">Rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> party in the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> party system.
+놀랍게도 <span style="color: #D3C24D;">**[+ ddp_name +]**</span>는 <span style="color: #C0A054;">**DVP**</span>의 결정을 따랐고 통합된 <span style="color: #FFCC00;">자유인민당</span>에 대한 지지를 확인했습니다. <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내 좌파들이 <span style="color: #000000;">바</span><span style="color: #DD0000;">이</span><span style="color: #FFCC00;">마르</span> 정당 시스템에서 '<span style="color: #c00000;">사회적</span>이고 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span>적인 정당'의 위치를 고수하려던 싸움에서 마침내 패배한 것으로 보입니다.
 
-However, the leftists within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will wield little influence in the wider party, which will consist of twice as many <span style="color: #C0A054;">**DVP**</span> members as <span style="color: #D3C24D;">**[+ ddp_name +]**</span> members.
+그러나 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 내 좌파들은 더 거대해진 당 내에서 거의 영향력을 발휘하지 못할 것이며, 통합된 당은 <span style="color: #D3C24D;">**[+ ddp_name +]**</span> 당원들보다 두 배나 많은 <span style="color: #C0A054;">**DVP**</span> 당원들로 구성될 것입니다.
 
 @ddp_fail
 view-if: lvp_formation_points < 3
 on-arrival: dvp_right += 5; new_middle_ddp -= 4; old_middle_ddp -= 4; pro_republic -= 5; liberal_cooperation -= 10
 face-image: img/portraits/hitler.jpg
 
-As always, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s left wing have rejected the plans to create a united <span style="color: #FFCC00;">Liberal People's Party</span>. It seems that the infighting that plagues the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> remains alive and well. This outcome has greatly demoralized the German middle and has forced the disbandment of the Liberal Association. 
+언제나 그렇듯, <span style="color: #D3C24D;">**[+ ddp_name +]**</span>의 좌파는 통합된 <span style="color: #FFCC00;">자유인민당</span> 창설 계획을 거부했습니다. <span style="color: #D3C24D;">**[+ ddp_name +]**</span>를 괴롭히는 고질적인 내분이 여전히 건재한 것으로 보입니다. 이 결과는 독일 중산층의 사기를 크게 꺾어놓았고 자유주의 연합의 해산을 초래했습니다.

@@ -1,5 +1,5 @@
-title: London Economic Conference
-subtitle: The <span style="color: #10069f;">League</span> of <span style="color: #10069f;">Nations</span> unites to tackle the Great Depression...
+title: 런던 경제 회의
+subtitle: <span style="color: #10069f;">국제</span><span style="color: #10069f;">연맹</span>이 대공황을 해결하기 위해 뭉쳤습니다...
 view-if: year = 1933 and month >= 6
 on-arrival: london_economic_conference_seen = 1
 new-page: true
@@ -7,17 +7,17 @@ max-visits: 1
 go-to: economic_recovery if unemployed < 15; no_recovery if unemployed >= 15
 tags: event
 
-= London Economic Conference
+= 런던 경제 회의
 
 # TODO: if you've recovered, you get economic recovery
 # if you haven't recovered, you can either support Roosevelt or support the UK/France
 
-The <span style="color: #10069f;">League</span> of <span style="color: #10069f;">Nations</span> is hosting a conference to discuss the state of the global economy and potential solutions to the ongoing depression. All parties want to reduce tariffs to encourage trade. However, the Western powers are at an impasse; <span style="color: #002654;">France</span> and to a lesser extent <span style="color: #C8102E;">Britain</span> are calling for fixed currency exchange rates, while President Roosevelt of the <span style="color: #B31942;">United</span> <span style="color: #0A3161;">States</span> wants to print new money to stimulate demand, calling for "controlled inflation". The <span style="color: #001489;">Europeans</span> want to reduce their debts to the <span style="color: #B31942;">U</span><span style="color: #0A3161;">S</span>, while <span style="color: #B31942;">Amer</span><span style="color: #0A3161;">ica</span> favors continued full payments.
+<span style="color: #10069f;">국제</span><span style="color: #10069f;">연맹</span>이 세계 경제의 현황과 지속되는 불황에 대한 잠재적 해결책을 논의하기 위해 회의를 주최했습니다. 모든 당사국은 무역을 장려하기 위해 관세를 낮추기를 원합니다. 그러나 서구 열강들은 교착 상태에 빠져 있습니다. <span style="color: #002654;">프랑스</span>와, 정도는 덜하지만 <span style="color: #C8102E;">영국</span>은 고정 환율을 요구하고 있는 반면, <span style="color: #B31942;">미</span><span style="color: #0A3161;">국</span>의 루즈벨트 대통령은 "통제된 인플레이션"을 주장하며 수요를 자극하기 위해 화폐를 증발하기를 원합니다. <span style="color: #001489;">유럽 국가들</span>은 <span style="color: #B31942;">미</span><span style="color: #0A3161;">국</span>에 대한 부채 탕감을 원하지만, <span style="color: #B31942;">미</span><span style="color: #0A3161;">국</span>은 완전한 상환이 계속되기를 선호합니다.
 
 @economic_recovery
 
-[? if wtb_adopted or budget <= 0: Germany has largely recovered from the crisis, owing in large part to the same sorts of economic policies that Roosevelt is pursuing. ?]
-[? if not wtb_adopted and budget > 0: Germany has largely recovered from the crisis, without having to resort to budget deficits or devaluing the currency. ?]
+[? if wtb_adopted or budget <= 0: 독일은 루즈벨트가 추진하는 것과 유사한 경제 정책 덕분에 위기에서 대부분 회복했습니다. ?]
+[? if not wtb_adopted and budget > 0: 독일은 재정 적자나 통화 가치 절하에 의존하지 않고도 위기에서 대부분 회복했습니다. ?]
 
 - @support_roosevelt
 - @support_france
@@ -27,7 +27,7 @@ The <span style="color: #10069f;">League</span> of <span style="color: #10069f;"
 
 @no_recovery
 
-Germany, like the rest of the world, is still deep in the economic crisis, even if it has appeared to bottom out.
+독일은 전 세계와 마찬가지로, 비록 바닥은 친 것처럼 보일지라도 여전히 깊은 경제 위기 속에 있습니다.
 
 - @support_roosevelt
 - @support_france
@@ -37,60 +37,60 @@ Germany, like the rest of the world, is still deep in the economic crisis, even 
 
 
 @stable_currency_out_of_gov
-title: German representatives call for stable currency, along with <span style="color: #C8102E;">Britain</span> and <span style="color: #002654;">France</span>.
+title: 독일 대표단은 <span style="color: #C8102E;">영국</span>, <span style="color: #002654;">프랑스</span>와 함께 통화 안정을 요구한다.
 view-if: not spd_in_government
 on-arrival: west_relation += 1
 
-As expected, the conservative German bankers support <span style="color: #C8102E;">Britain</span> and <span style="color: #002654;">France</span>'s plan to stabilize currency exchange rates. In response to the continued support for fixed currency exchange rates and the impasse on debts, the <span style="color: #B31942;">Amer</span><span style="color: #0A3161;">icans</span> pull out of the conference, leaving it with no agreements whatsoever.
+예상대로 보수적인 독일 은행가들은 환율을 안정시키려는 <span style="color: #C8102E;">영국</span>과 <span style="color: #002654;">프랑스</span>의 계획을 지지합니다. 고정 환율에 대한 지속적인 지지와 부채 문제의 교착 상태에 대응하여, <span style="color: #B31942;">미국</span><span style="color: #0A3161;">인들</span>은 회의에서 철수해 버렸고, 회의는 아무런 합의 없이 끝났습니다.
 
-[? if unemployed >= 15 : Nevertheless, the world economy is slowly improving due in part to the economic stimulus and more liberal trade policies of the Roosevelt administration. ?]
-[? if unemployed < 15 : Nevertheless, the world economy is slowly improving due in part to the economic stimulus and more liberal trade policies of the Roosevelt administration as well as our own economic plan. ?]
+[? if unemployed >= 15 : 그럼에도 불구하고, 세계 경제는 루즈벨트 행정부의 경기 부양책과 더 자유주의적인 무역 정책 덕분에 서서히 개선되고 있습니다. ?]
+[? if unemployed < 15 : 그럼에도 불구하고, 세계 경제는 루즈벨트 행정부의 경기 부양책과 더 자유주의적인 무역 정책, 그리고 우리 자체적인 경제 계획 덕분에 서서히 개선되고 있습니다. ?]
 
 
 @support_roosevelt
-title: Support Roosevelt's ideas - we must devalue currency.
+title: 루즈벨트의 구상을 지지한다 - 우리는 통화 가치를 절하해야 한다.
 view-if: spd_in_government
 
 
-We support Roosevelt's plan for controlled inflation, leaving us at odds with the <span style="color: #001489;">European</span> powers. In response to the continued support for fixed currency exchange rates by <span style="color: #002654;">France</span> and <span style="color: #C8102E;">Britain</span> and the impasse on debts, the <span style="color: #B31942;">Amer</span><span style="color: #0A3161;">icans</span> pull out of the conference, leaving it with no agreements whatsoever.
+우리는 루즈벨트의 통제된 인플레이션 계획을 지지하며, 이로 인해 <span style="color: #001489;">유럽</span> 열강들과 척을 지게 되었습니다. <span style="color: #002654;">프랑스</span>와 <span style="color: #C8102E;">영국</span>의 고정 환율에 대한 지속적인 지지와 부채 문제의 교착 상태에 대응하여, <span style="color: #B31942;">미국</span><span style="color: #0A3161;">인들</span>은 회의에서 철수해 버렸고, 회의는 아무런 합의 없이 끝났습니다.
 
 @support_france
-title: Support <span style="color: #002654;">France</span> and <span style="color: #C8102E;">Britain</span> - we must have stable currency.
+title: <span style="color: #002654;">프랑스</span>와 <span style="color: #C8102E;">영국</span>을 지지한다 - 우리는 안정적인 통화를 유지해야 한다.
 view-if: spd_in_government
 on-arrival: west_relation += 1; eu_progress += 1
 
-Our position brings us closer to other <span style="color: #001489;">European</span> powers. In response to the continued support for fixed currency exchange rates and the impasse on debts, the <span style="color: #B31942;">Amer</span><span style="color: #0A3161;">icans</span> pull out of the conference, leaving it with no agreements whatsoever.
+우리의 입장은 다른 <span style="color: #001489;">유럽</span> 열강들과의 관계를 더 가깝게 만듭니다. 고정 환율에 대한 지속적인 지지와 부채 문제의 교착 상태에 대응하여, <span style="color: #B31942;">미국</span><span style="color: #0A3161;">인들</span>은 회의에서 철수해 버렸고, 회의는 아무런 합의 없이 끝났습니다.
 
 
 @salvage
-title: Can we try to salvage the negotiations?
+title: 우리가 협상을 살려낼 수 있겠습니까?
 view-if: spd_in_government
 
-How should we try to salvage the negotiations?
+우리는 협상을 살리기 위해 어떤 시도를 해야 합니까?
 
-- @salvage_currency: Try to convince <span style="color: #002654;">France</span> and <span style="color: #C8102E;">Britain</span> that slowly controlled inflation is possible and desirable.
-- @salvage_debts: Try to convince the <span style="color: #B31942;">U</span><span style="color: #0A3161;">S</span> to reduce war debts for the sake of peace.
-- @no_business: Nothing can be done.
+- @salvage_currency: <span style="color: #002654;">프랑스</span>와 <span style="color: #C8102E;">영국</span>에게 완만하고 통제된 인플레이션이 가능하며 바람직하다고 설득한다.
+- @salvage_debts: 평화를 위해 전쟁 부채를 탕감하도록 <span style="color: #B31942;">미</span><span style="color: #0A3161;">국</span>을 설득한다.
+- @no_business: 할 수 있는 게 없다.
 
 @salvage_currency
 choose-if: woytinsky_advisor = 1 and wtb_implemented > 1
-unavailable-subtitle: Wladimir Woytinsky would be extremely helpful right now.
+unavailable-subtitle: 블라디미르 보이틴스키가 지금 당장 큰 도움이 될 것입니다.
 on-arrival: foreign_aid = 1; unemployed -= 2 if unemployed >= 10; unemployed -= 1.5 if unemployed >= 5; inflation += 1.5; workers_spd += 4*(1-dissent); new_middle_spd += 3*(1-dissent); economic_growth += 1.5 if economic_growth < 3
 
-Wladimir Woytinsky, now part of our delegation to the conference, uses our successful implementation of the WTB-plan in order to argue for loosening currency valuation. The argument is at least somewhat convincing, and an agreement is reached, leading to increased inflation and demand stimulus throughout the world.
+이제 우리 대표단의 일원이 된 블라디미르 보이틴스키는 통화 평가 완화를 주장하기 위해 우리의 성공적인 WTB 계획 이행 사례를 활용합니다. 이 주장은 적어도 어느 정도 설득력을 얻어 합의에 도달하게 되며, 전 세계적으로 인플레이션 증가와 수요 자극으로 이어집니다.
 
 @salvage_debts
 choose-if: reparations <= -2 and pacifism >= 3 and (rearmament_exposed or west_relation >= 3)
-unavailable-subtitle: We cannot argue for pacifism in our current state.
+unavailable-subtitle: 현재 상태로는 평화주의를 주장할 수 없습니다.
 on-arrival: foreign_aid = 1; budget += 1; unemployed -= 1 if unemployed >= 10; unemployed -= 1 if unemployed >= 5; inflation += 1 if inflation < 0; new_middle_spd += 4*(1-dissent); workers_spd += 3*(1-dissent); economic_growth += 1 if economic_growth < 3
 
-We try to argue that reducing war debts will reduce the risk of a future <span style="color: #001489;">European</span> war, using our successful disarmament and the reduction in Versailles reparation payments as an argument. The argument is at least somewhat convincing to the <span style="color: #B31942;">Amer</span><span style="color: #0A3161;">icans</span>, leading to an agreement to reduce debts from the Great War. This indirectly also improves our economy.
+우리는 전쟁 부채 탕감이 미래의 <span style="color: #001489;">유럽</span> 전쟁 발발 위험을 줄일 것이라고 주장하며, 우리의 성공적인 군축과 베르사유 배상금 축소를 근거로 제시합니다. 이 주장은 <span style="color: #B31942;">미국</span><span style="color: #0A3161;">인들</span>에게 적어도 어느 정도 먹혀들어, 대전쟁의 부채를 줄이는 합의로 이어집니다. 이는 간접적으로 우리 경제 또한 개선시킵니다.
 
 @no_business
-title: This conference is none of our concern.
+title: 이 회의는 우리 알 바 아니다.
 view-if: spd_in_government
 
-The conference collapses, as expected. In response to the continued support for fixed currency exchange rates and the impasse on debts, the <span style="color: #B31942;">Amer</span><span style="color: #0A3161;">icans</span> pull out of the conference, leaving it with no agreements whatsoever.
+예상대로 회의는 결렬되었습니다. 고정 환율에 대한 지속적인 지지와 부채 문제의 교착 상태에 대응하여, <span style="color: #B31942;">미국</span><span style="color: #0A3161;">인들</span>은 회의에서 철수해 버렸고, 회의는 아무런 합의 없이 끝났습니다.
 
-[? if unemployed >= 15 : Nevertheless, the world economy is slowly improving due in part to the economic stimulus and more liberal trade policies of the Roosevelt administration. ?]
-[? if unemployed < 15 : Nevertheless, the world economy is slowly improving due in part to the economic stimulus and more liberal trade policies of the Roosevelt administration as well as our own economic plan. ?]
+[? if unemployed >= 15 : 그럼에도 불구하고, 세계 경제는 루즈벨트 행정부의 경기 부양책과 더 자유주의적인 무역 정책 덕분에 서서히 개선되고 있습니다. ?]
+[? if unemployed < 15 : 그럼에도 불구하고, 세계 경제는 루즈벨트 행정부의 경기 부양책과 더 자유주의적인 무역 정책, 그리고 우리 자체적인 경제 계획 덕분에 서서히 개선되고 있습니다. ?]
