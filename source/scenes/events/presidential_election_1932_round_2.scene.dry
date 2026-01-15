@@ -1,5 +1,5 @@
-title: Presidential Election
-subtitle: The second round results have come in...
+title: 대통령 선거
+subtitle: 2차 투표 결과가 나왔습니다...
 view-if: year = 1932 and month == 4 and not hindenburg_term_extended and presidential_election_r2_trigger
 frequency: 1000
 max-visits: 1
@@ -12,11 +12,11 @@ face-image: img/hindenburg_election.jpg
 
 @pres_election
 
-The first round has ended, with no candidate receiving an absolute majority of votes. [+ nsdap_candidate_1932 +]'s results were disappointing to him and his party, [? if not hitler_support_hindenburg: but he has chosen to remain as a candidate?][? if hitler_support_hindenburg: resulting in him dropping out and supporting Hindenburg instead?]. [? if spd_support_thalmann == 0 and kpd_support_spd == 0: Thälmann has also remained in the running, refusing to back what they view as the lesser evil.?] 
+1차 투표가 끝났지만, 과반수를 득표한 후보는 없었습니다. [+ nsdap_candidate_1932 +]의 성적은 그와 당에게 실망스러운 결과였습니다. [? if not hitler_support_hindenburg: 하지만 그는 후보직을 유지하기로 결정했습니다.?][? if hitler_support_hindenburg: 그 결과 그는 사퇴하고 힌덴부르크를 지지하기로 했습니다.?] [? if spd_support_thalmann == 0 and kpd_support_spd == 0: 텔만 또한 차악을 지지하기를 거부하며 경선에 남았습니다.?]
 
-Following last month’s events, [+ dnvp_candidate_1932 +] has withdrawn from the race. His votes are expected to be [? if not hitler_support_hindenburg: split between [+ reactionary_candidate_1932 +][? if secondary_reactionary_candidate_1932:, [+ secondary_reactionary_candidate_1932 +]?] and [+ nsdap_candidate_1932 +]?][? if hitler_support_hindenburg: redistributed to Hindenburg?]. However, Hugenberg’s [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?] continues to withhold an official endorsement in favor of any candidate.
+지난달의 사건들에 이어, [+ dnvp_candidate_1932 +]는 경선에서 사퇴했습니다. 그의 표는 [? if not hitler_support_hindenburg: [+ reactionary_candidate_1932 +][? if secondary_reactionary_candidate_1932:, [+ secondary_reactionary_candidate_1932 +]?]와 [+ nsdap_candidate_1932 +]로 갈라질 것으로 예상됩니다.?][? if hitler_support_hindenburg: 힌덴부르크에게 흡수될 것으로 예상됩니다.?] 그러나 후겐베르크의 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?]는 여전히 특정 후보에 대한 공식 지지를 유보하고 있습니다.
 
-- @final_election: The second round results...
+- @final_election: 2차 투표 결과...
 
 @final_election
 go-to: election_algorithm
@@ -631,7 +631,7 @@ go-to: calculation
 @calculation
 go-to: hindenburg_wins if hindenburg_plurality == 1; thalmann_wins if thalmann_plurality == 1; hitler_wins if nsdap_president_plurality == 1; braun_wins if spd_plurality == 1 and spd_candidate_1932 == "Braun"; rosenfeld_wins if spd_plurality == 1 and spd_candidate_1932 == "Rosenfeld"; eckener_wins if spd_plurality == 1 and spd_candidate_1932 == "Eckener"; reactionary_candidate_majority if (reactionary_candidate_1_plurality or reactionary_candidate_2_plurality)
 
-Results:
+결과:
 
 [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932 +]**</span> - [+ hindenburg_votes_disp +]% ?][? if not hindenburg_run: [? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932 +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932 +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932 +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932 +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932 +]**</span>?] - [+ reactionary_candidate_1_votes_disp +]% ?]
 
@@ -641,62 +641,62 @@ Results:
 
 [? if not kpd_support_spd : <span style="color: #700000;">**[+ communist_candidate_1932 +]**</span> - [+ thalmann_votes_disp +]% ?]
 
-[? if spd_campaign > 0 : [? if spd_candidate_1932 != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span>?][? if spd_candidate_1932 == "Eckener": <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>?] - [+ spd_president_votes_disp +]% ?]
+[? if spd_campaign > 0 : [? if spd_candidate_1932 != "Eckener": <span style="color: #c00000;">**[+ spd_candidate_1932 +]**</span>?][? if spd_candidate_1932 == "Eckener": <span style="color: #000000;">**에**</span><span style="color: #DD0000;">**케**</span><span style="color: #FFCC00;">**너**</span>?] - [+ spd_president_votes_disp +]% ?]
 
-[? if thalmann_votes_rnd_1 > thalmann_votes + 2 and not kpd_support_spd: The decline of [+ communist_candidate_1932 +]'s vote share is largely attributed to the futility of his campaign, with estimates suggesting that a significant portion of his former voters have either defected to [+ nsdap_candidate_1932 +] or abstained from the second round. The <span style="color: #700000;">**Communist**</span> camp is overcome with resignation, as this outcome suggests that the German masses are still far from ready for the revolutionary assault against capitalism that he and his party’s leadership had been preparing for. ?]
+[? if thalmann_votes_rnd_1 > thalmann_votes + 2 and not kpd_support_spd: [+ communist_candidate_1932 +]의 득표율 하락은 주로 그의 선거 운동이 무의미했기 때문인 것으로 풀이됩니다. 기존 지지층의 상당수가 [+ nsdap_candidate_1932 +]에게 전향했거나 2차 투표에서 기권한 것으로 추정됩니다. <span style="color: #700000;">**공산주의자**</span> 진영은 깊은 체념에 빠졌습니다. 이 결과는 독일 대중이 그와 당 지도부가 준비해 온 자본주의에 대한 혁명적 공격을 받아들일 준비가 전혀 되어 있지 않음을 시사하기 때문입니다. ?]
 
-[? if hindenburg_run and not hitler_support_hindenburg: It is seen that [+ nsdap_candidate_1932 +] was the one to benefit from [+ dnvp_candidate_1932 +]'s withdrawal, rather than [+ reactionary_candidate_1932 +], having garnered 60% of his former voters. Even if [+ nsdap_candidate_1932 +] doesn't win, the destruction of the parties between the <span style="color: #7A3C00;">**NSDAP**</span> and [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] will have drastic consequences for German democracy. ?]
+[? if hindenburg_run and not hitler_support_hindenburg: [+ dnvp_candidate_1932 +]의 사퇴로 이득을 본 것은 [+ reactionary_candidate_1932 +]가 아니라 [+ nsdap_candidate_1932 +]인 것으로 보입니다. 그는 사퇴한 후보 지지층의 60%를 흡수했습니다. 비록 [+ nsdap_candidate_1932 +]가 승리하지 못하더라도, <span style="color: #7A3C00;">**NSDAP**</span>와 [? if z_party_name != "CVP": <span style="color: #000000;">중앙당</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] 사이의 정당들이 붕괴한 것은 독일 민주주의에 파국적인 결과를 초래할 것입니다. ?]
 
 @hindenburg_wins
 on-arrival: president = "Hindenburg"; hindenburg_angry_bruning += 15 if not spd_campaign and spd_support_reactionary
 
-As expected, the incumbent Hindenburg wins the presidency. Let's hope he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power.
+예상대로, 현직 힌덴부르크가 대통령에 당선되었습니다. 그가 계속해서 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하기를 희망합시다.
 
-[? if spd_support_reactionary and not bruning_time: The fact that, even with the votes from the <span style="color: #c00000;">socialists</span> and <span style="color: #000000;">Catholics</span>, Hindenburg has failed to secure a majority in the first round has been a great embarrassment to him. Realizing that many of his former supporters have turned to Hitler, he is now shifting further to the right. ?]
+[? if spd_support_reactionary and not bruning_time: <span style="color: #c00000;">사회주의자들</span>과 <span style="color: #000000;">가톨릭 교도들</span>의 표를 얻고도 힌덴부르크가 1차 투표에서 과반수 확보에 실패한 사실은 그에게 큰 망신이었습니다. 기존 지지자들 중 상당수가 히틀러에게 돌아섰음을 깨달은 그는 이제 더욱 우경화되고 있습니다. ?]
 
-[? if spd_support_reactionary and bruning_time: The fact that [+ reactionary_candidate_1932 +] owed his reelection to the parties who opposed him in 1925 rather than those with whom he felt the closest natural affinity with is a source of great personal anguish to the aging president and severely strained his relations with Brüning and the conservatives who had orchestrated his reelection campaign. ?]
+[? if spd_support_reactionary and bruning_time: [+ reactionary_candidate_1932 +]가 자신과 성향이 맞는 이들이 아니라, 1925년에 자신을 반대했던 정당들 덕분에 재선되었다는 사실은 늙은 대통령에게 큰 개인적 고뇌를 안겨주었습니다. 또한 이로 인해 브뤼닝 및 재선 캠페인을 주도했던 보수주의자들과의 관계도 심각하게 경색되었습니다. ?]
 
 @thalmann_wins
 on-arrival: president = "Thälmann"; kpd_relation = 80;
 
-Ernst Thälmann of the <span style="color: #700000;">**KPD**</span> has won the presidency. Immediately, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> launches a coup attempt against the government. We have no choice but to unite with the <span style="color: #700000;">**KPD**</span> against the <span style="color: #7A3C00;">fascists</span>...
+<span style="color: #700000;">**KPD**</span>의 에른스트 텔만이 대통령에 당선되었습니다. 즉시 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우파</span>가 정부를 전복하려 쿠데타를 시도합니다. 우리는 <span style="color: #7A3C00;">파시스트들</span>에 맞서 <span style="color: #700000;">**KPD**</span>와 연합하는 것 외에는 선택의 여지가 없습니다...
 
-- @civil_war: This is civil war.
+- @civil_war: 이젠 내전이다.
 
 @hitler_wins
 on-arrival: president = nsdap_candidate_1932; chancellor = "Hitler"; chancellor_party = "NSDAP"
 
-[? if nsdap_candidate_1932 == "Hitler" : Adolf Hitler of the <span style="color: #7A3C00;">**NSDAP**</span> has won the presidency. He wastes no time in consolidating power. ?]
-[? if nsdap_candidate_1932 != "Hitler" : The <span style="color: #7A3C00;">**NSDAP**</span> candidate [+ president +] has won. The first action President [+ president +] takes is inviting Hitler back into Germany, and appointing him chancellor. The <span style="color: #7A3C00;">Nazis</span> waste no time in consolidating power. ?]
+[? if nsdap_candidate_1932 == "Hitler" : <span style="color: #7A3C00;">**NSDAP**</span>의 아돌프 히틀러가 대통령에 당선되었습니다. 그는 권력을 공고히 하는 데 시간을 낭비하지 않습니다. ?]
+[? if nsdap_candidate_1932 != "Hitler" : <span style="color: #7A3C00;">**NSDAP**</span> 후보 [+ president +]가 당선되었습니다. [+ president +] 대통령이 취한 첫 번째 조치는 히틀러를 독일로 불러들여 총리로 임명하는 것이었습니다. <span style="color: #7A3C00;">나치</span>는 권력을 공고히 하는 데 시간을 낭비하지 않습니다. ?]
 
-- @hitler_takes_power: What do we do now?
+- @hitler_takes_power: 이제 우린 어찌해야 하는가?
 
 @braun_wins
 on-arrival: president = "Braun"; president_ideology = "Left"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 6*(1-dissent); old_middle_spd += 4*(1-dissent); new_middle_spd += 4*(1-dissent); rural_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent);
 go-to: achievement_check_1
 
-Otto Braun of the <span style="color: #c00000;">**SPD**</span> has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+<span style="color: #c00000;">**SPD**</span>의 오토 브라운이 대통령에 당선되었습니다! 이는 우리 당의 경사이며, 그의 승리는 우리의 지지율을 크게 끌어올릴 것입니다.
 
 @rosenfeld_wins
 on-arrival: president = "Rosenfeld"; president_ideology = "Left"; center_dissent -= 5; labor_dissent -= 5; left_dissent -= 15; left_strength += 20; workers_spd += 9*(1-dissent); unemployed_spd += 6*(1-dissent); coup_progress += 4; capital_strike_progress += 4
 go-to: achievement_check_1
 
-Kurt Rosenfeld of the [? if not left_split: <span style="color: #c00000;">**SPD**</span>?][? if left_split: <span style="color: #9B0000;">**SAPD**</span>?] has won the presidency! This is a moment of celebration for our party, and his victory is able to bolster our support.
+[? if not left_split: <span style="color: #c00000;">**SPD**</span>?][? if left_split: <span style="color: #9B0000;">**SAPD**</span>?]의 쿠르트 로젠펠트가 대통령에 당선되었습니다! 이는 우리 당의 경사이며, 그의 승리는 우리의 지지율을 크게 끌어올릴 것입니다.
 
-However, his leftism has sparked rumors of a planned "March on Berlin" by the <span style="color: #7A3C00;">**SA**</span> and <span style="color: #3E88B3;">**Stahlhelm**</span>, who see his election as tantamount to electing a <span style="color: #700000;">**Communist**</span>. Industrialists, equally displeased, may resort to protest through their own means.
+그러나 그의 좌파 성향은 그의 당선을 <span style="color: #700000;">**공산주의자**</span> 선출과 다를 바 없다고 여기는 <span style="color: #7A3C00;">**SA**</span>와 <span style="color: #3E88B3;">**Stahlhelm**</span>의 "베를린 진군" 계획에 대한 소문을 촉발했습니다. 마찬가지로 불쾌해하는 산업가들 또한 그들만의 방식으로 저항에 나설지도 모릅니다.
 
 @eckener_wins
 on-arrival: president = "Eckener"; president_ideology = "Moderate"; reformist_dissent -= 20; center_dissent -= 5; labor_dissent -= 5; reformist_strength += 20; workers_spd += 4*(1-dissent); unemployed_spd += 2*(1-dissent); old_middle_spd += 2*(1-dissent); new_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent)
 achievement: zeppelin_kapitan
 go-to: achievement_check_1
 
-Nationally renown Zeppelin pilot and independent Hugo Eckener has won the presidency! This is a moment of celebration for our party, as his victory helps keep the <span style="color: #7A3C00;">Nazis</span> at bay.
+국민적 영웅인 비행선 조종사이자 무소속인 휴고 에케너가 대통령에 당선되었습니다! 그의 승리가 <span style="color: #7A3C00;">나치</span>를 저지하는 데 도움이 될 것이기에, 이는 우리 당에게도 축하할 일입니다.
 
 @duesterburg_wins
 on-arrival: president = "Braun"; president_ideology = "Left"; reformist_dissent -= 15; center_dissent -= 15; labor_dissent -= 15; left_dissent -= 5; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent);
 go-to: achievement_check_1
 
-Duesterberg is too ashamed to accept the Presidency, and out of the kindness of his heart, has given it to Otto Braun. 
+뒤스터베르크는 너무 부끄러워 대통령직을 수락하지 못하고, 호의를 베풀어 오토 브라운에게 자리를 양보했습니다.
 
 @achievement_check_1
 on-arrival: neue_geschaftsfuhrung = 1 if chancellor == "Brüning" and spd_toleration
@@ -712,23 +712,23 @@ go-to: jarres_win if (reactionary_candidate_1_plurality and reactionary_candidat
 on-arrival: president = "Jarres"; president_ideology = "Right"; new_middle_dvp += 4; old_middle_dvp += 4; rural_dvp += 4; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp += 4
 achievement: aller_guten_dinge_sind_zwei
 
-Perhaps surprisingly, Karl Jarres has made an unforeseen comeback and won the presidency. We hope that his governance will be an improvement over that of Hindenburg, and that he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power. 
+놀랍게도 카를 야레스가 예상을 뒤엎고 복귀하여 대통령에 당선되었습니다. 우리는 그의 통치가 힌덴부르크보다는 낫기를, 그리고 그가 계속해서 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하기를 희망합니다.
 
 @gessler_win
 on-arrival: president = "Gessler"; president_ideology = "Moderate"; new_middle_ddp += 2; old_middle_ddp += 2; rural_ddp += 2; new_middle_dvp += 2; old_middle_dvp += 2; rural_dvp += 2; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp += 4
 
-Otto Gessler has made a comeback and won the presidency. Despite his[? if lvp_formed: &nbsp;former?] affiliation with the <span style="color: #D3C24D;">**DDP**</span>, he isn’t as friendly as his colleagues. However, he is a significant step up from Hindenburg. Let’s hope he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power.
+오토 게슬러가 정계에 복귀하여 대통령에 당선되었습니다. [? if lvp_formed: &nbsp;과거?] <span style="color: #D3C24D;">**DDP**</span> 소속이었음에도 불구하고, 그는 옛 동료들에게 그리 우호적이지 않습니다. 하지만 그는 힌덴부르크보다는 훨씬 나은 인물입니다. 그가 계속해서 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하기를 희망합시다.
 
 @luther_win
 on-arrival: president = "Luther"; president_ideology = "Moderate"; new_middle_dvp += 4; old_middle_dvp += 4; rural_dvp += 4; new_middle_lvp += 4; old_middle_lvp += 4; rural_lvp += 4
 
-From former Chancellor to President, Hans Luther has secured the presidency. Known for his technocratic beliefs, he's unlikely to rock the boat in either political direction. Let’s hope he continues to keep the <span style="color: #7A3C00;">Nazis</span> out of power.
+전직 총리였던 한스 루터가 대통령직을 거머쥐었습니다. 기술관료적 신념으로 알려진 그는 정치적으로 어느 한쪽으로 치우치는 행동을 하지 않을 것입니다. 그가 계속해서 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하기를 희망합시다.
 
 @adenauer_win
 on-arrival: president = "Adenauer"; president_ideology = "Moderate"; workers_z += 4; new_middle_z += 6; old_middle_z += 6; rural_z += 4; catholics_z += 4
 go-to: bundesrepublik if presidential_powers
 
-Konrad Adenauer has risen from Mayor to President and is expected to pursue friendlier policies toward the <span style="color: #c00000;">**SPD**</span> than Hindenburg. Still, let's hope he remains firm in keeping the <span style="color: #7A3C00;">Nazis</span> out of power.
+콘라트 아데나워는 시장에서 대통령으로 도약했으며, 힌덴부르크보다 <span style="color: #c00000;">**SPD**</span>에 더 우호적인 정책을 펼칠 것으로 예상됩니다. 그래도 그가 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하는 데 확고한 태도를 유지하기를 희망합시다.
 
 @bundesrepublik
 achievement: bundesrepublik
@@ -737,19 +737,19 @@ achievement: bundesrepublik
 @bruning_win
 on-arrival: president = "Brüning"; president_ideology = "Moderate"; new_middle_z += 4; old_middle_z += 4; rural_z += 2; catholics_z += 2
 
-Heinrich Brüning may be an advocate of economic austerity, but as president, he’s a clear step up from Hindenburg in both his <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> convictions and his stance toward the <span style="color: #c00000;">**SPD**</span>. Let’s hope he stands firm and keeps the <span style="color: #7A3C00;">Nazis</span> out of power.
+하인리히 브뤼닝은 비록 경제적 긴축의 옹호자일지라도, 대통령으로서는 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">주의</span>적 신념과 <span style="color: #c00000;">**SPD**</span>에 대한 태도 모두에서 힌덴부르크보다 확실히 나은 인물입니다. 그가 흔들리지 않고 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하기를 희망합시다.
 
 @stegerwald_win
 on-arrival: president = "Stegerwald"; president_ideology = "Moderate"; workers_z += 8; new_middle_z += 6; old_middle_z += 6; rural_z += 4; catholics_z += 4
 
-Adam Stegerwald has risen from union president to President of Germany. He is expected to pursue friendlier policies toward the <span style="color: #c00000;">**SPD**</span> than Hindenburg did, and to provide a voice for the laborers of Germany. Let's hope he remains firm in keeping the <span style="color: #7A3C00;">Nazis</span> out of power.
+아담 슈테거발트는 노조 위원장에서 독일 대통령의 자리에 올랐습니다. 그는 힌덴부르크보다 <span style="color: #c00000;">**SPD**</span>에 더 우호적인 정책을 펼치고, 독일 노동자들을 대변할 것으로 기대됩니다. 그가 <span style="color: #7A3C00;">나치</span>를 권력에서 배제하는 데 확고한 태도를 유지하기를 희망합시다.
 
 @vorbeck_win
 on-arrival: president = "Lettow-Vorbeck"; president_ideology = "Right"; vorbeck_party = "DNVP"; vorbeck_party = "KVP" if kvp_formed; vorbeck_party = "Other" if dnvp_ideology == "Radical" and not kvp_formed; workers_dnvp += 4 if vorbeck_party == "DNVP"; new_middle_dnvp += 4 if vorbeck_party == "DNVP"; old_middle_dnvp += 6 if vorbeck_party == "DNVP"; rural_dnvp += 6 if vorbeck_party == "DNVP"; catholics_dnvp += 4 if vorbeck_party == "DNVP"; workers_kvp += 4 if vorbeck_party == "KVP"; new_middle_kvp += 4 if vorbeck_party == "KVP"; old_middle_kvp += 6 if vorbeck_party == "KVP"; rural_kvp += 6 if vorbeck_party == "KVP"; catholics_kvp += 4 if vorbeck_party == "KVP"; workers_other += 4 if vorbeck_party == "Other"; new_middle_other += 4 if vorbeck_party == "Other"; old_middle_other += 6 if vorbeck_party == "Other"; rural_other += 6 if vorbeck_party == "Other"; catholics_other += 4 if vorbeck_party == "Other"; 
 
-Unfortunately, Paul von Lettow-Vorbeck, a <span style="color: #3E88B3;">nationalist</span> not far different from Hindenburg, has been elected president. A return to government under his leadership—his Camarilla certainly won’t allow it. Let’s hope he holds the line against the <span style="color: #7A3C00;">Nazis</span> and abandons the dangerous taming strategy.
+불행히도 힌덴부르크와 별반 다를 게 없는 <span style="color: #3E88B3;">민족주의자</span> 파울 폰 레토브-포르베크가 대통령에 선출되었습니다. 그의 리더십 아래서 정부에 복귀하는 것은—그의 측근 그룹이 결코 허용하지 않을 것입니다. 그가 <span style="color: #7A3C00;">나치</span>에 맞서 선을 지키고, 위험한 길들이기 전략을 버리기를 희망합시다.
 
 @westarp_win
 on-arrival: president = "Westarp"; president_ideology = "Right"; westarp_party = "DNVP"; westarp_party = "KVP" if kvp_formed; westarp_party = "Other" if dnvp_ideology == "Radical" and not kvp_formed; workers_dnvp += 2 if westarp_party == "DNVP"; new_middle_dnvp += 4 if westarp_party == "DNVP"; old_middle_dnvp += 6 if westarp_party == "DNVP"; rural_dnvp += 6 if westarp_party == "DNVP"; catholics_dnvp += 2 if westarp_party == "DNVP"; workers_kvp += 2 if westarp_party == "KVP"; new_middle_kvp += 4 if westarp_party == "KVP"; old_middle_kvp += 6 if westarp_party == "KVP"; rural_kvp += 6 if westarp_party == "KVP"; catholics_kvp += 2 if westarp_party == "KVP"; workers_other += 2 if westarp_party == "Other"; new_middle_other += 4 if westarp_party == "Other"; old_middle_other += 6 if westarp_party == "Other"; rural_other += 6 if westarp_party == "Other"; catholics_other += 2 if westarp_party == "Other"; 
 
-Unfortunately, Kuno von Westarp, a known <span style="color: #808080;">reactionary</span> and <span style="color: #3E88B3;">nationalist</span>, has been elected president. It’s unlikely we’ll return to government under his leadership. Let’s hope he holds the line against the <span style="color: #7A3C00;">Nazis</span>—and abandons his dangerous taming strategy.
+불행히도 널리 알려진 <span style="color: #808080;">반동주의자</span>이자 <span style="color: #3E88B3;">민족주의자</span>인 쿠노 폰 베스타르프가 대통령에 선출되었습니다. 그의 리더십 아래서 우리가 정부에 복귀할 가능성은 희박합니다. 그가 <span style="color: #7A3C00;">나치</span>에 맞서 선을 지키기를—그리고 그의 위험한 길들이기 전략을 버리기를 희망합시다.
