@@ -1,5 +1,5 @@
-title: March on Berlin
-subtitle: Right-wing militants are taking action...
+title: 베를린 진군
+subtitle: 우파 무장세력이 행동을 개시했습니다...
 view-if: ((spd_in_government = 1 and coup_progress >= 10 and year >= 1930 and (sa_banned=0 or sh_banned=0 or far_right_force >= 40)) or (year >= 1933 and month >= 2 and nsdap_normalized + dnvp_normalized >= 0.5)) and march_on_berlin_timer = 0
 new-page: true
 max-visits: 4
@@ -7,39 +7,39 @@ on-arrival: march_on_berlin_seen += 1; sa_strength += 80; sh_strength += 80; str
 go-to: ask_resign if spd_in_government and (president_ideology == "Right" or president == "Hindenburg"); govt_menu if president_ideology == "Left"; presidential_glaze if president_ideology == "Moderate"; non_govt_menu if spd_in_government = 0 and (president_ideology == "Right" or president == "Hindenburg")
 tags: event
 
-= March on Berlin
+= 베를린 진군
 
-The <span style="color: #7A3C00;">far</span> <span style="color: #3E88B3;">right</span> is mobilizing. Paramilitary forces of the <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">**SA**</span>, organized under the Harzburg Front, have marched on Berlin, threatening to violently overthrow the government.
+<span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우파</span>가 결집하고 있습니다. 하르츠부르크 전선 아래 조직된 <span style="color: #3E88B3;">**철모단**</span>과 <span style="color: #7A3C00;">**SA**</span>의 준군사 조직들이 베를린으로 진격하며 폭력적인 정부 전복을 위협하고 있습니다.
 
-They demand either immediate elections under the "supervision" of the nationalist paramilitaries, or else the immediate resignation of the government and the appointment of Adolf Hitler as chancellor[? if hitler_deported : , and the revocation of his deportation ?]. It is obvious that they are threatening a civil war if their demands are not met.
+그들은 민족주의 준군사 조직들의 "감독" 하에 치러지는 즉각적인 총선, 혹은 현 정부의 즉각적인 사퇴와 아돌프 히틀러의 총리 임명을 요구하고 있습니다[? if hitler_deported : , 또한 그의 추방 취소도 요구합니다 ?]. 만약 그들의 요구가 충족되지 않는다면 내전을 일으키겠다고 위협하는 것이 분명합니다.
 
 @non_govt_menu
 
-It appears that President [+ president +] is looking favorably upon the <span style="color: #7A3C00;">fascist</span> proposals. Chancellor [+ chancellor +] has announced plans to resign.
+[+ president +] 대통령은 <span style="color: #7A3C00;">파시스트</span>들의 제안을 호의적으로 검토하고 있는 것으로 보입니다. [+ chancellor +] 총리는 사임 계획을 발표했습니다.
 
 - @fight
 - @accept
 
 @accept
-title: There is nothing we can do.
+title: 우리가 할 수 있는 일은 없다.
 go-to: accept_election if (nsdap_normalized + dnvp_normalized >= 0.5 and far_right_coalition < 50); accept_hitler if (nsdap_normalized + dnvp_normalized < 0.5 or far_right_coalition >= 50)
 
 @accept_election
 on-arrival: next_election_time = time + 1 if next_election_time > time+1; next_election_month = month + 1 if next_election_time >= time+1; next_election_year = year if next_election_time >= time+1; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; old_middle_nsdap += 10; new_middle_nsdap += 10; workers_nsdap += 10; rural_nsdap += 10; unemployed_nsdap += 8; workers_spd -= 10; workers_kpd -= 10; sa_strength += 100;
 
-President [+ president +] has called for emergency elections, to be held next month, under a caretaker government. The <span style="color: #7A3C00;">**SA**</span> is permitted to act with impunity, intimidating voters into supporting the <span style="color: #7A3C00;">fascists</span>.
+[+ president +] 대통령은 과도 정부 하에 다음 달 치러질 비상 선거를 소집했습니다. <span style="color: #7A3C00;">**SA**</span>는 아무런 제재 없이 활동하며 유권자들을 협박해 <span style="color: #7A3C00;">파시스트</span>를 지지하도록 강요하고 있습니다.
 
 
 @accept_hitler
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; spd_in_government = 0
 
-After the resignation of the chancellor, Hitler has been appointed chancellor[? if hitler_deported: , after being made a citizen again ?].
+총리의 사임 이후, 히틀러가 총리로 임명되었습니다[? if hitler_deported: , 다시 시민권을 획득한 뒤 말입니다 ?].
 
 - @hitler_takes_power
 
 @ask_resign
 
-President [+ president +] has asked our government to resign.
+[+ president +] 대통령은 우리 정부에게 사임을 요청했습니다.
 
 - @fight
 - @fight_constitution
@@ -51,52 +51,52 @@ President [+ president +] has asked our government to resign.
 - @new_elections
 
 @fight
-title: Deploy the Reichsbanner and call a general strike to resist the <span style="color: #7A3C00;">fascists</span>!
+title: 국기단을 배치하고 총파업을 선언하여 <span style="color: #7A3C00;">파시스트</span>들에게 저항한다!
 on-arrival: defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if spd_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; defense_strength += workers_spd_normalized*(2 - dissent)*(2 - unemployed/100); defense_strength += reichswehr_strength*reichswehr_loyalty*reichswehr_militancy if president_ideology == "Left" and spd_in_government
 go-to: fight_2_win if defense_strength >= enemy_strength and march_on_berlin_seen <= 1; fight_2_win_2 if defense_strength >= enemy_strength and march_on_berlin_seen > 1; fight_2_pre_civil_war if defense_strength < enemy_strength
 
-The Reichsbanner number at [+ rb_strength +] thousand; many are in Berlin to counter the <span style="color: #7A3C00;">fascist</span> demonstration.
+국기단 병력은 [+ rb_strength +]천 명에 달하며, 많은 이들이 <span style="color: #7A3C00;">파시스트</span> 시위에 맞서기 위해 베를린에 집결해 있습니다.
 
-[? if spd_prussia: The Prussian police has been deployed against the <span style="color: #7A3C00;">fascists</span>. ?] [? if spd_in_government and president == "Braun" : The portions of the Reichswehr that are loyal are also deployed. ?]
+[? if spd_prussia: 프로이센 경찰이 <span style="color: #7A3C00;">파시스트</span>들에 대항하여 배치되었습니다. ?] [? if spd_in_government and president == "Braun" : 충성스러운 국방군 병력 일부도 배치되었습니다. ?]
 
 
 @fight_2_win
 on-arrival: coup_progress = 0; sa_strength *= 0.7; sh_strength *= 0.7; rb_strength *= 0.9; workers_nsdap -= 12*(1-dissent); unemployed_nsdap -= 10*(1-dissent); new_middle_nsdap -= 6*(1-dissent); workers_spd += 8*(1-dissent); unemployed_spd += 6*(1-dissent); workers_dnvp -= 2; new_middle_dnvp -= 2; old_middle_dnvp -= 2; catholics_dnvp -= 2; pro_republic += 15
 achievement: drei_pfeile
 
-Our forces confront the <span style="color: #7A3C00;">fascists</span>, and somehow, the <span style="color: #7A3C00;">fascists</span> retreat! They were overwhelmed by our display of strength, and have chosen to slink away. The attempted coup is over, at least for now.
+우리 병력이 <span style="color: #7A3C00;">파시스트</span>들과 대치하자, 놀랍게도 <span style="color: #7A3C00;">파시스트</span>들이 후퇴했습니다! 그들은 우리가 보여준 무력에 압도되어 슬그머니 물러나는 길을 택했습니다. 쿠데타 시도는 끝났습니다. 적어도 지금은 말입니다.
 
-The show of force has reinvigorated support for the republic and for the <span style="color: #c00000;">**SPD**</span>, and has weakened the <span style="color: #7A3C00;">fascists</span>.
+이 무력 시위는 공화국과 <span style="color: #c00000;">**SPD**</span>에 대한 지지를 다시금 활기차게 만들었으며, <span style="color: #7A3C00;">파시스트</span>들을 약화시켰습니다.
 
 @fight_2_win_2
 on-arrival: coup_progress = 0; pro_republic += 5; workers_nsdap -= 2*(1-dissent); unemployed_nsdap -= 2*(1-dissent); new_middle_nsdap -= 2*(1-dissent); rb_strength *= 0.9; sa_strength *= 0.9; sh_strength *= 0.9
 
-Our forces confront the <span style="color: #7A3C00;">fascists</span>, and somehow, the <span style="color: #7A3C00;">fascists</span> retreat! They were overwhelmed by our display of strength, and have chosen to slink away. The attempted coup is over, at least for now.
+우리 병력이 <span style="color: #7A3C00;">파시스트</span>들과 대치하자, 놀랍게도 <span style="color: #7A3C00;">파시스트</span>들이 후퇴했습니다! 그들은 우리가 보여준 무력에 압도되어 슬그머니 물러나는 길을 택했습니다. 쿠데타 시도는 끝났습니다. 적어도 지금은 말입니다.
 
-The show of force has reinvigorated support for the republic and for the <span style="color: #c00000;">**SPD**</span>, and has weakened the <span style="color: #7A3C00;">fascists</span>.
+이 무력 시위는 공화국과 <span style="color: #c00000;">**SPD**</span>에 대한 지지를 다시금 활기차게 만들었으며, <span style="color: #7A3C00;">파시스트</span>들을 약화시켰습니다.
 
 
 @fight_2_pre_civil_war
 
-Our forces confront the <span style="color: #7A3C00;">fascists</span> on the streets of Berlin, and armed fighting erupts. Neither side is dislodged from their positions.
+우리 병력이 베를린 거리에서 <span style="color: #7A3C00;">파시스트</span>들과 맞닥뜨렸고, 무력 충돌이 발발했습니다. 양측 모두 한 치도 물러서지 않고 있습니다.
 
-- @civil_war: It is a civil war.
+- @civil_war: 이젠 내전이다.
 
 
 @fight_constitution
-title: This is unconstitutional! We will keep our positions in government, and ask the courts to keep us in power.
+title: 이것은 위헌이다! 우리는 정부 내 직위를 유지할 것이며, 법원에 우리의 권력 유지를 요청할 것이다.
 choose-if: judicial_reform >= 3
-unavailable-subtitle: The judiciary would never agree with us.
+unavailable-subtitle: 사법부는 결코 우리 편을 들지 않을 것입니다.
 
-The courts agree that President [+ president +] is wrong to dismiss us, and that we should remain in the government. The President might respect the court's decision for now, but the <span style="color: #7A3C00;">fascists</span> in the streets do not. They are still demanding snap elections or the resignation of the government, and will remain in the streets until we either meet their demands, or they are forced out.
+법원은 [+ president +] 대통령의 해임 결정이 부당하며, 우리가 정부에 남아야 한다는 데 동의합니다. 대통령은 당분간 법원의 결정을 존중할지 모르지만, 거리에 있는 <span style="color: #7A3C00;">파시스트</span>들은 그렇지 않습니다. 그들은 여전히 조기 총선이나 정부의 사퇴를 요구하고 있으며, 우리가 그들의 요구를 들어주거나 그들이 쫓겨날 때까지 거리를 점거할 것입니다.
 
 - @new_elections
 - @fight
 
 
 @new_elections
-title: Call for new snap elections.
-subtitle: We will not resign at gunpoint, and we will attempt to maintain the integrity of the elections.
+title: 조기 총선을 요구한다.
+subtitle: 우리는 총구 앞에서 사임하지 않을 것이며, 선거의 무결성을 유지하려고 시도할 것입니다.
 go-to: new_elections_braun if president_ideology == "Left"; new_elections_hindenburg if ((president_ideology != "Left" and president_ideology == "Right") or president == "Hindenburg") and z_relation >= 40 and far_right_coalition < 50; new_elections_hindenburg_reject if ((president_ideology != "Left" and president_ideology == "Right") or president == "Hindenburg") and (z_relation < 40 or far_right_coalition >= 50); new_elections_moderate if president_ideology == "Moderate"
 
 
@@ -106,7 +106,7 @@ go-to: new_elections_braun_2 if nsdap_normalized + dnvp_normalized >= 0.5 and fa
 
 @new_elections_braun_reject
 
-The <span style="color: #7A3C00;">fascists</span> reject our offer of free and fair elections. They are demanding that President [+ president +] dismisses the current government and appoints Hitler chancellor. [? if far_right_coalition >= 50 : They claim that since the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> coalition has the majority in the Reichstag, they are constitutionally justified in appointing the chancellor. Unfortunately, their argument is not exactly wrong. ?]
+<span style="color: #7A3C00;">파시스트</span>들은 자유롭고 공정한 선거라는 우리의 제안을 거부합니다. 그들은 [+ president +] 대통령이 현 정부를 해임하고 히틀러를 총리로 임명할 것을 요구하고 있습니다. [? if far_right_coalition >= 50 : 그들은 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 연합이 제국의회 과반을 차지하고 있으므로, 총리 임명권이 헌법적으로 정당하다고 주장합니다. 불행히도, 그들의 주장이 완전히 틀린 것은 아닙니다. ?]
 
 - @braun_appoints_hitler
 - @rosenfeld_appoints_strasser
@@ -115,13 +115,13 @@ The <span style="color: #7A3C00;">fascists</span> reject our offer of free and f
 @new_elections_braun_2
 go-to: new_elections_2
 
-The <span style="color: #7A3C00;">fascists</span> seem to believe that they would win an election if one were to be held now, so they agree to our holding an election for next month.
+<span style="color: #7A3C00;">파시스트</span>들은 지금 선거가 열린다면 자신들이 승리할 것이라 믿는 듯하며, 다음 달 선거를 치르자는 우리의 제안에 동의합니다.
 
 
 @new_elections_hindenburg
 go-to: new_elections_2
 
-With the mediation of various establishment figures, new elections are called for next month, without the use of <span style="color: #7A3C00;">fascist</span> "electoral monitors".
+여러 기득권 인사들의 중재로, <span style="color: #7A3C00;">파시스트</span> "선거 감시단"의 개입 없이 다음 달 새로운 선거가 소집됩니다.
 
 
 @new_elections_2
@@ -130,70 +130,70 @@ on-arrival: next_election_time = time + 1 if next_election_time > time+1; next_e
 
 @new_elections_hindenburg_reject
 
-[? if president == "Hindenburg": Influenced by his inner circle and by the <span style="color: #7A3C00;">fascists</span> in the streets, President Hindenburg rejects our offer of new free and fair elections, and again demands that we resign. ?][? if president != "Hindenburg": Influenced by the <span style="color: #7A3C00;">fascists</span> in the streets—and his own sympathies, as the <span style="color: #3E88B3;">**Stahlhelm**</span> is also taking part—President [+ president +] rejects our proposal for new free and fair elections, and once again demands our resignation. ?] There is no arguing.
+[? if president == "Hindenburg": 측근들과 거리의 <span style="color: #7A3C00;">파시스트</span>들에게 영향을 받아, 힌덴부르크 대통령은 우리의 자유롭고 공정한 재선거 제안을 거부하고 다시금 사임을 요구합니다. ?][? if president != "Hindenburg": 거리의 <span style="color: #7A3C00;">파시스트</span>들—그리고 <span style="color: #3E88B3;">**철모단**</span> 또한 참여하고 있기에 그 자신의 동조심—에 영향을 받아, [+ president +] 대통령은 우리의 자유롭고 공정한 재선거 제안을 거부하고 다시 한번 우리의 사임을 요구합니다. ?] 더 이상의 논의는 불가능합니다.
 
 - @resign
 - @fight
 
 @new_elections_moderate
 
-Despite President [+ president +] standing with us against the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> marchers, he remains under pressure from the <span style="color: #7A3C00;">fascists</span> in the streets and prioritizes a peaceful resolution above all else.
+[+ president +] 대통령이 <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span> 시위대에 맞서 우리와 함께하고 있음에도 불구하고, 그는 여전히 거리의 <span style="color: #7A3C00;">파시스트</span>들로부터 압박을 받고 있으며 무엇보다 평화적인 해결을 최우선으로 여깁니다.
 
-Still, [+ president +] refuses to accept any new election that is not truly free and fair.
+그럼에도, [+ president +]는 진정으로 자유롭고 공정하지 않은 선거는 그 어떤 것도 받아들이기를 거부합니다.
 
 - @new_elections_moderate_2
 - @new_elections_moderate_2_alt
 
 @new_elections_moderate_2
-title: Free and fair elections it is!
+title: 자유롭고 공정한 선거다!
 choose-if: far_right_coalition < 50 and nsdap_normalized + dnvp_normalized >= 0.5
-unavailable-subtitle: The <span style="color: #7A3C00;">fascists</span> want nothing less than a rigged ballot.
+unavailable-subtitle: <span style="color: #7A3C00;">파시스트</span>들은 조작된 투표만을 원합니다.
 go-to: new_elections_2
 
-The <span style="color: #7A3C00;">fascists</span>, confident in their chances, agree to [+ president +]’s proposal to hold elections next month.
+자신들의 승리를 확신하는 <span style="color: #7A3C00;">파시스트</span>들은 다음 달 선거를 치르자는 [+ president +]의 제안에 동의합니다.
 
 @new_elections_moderate_2_alt
-title: Any chance of a peaceful resolution is thrown out.
+title: 평화적 해결의 기회는 사라졌다.
 choose-if: far_right_coalition >= 50 and nsdap_normalized + dnvp_normalized < 0.5
-unavailable-subtitle: The <span style="color: #7A3C00;">fascists</span> are confident in their chances.
+unavailable-subtitle: <span style="color: #7A3C00;">파시스트</span>들은 자신들의 승리를 확신합니다.
 
-[+ president +] cannot bring himself to violate German democracy—or appoint a <span style="color: #7A3C00;">Nazi</span> as Chancellor. Our only option now is to confront the <span style="color: #7A3C00;">fascists</span> head-on, with the support of loyal government forces.
+[+ president +]는 차마 독일 민주주의를 훼손하거나—<span style="color: #7A3C00;">나치</span>를 총리로 임명할 수 없습니다. 이제 남은 유일한 선택은 충성파 정부군의 지원을 받아 <span style="color: #7A3C00;">파시스트</span>들과 정면으로 맞서는 것뿐입니다.
 
 - @fight
 
 @resign
-title: Resign our positions in the government.
+title: 정부 내 직책을 사임한다.
 choose-if: president != "Braun"
-unavailable-subtitle: President Braun cannot resign.
+unavailable-subtitle: 브라운 대통령은 사임할 수 없습니다.
 on-arrival: chancellor = "Goerdeler"; chancellor_party = "I"; spd_in_government = 0;
 go-to: accept
 
-We have resigned our positions in the government. We are replaced by the <span style="color: #808080;">reactionary</span> Goerdeler, who aims to bring the <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> into government.
+우리는 정부 내 직책을 사임했습니다. 우리의 자리는 <span style="color: #7A3C00;">민족주의</span> <span style="color: #3E88B3;">야당</span>을 정부로 끌어들이려는 <span style="color: #808080;">반동적인</span> 괴르델러로 대체됩니다.
 
 @braun_appoints_hitler
-title: We cannot do anything but appoint Hitler chancellor.
+title: 히틀러를 총리로 임명하는 것 외에는 방법이 없다.
 view-if: president_ideology == "Left"
 choose-if: (nsdap_normalized >= 0.5 or largest_party == "NSDAP") and president != "Rosenfeld"
-unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act. [? if president == "Rosenfeld": Rosenfeld would never do this, no matter the circumstances. ?]
+unavailable-subtitle: [+ president +] 대통령이 그런 뻔뻔하고 비민주적인 행동을 할 리가 없습니다. [? if president == "Rosenfeld": 로젠펠트는 어떤 상황에서도 절대 이런 짓을 하지 않을 것입니다. ?]
 on-arrival: chancellor = "Hitler"; chancellor_party = "NSDAP"; spd_in_government = 0
 
-Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Hitler of the <span style="color: #7A3C00;">**NSDAP**</span> as chancellor.
+내전의 위협 속에서 더 이상의 투쟁을 원치 않는 [+ president +] 대통령은 현 정부를 해임하고 <span style="color: #7A3C00;">**NSDAP**</span>의 히틀러를 총리로 임명합니다.
 
 @rosenfeld_appoints_strasser
-title: We cannot do anything but appoint Strasser chancellor.
+title: 슈트라서를 총리로 임명하는 것 외에는 방법이 없다.
 view-if: president_ideology == "Left" and president == "Rosenfeld"
 choose-if: time >= hitler_explode and hitler_explode
-unavailable-subtitle: There is no way President [+ president +] could do such a blatantly undemocratic act.
+unavailable-subtitle: [+ president +] 대통령이 그런 뻔뻔하고 비민주적인 행동을 할 리가 없습니다.
 on-arrival: chancellor = "Strasser"; chancellor_party = "NSDAP"; spd_in_government = 0
 
-Threatened with a civil war, and unwilling to fight anymore, President [+ president +] dismisses the current government and appoints Strasser of the <span style="color: #7A3C00;">**NSDAP**</span> as chancellor.
+내전의 위협 속에서 더 이상의 투쟁을 원치 않는 [+ president +] 대통령은 현 정부를 해임하고 <span style="color: #7A3C00;">**NSDAP**</span>의 슈트라서를 총리로 임명합니다.
 
 - @hitler_takes_power
 
 @presidential_glaze
 on-arrival: reichswehr_loyalty += 0.1; reichswehr_loyalty += 0.1 if president == "Gessler"
 
-Luckily, President [+ president +] is on our side in this crisis. He has recognized the coup for what it is, and is prepared to stand by the government if we resist.
+다행히도, [+ president +] 대통령은 이번 위기에서 우리 편입니다. 그는 쿠데타의 본질을 꿰뚫어 보았으며, 우리가 저항한다면 정부 편에 설 준비가 되어 있습니다.
 
 - @fight
 - @new_elections

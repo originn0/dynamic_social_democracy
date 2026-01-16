@@ -1,5 +1,5 @@
-title: [+ nsdap_chancellor +] appointed Chancellor!
-subtitle: The beginning of the end...
+title: [+ nsdap_chancellor +] 총리로 임명되다!
+subtitle: 종말의 시작...
 view-if: chancellor = "Schleicher" and schleicher_time == 7 and schleicher_explode and schleicher_coup
 new-page: true
 tags: event
@@ -18,27 +18,27 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-= [+ nsdap_chancellor +] appointed Chancellor!
+= [+ nsdap_chancellor +] 총리로 임명되다!
 
-The moment has arrived—[+ nsdap_chancellor +] is set to be sworn in as Chancellor today, unless it's struck down at the last minute.
+운명의 순간이 왔습니다—[+ nsdap_chancellor +]는 막판에 뒤집히지 않는 한 오늘 총리로 취임 선서를 할 예정입니다.
 
-In response to rumors of a Schleicher coup, General von Blomberg is sworn in unconstitutionally by President Hindenburg in the early hours of the morning.
+슐라이허의 쿠데타 소문에 대응하여, 폰 블롬베르크 장군은 이른 새벽 힌덴부르크 대통령에 의해 위헌적으로 장관 선서를 마쳤습니다.
 
 - @nazi_2
 
 @nazi_2  
-title: The next [+ nsdap_chancellor +] cabinet meets with the president.
+title: 차기 [+ nsdap_chancellor +] 내각이 대통령을 알현하다.
 
-Hugenberg arrives at Papen's apartment, accompanied by the leaders of the <span style="color: #3E88B3;">**Stahlhelm**</span>. They are met by an agitated Papen, who stresses the urgency of the situation.
+후겐베르크는 <span style="color: #3E88B3;">**철모단**</span>의 지도자들과 함께 파펜의 아파트에 도착합니다. 그들은 잔뜩 흥분한 파펜을 마주하는데, 그는 상황의 긴급함을 강조합니다.
 
-> *"If the new cabinet is not installed by eleven o’clock, the army will march. We’re threatened with a military dictatorship under Schleicher and Hammerstein."*
+> *"새 내각이 11시까지 구성되지 않으면, 군대가 진격할 것이네. 우리는 슐라이허와 함머슈타인 하의 군사 독재 위협을 받고 있지."*
 
- - Franz von Papen, to the leaders of the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?], [+ year +]
+ - 프란츠 폰 파펜, [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?] 지도자들에게, [+ year +]
 
 - @nazi_3
 
 @nazi_3  
-title: Theodor Duesterberg voices his objections.
+title: 테오도어 뒤스터베르크가 반대 의견을 낸다.
 on-arrival: {!
 Q.hugenberg_hitler_r = 0;
 
@@ -55,18 +55,18 @@ if (Q.dnvp_r + Q.dvp_r >= 10 && Q.hugenberg_dvp) Q.hugenberg_hitler_r -= 1;
 if (Q.dnvp_r + Q.dvp_r >= 12 && Q.hugenberg_dvp) Q.hugenberg_hitler_r -= 1;
 !}
 
-The co-leader of the <span style="color: #3E88B3;">**Stahlhelm**</span>, alongside Otto Schmidt-Hannover of the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?], expresses serious reservations about [+ nsdap_chancellor +]'s chancellorship.
+<span style="color: #3E88B3;">**철모단**</span>의 공동 지도자는, [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnvp_ideology == "Moderate": <span style="color: #003755;">**DNF**</span>?]의 오토 슈미트-한노버와 함께, [+ nsdap_chancellor +]의 총리직에 대해 심각한 우려를 표명합니다.
 
-Duesterberg's consent is crucial for his co-leader Seldte to enter the cabinet, but Duesterberg, having been targeted by <span style="color: #7A3C00;">Nazi</span> attacks due to his <span style="color: #005EB8;">Jewish</span> ancestry, remains deeply wary of a [+ nsdap_chancellor +] government.
+뒤스터베르크의 동의는 그의 공동 지도자 젤테가 내각에 입각하는 데 필수적이지만, 뒤스터베르크는 자신의 <span style="color: #005EB8;">유대인</span> 혈통 때문에 <span style="color: #7A3C00;">나치</span>의 공격 표적이 되어왔기에, [+ nsdap_chancellor +] 정부를 깊이 경계하고 있습니다.
 
-Noticing his concerns, [+ nsdap_chancellor +] immediately approaches Duesterberg, assuring him that the attacks were never approved by him, and with a display of sincere emotion, Duesterberg relents, dropping his objections.
+그의 우려를 눈치챈 [+ nsdap_chancellor +]는 즉시 뒤스터베르크에게 다가가, 그 공격들은 자신이 승인한 적이 없다고 안심시키고, 진심 어린 감정 표현을 보이자 뒤스터베르크는 마음을 누그러뜨리고 반대를 철회합니다.
 
 - @nazi_4
 - @nazi_6
 
 @nazi_4
-title: Hitler is sworn in.
-subtitle: We have failed.
+title: 히틀러가 선서하다.
+subtitle: 우리는 실패했다.
 on-arrival: {!
 Q.chancellor = Q.nsdap_chancellor;
 Q.chancellor_party = "NSDAP";
@@ -87,22 +87,22 @@ if (Q.prussia_leader == "Schleicher") {
 }
 !}
 
-Not yet. With the swearing-in of the cabinet only minutes away, a loose end begins to unravel.
+아직 아닙니다. 내각 선서가 불과 몇 분 남지 않은 상황에서, 예상치 못한 문제가 터져 나옵니다.
 
-Hugenberg, being unaware of Papen's promise to [+ nsdap_leader +] that elections would immediately be called, was taken aback by [+ nsdap_chancellor +] requesting a commitment on that point, and firmly refused to accept [+ nsdap_leader +]'s demand.
+선거가 즉시 소집될 것이라는 파펜과 [+ nsdap_leader +] 간의 약속을 몰랐던 후겐베르크는, [+ nsdap_chancellor +]가 그 점에 대한 확약을 요구하자 당황했고, [+ nsdap_leader +]의 요구를 받아들이기를 단호히 거부했습니다.
 
-With Hugenberg uncompromising as ever, no matter what is conceded to him, his arrogance has actually paid off this time. Not until Meissner interrupts, and Hugenberg, seeing himself as the only obstacle, accedes to new elections.
+후겐베르크가 어떤 양보에도 아랑곳하지 않고 여느 때처럼 타협을 거부하면서, 그의 오만함은 이번에는 실제로 성과를 거두었습니다. 마이스너가 끼어들고, 자신을 유일한 장애물로 인식한 후겐베르크가 새로운 선거에 동의할 때까지는 말입니다.
 
-In an act of perjury, the <span style="color: #7A3C00;">Nazi</span> leader swore to defend and uphold the constitution and laws of the republic he had so long vowed to destroy.
+위증을 저지르며, <span style="color: #7A3C00;">나치</span> 지도자는 그토록 오랫동안 파괴하겠다고 맹세했던 공화국의 헌법과 법률을 수호하고 지지하겠다고 선서했습니다.
 
-With Hindenburg believing that he was appointing a parliamentary chancellor, he ordered negotiations with the <span style="color: #000000;">Center Party</span>, which were purposefully sabotaged and ultimately failed.
+힌덴부르크는 자신이 의회 총리를 임명하고 있다고 믿으며 <span style="color: #000000;">중앙당</span>과의 협상을 지시했지만, 이는 의도적으로 방해받았고 결국 실패로 돌아갔습니다.
 
-What do we do?
+우리는 무엇을 해야 합니까?
 
 - @nazi_5
 
 @nazi_5
-title: Review our options.
+title: 우리의 선택지를 검토한다.
 on-display: {!  
     var cardEl = document.createElement('div');  
     cardEl.className = "face-figure2";  
@@ -116,21 +116,21 @@ on-display: {!
     contentDiv.appendChild(cardEl);
 !}
 
-Although the arch-enemy of democracy had been installed as chancellor, to everyone's surprise, the usual political violence marked that day. The <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties haven't had the expected reaction to his appointment, and many believe that we should bide our time and prepare for a final showdown when [+ nsdap_chancellor +] likely violates the constitution. Many also believe that Hindenburg will keep [+ nsdap_chancellor +] in check, and save German democracy from destruction.
+비록 민주주의의 주적이 총리로 취임했지만, 놀랍게도 그날은 여느 때와 다름없는 정치적 폭력만이 난무했습니다. <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">국</span> 정당들은 그의 임명에 대해 예상된 반응을 보이지 않았고, 많은 이들은 우리가 때를 기다리며 [+ nsdap_chancellor +]가 헌법을 위반할 가능성이 높을 때 최후의 결전을 준비해야 한다고 믿습니다. 또한 많은 이들은 힌덴부르크가 [+ nsdap_chancellor +]를 견제하고, 독일 민주주의를 파멸로부터 구할 것이라고 믿습니다.
 
-Most people have no idea what has befallen them; the installation of yet another chancellor had become such a common occurrence that a dangerous amount of ordinary folk have grown indifferent.
+대부분의 사람들은 자신들에게 무슨 일이 닥쳤는지 전혀 모릅니다. 총리가 바뀌는 일은 너무나 흔한 일이 되어 위험할 정도로 많은 일반 대중이 무관심해졌습니다.
 
-This astonishing turnabout in [+ nsdap_leader +]'s fortunes confirmed his belief that he was a man of destiny, certain to succeed in his plan to purify Germany of <span style="color: #005EB8;">Jews</span>, and wage endless wars of violent expansion all over Europe. Hitler had not seized power; it had been handed to him by the men who at that moment controlled Germany’s destiny.
+[+ nsdap_leader +]의 운명에 대한 이 놀라운 반전은 그가 운명의 사람이며, 독일에서 <span style="color: #005EB8;">유대인</span>을 몰아내고 유럽 전역에서 끝없는 정복 전쟁을 벌이려는 그의 계획이 성공할 것이라는 믿음을 확인시켜 주었습니다. 히틀러는 권력을 쟁취하지 않았습니다. 그 순간 독일의 운명을 쥐고 있던 자들이 그에게 권력을 가져다 바쳤습니다.
 
-What are we to do now?
+우리는 이제 무엇을 해야 합니까?
 
 - @bide_time
 - @civil_war_pre
 
 @bide_time
-title: Bide our time, wait until [+ nsdap_chancellor +] makes an unconstitutional move first, then strike.
+title: 때를 기다리며, [+ nsdap_chancellor +]가 먼저 위헌적인 움직임을 보일 때까지 기다린 다음, 반격한다.
 
-What is our hope here?
+여기서 우리의 희망은 무엇입니까?
 
 - @nothing_1
 - @nothing_2
@@ -138,36 +138,36 @@ What is our hope here?
 - @nothing_4
 
 @nothing_1
-title: Papen and the conservatives will control [+ nsdap_chancellor +].
+title: 파펜과 보수주의자들이 [+ nsdap_chancellor +]를 통제할 것이다.
 go-to: something_1
 
 
 @nothing_2
-title: Hindenburg will keep [+ nsdap_chancellor +] in check.
+title: 힌덴부르크가 [+ nsdap_chancellor +]를 견제할 것이다.
 go-to: something_1
 
 
 @nothing_3
-title: Organized labor, and the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties will obstruct him in parliament.
+title: 조직된 노동계와 <span style="color: #000000;">공</span><span style="color: #DD0000;">화</span><span style="color: #FFCC00;">국</span> 정당들이 의회에서 그를 저지할 것이다.
 go-to: something_1
 
 
 @nothing_4
-title: After [+ nsdap_chancellor +], our turn.
+title: [+ nsdap_chancellor +] 다음은, 우리의 차례다.
 go-to: something_1
 
 
 @something_1
 on-arrival: month += 2; week -= 1; month -= 1 if week < 1; year += 1 if month > 12; month -= 12 if month > 12; chancellor = "Hitler"
 
-Speeches are made. Votes are held. Bullets fly in the streets. Some <span style="color: #c00000;">socialists</span> are killed or jailed. Others flee the country. What can votes even do at this juncture?
+연설이 이어집니다. 투표가 진행됩니다. 거리에는 총알이 빗발칩니다. 일부 <span style="color: #c00000;">사회주의자들</span>은 살해되거나 투옥됩니다. 다른 이들은 나라를 탈출합니다. 이 시점에 투표가 무슨 소용이 있겠습니까?
 
-The Reichstag is burned, ostensibly by a foreign <span style="color: #700000;">communist</span>. In the wake, the <span style="color: #7A3C00;">Nazis</span> pass decrees giving them unlimited power. They, combined with the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>?], will win a majority at the next elections. [? if nsdap_chancellor != "Hitler": Hitler is bought back from Austria and appointed chancellor. ?]
+제국의회 의사당은 표면적으로는 외국인 <span style="color: #700000;">공산주의자</span>에 의해 불태워집니다. 그 여파로, <span style="color: #7A3C00;">나치</span>는 자신들에게 무제한의 권력을 부여하는 법령을 통과시킵니다. 그들은 [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>?]와 연합하여 다음 선거에서 과반수를 차지할 것입니다. [? if nsdap_chancellor != "Hitler": 히틀러는 오스트리아에서 다시 불려와 총리로 임명됩니다. ?]
 
 - @enabling_act
 
 @enabling_act
-title: [+ nsdap_chancellor +] attempts to pass an enabling act.
+title: [+ nsdap_chancellor +]가 수권법 통과를 시도한다.
 on-arrival: {!
 const contentElement = document.getElementById('content');
 contentElement.style.backgroundColor = '#312115';
@@ -195,62 +195,62 @@ on-display: {!
 audio: music/1930_1933/Burgundian_Lullaby.ogg
 set-bg: img/reichstag_fire.jpg
 
-= Enabling Act
+= 수권법
 
-Together with the [? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>?], and the dictatorial powers offered by the Reichstag Fire Decree, the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> have won more than an outright majority.
+[? if dnvp_ideology == "Radical": <span style="color: #3E88B3;">**DNVP**</span>?][? if dnf_formed: <span style="color: #003755;">**DNF**</span>?]와 함께, 그리고 제국의회 화재 포고령으로 얻은 독재 권력을 등에 업고, <span style="color: #7A3C00;">극</span><span style="color: #3E88B3;">우</span>파는 단순 과반수 이상을 확보했습니다.
 
-The law is considered a constitutional amendment, requiring two-thirds of the Reichstag to approve the bill. The <span style="color: #700000;">**Communists**</span> are de-facto banned, and many <span style="color: #c00000;">**SPD**</span> deputies are imprisoned under the powers of the Reichstag Fire Decree. The <span style="color: #000000;">Center Party</span> is the deciding factor, seeking to save the Catholic population from persecution and a second Kulturkampf.
+이 법은 헌법 개정으로 간주되어, 법안 통과를 위해 제국의회 의석의 3분의 2가 필요합니다. <span style="color: #700000;">**공산당**</span>은 사실상 불법화되었고, 많은 <span style="color: #c00000;">**SPD**</span> 의원들은 제국의회 화재 포고령에 의해 투옥되었습니다. <span style="color: #000000;">중앙당</span>은 가톨릭 인구를 박해와 제2의 문화투쟁으로부터 보호하려 노력하는 결정적인 변수입니다.
 
-<span style="color: #7A3C00;">**SA**</span> men are positioned inside and outside the chamber, an intense atmosphere of fear settling over the nominally constitutional <span style="color: #000000;">Center Party</span>. Wirth and Brüning argue against the bill, while the majority of the party is in favor of it. The <span style="color: #7A3C00;">Nazis</span> have promised constitutional safeguards, but have refused to put it in writing as requested by Hugenberg and the <span style="color: #000000;">Center Party</span>.
+<span style="color: #7A3C00;">**SA**</span> 대원들이 회의장 안팎에 배치되어, 명목상 헌법을 준수하는 <span style="color: #000000;">중앙당</span> 위에 공포의 그림자를 드리웁니다. 비르트와 브뤼닝은 법안에 반대하지만, 당의 대다수는 찬성 쪽으로 기웁니다. <span style="color: #7A3C00;">나치</span>는 헌법적 안전장치를 약속했지만, 후겐베르크와 <span style="color: #000000;">중앙당</span>이 요청한 서면 확약은 거부했습니다.
 
-- @enabling_act_2: The <span style="color: #000000;">Center Party</span> votes for the enabling act!
-- @enabling_act_3: The <span style="color: #000000;">Center Party</span> votes against the enabling act!
+- @enabling_act_2: <span style="color: #000000;">중앙당</span>이 수권법에 찬성표를 던지다!
+- @enabling_act_3: <span style="color: #000000;">중앙당</span>이 수권법에 반대표를 던지다!
 
 @enabling_act_2
-subtitle: It doesn't matter in the end.
+subtitle: 결국 아무 소용도 없습니다.
 
-A concordat with the Vatican is signed months later, protecting the millions of German Catholics from potential <span style="color: #7A3C00;">Nazi</span> persecution. The <span style="color: #7A3C00;">**NSDAP**</span> becomes the sole political party. Franz von Papen is ousted from Prussia, remaining in the powerless position of Vice Chancellor. Hugenberg is forced to resign.
+몇 달 후 바티칸과의 정교협약이 체결되어, 수백만 명의 독일 가톨릭 신자들을 잠재적인 <span style="color: #7A3C00;">나치</span>의 박해로부터 보호합니다. <span style="color: #7A3C00;">**NSDAP**</span>는 유일한 합법 정당이 됩니다. 프란츠 폰 파펜은 프로이센에서 축출되어, 부총리라는 허울뿐인 직책에 남습니다. 후겐베르크는 사임을 강요받습니다.
 
-Efforts to tame the <span style="color: #7A3C00;">Nazis</span> have failed; their relentless consolidation of power leaves only the aging Hindenburg to check their unlimited authority. Schleicher is murdered during the Night of Long Knives, Papen delivers his infamous 'Marburg Speech' before resigning, and after Hindenburg’s death at 86 years old, Germany is lost.
+<span style="color: #7A3C00;">나치</span>를 길들이려는 노력은 실패했습니다. 그들의 무자비한 권력 독점은 그들의 무제한적인 권위를 견제할 늙어가는 힌덴부르크만을 남겨두었습니다. 슐라이허는 '장검의 밤'에 살해되고, 파펜은 사임 전 악명 높은 '마르부르크 연설'을 남기며, 86세의 나이로 힌덴부르크가 사망한 후, 독일은 파멸의 길로 들어섭니다.
 
 - @game_over
 
 @enabling_act_3
-unavailable-subtitle: It doesn't matter in the end.
+unavailable-subtitle: 결국 아무 소용도 없습니다.
 choose-if: super_secret_mode
 
-Yeah.
+네.
 
 @civil_war_pre
-title: We must not allow [+ nsdap_chancellor +] to consolidate! We will fight on the streets to prevent [+ nsdap_chancellor +] from retaining power.
+title: 우리는 [+ nsdap_chancellor +]가 권력을 굳히도록 놔둬선 안 된다! 우리는 [+ nsdap_chancellor +]의 권력 유지를 막기 위해 거리에서 싸울 것이다.
 
-Unfortunately, not many <span style="color: #000000;">repu</span><span style="color: #DD0000;">bli</span><span style="color: #FFCC00;">cans</span> are willing to take up arms against the newly appointed [+ nsdap_chancellor +].
+불행히도, 새로 임명된 [+ nsdap_chancellor +]에 맞서 무기를 들 의향이 있는 <span style="color: #000000;">공화</span><span style="color: #DD0000;">주의</span><span style="color: #FFCC00;">자들</span>은 많지 않습니다.
 
-Do we realize that this means civil war, against the full force of the state?
+이것이 국가의 모든 공권력에 맞서는 내전을 의미한다는 것을 깨닫고 있습니까?
 
-- @civil_war: Yes.
-- @bide_time: We are not ready for war. We must bide our time.
+- @civil_war: 그래.
+- @bide_time: 우리는 전쟁 준비가 되어 있지 않다. 때를 기다려야 한다.
 
 @nazi_6
-title: Hugenberg saves democracy?
-subtitle: His arrogance has finally become useful.
-unavailable-subtitle: He is satisfied with his ministries. 
+title: 후겐베르크가 민주주의를 구하다?
+subtitle: 그의 오만함이 마침내 쓸모가 있었다.
+unavailable-subtitle: 그는 자신의 직책에 만족합니다.
 choose-if: hugenberg_hitler_r <= -2
 
-Not yet. With the swearing-in of the cabinet only minutes away, a loose end begins to unravel.
+아직 아닙니다. 내각 선서가 불과 몇 분 남지 않은 상황에서, 예상치 못한 문제가 터져 나옵니다.
 
-Hugenberg, unaware of Papen's promise to [+ nsdap_leader +] that elections would be immediately called, is taken aback when [+ nsdap_chancellor +] requests a commitment on this point and firmly refuses to accept [+ nsdap_leader +]'s demand. His relatively strong performance in the last election has only inflated his ego.
+선거가 즉시 소집될 것이라는 파펜과 [+ nsdap_leader +] 간의 약속을 몰랐던 후겐베르크는, [+ nsdap_chancellor +]가 이 점에 대한 확약을 요구하자 당황했고 [+ nsdap_leader +]의 요구를 받아들이기를 단호히 거부합니다. 지난 선거에서의 비교적 선전은 그의 자존심을 부풀렸을 뿐입니다.
 
-With Hugenberg as uncompromising as ever, no matter what is conceded to him, his arrogance has actually paid off this time.
+후겐베르크가 어떤 양보에도 아랑곳하지 않고 여느 때처럼 타협을 거부하면서, 그의 오만함은 이번에는 실제로 성과를 거두었습니다.
 
-Even when Meissner interrupts, Hugenberg—the only obstacle to [+ nsdap_chancellor +]'s ascension—storms off after [+ nsdap_leader +] continues to stubbornly reject his demand. With the leader of the only relevant party willing to coalition with them having left, Hindenburg's illusions that the <span style="color: #7A3C00;">**NSDAP**</span> would form a parliamentary cabinet are shattered.
+심지어 마이스너가 끼어들었을 때도, [+ nsdap_chancellor +]의 승격에 유일한 걸림돌인 후겐베르크는 [+ nsdap_leader +]가 자신의 요구를 고집스럽게 거부하자 자리를 박차고 나갑니다. 그들과 연합할 의향이 있는 유일한 유의미한 정당의 지도자가 떠나면서, <span style="color: #7A3C00;">**NSDAP**</span>가 의회 내각을 구성할 것이라는 힌덴부르크의 환상은 산산조각이 납니다.
 
 - @nazi_7
 
 @nazi_7
-title: Who will succeed Schleicher now?
+title: 이제 누가 슐라이허를 계승할 것인가?
 on-arrival: chancellor = "Papen"; prussia_leader = "Papen"; papen_back = 1
 
-As Papen continues pleading with Hindenburg to reconsider appointing [+ nsdap_chancellor +], he has effectively removed himself from consideration. Nevertheless, Hindenburg still regards it as an urgent priority to remove Schleicher—the chancellor rumored to be preparing a coup against him—from office.
+파펜이 힌덴부르크에게 [+ nsdap_chancellor +] 임명을 재고해 달라고 계속 간청함에 따라, 그는 사실상 후보군에서 제외되었습니다. 그럼에도 불구하고, 힌덴부르크는 여전히 슐라이허—자신에 대해 쿠데타를 준비하고 있다는 소문이 도는 총리—를 공직에서 제거하는 것을 시급한 우선순위로 여깁니다.
 
-Papen is once again reluctantly persuaded to form a presidential cabinet, with himself at its head and most of Schleicher's ministers retained. However, this is only a temporary solution: a purely caretaker government, Hindenburg stresses, while a new <i>parliamentary</i> cabinet is assembled. A vote of no confidence looms.
+파펜은 다시 한번 마지못해 자신을 수장으로 하고 슐라이허의 장관 대부분을 유임시키는 대통령 내각을 구성하도록 설득됩니다. 그러나, 이것은 임시방편일 뿐입니다. 힌덴부르크는 새로운 *의회* 내각이 구성되는 동안의 순수한 관리 정부일 뿐이라고 강조합니다. 불신임 투표가 다가오고 있습니다.

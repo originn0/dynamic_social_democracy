@@ -1,5 +1,5 @@
-title: Discontent in the Reichswehr
-subtitle:  The <span style="color: #808080;">reactionary</span> nest begins to voice its discontent aloud.
+title: 국방군 내의 불만
+subtitle: <span style="color: #808080;">반동</span>의 소굴이 불만을 표출하기 시작합니다.
 view-if: reichswehr_loyalty <= 0 and spd_in_government and not rubicon and reichswehr_minister_party != "SPD"
 on-arrival: reichswehr_angry = 1
 tags: event
@@ -7,39 +7,39 @@ new-page: true
 max-visits: 1
 face-image: img/portraits/SchleicherKurt.jpg
 
-= Discontent in the Reichswehr
+= 국방군 내의 불만
 
-The Reichswehr, despite its evident bias toward right-wing <span style="color: #808080;">reactionary</span> politics, has long portrayed itself as a non-partisan, neutral force in German affairs. Throughout most of the <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Republic’s history, it has largely refrained from overt political interference. However, Defense Minister Groener—alongside his longtime ally Kurt von Schleicher and Chief of the Army Kurt von Hammerstein-Equord—has now made public the military’s growing disagreements and concerns with the <span style="color: #c00000;">**SPD**</span>.
+국방군은 우파 <span style="color: #808080;">반동</span> 정치에 대한 명백한 편향에도 불구하고, 오랫동안 독일 문제에서 비당파적이고 중립적인 세력으로 자신을 포장해 왔습니다. <span style="color: #000000;">바</span><span style="color: #DD0000;">이마</span><span style="color: #FFCC00;">르</span> 공화국의 역사 대부분 동안, 군은 노골적인 정치 개입을 대체로 자제했습니다. 그러나 그뢰너 국방장관은—그의 오랜 동맹인 쿠르트 폰 슐라이허 및 육군청장 쿠르트 폰 함머슈타인-에크보르트와 함께—이제 <span style="color: #c00000;">**SPD**</span>에 대한 군부의 커지는 불일치와 우려를 공개적으로 표명했습니다.
 
-The Reichswehr remains widely respected across the political spectrum—except among the left-wing parties. Schleicher, long known as a political schemer, may attempt to exploit this to undermine our standing among our allies. We can either offer concessions to placate the military, or hold firm and do nothing at all.
+국방군은 좌파 정당들을 제외하고는 정치적 스펙트럼 전반에 걸쳐 널리 존경받고 있습니다. 오랫동안 정치적 모략가로 알려진 슐라이허는 이를 이용해 동맹들 사이에서 우리의 입지를 약화시키려 할 수 있습니다. 우리는 군을 달래기 위해 양보를 제공하거나, 아니면 굳건히 버티며 무시할 수 있습니다.
 
 - @concessions
 - @idc
 - @reform
 
 @concessions
-title: Perhaps another battleship will keep them happy?
-subtitle: Conceding to the Reichswehr is viewed as a betrayal of our core values.
+title: 전함 한 척 더 주면 그들이 행복해할까?
+subtitle: 국방군에게 양보하는 것은 우리의 핵심 가치에 대한 배신으로 간주됩니다.
 choose-if: reformist_strength >= labor_strength and reformist_strength >= left_strength and budget >= 1
-unavailable-subtitle: [? if (labor_strength > reformist_strength) or (left_strength > reformist_strength): Our party refuses to tolerate concessions to the Reichswehr. ?][? if budget < 1: We lack the necessary budget. ?]
+unavailable-subtitle: [? if (labor_strength > reformist_strength) or (left_strength > reformist_strength): 우리 당은 국방군에 대한 양보를 용인할 수 없습니다. ?][? if budget < 1: 필요한 예산이 부족합니다. ?]
 on-arrival: reichswehr_loyalty += 0.2; reichswehr_militancy += 1; left_dissent += 30; labor_dissent += 25; center_dissent += 20; reformist_dissent += 10; budget -= 1; workers_spd -= 6; unemployed_spd -= 6; new_middle_spd -= 2; catholics_spd -= 2; old_middle_spd += 2; nationalism += 8; pacifism -= 3; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 1; hindenburg_angry -= 25
 
-We have accepted Schleicher’s demands for increased funding toward the army’s modernization program, securing the purchase of new equipment for the small force. This decision has drawn intense criticism from the <span style="color: #700000;">**Communists**</span> and many within our own party, who condemn the diversion of funds into the black hole of the defense budget instead of toward welfare for women and children.
+우리는 군 현대화 프로그램을 위한 자금 증액에 대한 슐라이허의 요구를 수용하여, 소규모 병력을 위한 신형 장비 구매를 보장했습니다. 이 결정은 <span style="color: #700000;">**공산당**</span>과 우리 당 내부의 많은 이들로부터 거센 비판을 불러일으켰는데, 그들은 자금이 여성과 아동을 위한 복지 대신 국방 예산의 블랙홀로 전용되는 것을 비난합니다.
 
 @reform
-title: Fire these rabble rousers immediately!
-subtitle: The bourgeois parties will not be pleased.
+title: 이 선동가들을 즉시 해임하라!
+subtitle: 부르주아 정당들은 기뻐하지 않을 것입니다.
 choose-if: (coalition_dissent <= 0 and (z_relation >= 60 or (not in_grand_coalition and not in_weimar_coalition))) or in_left_front
-unavailable-subtitle: We lack the leverage—or sympathy—among our coalition partners.
+unavailable-subtitle: 우리는 연정 파트너들 사이에서 지렛대—혹은 동정심—이 부족합니다.
 on-arrival: coalition_dissent += 1 if in_weimar_coalition or in_grand_coalition; new_middle_spd -= 2; old_middle_spd -= 2; rural_spd -= 2; z_relation -= 5; ddp_relation -= 5 if ddp_ideology != "Left"; dvp_relation -= 8; lvp_relation -= 5; lvp_right += 2; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; hindenburg_angry += 25; reichswehr_minister = "Oster"; groener_explode = 1; reichswehr_loyalty += 0.2; coup_progress += 3; capital_strike_progress += 1
 face-image: img/portraits/oster.jpg
 
-Our request to dismiss Wilhelm Groener has been approved by our coalition partners. He is replaced by Hans Oster, a relatively minor officer in the German Army. While Oster shares the nationalist leanings common within the military and is conservative enough to be accepted as Groener’s successor, our lack of control over the Reichswehr Ministry limits us—we can only remove a handful of officials involved in political interference.
+빌헬름 그뢰너를 해임하라는 우리의 요청은 연정 파트너들에 의해 승인되었습니다. 그는 독일 육군의 비교적 소수파 장교인 한스 오스터로 대체됩니다. 오스터는 군 내에 만연한 민족주의적 성향을 공유하고 그뢰너의 후임자로 받아들여질 만큼 충분히 보수적이지만, 국방부 장관에 대한 우리의 통제력 부족은 우리를 제한합니다—우리는 정치적 개입에 연루된 소수의 관리들만 제거할 수 있습니다.
 
-Schleicher has been dismissed from the Office for Ministerial Affairs, and von Hammerstein, for now, has remained notably quiet.
+슐라이허는 장관 사무국에서 해임되었고, 폰 함머슈타인은 당분간 눈에 띄게 조용히 있습니다.
 
 @idc
-title: What are they going to do? Coup us?
+title: 그들이 뭘 어쩌겠나? 쿠데타라도 하겠나?
 on-arrival: coalition_dissent += 2 if in_weimar_coalition or in_grand_coalition; workers_spd -= 2 if pacifism < 5; new_middle_spd -= 2; new_middle_spd -= 2 if pacifism < 5; old_middle_spd -= 4; old_middle_spd -= 2 if pacifism < 5; rural_spd -= 4; rural_spd -= 2 if pacifism < 5; z_relation -= 10; ddp_relation -= 10 if ddp_ideology != "Left"; dvp_relation -= 15; lvp_relation -= 15; lvp_right += 6; dvp_right += 6; ddp_right += 2; ddp_cohesion -= 2; hindenburg_angry += 100; coup_progress += 5; capital_strike_progress += 3
 
-The Reichswehr won’t go so far as to overthrow us, but Schleicher’s decade-long web of connections is proving effective. We are also the victim of a renewed propaganda campaign by the nationalist parties[? if pacifism >= 5:, which has fortunately failed to gain traction?]. [? if president == "Hindenburg": As a key figure in President Hindenburg’s camarilla, he has played a major role in stoking the old man’s growing hostility toward us. ?]
+국방군은 우리를 전복시키는 데까지 가지는 않겠지만, 슐라이허의 10년 된 인맥망은 효과적임이 증명되고 있습니다. 우리는 또한 민족주의 정당들의 갱신된 선전 캠페인의 희생자가 되었습니다[? if pacifism >= 5:, 다행히도 큰 호응을 얻지 못했습니다?]. [? if president == "Hindenburg": 힌덴부르크 대통령의 측근 그룹 핵심 인물로서, 그는 우리에 대한 노인의 커지는 적대감을 부추기는 데 주요한 역할을 했습니다. ?]
