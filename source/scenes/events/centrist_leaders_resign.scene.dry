@@ -4,7 +4,6 @@ subtitle: Centrist disagreements with our policies have grown too severe.
 tags: event
 view-if: center_dissent >= 60
 on-arrival: {!
-Q.center_strength *= 0.3; 
 
 if (Q.center_strength < 10) {
     Q.workers_spd -= 3; 
@@ -26,6 +25,7 @@ if (Q.center_strength < 10) {
     Q.rb_strength -= 200; 
 }
 
+Q.center_strength *= 0.3; 
 Q.n_advisors_start = Q.n_advisors; 
 if (Q.wels_advisor == 1) Q.n_advisors -= 1; 
 if (Q.hilferding_advisor == 1) Q.n_advisors -= 1; 
