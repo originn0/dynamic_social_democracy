@@ -282,7 +282,7 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   }
 
   if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president !=   "Göring" && Q.president != "Seldte" && Q.chancellor != "Hitler" && !Q.hammerstein_win && !(Q.president == "Hergt" && Q.chancellor == "Seldte")) {
-    if ((Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Ossietzky" || Q.president == "Mann") && Q.in_left_front) {
+    if ((Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Ossietzky" || Q.president == "Mann") && Q.in_left_front && !Q.civil_war_seen) {
       Q.kpd_points_calc = 0;
       Q.kpd_points_calc += Q.rfb_force;
       Q.kpd_points_calc += (100 - Q.pro_republic) / 2;
