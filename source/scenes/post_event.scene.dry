@@ -4047,11 +4047,11 @@ if (Q.spd_in_government_time >= 6) {
     if (Q.judicial_reform >= 1) {
         Q.hindenburg_angry += (Q.judicial_reform / 2)
     }
-    if (Q.coalition_dissent == 0) {
+    if (Q.coalition_dissent <= 0) {
         Q.hindenburg_angry -= 2;
     } else if (Q.coalition_dissent == 2) {
         Q.hindenburg_angry += 2;
-    } else if (Q.coalition_dissent == 3) {
+    } else if (Q.coalition_dissent >= 3) {
         Q.hindenburg_angry += 3;
     }
     if (Q.capital_strike_progress > 0) {
