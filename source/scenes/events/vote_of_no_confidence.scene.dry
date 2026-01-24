@@ -32,7 +32,7 @@ How do we assuage our partners?
 
 @dvp_prussia_2
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and in_grand_coalition = 1 and dvp_was_in_prussia == 0 and not lvp_formed
-choose-if: z_leader != "Kaas"
+choose-if: z_leader != "Kaas" and not secularized
 unavailable-subtitle: [? if z_leader = "Kaas": Kaas and the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] strongly dissents against. ?]
 on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; dvp_relation += 10; z_relation -= 5; ddp_relation += 3; coalition_dissent -= 1; left_dissent += 5; in_grand_coalition_prussia = 1; dvp_left += 3; new_middle_dvp += 3
 
