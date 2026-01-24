@@ -118,14 +118,14 @@ Are you sure about this? The <span style="color: #000000;">We</span><span style=
 - @cancel_advisor_action
 
 @secularize_2
-on-arrival: secularized = 1; secularized_a = 1; budget -= 1; catholics_spd -= 15; catholics -= 5; z_relation -= 15; dvp_relation += 6*(1-dissent); ddp_relation += 6*(1-dissent); lvp_relation += 6*(1-dissent); kpd_relation += 6*(1-dissent); new_middle_spd += 3*(1-dissent); workers_spd += 3*(1-dissent); education_science += 0.5; new_middle_ddp += 4; new_middle_dvp += 4; new_middle_lvp += 8; dvp_left += 3; ddp_left += 3; ddp_cohesion += 2; lvp_left += 5; education_goal_spd += 1
-go-to: vote_of_no_confidence.vonc_menu if (in_weimar_coalition and not in_social_liberal_coalition) or in_grand_coalition or in_popular_front or in_emergency_government
+on-arrival: secularized = 1; secularized_a = 1; budget -= 1; catholics_spd -= 15; catholics -= 5; z_relation -= 15; dvp_relation += 6*(1-dissent); ddp_relation += 6*(1-dissent); lvp_relation += 6*(1-dissent); kpd_relation += 6*(1-dissent); new_middle_spd += 3*(1-dissent); workers_spd += 3*(1-dissent); education_science += 0.5; new_middle_ddp += 4; new_middle_dvp += 4; new_middle_lvp += 8; dvp_left += 3; ddp_left += 3; ddp_cohesion += 2; lvp_left += 5; education_goal_spd += 1; coalition_dissent += 3 if constructive_vonc and ((in_weimar_coalition and not in_social_liberal_coalition) or in_grand_coalition or in_popular_front or in_emergency_government)
+go-to: vote_of_no_confidence.vonc_menu if ((in_weimar_coalition and not in_social_liberal_coalition) or in_grand_coalition or in_popular_front or in_emergency_government) and not constructive_vonc
 
 # instant VONC from zentrum
 
 The <span style="color: #c00000;">**SPD**</span>, [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, [? if not dvp_exist: former ?]<span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], and <span style="color: #700000;">**KPD**</span> vote in favor of secular education, overcoming the opposition of the religiously-oriented [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span>. We have funded secular community schools to replace some previous denominational schools.
 
-[? if in_weimar_coalition or in_grand_coalition or in_popular_front or in_emergency_government: Of course, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is in revolt at this proposal, and have called for a vote of no confidence in our government. ?]
+[? if in_weimar_coalition or in_grand_coalition or in_popular_front or in_emergency_government: Of course, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is in revolt at this proposal[? if not constructive_vonc: , and have called for a vote of no confidence in our government?]. ?]
 
 
 
