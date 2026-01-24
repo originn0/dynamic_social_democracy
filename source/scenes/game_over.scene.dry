@@ -334,6 +334,9 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.der_aufstieg_skywalkers) {
     this.achieve('der_aufstieg_skywalkers');
   }
+  if (Q.chancellor == "Breitscheid" && Q.left_cartel_france && Q.reparations_resolved && (Q.sdapo_win || Q.austria_peace) && Q.radio) {
+    this.achieve('mr_breitscheid');
+  }
 }
 this.achieve('game_completed');
 !}
@@ -705,7 +708,8 @@ const achievements = [
   "achievement_abgrundlaufer",
   "achievement_bruning_uber_alles",
   "achievement_der_aufstieg_skywalkers",
-  "achievement_kulturkampf"
+  "achievement_kulturkampf",
+  "mr_breitscheid"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -2589,6 +2593,21 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_mr_breitscheid: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/mr_breitscheid.png" alt="Mr Breitscheid Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Because I'm Mr. Breit-scheid</div>
+      <div class="achievement_subtitle"> - Breitscheid is chancellor at the end of game, Left Cartel has won in France, reparations are resolved, Austria remains democratic by the end of game, and a radio station is funded.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -4365,6 +4384,21 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_mr_breitscheid: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/mr_breitscheid.png" alt="Mr Breitscheid Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Because I'm Mr. Breit-scheid</div>
+      <div class="achievement_subtitle"> - Breitscheid is chancellor at the end of game, Left Cartel has won in France, reparations are resolved, Austria remains democratic by the end of game, and a radio station is funded.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -6136,6 +6170,21 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Kulturkampf</div>
       <div class="achievement_subtitle"> - pass all women's rights and <span style="color: red;">ho</span><span style="color: orange;">m</span><span style="color: yellow;">o</span><span style="color: green;">se</span><span style="color: blue;">xu</span><span style="color: purple;">al</span> rights reforms, secularize education, and form a <span style="color: #c00000;">Social</span>-<span style="color: #D3C24D;">Liberal</span> coalition.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_mr_breitscheid: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/mr_breitscheid.png" alt="Mr Breitscheid Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Because I'm Mr. Breit-scheid</div>
+      <div class="achievement_subtitle"> - Breitscheid is chancellor at the end of game, Left Cartel has won in France, reparations are resolved, Austria remains democratic by the end of game, and a radio station is funded.
     </div>
   {!</td>!}
 {!</tr>!}
