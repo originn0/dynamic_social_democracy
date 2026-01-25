@@ -1128,7 +1128,9 @@ if (Q.dnvp_ideology === "Moderate") {
     Q.far_right_coalition = parseFloat((Q.dnvp_r + Q.nsdap_r).toFixed(1));
 }
 
-if (Q.hugenberg_dvp) Q.far_right_coalition = parseFloat((Q.far_right_coalition + Q.dvp_r).toFixed(1));
+if (Q.dvp_leader == "Dingeldey" && Q.dvp_ideology == "Right" && Q.dvp_right - Q.dvp_left >= 15) {
+    Q.far_right_coalition += Q.dvp_r;
+}
 
 Q.left_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.sapd_r).toFixed(1));
 

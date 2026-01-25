@@ -337,6 +337,12 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.chancellor == "Breitscheid" && Q.left_cartel_france && Q.reparations_resolved && (Q.sdapo_win || Q.austria_peace) && Q.radio) {
     this.achieve('mr_breitscheid');
   }
+  if (Q.year == 1934 && Q.month == 7 && Q.hilferding_advisor && Q.wels_advisor && Q.muller_advisor && Q.kleber_der_partei) {
+    this.achieve('kleber_der_partei');
+  }
+  if (Q.prussian_police_loyalty >= 0.95 && Q.reichswehr_loyalty >= 0.95 && Q.interior_police_loyalty >= 0.95 && Q.judicial_reform >= 2 && Q.prussia_purge >= 2) {
+    this.achieve('grosse_sauberung');
+  }
 }
 this.achieve('game_completed');
 !}
@@ -709,7 +715,10 @@ const achievements = [
   "achievement_bruning_uber_alles",
   "achievement_der_aufstieg_skywalkers",
   "achievement_kulturkampf",
-  "mr_breitscheid"
+  "achievement_mr_breitscheid",
+  "achievement_alt_aber_gold",
+  "achievement_kleber_der_partei",
+  "achievement_grosse_sauberung"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -2608,6 +2617,52 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_alt_aber_gold: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/alt_aber_gold.png" alt="Alt Aber Gold Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Alt, Aber Gold</div>
+      <div class="achievement_subtitle"> - in the first Saxon election, the <span style="color: #fe9e00;">**ASPD**</span> wins over 5% of the vote. 
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+
+[? if game_achievement_kleber_der_partei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kleber_der_partei.png" alt="Kleber der Partei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kleber der Partei</div>
+      <div class="achievement_subtitle"> - the original 3 advisors remain from the start to the end of the game (Müller's slot must remain empty after his death).
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_grosse_sauberung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/grosse_sauberung.png" alt="Große Säuberung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Große Säuberung</div>
+      <div class="achievement_subtitle"> - by the end of the game, completely reform the judiciary, purge the Prussian bureaucracy twice, and secure full loyalty from the Interior police, the Prussian police, and the Reichswehr.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -4399,6 +4454,51 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_alt_aber_gold: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/alt_aber_gold.png" alt="Alt Aber Gold Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Alt, Aber Gold</div>
+      <div class="achievement_subtitle"> - in the first Saxon election, the <span style="color: #fe9e00;">**ASPD**</span> wins over 5% of the vote. 
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_kleber_der_partei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kleber_der_partei.png" alt="Kleber der Partei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kleber der Partei</div>
+      <div class="achievement_subtitle"> - the original 3 advisors remain from the start to the end of the game (Müller's slot must remain empty after his death).
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_grosse_sauberung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/grosse_sauberung.png" alt="Große Säuberung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Große Säuberung</div>
+      <div class="achievement_subtitle"> - by the end of the game, completely reform the judiciary, purge the Prussian bureaucracy twice, and secure full loyalty from the Interior police, the Prussian police, and the Reichswehr.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -6185,6 +6285,51 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Because I'm Mr. Breit-scheid</div>
       <div class="achievement_subtitle"> - by the end of the game, Breitscheid is chancellor, the <span style="color: #FFC0C0;">Left Cartel</span> has won in France, reparations are resolved, Austria remains democratic, and a radio station has been funded.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_alt_aber_gold: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/alt_aber_gold.png" alt="Alt Aber Gold Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Alt, Aber Gold</div>
+      <div class="achievement_subtitle"> - in the first Saxon election, the <span style="color: #fe9e00;">**ASPD**</span> wins over 5% of the vote. 
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_kleber_der_partei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/kleber_der_partei.png" alt="Kleber der Partei Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(196, 177, 86, 0.1);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Kleber der Partei</div>
+      <div class="achievement_subtitle"> - the original 3 advisors remain from the start to the end of the game (Müller's slot must remain empty after his death).
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_grosse_sauberung: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 78px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/grosse_sauberung.png" alt="Große Säuberung Icon"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(128, 0, 0, 0.15);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Große Säuberung</div>
+      <div class="achievement_subtitle"> - by the end of the game, completely reform the judiciary, purge the Prussian bureaucracy twice, and secure full loyalty from the Interior police, the Prussian police, and the Reichswehr.
     </div>
   {!</td>!}
 {!</tr>!}

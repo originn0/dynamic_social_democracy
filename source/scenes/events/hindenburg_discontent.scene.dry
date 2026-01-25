@@ -4,10 +4,11 @@ view-if: (president == "Hindenburg" and presidential_powers and spd_in_governmen
 priority: -1
 new-page: true
 tags: event
-on-arrival: dvp_relation -= 6; ddp_relation -= 3; lvp_relation -= 3; z_relation -= 3 if chancellor_party != "Z"; coalition_dissent += 1; hindenburg_grr_time = time + 6
+on-arrival: dvp_relation -= 6; ddp_relation -= 3; lvp_relation -= 3; z_relation -= 3 if chancellor_party != "Z"; coalition_dissent += 1; hindenburg_grr_time = time + 6; hindenburg_grr_amount += 1
+max-visits: 3
 
 = Hindenburg Voices Disapproval
 
 President Hindenburg has made his dissatisfaction with the <span style="color: #c00000;">socialist</span> presence in government clear and would use his presidential powers to remove us by force—if he actually had them.
 
-However, Hindenburg still holds great sway over the bourgeois parties and, along with his influential inner circle, has pressured them to break with our government. 
+[? if hindenburg_grr_amount <= 2: However, Hindenburg still holds great sway over the bourgeois parties and, along with his influential inner circle, has pressured them to break with our government. ?][? if hindenburg_grr_amount > 2: Hindenburg has been sidelined lately, and his influence over the bourgeois parties have weakened. This is the last time we will hear of the old man. ?]

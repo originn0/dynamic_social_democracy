@@ -1350,7 +1350,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     if (Q.muller_advisor) Q.center_advisor_n += 1;
     if (Q.breitscheid_advisor) Q.center_advisor_n += 1;
 
-    centrist_advisor_decay_effect = Q.center_advisor_n*0.3;
+    var centrist_advisor_decay_effect = Q.center_advisor_n*0.3;
 
     if (Q.center_advisor_n) {
         Q.center_dissent_decay *= (1-centrist_advisor_decay_effect);
@@ -1377,7 +1377,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
         if (Q.judicial_reform >= 2) Q.non_factional_advisor_n += 1;
     }
 
-    non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.15;
+    var non_factional_advisor_decay_effect = Q.non_factional_advisor_n*0.15;
 
     if (Q.non_factional_advisor_n) {
         Q.center_dissent_decay *= (1-non_factional_advisor_decay_effect);
@@ -5167,7 +5167,7 @@ var choices = this._compileChoices(scene);
 if (choices && choices[0].title != "Continue...") {
     Q.has_event = 1;
 } else {
-    has_event = 0;
+    Q.has_event = 0;
 }
 // pre-load all of the event images
 if (this.ui && this.ui.show_portraits) {

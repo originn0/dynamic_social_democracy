@@ -11,7 +11,7 @@ go-to: start_menu_2
 @start_menu_2
 
 - @start_1: Start game
-- @modinfo: Mod Info - Last Updated 2026/01/24
+- @modinfo: Mod Info - Last Updated 2026/01/25
 - @credits: Credits
 - @game_over.achievements
 
@@ -24,7 +24,7 @@ go-to: start if achievement_game_completed; pls_player if not achievement_game_c
 
 Read.
 
-- @modinfo.infotext: Mod Info - Last Updated 2026/01/24
+- @modinfo.infotext: Mod Info - Last Updated 2026/01/25
 
 
 @start
@@ -141,6 +141,7 @@ Q.nsdap_chancellor = "Hitler";
 // hmm... maybe we can play nice with Hindenburg???
 Q.hindenburg_relation = 25;
 Q.hindenburg_angry = 0;
+Q.hindenburg_grr_amount = 0;
 
 // prussian activities lol
 Q.spd_prussia = 1;
@@ -971,6 +972,8 @@ Q.notwendigkeit = 1;
 Q.gov_burden_fail = 0;
 Q.prussia_force_timer = 0;
 Q.emergency_used = 0;
+Q.kleber_der_partei = 1;
+Q.prussia_purge = 0;
 
 // rubicon
 Q.hindenburg_schleicher_r = 5;
@@ -1180,7 +1183,10 @@ const achievements = [
   "achievement_bruning_uber_alles",
   "achievement_der_aufstieg_skywalkers",
   "achievement_kulturkampf",
-  "mr_breitscheid"
+  "achievement_mr_breitscheid",
+  "achievement_alt_aber_gold",
+  "achievement_kleber_der_partei",
+  "achievement_grosse_sauberung"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;

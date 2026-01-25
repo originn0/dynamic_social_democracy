@@ -70,14 +70,14 @@ for (var party of Q.parties) {
 Q.kpd_r = 0;
 Q.sapd_r = 0;
 
-total_r_sum = 0;
+Q.total_r_sum = 0;
 
 for (var party of Q.parties) {
-    total_r_sum += Q[party + '_r'];
+    Q.total_r_sum += Q[party + '_r'];
 }
 
-if (total_r_sum !== 100) {
-    let normalization_factor = 100 / total_r_sum;
+if (Q.total_r_sum !== 100) {
+    let normalization_factor = 100 / Q.total_r_sum;
     for (var party of Q.parties) {
         Q[party + '_r'] = Math.round(Q[party + '_r'] * normalization_factor * 10) / 10;
     }

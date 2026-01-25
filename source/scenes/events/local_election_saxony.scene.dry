@@ -2,7 +2,7 @@ title: Saxony Landtag Election
 view-if: (year == 1929 and month == 5 and not saxony_election_seen) or (saxony_election_2_trigger_time == time and saxony_election_seen_time != time)
 new-page: true
 tags: event
-on-arrival: saxony_election_seen = 1; saxony_election_seen_time = time
+on-arrival: saxony_election_seen += 1 if saxony_election_seen; saxony_election_seen = 1 if not saxony_election_seen; saxony_election_seen_time = time
 priority: 2
 on-display: {!  
     var cardEl = document.createElement('div');  
@@ -464,8 +464,7 @@ if (window && d3) {
     d3.select("#saxony_landtag").datum(data).call(parliament);
 }
 !}
-go-to: saxony_coalition_menu
-
+go-to: saxony_achievement
 
 **Saxony results:**
 
@@ -522,6 +521,13 @@ Right-Wing Coalition ([? if aspd_r_saxony: <span style="color: #fe9e00;">**ASPD*
 
 [? if nsdap_saxony_elections_vote >= 4: The rise of the <span style="color: #7A3C00;">**NSDAP**</span> is quite unexpected, especially given their meager 1.6% of the vote in the last election. ?]
 
+@saxony_achievement
+go-to: alt_aber_gold if aspd_saxony_elections_vote >= 5 and saxony_election_seen == 1; saxony_coalition_menu if aspd_saxony_elections_vote < 5 or saxony_election_seen != 1
+
+@alt_aber_gold
+achievement: alt_aber_gold
+go-to: saxony_coalition_menu
+
 @saxony_coalition_menu
 on-arrival: {!
 let dvp_toleration_threshold = 50;
@@ -565,7 +571,7 @@ if ((Q.dvp_relation < (dvp_toleration_threshold + 5) && !Q.lvp_formed) || (Q.lvp
 <hr id="read-marker">
 The bourgeois parties have historically been hostile to us in state politics, particularly after the notorious <span style="color: #c00000;">**SPD**</span>-<span style="color: #700000;">**KPD**</span> United Left government faced a <i>Reichsexekution</i> six years ago. The split of our reformist wing into the <span style="color: #fe9e00;">**ASPD**</span> further pushed our state organization toward the left.
 
-With the <span style="color: #fe9e00;">**ASPD**</span>’s disastrous result of [+ aspd_saxony_elections_vote +]%, their viability as a political force in the state is coming to an end, with bourgeois parties are seeking a replacement for Max Heldt. Despite our cooperation on the local level, the national <span style="color: #700000;">**KPD**</span> is unlikely to ever accept a coalition.
+[? if aspd_saxony_elections_vote <= 3: With the <span style="color: #fe9e00;">**ASPD**</span>'s disastrous result of [+ aspd_saxony_elections_vote +]%, their viability as a political force in the state is coming to an end, with bourgeois parties are seeking a replacement for Max Heldt. ?][? if aspd_saxony_elections_vote > 3: The <span style="color: #fe9e00;">**ASPD**</span> has not suffered the decline we thought it would, winning [+ aspd_saxony_elections_vote +]% of the vote. Whether Max Heldt remains is up to the bourgeois parties. ?] Despite our cooperation on the local level, the national <span style="color: #700000;">**KPD**</span> is unlikely to ever accept a coalition.
 
 - @true_bourgeois_coalition_saxony
 - @bourgeois_coalition_saxony
