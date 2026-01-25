@@ -4181,6 +4181,9 @@ if (Q.spd_in_government_time >= 6) {
     if (((Q.z_relation + Q.ddp_relation) / 2) < 40) {
         Q.hindenburg_angry += 1;
     }
+    if (Q.peoples_party) {
+        Q.hindenburg_angry -= 1;
+    }
     if (Q.left_strength >= Q.reformist_strength) {
         Q.hindenburg_angry += Q.left_strength / 50;
     }
