@@ -12,21 +12,23 @@ The defection of multiple bourgeois and special interest parties from their prev
 
 The <span style="color: #7A3C00;">national</span> <span style="color: #3E88B3;">opposition</span> remains committed to its all-or-nothing approach, refusing to support the government unless they are granted the Chancellery. Despite this, many on the Right still believe that a compromise with Hitler and Hugenberg is possible and believe that Brüning is not making enough of an effort to achieve it.
 
+[? if constructive_vonc: Brüning has put forward a motion of confidence and is threatening to call new elections if a majority of the Reichstag doesn't support his government. ?]
+
 - @vonc_yes
 - @vonc_no
 
 @vonc_yes
-title: Support the vote of no confidence, voting against the government.
+title: [? if not constructive_vonc: Support the vote of no confidence,?][? if constructive_vonc: Oppose the vote of confidence,?] voting against the government.
 subtitle: Might as well cut our losses here.
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 3; z_relation -= 5; ddp_relation -= 3; lvp_relation -= 3; dvp_right += 1; ddp_right += 1; lvp_right += 1
 call: set_next_election_time
 
-We have officially broken with the [+ chancellor +] government, voting against them in a vote of no confidence. The bourgeois parties have also joined in, rather than engage in a futile attempt to save Brüning’s government.
+We have officially broken with the [+ chancellor +] government, voting against them in a vote of [? if not constructive_vonc: no ?]confidence. The bourgeois parties have also joined in, rather than engage in a futile attempt to save Brüning’s government.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @vonc_no
-title: Oppose the vote of no confidence, voting in favor of the government.
+title: [? if not constructive_vonc: Oppose the vote of no confidence,?][? if constructive_vonc: Support the vote of confidence,?] voting in favor of the government.
 subtitle: Currently, [+ bruning_coalition +]% of the Reichstag supports Brüning, but subject to change.
 on-arrival: {!
 Q.bruning_joever = 1;
@@ -59,7 +61,7 @@ go-to: bruning_lives_wp if bruning_coalition >= 50 and wp_reversal; bruning_dies
 on-arrival: bruning_not_joever = 1; new_middle_nsdap += new_middle_other*0.5; new_middle_other *= 0.5; old_middle_nsdap += old_middle_other*0.5; old_middle_other *= 0.5
 face-image: img/wp2.jpg
 
-The <span style="color: #b8996f;">**WP**</span> has unexpectedly reversed its opposition to Brüning's government following last-minute concessions from the Chancellor. In a crucial no-confidence vote, they sided with the government, effectively canceling out the impact of the other bourgeois parties that voted against it.
+The <span style="color: #b8996f;">**WP**</span> has unexpectedly reversed its opposition to Brüning's government following last-minute concessions from the Chancellor. In a crucial [? if not constructive_vonc: no-?]confidence vote, they sided with the government, effectively canceling out the impact of the other bourgeois parties that voted against it.
 
 This sudden shift by the <span style="color: #b8996f;">**WP**</span> has all but sealed its political demise. Already struggling to maintain support among the middle class, the party now faces mass defections, with local chapters either dissolving or breaking away entirely.
 
@@ -70,11 +72,11 @@ on-arrival: time_to_election = 3; spd_toleration = 0; spd_toleration_right = 0; 
 face-image: img/wp2.jpg
 call: set_next_election_time
 
-The <span style="color: #b8996f;">**WP**</span> has unexpectedly reversed its opposition to Brüning's government following last-minute concessions from the Chancellor. In a crucial no-confidence vote, they sided with the government[? if cnblp_defect or (dvp_defect and dvp_exist):, counteracting the impact of the [? if dvp_defect and dvp_exist: <span style="color: #C0A054;">**DVP**</span>'s?][? if not dvp_defect or not dvp_exist: [? if cnblp_defect: <span style="color: #7FCEB1;">**CNBLP**</span>'s?]?] withdrawal?].
+The <span style="color: #b8996f;">**WP**</span> has unexpectedly reversed its opposition to Brüning's government following last-minute concessions from the Chancellor. In a crucial [? if not constructive_vonc: no-?]confidence vote, they sided with the government[? if cnblp_defect or (dvp_defect and dvp_exist):, counteracting the impact of the [? if dvp_defect and dvp_exist: <span style="color: #C0A054;">**DVP**</span>'s?][? if not dvp_defect or not dvp_exist: [? if cnblp_defect: <span style="color: #7FCEB1;">**CNBLP**</span>'s?]?] withdrawal?].
 
 This sudden shift by the <span style="color: #b8996f;">**WP**</span> has all but sealed its political demise. Already struggling to maintain support among the middle class, the party now faces mass defections, with local chapters either dissolving or breaking away entirely.
 
-Unfortunately, all of this effort is for naught, with only [+ bruning_coalition +]% of the Reichstag voting against the Brüning government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+Unfortunately, all of this effort is for naught, with only [+ bruning_coalition +]% of the Reichstag voting to support Brüning's government. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @bruning_dies_no_wp
 on-arrival: time_to_election = 3; spd_toleration = 0; spd_toleration_right = 0; bruning_cabinet_collapsed = 1
