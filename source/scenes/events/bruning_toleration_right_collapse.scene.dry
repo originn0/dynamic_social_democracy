@@ -15,11 +15,13 @@ Their first step toward this goal is an attempt to bring down the Brüning gover
 
 Hopefully [+ dnvp_leader +] can restore order within his party, and prevent new elections from delivering catastrophic gains for the <span style="color: #7A3C00;">far</span>-<span style="color: #003755;">right</span>.
 
+[? if constructive_vonc: Brüning has put forward a motion of confidence and is threatening to call new elections if a majority of the Reichstag doesn't support his government. ?]
+
 - @vonc_yes
 - @vonc_no
 
 @vonc_yes
-title: Support the vote of no confidence, voting against the government.
+title: [? if not constructive_vonc: Support the vote of no confidence?][? if constructive_vonc: Oppose the vote of confidence?], voting against the government.
 subtitle: We will be the one to destroy Brüning, screw you.
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 2; lvp_relation -= 3; reformist_dissent += 5
 call: set_next_election_time
@@ -30,7 +32,7 @@ We have seized the initiative from the <span style="color: #3E88B3;">**DNVP**</s
 The <span style="color: #000000;">bourgeois</span>-<span style="color: #3E88B3;">right</span> coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @vonc_no
-title: Oppose the vote of no confidence, voting in favor of the government.
+title: [? if not constructive_vonc: Oppose the vote of no confidence?][? if constructive_vonc: Support the vote of confidence?], voting in favor of the government.
 subtitle: We will hope that the <span style="color: #3E88B3;">**DNVP**</span> manages to get its house in order.
 on-arrival: left_dissent += 5
 go-to: vonc_hergt if dnvp_leader == "Hergt"; vonc_treviranus if dnvp_leader == "Treviranus"; vonc_lambach if dnvp_leader == "Lambach"; vonc_moderate if dnvp_leader == "Schiele" or dnvp_leader == "Westarp"
@@ -84,7 +86,7 @@ Pro-Brüning delegates: [+ pro_bruning_dnvp +]
 
 Anti-Brüning delegates: [+ anti_bruning_dnvp +]
 
-[? if pro_bruning_dnvp >= anti_bruning_dnvp: The pro-Brüning delegates have maintained control of the party, and the new leader of the <span style="color: #3E88B3;">**DNVP**</span>, coincidentally Westarp again, has enforced party discipline, with only a few radical members voting against. ?][? if anti_bruning_dnvp >= pro_bruning_dnvp: The pro-Brüning delegates have lost control of the party, and the majority of the party's delegation has agreed to back a vote of no confidence against Brüning. Following Hergt's resignation, Westarp is, coincidentally, re-elected again shortly after. ?]
+[? if pro_bruning_dnvp >= anti_bruning_dnvp: The pro-Brüning delegates have maintained control of the party, and the new leader of the <span style="color: #3E88B3;">**DNVP**</span>, coincidentally Westarp again, has enforced party discipline, with only a few radical members voting against. ?][? if anti_bruning_dnvp >= pro_bruning_dnvp: The pro-Brüning delegates have lost control of the party, and the majority of the party's delegation has agreed to [? if not constructive_vonc: back a vote of no confidence against?][? if constructive_vonc: oppose the vote of confidence for?] Brüning. Following Hergt's resignation, Westarp is, coincidentally, re-elected again shortly after. ?]
 
 @vonc_treviranus
 on-arrival: {!
@@ -119,7 +121,7 @@ view-if: bruning_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; new_middle_dnvp -= 2; new_middle_dnf += 2; new_middle_nsdap += 2; old_middle_dnvp -= 4; old_middle_dnf += 3; old_middle_nsdap += 4; rural_dnvp -= 3; rural_nsdap += 3; rural_dnf += 2; workers_dnvp -= 2; workers_nsdap += 2; dvp_right += 3; ddp_right += 1; lvp_right += 2
 go-to: election_set
 
-The defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of no confidence, ushering in new elections where the extremists stand to gain.
+The defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of [? if not constructive_vonc: no ?]confidence, ushering in new elections where the extremists stand to gain.
 
 @vonc_lambach
 on-arrival: {!
@@ -156,7 +158,7 @@ view-if: bruning_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; new_middle_dnvp -= 6; new_middle_dnf += 4; new_middle_nsdap += 2; old_middle_dnvp *= 0.5; old_middle_dnf += 4; old_middle_nsdap += 2; rural_dnvp *= 0.6; rural_dnf += 4; rural_nsdap += 2; workers_dnvp -= 2; workers_nsdap += 2; lambachover = 1; dvp_right += 3; ddp_right += 1; lvp_right += 2
 go-to: election_set
 
-The defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of no confidence, ushering in new elections where the extremists stand to gain.
+The defections of some members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of [? if not constructive_vonc: no ?]confidence, ushering in new elections where the extremists stand to gain.
 
 The loss of nearly 40% of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary group has triggered a broader defection of the <span style="color: #3E88B3;">**DNVP**</span>'s non-worker voter base to the <span style="color: #003755;">**DNF**</span>—and even the <span style="color: #7A3C00;">**NSDAP**</span>.
 
@@ -177,7 +179,7 @@ Q.bruning_coalition = Q.cordon_sanitaire;
 Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss) * 10) / 10;
 !}
 
-[? if dnvp_leader == "Schiele": Martin Schiele, a strong supporter of Brüning—and his Minister of Agriculture—has successfully persuaded the <span style="color: #385A38;">agrarian</span> wing of the <span style="color: #3E88B3;">**DNVP**</span> to oppose the vote of confidence. He also enlists the support of Westarp and incumbent cabinet members to lobby the rest of the party. However, some radical members, who remained in the party solely due to their shared hatred of Hugenberg, are expected to defy party discipline. ?][? if dnvp_leader == "Westarp": Kuno von Westarp, a longtime leader of the <span style="color: #3E88B3;">**DNVP**</span> and one of Brüning's strongest supporters, has rallied members from all wings of the party to oppose the proposed vote of no confidence, warning of the political and economic instability that would follow if it passed. However, some radical members, who remained in the party solely due to their shared hatred of Hugenberg, are expected to defy party discipline. ?]
+[? if dnvp_leader == "Schiele": Martin Schiele, a strong supporter of Brüning—and his Minister of Agriculture—has successfully persuaded the <span style="color: #385A38;">agrarian</span> wing of the <span style="color: #3E88B3;">**DNVP**</span> to [? if not constructive_vonc: oppose the vote of no confidence?][? if constructive_vonc: support the vote of confidence?]. He also enlists the support of Westarp and incumbent cabinet members to lobby the rest of the party. However, some radical members, who remained in the party solely due to their shared hatred of Hugenberg, are expected to defy party discipline. ?][? if dnvp_leader == "Westarp": Kuno von Westarp, a longtime leader of the <span style="color: #3E88B3;">**DNVP**</span> and one of Brüning's strongest supporters, has rallied members from all wings of the party to [? if not constructive_vonc: oppose the proposed vote of no confidence?][? if constructive_vonc: support the proposed vote of confidence?], warning of the political and economic instability that would follow new elections. However, some radical members, who remained in the party solely due to their shared hatred of Hugenberg, are expected to defy party discipline. ?]
 
 - @results4: The Reichstag convenes.
 - @results5: The Reichstag convenes.
@@ -193,7 +195,7 @@ view-if: bruning_coalition < 50
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; new_middle_dnvp -= 3; new_middle_dnf += 3; new_middle_nsdap += 3; old_middle_dnvp -= 5; old_middle_dnf += 3; old_middle_nsdap += 5; rural_dnvp -= 4; rural_nsdap += 4; workers_dnvp -= 3; workers_nsdap += 3; dvp_right += 3; ddp_right += 1; lvp_right += 2
 go-to: election_set
 
-The defections of even a small amount of members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of no confidence, ushering in new elections where the extremists stand to gain.
+The defections of even a small amount of members of the <span style="color: #3E88B3;">**DNVP**</span>'s parliamentary delegation to Hugenberg's <span style="color: #003755;">**DNF**</span> has successfully caused Brüning to lose the vote of [? if not constructive_vonc: no ?]confidence, ushering in new elections where the extremists stand to gain.
 
 @election_set
 call: set_next_election_time
