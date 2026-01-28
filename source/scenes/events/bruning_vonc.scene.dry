@@ -8,19 +8,25 @@ max-visits: 1
 
 = Vote of no confidence
 
-Following the collapse of our coalition, President [+ president +] has appointed Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Party in a government supported by bourgeois forces. However, they cannot survive without the support from us or the <span style="color: #3E88B3;">**DNVP**</span>. 
+Following the collapse of our coalition, President [+ president +] has appointed Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Party in a government supported by bourgeois forces. However, they cannot survive without the support from us or the <span style="color: #3E88B3;">**DNVP**</span>. [? if constructive_vonc: Well actually, it can but it wouldn't be able to pass any legislation. ?]
 
-Brüning, has reorganized his cabinet to include the parties to the right of the [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], such as the <span style="color: #b8996f;">**WP**</span> and let the <span style="color: #3E88B3;">**DNVP**</span> take over as Minister of Agriculture, presumably to pressure the <span style="color: #3E88B3;">**DNVP**</span> to support his government. We are left with the choice to "tolerate" the government to prevent the gains of extremists within the Reichstag or vote to oust Brüning for new elections.
+Brüning, has reorganized his cabinet to include the parties to the right of the [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], such as the <span style="color: #b8996f;">**WP**</span> and let the <span style="color: #3E88B3;">**DNVP**</span> take over as Minister of Agriculture, presumably to pressure the <span style="color: #3E88B3;">**DNVP**</span> to support his government. We are left with the choice to "tolerate" the government to prevent the gains of extremists within the Reichstag[? if not constructive_vonc:&nbsp;or vote to oust Brüning for new elections?].
+
+[? if constructive_vonc: With the requirement that votes of no-confidence be constructive, the no-confidence motions put forward by the <span style="color: #7A3C00;">**NSDAP**</span> and the <span style="color: #700000;">**KPD**</span> have no chance of succeeding. ?]
 
 - @vote_no
 - @vote_no_nothing
 - @vote_yes
 - @vote_yes_nothing
+- @bruning_dnvp
+- @bruning_spd
+- @breitscheid_vonc
+- @no_matter
 
 @vote_no
 title: Support the vote of no confidence, voting against the government.
 subtitle: The government will collapse, and there will be new elections.
-view-if: right_coalition < 50
+view-if: right_coalition < 50 and neo_weimar_coalition >= 50 and not constructive_vonc
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 3; bruning_event_timer = 0; z_relation -= 5
 call: set_next_election_time
 
@@ -32,7 +38,7 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 title: Support the vote of no confidence, voting against the government.
 subtitle: Brüning looks to the right.
 on-arrival: dnvp_bruning = 1; z_relation -= 5
-view-if: right_coalition >= 50
+view-if: right_coalition >= 50 and not constructive_vonc
 
 We have broken with the [+ chancellor +] government, and have voted against them in a vote of no confidence. However the <span style="color: #3E88B3;">**DNVP**</span> surprisingly votes in favor with the government, preventing new elections from being called.
 
@@ -41,7 +47,7 @@ Their support of the cabinet is unreliable, with Hugenberg at the helm. It's a m
 @vote_yes
 title: Oppose the vote of no confidence, voting for the government.
 subtitle: We would essentially provide "toleration" to a bourgeois government.
-view-if: right_coalition < 50
+view-if: right_coalition < 50 and neo_weimar_coalition >= 50 and not constructive_vonc
 on-arrival: welfare -= 1; left_dissent += 10; labor_dissent += 10; workers_spd *= 0.9; unemployed_spd *= 0.9; unemployed_nsdap += 5; unemployed_kpd += 5; workers_nsdap += 5; workers_kpd += 3; workers_spd -= 4 if welfare < 0; unemployed_spd -= 5 if welfare < 0; pro_republic -= 4; kpd_relation -= 8; ddp_left += 1; dvp_left += 1; lvp_left += 1; other_r += dnvp_r*0.4 if not kvp_formed; kvp_r += dnvp_r*0.4 if kvp_formed; dnvp_r = dnvp_r*0.6; rural_dnvp -= 4; new_middle_dnvp -= 4; old_middle_dnvp -= 4; rural_other += 4 if not kvp_formed; new_middle_other += 4 if not kvp_formed; old_middle_other += 4 if not kvp_formed; rural_kvp += 4 if kvp_formed; new_middle_kvp += 4 if kvp_formed; old_middle_kvp += 4 if kvp_formed; dnvp_split_2 = 1; dnvp_split_2_timer = 1 if not kvp_formed
 
 We try to convince the workers that this policy is necessary in order to maintain a stable parliamentary government, and to deal with the fiscal consequences of the depression. Still, this policy provides excellent recruiting fodder for <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span>.
@@ -52,8 +58,47 @@ Westarp and his group of moderates that still remain within the <span style="col
 title: Oppose the vote of no confidence, voting for the government.
 subtitle: The bourgeois rather work with the <span style="color: #3E88B3;">**DNVP**</span> over allowing us to influence government.
 on-arrival: dnvp_bruning = 1; z_relation -= 5
-view-if: right_coalition >= 50
+view-if: right_coalition >= 50 and not constructive_vonc
 
 This has become unnecessary with the <span style="color: #3E88B3;">**DNVP**</span> surprisingly voting in favor of the government, preventing new elections from being called.
 
 Their support of the cabinet is unreliable, with Hugenberg at the helm. It's a matter of time before a crisis takes down the cabinet.
+
+@bruning_dnvp
+title: Brüning looks to the right.
+subtitle: The bourgeois rather work with the <span style="color: #3E88B3;">**DNVP**</span> over allowing us to influence government.
+on-arrival: dnvp_bruning = 1; z_relation -= 5
+view-if: right_coalition >= 50 and constructive_vonc
+
+Brüning has suprisingly won the support of the <span style="color: #3E88B3;">**DNVP**</span> giving him a parliamentary majority.
+
+Their support of the cabinet is unreliable, with Hugenberg at the helm. It's a matter of time before a crisis takes down the cabinet.
+
+@bruning_spd
+title: Brüning looks to the <span style="color: #c00000;">**SPD**</span>.
+subtitle: Brüning tries to gain our support.
+view-if: right_coalition < 50 and neo_weimar_coalition >= 50 and constructive_vonc
+on-arrival: ddp_left += 1; dvp_left += 1; lvp_left += 1; other_r += dnvp_r*0.4 if not kvp_formed; kvp_r += dnvp_r*0.4 if kvp_formed; dnvp_r = dnvp_r*0.6; rural_dnvp -= 4; new_middle_dnvp -= 4; old_middle_dnvp -= 4; rural_other += 4 if not kvp_formed; new_middle_other += 4 if not kvp_formed; old_middle_other += 4 if not kvp_formed; rural_kvp += 4 if kvp_formed; new_middle_kvp += 4 if kvp_formed; old_middle_kvp += 4 if kvp_formed; dnvp_split_2 = 1; dnvp_split_2_timer = 1 if not kvp_formed
+
+With the only path towards a viable majority lying with us, Brüning has started negotiations to try to gain our support for his new government.
+
+Westarp and his group of moderates that still remain within the <span style="color: #3E88B3;">**DNVP**</span> are outraged with Hugenberg letting the <span style="color: #c00000;">**SPD**</span> influence the [+ chancellor +] right-wing government, and resign en masse[? if kvp_formed:&nbsp;to join the <span style="color: #0087DC;">**KVP**</span>?].
+
+@breitscheid_vonc
+title: Call a constructive motion of no confidence with the <span style="color: #700000;">**KPD**</span>!
+view-if: constructive_vonc and (left_coalition >= 50 or kpd_relation >= 50)
+choose-if: left_coalition >= 50 and kpd_relation >= 50
+unavailable-subtitle: [? if left_coalition < 50 : We do not have a majority in favor of Breitscheid. ?][? if kpd_relation < 50 : The Communists are unwilling. ?]
+on-arrival: in_left_front = 1; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; chancellor_party = "SPD"; chancellor = "Breitscheid"; coup_progress += 3; capital_strike_progress += 2; coup_progress += 1 if in_left_front_prussia; capital_strike_progress += 1 if in_left_front_prussia; labor_minister_party = "SPD"; interior_minister_party = "SPD"; finance_minister_party = "SPD"; economic_minister_party = "SPD"; justice_minister_party = "SPD"; foreign_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"; kpd_relation += 10; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 10; lvp_relation -= 8; reichswehr_loyalty -= 0.05; dvp_right += 10; ddp_right += 5; ddp_cohesion -= 3; lvp_right += 8; liberal_cooperation += 5; bourgeois_cooperation += 10; liberal_cooperation += 3 if in_left_front_prussia or in_popular_front_prussia; bourgeois_cooperation += 5 if in_left_front_prussia or in_popular_front_prussia; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 30; left_strength += 20; bruning_event_timer = 0
+
+We have successfully passed a motion of no confidence to replace Brüning with Breitscheid. We are now ruling in a united front with the <span style="color: #700000;">**KPD**</span>.
+
+Whatever their reasoning is, the <span style="color: #c00000;">**SPD**</span> has control over the ministries of government.
+
+@no_matter
+title: It does not matter what we do.
+subtitle: The anti-government parties have over 50% of the vote, no matter our choices.
+view-if: right_coalition < 50 and neo_weimar_coalition < 50
+on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5; bruning_event_timer = 0
+
+[? if not constructive_vonc: The bourgeois coalition has fallen?][? if constructive_vonc: With no path towards a parliamentary majority, Brüning has chosen to call new elections?]. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
