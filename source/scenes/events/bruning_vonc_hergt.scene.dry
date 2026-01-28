@@ -8,19 +8,23 @@ max-visits: 1
 
 = Vote of no confidence
 
-Following the collapse of our coalition, President [+ president +] has appointed Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in a government supported by bourgeois forces. [? if center_right_coalition < 50: However, they cannot survive without the support from us, considering that the <span style="color: #7A3C00;">**NSDAP**</span> won't participate. ?]
+Following the collapse of our coalition, President [+ president +] has appointed Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] in a government supported by bourgeois forces. [? if center_right_coalition < 50 and not constructive_vonc: However, they cannot survive without the support from us, considering that the <span style="color: #7A3C00;">**NSDAP**</span> won't participate. ?]
 
-Brüning, has reorganized his cabinet to include the parties to the right of the [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], such as the <span style="color: #b8996f;">**WP**</span> and <span style="color: #3E88B3;">**DNVP**</span>, to create [? if was_in_center_right_coalition == 0:a?][? if was_in_center_right_coalition == 1:another?] center-right coalition. [? if center_right_coalition < 50: We are left with the choice to "tolerate" the government to prevent the gains of extremists within the Reichstag or vote to oust Brüning for new elections. ?]
+Brüning, has reorganized his cabinet to include the parties to the right of the [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if not lvp_formed and not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?], such as the <span style="color: #b8996f;">**WP**</span> and <span style="color: #3E88B3;">**DNVP**</span>, to create [? if was_in_center_right_coalition == 0:a?][? if was_in_center_right_coalition == 1:another?] center-right coalition. [? if center_right_coalition < 50: We are left with the choice to "tolerate" the government to prevent the gains of extremists within the Reichstag[? if not constructive_vonc:&nbsp;or vote to oust Brüning for new elections?]. ?]
+
+[? if constructive_vonc: With the requirement that votes of no-confidence be constructive, the no-confidence motions put forward by the <span style="color: #7A3C00;">**NSDAP**</span> and the <span style="color: #700000;">**KPD**</span> have no chance of succeeding. ?]
 
 - @vote_no
 - @vote_yes
 - @no_matter
 - @center_right
+- @breitscheid_vonc
+- @bruning_spd
 
 @vote_no
 title: Support the vote of no confidence, voting against the government.
 subtitle: The government will collapse, and there will be new elections.
-view-if: cordon_sanitaire >= 50 and center_right_coalition < 50
+view-if: cordon_sanitaire >= 50 and center_right_coalition < 50 and not constructive_vonc
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; in_right_coalition = 0; in_center_right_coalition = 0; pro_republic -= 3; bruning_event_timer = 0; z_relation -= 5
 call: set_next_election_time
 
@@ -31,7 +35,7 @@ New elections have been set for [+ next_election_month : month +] [+ next_electi
 @vote_yes
 title: Oppose the vote of no confidence, voting for the government.
 subtitle: We would essentially provide "toleration" to a bourgeois government.
-view-if: cordon_sanitaire >= 50 and center_right_coalition < 50
+view-if: cordon_sanitaire >= 50 and center_right_coalition < 50 and not constructive_vonc
 on-arrival: welfare -= 1; left_dissent += 10; labor_dissent += 10; workers_spd *= 0.9; unemployed_spd *= 0.9; unemployed_nsdap += 5; unemployed_kpd += 5; workers_nsdap += 5; workers_kpd += 3; workers_spd -= 4 if welfare < 0; unemployed_spd -= 5 if welfare < 0; pro_republic -= 4; kpd_relation -= 8; spd_toleration_hergt = 1
 
 We try to convince the workers that this policy is necessary in order to maintain a stable parliamentary government, and to deal with the fiscal consequences of the depression. Still, this policy provides excellent recruiting fodder for <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span>.
@@ -43,7 +47,7 @@ view-if: cordon_sanitaire < 50
 call: set_next_election_time
 on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5; bruning_event_timer = 0
 
-The right-wing coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+[? if not constructive_vonc: The right-wing coalition has fallen?][? if constructive_vonc: With no path towards a parliamentary majority, Brüning has chosen to call new elections?]. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @center_right
 title: It does not matter what we do.
@@ -52,3 +56,22 @@ view-if: center_right_coalition >= 50
 on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; in_grand_coalition = 0; in_center_right_coalition = 1; in_right_coalition = 0; ddp_relation -= 5; dvp_relation -= 5; z_relation -= 5; lvp_relation -= 5; old_middle_dnf -= 2; ddp_right += 1; bourgeois_cooperation += 2; liberal_cooperation += 1
 
 The bourgeois has survived without our toleration, leaving us as an opposition party. 
+
+@breitscheid_vonc
+title: Call a constructive motion of no confidence with the <span style="color: #700000;">**KPD**</span>!
+view-if: constructive_vonc and (left_coalition >= 50 or kpd_relation >= 50)
+choose-if: left_coalition >= 50 and kpd_relation >= 50
+unavailable-subtitle: [? if left_coalition < 50 : We do not have a majority in favor of Breitscheid. ?][? if kpd_relation < 50 : The Communists are unwilling. ?]
+on-arrival: in_left_front = 1; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; chancellor_party = "SPD"; chancellor = "Breitscheid"; coup_progress += 3; capital_strike_progress += 2; coup_progress += 1 if in_left_front_prussia; capital_strike_progress += 1 if in_left_front_prussia; labor_minister_party = "SPD"; interior_minister_party = "SPD"; finance_minister_party = "SPD"; economic_minister_party = "SPD"; justice_minister_party = "SPD"; foreign_minister_party = "SPD"; agriculture_minister_party = "SPD"; reichswehr_minister_party = "SPD"; kpd_relation += 10; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 10; lvp_relation -= 8; reichswehr_loyalty -= 0.05; dvp_right += 10; ddp_right += 5; ddp_cohesion -= 3; lvp_right += 8; liberal_cooperation += 5; bourgeois_cooperation += 10; liberal_cooperation += 3 if in_left_front_prussia or in_popular_front_prussia; bourgeois_cooperation += 5 if in_left_front_prussia or in_popular_front_prussia; reformist_dissent += 20; reformist_strength -= 10; left_dissent -= 30; left_strength += 20; bruning_event_timer = 0
+
+We have successfully passed a motion of no confidence to replace Brüning with Breitscheid. We are now ruling in a united front with the <span style="color: #700000;">**KPD**</span>.
+
+Whatever their reasoning is, the <span style="color: #c00000;">**SPD**</span> has control over the ministries of government.
+
+@bruning_spd
+title: Brüning approaches us.
+subtitle: We are expected to provide "toleration" to a bourgeois government.
+view-if: cordon_sanitaire >= 50 and center_right_coalition < 50 and constructive_vonc
+on-arrival: spd_toleration_hergt = 1
+
+With the only path towards a viable majority lying with us, Brüning has started negotiations to try to gain our support for his new government. With no way of bringing down Brüning's government, we are forced to provide "toleration" for the time being.
