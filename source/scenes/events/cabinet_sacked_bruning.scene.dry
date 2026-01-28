@@ -36,11 +36,13 @@ Replacing us is a new cabinet encompassing solely the bourgeois parties. [? if b
 
 - @tolerate
 - @dont_tolerate
+- @bruning_spd
+- @no_matter
 
 @tolerate
 title: Oppose any votes of no confidence, voting for the government.
 subtitle: We would essentially provide "toleration" to a bourgeois government.
-view-if: bruning_event_seen or year < 1930
+view-if: cordon_sanitaire >= 50 and not constructive_vonc and (bruning_event_seen or year < 1930)
 on-arrival: spd_toleration = 1; left_dissent += 10; pro_republic -= 3; workers_kpd += 3; workers_nsdap += 3; workers_spd -= 3; unemployed_kpd += 5; unemployed_nsdap += 3; unemployed_spd -= 5; dvp_right += 2; ddp_right += 1; lvp_right += 2; liberal_cooperation += 1; welfare -= 2
 
 Brüning immediately begins to cut welfare using his emergency powers granted by President [+ president +]. We try to convince the workers that this policy is necessary in order to maintain a stable parliamentary government, and to deal with the fiscal consequences of the depression. Still, this policy provides excellent recruiting fodder for <span style="color: #7A3C00;">Nazis</span> and <span style="color: #700000;">**Communists**</span>.
@@ -48,8 +50,25 @@ Brüning immediately begins to cut welfare using his emergency powers granted by
 @dont_tolerate
 title: Support the vote of no confidence, voting against the government.
 subtitle: The government will collapse, and there will be new elections.
-view-if: bruning_event_seen or year < 1930
+view-if: cordon_sanitaire >= 50 and not constructive_vonc and (bruning_event_seen or year < 1930)
 on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5
 call: set_next_election_time
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
+
+@bruning_spd
+title: Brüning approaches us.
+subtitle: We are expected to provide "toleration" to a bourgeois government.
+view-if: cordon_sanitaire >= 50 and constructive_vonc
+on-arrival: spd_toleration = 1
+
+With the only path towards a viable majority lying with us, Brüning has started negotiations to try to gain our support for his new government. With no way of bringing down Brüning's government, we are forced to provide "toleration" for the time being.
+
+@no_matter
+title: It does not matter what we do.
+subtitle: The anti-government parties have over 50% of the vote, no matter our choices.
+view-if: cordon_sanitaire < 50
+call: set_next_election_time
+on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5
+
+[? if not constructive_vonc: The bourgeois coalition has fallen?][? if constructive_vonc: With no path towards a parliamentary majority, Brüning has chosen to call new elections?]. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
