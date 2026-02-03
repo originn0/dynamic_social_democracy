@@ -574,7 +574,6 @@ Loyalty: [+ prussian_police_loyalty : loyalty +]
 
 
 @factions
-go-to: neorevisionists if neorevisionism > 0; menu if neorevisionism <= 0
 
 **Internal factions of the** <span style="color: #c00000;">**SPD**</span>
 
@@ -612,27 +611,21 @@ Strength: [+ reformist_strength : strength +]
 
 Dissent: [+ reformist_dissent : dissent +]
 
-@neorevisionists
-go-to: menu
+[? if neorevisionism: **Neorevisionists** ?]
 
-**Neorevisionists**
+[? if neorevisionism: Neorevisionists focus on defending the republic and expanding democracy, while also expanding the party's base beyond the working class to create a people's party. They support new propaganda methods and extra-parliamentary action in defense of the republic. ?]
 
-Neorevisionists focus on defending the republic and expanding democracy, while also expanding the party's base beyond the working class to create a people's party. They support new propaganda methods and extra-parliamentary action in defense of the republic.
+[? if neorevisionism: Strength: [+ neorevisionist_strength : strength +] ?]
 
-Strength: [+ neorevisionist_strength : strength +]
+[? if neorevisionism: Dissent: [+ neorevisionist_dissent : dissent +] ?]
 
-Dissent: [+ neorevisionist_dissent : dissent +]
+[? if social_patriot: **Social Patriots** ?]
 
-@social_patriot
-go-to: menu
+[? if social_patriot: Social Patriots combine support for pro-worker social programs with fervent German nationalism and anti-<span style="color: #700000;">communism</span>. Many of those who identify with this tendency seem to be little more than lapdogs of Schleicher[? if dnef_formed :&nbsp;and his <span style="color: #BFC8CC;">**DNEF**</span>?]. Other factions view their positions as contradictory and incoherent[? if schleicher_spd_influence > 5 :, but perhaps they may know best after all..?]. ?]
 
-**Social Patriots**
+[? if social_patriot: Strength: [+ social_patriot_strength : strength +] ?]
 
-<span style="color: #fe9e00;">Social patriots</span> combine support of pro-worker social programs supported by our other factions, with fervent German nationalism and anti-communism. Many of them seem to be little more than lapdogs of Schleicher[? if dnef_formed : and his <span style="color: #BFC8CC;">**DNEF**</span>]. Their positions are often seen by the other factions as contradictory and incoherent [? if schleicher_spd_influence > 5 : , but perhaps they may know best after all...].
-
-Strength: [+ social_patriot_strength : strength +]
-
-Dissent: [+ social_patriot_dissent : dissent +]
+[? if social_patriot: Dissent: [+ social_patriot_dissent : dissent +] ?]
 
 @figures
 title: Figures and Charts
