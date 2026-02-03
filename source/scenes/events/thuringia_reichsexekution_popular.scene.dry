@@ -26,7 +26,7 @@ The Reichswehr and Stalhelm are already preparing to enter Thuringia. Our forces
 - @surrender
 
 @defend_2
-on-arrival: resist_coup = 1; thuringia_joever = 0; reformist_dissent += 10; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += rfb_strength*rfb_militancy; defense_strength += workers_spd_normalized*(1 - dissent)*(1 - unemployed/100); defense_strength += workers_kpd_normalized*(2 - unemployed/100); defense_strength *= 0.75; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)
+on-arrival: resist_coup = 1; thuringia_joever = 0; reformist_dissent += 10; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += rfb_strength*rfb_militancy; defense_strength += workers_spd_normalized*(1 - dissent)*(2 - unemployed/100); defense_strength += workers_kpd_normalized*(2 - unemployed/100); defense_strength *= 0.8; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty)
 go-to: defend_2_civil_war if defense_strength < enemy_strength; defend_2_victory if defense_strength >= enemy_strength
 
 @defend_2_civil_war
@@ -36,7 +36,7 @@ As the Reichswehr and their reactionary auxiliaries march into Thuringia, armed 
 - @civil_war: It is a civil war.
 
 @defend_2_victory
-on-arrival: sa_strength *= 0.8; sh_strength *= 0.8; left_dissent -= 10; reformist_dissent -= 10; reichsexekution_defeated = 1; pro_republic += 5; workers_spd += 4; unemployed_spd += 4; workers_kpd += 3; unemployed_kpd += 3; workers_nsdap -= 6; unemployed_nsdap -= 6; hindenburg_angry -= 35; hindenburg_angry_bruning += 30; coup_victory = 1; kpd_relation += 15; rfb_strength += 100; rfb_militancy += 0.1; rb_strength *= 1.05
+on-arrival: sa_strength *= 0.8; sh_strength *= 0.8; left_dissent -= 10; reformist_dissent -= 10; reichsexekution_defeated = 1; pro_republic += 5; workers_spd += 4; unemployed_spd += 4; workers_kpd += 3; unemployed_kpd += 3; workers_nsdap -= 6; unemployed_nsdap -= 6; hindenburg_angry -= 35; hindenburg_angry_bruning += 30; coup_victory = 1; kpd_relation += 15; rfb_strength += 100; rfb_militancy += 0.1; rb_strength += 200
 achievement: drei_pfeile
 
 The Reichsbanner and RFB confront the reactionaries on the road to Thuringia and somehow, the enemy has retreated without a fight! They were surprised by our resistance and Hindenburg has decided to not risk a civil war over Thuringia.
