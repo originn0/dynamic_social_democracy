@@ -238,7 +238,8 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
       this.achieve('blockparteien_parade');
   }
 
-  if ((Q.ddp_leader == "Lemmer" && ((Q.dvp_leader == "Thiel" || Q.dvp_leader == "Glatzel") && Q.dvp_exist) && !Q.lvp_formed || (Q.lvp_leader == "Glatzel" && Q.lvp_formed) || !Q.lvp_formed && !Q.dvp_exist) && ((Q.dnvp_leader == "Lambach" && Q.z_leader == "Kaiser") && !Q.cvp_formed || (Q.cvp_leader == "Lambach" || Q.cvp_leader == "Stegerwald") && Q.cvp_formed)) {
+  if 
+    (((Q.ddp_leader == "Lemmer" || Q.lvp_formed) && (Q.dvp_leader == "Thiel" || Q.dvp_leader == "Glatzel" || !Q.dvp_exist || Q.lvp_formed) && (Q.lvp_leader == "Glatzel" || !Q.lvp_formed)) && ((Q.dnvp_leader == "Lambach" && Q.z_leader == "Kaiser") && !Q.cvp_formed || (Q.cvp_leader == "Lambach" || Q.cvp_leader == "Stegerwald") && Q.cvp_formed)) {
       this.achieve('der_arbeiterstaat');
   }
 
