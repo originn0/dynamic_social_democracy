@@ -1,0 +1,4127 @@
+title: sandbox
+new-page: true
+is-special: true
+is-hand: true
+go-to: sandbox_menu
+
+= Sandbox Menu
+
+@sandbox_menu
+
+- @disable_end: Disable End In 1934
+- @enable_end: Enable End In 1934
+- @editresources: Edit Resources
+- @editbudget: Edit Budget
+- @editrelations: Edit Party Relations
+- @editpartysupport: Edit Party Support
+- @miscparty: Miscellaneous Party Options
+- @editleft: Edit Left Faction Of SPD
+- @editcenter: Edit Center Faction of SPD
+- @editlabor: Edit Labor Faction of SPD
+- @editreformist: Edit Reformist Faction of SPD
+- @editneorevisionist: Edit Neorevisionist Faction of SPD
+- @editironfront: Edit Iron Front
+- @editparamilitary: Edit Paramilitary Groups
+- @editreichswehr: Edit Reichswehr and Police
+
+@disable_end
+view-if: end_disabled != 1
+on-arrival: end_disabled = 1
+go-to: sandbox_menu
+
+The end date has been disabled.
+
+@enable_end
+view-if: end_disabled = 1
+on-arrival: end_disabled = 0
+go-to: sandbox_menu
+
+The end date has been enabled.
+
+@editresources
+
+- @add10resources: Add 10 Resources
+- @add20resources: Add 20 Resources
+- @add100resources: Add 100 Resources
+- @subtract10resources: Subtract 10 Resources
+- @subtract20resources: Subtract 20 Resources
+- @subtract100resources: Subtract 100 Resources
+- @returnsandbox: Return To Sandbox
+
+@add10resources
+go-to: sandbox_menu
+on-arrival: {!
+Q.resources += 10;
+!}
+
+Added 10 resources to the party's stockpile.
+
+@add20resources
+go-to: sandbox_menu
+on-arrival: {!
+Q.resources += 20;
+!}
+
+Added 20 resources to the party's stockpile.
+
+@add100resources
+go-to: sandbox_menu
+on-arrival: {!
+Q.resources += 100;
+!}
+
+Added 100 resources to the party's stockpile, stop being greedy.
+
+@subtract10resources
+go-to: sandbox_menu
+on-arrival: {!
+Q.resources -= 10;
+!}
+
+Removed 10 resources from the party's stockpile.
+
+@subtract20resources
+go-to: sandbox_menu
+on-arrival: {!
+Q.resources -= 20;
+!}
+
+Removed 20 resources from the party's stockpile.
+
+@subtract100resources
+go-to: sandbox_menu
+on-arrival: {!
+Q.resources -= 100;
+!}
+
+Removed 100 resources from the party's stockpile. This doesn't go to the homeless or anything, why would you do this?
+
+@editbudget
+
+- @add10budget: Add 10 Budget
+- @add20budget: Add 20 Budget
+- @add100budget: Add 100 Budget
+- @subtract10budget: Subtract 10 Budget
+- @subtract20budget: Subtract 20 Budget
+- @subtract100budget: Subtract 100 Budget
+- @returnsandbox: Return To Sandbox
+
+@add10budget
+go-to: sandbox_menu
+on-arrival: {!
+Q.budget += 10;
+!}
+
+Added 10 budget to the country's stockpile.
+
+@add20budget
+go-to: sandbox_menu
+on-arrival: {!
+Q.budget += 20;
+!}
+
+Added 20 budget to the country's stockpile.
+
+@add100budget
+go-to: sandbox_menu
+on-arrival: {!
+Q.budget += 100;
+!}
+
+Added 100 budget to the country's stockpile, stop being greedy.
+
+@subtract10budget
+go-to: sandbox_menu
+on-arrival: {!
+Q.budget -= 10;
+!}
+
+Removed 10 budget from the country's stockpile.
+
+@subtract20budget
+go-to: sandbox_menu
+on-arrival: {!
+Q.budget -= 20;
+!}
+
+Removed 20 budget from the country's stockpile.
+
+@subtract100budget
+go-to: sandbox_menu
+on-arrival: {!
+Q.budget -= 100;
+!}
+
+Removed 100 budget from the country's stockpile. This doesn't go to the homeless or anything, why would you do this?
+
+@editrelations
+
+- @increasecenterrel: Increase Relations With The Center Party
+- @decreasecenterrel: Decrease Relations With The Center Party
+- @increasekpdrel: Increase Relations With The KPD
+- @decreasekpdrel: Decrease Relations With The KPD
+- @increaseddprel: Increase Relations With The DDP/DStP
+- @decreaseddprel: Decrease Relations With The DDP/DStP
+- @increaselvprel: Increase Relations With The LVP
+- @decreaselvprel: Decrease Relations With The LVP
+- @increasedvprel: Increase Relations With The DVP
+- @decreasedvprel: Decrease Relations With The DVP
+- @increasednvprel: Increase Relations With The DNVP (Doesn't Work)
+- @decreasednvprel: Decrease Relations With The DNVP (Doesn't Work)
+- @increasensdaprel: Increase Relations With The NSDAP (Doesn't Work)
+- @decreasensdaprel: Decrease Relations With The NSDAP (Doesn't Work)
+- @returnsandbox: Return To Sandbox Menu
+
+@increasecenterrel
+go-to: editrelations
+on-arrival: {!
+Q.z_relation += 15;
+!}
+
+Increased relations with the Center Party.
+
+@decreasecenterrel
+go-to: editrelations
+on-arrival: {!
+Q.z_relation -= 15;
+!}
+
+Decreased relations with the Center Party.
+
+@increasekpdrel
+go-to: editrelations
+on-arrival: {!
+Q.kpd_relation += 15;
+!}
+
+Increased relations with the KPD.
+
+@decreasekpdrel
+go-to: editrelations
+on-arrival: {!
+Q.kpd_relation -= 15;
+!}
+
+Decreased relations with the KPD.
+
+@increaseddprel
+go-to: editrelations
+on-arrival: {!
+Q.ddp_relation += 15;
+!}
+
+Increased relations with the DDP.
+
+@decreaseddprel
+go-to: editrelations
+on-arrival: {!
+Q.ddp_relation -= 15;
+!}
+
+Decreased relations with the DDP.
+
+@increaselvprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation += 15;
+!}
+
+Increased relations with the LVP.
+
+@decreaselvprel
+go-to: editrelations
+on-arrival: {!
+Q.lvp_relation -= 15;
+!}
+
+Decreased relations with the LVP
+
+@increasedvprel
+go-to: editrelations
+on-arrival: {!
+Q.dvp_relation += 15;
+!}
+
+Increased relations with the DVP.
+
+@decreasedvprel
+go-to: editrelations
+on-arrival: {!
+Q.dvp_relation -= 15;
+!}
+
+Decreased relations with the DVP.
+
+@increasednvprel
+go-to: editrelations
+on-arrival: {!
+Q.dnvp_relation += 15;
+!}
+
+Increased relations with the DNVP.
+
+@decreasednvprel
+go-to: editrelations
+on-arrival: {!
+Q.dnvp_relation -= 15;
+!}
+
+Decreased relations with the DNVP.
+
+@increasensdaprel
+go-to: editrelations
+on-arrival: {!
+Q.nsdap_relation += 15;
+!}
+
+Increased relations with the NSDAP.
+
+@decreasensdaprel
+go-to: editrelations
+on-arrival: {!
+Q.nsdap_relation -= 15;
+!}
+
+Decreased relations with the NSDAP.
+
+@editleft
+
+- @add5leftdissent: Add 5 Left Dissent
+- @100leftdissent: Maximum Left Dissent
+- @subtract5leftdissent: Remove 5 Left Dissent
+- @removeleftdissent: Remove All Left Dissent
+- @add5leftstrength: Add 5 Left Strength
+- @100leftstrength: Maximum Left Strength
+- @subtract5leftstrength: Remove 5 Left Strength
+- @removeleftstrength: Remove Left Strength
+- @returnsandbox: Return To Sandbox Menu
+
+@add5leftdissent
+go-to: editleft
+on-arrival: {!
+Q.left_dissent += 5;
+!}
+
+Added 5 left dissent.
+
+@100leftdissent
+go-to: editleft
+on-arrival: {!
+Q.left_dissent = 100;
+!}
+
+Maximised left dissent.
+
+@subtract5leftdissent
+go-to: editleft
+on-arrival: {!
+Q.left_dissent -= 5;
+!}
+
+Reduced left dissent by 5.
+
+@removeleftdissent
+go-to: editleft
+on-arrival: {!
+Q.left_dissent = 0;
+!}
+
+Removed all left dissent.
+
+@add5leftstrength
+go-to: editleft
+on-arrival: {!
+Q.left_strength += 5;
+!}
+
+Added 5 left strength.
+
+@100leftstrength
+go-to: editleft
+on-arrival: {!
+Q.left_strength = 100;
+!}
+
+Maximised left strength.
+
+@subtract5leftstrength
+go-to: editleft
+on-arrival: {!
+Q.left_strength -= 5;
+!}
+
+Reduced left strength by 5.
+
+@removeleftstrength
+go-to: editleft
+on-arrival: {!
+Q.left_strength = 0;
+!}
+
+Removed all left strength.
+
+@editcenter
+
+- @add5centerdissent: Add 5 Center Dissent
+- @100centerdissent: Maximum Center Dissent
+- @subtract5centerdissent: Remove 5 Center Dissent
+- @removecenterdissent: Remove All Center Dissent
+- @add5centerstrength: Add 5 Center Strength
+- @100centerstrength: Maximum Center Strength
+- @subtract5centerstrength: Remove 5 Center Strength
+- @removecenterstrength: Remove Center Strength
+- @returnsandbox: Return To Sandbox Menu
+
+@add5centerdissent
+go-to: editcenter
+on-arrival: {!
+Q.center_dissent += 5;
+!}
+
+Added 5 center dissent.
+
+@100centerdissent
+go-to: editcenter
+on-arrival: {!
+Q.center_dissent = 100;
+!}
+
+Maximised center dissent.
+
+@subtract5centerdissent
+go-to: editcenter
+on-arrival: {!
+Q.center_dissent -= 5;
+!}
+
+Reduced center dissent by 5.
+
+@removecenterdissent
+go-to: editcenter
+on-arrival: {!
+Q.center_dissent = 0;
+!}
+
+Removed all center dissent.
+
+@add5centerstrength
+go-to: editcenter
+on-arrival: {!
+Q.center_strength += 5;
+!}
+
+Added 5 center strength.
+
+@100centerstrength
+go-to: editcenter
+on-arrival: {!
+Q.center_strength = 100;
+!}
+
+Maximised center strength.
+
+@subtract5centerstrength
+go-to: editcenter
+on-arrival: {!
+Q.center_strength -= 5;
+!}
+
+Reduced center strength by 5.
+
+@removecenterstrength
+go-to: editcenter
+on-arrival: {!
+Q.center_strength = 0;
+!}
+
+Removed all center strength.
+
+@editlabor
+
+- @add5labordissent: Add 5 Labor Dissent
+- @100labordissent: Maximum Labor Dissent
+- @subtract5labordissent: Remove 5 Labor Dissent
+- @removelabordissent: Remove All Labor Dissent
+- @add5laborstrength: Add 5 Labor Strength
+- @100laborstrength: Maximum Labor Strength
+- @subtract5laborstrength: Remove 5 Labor Strength
+- @removelaborstrength: Remove Labor Strength
+- @returnsandbox: Return To Sandbox Menu
+
+@add5labordissent
+go-to: editlabor
+on-arrival: {!
+Q.labor_dissent += 5;
+!}
+
+Added 5 labor dissent.
+
+@100labordissent
+go-to: editlabor
+on-arrival: {!
+Q.labor_dissent = 100;
+!}
+
+Maximised labor dissent.
+
+@subtract5labordissent
+go-to: editlabor
+on-arrival: {!
+Q.labor_dissent -= 5;
+!}
+
+Reduced labor dissent by 5.
+
+@removelabordissent
+go-to: editlabor
+on-arrival: {!
+Q.labor_dissent = 0;
+!}
+
+Removed all labor dissent.
+
+@add5laborstrength
+go-to: editlabor
+on-arrival: {!
+Q.labor_strength += 5;
+!}
+
+Added 5 labor strength.
+
+@100laborstrength
+go-to: editlabor
+on-arrival: {!
+Q.labor_strength = 100;
+!}
+
+Maximised labor strength.
+
+@subtract5laborstrength
+go-to: editlabor
+on-arrival: {!
+Q.labor_strength -= 5;
+!}
+
+Reduced labor strength by 5.
+
+@removelaborstrength
+go-to: editlabor
+on-arrival: {!
+Q.labor_strength = 0;
+!}
+
+Removed all labor strength.
+
+@editreformist
+
+- @add5reformistdissent: Add 5 Reformist Dissent
+- @100reformistdissent: Maximum Reformist Dissent
+- @subtract5reformistdissent: Remove 5 Reformist Dissent
+- @removereformistdissent: Remove All Reformist Dissent
+- @add5reformiststrength: Add 5 Reformist Strength
+- @100reformiststrength: Maximum Reformist Strength
+- @subtract5reformiststrength: Remove 5 Reformist Strength
+- @removereformiststrength: Remove Reformist Strength
+- @returnsandbox: Return To Sandbox Menu
+
+@add5reformistdissent
+go-to: editreformist
+on-arrival: {!
+Q.reformist_dissent += 5;
+!}
+
+Added 5 reformist dissent.
+
+@100reformistdissent
+go-to: editreformist
+on-arrival: {!
+Q.reformist_dissent = 100;
+!}
+
+Maximised reformist dissent.
+
+@subtract5reformistdissent
+go-to: editreformist
+on-arrival: {!
+Q.reformist_dissent -= 5;
+!}
+
+Reduced reformist dissent by 5.
+
+@removereformistdissent
+go-to: editreformist
+on-arrival: {!
+Q.reformist_dissent = 0;
+!}
+
+Removed all reformist dissent.
+
+@add5reformiststrength
+go-to: editreformist
+on-arrival: {!
+Q.reformist_strength += 5;
+!}
+
+Added 5 reformist strength.
+
+@100reformiststrength
+go-to: editreformist
+on-arrival: {!
+Q.reformist_strength = 100;
+!}
+
+Maximised reformist strength.
+
+@subtract5reformiststrength
+go-to: editreformist
+on-arrival: {!
+Q.reformist_strength -= 5;
+!}
+
+Reduced reformist strength by 5.
+
+@removereformiststrength
+go-to: editreformist
+on-arrival: {!
+Q.reformist_strength = 0;
+!}
+
+Removed all reformist strength.
+
+@editneorevisionist
+
+- @discoverneorevisionism: Discover Neorevisionism
+- @add5neorevisionistdissent: Add 5 Neorevisionist Dissent
+- @100neorevisionistdissent: Maximum Neorevisionist Dissent
+- @subtract5neorevisionistdissent: Remove 5 Neorevisionist Dissent
+- @removeneorevisionistdissent: Remove All Neorevisionist Dissent
+- @add5neorevisioniststrength: Add 5 Neorevisionist Strength
+- @100neorevisioniststrength: Maximum Neorevisionist Strength
+- @subtract5neorevisioniststrength: Remove 5 Neorevisionist Strength
+- @removeneorevisioniststrength: Remove Neorevisionist Strength
+- @returnsandbox: Return To Sandbox Menu
+
+@discoverneorevisionism
+go-to: editneorevisionist
+view-if: neorevisionism == 0
+on-arrival: {!
+Q.neorevisionism = 1;
+!}
+
+@add5neorevisionistdissent
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_dissent += 5;
+!}
+
+Added 5 neorevisionist dissent.
+
+@100neorevisionistdissent
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_dissent = 100;
+!}
+
+Maximised neorevisionist dissent.
+
+@subtract5neorevisionistdissent
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_dissent -= 5;
+!}
+
+Reduced neorevisionist dissent by 5.
+
+@removeneorevisionistdissent
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_dissent = 0;
+!}
+
+Removed all neorevisionist dissent.
+
+@add5neorevisioniststrength
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_strength += 5;
+!}
+
+Added 5 neorevisionist strength.
+
+@100neorevisioniststrength
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_strength = 100;
+!}
+
+Maximised neorevisionist strength.
+
+@subtract5neorevisioniststrength
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_strength -= 5;
+!}
+
+Reduced neorevisionist strength by 5.
+
+@removeneorevisioniststrength
+go-to: editneorevisionist
+on-arrival: {!
+Q.neorevisionist_strength = 0;
+!}
+
+Removed all neorevisionist strength.
+
+@returnsandbox
+go-to: sandbox_menu
+
+@editironfront
+
+- @formironfront: Form The Iron Front
+- @raiseurgency: Raise Urgency Against Nazis
+- @lowerurgency: Lower Urgency Against Nazis
+- @returnsandbox: Return To Sandbox Menu
+
+@formironfront
+go-to: editironfront
+view-if: iron_front_formed = 0
+on-arrival: {!
+Q.iron_front_formed = 1;
+!}
+achievement: eiserne_front
+
+Iron Front has been formed.
+
+@raiseurgency
+go-to: editironfront
+on-arrival: {!
+nazi_urgency += 1;
+!}
+
+Raised nazi urgency.
+
+@lowerurgency
+go-to: editironfront
+on-arrival: {!
+nazi_urgency -= 1;
+!}
+
+Lowered nazi urgency.
+
+@editparamilitary
+
+- @raiserbstrength: Raise Reichsbanner Strength
+- @lowerrbstrength: Lower Reichsbanner Strength
+- @raiserbmilitancy: Raise Reichsbanner Militancy
+- @lowerrbmilitancy: Lower Reichsbanner Militancy
+- @banrb: Ban Reichsbanner
+- @unbanrb: Unban Reichsbanner
+- @raiseshstrength: Raise Stahlhelm Strength
+- @lowershstrength: Lower Stahlhelm Strength
+- @raiseshmilitancy: Raise Stahlhelm Militancy
+- @lowershmilitancy: Lower Stahlhelm Militancy
+- @bansh: Ban Stahlhelm
+- @unbansh: Unban Stahlhelm
+- @raisesastrength: Raise SA Strength
+- @lowersastrength: Lower SA Strength
+- @raisesamilitancy: Raise SA Militancy
+- @lowersamilitancy: Lower SA Militancy
+- @bansa: Ban SA
+- @unbansa: Unban SA
+- @raiserfbstrength: Raise RFB Strength
+- @lowerrfbstrength: Lower RFB Strength
+- @raiserfbmilitancy: Raise RFB Militancy
+- @lowerrfbmilitancy: Lower RFB Militancy
+- @banrfb: Ban RFB
+- @unbanrfb: Unban RFB
+- @returnsandbox: Return To Sandbox Menu
+
+@raiserbstrength
+go-to: editparamilitary
+on-arrival: {!
+Q.rb_strength += 200;
+!}
+
+Raised Reichsbanner strength by 200.
+
+@lowerrbstrength
+go-to: editparamilitary
+on-arrival: {!
+Q.rb_strength -= 200;
+!}
+
+Lowered Reichsbanner strength by 200.
+
+@raiserbmilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.rb_militancy += 0.15;
+!}
+
+Raised Reichsbanner militancy.
+
+@lowerrbmilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.rb_militancy -= 0.15;
+!}
+
+Lowered Reichsbanner militancy.
+
+@banrb
+go-to: editparamilitary
+view-if: rb_banned == 0
+on-arrival: {!
+Q.rb_banned = 1;
+!}
+
+Banned the Reichsbanner.
+
+@unbanrb
+go-to: editparamilitary
+view-if: rb_banned != 0
+on-arrival: {!
+Q.rb_banned = 0;
+!}
+
+Unbanned the Reichsbanner.
+
+@raiseshstrength
+go-to: editparamilitary
+on-arrival: {!
+Q.sh_strength += 200;
+!}
+
+Raised Stahlhelm strength by 200.
+
+@lowershstrength
+go-to: editparamilitary
+on-arrival: {!
+Q.sh_strength -= 200;
+!}
+
+Lowered Stahlhelm strength by 200.
+
+@raiseshmilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.sh_militancy += 0.15;
+!}
+
+Raised Stahlhelm militancy.
+
+@lowershmilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.sh_militancy -= 0.15;
+!}
+
+Lowered Stahlhelm militancy.
+
+@bansh
+go-to: editparamilitary
+view-if: sh_banned == 0
+on-arrival: {!
+Q.sh_banned = 1;
+!}
+
+Banned the Stahlhelm.
+
+@unbansh
+go-to: editparamilitary
+view-if: sh_banned != 0
+on-arrival: {!
+Q.sh_banned = 0;
+!}
+
+Unbanned the Stahlhelm.
+
+@raisesastrength
+go-to: editparamilitary
+on-arrival: {!
+Q.sa_strength += 200;
+!}
+
+Raised SA strength by 200.
+
+@lowersastrength
+go-to: editparamilitary
+on-arrival: {!
+Q.sa_strength -= 200;
+!}
+
+Lowered SA strength by 200.
+
+@raisesamilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.sa_militancy += 0.15;
+!}
+
+Raised SA militancy.
+
+@lowersamilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.sa_militancy -= 0.15;
+!}
+
+Lowered SA militancy.
+
+@bansa
+go-to: editparamilitary
+view-if: sa_banned == 0
+on-arrival: {!
+Q.sa_banned = 1;
+!}
+
+Banned the SA.
+
+@unbansa
+go-to: editparamilitary
+view-if: sa_banned != 0
+on-arrival: {!
+Q.sa_banned = 0;
+!}
+
+Unbanned the SA.
+
+@raiserfbstrength
+go-to: editparamilitary
+on-arrival: {!
+Q.rfb_strength += 200;
+!}
+
+Raised RFB strength by 200.
+
+@lowerrfbstrength
+go-to: editparamilitary
+on-arrival: {!
+Q.rfb_strength -= 200;
+!}
+
+Lowered RFB strength by 200.
+
+@raiserfbmilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.rfb_militancy += 0.15;
+!}
+
+Raised RFB militancy.
+
+@lowerrfbmilitancy
+go-to: editparamilitary
+on-arrival: {!
+Q.rfb_militancy -= 0.15;
+!}
+
+Lowered RFB militancy.
+
+@banrfb
+go-to: editparamilitary
+view-if: rfb_banned == 0
+on-arrival: {!
+Q.rfb_banned = 1;
+!}
+
+Banned the RFB.
+
+@unbanrfb
+go-to: editparamilitary
+view-if: rfb_banned != 0
+on-arrival: {!
+Q.rfb_banned = 0;
+!}
+
+Unbanned the RFB.
+
+@editreichswehr
+
+- @raiserwstrength: Raise Reichswehr Strength By 25,000
+- @lowerrwstrength: Lower Reichswehr Strength
+- @raiserwloyalty: Raise Reichswehr Loyalty
+- @lowerrwloyalty: Lower Reichswehr Loyalty
+- @raiseppstrength: Raise Prussian Police Strength By 25,000
+- @lowerppstrength: Lower Prussian Police Strength
+- @raisepployalty: Raise Prussian Police Loyalty
+- @lowerpployalty: Lower Prussian Police Loyalty
+- @raiseipstrength: Raise Interior Police Strength By 25,000
+- @loweripstrength: Lower Interior Police Strength
+- @raiseiployalty: Raise Interior Police Loyalty
+- @loweriployalty: Lower Interior Police Loyalty
+- @returnsandbox: Return To Sandbox Menu
+
+@raiserwstrength
+go-to: editreichswehr
+on-arrival: {!
+Q.reichswehr_strength += 25;
+!}
+
+Raised Reichswehr strength by 25,000.
+
+@lowerrwstrength
+go-to: editreichswehr
+on-arrival: {!
+Q.reichswehr_strength -= 25;
+!}
+
+Lowered Reichswehr strength by 25,000.
+
+@raiserwloyalty
+go-to: editreichswehr
+on-arrival: {!
+Q.reichswehr_loyalty += 0.2;
+!}
+
+Raised Reichswehr loyalty.
+
+@lowerrwloyalty
+go-to: editreichswehr
+on-arrival: {!
+Q.reichswehr_loyalty -= 0.2;
+!}
+
+Lowered Reichswehr loyalty.
+
+@raiseppstrength
+go-to: editreichswehr
+on-arrival: {!
+Q.prussian_police_strength += 25;
+!}
+
+Raised Prussian Police strength by 25,000.
+
+@lowerppstrength
+go-to: editreichswehr
+on-arrival: {!
+Q.prussian_police_strength -= 25;
+!}
+
+Lowered Prussian Police strength by 25,000.
+
+@raisepployalty
+go-to: editreichswehr
+on-arrival: {!
+Q.prussian_police_loyalty += 0.2;
+!}
+
+Raised Prussian Police loyalty.
+
+@lowerpployalty
+go-to: editreichswehr
+on-arrival: {!
+Q.prussian_police_loyalty -= 0.2;
+!}
+
+Lowered Prussian Police loyalty.
+
+@raiseipstrength
+go-to: editreichswehr
+on-arrival: {!
+Q.interior_police_strength += 25;
+!}
+
+Raised Interior Police strength by 25,000.
+
+@loweripstrength
+go-to: editreichswehr
+on-arrival: {!
+Q.interior_police_strength -= 25;
+!}
+
+Lowered Interior Police strength by 25,000.
+
+@raiseiployalty
+go-to: editreichswehr
+on-arrival: {!
+Q.interior_police_loyalty += 0.2;
+!}
+
+Raised Interior Police loyalty.
+
+@loweriployalty
+go-to: editreichswehr
+on-arrival: {!
+Q.interior_police_loyalty -= 0.2;
+!}
+
+Lowered Interior Police loyalty.
+
+@miscparty
+
+- @allow_banning: Allow Banning Unconstitutional Parties
+- @ban_kpd: Ban KPD
+- @unban_kpd: Unban KPD
+- @ban_nsdap: Ban NSDAP
+- @unban_nsdap: Unban NSDAP
+- @form_sapd: Form <span style="color: #9B0000;">**SAPD**</span>.
+- @form_rdp: Form <span style="color: #E0B0FF;">**RDP**</span>.
+- @form_dnf: Form <span style="color: #003755;">**DNF**</span>.
+- @form_kvp: Form <span style="color: #0087DC;">**KVP**</span>.
+- @form_lvp: Form <span style="color: #FFCC00;">**LVP**</span>.
+- @form_dnef: Form <span style="color: #BFC8CC;">**DNEF**</span>.
+- @form_aspd: Form ASPD
+- @nazi_boom: Splinter NSDAP
+- @returnsandbox: Return To Sandbox Menu
+
+@allow_banning
+view-if: constitutional_protection == 0
+go-to: miscparty
+on-arrival: {!
+Q.constitutional_protection = 1;
+!}
+
+Allowed banning unconstitutional parties.
+
+@ban_kpd
+go-to: miscparty
+view-if: kpd_banned == 0 and constitutional_protection == 1
+on-arrival: {!
+Q.kpd_banned = 1;
+!}
+
+Banned the KPD.
+
+@unban_kpd
+go-to: miscparty
+view-if: kpd_banned != 0 and constitutional_protection == 1
+on-arrival: {!
+Q.kpd_banned = 0;
+!}
+
+Unbanned the KPD.
+
+@ban_nsdap
+go-to: miscparty
+view-if: nsdap_banned == 0 and constitutional_protection == 1
+on-arrival: {!
+Q.nsdap_banned = 1;
+!}
+
+Banned the NSDAP.
+
+@unban_nsdap
+go-to: miscparty
+view-if: nsdap_banned != 0 and constitutional_protection == 1
+on-arrival: {!
+Q.nsdap_banned = 0;
+!}
+
+Unbanned the NSDAP.
+
+@form_sapd
+on-arrival: {!
+// set up the infrastructure
+Q.sapd_formed = 1
+Q.parties.push('sapd');
+Q.parties_graph.push('sapd');
+
+Q.workers_sapd = 5;
+Q.workers_spd -= 3;
+Q.new_middle_sapd = 1;
+Q.old_middle_sapd = 0;
+Q.rural_sapd = 0;
+Q.unemployed_sapd = 2;
+Q.catholics_sapd = 0;
+
+Q.workers_other -= 5;
+
+if (Q.unions_independent) {
+    Q.workers_sapd += 8;
+    Q.unemployed_sapd += 4;
+}
+
+Q.old_workers_sapd_display = 0
+Q.old_new_middle_sapd_display = 0
+Q.old_old_middle_sapd_display = 0
+Q.old_rural_sapd_display = 0
+Q.old_unemployed_sapd_display = 0
+Q.old_catholics_sapd_display = 0
+
+// update all records
+Q.sapd_r = 0;
+Q.old_sapd_r = 0;
+for (var record of Q.election_records) {
+    record['sapd'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['sapd'] = 0;
+}
+!}
+
+Formed the <span style="color: #9B0000;">**SAPD**</span>.
+
+@form_rdp
+on-arrival: {!
+Q.rdp_formed = 1;
+
+Q.new_middle_lvp -= 4;
+Q.new_middle_spd += 4;
+Q.pro_republic += 3;
+
+Q.lvp_relation -= 4;
+Q.lvp_right += 1;
+!}
+
+Formed the <span style="color: #E0B0FF;">**RDP**</span>.
+
+
+@form_dnf
+on-arrival: {!
+
+Q.dnf_formed = 1;
+Q.parties.push('dnf');
+Q.parties_graph.push('dnf');
+
+Q.workers_dnf = 1;
+
+Q.new_middle_dnf = 4;
+Q.new_middle_dnvp -= 5;
+
+Q.old_middle_dnf = 18;
+Q.old_middle_dnvp -= 16;
+
+Q.rural_dnf = 16;
+Q.rural_dnvp -= 18;
+
+Q.unemployed_dnf = 1;
+Q.unemployed_dnvp -= 1;
+
+Q.catholics_dnf = 0;
+
+Q.new_middle_nsdap += 1;
+Q.old_middle_nsdap += 2;
+Q.rural_nsdap += 2;
+Q.unemployed_nsdap += 1;
+
+Q.dnf_r = Math.round((Q.dnvp_r / 2 - 1) * 10) / 10;
+Q.dnvp_r = Math.round((Q.dnvp_r - Q.dnf_r) * 10) / 10;
+Q.dnf_r_prussia = Math.round((Q.dnvp_r_prussia / 2 - 3) * 10) / 10;
+Q.dnvp_r_prussia = Math.round((Q.dnvp_r_prussia - Q.dnf_r_prussia) * 10) / 10;
+Q.dnf_relation = 5
+
+Q.old_workers_dnf_display = 0
+Q.old_new_middle_dnf_display = 0
+Q.old_old_middle_dnf_display = 0
+Q.old_rural_dnf_display = 0
+Q.old_unemployed_dnf_display = 0
+Q.old_catholics_dnf_display = 0
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
+} else {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r - Q.bvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.lvp_r).toFixed(1));
+} else {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.ddp_r).toFixed(1));
+}
+
+Q.social_catholic_coalition = parseFloat((Q.spd_r + Q.z_r - Q.bvp_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r).toFixed(1));
+} else {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r).toFixed(1));
+} else {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition = parseFloat((Q.dnf_r + Q.nsdap_r).toFixed(1));
+} else {
+    Q.far_right_coalition = parseFloat((Q.dnvp_r + Q.nsdap_r).toFixed(1));
+}
+
+Q.left_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.sapd_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 0 && Q.bourgeois_parliament_ddp == 0) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r + Q.ddp_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 1 || Q.bourgeois_parliament_ddp == 1) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnf_r).toFixed(1));
+} else {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r).toFixed(1));
+} else {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+Q.hitler_right_coalition = parseFloat((Q.z_r + Q.nsdap_r).toFixed(1));
+
+Q.goerdeler_right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.lvp_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + (Q.lvp_r / 3) + Q.sapd_r).toFixed(1));
+} else {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.ddp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition = parseFloat((Q.dnef_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r + Q.dsu_r).toFixed(1));
+    Q.schleicher_left_coalition = parseFloat((Q.dnef_r + Q.spd_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia ).toFixed(1));
+} else {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia).toFixed(1));
+} else {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia).toFixed(1));
+}
+
+Q.social_catholic_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
+} else {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnf_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+} else {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+}
+
+if (Q.hugenberg_dvp) Q.far_right_coalition_prussia = parseFloat((Q.far_right_coalition_prussia + Q.dvp_r_prussia).toFixed(1));
+
+Q.left_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.sapd_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 0) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 1) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnf_r_prussia).toFixed(1));
+} else {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r).toFixed(1));
+}
+
+// Q.hitler_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + (Q.lvp_r_prussia / 2) + Q.sapd_r_prussia).toFixed(1));
+} else {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.lvp_r_prussia + Q.dvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia + Q.dnvp_r_prussia + Q.dnf_r_prussia + Q.dsu_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
+    Q.weimar_coalition_prussia += Q.sapd_r_prussia;
+}
+
+for (var record of Q.election_records) {
+    record['dnf'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['dnf'] = 0;
+}
+!}
+go-to: dnf_collapse_right_coalition if right_coalition < 50 and in_right_coalition == 1; dnf_collapse_center_right_coalition if center_right_coalition < 50 and in_center_right_coalition == 1
+
+Formed the DNF.
+
+@form_kvp
+on-arrival: {!
+
+Q.kvp_formed = 1;
+Q.parties.push('kvp');
+Q.parties_graph.push('kvp');
+
+Q.workers_kvp = 5;
+Q.workers_dnvp -= 3
+Q.workers_other -= 2
+
+Q.new_middle_kvp = 10;
+Q.new_middle_dnvp -= 4;
+Q.new_middle_other -= 6;
+
+Q.old_middle_kvp = 12;
+Q.old_middle_dnvp -= 4;
+Q.old_middle_other -= 8;
+
+Q.rural_kvp = 15;
+Q.rural_dnvp -= 5;
+Q.rural_other -= 10;
+
+Q.unemployed_kvp = 0;
+
+Q.catholics_kvp = 4;
+Q.catholics_dnvp -= 2;
+Q.catholics_other -= 2;
+
+Q.kvp_r = Math.round((Q.dnvp_r / 2 + 1) * 10) / 10;
+Q.dnvp_r = Math.round((Q.dnvp_r - Q.kvp_r) * 10) / 10;
+Q.kvp_r_prussia = Math.round((Q.dnvp_r_prussia / 2 + 2) * 10) / 10;
+Q.dnvp_r_prussia = Math.round((Q.dnvp_r_prussia - Q.kvp_r_prussia) * 10) / 10;
+Q.kvp_relation = 15;
+
+Q.old_workers_kvp_display = 0;
+Q.old_new_middle_kvp_display = 0;
+Q.old_old_middle_kvp_display = 0;
+Q.old_rural_kvp_display = 0;
+Q.old_unemployed_kvp_display = 0;
+Q.old_catholics_kvp_display = 0;
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
+} else {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r - Q.bvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.lvp_r).toFixed(1));
+} else {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.ddp_r).toFixed(1));
+}
+
+Q.social_catholic_coalition = parseFloat((Q.spd_r + Q.z_r - Q.bvp_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r).toFixed(1));
+} else {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r).toFixed(1));
+} else {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition = parseFloat((Q.dnf_r + Q.nsdap_r).toFixed(1));
+} else {
+    Q.far_right_coalition = parseFloat((Q.dnvp_r + Q.nsdap_r).toFixed(1));
+}
+
+if (Q.hugenberg_dvp) Q.far_right_coalition = parseFloat((Q.far_right_coalition + Q.dvp_r).toFixed(1));
+
+Q.left_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.sapd_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 0 && Q.bourgeois_parliament_ddp == 0) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r + Q.ddp_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 1 || Q.bourgeois_parliament_ddp == 1) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnf_r).toFixed(1));
+} else {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r).toFixed(1));
+} else {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+Q.hitler_right_coalition = parseFloat((Q.z_r + Q.nsdap_r).toFixed(1));
+
+Q.goerdeler_right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.lvp_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + (Q.lvp_r / 3) + Q.sapd_r).toFixed(1));
+} else {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.ddp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition = parseFloat((Q.dnef_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r + Q.dsu_r).toFixed(1));
+    Q.schleicher_left_coalition = parseFloat((Q.dnef_r + Q.spd_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia ).toFixed(1));
+} else {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia).toFixed(1));
+} else {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia).toFixed(1));
+}
+
+Q.social_catholic_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
+} else {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnf_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+} else {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+}
+
+if (Q.hugenberg_dvp) Q.far_right_coalition_prussia = parseFloat((Q.far_right_coalition_prussia + Q.dvp_r_prussia).toFixed(1));
+
+Q.left_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.sapd_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 0) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 1) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnf_r_prussia).toFixed(1));
+} else {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r).toFixed(1));
+}
+
+// Q.hitler_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + (Q.lvp_r_prussia / 2) + Q.sapd_r_prussia).toFixed(1));
+} else {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.lvp_r_prussia + Q.dvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia + Q.dnvp_r_prussia + Q.dnf_r_prussia + Q.dsu_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
+    Q.weimar_coalition_prussia += Q.sapd_r_prussia;
+}
+
+for (var record of Q.election_records) {
+    record['kvp'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['kvp'] = 0;
+}
+!}
+
+Formed the KVP.
+
+@form_lvp
+on-arrival: {!
+
+Q.lvp_formed = 1;
+Q.parties.push('lvp');
+Q.parties_graph.push('lvp');
+
+Q.workers_lvp = Q.workers_ddp + Q.workers_dvp
+
+Q.new_middle_lvp = Q.new_middle_ddp + Q.new_middle_dvp
+
+Q.old_middle_lvp = Q.old_middle_ddp + Q.old_middle_dvp
+
+Q.rural_lvp = Q.rural_ddp + Q.rural_dvp
+
+Q.unemployed_lvp = Q.unemployed_ddp + Q.unemployed_dvp
+
+Q.catholics_lvp = Q.catholics_ddp + Q.catholics_dvp
+
+Q.new_middle_other -= 4;
+Q.old_middle_other -= 4;
+Q.rural_other -= 2;
+Q.new_middle_lvp += 4
+Q.old_middle_lvp += 4
+Q.rural_lvp += 4
+
+Q.lvp_r = Math.round((Q.ddp_r + Q.dvp_r) * 10) / 10;
+Q.lvp_relation = Math.round((Q.ddp_relation + Q.dvp_relation) / 2)
+Q.lvp_left = Q.ddp_left + Q.dvp_left;
+Q.lvp_right = Q.ddp_right + Q.dvp_right;
+Q.lvp_left *= 0.5;
+Q.lvp_right *= 0.5;
+Q.lvp_leader = "Luther";
+Q.lvp_ideology = "Moderate";
+
+Q.ddp_r = 0;
+Q.dvp_r = 0;
+Q.liberal_parliament = 0;
+Q.dvp_votes = 0;
+Q.ddp_votes = 0;
+Q.dvp_normalized = 0;
+Q.ddp_normalized = 0;
+Q.bourgeois_parliament_ddp = 0;
+
+if (Q.in_grand_coalition_prussia) {
+    Q.in_grand_coalition_prussia = 0;
+    Q.in_minority_grand_coalition_prussia = 0;
+    Q.in_weimar_coalition_prussia = 1;
+    if (Q.weimar_coalition_prussia < 50) {
+        Q.in_minority_weimar_coalition_prussia = 1;
+    }
+}
+
+if (Q.in_center_right_coalition) {
+    Q.in_center_right_coalition = 0;
+    Q.in_right_coalition = 1;
+}
+
+Q.parties = Q.parties.filter(party => party !== 'ddp' && party !== 'dvp');
+
+if (Q.labor_minister_party !== "SPD") Q.labor_minister_party = "Z";
+if (Q.labor_minister !== "Wissell") Q.labor_minister = "Stegerwald";
+
+if (Q.labor_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.labor_minister_party = Q.ddp_name;
+if (Q.labor_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.labor_minister_party = "LVP";
+if (Q.labor_minister !== "Wissell" && Q.in_social_liberal_coalition) Q.labor_minister = "Lemmer";
+
+if (Q.interior_minister_party !== "SPD") Q.interior_minister_party = "Z";
+if (Q.interior_minister !== "Severing") Q.interior_minister = "Wirth";
+
+if (Q.interior_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.interior_minister_party = Q.ddp_name;
+if (Q.interior_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.interior_minister_party = "LVP";
+if (Q.interior_minister !== "Severing" && Q.in_social_liberal_coalition) Q.interior_minister = "Külz";
+
+if (Q.finance_minister_party !== "SPD" && Q.in_grand_coalition && !Q.lvp_formed) {
+    Q.finance_minister_party = "DVP";
+} else if (Q.finance_minister_party !== "SPD" && (Q.in_grand_coalition || Q.in_weimar_coalition) && Q.lvp_formed) {
+    Q.finance_minister_party = "LVP";
+}
+if (Q.finance_minister !== "Hilferding" && (Q.in_grand_coalition)) Q.finance_minister = "Moldenhauer";
+
+if (Q.finance_minister_party !== "SPD" && (Q.in_weimar_coalition && !Q.lvp_formed || Q.in_popular_front || Q.in_social_catholic_coalition)) Q.finance_minister_party = "Z";
+if (Q.finance_minister !== "Hilferding" && (Q.in_weimar_coalition && !Q.lvp_formed || Q.in_popular_front || Q.in_social_catholic_coalition)) Q.finance_minister = "Köhler";
+
+if (Q.finance_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.finance_minister_party = Q.ddp_name;
+if (Q.finance_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.finance_minister_party = "LVP";
+if (Q.finance_minister !== "Hilferding" && Q.in_social_liberal_coalition) Q.finance_minister = "Reinhold";
+if (Q.finance_minister !== "Hilferding" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.finance_minister = "Moldenhauer";
+
+if (Q.economic_minister_party !== "SPD" && Q.in_grand_coalition && !Q.lvp_formed) {
+    Q.economic_minister_party = "DVP";
+} else if (Q.economic_minister_party !== "SPD" && (Q.in_grand_coalition || Q.in_weimar_coalition) && Q.lvp_formed) {
+    Q.economic_minister_party = "LVP";
+}
+if (Q.economic_minister !== "Schmidt" && Q.in_grand_coalition) Q.economic_minister = "Curtius";
+
+if (Q.economic_minister_party !== "SPD" && (Q.in_weimar_coalition && !Q.lvp_formed || (Q.in_popular_front && Q.liberal_parliament === 0 && Q.bourgeois_parliament_ddp == 0 && !Q.lvp_formed))) Q.economic_minister_party = Q.ddp_name;
+if (Q.economic_minister_party !== "SPD" && (Q.in_weimar_coalition && Q.lvp_formed || (Q.in_popular_front && Q.liberal_parliament === 0 && Q.lvp_formed))) Q.economic_minister_party = "LVP";
+if (Q.economic_minister !== "Schmidt" && (Q.in_weimar_coalition || (Q.in_popular_front && Q.liberal_parliament === 0 && Q.bourgeois_parliament_ddp == 0 && !Q.lvp_formed))) Q.economic_minister = "Dietrich";
+
+if (Q.economic_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.economic_minister_party = Q.ddp_name;
+if (Q.economic_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.economic_minister_party = "LVP";
+if (Q.economic_minister !== "Schmidt" && Q.in_social_liberal_coalition) Q.economic_minister = "Trendelenburg";
+if (Q.economic_minister !== "Schmidt" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.economic_minister = "Curtius";
+
+if (Q.economic_minister_party !== "SPD" && Q.in_social_catholic_coalition) Q.economic_minister_party = "Z";
+if (Q.economic_minister !== "Schmidt" && Q.in_social_catholic_coalition) Q.economic_minister = "Brüning";
+
+if (Q.justice_minister_party !== "SPD" && !Q.lvp_formed) {
+    Q.justice_minister_party = Q.ddp_name;
+} else if (Q.justice_minister_party !== "SPD" && Q.lvp_formed) {
+    Q.justice_minister_party = "LVP";
+}
+if (Q.justice_minister !== "Radbruch") Q.justice_minister = "Koch-Weser";
+
+if (Q.justice_minister_party !== "SPD" && (Q.in_popular_front && (Q.liberal_parliament === 1 || Q.bourgeois_parliament_ddp == 1 || Q.lvp_formed) || Q.in_social_catholic_coalition)) Q.justice_minister_party = "Z";
+if (Q.justice_minister !== "Radbruch" && (Q.in_popular_front && (Q.liberal_parliament === 1 || Q.bourgeois_parliament_ddp == 1 || Q.lvp_formed) || Q.in_social_catholic_coalition)) Q.justice_minister = "Guérard";
+
+if (Q.justice_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.justice_minister_party = Q.ddp_name;
+if (Q.justice_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.justice_minister_party = "LVP";
+if (Q.justice_minister !== "Radbruch" && Q.in_social_liberal_coalition) Q.justice_minister = "Koch-Weser";
+
+if (Q.foreign_minister_party !== "SPD" && !Q.lvp_formed) {
+    Q.foreign_minister_party = "DVP";
+} else if (Q.foreign_minister_party !== "SPD" && Q.lvp_formed) {
+    Q.foreign_minister_party = "LVP";
+}
+if (Q.foreign_minister !== "Breitscheid") Q.foreign_minister = "Stresemann";
+if (Q.foreign_minister !== "Breitscheid" && Q.stresemann_dead === 1) Q.foreign_minister = "Curtius";
+if (Q.foreign_minister_party !== "SPD" && (Q.in_weimar_coalition && !Q.lvp_formed || Q.in_popular_front || Q.in_social_catholic_coalition)) Q.foreign_minister_party = "Z";
+if (Q.foreign_minister_party !== "SPD" && (Q.in_weimar_coalition && Q.lvp_formed)) Q.foreign_minister_party = "LVP";
+if (Q.foreign_minister !== "Breitscheid" && (Q.in_weimar_coalition && !Q.lvp_formed || Q.in_popular_front || Q.in_social_catholic_coalition)) Q.foreign_minister = "Wirth";
+
+if (Q.foreign_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.foreign_minister_party = Q.ddp_name;
+if (Q.foreign_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.foreign_minister_party = "LVP";
+if (Q.foreign_minister !== "Breitscheid" && Q.in_social_liberal_coalition) Q.foreign_minister = "Prittwitz";
+
+if (Q.agriculture_minister_party !== "SPD" && !Q.lvp_formed) {
+    Q.agriculture_minister_party = Q.ddp_name;
+} else if (Q.agriculture_minister_party !== "SPD" && Q.lvp_formed) {
+    Q.agriculture_minister_party = "LVP";
+}
+if (Q.agriculture_minister !== "Baade") Q.agriculture_minister = "Dietrich";
+
+if (Q.agriculture_minister_party !== "SPD" && (Q.in_weimar_coalition && !Q.lvp_formed || Q.in_popular_front || Q.in_social_catholic_coalition)) Q.agriculture_minister_party = "Z";
+if (Q.agriculture_minister !== "Baade" && (Q.in_weimar_coalition && !Q.lvp_formed || Q.in_popular_front || Q.in_social_catholic_coalition)) Q.agriculture_minister = "Hermes";
+
+if (Q.agriculture_minister_party !== "SPD" && Q.in_social_liberal_coalition) Q.agriculture_minister_party = Q.ddp_name;
+if (Q.agriculture_minister_party !== "SPD" && Q.in_social_liberal_coalition && Q.lvp_formed) Q.agriculture_minister_party = "LVP";
+if (Q.agriculture_minister !== "Baade" && Q.in_social_liberal_coalition) Q.agriculture_minister = "Dietrich";
+
+if (Q.reichswehr_minister_party !== "SPD") Q.reichswehr_minister_party = "I";
+if (Q.reichswehr_minister !== "Leber") Q.reichswehr_minister = "Groener";
+
+Q.old_workers_lvp_display = 0
+Q.old_new_middle_lvp_display = 0
+Q.old_old_middle_lvp_display = 0
+Q.old_rural_lvp_display = 0
+Q.old_unemployed_lvp_display = 0
+Q.old_catholics_lvp_display = 0
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
+} else {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r - Q.bvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.lvp_r).toFixed(1));
+} else {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.ddp_r).toFixed(1));
+}
+
+Q.social_catholic_coalition = parseFloat((Q.spd_r + Q.z_r - Q.bvp_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r).toFixed(1));
+} else {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r).toFixed(1));
+} else {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition = parseFloat((Q.dnf_r + Q.nsdap_r).toFixed(1));
+} else {
+    Q.far_right_coalition = parseFloat((Q.dnvp_r + Q.nsdap_r).toFixed(1));
+}
+
+if (Q.hugenberg_dvp) Q.far_right_coalition = parseFloat((Q.far_right_coalition + Q.dvp_r).toFixed(1));
+
+Q.left_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.sapd_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 0 && Q.bourgeois_parliament_ddp == 0) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r + Q.ddp_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 1 || Q.bourgeois_parliament_ddp == 1) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnf_r).toFixed(1));
+} else {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r).toFixed(1));
+} else {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+Q.hitler_right_coalition = parseFloat((Q.z_r + Q.nsdap_r).toFixed(1));
+
+Q.goerdeler_right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.lvp_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + (Q.lvp_r / 3) + Q.sapd_r).toFixed(1));
+} else {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.ddp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition = parseFloat((Q.dnef_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r + Q.dsu_r).toFixed(1));
+    Q.schleicher_left_coalition = parseFloat((Q.dnef_r + Q.spd_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia ).toFixed(1));
+} else {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia).toFixed(1));
+} else {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia).toFixed(1));
+}
+
+Q.social_catholic_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
+} else {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnf_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+} else {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+}
+
+if (Q.hugenberg_dvp) Q.far_right_coalition_prussia = parseFloat((Q.far_right_coalition_prussia + Q.dvp_r_prussia).toFixed(1));
+
+Q.left_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.sapd_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 0) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 1) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnf_r_prussia).toFixed(1));
+} else {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r).toFixed(1));
+}
+
+// Q.hitler_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + (Q.lvp_r_prussia / 2) + Q.sapd_r_prussia).toFixed(1));
+} else {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.lvp_r_prussia + Q.dvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia + Q.dnvp_r_prussia + Q.dnf_r_prussia + Q.dsu_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
+    Q.weimar_coalition_prussia += Q.sapd_r_prussia;
+}
+
+for (var record of Q.election_records) {
+    record['lvp'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['lvp'] = 0;
+}
+!}
+
+Formed the LVP.
+
+@form_dnef
+on-arrival: {!
+
+Q.dnef_formed = 1;
+Q.dnef_existed = 1;
+Q.parties.push('dnef');
+Q.parties_graph.push('dnef');
+
+Q.workers_dnef = 7;
+Q.workers_dnef += ((100 - Q.pro_republic) / 10);
+Q.workers_dnef += (Q.nationalism / 10);
+if (!Q.unions_independent) {
+    Q.workers_dnef += Q.labor_dissent / 5;
+    Q.workers_spd -= Q.labor_dissent / 5;
+} else {
+    Q.workers_dnef += 6;
+}
+Q.workers_dnvp -= 2;
+Q.workers_dnef += Q.workers_dnef_bonus;
+
+Q.new_middle_dnef = 20;
+Q.new_middle_dnvp -= 6;
+Q.new_middle_dvp -= 2;
+Q.new_middle_lvp -= 2;
+Q.new_middle_kvp -= 2;
+Q.new_middle_dnf -= 2;
+Q.new_middle_dnef += Q.reformist_dissent / 10;
+Q.new_middle_z -= 2;
+Q.new_middle_spd -= Q.reformist_dissent / 10;
+Q.new_middle_dnef += Q.new_middle_dnef_bonus;
+
+Q.old_middle_dnef = 25;
+Q.old_middle_dnvp -= 14;
+Q.old_middle_dnf -= 6;
+Q.old_middle_dvp -= 4;
+Q.old_middle_lvp -= 4;
+Q.old_middle_z -= 2;
+Q.old_middle_spd -= 4;
+Q.old_middle_dnef += Q.old_middle_dnef_bonus;
+
+Q.rural_dnef = 12;
+Q.rural_dnvp -= 6;
+Q.rural_dnf -= 2;
+Q.rural_dvp -= 2;
+Q.rural_lvp -= 2;
+Q.rural_z -= 2;
+Q.rural_spd -= 2;
+Q.rural_dnef += Q.rural_dnef_bonus;
+
+Q.unemployed_dnef = 14;
+Q.unemployed_nsdap -= 4;
+Q.unemployed_dnvp -= 2;
+Q.unemployed_dnf -= 2;
+if (!Q.unions_independent) {
+    Q.unemployed_dnef += Q.labor_dissent / 4;
+    Q.unemployed_spd -= Q.labor_dissent / 4;
+} else {
+    Q.unemployed_dnef += 4;
+}
+Q.unemployed_dnef += Q.unemployed_dnef_bonus;
+
+Q.catholics_dnef = 8;
+Q.catholics_z -= 4;
+Q.catholics_nsdap -= 2;
+Q.catholics_spd -= 2;
+Q.catholics_dnef += Q.catholics_dnef_bonus;
+
+if (Q.dnvp_ideology == "Radical") {
+    Q.new_middle_dnvp *= 0.8;
+    Q.old_middle_dnvp *= 0.8;
+    Q.rural_dnvp *= 0.9;
+    Q.new_middle_dnef += 4;
+    Q.old_middle_dnef += 6;
+    Q.rural_dnef += 4;
+}
+
+if (Q.total_dnef_bonus) {
+    Q.workers_dnef -= Q.total_dnef_bonus;
+    Q.new_middle_dnef -= Q.total_dnef_bonus;
+    Q.old_middle_dnef -= Q.total_dnef_bonus;
+    Q.rural_dnef -= Q.total_dnef_bonus;
+    Q.unemployed_dnef -= Q.total_dnef_bonus;
+    Q.catholics_dnef -= Q.total_dnef_bonus;
+}
+
+Q.workers_other *= 0.8;
+Q.workers_dnef += Q.workers_other*0.2;
+if (Q.csvd_formed) {
+    Q.workers_dnef += Q.workers_other*0.6;
+    Q.workers_other *= 0.4;
+}
+Q.new_middle_dnef += Q.new_middle_other*0.8;
+Q.new_middle_other *= 0.2;
+Q.old_middle_dnef += Q.old_middle_other*0.8;
+Q.old_middle_other *= 0.2;
+Q.rural_dnef += Q.rural_other*0.6;
+Q.rural_other *= 0.4;
+
+Q.dnef_r = 0;
+Q.dnef_r_prussia = 0;
+Q.dnef_relation = Q.schleicher_spd_r*5
+if (Q.dnef_relation > 50) Q.dnef_relation = 50;
+
+Q.dnef_ideology = "Moderate";
+Q.dnef_left = 0;
+Q.dnef_right = 0;
+Q.dnef_leader = "Schleicher";
+
+if (Q.dnef_right > (Q.dnef_left + 3)) {
+    Q.dnef_ideology = "Right"
+} else if (Q.dnef_left > (Q.dnef_right + 3)) {
+    Q.dnef_ideology = "Left"
+} else {
+    Q.dnef_ideology = "Moderate"
+}
+
+if (Q.dstp_maintained) {
+    Q.dstp_dnef = 1;
+
+    Q.pro_republic -= Q.ddp_votes;
+
+    Q.ddp_relation = Q.dnef_relation;
+
+    Q.dnef_r += Q.ddp_r;
+    Q.ddp_r = 0;
+
+    Q.ddp_leader = "Mahraun";
+}
+
+if (Q.kvp_formed && Q.schleicher_kvp) {
+    Q.kvp_dnef = 1;
+
+    Q.pro_republic -= Q.kvp_votes;
+
+    Q.kvp_relation = (Q.dnef_relation/2);
+
+    Q.dnef_r += Q.kvp_r;
+    Q.kvp_r = 0;
+}
+
+Q.other_dnef = 1;
+
+Q.pro_republic -= Q.other_votes;
+
+Q.dnef_r += Q.other_r;
+Q.other_r = 0;
+
+if (Q.dnef_formed) {
+    if (Q.dnef_ideology != "Left") {
+        Q.industrial_dnef_backing = 4;
+    } else {
+        Q.industrial_dnef_backing = 3;
+    }
+} else {
+    Q.industrial_dnef_backing = 0;
+}
+
+Q.old_workers_dnef_display = 0
+Q.old_new_middle_dnef_display = 0
+Q.old_old_middle_dnef_display = 0
+Q.old_rural_dnef_display = 0
+Q.old_unemployed_dnef_display = 0
+Q.old_catholics_dnef_display = 0
+
+if (Q.lvp_formed) {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
+} else {
+    Q.weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r - Q.bvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.lvp_r).toFixed(1));
+} else {
+    Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.ddp_r).toFixed(1));
+}
+
+Q.social_catholic_coalition = parseFloat((Q.spd_r + Q.z_r - Q.bvp_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r).toFixed(1));
+} else {
+    Q.grand_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r).toFixed(1));
+} else {
+    Q.bourgeois_coalition = parseFloat((Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.center_right_coalition = parseFloat((Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition = parseFloat((Q.dnf_r + Q.nsdap_r).toFixed(1));
+} else {
+    Q.far_right_coalition = parseFloat((Q.dnvp_r + Q.nsdap_r).toFixed(1));
+}
+
+Q.left_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.sapd_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 0 && Q.bourgeois_parliament_ddp == 0) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r + Q.ddp_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+} else if (Q.liberal_parliament == 1 || Q.bourgeois_parliament_ddp == 1) {
+    Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnf_r).toFixed(1));
+} else {
+    Q.anti_democratic_coalition = parseFloat((Q.kpd_r + Q.nsdap_r + Q.dnvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r).toFixed(1));
+} else {
+    Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r + Q.kvp_r).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r + Q.dnvp_r + Q.kvp_r).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.lvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+} else {
+    Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.z_r + Q.ddp_r + Q.dvp_r + Q.other_r + Q.dnvp_r).toFixed(1));
+}
+
+Q.hitler_right_coalition = parseFloat((Q.z_r + Q.nsdap_r).toFixed(1));
+
+Q.goerdeler_right_coalition = parseFloat((Q.z_r + Q.dvp_r + Q.lvp_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + (Q.lvp_r / 3) + Q.sapd_r).toFixed(1));
+} else {
+    Q.progressive_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.ddp_r + Q.sapd_r).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition = parseFloat((Q.dnef_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r + Q.other_r + Q.kvp_r + Q.dnvp_r + Q.dnf_r + Q.dsu_r).toFixed(1));
+    Q.schleicher_left_coalition = parseFloat((Q.dnef_r + Q.spd_r + Q.lvp_r + Q.dvp_r + Q.ddp_r + Q.z_r).toFixed(1));
+}
+if (Q.lvp_formed) {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia ).toFixed(1));
+} else {
+    Q.weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia).toFixed(1));
+} else {
+    Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia).toFixed(1));
+}
+
+Q.social_catholic_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
+} else {
+    Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.bourgeois_coalition_prussia = parseFloat((Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (!Q.kvp_formed && Q.lvp_formed) {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.center_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnf_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+} else {
+    Q.far_right_coalition_prussia = parseFloat((Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+}
+
+if (Q.hugenberg_dvp) Q.far_right_coalition_prussia = parseFloat((Q.far_right_coalition_prussia + Q.dvp_r_prussia).toFixed(1));
+
+Q.left_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.sapd_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 0) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+} else if (Q.liberal_parliament == 1) {
+    Q.popular_front_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.z_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnvp_ideology === "Moderate") {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnf_r_prussia).toFixed(1));
+} else {
+    Q.anti_democratic_coalition_prussia = parseFloat((Q.kpd_r_prussia + Q.nsdap_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.kvp_formed && Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.kvp_formed && !Q.lvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia + Q.kvp_r_prussia).toFixed(1));
+} else if (Q.lvp_formed && !Q.kvp_formed) {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.lvp_r_prussia + Q.other_r_prussia + Q.dnvp_r_prussia).toFixed(1));
+} else {
+    Q.cordon_sanitaire_prussia = parseFloat((Q.spd_r_prussia + Q.z_r_prussia + Q.ddp_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia + Q.dnvp_r).toFixed(1));
+}
+
+// Q.hitler_right_coalition_prussia = parseFloat((Q.z_r_prussia + Q.dnvp_r_prussia + Q.nsdap_r_prussia).toFixed(1));
+
+if (Q.lvp_formed) {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + (Q.lvp_r_prussia / 2) + Q.sapd_r_prussia).toFixed(1));
+} else {
+    Q.progressive_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.kpd_r_prussia + Q.ddp_r_prussia + Q.sapd_r_prussia).toFixed(1));
+}
+
+if (Q.dnef_formed) {
+    Q.schleicher_right_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.lvp_r_prussia + Q.dvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.other_r_prussia + Q.kvp_r_prussia + Q.dnvp_r_prussia + Q.dnf_r_prussia + Q.dsu_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
+    Q.weimar_coalition_prussia += Q.sapd_r_prussia;
+}
+
+for (var record of Q.election_records) {
+    record['dnef'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['dnef'] = 0;
+}
+!}
+
+Formed the DNEF
+
+@form_aspd
+on-arrival: {!
+
+Q.aspd_other = 1
+Q.aspd_kvp = 1;
+Q.parties.push('aspd');
+Q.parties_graph.push('aspd');
+
+Q.workers_aspd = 5;
+Q.new_middle_aspd = 1;
+Q.old_middle_aspd = 0;
+Q.rural_aspd = 0;
+Q.unemployed_aspd = 2;
+Q.catholics_aspd = 0;
+
+Q.workers_other -= 5;
+
+if (Q.unions_independent) {
+    Q.workers_aspd += 8;
+    Q.unemployed_aspd += 4;
+}
+
+Q.old_workers_aspd_display = 0
+Q.old_new_middle_aspd_display = 0
+Q.old_old_middle_aspd_display = 0
+Q.old_rural_aspd_display = 0
+Q.old_unemployed_aspd_display = 0
+Q.old_catholics_aspd_display = 0
+
+// update all records
+Q.aspd_r = 0;
+Q.old_aspd_r = 0;
+for (var record of Q.election_records) {
+    record['aspd'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['aspd'] = 0;
+}
+!}
+
+Formed the ASPD.
+
+@nazi_boom
+on-arrival: {!
+Q.dsu_exist = 1;
+Q.dsu_leader = "Strasser";
+Q.nvf_exist = 1;
+
+Q.parties.push('dsu');
+Q.parties_graph.push('dsu');
+
+Q.parties.push('nvf');
+Q.parties_graph.push('nvf');
+
+Q.workers_nvf = 0;
+Q.new_middle_nvf = 1;
+Q.old_middle_nvf = 5;
+Q.rural_nvf = 0;
+Q.unemployed_nvf = 2;
+Q.catholics_nvf = 0;
+
+Q.workers_dsu = 0;
+Q.new_middle_dsu = 5;
+Q.old_middle_dsu = 1;
+Q.rural_dsu = 0;
+Q.unemployed_dsu = 2;
+Q.catholics_dsu = 0;
+
+Q.old_workers_nvf_display = 0
+Q.old_new_middle_nvf_display = 0
+Q.old_old_middle_nvf_display = 0
+Q.old_rural_nvf_display = 0
+Q.old_unemployed_nvf_display = 0
+Q.old_catholics_nvf_display = 0
+
+Q.old_workers_dsu_display = 0
+Q.old_new_middle_dsu_display = 0
+Q.old_old_middle_dsu_display = 0
+Q.old_rural_dsu_display = 0
+Q.old_unemployed_dsu_display = 0
+Q.old_catholics_dsu_display = 0
+
+// update all records
+Q.nvf_r = 0;
+Q.old_nvf_r = 0;
+for (var record of Q.election_records) {
+    record['nvf'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['nvf'] = 0;
+}
+!}
+
+Q.dsu_r = 0;
+Q.old_dsu_r = 0;
+for (var record of Q.election_records) {
+    record['dsu'] = 0;
+}
+for (var record of Q.party_support_records) {
+    record['dsu'] = 0;
+}
+!}
+
+These parties are doomed to eternal infighting
+
+@editpartysupport
+
+- @spd_support: Edit SPD Support
+- @sapd_support: Edit SAPD Support
+- @center_support: Edit Center Support
+- @kpd_support: Edit KPD Support
+- @dnf_support: Edit DNF Support
+- @kvp_support: Edit KVP Support
+- @lvp_support: Edit LVP Support
+- @ddp_support: Edit DDP/DStP Support
+- @dvp_support: Edit DVP Support
+- @dnvp_support: Edit DNVP Support
+- @nsdap_support: Edit NSDAP Support
+- @dsu_support: Edit DSU Support
+- @nvf_support: Edit NVF Support
+- @other_support: Edit Other Support
+- @returnsandbox: Return To Sandbox Menu
+
+@returnpartysupport
+go-to: editpartysupport
+
+@spd_support
+
+- @spd_worker_up: Increase SPD Worker Support
+- @spd_worker_down: Decrease SPD Worker Support
+- @spd_old_middle_up: Increase SPD Old Middle Support
+- @spd_old_middle_down: Decrease SPD Old Middle Support
+- @spd_new_middle_up: Increase SPD New Middle Support
+- @spd_new_middle_down: Decrease SPD New Middle Support
+- @spd_rural_up: Increase SPD Rural Support
+- @spd_rural_down: Decrease SPD Rural Support
+- @spd_unemployed_up: Increase SPD Unemployed Support
+- @spd_unemployed_down: Decrease SPD Unemployed Support
+- @spd_catholics_up: Increase SPD Catholics Support
+- @spd_catholics_down: Decrease SPD Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@spd_worker_up
+go-to: spd_support
+on-arrival: {!
+Q.workers_spd += 20;
+!}
+
+Raised worker support for SPD.
+
+@spd_worker_down
+go-to: spd_support
+on-arrival: {!
+Q.workers_spd -= 20;
+!}
+
+Lowered worker support for SPD.
+
+@spd_old_middle_up
+go-to: spd_support
+on-arrival: {!
+Q.old_middle_spd += 20;
+!}
+
+Raised Old Middle Class support for SPD.
+
+@spd_old_middle_down
+go-to: spd_support
+on-arrival: {!
+Q.old_middle_spd -= 20;
+!}
+
+Lowered Old Middle Class support for SPD.
+
+@spd_new_middle_up
+go-to: spd_support
+on-arrival: {!
+Q.new_middle_spd += 20;
+!}
+
+Raised New Middle Class support for SPD.
+
+@spd_new_middle_down
+go-to: spd_support
+on-arrival: {!
+Q.new_middle_spd -= 20;
+!}
+
+Lowered New Middle Class support for SPD.
+
+@spd_rural_up
+go-to: spd_support
+on-arrival: {!
+Q.rural_spd += 20;
+!}
+
+Raised Rural support for SPD.
+
+@spd_rural_down
+go-to: spd_support
+on-arrival: {!
+Q.rural_spd -= 20;
+!}
+
+Lowered Rural support for SPD.
+
+@spd_unemployed_up
+go-to: spd_support
+on-arrival: {!
+Q.unemployed_spd += 20;
+!}
+
+Raised Unemployed support for SPD.
+
+@spd_unemployed_down
+go-to: spd_support
+on-arrival: {!
+Q.unemployed_spd -= 20;
+!}
+
+Lowered Unemployed support for SPD.
+
+@spd_catholics_up
+go-to: spd_support
+on-arrival: {!
+Q.catholics_spd += 20;
+!}
+
+Raised Catholics support for SPD.
+
+@spd_catholics_down
+go-to: spd_support
+on-arrival: {!
+Q.catholics_spd -= 20;
+!}
+
+Lowered Catholics support for SPD.
+
+@sapd_support
+view-if: sapd_formed == 1
+
+- @sapd_worker_up: Increase SAPD Worker Support
+- @sapd_worker_down: Decrease SAPD Worker Support
+- @sapd_old_middle_up: Increase SAPD Old Middle Support
+- @sapd_old_middle_down: Decrease SAPD Old Middle Support
+- @sapd_new_middle_up: Increase SAPD New Middle Support
+- @sapd_new_middle_down: Decrease SAPD New Middle Support
+- @sapd_rural_up: Increase SAPD Rural Support
+- @sapd_rural_down: Decrease SAPD Rural Support
+- @sapd_unemployed_up: Increase SAPD Unemployed Support
+- @sapd_unemployed_down: Decrease SAPD Unemployed Support
+- @sapd_catholics_up: Increase SAPD Catholics Support
+- @sapd_catholics_down: Decrease SAPD Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@sapd_worker_up
+go-to: sapd_support
+on-arrival: {!
+Q.workers_sapd += 20;
+!}
+
+Raised worker support for SAPD.
+
+@sapd_worker_down
+go-to: sapd_support
+on-arrival: {!
+Q.workers_sapd -= 20;
+!}
+
+Lowered worker support for SAPD.
+
+@sapd_old_middle_up
+go-to: sapd_support
+on-arrival: {!
+Q.old_middle_sapd += 20;
+!}
+
+Raised Old Middle Class support for SAPD.
+
+@sapd_old_middle_down
+go-to: sapd_support
+on-arrival: {!
+Q.old_middle_sapd -= 20;
+!}
+
+Lowered Old Middle Class support for SAPD.
+
+@sapd_new_middle_up
+go-to: sapd_support
+on-arrival: {!
+Q.new_middle_sapd += 20;
+!}
+
+Raised New Middle Class support for SAPD.
+
+@sapd_new_middle_down
+go-to: sapd_support
+on-arrival: {!
+Q.new_middle_sapd -= 20;
+!}
+
+Lowered New Middle Class support for SAPD.
+
+@sapd_rural_up
+go-to: sapd_support
+on-arrival: {!
+Q.rural_sapd += 20;
+!}
+
+Raised Rural support for SAPD.
+
+@sapd_rural_down
+go-to: sapd_support
+on-arrival: {!
+Q.rural_sapd -= 20;
+!}
+
+Lowered Rural support for SAPD.
+
+@sapd_unemployed_up
+go-to: sapd_support
+on-arrival: {!
+Q.unemployed_sapd += 20;
+!}
+
+Raised Unemployed support for SAPD.
+
+@sapd_unemployed_down
+go-to: sapd_support
+on-arrival: {!
+Q.unemployed_sapd -= 20;
+!}
+
+Lowered Unemployed support for SAPD.
+
+@sapd_catholics_up
+go-to: sapd_support
+on-arrival: {!
+Q.catholics_sapd += 20;
+!}
+
+Raised Catholics support for SAPD.
+
+@sapd_catholics_down
+go-to: sapd_support
+on-arrival: {!
+Q.catholics_sapd -= 20;
+!}
+
+Lowered Catholics support for SAPD.
+
+@center_support
+
+- @center_worker_up: Increase Center Worker Support
+- @center_worker_down: Decrease Center Worker Support
+- @center_old_middle_up: Increase Center Old Middle Support
+- @center_old_middle_down: Decrease Center Old Middle Support
+- @center_new_middle_up: Increase Center New Middle Support
+- @center_new_middle_down: Decrease Center New Middle Support
+- @center_rural_up: Increase Center Rural Support
+- @center_rural_down: Decrease Center Rural Support
+- @center_unemployed_up: Increase Center Unemployed Support
+- @center_unemployed_down: Decrease Center Unemployed Support
+- @center_catholics_up: Increase Center Catholics Support
+- @center_catholics_down: Decrease Center Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@center_worker_up
+go-to: center_support
+on-arrival: {!
+Q.workers_z += 20;
+!}
+
+Raised worker support for Center.
+
+@center_worker_down
+go-to: center_support
+on-arrival: {!
+Q.workers_z -= 20;
+!}
+
+Lowered worker support for Center.
+
+@center_old_middle_up
+go-to: center_support
+on-arrival: {!
+Q.old_middle_z += 20;
+!}
+
+Raised Old Middle Class support for Center.
+
+@center_old_middle_down
+go-to: center_support
+on-arrival: {!
+Q.old_middle_z -= 20;
+!}
+
+Lowered Old Middle Class support for Center.
+
+@center_new_middle_up
+go-to: center_support
+on-arrival: {!
+Q.new_middle_z += 20;
+!}
+
+Raised New Middle Class support for Center.
+
+@center_new_middle_down
+go-to: center_support
+on-arrival: {!
+Q.new_middle_z -= 20;
+!}
+
+Lowered New Middle Class support for Center.
+
+@center_rural_up
+go-to: center_support
+on-arrival: {!
+Q.rural_z += 20;
+!}
+
+Raised Rural support for Center.
+
+@center_rural_down
+go-to: center_support
+on-arrival: {!
+Q.rural_z -= 20;
+!}
+
+Lowered Rural support for Center.
+
+@center_unemployed_up
+go-to: center_support
+on-arrival: {!
+Q.unemployed_z += 20;
+!}
+
+Raised Unemployed support for Center.
+
+@center_unemployed_down
+go-to: center_support
+on-arrival: {!
+Q.unemployed_z -= 20;
+!}
+
+Lowered Unemployed support for Center.
+
+@center_catholics_up
+go-to: center_support
+on-arrival: {!
+Q.catholics_z += 20;
+!}
+
+Raised Catholics support for Center.
+
+@center_catholics_down
+go-to: center_support
+on-arrival: {!
+Q.catholics_z -= 20;
+!}
+
+Lowered Catholics support for Center.
+
+@kpd_support
+
+- @kpd_worker_up: Increase KPD Worker Support
+- @kpd_worker_down: Decrease KPD Worker Support
+- @kpd_old_middle_up: Increase KPD Old Middle Support
+- @kpd_old_middle_down: Decrease KPD Old Middle Support
+- @kpd_new_middle_up: Increase KPD New Middle Support
+- @kpd_new_middle_down: Decrease KPD New Middle Support
+- @kpd_rural_up: Increase KPD Rural Support
+- @kpd_rural_down: Decrease KPD Rural Support
+- @kpd_unemployed_up: Increase KPD Unemployed Support
+- @kpd_unemployed_down: Decrease KPD Unemployed Support
+- @kpd_catholics_up: Increase KPD Catholics Support
+- @kpd_catholics_down: Decrease KPD Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@kpd_worker_up
+go-to: kpd_support
+on-arrival: {!
+Q.workers_kpd += 20;
+!}
+
+Raised worker support for KPD.
+
+@kpd_worker_down
+go-to: kpd_support
+on-arrival: {!
+Q.workers_kpd -= 20;
+!}
+
+Lowered worker support for KPD.
+
+@kpd_old_middle_up
+go-to: kpd_support
+on-arrival: {!
+Q.old_middle_kpd += 20;
+!}
+
+Raised Old Middle Class support for KPD.
+
+@kpd_old_middle_down
+go-to: kpd_support
+on-arrival: {!
+Q.old_middle_kpd -= 20;
+!}
+
+Lowered Old Middle Class support for KPD.
+
+@kpd_new_middle_up
+go-to: kpd_support
+on-arrival: {!
+Q.new_middle_kpd += 20;
+!}
+
+Raised New Middle Class support for KPD.
+
+@kpd_new_middle_down
+go-to: kpd_support
+on-arrival: {!
+Q.new_middle_kpd -= 20;
+!}
+
+Lowered New Middle Class support for KPD.
+
+@kpd_rural_up
+go-to: kpd_support
+on-arrival: {!
+Q.rural_kpd += 20;
+!}
+
+Raised Rural support for KPD.
+
+@kpd_rural_down
+go-to: kpd_support
+on-arrival: {!
+Q.rural_kpd -= 20;
+!}
+
+Lowered Rural support for KPD.
+
+@kpd_unemployed_up
+go-to: kpd_support
+on-arrival: {!
+Q.unemployed_kpd += 20;
+!}
+
+Raised Unemployed support for KPD.
+
+@kpd_unemployed_down
+go-to: kpd_support
+on-arrival: {!
+Q.unemployed_kpd -= 20;
+!}
+
+Lowered Unemployed support for KPD.
+
+@kpd_catholics_up
+go-to: kpd_support
+on-arrival: {!
+Q.catholics_kpd += 20;
+!}
+
+Raised Catholics support for KPD.
+
+@kpd_catholics_down
+go-to: kpd_support
+on-arrival: {!
+Q.catholics_kpd -= 20;
+!}
+
+Lowered Catholics support for KPD.
+
+@dnf_support
+view-if: dnf_formed == 1
+
+- @dnf_worker_up: Increase DNF Worker Support
+- @dnf_worker_down: Decrease DNF Worker Support
+- @dnf_old_middle_up: Increase DNF Old Middle Support
+- @dnf_old_middle_down: Decrease DNF Old Middle Support
+- @dnf_new_middle_up: Increase DNF New Middle Support
+- @dnf_new_middle_down: Decrease DNF New Middle Support
+- @dnf_rural_up: Increase DNF Rural Support
+- @dnf_rural_down: Decrease DNF Rural Support
+- @dnf_unemployed_up: Increase DNF Unemployed Support
+- @dnf_unemployed_down: Decrease DNF Unemployed Support
+- @dnf_catholics_up: Increase DNF Catholics Support
+- @dnf_catholics_down: Decrease DNF Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@dnf_worker_up
+go-to: dnf_support
+on-arrival: {!
+Q.workers_dnf += 20;
+!}
+
+Raised worker support for DNF.
+
+@dnf_worker_down
+go-to: dnf_support
+on-arrival: {!
+Q.workers_dnf -= 20;
+!}
+
+Lowered worker support for DNF.
+
+@dnf_old_middle_up
+go-to: dnf_support
+on-arrival: {!
+Q.old_middle_dnf += 20;
+!}
+
+Raised Old Middle Class support for DNF.
+
+@dnf_old_middle_down
+go-to: dnf_support
+on-arrival: {!
+Q.old_middle_dnf -= 20;
+!}
+
+Lowered Old Middle Class support for DNF.
+
+@dnf_new_middle_up
+go-to: dnf_support
+on-arrival: {!
+Q.new_middle_dnf += 20;
+!}
+
+Raised New Middle Class support for DNF.
+
+@dnf_new_middle_down
+go-to: dnf_support
+on-arrival: {!
+Q.new_middle_dnf -= 20;
+!}
+
+Lowered New Middle Class support for DNF.
+
+@dnf_rural_up
+go-to: dnf_support
+on-arrival: {!
+Q.rural_dnf += 20;
+!}
+
+Raised Rural support for DNF.
+
+@dnf_rural_down
+go-to: dnf_support
+on-arrival: {!
+Q.rural_dnf -= 20;
+!}
+
+Lowered Rural support for DNF.
+
+@dnf_unemployed_up
+go-to: dnf_support
+on-arrival: {!
+Q.unemployed_dnf += 20;
+!}
+
+Raised Unemployed support for DNF.
+
+@dnf_unemployed_down
+go-to: dnf_support
+on-arrival: {!
+Q.unemployed_dnf -= 20;
+!}
+
+Lowered Unemployed support for DNF.
+
+@dnf_catholics_up
+go-to: dnf_support
+on-arrival: {!
+Q.catholics_dnf += 20;
+!}
+
+Raised Catholics support for DNF.
+
+@dnf_catholics_down
+go-to: dnf_support
+on-arrival: {!
+Q.catholics_dnf -= 20;
+!}
+
+Lowered Catholics support for DNF.
+
+@kvp_support
+view-if: kvp_formed == 1
+
+- @kvp_worker_up: Increase KVP Worker Support
+- @kvp_worker_down: Decrease KVP Worker Support
+- @kvp_old_middle_up: Increase KVP Old Middle Support
+- @kvp_old_middle_down: Decrease KVP Old Middle Support
+- @kvp_new_middle_up: Increase KVP New Middle Support
+- @kvp_new_middle_down: Decrease KVP New Middle Support
+- @kvp_rural_up: Increase KVP Rural Support
+- @kvp_rural_down: Decrease KVP Rural Support
+- @kvp_unemployed_up: Increase KVP Unemployed Support
+- @kvp_unemployed_down: Decrease KVP Unemployed Support
+- @kvp_catholics_up: Increase KVP Catholics Support
+- @kvp_catholics_down: Decrease KVP Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@kvp_worker_up
+go-to: kvp_support
+on-arrival: {!
+Q.workers_kvp += 20;
+!}
+
+Raised worker support for KVP.
+
+@kvp_worker_down
+go-to: kvp_support
+on-arrival: {!
+Q.workers_kvp -= 20;
+!}
+
+Lowered worker support for KVP.
+
+@kvp_old_middle_up
+go-to: kvp_support
+on-arrival: {!
+Q.old_middle_kvp += 20;
+!}
+
+Raised Old Middle Class support for KVP.
+
+@kvp_old_middle_down
+go-to: kvp_support
+on-arrival: {!
+Q.old_middle_kvp -= 20;
+!}
+
+Lowered Old Middle Class support for KVP.
+
+@kvp_new_middle_up
+go-to: kvp_support
+on-arrival: {!
+Q.new_middle_kvp += 20;
+!}
+
+Raised New Middle Class support for KVP.
+
+@kvp_new_middle_down
+go-to: kvp_support
+on-arrival: {!
+Q.new_middle_kvp -= 20;
+!}
+
+Lowered New Middle Class support for KVP.
+
+@kvp_rural_up
+go-to: kvp_support
+on-arrival: {!
+Q.rural_kvp += 20;
+!}
+
+Raised Rural support for KVP.
+
+@kvp_rural_down
+go-to: kvp_support
+on-arrival: {!
+Q.rural_kvp -= 20;
+!}
+
+Lowered Rural support for KVP.
+
+@kvp_unemployed_up
+go-to: kvp_support
+on-arrival: {!
+Q.unemployed_kvp += 20;
+!}
+
+Raised Unemployed support for KVP.
+
+@kvp_unemployed_down
+go-to: kvp_support
+on-arrival: {!
+Q.unemployed_kvp -= 20;
+!}
+
+Lowered Unemployed support for KVP.
+
+@kvp_catholics_up
+go-to: kvp_support
+on-arrival: {!
+Q.catholics_kvp += 20;
+!}
+
+Raised Catholics support for KVP.
+
+@kvp_catholics_down
+go-to: kvp_support
+on-arrival: {!
+Q.catholics_kvp -= 20;
+!}
+
+Lowered Catholics support for KVP.
+
+@lvp_support
+view-if: lvp_formed == 1
+
+- @lvp_worker_up: Increase LVP Worker Support
+- @lvp_worker_down: Decrease LVP Worker Support
+- @lvp_old_middle_up: Increase LVP Old Middle Support
+- @lvp_old_middle_down: Decrease LVP Old Middle Support
+- @lvp_new_middle_up: Increase LVP New Middle Support
+- @lvp_new_middle_down: Decrease LVP New Middle Support
+- @lvp_rural_up: Increase LVP Rural Support
+- @lvp_rural_down: Decrease LVP Rural Support
+- @lvp_unemployed_up: Increase LVP Unemployed Support
+- @lvp_unemployed_down: Decrease LVP Unemployed Support
+- @lvp_catholics_up: Increase LVP Catholics Support
+- @lvp_catholics_down: Decrease LVP Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@lvp_worker_up
+go-to: lvp_support
+on-arrival: {!
+Q.workers_lvp += 20;
+!}
+
+Raised worker support for LVP.
+
+@lvp_worker_down
+go-to: lvp_support
+on-arrival: {!
+Q.workers_lvp -= 20;
+!}
+
+Lowered worker support for LVP.
+
+@lvp_old_middle_up
+go-to: lvp_support
+on-arrival: {!
+Q.old_middle_lvp += 20;
+!}
+
+Raised Old Middle Class support for LVP.
+
+@lvp_old_middle_down
+go-to: lvp_support
+on-arrival: {!
+Q.old_middle_lvp -= 20;
+!}
+
+Lowered Old Middle Class support for LVP.
+
+@lvp_new_middle_up
+go-to: lvp_support
+on-arrival: {!
+Q.new_middle_lvp += 20;
+!}
+
+Raised New Middle Class support for LVP.
+
+@lvp_new_middle_down
+go-to: lvp_support
+on-arrival: {!
+Q.new_middle_lvp -= 20;
+!}
+
+Lowered New Middle Class support for LVP.
+
+@lvp_rural_up
+go-to: lvp_support
+on-arrival: {!
+Q.rural_lvp += 20;
+!}
+
+Raised Rural support for LVP.
+
+@lvp_rural_down
+go-to: lvp_support
+on-arrival: {!
+Q.rural_lvp -= 20;
+!}
+
+Lowered Rural support for LVP.
+
+@lvp_unemployed_up
+go-to: lvp_support
+on-arrival: {!
+Q.unemployed_lvp += 20;
+!}
+
+Raised Unemployed support for LVP.
+
+@lvp_unemployed_down
+go-to: lvp_support
+on-arrival: {!
+Q.unemployed_lvp -= 20;
+!}
+
+Lowered Unemployed support for LVP.
+
+@lvp_catholics_up
+go-to: lvp_support
+on-arrival: {!
+Q.catholics_lvp += 20;
+!}
+
+Raised Catholics support for LVP.
+
+@lvp_catholics_down
+go-to: lvp_support
+on-arrival: {!
+Q.catholics_lvp -= 20;
+!}
+
+Lowered Catholics support for LVP.
+
+@ddp_support
+
+- @ddp_worker_up: Increase DDP Worker Support
+- @ddp_worker_down: Decrease DDP Worker Support
+- @ddp_old_middle_up: Increase DDP Old Middle Support
+- @ddp_old_middle_down: Decrease DDP Old Middle Support
+- @ddp_new_middle_up: Increase DDP New Middle Support
+- @ddp_new_middle_down: Decrease DDP New Middle Support
+- @ddp_rural_up: Increase DDP Rural Support
+- @ddp_rural_down: Decrease DDP Rural Support
+- @ddp_unemployed_up: Increase DDP Unemployed Support
+- @ddp_unemployed_down: Decrease DDP Unemployed Support
+- @ddp_catholics_up: Increase DDP Catholics Support
+- @ddp_catholics_down: Decrease DDP Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@ddp_worker_up
+go-to: ddp_support
+on-arrival: {!
+Q.workers_ddp += 20;
+!}
+
+Raised worker support for DDP.
+
+@ddp_worker_down
+go-to: ddp_support
+on-arrival: {!
+Q.workers_ddp -= 20;
+!}
+
+Lowered worker support for DDP.
+
+@ddp_old_middle_up
+go-to: ddp_support
+on-arrival: {!
+Q.old_middle_ddp += 20;
+!}
+
+Raised Old Middle Class support for DDP.
+
+@ddp_old_middle_down
+go-to: ddp_support
+on-arrival: {!
+Q.old_middle_ddp -= 20;
+!}
+
+Lowered Old Middle Class support for DDP.
+
+@ddp_new_middle_up
+go-to: ddp_support
+on-arrival: {!
+Q.new_middle_ddp += 20;
+!}
+
+Raised New Middle Class support for DDP.
+
+@ddp_new_middle_down
+go-to: ddp_support
+on-arrival: {!
+Q.new_middle_ddp -= 20;
+!}
+
+Lowered New Middle Class support for DDP.
+
+@ddp_rural_up
+go-to: ddp_support
+on-arrival: {!
+Q.rural_ddp += 20;
+!}
+
+Raised Rural support for DDP.
+
+@ddp_rural_down
+go-to: ddp_support
+on-arrival: {!
+Q.rural_ddp -= 20;
+!}
+
+Lowered Rural support for DDP.
+
+@ddp_unemployed_up
+go-to: ddp_support
+on-arrival: {!
+Q.unemployed_ddp += 20;
+!}
+
+Raised Unemployed support for DDP.
+
+@ddp_unemployed_down
+go-to: ddp_support
+on-arrival: {!
+Q.unemployed_ddp -= 20;
+!}
+
+Lowered Unemployed support for DDP.
+
+@ddp_catholics_up
+go-to: ddp_support
+on-arrival: {!
+Q.catholics_ddp += 20;
+!}
+
+Raised Catholics support for DDP.
+
+@ddp_catholics_down
+go-to: ddp_support
+on-arrival: {!
+Q.catholics_ddp -= 20;
+!}
+
+Lowered Catholics support for DDP.
+
+@dvp_support
+
+- @dvp_worker_up: Increase DVP Worker Support
+- @dvp_worker_down: Decrease DVP Worker Support
+- @dvp_old_middle_up: Increase DVP Old Middle Support
+- @dvp_old_middle_down: Decrease DVP Old Middle Support
+- @dvp_new_middle_up: Increase DVP New Middle Support
+- @dvp_new_middle_down: Decrease DVP New Middle Support
+- @dvp_rural_up: Increase DVP Rural Support
+- @dvp_rural_down: Decrease DVP Rural Support
+- @dvp_unemployed_up: Increase DVP Unemployed Support
+- @dvp_unemployed_down: Decrease DVP Unemployed Support
+- @dvp_catholics_up: Increase DVP Catholics Support
+- @dvp_catholics_down: Decrease DVP Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@dvp_worker_up
+go-to: dvp_support
+on-arrival: {!
+Q.workers_dvp += 20;
+!}
+
+Raised worker support for DVP.
+
+@dvp_worker_down
+go-to: dvp_support
+on-arrival: {!
+Q.workers_dvp -= 20;
+!}
+
+Lowered worker support for DVP.
+
+@dvp_old_middle_up
+go-to: dvp_support
+on-arrival: {!
+Q.old_middle_dvp += 20;
+!}
+
+Raised Old Middle Class support for DVP.
+
+@dvp_old_middle_down
+go-to: dvp_support
+on-arrival: {!
+Q.old_middle_dvp -= 20;
+!}
+
+Lowered Old Middle Class support for DVP.
+
+@dvp_new_middle_up
+go-to: dvp_support
+on-arrival: {!
+Q.new_middle_dvp += 20;
+!}
+
+Raised New Middle Class support for DVP.
+
+@dvp_new_middle_down
+go-to: dvp_support
+on-arrival: {!
+Q.new_middle_dvp -= 20;
+!}
+
+Lowered New Middle Class support for DVP.
+
+@dvp_rural_up
+go-to: dvp_support
+on-arrival: {!
+Q.rural_dvp += 20;
+!}
+
+Raised Rural support for DVP.
+
+@dvp_rural_down
+go-to: dvp_support
+on-arrival: {!
+Q.rural_dvp -= 20;
+!}
+
+Lowered Rural support for DVP.
+
+@dvp_unemployed_up
+go-to: dvp_support
+on-arrival: {!
+Q.unemployed_dvp += 20;
+!}
+
+Raised Unemployed support for DVP.
+
+@dvp_unemployed_down
+go-to: dvp_support
+on-arrival: {!
+Q.unemployed_dvp -= 20;
+!}
+
+Lowered Unemployed support for DVP.
+
+@dvp_catholics_up
+go-to: dvp_support
+on-arrival: {!
+Q.catholics_dvp += 20;
+!}
+
+Raised Catholics support for DVP.
+
+@dvp_catholics_down
+go-to: dvp_support
+on-arrival: {!
+Q.catholics_dvp -= 20;
+!}
+
+Lowered Catholics support for DVP.
+
+@dnvp_support
+
+- @dnvp_worker_up: Increase DNVP Worker Support
+- @dnvp_worker_down: Decrease DNVP Worker Support
+- @dnvp_old_middle_up: Increase DNVP Old Middle Support
+- @dnvp_old_middle_down: Decrease DNVP Old Middle Support
+- @dnvp_new_middle_up: Increase DNVP New Middle Support
+- @dnvp_new_middle_down: Decrease DNVP New Middle Support
+- @dnvp_rural_up: Increase DNVP Rural Support
+- @dnvp_rural_down: Decrease DNVP Rural Support
+- @dnvp_unemployed_up: Increase DNVP Unemployed Support
+- @dnvp_unemployed_down: Decrease DNVP Unemployed Support
+- @dnvp_catholics_up: Increase DNVP Catholics Support
+- @dnvp_catholics_down: Decrease DNVP Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@dnvp_worker_up
+go-to: dnvp_support
+on-arrival: {!
+Q.workers_dnvp += 20;
+!}
+
+Raised worker support for DNVP.
+
+@dnvp_worker_down
+go-to: dnvp_support
+on-arrival: {!
+Q.workers_dnvp -= 20;
+!}
+
+Lowered worker support for DNVP.
+
+@dnvp_old_middle_up
+go-to: dnvp_support
+on-arrival: {!
+Q.old_middle_dnvp += 20;
+!}
+
+Raised Old Middle Class support for DNVP.
+
+@dnvp_old_middle_down
+go-to: dnvp_support
+on-arrival: {!
+Q.old_middle_dnvp -= 20;
+!}
+
+Lowered Old Middle Class support for DNVP.
+
+@dnvp_new_middle_up
+go-to: dnvp_support
+on-arrival: {!
+Q.new_middle_dnvp += 20;
+!}
+
+Raised New Middle Class support for DNVP.
+
+@dnvp_new_middle_down
+go-to: dnvp_support
+on-arrival: {!
+Q.new_middle_dnvp -= 20;
+!}
+
+Lowered New Middle Class support for DNVP.
+
+@dnvp_rural_up
+go-to: dnvp_support
+on-arrival: {!
+Q.rural_dnvp += 20;
+!}
+
+Raised Rural support for DNVP.
+
+@dnvp_rural_down
+go-to: dnvp_support
+on-arrival: {!
+Q.rural_dnvp -= 20;
+!}
+
+Lowered Rural support for DNVP.
+
+@dnvp_unemployed_up
+go-to: dnvp_support
+on-arrival: {!
+Q.unemployed_dnvp += 20;
+!}
+
+Raised Unemployed support for DNVP.
+
+@dnvp_unemployed_down
+go-to: dnvp_support
+on-arrival: {!
+Q.unemployed_dnvp -= 20;
+!}
+
+Lowered Unemployed support for DNVP.
+
+@dnvp_catholics_up
+go-to: dnvp_support
+on-arrival: {!
+Q.catholics_dnvp += 20;
+!}
+
+Raised Catholics support for DNVP.
+
+@dnvp_catholics_down
+go-to: dnvp_support
+on-arrival: {!
+Q.catholics_dnvp -= 20;
+!}
+
+Lowered Catholics support for DNVP.
+
+@nsdap_support
+
+- @nsdap_worker_up: Increase NSDAP Worker Support
+- @nsdap_worker_down: Decrease NSDAP Worker Support
+- @nsdap_old_middle_up: Increase NSDAP Old Middle Support
+- @nsdap_old_middle_down: Decrease NSDAP Old Middle Support
+- @nsdap_new_middle_up: Increase NSDAP New Middle Support
+- @nsdap_new_middle_down: Decrease NSDAP New Middle Support
+- @nsdap_rural_up: Increase NSDAP Rural Support
+- @nsdap_rural_down: Decrease NSDAP Rural Support
+- @nsdap_unemployed_up: Increase NSDAP Unemployed Support
+- @nsdap_unemployed_down: Decrease NSDAP Unemployed Support
+- @nsdap_catholics_up: Increase NSDAP Catholics Support
+- @nsdap_catholics_down: Decrease NSDAP Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@nsdap_worker_up
+go-to: nsdap_support
+on-arrival: {!
+Q.workers_nsdap += 20;
+!}
+
+Raised worker support for NSDAP.
+
+@nsdap_worker_down
+go-to: nsdap_support
+on-arrival: {!
+Q.workers_nsdap -= 20;
+!}
+
+Lowered worker support for NSDAP.
+
+@nsdap_old_middle_up
+go-to: nsdap_support
+on-arrival: {!
+Q.old_middle_nsdap += 20;
+!}
+
+Raised Old Middle Class support for NSDAP.
+
+@nsdap_old_middle_down
+go-to: nsdap_support
+on-arrival: {!
+Q.old_middle_nsdap -= 20;
+!}
+
+Lowered Old Middle Class support for NSDAP.
+
+@nsdap_new_middle_up
+go-to: nsdap_support
+on-arrival: {!
+Q.new_middle_nsdap += 20;
+!}
+
+Raised New Middle Class support for NSDAP.
+
+@nsdap_new_middle_down
+go-to: nsdap_support
+on-arrival: {!
+Q.new_middle_nsdap -= 20;
+!}
+
+Lowered New Middle Class support for NSDAP.
+
+@nsdap_rural_up
+go-to: nsdap_support
+on-arrival: {!
+Q.rural_nsdap += 20;
+!}
+
+Raised Rural support for NSDAP.
+
+@nsdap_rural_down
+go-to: nsdap_support
+on-arrival: {!
+Q.rural_nsdap -= 20;
+!}
+
+Lowered Rural support for NSDAP.
+
+@nsdap_unemployed_up
+go-to: nsdap_support
+on-arrival: {!
+Q.unemployed_nsdap += 20;
+!}
+
+Raised Unemployed support for NSDAP.
+
+@nsdap_unemployed_down
+go-to: nsdap_support
+on-arrival: {!
+Q.unemployed_nsdap -= 20;
+!}
+
+Lowered Unemployed support for NSDAP.
+
+@nsdap_catholics_up
+go-to: nsdap_support
+on-arrival: {!
+Q.catholics_nsdap += 20;
+!}
+
+Raised Catholics support for NSDAP.
+
+@nsdap_catholics_down
+go-to: nsdap_support
+on-arrival: {!
+Q.catholics_nsdap -= 20;
+!}
+
+Lowered Catholics support for NSDAP.
+
+@dsu_support
+
+- @dsu_worker_up: Increase DSU Worker Support
+- @dsu_worker_down: Decrease DSU Worker Support
+- @dsu_old_middle_up: Increase DSU Old Middle Support
+- @dsu_old_middle_down: Decrease DSU Old Middle Support
+- @dsu_new_middle_up: Increase DSU New Middle Support
+- @dsu_new_middle_down: Decrease DSU New Middle Support
+- @dsu_rural_up: Increase DSU Rural Support
+- @dsu_rural_down: Decrease DSU Rural Support
+- @dsu_unemployed_up: Increase DSU Unemployed Support
+- @dsu_unemployed_down: Decrease DSU Unemployed Support
+- @dsu_catholics_up: Increase DSU Catholics Support
+- @dsu_catholics_down: Decrease DSU Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@dsu_worker_up
+go-to: dsu_support
+on-arrival: {!
+Q.workers_dsu += 20;
+!}
+
+Raised worker support for DSU.
+
+@dsu_worker_down
+go-to: dsu_support
+on-arrival: {!
+Q.workers_dsu -= 20;
+!}
+
+Lowered worker support for DSU.
+
+@dsu_old_middle_up
+go-to: dsu_support
+on-arrival: {!
+Q.old_middle_dsu += 20;
+!}
+
+Raised Old Middle Class support for DSU.
+
+@dsu_old_middle_down
+go-to: dsu_support
+on-arrival: {!
+Q.old_middle_dsu -= 20;
+!}
+
+Lowered Old Middle Class support for DSU.
+
+@dsu_new_middle_up
+go-to: dsu_support
+on-arrival: {!
+Q.new_middle_dsu += 20;
+!}
+
+Raised New Middle Class support for DSU.
+
+@dsu_new_middle_down
+go-to: dsu_support
+on-arrival: {!
+Q.new_middle_dsu -= 20;
+!}
+
+Lowered New Middle Class support for DSU.
+
+@dsu_rural_up
+go-to: dsu_support
+on-arrival: {!
+Q.rural_dsu += 20;
+!}
+
+Raised Rural support for DSU.
+
+@dsu_rural_down
+go-to: dsu_support
+on-arrival: {!
+Q.rural_dsu -= 20;
+!}
+
+Lowered Rural support for DSU.
+
+@dsu_unemployed_up
+go-to: dsu_support
+on-arrival: {!
+Q.unemployed_dsu += 20;
+!}
+
+Raised Unemployed support for DSU.
+
+@dsu_unemployed_down
+go-to: dsu_support
+on-arrival: {!
+Q.unemployed_dsu -= 20;
+!}
+
+Lowered Unemployed support for DSU.
+
+@dsu_catholics_up
+go-to: dsu_support
+on-arrival: {!
+Q.catholics_dsu += 20;
+!}
+
+Raised Catholics support for DSU.
+
+@dsu_catholics_down
+go-to: dsu_support
+on-arrival: {!
+Q.catholics_dsu -= 20;
+!}
+
+Lowered Catholics support for DSU.
+
+@nvf_support
+
+- @nvf_worker_up: Increase NVF Worker Support
+- @nvf_worker_down: Decrease NVF Worker Support
+- @nvf_old_middle_up: Increase NVF Old Middle Support
+- @nvf_old_middle_down: Decrease NVF Old Middle Support
+- @nvf_new_middle_up: Increase NVF New Middle Support
+- @nvf_new_middle_down: Decrease NVF New Middle Support
+- @nvf_rural_up: Increase NVF Rural Support
+- @nvf_rural_down: Decrease NVF Rural Support
+- @nvf_unemployed_up: Increase NVF Unemployed Support
+- @nvf_unemployed_down: Decrease NVF Unemployed Support
+- @nvf_catholics_up: Increase NVF Catholics Support
+- @nvf_catholics_down: Decrease NVF Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@nvf_worker_up
+go-to: nvf_support
+on-arrival: {!
+Q.workers_nvf += 20;
+!}
+
+Raised worker support for NVF.
+
+@nvf_worker_down
+go-to: nvf_support
+on-arrival: {!
+Q.workers_nvf -= 20;
+!}
+
+Lowered worker support for NVF.
+
+@nvf_old_middle_up
+go-to: nvf_support
+on-arrival: {!
+Q.nvf_middle_dsu += 20;
+!}
+
+Raised Old Middle Class support for NVF.
+
+@nvf_old_middle_down
+go-to: nvf_support
+on-arrival: {!
+Q.old_middle_nvf -= 20;
+!}
+
+Lowered Old Middle Class support for NVF.
+
+@nvf_new_middle_up
+go-to: nvf_support
+on-arrival: {!
+Q.new_middle_nvf += 20;
+!}
+
+Raised New Middle Class support for NVF.
+
+@nvf_new_middle_down
+go-to: nvf_support
+on-arrival: {!
+Q.new_middle_nvf -= 20;
+!}
+
+Lowered New Middle Class support for NVF.
+
+@nvf_rural_up
+go-to: nvf_support
+on-arrival: {!
+Q.rural_nvf += 20;
+!}
+
+Raised Rural support for NVF.
+
+@nvf_rural_down
+go-to: nvf_support
+on-arrival: {!
+Q.rural_nvf -= 20;
+!}
+
+Lowered Rural support for NVF.
+
+@nvf_unemployed_up
+go-to: nvf_support
+on-arrival: {!
+Q.unemployed_nvf += 20;
+!}
+
+Raised Unemployed support for NVF.
+
+@nvf_unemployed_down
+go-to: nvf_support
+on-arrival: {!
+Q.unemployed_nvf -= 20;
+!}
+
+Lowered Unemployed support for NVF.
+
+@nvf_catholics_up
+go-to: nvf_support
+on-arrival: {!
+Q.catholics_nvf += 20;
+!}
+
+Raised Catholics support for NVF.
+
+@nvf_catholics_down
+go-to: nvf_support
+on-arrival: {!
+Q.catholics_nvf -= 20;
+!}
+
+Lowered Catholics support for NVF.
+
+
+@other_support
+
+- @other_worker_up: Increase Other Worker Support
+- @other_worker_down: Decrease Other Worker Support
+- @other_old_middle_up: Increase Other Old Middle Support
+- @other_old_middle_down: Decrease Other Old Middle Support
+- @other_new_middle_up: Increase Other New Middle Support
+- @other_new_middle_down: Decrease Other New Middle Support
+- @other_rural_up: Increase Other Rural Support
+- @other_rural_down: Decrease Other Rural Support
+- @other_unemployed_up: Increase Other Unemployed Support
+- @other_unemployed_down: Decrease Other Unemployed Support
+- @other_catholics_up: Increase Other Catholics Support
+- @other_catholics_down: Decrease Other Catholics Support
+- @returnpartysupport: Return To Party Support Menu
+
+@other_worker_up
+go-to: other_support
+on-arrival: {!
+Q.workers_other += 20;
+!}
+
+Raised worker support for Other.
+
+@other_worker_down
+go-to: other_support
+on-arrival: {!
+Q.workers_other -= 20;
+!}
+
+Lowered worker support for Other.
+
+@other_old_middle_up
+go-to: other_support
+on-arrival: {!
+Q.old_middle_other += 20;
+!}
+
+Raised Old Middle Class support for Other.
+
+@other_old_middle_down
+go-to: other_support
+on-arrival: {!
+Q.old_middle_other -= 20;
+!}
+
+Lowered Old Middle Class support for Other.
+
+@other_new_middle_up
+go-to: other_support
+on-arrival: {!
+Q.new_middle_other += 20;
+!}
+
+Raised New Middle Class support for Other.
+
+@other_new_middle_down
+go-to: other_support
+on-arrival: {!
+Q.new_middle_other -= 20;
+!}
+
+Lowered New Middle Class support for Other.
+
+@other_rural_up
+go-to: other_support
+on-arrival: {!
+Q.rural_other += 20;
+!}
+
+Raised Rural support for Other.
+
+@other_rural_down
+go-to: other_support
+on-arrival: {!
+Q.rural_other -= 20;
+!}
+
+Lowered Rural support for Other.
+
+@other_unemployed_up
+go-to: other_support
+on-arrival: {!
+Q.unemployed_other += 20;
+!}
+
+Raised Unemployed support for Other.
+
+@other_unemployed_down
+go-to: other_support
+on-arrival: {!
+Q.unemployed_other -= 20;
+!}
+
+Lowered Unemployed support for Other.
+
+@other_catholics_up
+go-to: other_support
+on-arrival: {!
+Q.catholics_other += 20;
+!}
+
+Raised Catholics support for Other.
+
+@other_catholics_down
+go-to: other_support
+on-arrival: {!
+Q.catholics_other -= 20;
+!}
+
+Lowered Catholics support for Other.
