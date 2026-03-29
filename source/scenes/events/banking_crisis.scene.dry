@@ -1,7 +1,7 @@
 title: Banking Crisis
 subtitle: The collapse of the German banking system...
 new-page: true
-on-arrival: banking_crisis_seen = 1; workers_kpd += 2; workers_nsdap += 3; new_middle_nsdap += 5; old_middle_nsdap += 5; rural_nsdap += 3; unemployed += 3; crisis_urgency += 1; workers_spd -= 4 if spd_in_government; new_middle_spd -= 5 if spd_in_government; old_middle_spd -= 5 if spd_in_government; rural_spd -= 4 if spd_in_government; economic_growth -= 1.4; hindenburg_angry_bruning += 20; hindenburg_angry += 40; dnvp_angry += 1 if spd_toleration_right; banking_crisis_fallout_time = time + 6
+on-arrival: banking_crisis_seen = 1; workers_kpd += 2; unemployed_kpd += 5; workers_nsdap += 3 if chancellor != "Hitler"; new_middle_nsdap += 5 if chancellor != "Hitler"; old_middle_nsdap += 5 if chancellor != "Hitler"; rural_nsdap += 3 if chancellor != "Hitler"; unemployed += 3; crisis_urgency += 1; workers_spd -= 4 if spd_in_government; new_middle_spd -= 5 if spd_in_government; old_middle_spd -= 5 if spd_in_government; rural_spd -= 4 if spd_in_government; economic_growth -= 1.4; hindenburg_angry_bruning += 20; hindenburg_angry += 40; dnvp_angry += 1 if spd_toleration_right; banking_crisis_fallout_time = time + 6
 tags: event
 view-if: customs_union = 1 and banking_crisis_timer = 0
 max-visits: 1
@@ -16,7 +16,12 @@ This is a bourgeois dispute, but the costs will be borne by the proletariat. The
 
 - @nothing_to_do: There is nothing we can do.
 - @stabilization: Take action to stabilize the economy!
-- @austerity: Chancellor [+ chancellor +]'s response is, as always, more austerity.
+- @austerity_toleration: Chancellor Brüning's response is, as always, more austerity.
+- @austerity_majority: Chancellor Brüning's response is, as always, more austerity.
+- @austerity_snaps: Chancellor Brüning's response is, as always, more austerity.
+- @austerity_goerdeler: Chancellor Goerdeler's response is, as always, more austerity.
+- @austerity_hitler: Chancellor Hitler's response is more austerity.  With extra racism, of course.
+- @wirth_toleration: Chancellor Wirth's response is, reluctantly, more austerity.
 - @end_toleration: We are tired of austerity. End the toleration arrangement!
 
 @nothing_to_do
@@ -27,17 +32,51 @@ There is, essentially, nothing we can do.
 
 @stabilization
 view-if: spd_in_government = 1
-subtitle: -1 budget
-choose-if: budget >= 1
-on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); unemployed -= 2; inflation += 1 if inflation < 0; budget -= 1; workers_nsdap -= 3; economic_growth += 1;
+subtitle: -1 budget 
+unavailable-subtitle: We do not have the necessary budget. [? if budget <= 0 and budget >= -3 and wtb_adopted = 1: The <span style="color: #C0A054;">**DVP**</span> will call a pre-emptive vote of no confidence.?] [? if wtb_adopted = 0: Our own party doesn't support running a budget deficit.?] [? if budget <= 0 and economic_minister_party != "SPD": Our current coalition's economic minister refuses to support this course of action.?]
+choose-if: budget >= 1 or (wtb_adopted = 1 and budget >= -3 and (in_spd_majority = 1 or in_social_catholic_coalition = 1 or in_weimar_coalition = 1 or in_left_front = 1 or in_popular_front = 1) and economic_minister_party = "SPD")
+on-arrival: workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); old_middle_spd += 2*(1-dissent); rural_spd += 2*(1-dissent); unemployed -= 2; inflation += 1 if inflation < 0; budget -= 1; workers_nsdap -= 3; economic_growth += 1; coalition_dissent += 1 if budget <= 0 and (in_social_catholic_coalition = 1 or in_weimar_coalition = 1 or in_popular_front = 1)
 
 In the face of the banking crisis, we have taken emergency action to stabilize the economy by injecting money into the banking system. It might not be enough, but it temporarily staunches the bleeding.
 
-@austerity
-view-if: spd_in_government = 0
+@austerity_toleration
+view-if: spd_toleration = 1 and chancellor = "Brüning"
 on-arrival: welfare -= 1 if budget <= 0; workers_spd -= 3; workers_spd += 2 if budget > 0; workers_nsdap -= 2 if budget > 0; unemployed_spd -= 3; unemployed_spd += 2 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
 
 [? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
+
+@austerity_majority
+view-if: in_right_coalition = 1 or in_center_right_coalition = 1 or secret_mode = 1
+on-arrival: welfare -= 1 if budget <= 0; unemployed_spd += 3 if budget <= 0; workers_nsdap -= 2 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
+
+[? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
+[? if budget <= 0: As we are firmly in opposition to the current cabinet, we have free rein to rally against these austerity measures. ?]
+
+@austerity_snaps
+view-if: spd_in_government = 0 and spd_toleration = 0 and in_right_coalition = 0 and in_center_right_coalition = 0 and secret_mode = 0 and chancellor = "Brüning"
+on-arrival: welfare -= 1 if budget <= 0; workers_spd -= 1; workers_spd += 1 if budget > 0; workers_nsdap -= 2 if budget > 0; unemployed_spd -= 1; unemployed_spd += 1 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
+
+[? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
+
+@austerity_goerdeler
+view-if: chancellor = "Goerdeler"
+on-arrival: welfare -= 1 if budget <= 0; unemployed_spd += 3 if budget <= 0; workers_nsdap -= 2 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
+
+[? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
+[? if budget <= 0: As we are firmly in opposition to the current cabinet, we have free rein to rally against these austerity measures. ?]
+
+@austerity_hitler
+view-if: chancellor = "Hitler"
+on-arrival: welfare -= 1 if budget <= 0; unemployed_spd += 3 if budget <= 0; workers_nsdap -= 5; workers_nsdap += 4 if budget > 0; unemployed_nsdap -= 5; unemployed_nsdap += 4 if budget > 0; pro_republic -= 5; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
+
+[? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare. He blames the crisis on a "Judeo-Bolshevik plot" and argues his hand has been forced here, but nevertheless, this move has damaged his credibility as an anti-austerity figure. ?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?] 
+[? if budget <= 0: As we are firmly in opposition to the current cabinet, we have free rein to rally against these austerity measures. ?]
+
+@austerity_wirth
+view-if: spd_toleration = 1 and chancellor = "Wirth"
+on-arrival: welfare -= 1 if budget <= 0; workers_spd -= 3; workers_spd += 2 if budget > 0; workers_nsdap -= 2 if budget > 0; unemployed_spd -= 3; unemployed_spd += 2 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
+
+[? if budget <= 0: Under pressure from the right wing of the coalition, chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Thankfully, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
 
 @end_toleration
 view-if: spd_toleration = 1
