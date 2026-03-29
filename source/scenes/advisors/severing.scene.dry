@@ -19,7 +19,7 @@ subtitle: Severing has influence over Prussian politics.
 choose-if: advisor_action_timer <= 0 and spd_prussia = 1
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if not spd_prussia : The <span style="color: #c00000;">SPD</span> is not in control of Prussia. ?]
 on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
-go-to: prussian_affairs if in_grand_coalition_prussia == 0; prussian_affairs_dvp if in_grand_coalition_prussia == 1; prussian_affairs_left if in_popular_front_prussia or in_left_front_prussia
+go-to: prussian_affairs if in_grand_coalition_prussia == 0 and not in_popular_front_prussia and not in_left_front_prussia; prussian_affairs_dvp if in_grand_coalition_prussia == 1; prussian_affairs_left if in_popular_front_prussia or in_left_front_prussia
 
 
 @police_affairs
