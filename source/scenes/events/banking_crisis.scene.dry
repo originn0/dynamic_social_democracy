@@ -21,7 +21,7 @@ This is a bourgeois dispute, but the costs will be borne by the proletariat. The
 - @austerity_snaps: Chancellor Brüning's response is, as always, more austerity.
 - @austerity_goerdeler: Chancellor Goerdeler's response is, as always, more austerity.
 - @austerity_hitler: Chancellor Hitler's response is more austerity.  With extra racism, of course.
-- @wirth_toleration: Chancellor Wirth's response is, reluctantly, more austerity.
+- @austerity_wirth: Chancellor Wirth's response is, reluctantly, more austerity.
 - @end_toleration: We are tired of austerity. End the toleration arrangement!
 
 @nothing_to_do
@@ -46,7 +46,7 @@ on-arrival: welfare -= 1 if budget <= 0; workers_spd -= 3; workers_spd += 2 if b
 [? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
 
 @austerity_majority
-view-if: in_right_coalition = 1 or in_center_right_coalition = 1 or secret_mode = 1
+view-if: spd_in_government = 0 and spd_toleration = 0 and (in_right_coalition = 1 or in_center_right_coalition = 1 or in_bourgeois_coalition = 1)
 on-arrival: welfare -= 1 if budget <= 0; unemployed_spd += 3 if budget <= 0; workers_nsdap -= 2 if budget > 0; pro_republic -= 3; pro_republic += 2 if budget > 0; economic_growth -= 1; economic_growth += 0.4 if budget > 0; unemployed -= 1 if budget > 0; inflation += 0.8 if inflation < 0 and budget > 0; budget -= 1 if budget > 0
 
 [? if budget <= 0: Chancellor [+ chancellor +] responds to the banking crisis with more cuts to welfare.?][? if budget > 0: Surprisingly, Chancellor [+ chancellor +] has refrained from cutting social spending, owing to the budget surplus, and has taken measures to stabilize the economy and banking system. ?]
