@@ -457,8 +457,58 @@ We are not alone. [? if spd_alone: Well, we actually are, never mind. ?]
 
 [? if not spd_alone: The <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition parties are nominally against such unconstitutional acts as well. While they may not have an armed self-defense militia, they have several hundred thousand employees in blue-collar and white-collar jobs, and could completely cripple the economy if they act alongside the <span style="color: #c00000;">socialist</span> Free Unions. ?]
 
+- @spd_win
 - @spd_med
 - @spd_lose
+
+@spd_win
+title: The government is paralyzed!
+on-arrival: {!
+Q.schleicher_spd_influence = 0;
+Q.schleicher_spd_r = 0;
+Q.schleicher_spd_support = 0;
+Q.schleicher_approval -= 4;
+Q.republicans_schleicher_bonus -= 4;
+Q.workers_schleicher_bonus -= 6;
+Q.industrialists_schleicher_bonus -= 2;
+Q.nationalists_schleicher_bonus -= 2;
+
+Q.hindenburg_schleicher_r -= 2;
+Q.schleicher_strength -= 2;
+Q.papen_strength += 1;
+
+Q.workers_spd += 8;
+Q.unemployed_spd += 6;
+Q.new_middle_spd += 2;
+Q.old_middle_spd += 2;
+Q.rural_spd += 2;
+Q.workers_kpd += 2;
+Q.unemployed_kpd += 2;
+
+Q.workers_dnef -= 6;
+Q.new_middle_dnef -= 6;
+Q.old_middle_dnef -= 6;
+Q.rural_dnef -= 6;
+Q.unemployed_dnef -= 6;
+Q.total_dnef_bonus -= 6;
+
+Q.rb_strength *= 1.2;
+Q.rb_militancy *= 0.8;
+Q.rfb_strength *= 1.4;
+Q.rfb_militancy *= 1.4;
+
+Q.reformist_dissent -= 20;
+Q.labor_dissent -= 20;
+!}
+view-if: spd_win
+
+The mass general strike has crippled the German economy, bringing the country to a complete standstill. With the Reichsbanner strong and organized, the government cannot simply crush the hundreds of thousands of <span style="color: #c00000;">socialist</span> protesters flooding the streets.
+
+Meanwhile, in defiance of the indefinite adjournment of the Reichstag, the <span style="color: #000000;">rep</span><span style="color: #DD0000;">ubl</span><span style="color: #FFCC00;">ican</span> parties have banded together to unofficially reconvene the chamber at a separate location, openly challenging federal authority.
+
+The next few days will be chaotic—and decisive for Germany as a whole.
+
+- @z_break
 
 @spd_med
 title: Schleicher attempts to negotiate with us.
