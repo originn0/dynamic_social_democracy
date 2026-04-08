@@ -1,6 +1,6 @@
 # Work in Progress
 title: Saxon Landtag Election
-view-if: ((saxony_most_recent <= time - 48 and not saxony_1933_seen) or (saxony_1933_trigger_time == time and saxony_1933_seen_time != time)) and not rubicon
+view-if: ((saxony_most_recent <= time - 48 and not saxony_1933_seen) or (saxony_1933_trigger_time == time and saxony_1933_seen_time != time)) and not rubicon and not no_fun
 # I will add Saxon elections for Rubicon as well, if I can figure out how to navigate Rubicon stuff better.
 new-page: true
 tags: event
@@ -21,9 +21,20 @@ on-display: {!
 
 = Elections, [+ month : month +] [+ year +]
 
+# Reminder of possible coalition outcomes from 1929/1930 Saxon elections:
+# Heldt toleration, Schieck toleration, Heldt groko, 1930 Groko, Successful United Left, United Left Reichsexekution, SPD majority, Schieck majority, Nazis enter
+
 The Saxon state elections are to be held now.
 
 - @saxony: May we do our best...
+- @nuh_uh
+
+@nuh_uh
+title: I hate game flavor!  Leave it to the local party to deal with.
+subtitle: Disables this and future local elections.
+on-arrival: no_fun = 1
+
+What a killjoy you are.
 
 @saxony
 on-arrival: {!
@@ -81,6 +92,7 @@ if (Q.workers_spd_normalized >= 70) saxony_adjustment_factors.spd += 0.1;
 if (Q.unemployed_spd_normalized >= 50) saxony_adjustment_factors.spd += 0.1;
 if (Q.works_program > 1) saxony_adjustment_factors.spd += 0.1;
 Q.spd_saxony_elections_vote = Q.spd_votes*saxony_adjustment_factors.spd;
+if (Q.workers_sapd_normalized >= 10) saxony_adjustment_factors.sapd += 0.1;
 Q.sapd_saxony_elections_vote = Q.sapd_votes*saxony_adjustment_factors.sapd;
 if (Q.unemployed >= 15) saxony_adjustment_factors.kpd += 0.1;
 Q.kpd_saxony_elections_vote = Q.kpd_votes*saxony_adjustment_factors.kpd;
@@ -107,6 +119,7 @@ if (Q.dnvp_ideology == "Moderate") saxony_adjustment_factors.dnvp += 0.3;
 if (Q.dnvp_leader == "Lambach") saxony_adjustment_factors.dnvp += 0.2;
 if (Q.dnvp_leader == "Schiele") saxony_adjustment_factors.dnvp -= 0.3;
 Q.dnvp_saxony_elections_vote = Q.dnvp_votes*saxony_adjustment_factors.dnvp;
+if (Q.workers_nsdap_normalized >= 20) saxony_adjustment.factors.nsdap += 0.1;
 Q.nsdap_saxony_elections_vote = Q.nsdap_votes*saxony_adjustment_factors.nsdap;
 if (Q.stolper_program_adopted) saxony_adjustment_factors.other -= 0.1;
 if (Q.dstp_maintained) saxony_adjustment_factors.other -= 0.3;
@@ -238,9 +251,9 @@ if (Q.total_r_saxony > 0) {
 let spd_share = 0.98;
 let aspd_share = 0.02;
 
-if (Q.reformists_resign) aspd_share += 0.05;
 if (Q.unions_independent) aspd_share += 0.05;
 if (Q.aspd_dead) aspd_share = 0;
+if (Q.reformists_resign) aspd_share += 0.05;
 
 let total_spd_share = aspd_share + spd_share;
 
@@ -422,6 +435,8 @@ Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.aspd_r_saxony
 if (Q.dnvp_ideology == "Moderate") Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.aspd_r_saxony + Q.z_r_saxony + Q.ddp_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony).toFixed(1));
 Q.far_right_coalition_saxony = parseFloat((Q.z_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony + Q.kvp_r_saxony + Q.dnf_r_saxony + Q.nsdap_r_saxony - Q.vnr_r_saxony - Q.csvd_r_saxony).toFixed(1));
 Q.spd_coalition_saxony = parseFloat((Q.aspd_r_saxony + Q.spd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony).toFixed(1));
+Q.true_far_right_coalition_saxony = parseFloat((Q.dnf_r_saxony + Q.nsdap_r_saxony).toFixed(1));
+if (Q.dnvp_ideology == "Radical") Q.true_far_right_coalition_saxony = parseFloat((Q.dnvp_r_saxony + Q.nsdap_r_saxony).toFixed(1));
 
 on-display: {!
 data = [{
@@ -641,6 +656,11 @@ go-to: saxony_coalition_menu
 {!</table>!}
 <hr id="read-marker">
 
+[? if aspd_dead and reformists_resign: Despite the <span style="color: #fe9e00;">**ASPD**</span>'s reunion with the <span style="color: #c00000;">**SPD**</span> after the Landtag election 4 years ago, our party's leftist direction at the federal level has driven them to split off again. ?]
+
+<hr id="read-marker">
+
+
 @saxony_coalition_menu
 on-arrival: {!
 let dvp_toleration_threshold = 30;
@@ -705,9 +725,121 @@ if ((Q.dvp_relation < (dvp_toleration_threshold + 5) && !Q.lvp_formed) || (Q.lvp
 }
 !}
 
+# Reminder of possible coalition outcomes from 1929/1930 Saxon elections:
+# Heldt toleration, Schieck toleration, Heldt groko, 1930 Groko, Successful United Left, United Left Reichsexekution, SPD majority, Schieck majority, Nazis enter
+
+- @continue_toleration_saxony
 - @true_bourgeois_coalition_saxony
 - @bourgeois_coalition_saxony
 - @grand_coalition_saxony
 - @united_left_saxony
 - @no_majority
 - @spd_majority
+- @soclib_saxony
+- @soclib_saxony_cvp
+- @far_right_coalition_saxony
+- @far_left_saxony
+
+# Coalitions are still a work in progress for sure.  Initial ones down here are just the 1930 text repeated, plus a little more.
+
+
+
+@continue_toleration_saxony
+title: We will continue our toleration agreement with the incumbent government.
+choose-if: saxony_toleration and toleration_possible_saxony and mega_bourgeois_coalition_saxony >= 50
+
+@toleration_saxony
+title: We will enter a toleration agreement with the incumbent government.
+choose-if: mega_bourgeois_coalition_saxony >= 50
+unavailable-subtitle: Our votes won't matter, as the anti-democratic parties hold a majority.
+on-arrival: saxony_toleration = 1; pro_republic += 2
+
+Together with the bourgeois parties, we've successfully blocked the <span style="color: #7A3C00;">**NSDAP**</span>'s vote for new elections. This marks one of the first uses of toleration to prevent the <span style="color: #7A3C00;">Nazis</span> from gaining more influence.
+
+The Schieck Cabinet will remain unchanged, composed only of the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span> and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
+
+@far_right_coalition_saxony
+title: We will enter a toleration agreement with the incumbent government.
+view-if: saxony_no_majority_2
+choose-if: mega_bourgeois_coalition_saxony < 50 and far_right_coalition_saxony >= 50
+unavailable-subtitle: Even when including the <span style="color: #7A3C00;">NSDAP</span>, the bourgeois government can't find a majority.
+on-arrival: saxony_nsdap = 1; nsdap_left += 5; hitler_explode = time + 36; data_miner_detected = 1; workers_nsdap += 6; workers_kpd -= 3; workers_spd -= 2; unemployed_nsdap += 6; unemployed_kpd -= 3; unemployed_spd -= 2; new_middle_nsdap += 4; new_middle_ddp -= 1; new_middle_lvp -= 1; new_middle_spd -= 3; sa_strength += 100; sa_militancy += 0.05; prussian_police_loyalty -= 0.05; pro_republic -= 5
+face-image: img/portraits/strasser.jpg
+
+After a failed negotiation previously, the bourgeois parties are now willing to offer a ministerial position to the <span style="color: #7A3C00;">**NSDAP**</span> in exchange for their support. Gregor Strasser, leader of the <span style="color: #7A3C00;">**NSDAP**</span>'s left wing, has been appointed as the new Interior Minister, a role he had been denied in the past due to his more radical anti-capitalist views.
+
+Saxony, once a stronghold of <span style="color: #c00000;">socialism</span> and democracy, is now being dismantled by the <span style="color: #7A3C00;">Nazis</span>. The "democratic" aspect more so, as Strasser has pushed for the cabinet to adopt pro-worker and anti-capitalist policies in an attempt to win their votes. The state police, now largely comprised of <span style="color: #7A3C00;">Nazis</span>, are actively suppressing <span style="color: #c00000;">socialist</span> and <span style="color: #700000;">communist</span> organizations and meetings. Socialist newspapers critical of the government have been banned, and civil servants with suspected <span style="color: #c00000;">socialist</span> or <span style="color: #D3C24D;">democratic</span> leanings are being purged in large numbers.
+
+However, there is a real possibility that Strasser could be removed from his position by his coalition partners, as they were never a huge fan of him.
+
+@true_bourgeois_coalition_saxony
+title: The Schieck government has garnered a majority to rule via parliament.
+subtitle: The bourgeois parties have survived the onslaught from the <span style="color: #7A3C00;">Nazis</span>, at least for now.
+view-if: true_bourgeois_coalition_saxony >= 50
+on-arrival: saxony_right_2 = 1; pro_republic += 2; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_other += 2 if dnvp_ideology == "Radical"; old_middle_other += 2 if dnvp_ideology == "Radical"; rural_dnvp += 2 if dnvp_ideology == "Moderate"; old_middle_dnvp += 2 if dnvp_ideology == "Moderate"
+
+Surprisingly, the bourgeois parties have held their ground, 
+
+The <span style="color: #7A3C00;">**NSDAP**</span> is heavily demoralized by this defeat, as they are relegated to the powerless opposition role. They had expected the national political climate to benefit them, and to allow them to influence government.
+
+@grand_coalition_saxony
+title: A [? if lvp_formed and stegerwald_path: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed or not stegerwald_path: Grand?] Coalition is formed!
+subtitle: We have somehow reconciled with the bourgeois parties, that they're willing to govern with us again.
+unavailable-subtitle: [? if z_relation < 50 and stegerwald_path: We need higher relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. ?][? if dvp_toleration_threshold_fail_saxony: We need higher relations with the [? if not lvp_formed: <span style="color: #C0A054;">DVP</span>?][? if lvp_formed: <span style="color: #FFCC00;">LVP</span>?]. ?][? if left_strength >= 20: Our Saxon organization is too left-wing to even consider this as an option—after all, their stubborn refusal in the past led to the expulsion of the majority of the parliamentary faction and the subsequent formation of the <span style="color: #fe9e00;">ASPD</span>. ?]
+view-if: spd_coalition_saxony >= 50
+choose-if: spd_coalition_possible_saxony and left_strength < 20
+on-arrival: saxony_spd = 1; saxony_groko = 1; workers_nsdap -= 3; unemployed_nsdap -= 3; workers_spd += 3; unemployed_spd += 3; workers_nsdap -= 3; unemployed_nsdap -= 3; z_relation += 3; ddp_relation += 3; lvp_relation += 3; dvp_relation += 5; pro_republic += 3; reformist_dissent -= 15; reformist_strength += 10; aspd_dead = 1
+
+Somehow, the bourgeois parties are willing to form a [? if lvp_formed and stegerwald_path: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed or not stegerwald_path: Grand?] Coalition with us, rather than continuing their current government with Max Heldt and the right-wing parties.
+
+With the <span style="color: #fe9e00;">**ASPD**</span> (whose Saxon chapter is notably more sane) now convinced of our reformist path, they have rejoined the Saxon <span style="color: #c00000;">**SPD**</span>! This development has weakened the <span style="color: #7A3C00;">**NSDAP**</span>, who are now relegated to the powerless opposition.
+
+@united_left_saxony
+title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>.
+subtitle: History will repeat itself.
+view-if: left_coalition_saxony >= 50 and (kpd_relation >= 35 and kpd_leader == "Conciliators") or (kpd_relation >= 55 and kpd_leader != "Conciliators")
+on-arrival: red_saxony = 1; z_relation -= 7; ddp_relation -= 7; dvp_relation -= 7; lvp_relation -= 7; coup_progress += 5; hindenburg_angry += 60; rfb_militancy += 0.08; rfb_strength += 150; sa_strength += 80; sh_strength += 80; strife += 1; workers_spd += 5; workers_kpd += 5; unemployed_spd += 5; new_middle_spd -= 5; old_middle_spd -= 5; rural_spd -= 5; communist_coalition += 3; kpd_relation += 15
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/redthuringia.png";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+
+Surprisingly, despite reluctance on both sides due to fears that the <span style="color: #808080;">reactionary</span> Hindenburg will order a <i>Reichsexekution</i> if a coalition were to form, <span style="color: #c00000;">Red</span> Saxony is restored! 
+
+As one of the most left-wing and industrial states in Germany, we will use our leverage to implement comprehensive reforms and transform Saxony into a stronghold of <span style="color: #c00000;">socialism</span>. Hindenburg’s patience is especially thin. Tread carefully.
+
+@no_majority
+title: No majority can be found!
+subtitle: [? if true_bourgeois_coalition_saxony < 50 and spd_coalition_saxony < 50: All possible coalitions lack a majority. ?][? if spd_coalition_saxony >= 50 and not spd_coalition_possible_saxony: The bourgeois parties are antagonistic to our Saxon organization. ?][? if spd_coalition_saxony >= 50 and left_strength >= 20: Our party itself rejects the possibility of a majority coalition with the liberals. ?]
+view-if: true_bourgeois_coalition_saxony < 50 and (spd_coalition_saxony < 50 or (not spd_coalition_possible_saxony or left_strength >= 20))
+
+With the bourgeois parties unable to secure a majority, and the <span style="color: #7A3C00;">**NSDAP**</span> refusing to enter government, the Landtag is in a deadlock. The Schieck Cabinet remains in power as a caretaker government, but a simple majority vote can still dissolve the Landtag, making toleration a necessity.
+
+[? if mega_bourgeois_coalition_saxony >= 50: The coalition of parties in between the <span style="color: #700000;">**KPD**</span> and the anti-democratic Right constitute a majority, but it is our decision whether or not to tolerate the incumbent government, to prevent new elections from being called. ?][? if mega_bourgeois_coalition_saxony < 50: The coalition of parties in between the <span style="color: #700000;">**KPD**</span> and the anti-democratic Right don't even constitute a majority, making any majority government impossible. ?]
+
+- @toleration_saxony
+- @no_majority_2
+
+@no_majority_2
+title: A majority still can't be found!
+subtitle: [? if mega_bourgeois_coalition_saxony < 50: Even with our votes, it is still joever for the coalition. ?][? if mega_bourgeois_coalition_saxony >= 50: We will refuse to tolerate the bourgeois government, forcing new elections. ?]
+view-if: not saxony_no_majority_2 or far_right_coalition_saxony < 50
+on-arrival: saxony_election_3_trigger_time = time + 3; saxony_no_majority_2 = 1; saxony_no_majority = 1 if not saxony_no_majority; saxony_no_majority += 1 if saxony_no_majority; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; unemployed_nsdap += 3; pro_republic -= 3; new_middle_spd -= 2 if toleration_possible_saxony; old_middle_spd -= 2 if toleration_possible_saxony; rural_spd -= 1 if toleration_possible_saxony; reformist_dissent += 10 if toleration_possible_saxony; left_dissent -= 5 if toleration_possible_saxony
+
+With no viable alternatives, the Landtag faces dissolution, triggering new elections—an opportunity the <span style="color: #7A3C00;">**NSDAP**</span> hopes to exploit by capitalizing on political instability and the perceived failure of parliamentary democracy.
+
+@spd_majority
+title: Form an SPD only goverment!
+subtitle: Sweat...
+view-if: spd_r_saxony >= 50 
+on-arrival: saxony_spd = 1; reformist_dissent -= 5; left_dissent -= 30; left_strength += 10; center_dissent -= 10; labor_dissent -= 10; aspd_dead = 1; workers_spd += 7; workers_kpd -= 4; new_middle_spd += 3; old_middle_spd += 2; unemployed_spd += 4; unemployed_nsdap -=3; pro_republic += 5
+
+Unexpectedly, we've found ourselves controlling a majority of the Saxony landtag and being able to form a goverment of just the <span style="color: #c00000;">**SPD**</span>! It is unclear how the bourgeois and <span style="color: #808080;">reactionaries</span> will react to a <span style="color: #c00000;">Red</span> Saxony but without the communists... [? if aspd_share > 0: The ASPD seeing as we no longer require on coalition negoations to form goverment has decided to join us. ?] 
