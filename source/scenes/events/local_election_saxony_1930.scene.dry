@@ -2,7 +2,7 @@ title: Saxony Landtag Election
 view-if: (year == 1930 and month >= 6 and not saxony_election_1930_seen and saxony_1930_trigger) or (saxony_election_3_trigger_time == time and saxony_election_seen_2_time != time)
 new-page: true
 tags: event
-on-arrival: saxony_election_1930_seen = 1; saxony_election_seen_2_time = time
+on-arrival: saxony_election_1930_seen = 1; saxony_election_seen_2_time = time; saxony_most_recent = time
 priority: 2
 on-display: {!  
     var cardEl = document.createElement('div');  
