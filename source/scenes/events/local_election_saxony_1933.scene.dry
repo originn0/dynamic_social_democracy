@@ -432,6 +432,8 @@ if (Q.dnvp_ideology == "Moderate") Q.mega_bourgeois_coalition_saxony = parseFloa
 Q.far_right_coalition_saxony = parseFloat((Q.z_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony + Q.kvp_r_saxony + Q.dnf_r_saxony + Q.nsdap_r_saxony - Q.vnr_r_saxony - Q.csvd_r_saxony).toFixed(1));
 Q.spd_coalition_saxony = parseFloat((Q.aspd_r_saxony + Q.spd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony).toFixed(1));
 
+!}
+
 on-display: {!
 data = [{
     "id": "kpd",
@@ -601,8 +603,9 @@ if (window && d3) {
     parliament.exit.toCenter(false).bigToSmall(true);
     d3.select("#saxony_landtag").datum(data).call(parliament);
 };
-
+!}
 go-to: saxony_coalition_menu
+
 
 **Saxony results:**
 
@@ -649,15 +652,19 @@ go-to: saxony_coalition_menu
 {!<tr><td><div class="box" style='background-color:#7A3C00'> </div> !} NSDAP: {!</td><td>!} [+ nsdap_saxony_elections_vote +]% {!</td><td>!} [+ nsdap_r_saxony +]%  {!</td></tr>!}
 {!</table>!}
 <hr id="read-marker">
-
 [? if aspd_dead and reformists_resign: Despite the <span style="color: #fe9e00;">**ASPD**</span>'s reunion with the <span style="color: #c00000;">**SPD**</span> after the Landtag election 4 years ago, our party's leftist direction at the federal level has driven them to split off again. ?]
-
 [? if nsdap_r_saxony > (nsdap_r_saxony_old + 5) and not saxony_nsdap: The <span style="color: #7A3C00;">**Nazis**</span> have made significant gains relative to last election.  This may make a stable governing arrangement more difficult this time around. ?]
-
 [? if saxony_nsdap: Following Gregor Stasser's anti-capitalist antics of the previous coalition, the bourgeois parties are quite reluctant to include the <span style="color: #7A3C00;">**Nazis**</span> in government again. ?]
-
 <hr id="read-marker">
+United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_saxony +]% 
 
+Grand Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #fe9e00;">**ASPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_saxony:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_saxony +]% 
+
+[? if dnvp_ideology == "Moderate": Bourgeois Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
+
+[? if dnvp_ideology == "Radical": Bourgeois Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?][? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?]): [+ true_bourgeois_coalition_saxony +]% ?]
+
+[? if saxony_no_majority_2: Right-wing Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span>?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #3E88B3;">**DNVP**</span> + <span style="color: #7A3C00;">**NSDAP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
 
 @saxony_coalition_menu
 on-arrival: {!
