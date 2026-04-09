@@ -1,7 +1,5 @@
-# Work in Progress
 title: Saxon Landtag Election
 view-if: (saxony_most_recent <= time - 48 or (saxony_1933_trigger_time == time and saxony_1933_seen_time != time)) and not rubicon
-# I will try to add Saxon elections for Rubicon at some point as well.
 new-page: true
 tags: event
 on-arrival: saxony_most_recent = time; saxony_1933_seen_time = time
@@ -21,8 +19,6 @@ on-display: {!
 
 = Elections, [+ month : month +] [+ year +]
 
-# Reminder of possible coalition outcomes from 1929/1930 Saxon elections:
-# Heldt toleration, Schieck toleration, Heldt groko, 1930 Groko, Successful United Left, United Left Reichsexekution, SPD majority, Schieck majority, Nazis enter
 
 The Saxon state elections are to be held now.
 
@@ -431,7 +427,6 @@ Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.aspd_r_saxony
 if (Q.dnvp_ideology == "Moderate") Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.aspd_r_saxony + Q.z_r_saxony + Q.ddp_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony).toFixed(1));
 Q.far_right_coalition_saxony = parseFloat((Q.z_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony + Q.kvp_r_saxony + Q.dnf_r_saxony + Q.nsdap_r_saxony - Q.vnr_r_saxony - Q.csvd_r_saxony).toFixed(1));
 Q.spd_coalition_saxony = parseFloat((Q.aspd_r_saxony + Q.spd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony).toFixed(1));
-
 !}
 
 on-display: {!
