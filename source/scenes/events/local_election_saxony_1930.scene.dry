@@ -2,7 +2,7 @@ title: Saxony Landtag Election
 view-if: (year == 1930 and month >= 6 and not saxony_election_1930_seen and saxony_1930_trigger) or (saxony_election_3_trigger_time == time and saxony_election_seen_2_time != time)
 new-page: true
 tags: event
-on-arrival: saxony_election_1930_seen = 1; saxony_election_seen_2_time = time
+on-arrival: saxony_election_1930_seen = 1; saxony_election_seen_2_time = time; saxony_most_recent = time
 priority: 2
 on-display: {!  
     var cardEl = document.createElement('div');  
@@ -790,9 +790,9 @@ With the bourgeois parties unable to secure a majority, and the <span style="col
 
 @no_majority_2
 title: A majority still can't be found!
-subtitle: [? if mega_bourgeois_coalition_saxony < 50: Even with our votes, it is still joever for the coalition. ?][? if mega_bourgeois_coalition_saxony >= 5: We will refuse to tolerate the bourgeois government, forcing new elections. ?]
+subtitle: [? if mega_bourgeois_coalition_saxony < 50: Even with our votes, it is still joever for the coalition. ?][? if mega_bourgeois_coalition_saxony >= 50: We will refuse to tolerate the bourgeois government, forcing new elections. ?]
 view-if: not saxony_no_majority_2 or far_right_coalition_saxony < 50
-on-arrival: saxony_election_3_trigger_time = time + 3; saxony_no_majority_2 = 1; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; unemployed_nsdap += 3; pro_republic -= 3; new_middle_spd -= 2 if toleration_possible_saxony; old_middle_spd -= 2 if toleration_possible_saxony; rural_spd -= 1 if toleration_possible_saxony; reformist_dissent += 10 if toleration_possible_saxony; left_dissent -= 5 if toleration_possible_saxony
+on-arrival: saxony_election_3_trigger_time = time + 3; saxony_no_majority_2 = 1; saxony_no_majority = 1 if not saxony_no_majority; saxony_no_majority += 1 if saxony_no_majority; new_middle_nsdap += 3; old_middle_nsdap += 3; rural_nsdap += 3; unemployed_nsdap += 3; pro_republic -= 3; new_middle_spd -= 2 if toleration_possible_saxony; old_middle_spd -= 2 if toleration_possible_saxony; rural_spd -= 1 if toleration_possible_saxony; reformist_dissent += 10 if toleration_possible_saxony; left_dissent -= 5 if toleration_possible_saxony
 
 With no viable alternatives, the Landtag faces dissolution, triggering new elections—an opportunity the <span style="color: #7A3C00;">**NSDAP**</span> hopes to exploit by capitalizing on political instability and the perceived failure of parliamentary democracy.
 

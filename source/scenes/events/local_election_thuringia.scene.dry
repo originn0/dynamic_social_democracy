@@ -626,7 +626,7 @@ In an effort to avoid this, they are more open to negotiating a toleration agree
 @no_majority_2
 title: A majority still can't be found!
 subtitle: [? if not toleration_possible: This is getting ridiculous. ?][? if toleration_possible: We will refuse to tolerate the bourgeois government, forcing new elections. ?]
-on-arrival: thuringia_election_2_trigger_time = time + 3; thuringia_no_majority = 1; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 2; unemployed_nsdap += 4; pro_republic -= 3; new_middle_spd -= 3 if toleration_possible; old_middle_spd -= 3 if toleration_possible; rural_spd -= 2 if toleration_possible
+on-arrival: thuringia_election_2_trigger_time = time + 3; thuringia_no_majority = 1 if not thuringia_no_majority; thuringia_no_majority += 1 if thuringia_no_majority; new_middle_nsdap += 4; old_middle_nsdap += 4; rural_nsdap += 2; unemployed_nsdap += 4; pro_republic -= 3; new_middle_spd -= 3 if toleration_possible; old_middle_spd -= 3 if toleration_possible; rural_spd -= 2 if toleration_possible
 
 [? if not toleration_possible: The bourgeois parties remain unwilling to accept our offer of toleration. [? if far_right_coalition_thuringia + ddp_r_thuringia >= 50: One option the incumbent coalition has considered is including both the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> and the <span style="color: #7A3C00;">**NSDAP**</span>, but for obvious reasons, both parties have vetoed this proposal. ?]?][? if toleration_possible: By refusing to enter any toleration agreement, and with the bourgeois parties unwilling to let us lead the government, no majority can be found. As a result, we have shouldered much of the blame for the deadlock and are likely to suffer in the next elections. ?]
 
