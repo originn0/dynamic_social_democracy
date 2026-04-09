@@ -3,7 +3,6 @@ view-if: (saxony_most_recent <= time - 48 or (saxony_1933_trigger_time == time a
 new-page: true
 tags: event
 on-arrival: saxony_most_recent = time; saxony_1933_seen_time = time
-
 on-display: {!  
     var cardEl = document.createElement('div');  
     cardEl.className = "face-figure2";  
@@ -428,7 +427,6 @@ if (Q.dnvp_ideology == "Moderate") Q.mega_bourgeois_coalition_saxony = parseFloa
 Q.far_right_coalition_saxony = parseFloat((Q.z_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony + Q.kvp_r_saxony + Q.dnf_r_saxony + Q.nsdap_r_saxony - Q.vnr_r_saxony - Q.csvd_r_saxony).toFixed(1));
 Q.spd_coalition_saxony = parseFloat((Q.aspd_r_saxony + Q.spd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony).toFixed(1));
 !}
-
 on-display: {!
 data = [{
     "id": "kpd",
