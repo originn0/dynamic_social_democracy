@@ -672,13 +672,11 @@ if (Q.dvp_leader == "Dingeldey") {
 } else if (Q.dvp_leader == "Curtius") {
     dvp_toleration_threshold -= 10;
 }
-
 if (Q.dvp_ideology != "Left") {
     dvp_toleration_threshold += 10;
 } else if (Q.dvp_ideology == "Left") {
     dvp_toleration_threshold -= 10;
 }
-
 if (Q.lvp_leader == "Dingeldey") {
     lvp_toleration_threshold += 10;
 } else if (Q.lvp_leader == "Dieckmann") {
@@ -694,7 +692,6 @@ if (Q.lvp_leader == "Dingeldey") {
 } else if (Q.lvp_leader == "Dietrich") {
     lvp_toleration threshold -= 5;
 }
-
 if (Q.lvp_ideology != "Left") {
     lvp_toleration_threshold += 5;
 } else if (Q.lvp_ideology == "Left") {
@@ -708,7 +705,6 @@ if (Q.saxony_groko) {
     lvp_toleration_threshold -= 5;
     dvp_toleration_threshold -= 5;
 }
-
 if (!Q.dvp_exist || (Q.dvp_relation >= dvp_toleration_threshold && !Q.lvp_formed) || (Q.lvp_relation >= lvp_toleration_threshold && Q.lvp_formed)) {
     Q.toleration_possible_saxony = 1;
 } else {
