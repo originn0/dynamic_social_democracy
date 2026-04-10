@@ -80,6 +80,7 @@ if (Q.workers_spd_normalized >= 70) saxony_adjustment_factors.spd += 0.1;
 if (Q.unemployed_spd_normalized >= 50) saxony_adjustment_factors.spd += 0.1;
 if (Q.works_program > 1) saxony_adjustment_factors.spd += 0.1;
 if (Q.saxony_joever && Q.red_saxony) saxony_adjustment_factors.spd += 0.1;
+if (Q.unemployed >= 15) saxony_adjustment_factors.spd -= 0.1;
 Q.spd_saxony_elections_vote = Q.spd_votes*saxony_adjustment_factors.spd;
 if (Q.saxony_joever && Q.red_saxony) saxony_adjustment_factors.sapd += 0.1;
 if (Q.workers_sapd_normalized >= 10) saxony_adjustment_factors.sapd += 0.1;
@@ -90,6 +91,7 @@ Q.kpd_saxony_elections_vote = Q.kpd_votes*saxony_adjustment_factors.kpd;
 if (Q.stolper_program_adopted) saxony_adjustment_factors.ddp += 0.2;
 if (Q.dstp_maintained) saxony_adjustment_factors.ddp += 0.3;
 if (Q.ddp_leader == "Dietrich") saxony_adjustment_factors.ddp -= 0.1;
+if (!Q.dvp_exist) saxony_adjustment_factors.ddp += 0.2;
 Q.ddp_saxony_elections_vote = Q.ddp_votes*saxony_adjustment_factors.ddp;
 if (Q.lvp_leader == "Dieckmann") saxony_adjustment_factors.lvp += 0.1;
 if (Q.lvp_leader == "Glatzel") saxony_adjustment_factors.lvp += 0.1;
@@ -98,6 +100,7 @@ if (Q.stegerwald_path) saxony_adjustment_factors.z += 1.0;
 if (Q.cvp_formed && Q.cvp_leader == "Stegerwald") saxony_adjustment_factors.z += 0.1;
 if (Q.cvp_formed && Q.cvp_leader == "Lambach") saxony_adjustment_factors.z += 0.1;
 if (Q.cvp_formed && Q.cvp_leader == "Gereke") saxony_adjustment_factors.z -= 0.2;
+if (Q.dvp_in_cvp) saxony_adjustment_factors.z += 0.3;
 Q.z_saxony_elections_vote = Q.z_votes*saxony_adjustment_factors.z;
 if (Q.dvp_ideology != "Right" && Q.dvp_leader != "Hugo" && !Q.dvp_leader != "Dingeldey") saxony_adjustment_factors.dvp += 0.1;
 if (Q.dvp_votes >= 4) saxony_adjustment_factors.dvp -= 0.1;
@@ -119,6 +122,7 @@ if (Q.inflation >= 3) saxony_adjustment_factors.other += 0.3;
 if (Q.inflation >= 6) saxony_adjustment_factors.other += 0.3;
 Q.other_saxony_elections_vote = Q.other_votes*saxony_adjustment_factors.other;
 Q.kvp_saxony_elections_vote = Q.kvp_votes*saxony_adjustment_factors.kvp;
+if (Q.cvp_formed) saxony_adjustment_factors.dnf += 0.2;
 Q.dnf_saxony_elections_vote = Q.dnf_votes*saxony_adjustment_factors.dnf;
 
 Q.total_votes_saxony = Q.spd_saxony_elections_vote + Q.sapd_saxony_elections_vote + Q.kpd_saxony_elections_vote + Q.ddp_saxony_elections_vote + Q.lvp_saxony_elections_vote + Q.z_saxony_elections_vote + Q.dvp_saxony_elections_vote + Q.dnvp_saxony_elections_vote + Q.nsdap_saxony_elections_vote + Q.other_saxony_elections_vote + Q.kvp_saxony_elections_vote + Q.dnf_saxony_elections_vote;
@@ -586,6 +590,8 @@ if (Q.dnvp_r_saxony && !Q.cvp_formed) {
     "name": "DNVP",
     "seats": Math.round(Q.dnvp_r_saxony * 0.96),
 });
+}
+
 if (Q.dnf_formed && Q.dnf_r_saxony) {
     data.push({
         "id": "dnf",
