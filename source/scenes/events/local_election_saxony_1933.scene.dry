@@ -1014,7 +1014,7 @@ on-arrival: reichsex_sax_trigger = 1
 @no_majority
 title: No majority can be found!
 subtitle: [? if true_bourgeois_coalition_saxony < 50 and spd_coalition_saxony < 50: All possible coalitions lack a majority. ?][? if spd_coalition_saxony >= 50 and not spd_coalition_possible_saxony: The bourgeois parties are antagonistic to our Saxon organization. ?][? if spd_coalition_saxony >= 50 and left_strength >= 20: Our party itself rejects the possibility of a majority coalition with the liberals. ?]
-view-if: true_bourgeois_coalition_saxony < 50 and (spd_coalition_saxony < 50 or (not spd_coalition_possible_saxony or left_strength >= 20)) and (kpd_r_saxony + sapd_r_saxony) < 50 and nsdap_r_saxony < 50 and spd_r_saxony < 50
+view-if: not saxony_spd_maj and true_bourgeois_coalition_saxony < 50 and (spd_coalition_saxony < 50 or (not spd_coalition_possible_saxony or left_strength >= 20)) and (kpd_r_saxony + sapd_r_saxony) < 50 and nsdap_r_saxony < 50 and spd_r_saxony < 50
 
 With the bourgeois parties unable to secure a majority, and the <span style="color: #7A3C00;">**NSDAP**</span> refusing to enter government, the Landtag is in a deadlock. The Schieck Cabinet remains in power as a caretaker government, but a simple majority vote can still dissolve the Landtag, making toleration a necessity.
 
