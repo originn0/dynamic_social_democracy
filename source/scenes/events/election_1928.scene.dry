@@ -741,17 +741,28 @@ if (Q.nsdap_split) {
     Q.old_nsdap_hitler_r = Q.nsdap_hitler_r;
 }
 
-if (Q.rdp_list) {
-    Q.rdp_votes = Q.new_middle_spd_normalized;
-    Q.rdp_votes *= (Q.spd_votes / 100);
+if (Q.rdp_formed) {
     if (Q.pro_republic >= 15) Q.rdp_votes *= (Q.pro_republic / 100);
     if (Q.pro_republic < 15) Q.rdp_votes *= 0.15;
     if (Q.rdp_votes < 0.5) Q.rdp_votes = 0.5;
-    Q.rdp_r = Q.rdp_votes*(Q.spd_r / Q.spd_votes);
+        Q.rdp_r = parseFloat(Q.rdp_votes.toFixed(1));
+        Q.rdp_votes = parseFloat(Q.rdp_votes.toFixed(1))
+        Q.rdp_r = parseFloat((Q.rdp_r * factor).toFixed(1));
+        Q.str_votes_change_rdp = Q.rdp_votes - Q.previous_rdp_last_election_votes;
+        var sign2 = Q.str_votes_change_rdp > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_votes_change_rdp < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_votes_change_rdp = sign2 + Math.abs(Q.str_votes_change_rdp).toFixed(1);
 
-    Q.rdp_votes = Math.round(Q.rdp_votes * 10) / 10;
-
-    Q.spd_votes -= Q.rdp_votes;
+        Q.str_change_rdp = Q.rdp_r - Q.old_rdp_r;
+        var sign2 = Q.str_change_rdp > 0 ?
+            '<img src="img/arrowup.png"> ' :
+            Q.str_change_rdp < 0 ?
+            '<img src="img/arrowdown.png"> ' :
+            '<img src="img/steady.png"> ';
+        Q.str_change_rdp = sign2 + Math.abs(Q.str_change_rdp).toFixed(1);
 
     // vote share
     Q.str_votes_change_rdp = Q.rdp_votes - Q.previous_rdp_last_election_votes;
