@@ -1,4 +1,4 @@
-title: 1930 [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference 
+title: [+ year +] [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference 
 subtitle: [+ z_leader +] moves to merge with the anti-Hugenberg Right...
 view-if: stegerwald_skibidi_time == time and (z_leader == "Stegerwald" or z_leader == "Adenauer") and dnvp_ideology == "Radical" and not kvp_cnblp_sister and not dkp_merger_waiting
 new-page: true
@@ -6,37 +6,37 @@ max-visits: 1
 tags: event
 face-image: img/zentrum_3.jpg
 
-= 1930 [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference
+= [+ year +] [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] Conference
 
-With Hugenberg’s hardliners tightening their grip over the <span style="color: #3E88B3;">**DNVP**</span>, any prospect of a merger with the <span style="color: #000000;">Center Party</span> has evaporated. But a new path to expansion has emerged. The party leadership now turns its attention to the fragmented remains of the anti-Hugenberg right—figures like Westarp and his <span style="color: #0087DC;">**KVP**</span>—as potential candidates for absorption.
+With Hugenberg’s hardliners tightening their grip over the <span style="color: #3E88B3;">**DNVP**</span>, any prospect of a merger with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has evaporated. But a new path to expansion has emerged. The party leadership now turns its attention to the fragmented remains of the anti-Hugenberg right—figures like Westarp and his <span style="color: #0087DC;">**KVP**</span>—as potential candidates for absorption.
 
-The consequences are obvious. Bringing these elements into the fold would drag the <span style="color: #000000;">Center Party</span> further to the right—foreclosing any serious cooperation with the <span style="color: #c00000;">**SPD**</span> and entrenching the party within the conservative camp.
+The consequences are obvious. Bringing these elements into the fold would drag the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] further to the right—foreclosing any serious cooperation with the <span style="color: #c00000;">**SPD**</span> and entrenching the party within the conservative camp.
 
 A vote is now before them: merge with the <span style="color: #0087DC;">**KVP**</span>—or continue the status quo.
 
-- @cvp_kvp_merger: The <span style="color: #000000;">Center Party</span> absorbs the <span style="color: #0087DC;">**KVP**</span>!
-- @status_quo: The <span style="color: #000000;">Center Party</span> has rejected a merger with the <span style="color: #3E88B3;">**DNVP**</span> splinters.
+- @cvp_kvp_merger: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] absorbs the <span style="color: #0087DC;">**KVP**</span>!
+- @status_quo: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has rejected a merger with the <span style="color: #3E88B3;">**DNVP**</span> splinters.
 
 @cvp_kvp_merger
-subtitle: The <span style="color: #000000;">Center Party</span> is not in government with us, and our strained relations have nudged them toward this option.
-unavailable-subtitle: The <span style="color: #000000;">Center</span> care enough about our mutual relations to obstruct this merger.
-choose-if: z_relation < 40 and not ((in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia)))
+subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is not in government with us, and our strained relations have nudged them toward this option.
+unavailable-subtitle: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] care enough about our mutual relations to obstruct this merger.
+choose-if: z_relation < 40 and not ((in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia and not in_spd_majority_prussia)))
 on-arrival: z_party_name = "CVP"; workers_z -= 3; workers_spd += 3; unemployed_z -= 3; unemployed_spd += 3
 face-image: img/cvp.jpg
 go-to: cvp_kvp_formed if kvp_formed; cvp_kvp_lite_formed if not kvp_formed
 
-The <span style="color: #000000;">Center Party</span> has officially absorbed the much smaller <span style="color: #0087DC;">**KVP**</span>, expanding its reach to the right. Unsurprisingly, this has severely strained relations between our two parties, as former <span style="color: #3E88B3;">**DNVP**</span> figures like Westarp remain openly hostile to any cooperation with the <span style="color: #c00000;">**SPD**</span>.
+The [? if z_leader == "Stegerwald": <span style="color: #000000;">Center Party</span>?][? if z_leader == "Adenauer": <span style="color: #000000;">**CVP**</span>?] has officially absorbed the much smaller <span style="color: #0087DC;">**KVP**</span>, expanding its reach to the right. Unsurprisingly, this has severely strained relations between our two parties, as former <span style="color: #3E88B3;">**DNVP**</span> figures like Westarp remain openly hostile to any cooperation with the <span style="color: #c00000;">**SPD**</span>.
 
-Still, the party’s transformation marches on. To mark the merger—and its progress toward becoming an interconfessional Volkspartei—it has formally rebranded itself as the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>)—an effort to finally shed its old, Catholic-associated <span style="color: #000000;">Center</span> label.
+Still, the party’s transformation marches on. [? if z_leader == "Stegerwald": To mark the merger—and its progress toward becoming an interconfessional Volkspartei—it has formally rebranded itself as the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>)—an effort to finally shed its old, Catholic-associated <span style="color: #000000;">Center</span> label. ?]
 
 @status_quo
-subtitle: [? if in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia): The <span style="color: #000000;">Center Party</span> is currently in a coalition with us, and don't want to endanger its stability.?] [? if z_relation >= 40 and not (in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia)): Significant portions of the <span style="color: #000000;">Center Party</span> supporting maintaining our relationship, and don't want to potentially endanger it. ?]
-choose-if: z_relation >= 40 or (in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia))
-unavailable-subtitle: [? if not (in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia)): We are not in any government with the <span style="color: #000000;">Center Party</span>, leaving them free to do what they want. ?] [? if z_relation < 40 : Our relations are too low for them to care about what we think. ?]
+subtitle: [? if in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia and not in_spd_majority_prussia): The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] is currently in a coalition with us, and don't want to endanger its stability.?] [? if z_relation >= 40 and not (in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia and not in_spd_majority_prussia)): Significant portions of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] supporting maintaining our relationship, and don't want to potentially endanger it. ?]
+choose-if: z_relation >= 40 or (in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia and not in_spd_majority_prussia))
+unavailable-subtitle: [? if not (in_weimar_coalition or in_grand_coalition or in_popular_front or (spd_prussia and not in_left_front_prussia and not in_spd_majority_prussia)): We are not in any government with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], leaving them free to do what they want. ?] [? if z_relation < 40 : Our relations are too low for them to care about what we think. ?]
 on-arrival: z_relation += 10; z_party_name = "CVP"; pro_republic += 5; nationalism -= 3; rural_kvp -= 2; rural_other -= 2 if not kvp_formed; rural_z += 2
 face-image: img/zentrum_2.jpg
 
-The status quo prevails. The <span style="color: #000000;">Center Party</span> and the <span style="color: #0087DC;">**KVP**</span> will remain separate—at least for now. Perhaps this is proof enough that the party still values cooperation with us over chasing after every fragment of the old Right.
+The status quo prevails. The [? if z_leader == "Stegerwald": <span style="color: #000000;">Center Party</span>?][? if z_leader == "Adenauer": <span style="color: #000000;">**CVP**</span>?] and the <span style="color: #0087DC;">**KVP**</span> will remain separate—at least for now. Perhaps this is proof enough that the party still values cooperation with us over chasing after every fragment of the old Right.
 
-Even so, the party’s transformation presses on. To cement its evolution into an interconfessional *Volkspartei*, it has formally rebranded itself as the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>)—a move to finally shed its old, Catholic-associated <span style="color: #000000;">Center</span> label.
+Even so, the party’s transformation presses on. [? if z_leader == "Stegerwald": To cement its evolution into an interconfessional *Volkspartei*, it has formally rebranded itself as the <i>Christliche Volkspartei</i> (<span style="color: #000000;">Christian People's Party</span>)—a move to finally shed its old, Catholic-associated <span style="color: #000000;">Center</span> label. ?]
 
