@@ -1391,18 +1391,21 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     if (Q.aufhauser_advisor) Q.labor_advisor_n += 1;
     if (Q.wissell_advisor) Q.labor_advisor_n += 1;
     if (Q.woytinsky_advisor) Q.labor_advisor_n += 1;
+    if (Q.editorial_line == "Labor") Q.labor_advisor_n += 1;
 
     Q.left_advisor_n = 0;
     if (Q.levi_advisor) Q.left_advisor_n += 1;
     if (Q.sender_advisor) Q.left_advisor_n += 1;
     if (Q.rosenfeld_advisor) Q.left_advisor_n += 1;
     if (Q.seydewitz_advisor) Q.left_advisor_n += 1;
+    if (Q.editorial_line == "Left") Q.left_advisor_n += 1;
 
     Q.reformist_advisor_n = 0;
     if (Q.severing_advisor) Q.reformist_advisor_n += 1;
     if (Q.braun_advisor) Q.reformist_advisor_n += 1;
     if (Q.juchacz_advisor) Q.reformist_advisor_n += 1;
     if (Q.pfulf_advisor) Q.reformist_advisor_n += 1;
+    if (Q.editorial_line == "Reformists") Q.reformist_advisor_n += 1;
 
     if (Q.nsdap_votes >= 20) {
         Q.center_dissent_decay *= 0.6;
