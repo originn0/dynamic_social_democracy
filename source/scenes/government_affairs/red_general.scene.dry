@@ -9,13 +9,14 @@ go-to: schleicher_menu if not schleicher_spd_adopted; schleicher_spd_established
 
 = Relations with the Red General
 
-While the <span style="color: #c00000;">**SPD**</span> remains steadfast in its commitment to a united front against the incumbent <span style="color: #808080;">reactionary</span> government, the ADGB, our union, has shown some openness to an accommodation with General Kurt von Schleicher. He has also shown interest in winning over the union through his support for public works.
+[? if chancellor_party == "SPD": While the <span style="color: #c00000;">**SPD**</span> remains in full control of the government for the time being, we must not get complacent. Kurt von Schleicher certainly has more tricks up his sleeve — it is too early to ignore his ability to further influence the environment. ?][? if chancellor_party != "SPD": While the <span style="color: #c00000;">**SPD**</span> remains steadfast in its commitment to a united front against the incumbent <span style="color: #808080;">reactionary</span> government, the ADGB, our union, has shown some openness to an accommodation with General Kurt von Schleicher. He has also shown interest in winning over the union through his support for public works. ?]
 
 @schleicher_menu
 
 - @spd_schleicher_adopted: Adopt a policy of cooperation with the Red General!
 - @convince_spd_schleicher: Push the party toward a more cooperative line with von Schleicher.
 - @united_front: Reiterate our opposition against the <span style="color: #808080;">reactionaries</span>.
+- @united_front_majority: Reiterate our opposition against the <span style="color: #808080;">reactionaries</span>.
 - @easy_discard
 - @cancel_advisor_action
 
@@ -43,10 +44,18 @@ Slowly but surely, the ADGB leadership is beginning to warm to the idea of const
 [? if otl_prussian_coup_seen: Furthermore, his role in the coup against our Prussian government has only deepened the animosity toward both him and the <span style="color: #c00000;">**SPD**</span>. ?] Rumors about our cooperation has damaged our standing among the working class.
 
 @united_front
-subtitle: The consensus view within the <span style="color: #c00000;">**SPD**</span>. We are a democratic party after all.
+view-if: chancellor_party != "SPD"
+subtitle: The consensus view within the <span style="color: #c00000;">**SPD**</span>: we are, afer all, a democratic party.
 on-arrival: schleicher_spd_support -= 2 if schleicher_spd_support > 0; schleicher_spd_r -= 1 if schleicher_spd_r > 0; schleicher_spd_influence -= 1 if schleicher_spd_influence > 0; workers_spd += 2; workers_kpd -= 1; left_dissent -= 5; center_dissent -= 5
 
 We continue to argue for a united opposition of the democratic parties against the unpopular [+ chancellor +] government, and win support among the people for doing so. 
+
+@united_front_majority 
+view-of: chancellor_party == "SPD"
+subtitle: Given our absolute majority in the government, we have no need of cooperating with Schleicher — and can instead aim to widen the united front against those who would bring the Republic down.
+on-arrival: schleicher_spd_support -= 2 if schleicher_spd_support > 0; schleicher_spd_r -= 1 if schleicher_spd_r > 0; schleicher_spd_influence -= 1 if schleicher_spd_influence > 0; workers_spd += 2; workers_kpd -= 1; left_dissent -= 5; center_dissent -= 5
+
+We continue to decry the anti-democratic opposition as ruinous to the Republic, highlighting the role chancellor [+ chancellor +] plays in stabilizing the situation. This helps our support among the people.
 
 @schleicher_spd_established
 
