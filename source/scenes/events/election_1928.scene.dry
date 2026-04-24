@@ -1096,6 +1096,8 @@ if (Q.lvp_formed) {
     Q.grand_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
 }
 
+Q.christian_majority = parseFloat((Q.z_r).toFixed(1));
+
 if (Q.kvp_formed && Q.lvp_formed) {
     Q.bourgeois_coalition = parseFloat((Q.z_r + Q.lvp_r + Q.other_r + Q.kvp_r).toFixed(1));
 } else if (Q.kvp_formed && !Q.lvp_formed) {
@@ -1936,6 +1938,8 @@ go-to: achievement_check_e
 
 [? if bourgeois_coalition >= 25 and kvp_formed: Bourgeois Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?]?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **Others** + <span style="color: #0087DC;">**KVP**</span>): [+ bourgeois_coalition +]% ?]
 
+[? if christian_majority >= 50: Christian Majority (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span>: [+ christian_majority +]% ?]
+
 [? if dnvp_ideology == "Moderate" and not lvp_formed and not cvp_formed: Center-Right Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist:&nbsp;+ <span style="color: #C0A054;">**DVP**</span>?] + **Others**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ center_right_coalition +]% ?]
 
 [? if dnvp_ideology == "Radical" or lvp_formed and not cvp_formed: Right-wing Coalition (<span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed and dvp_exist: <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed:<span style="color: #FFCC00;">**LVP**</span>?] + **Others**[? if not cvp_formed:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span>?]): [+ right_coalition +]% ?]
@@ -2003,6 +2007,7 @@ go-to: coalition_menu
 - @right_coalition
 - @center_right_coalition
 - @bourgeois_coalition
+- @christian_majority
 
 @wholesome_coalition
 title: A "wholesome" coalition is formed.
@@ -2461,6 +2466,14 @@ view-if: bourgeois_coalition >= 50 and not cvp_formed
 on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; in_bourgeois_coalition = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = ddp_name; justice_minister_party = "LVP" if lvp_formed; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = "DVP"; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = ddp_name; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; secret_mode = 1; bourgeois_cooperation += 10
 
 The Bourgeois Coalition is formed, with Brüning as its chancellor. We will have to contend with opposition politics for the time being. Secret Mode has been enabled.
+
+@christian_majority
+Title: Refuse to form a government, so that a Christian majority may be formed.
+subtitle: Holy.
+view-if: christian_majority >= 50
+on-arrival: spd_in_government = 0; spd_toleration = 0; spd_toleration_right = 0; in_christian_majority = 1; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "Z"; interior_minister_party = "Z"; justice_minister_party = "Z"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; finance_minister_party = "Z"; economic_minister_party = "Z"; agriculture_minister_party = "Z"; foreign_minister = "Wirth"; interior_minister = "Wirth"; justice_minister = "Guérard"; labor_minister = "Stegerwald"; reichswehr_minister = "Groener"; economic_minister = "Brüning"; finance_minister = "Köhler"; agriculture_minister = "Hermes"; z_relation -= 5
+
+The Christian Majority of the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] (<span style="color: #000000;">**[+ z_party_name +]**</span>) and the <span style="color: #A2D8E0;">**Bavarian People's**</span> (<span style="color: #A2D8E0;">**BVP**</span>) is formed, with Brüning as its chancellor. We will have to contend with opposition politics for the time being.
 
 @no_majority_moderate
 title: There is no clear governing majority.
