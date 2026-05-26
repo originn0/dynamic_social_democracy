@@ -4145,6 +4145,8 @@ if (Q.spd_in_government_time >= 6) {
     }
     if (Q.economic_growth < 0) {
         Q.hindenburg_angry += ((Q.economic_growth*-1) / 2)
+    } else if (Q.economic_growth > 3) {
+        Q.hindenburg_angry -= (Q.economic_growth / 2)
     }
     if (Q.budget < 0) {
         Q.hindenburg_angry += Q.budget*-1;
