@@ -361,10 +361,10 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.the_largest_party == 'lvp') {
     this.achieve('tausendjahrige_libreich');
   }
-  if (Q.factory_takeovers >= 6 && Q.march_on_berlin_seen >= 3 && Q.civil_war_seen && Q.republic_victory && Q.pro_republic >= 70 && Q.spd_votes >= 30) {
+  if (Q.factory_takeovers >= 6 && Q.march_on_berlin_seen >= 3 && Q.civil_war_seen == 1 && Q.republic_victory == 1 && Q.pro_republic >= 70 && Q.spd_votes >= 30) {
     this.achieve('totaler_klassenkrieg');
   }
-  if (Q.cvp_formed && Q.catholics_z_normalized <= 10) {
+  if (Q.cvp_formed == 1 && Q.catholics_z_normalized <= 10) {
     this.achieve('protestantische_volkspartei');
   }
 }
