@@ -361,6 +361,12 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.the_largest_party == 'lvp') {
     this.achieve('tausendjahrige_libreich');
   }
+  if (Q.factory_takeovers >= 6 && Q.march_on_berlin_seen >= 3 && Q.civil_war_seen && Q.republic_victory && Q.pro_republic >= 70 && Q.spd_votes >= 30) {
+    this.achieve('totaler_klassenkrieg');
+  }
+  if (Q.cvp_formed && Q.catholics_z_normalized <= 10) {
+    this.achieve('protestantische_volkspartei');
+  }
 }
 this.achieve('game_completed');
 !}
@@ -741,7 +747,9 @@ const achievements = [
   "achievement_bruning_der_rotfrontkampfer",
   "achievement_merz_und_scholz",
   "achievement_lindner_moribund",
-  "achievement_tausendjahrige_libreich"
+  "achievement_tausendjahrige_libreich",
+  "achievement_totaler_klassenkrieg",
+  "achievement_protestantische_volkspartei"
 ];
 
 Q.unlockedCount = achievements.filter(key => Q[key] === 1).length;
@@ -2761,6 +2769,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if game_achievement_totaler_klassenkrieg: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/totaler_klassenkrieg.png" alt="Totaler Klassenkrieg"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Totaler Klassenkrieg</div>
+      <div class="achievement_subtitle"> - seize the means of production, crush the forces of reaction, and bring about a brighter future.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if game_achievement_protestantische_volkspartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/protestantische_volkspartei.png" alt="Protestantische Volkspartei"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Protestantische Volkspartei</div>
+      <div class="achievement_subtitle"> - The <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> has less 10% or less support among Catholics.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Completed Achievements Overall
@@ -4672,6 +4710,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
   {!</td>!}
 {!</tr>!}
 ?]
+
+[? if achievement_totaler_klassenkrieg: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/totaler_klassenkrieg.png" alt="Totaler Klassenkrieg"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Totaler Klassenkrieg</div>
+      <div class="achievement_subtitle"> - seize the means of production, crush the forces of reaction, and bring about a brighter future.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if achievement_protestantische_volkspartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/protestantische_volkspartei.png" alt="Protestantische Volkspartei"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Protestantische Volkspartei</div>
+      <div class="achievement_subtitle"> - The <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> has less 10% or less support among Catholics.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
 {!</table>!}
 
 = Incomplete Achievements
@@ -6578,6 +6646,36 @@ All achievements require <span style="color: #0077FF;">dynamic</span>, <span sty
     <div style="padding-left: 0.5em;">
       <div style="font-weight: bold;">Tausendjährige Libreich</div>
       <div class="achievement_subtitle"> - have the  <span style="color: #FFCC00; font-weight: bold;">LVP</span> become the largest party in the Reichstag.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_totaler_klassenkrieg: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/totaler_klassenkrieg.png" alt="Totaler Klassenkrieg"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Totaler Klassenkrieg</div>
+      <div class="achievement_subtitle"> - seize the means of production, crush the forces of reaction, and bring about a brighter future.
+    </div>
+  {!</td>!}
+{!</tr>!}
+?]
+
+[? if not achievement_protestantische_volkspartei: 
+{!<tr>!}
+  {!<td style="width: 60px; height: 60px; vertical-align: middle; text-align: center; border: 2px solid #0077FF; background-color: rgba(192, 0, 0, 0.1);">!}
+    <img src="img/achievement/protestantische_volkspartei.png" alt="Protestantische Volkspartei"
+         style="width: 100%; height: 100%; object-fit: cover; display: block;">
+  {!</td>!}
+  {!<td style="border: 2px solid #0077FF; background-color: rgba(97, 24, 19, 0.2);">!}
+    <div style="padding-left: 0.5em;">
+      <div style="font-weight: bold;">Protestantische Volkspartei</div>
+      <div class="achievement_subtitle"> - The <i>true</i> <span style="color: #000000; font-weight: bold;">CVP</span> has less 10% or less support among Catholics.
     </div>
   {!</td>!}
 {!</tr>!}
