@@ -3400,12 +3400,8 @@ if (Q.cvp_economy_accepted && Q.budget < 0) {
     Q.kpd_relation -= 10;
 }
 !}
-go-to: social_catholic_coalition_cvp_2 if not left_split; social_catholic_coalition_cvp_3 if left_split; social_catholic_coalition_cvp_4 if z_r > (spd_r + bvp_r)
-achievement: historischer_kompromiss
-
-@social_catholic_coalition_cvp_4
 go-to: social_catholic_coalition_cvp_2 if not left_split; social_catholic_coalition_cvp_3 if left_split
-achievement: merz_und_scholz
+achievement: historischer_kompromiss
 
 @social_catholic_coalition_cvp_2
 go-to: social_catholic_coalition_cvp_3
@@ -3844,9 +3840,13 @@ go-to: ministries
 title: Let the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] have their chancellor.
 subtitle: [? if cvp_chancellor_accepted: Our coalition agreement stipulates that the chancellor must be from the <span style="color: #000000;">**[+ z_party_name +]**</span>, with Heinrich Brüning likely being their choice. ?][? if not cvp_chancellor_accepted: The <span style="color: #000000;">**[+ z_party_name +]**</span> would be happy with one of their own as chancellor, with Heinrich Brüning likely being their choice. ?]
 on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 1; z_relation += 5 if not cvp_chancellor_accepted; coalition_dissent = -1 if cvp_chancellor_accepted
-go-to: ministries
+go-to: ministries if z_r <= (spd_r + bvp_r); social_catholic_coalition_cvp_4 if z_r > (spd_r + bvp_r)
 
 Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has been appointed chancellor. He is approved by most factions of his party.
+
+@social_catholic_coalition_cvp_4
+achievement: merz_und_scholz
+go-to: ministries
 
 @no_govt
 title: We do not form the government.
