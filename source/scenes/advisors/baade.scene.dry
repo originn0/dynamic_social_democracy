@@ -12,6 +12,7 @@ Baade is one of the few agricultural experts in the <span style="color: #c00000;
 - @agriculture
 - @rural_campaign
 - @depression
+- @radicalize_rural
 - @root: Return to main
 
 @agriculture
@@ -40,3 +41,12 @@ unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +
 on-arrival: advisor_action_timer = 6; wtb_support += 2; center_dissent += 10; labor_strength += 5; wtb_points += 15
 
 [? if not wtb_concept: Woytinsky, Tarnow, and Baade, has been working together to draft a plan for getting us out of the depression. Baade canvasses in favor of this plan throughout the party. ?][? if wtb_concept: The WTB-plan, named for its primary supporters Woytinsky, Tarnow, and Baade, has been adopted as the unions' plan for getting us out of the depression. Baade canvasses in favor of this plan throughout the party. ?]
+
+@radicalize_rural
+title: Awaken the class consciousness of the peasantry and the rural working class. 
+subtitle: As our expert on agriculture, Baade can help awaken the class consciousness of peasants and rural workers.
+choose-if: socialism >= 51 and rural_spd_normalized >= 15 and rural_policy >= 1 and rural_conscious == 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if socialism < 51: We must seek to make socialism more popular. ?][? if rural_spd_normalized < 15: We sadly do not have enough support amongst rural voters. ?][? if rural_policy == 0: We have not enacted any rural policies. ?][? if rural_conscious == 1: We have already awoken the class consciousness of the peasantry and the rural working class. ?]
+max-visits: 1
+on-arrival: advisor_action_timer = 6; last_advisor_action = 1
+go-to: rural_consciousness
