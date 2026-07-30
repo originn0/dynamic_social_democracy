@@ -3932,10 +3932,18 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
     if (Q.reichswehr_goal_spd >= 1) {
         Q.goal_spd_total += 1
     }
-    if (Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2) {
+    if (Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2 && Q.new_middle_conscious == 0) {
         Q.workers_spd *= 0.9;
         Q.unemployed_spd *= 0.9;
         Q.new_middle_spd *= 0.95;
+        Q.left_dissent += 5;
+        Q.labor_dissent += 5;
+        Q.gov_burden_fail += 1;
+    }
+    if (Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2 && Q.new_middle_conscious == 1) {
+        Q.workers_spd *= 0.9;
+        Q.unemployed_spd *= 0.9;
+        Q.new_middle_spd *= 0.9;
         Q.left_dissent += 5;
         Q.labor_dissent += 5;
         Q.gov_burden_fail += 1;
@@ -3980,7 +3988,11 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
     if (Q.foreign_goal_spd_peoples >= 1) {
         Q.goal_spd_total_peoples += 1;
     }
-    if (Q.goal_spd_cancel_peoples >= 1 || Q.goal_spd_total_peoples < 1) {
+    console.log (Q.new_middle_spd)
+    console.log (Q.rural_spd)
+    console.log (Q.old_middle_spd)
+    console.log (Q.catholics_spd)
+    if ((Q.goal_spd_cancel_peoples >= 1 || Q.goal_spd_total_peoples < 1) && (Q.new_middle_conscious == 0 && Q.rural_conscious == 0)) {
         Q.old_middle_spd *= 0.8;
         Q.new_middle_spd *= 0.8;
         Q.rural_spd *= 0.8;
@@ -3988,6 +4000,30 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
         Q.reformist_dissent += 5;
         Q.gov_burden_fail += 1;
     }
+    if ((Q.goal_spd_cancel_peoples >= 1 || Q.goal_spd_total_peoples < 1) && (Q.new_middle_conscious == 1 && Q.rural_conscious == 1)) {
+        Q.old_middle_spd *= 0.8;
+        Q.rural_spd *= 0.9;
+        Q.catholics_spd *= 0.95;
+        Q.reformist_dissent += 5;
+        Q.gov_burden_fail += 1;
+    } else if ((Q.goal_spd_cancel_peoples >= 1 || Q.goal_spd_total_peoples < 1) && (Q.new_middle_conscious == 1 && Q.rural_conscious == 0)) {
+        Q.old_middle_spd *= 0.8;
+        Q.rural_spd *= 0.8;
+        Q.catholics_spd *= 0.95;
+        Q.reformist_dissent += 5;
+        Q.gov_burden_fail += 1;
+    } else if ((Q.goal_spd_cancel_peoples >= 1 || Q.goal_spd_total_peoples < 1) && (Q.new_middle_conscious == 0 && Q.rural_conscious == 1)) {
+        Q.old_middle_spd *= 0.8;
+        Q.new_middle_spd *= 0.8;
+        Q.rural_spd *= 0.9;
+        Q.catholics_spd *= 0.95;
+        Q.reformist_dissent += 5;
+        Q.gov_burden_fail += 1;
+    }
+    console.log (Q.new_middle_spd)
+    console.log (Q.rural_spd)
+    console.log (Q.old_middle_spd)
+    console.log (Q.catholics_spd)
     Q.economy_goal_spd_peoples = 0;
     Q.labor_goal_spd_peoples = 0;
     Q.finance_goal_spd_peoples = 0;
