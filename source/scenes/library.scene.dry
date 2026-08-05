@@ -12,6 +12,7 @@ Herein contains relevant information about the government and politics of the Ge
 - @government: Germany's system of government
 - @weimar_timeline: Timeline of the Weimar Republic before 1928
 - @curr_gov: Current government details
+- @kpd_ultimata: Conditions for <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span>'s continuous toleration of our governments
 - @demographics: Demographics
 - @parties: Parties
 - @public_opinion: Public opinion (and projected election results)
@@ -242,6 +243,39 @@ Agriculture:
 [? if agriculture_minister_party == "NSDAP": <span style="color: #7A3C00;">[+ agriculture_minister_party +]</span> ?]
 [? if agriculture_minister_party == "I": [+ agriculture_minister_party +] ?]
 
+@kpd_ultimata
+view-if: (kpd_demands_federal = 1) or (kpd_demands_prussia = 1)
+go-to: menu
+
+[? if kpd_demands_federal = 1 : <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span> is currently tolerating our federal government. They expect us to carry out the following policies: ?]
+
+[? if (welfare_goal = 1 and kpd_demands_federal = 1) : - Expand social welfare programs - [? if welfare_goal_completed : done ?][? if not welfare_goal_completed: pending ?] ?]
+
+[? if (agriculture_goal = 1 and kpd_demands_federal = 1) : - Enact a land reform program. - [? if agriculture_goal_completed : done ?][? if not agriculture_goal_completed: pending ?] ?]
+
+[? if (economy_goal = 1 and kpd_demands_federal = 1) : - Start substantial nationalization of the economy. - [? if economy_goal_completed : done ?][? if not economy_goal_completed: pending ?] ?]
+
+[? if (finance_goal = 1 and kpd_demands_federal = 1) : - Make taxes more progressive. - [? if finance_goal_completed : done ?][? if not finance_goal_completed: pending ?] ?]
+
+[? if (labor_goal = 1 and kpd_demands_federal = 1) : - Support workers in labor disputes. - [? if labor_goal_completed : done ?][? if not labor_goal_completed: pending ?] ?]
+
+[? if (foreign_goal = 1 and kpd_demands_federal = 1) : - Improve our relations with the <span style="color: #750e0e;">Soviet Union</span>. - [? if foreign_goal_completed : done ?][? if not foreign_goal_completed: pending ?] ?]
+
+[? if (reichswehr_goal = 1 and kpd_demands_federal = 1) : - Reduce funding for the Reichswehr. - [? if reichswehr_goal_completed : done ?][? if not reichswehr_goal_completed: pending ?] ?]
+
+[? if kpd_demands_federal = 1 : They are willing to grant us [+ kpd_ultimatum_timer +] months and will likely call a vote of no confidence if we do not carry the following policies out. ?]
+
+[? if ((kpd_demands_prussia = 1) and (kpd_demands_federal = 1)) : Furthermore, ?][? if kpd_demands_prussia = 1: <span class="tooltip-text" title="Communist Party of Germany" style="color: #700000;">**KPD**</span> is currently tolerating our government in Prussia. They expect us to carry out the following policies: ?]
+
+[? if (interior_goal_seen_prussia = 1 and kpd_demands_prussia = 1) : - Ban the <span style="color: #7A3C00;">**SA**</span> and <span style="color: #3E88B3;">**Stahlhelm**</span>. - [? if interior_goal_prussia <= 0 : done ?][? if interior_goal_prussia >= 1: pending ?] ?]
+
+[? if (rfb_goal_seen_prussia = 1 and kpd_demands_prussia = 1) : - Unban the <span style="color: #700000;">**RFB**</span>. - [? if rfb_goal_prussia <= 0: done ?][? if rfb_goal_prussia >= 1: pending ?] ?]
+
+[? if (bureaucracy_goal_seen_prussia = 1 and kpd_demands_prussia = 1) : - Purge the bureaucracy. - [? if bureaucracy_goal_prussia <= 0: done ?][? if bureaucracy_goal_prussia >= 1: pending ?] ?]
+
+[? if (free_kpd_goal_seen_prussia = 1 and kpd_demands_prussia = 1) : - Protect <span style="color: #700000;">communist</span> demonstrations. - [? if free_kpd_goal_prussia <= 0: done ?][? if free_kpd_goal_prussia >= 1: pending ?] ?]
+
+[? if kpd_demands_prussia = 1 : They are willing to grant us [+ kpd_ultimatum_prussia_timer +] months and will likely call a vote of no confidence if we do not carry the following policies out. ?]
 
 @demographics
 go-to: menu
