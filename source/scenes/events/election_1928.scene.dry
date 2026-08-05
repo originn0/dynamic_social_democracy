@@ -2464,7 +2464,7 @@ The Bourgeois Coalition is formed, with Brüning as its chancellor. We will have
 
 @no_majority_moderate
 title: There is no clear governing majority.
-view-if: (center_right_coalition < 50 or (bourgeois_coalition < 50 and dnvp_ideology == "Radical")) and president_ideology == "Moderate"
+view-if: (center_right_coalition < 50 or (bourgeois_coalition < 50 and dnvp_ideology == "Radical") or (year = 1929 and month >= 7)) and president_ideology == "Moderate"
 on-arrival: no_majority_elections += 1
 go-to: no_majority_bruning_moderate_2 if (chancellor = "Brüning" or chancellor = "Wirth" or chancellor = "Adenauer"); no_majority_spd_moderate if chancellor_party = "SPD"; taming_abandoned if chancellor = "Goerdeler" or chancellor_party == "NSDAP"
 
