@@ -33,7 +33,7 @@ At the start of this government, the <span style="color: #700000;">**KPD**</span
 [? if free_kpd_goal_seen_prussia = 1 : - Protect <span style="color: #700000;">communist</span> demonstrations. - [? if free_kpd_goal_prussia <= 0: success ?][? if free_kpd_goal_prussia >= 1: failed ?] ?]
 
 @goals_failed
-on-arrival: kpd_relation -= 8; workers_spd -= 4; unemployed_spd -= 4; workers_kpd += 4; rfb_strength += 100; rfb_militancy += 0.05; in_popular_front_prussia = 0; in_left_front_prussia = 0; prussia_leader = "Braun"; kpd_coalition_dissent += 2
+on-arrival: kpd_relation -= 8; workers_spd -= 4; unemployed_spd -= 4; workers_kpd += 4; rfb_strength += 100; rfb_militancy += 0.05; in_popular_front_prussia = 0; in_left_front_prussia = 0; prussia_leader = "Braun"; kpd_coalition_dissent += 2; kpd_demands_prussia = 0;
 
 Unfortunately, we have failed to accomplish all of the goals the <span style="color: #700000;">**KPD**</span> set out. They plan to call a vote of no confidence against our government, and have already begun mounting a propaganda campaign to delegitimize our government in the eyes of the workers.
 
@@ -41,7 +41,7 @@ Unfortunately, we have failed to accomplish all of the goals the <span style="co
 - @skibidi: Could we form a new government based on the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (and possibly <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?
 
 @goals_success
-on-arrival: workers_spd += 4; unemployed_spd += 4; kpd_relation += 6; workers_kpd += 4; kpd_coalition_success += 1; rfb_strength += 150; rfb_militancy += 0.1; reichsexekution += 1
+on-arrival: workers_spd += 4; unemployed_spd += 4; kpd_relation += 6; workers_kpd += 4; kpd_coalition_success += 1; rfb_strength += 150; rfb_militancy += 0.1; reichsexekution += 1; kpd_demands_prussia = 0;
 
 As expected, we have completed the goals set by the <span style="color: #700000;">**KPD**</span>. [? if president == "Hindenburg": However, over the past few months, President Hindenburg's concerns over our coalition government have grown... ?]
 
