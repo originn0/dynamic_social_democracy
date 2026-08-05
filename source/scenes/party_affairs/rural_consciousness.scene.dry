@@ -1,0 +1,48 @@
+title: Class Consciousness of the Peasantry and the Rural Working Class
+new-page: true
+is-card: true
+tags: party_affairs
+view-if: socialism >= 51 and rural_spd_normalized >= 15 and rural_policy >= 1
+on-arrival: month_actions += 1
+card-image: img/rural-conscious.jpg
+face-image: img/rural-conscious.jpg
+max-visits: 1
+
+
+= Class Consciousness of the Peasantry and the Rural Working class
+
+Due to our introduction of agrarian policies and the increased popularity of socialism, we now have a chance to raise the consciousness of the peasantry and the rural working class. [? if peoples_party == 0: As <span style="color: #9B0000;">Marxists</span>, we are predominantly a party of the industrial proletariat and believe that they are the driving force of the transition to socialism. Engels and Kautsky saw peasants as unreliable allies at best and as a relic of a bygone era, whilst Lenin's Bolsheviks saw revolutionary potential in the peasantry. Ideologically, we do not see the peasantry as a revolutionary class, though we could try to radicalise poorer peasants, small farmers, and agricultural workers against the Junkers and to sway them towards socialism. ?][? if peoples_party == 1: Despite becoming a people’s party, our party has traditionally neglected rural workers and peasants, with the industrial working class previously being our main focus. ?] We could awaken the class consciousness of the peasantry and the rural working class as a way to expand the <span style="color: #c00000;">**SPD**</span>’s base and to build urban-rural solidarity. [? if peoples_party == 0: After all, did Engels himself not advocate for some form of worker-peasant alliance? ?]
+
+- @awaken_1: Awaken their class consciousness!
+- @awaken_2: Awaken their class consciousness by the power of the radio!
+- @refute: No, we will not do this.
+- @easy_discard_1: Return card to hand.
+- @cancel_advisor_action
+
+@easy_discard_1
+view-if: last_advisor_action = 0
+go-to: easy_discard
+
+@awaken_1
+choose-if: baade_advisor or commercialized_media >= 2
+subtitle: [? if baade_advisor: Baade, through his expertise on agriculture, can help us raise the consciousness of the rural workers and peasants. ?] [? if commercialized_media >= 2 and not baade_advisor: We can use our existing newspapers for this. ?]
+unavailable-subtitle: [? if not baade_advisor: Baade's expertise on agriculture can help us with this. ?][? if commercialized_media < 2 and not baade_advisor: We might want to consider commercialising our newspapers. ?]
+on-arrival: rural_spd += 10*(1-dissent); left_strength += 3 if land_reform == 0; left_dissent += 3 if land_reform == 0; left_strength += 5 if land_reform >= 1; reformist_strength += 5; labor_strength += 4; socialism += 4*(1 - dissent); rural_conscious = 1
+
+We have taken advantage of the situation and have awoken the class consciousness of the peasantry and the rural working class. Increasingly, they flock to our party and more rural labourers have joined the DLV - the German Agrictulrural Workers' Union. 
+
+By awakening the class consciousness of the peasantry and the rural working class, failing a secondary burden will lessen the extent to which their support is reduced. In addition, our media campaigning and rallies will have more of an effect amongst rural voters, now that they are conscious. 
+
+@awaken_2
+choose-if: radio >= 2 and spd_in_government = 1
+subtitle: We can invest 1 budget into building more powerful radio transmission stations so that we can expand our radio network to the countryside.
+unavailable-subtitle: [? if budget < 1: We sadly do not have enough budget for this. ?] [? if spd_in_government = 0: We need to be in government to do this. ?] [? if radio < 2: We might want to consider building up our radio network. ?]
+on-arrival: rural_spd += 10*(1-dissent); budget -= 1; left_strength += 3 if land_reform == 0; left_dissent += 3 if land_reform == 0; left_strength += 5 if land_reform >= 1; reformist_strength += 5; labor_strength += 4; socialism += 4*(1 - dissent); rural_conscious = 1
+
+We have taken advantage of the situation and have awoken the class consciousness of the peasantry and the rural working class. Increasingly, they flock to our party and more rural labourers have joined the DLV - the German Agricultural Workers' Union. 
+
+By awakening the class consciousness of the peasantry and the rural working class, failing a secondary burden will lessen the extent to which their support is reduced. In addition, our media campaigning and rallies will have more of an effect amongst rural voters, now that they are conscious. 
+
+@refute
+
+We will not do this.

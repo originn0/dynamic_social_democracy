@@ -1,0 +1,36 @@
+title: Class Consciousness of the New Middle Class
+new-page: true
+is-card: true
+tags: party_affairs
+view-if: (socialism >= 51 and (radio >= 1 or commercialized_media >= 1) and new_middle_spd_normalized >= 15)
+on-arrival: month_actions += 1
+card-image: img/new-middle-conscious.jpg
+face-image: img/new-middle-conscious.jpg
+max-visits: 1
+
+= Class Consciousness of the New Middle Class
+
+Due to our investments in media, socialism is becoming more popular, including among the new middle class. [? if peoples_party == 0: <span style="color: #9B0000;">Marxist</span> intellectuals such as Bernstein and Kautsky have long debated about the status of the new middle class and whether they constitute a different class from the proletariat. ?][? if peoples_party == 1: Despite becoming a people’s party, our party has traditionally prioritised the industrial working class. ?] Our propagandizing has meant that the new middle class are increasingly considering themselves part of the proletariat, or at least having more in common with them. Whilst they’re more moderate than the industrial proletariat, we could awaken their class consciousness as a way to expand the <span style="color: #c00000;">**SPD**</span>’s base [? if peoples_party == 0: without diluting its class character ?] and to build solidarity with all workers.
+
+- @awaken: Awaken their class consciousness!
+- @refute: No, we will not do this.
+- @easy_discard: Return card to hand.
+- @cancel_advisor_action
+
+@easy_discard
+view-if: last_advisor_action = 0
+go-to: easy_discard
+
+@awaken
+choose-if: aufhauser_advisor or radio >= 2 or commercialized_media >=2
+subtitle: [? if aufhauser_advisor: Aufhäuser can use the AfA-bund to do this. ?] [? if radio >= 2 and not aufhauser_advisor: We can use our existing radio program for this. ?] [? if commercialized_media >= 2 and not aufhauser_advisor: We can use our existing newspapers for this. ?] 
+unavailable-subtitle: [? if radio < 2 and not aufhauser_advisor: Aufhäuser's role as the Chairman of the AfA-bund would be quite helpful for this. Alternatively, we might want to consider investing in radio. ?] [? if commercialized_media < 2 and not aufhauser_advisor: Aufhäuser's role as the Chairman of the AfA-bund would be quite helpful for this. Alternatively, we might want to consider commercializing our newspapers. ?]
+on-arrival: new_middle_spd += 10*(1-dissent); reformist_dissent += 2; labor_dissent += 3; left_strength += 5; reformist_strength += 5; labor_strength += 5; socialism += 4*(1 - dissent); new_middle_conscious = 1
+
+We have taken advantage of the situation and have awoken the class consciousness of the white collar workers. Increasingly, they flock to our party and [? if aufhauser_advisor: thanks to Aufhäuser's skills, ?] more white collar workers have joined the AfA-bund.
+
+By awakening the class consciousness of the new middle class, they have been removed from the secondary burdens. Pro-labor policies and radical left-wing policies, with the exception of raising taxes, can win their support. In addition, our media campaigning and rallies will have more of an effect amongst the new middle class, now that they are conscious. 
+
+@refute
+
+We will not do this.

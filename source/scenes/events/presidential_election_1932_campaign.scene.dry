@@ -187,7 +187,7 @@ title: We persuade the <span style="color: #700000;">**Communists**</span> to ta
 subtitle: This will alienate bourgeois voters! -2 resources
 choose-if: kpd_support_spd == 1 and (kpd_relation >= 70 or (kpd_relation >= 55 and kpd_leader == "Conciliators")) and resources >= 2
 unavailable-subtitle: [? if kpd_support_spd != 1: The <span style="color: #700000;">KPD</span> doesn't support Braun. ?][? if (kpd_relation < 70 or (kpd_relation < 55 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 2: Not enough resources. (need 2) ?]
-on-arrival: resources -= 2; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; lvp_relation -= 10; dvp_right += 5; ddp_right += 3; ddp_cohesion -= 2; lvp_right += 5; z_support_spd = 0 if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"); new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3
+on-arrival: resources -= 2; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 10; ddp_relation -= 10; dvp_relation -= 10; lvp_relation -= 10; dvp_right += 5; ddp_right += 3; ddp_cohesion -= 2; lvp_right += 5; z_support_spd = 0 if (z_relation < 60 and z_ideology == "Right") or (z_relation < 50 and z_ideology == "Left"); new_middle_spd -= 3 if new_middle_conscious == 0; old_middle_spd -= 3; catholics_spd -= 3
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_braun
@@ -309,7 +309,7 @@ title: We persuade the <span style="color: #700000;">**Communists**</span> to ta
 subtitle: This will alienate the bourgeois parties! -1 resource
 choose-if: kpd_support_spd == 1 and (kpd_relation >= 60 or (kpd_relation >= 40 and kpd_leader == "Conciliators")) and resources >= 1
 unavailable-subtitle: [? if kpd_support_spd != 1: The <span style="color: #700000;">KPD</span> doesn't support Rosenfeld. ?][? if (kpd_relation < 60 or (kpd_relation < 40 and kpd_leader == "Conciliators")): Our relations aren't good enough. ?] [? if resources < 1: Not enough resources. ?]
-on-arrival: resources -= 1; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 3; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 3; new_middle_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3
+on-arrival: resources -= 1; kpd_glaze_spd = 1; workers_spd += 3; workers_kpd += 5; workers_nsdap -= 3; unemployed_kpd += 3; unemployed_nsdap -= 3; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; dvp_right += 3; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 3; new_middle_spd -= 3 if new_middle_class == 0; old_middle_spd -= 3; catholics_spd -= 3
 face-image: img/kpd_poster.jpg
 max-visits: 1
 go-to: campaigning_rosenfeld

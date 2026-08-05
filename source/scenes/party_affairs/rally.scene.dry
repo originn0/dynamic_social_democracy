@@ -80,7 +80,7 @@ Mass rallies are a common feature of <span style="color: #c00000;">social democr
 - @easy_discard
 
 @class_struggle
-on-arrival: workers_spd += 4*(1-dissent); workers_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2; dvp_right += 0.5; ddp_right += 0.5; lvp_right += 0.5
+on-arrival: workers_spd += 4*(1-dissent); workers_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 2*(1-dissent) if nationalization_adopted; unemployed_spd += 3*(1-dissent) if left_strength > reformist_strength; workers_spd += 4*(1-dissent) if nationalization_progress > 0; unemployed_spd += 3*(1-dissent) if nationalization_progress > 0; left_strength += 5; left_dissent -= 5; old_middle_spd -= 3; new_middle_spd -= 2 if new_middle_conscious == 0; dvp_right += 0.5; ddp_right += 0.5; lvp_right += 0.5
 
 Our message of class struggle appeals to the left wing of the working class, while potentially alienating the middle class. [? if nationalization_adopted :  The adoption of the Left’s nationalization plan has done much to revitalize worker enthusiasm. ?][? if nationalization_progress > 0 : Our achievements in nationalization have assisted our messaging. ?]
 
@@ -115,6 +115,7 @@ The WTB plan has become a popular rallying cry for our party. The workers are ea
 
 
 @local
-on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent); unemployed_spd += 3*(1-dissent);
+on-arrival: workers_spd += 3*(1-dissent); old_middle_spd += 1*(1-dissent); new_middle_spd += 2*(1-dissent) if new_middle_conscious == 0; new_middle_spd += 3*(1-dissent) if new_middle_conscious == 1; unemployed_spd += 3*(1-dissent); rural_spd += 2*(1-dissent) if rural_conscious == 1
 
-Our speakers have gauged the mood and are speaking to the issues that seem to most affect the workers in this moment.
+
+Our speakers have gauged the mood and are speaking to the issues that seem to most affect the workers [? if rural_conscious == 1: and peasants ?] in this moment.
