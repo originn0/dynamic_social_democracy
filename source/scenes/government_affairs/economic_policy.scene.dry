@@ -162,7 +162,7 @@ title: Implement the Left plan for the transformation of the economy.
 subtitle: -[+ nationalize_budget +] budget. [? if works_councils >= 3 : Our works councils have reduced the budget necessary for this program. ?] [? if socializations >= 2: Our existing socialization policies have reduced the budget necessary for this program. ?]
 unavailable-subtitle: Our coalition agreement stipulates against socialization.
 choose-if: not cvp_economy_accepted
-view-if: nationalization_adopted == 1 and nationalization_progress == 0 and not schleicher_spd
+view-if: nationalization_adopted == 1 and not schleicher_spd
 go-to: nationalize_deficit if budget < nationalize_budget; nationalize_no_deficit if budget >= nationalize_budget
 
 
