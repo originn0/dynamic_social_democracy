@@ -30,19 +30,15 @@ On the right is Alfred Hugenberg, a prominent industrialist and head of a media 
 on-arrival: {!
   Q.dnvp_balance = Q.pro_republic - Q.nationalism - Q.previous_spd_last_election_votes + 20;
   Q.dnvp_civility = Q.pro_republic - 64;
-  if Q.in_right_coalition: Q.dnvp_balance += 4; Q.dnvp_civility += 5;
-  if Q.in_right_coalition_prussia: Q.dnvp_balance += 2; Q.dnvp_civility += 2;
-  if Q.in_right_coalition_prussia && Q.in_right_coalition: Q.dnvp_balance += 1;
-  if Q.dnvp_civility < 0 || !(Q.in_right_coalition || Q.in_right_coalition_prussia): Q.dnvp_excluded = 1;
+  if (Q.in_right_coalition) {Q.dnvp_balance += 4; Q.dnvp_civility += 5;}
+  if (Q.in_right_coalition_prussia) {Q.dnvp_balance += 2; Q.dnvp_civility += 2;}
+  if (Q.in_right_coalition_prussia && Q.in_right_coalition) {Q.dnvp_balance += 1;}
+  if (Q.dnvp_civility < 0 || !(Q.in_right_coalition || Q.in_right_coalition_prussia)) {Q.dnvp_excluded = 1;}
   
-  if (Q.dnvp_balance >= 2 && (Q.pro_republic_7 >= 65 || !Q.dnvp_excluded)) || Q.tariffs < 0:
-    Q.hergt_win = 1;
-  if (Q.dnvp_balance <= -2 && (Q.pro_republic_7 < 65 || Q.dnvp_excluded)) && Q.tariffs >= 0:
-    Q.hugenberg_win = 1;
-  if !(Q.hergt_win || Q.hugenberg_win):
-    Q.triumvirate_win = 1;
+  if ((Q.dnvp_balance >= 2 && (Q.pro_republic_7 >= 65 || !Q.dnvp_excluded)) || Q.tariffs < 0) {Q.hergt_win = 1;}
+  if ((Q.dnvp_balance <= -2 && (Q.pro_republic_7 < 65 || Q.dnvp_excluded)) && Q.tariffs >= 0) {Q.hugenberg_win = 1;}
+  if (!(Q.hergt_win || Q.hugenberg_win)) {Q.triumvirate_win = 1;}
 !}  
-
 go-to: hergt if hergt_win; hugenberg if hugenberg_win; triumvirate if triumvirate_win
 
 @hergt
