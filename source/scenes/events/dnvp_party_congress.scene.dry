@@ -27,7 +27,19 @@ On the right is Alfred Hugenberg, a prominent industrialist and head of a media 
 - @resultsdnvp: The party votes...
 
 @resultsdnvp
-go-to: hergt if (((pro_republic - nationalism - previous_spd_last_election_votes >= -18) or (pro_republic - nationalism - previous_spd_last_election_votes >= -26 and in_right_coalition_prussia and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -23 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -21 and in_right_coalition_prussia)) and ((pro_republic_7 >= 65) or ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) or tariffs < 0); hugenberg if (((pro_republic - nationalism - previous_spd_last_election_votes <= -22) or (pro_republic - nationalism - previous_spd_last_election_votes <= -27 and in_right_coalition and in_right_coalition_prussia) or (pro_republic - nationalism - previous_spd_last_election_votes <= -25 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes <= -24 and in_right_coalition_prussia)) and ((pro_republic_7 < 65) and not ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) and tariffs >= 0); triumvirate if not ((((pro_republic - nationalism - previous_spd_last_election_votes <= -22) or (pro_republic - nationalism - previous_spd_last_election_votes <= -27 and in_right_coalition and in_right_coalition_prussia) or (pro_republic - nationalism - previous_spd_last_election_votes <= -25 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes <= -24 and in_right_coalition_prussia)) and ((pro_republic_7 < 65) and not ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) and tariffs >= 0) or (((pro_republic - nationalism - previous_spd_last_election_votes >= -18) or (pro_republic - nationalism - previous_spd_last_election_votes >= -26 and in_right_coalition_prussia and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -23 and in_right_coalition) or (pro_republic - nationalism - previous_spd_last_election_votes >= -21 and in_right_coalition_prussia)) and ((pro_republic_7 >= 65) or ((pro_republic >= 57 and in_right_coalition and in_right_coalition_prussia) or (pro_republic >= 59 and in_right_coalition) or (pro_republic >= 62 and in_right_coalition_prussia))) or tariffs < 0))
+on-arrival: {!
+  Q.dnvp_balance = Q.pro_republic - Q.nationalism - Q.previous_spd_last_election_votes + 20;
+  Q.dnvp_civility = Q.pro_republic - 64;
+  if (Q.in_right_coalition) {Q.dnvp_balance += 4; Q.dnvp_civility += 5;}
+  if (Q.in_right_coalition_prussia) {Q.dnvp_balance += 2; Q.dnvp_civility += 2;}
+  if (Q.in_right_coalition_prussia && Q.in_right_coalition) {Q.dnvp_balance += 1;}
+  if (Q.dnvp_civility < 0 || !(Q.in_right_coalition || Q.in_right_coalition_prussia)) {Q.dnvp_excluded = 1;}
+  
+  if ((Q.dnvp_balance >= 2 && (Q.pro_republic_7 >= 65 || !Q.dnvp_excluded)) || Q.tariffs < 0) {Q.hergt_win = 1;}
+  if ((Q.dnvp_balance <= -2 && (Q.pro_republic_7 < 65 || Q.dnvp_excluded)) && Q.tariffs >= 0) {Q.hugenberg_win = 1;}
+  if (!(Q.hergt_win || Q.hugenberg_win)) {Q.triumvirate_win = 1;}
+!}  
+go-to: hergt if hergt_win; hugenberg if hugenberg_win; triumvirate if triumvirate_win
 
 @hergt
 on-arrival: dnvp_leader = "Hergt"; dnvp_ideology = "Moderate"; workers_other -= 1; rural_other -= 1; new_middle_other -= 1; old_middle_other -= 1; ddp_left += 1; dvp_left += 1; lvp_left += 1; z_relation -= 3; ddp_relation -= 2; dvp_relation -= 5
