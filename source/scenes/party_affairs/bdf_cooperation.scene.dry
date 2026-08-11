@@ -1,0 +1,37 @@
+title: Feminism beyond suffrage?
+new-page: true
+is-card: true
+tags: party_affairs
+view-if: ((womens_work >= 2 and family_law >= 2) and (womens_rights >= 7 or abortion_rights) and socialism >= 46 and nationalism <= 50)
+on-arrival: month_actions += 0
+card-image: img/frauen-freiheit-frieden.jpg
+face-image: img/frauen-freiheit-frieden.jpg
+max-visits: 1
+
+= Feminism beyond suffrage?
+
+Our party has been a vehement defender of the constitutional rights of women to be treated the same as men. By this point, we have made great progress both in addressing wage disparity and the restrictions marriage pushes upon both employed and unemployed women[? if abortion_rights: , and even pushed through a bill to legalize abortion despite the conservative opposition ?]. However, all our efforts show that it is not enough: our enemy ought to be the patriarchal culture so prevalent in Germany: without tackling this foundation, no Constitution can overcome the misogynistic sentiments entrenched this deep.
+
+We would need to take into account the needs of both "traditional" and "new" women: a solution that would only suit one group will be a half-measure. Perhaps cooperating with <span class="tooltip-text" title="Federation of German Women's Associations">**Bund Deutscher Frauenvereine**</span> — an umbrella organization of many disparate feminist organizations — would aid us in finding the way to reconcile the needs of all women in Germany.
+  
+- @bdf: We stand together with the feminist movement.
+- @deny: This isn't our fight.
+- @easy_discard: Return card to hand.
+- @cancel_advisor_action
+
+@easy_discard
+view-if: last_advisor_action = 0
+go-to: easy_discard
+
+@awaken
+on-arrival: workers_spd += 8*(1-dissent); new_middle_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); old_middle_spd += 4*(1-dissent); rural_spd += 4*(1-dissent); catholics_spd += 1*(1-dissent); reformist_dissent -= 5; reformist_strength += 5; left_dissent += 5; left_strength -= 5; center_dissent += 5; center_strength -= 5; labor_dissent -= 5; labor_strength += 5; neorevisionist_dissent -= 10 if neorevisionism; neorevisionist_strength += 10 if neorevisionism; socialism += 2*(1 - dissent); nationalism -= 6*(1 - dissent); bdf_cooperation = 1;
+
+We cooperate with ***Bund Deutscher Frauenvereine*** to hold extensive campaigns, promoting women's rights at work at home, seeking to offer a common ground to both "traditional" and "new" women. We make accent on the livelihoods of widows and mothers who have lost their family in the Great War, those women who belong to the working poor, and aim to shift the blame in the popular perception of domestic abuse from influence of alcohol to present power imbalances.
+
+While some prominent conservative activists, like Annagrete Lehmann, oppose our efforts out of a principle, even the most traditional women have grievances our rhetoric can appeal to.
+
+(We can now sponsor BDF campaigns.)
+
+@deny
+
+We are a party of the working class, and we do not have a responsibility to show preferential treatment.
