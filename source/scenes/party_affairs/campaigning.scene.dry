@@ -16,6 +16,7 @@ Whether or not we are in an electoral campaign, the party is always trying to br
 - @old_middle: The "old middle class" of small independent businessmen and artisans.
 - @rural: Rural workers and small farmers, who have felt neglected by us in the past.
 - @unemployed: The unemployed.
+- @bdf: We can sponsor *Bund Deutscher Frauenvereine* for an extensive campaign among women.
 - @catholics: Catholics, who typically support the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 - @root: We either don't want to or cannot campaign right now.
 - @easy_discard
@@ -60,6 +61,17 @@ unavailable-subtitle: Not enough resources.
 on-arrival: unemployed_spd += 6*(1-dissent); resources -= 1; unemployed_spd -= 3 if welfare < 0; unemployed_spd -= 2 if unemployed >= 30; unemployed_spd += 6*(1-dissent) if wtb_adopted = 1; unemployed_spd += 3*(1-dissent) if welfare >= 2;
 
 We have increased our campaigning among the unemployed. [? if welfare < 0: The welfare cuts and resultant poverty make our campaign more difficult, since we are associated with the government that enacted these cuts, and our campaign may even backfire. ?][? if wtb_adopted = 1 : Adopting the WTB plan gives us a new rallying point around which to attract support from the unemployed. ?]
+
+@bdf
+view-if: bdf_cooperation
+subtitle: -1 resources.
+choose-if: resources >= 1
+unavailable-subtitle: Not enough resources.
+on-arrival: resources -= 1; workers_spd += 4*(1-(dissent/2)); new_middle_spd += 4*(1-(dissent/2)); old_middle_spd += 3*(1-(dissent/2)); rural_spd += 3*(1-(dissent/2)); unemployed_spd += 3*(1-(dissent/2)); catholics_spd += 1*(1-(dissent/2));
+
+We have coordinated with BDF to campaign among women across all classes.
+
+#less dissent because of BDF participation
 
 @catholics
 subtitle: -1 resources
