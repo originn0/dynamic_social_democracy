@@ -65,21 +65,28 @@ What do the three arrows stand for?
 - @all: All of the above.
 
 @unity
+on-arrival: left_dissent -= 5; labor_dissent -= 5; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5
 go-to: if_end
 
 @anti
+on-arrival: z_relation += 3 if z_ideology == "Left"; z_relation -= 1 if z_ideology == "Right"; ddp_relation += 4 if ddp_ideology == "Left"; ddp_relation += 3 if ddp_ideology == "Moderate"; dvp_relation += 2 if dvp_ideology == "Left"; dvp_relation -= 1 if dvp_ideology == "Moderate"; dvp_relation -= 4 if dvp_ideology == "Right"; lvp_relation += 3 if lvp_ideology == "Left"; lvp_relation -= 3 if lvp_relation == "Right"; kpd_relation -= 3; kpd_relation -= 2 if kpd_leader != "Conciliators"
 go-to: if_end
 
 @orgs
+on-arrival: rb_strength += 100; rb_militancy += 0.02
 go-to: if_end
 
 @wtb
+on-arrival: workers_spd += 3*(1-dissent)/2; unemployed_spd += 3*(1-dissent)/2; rural_spd += 1*(1-dissent)/2; new_middle_spd += 1*(1-dissent)/2; old_middle_spd += 1*(1-dissent)/2; workers_spd += 3*(1-dissent)/2 if wtb_implemented; unemployed_spd += 3*(1-dissent)/2 if wtb_implemented; rural_spd += 2*(1-dissent)/2 if wtb_implemented; new_middle_spd += 2*(1-dissent)/2 if wtb_implemented; old_middle_spd += 2*(1-dissent)/2 if wtb_implemented; wtb_rally += 1
 view-if: wtb_adopted == 1
 go-to: if_end
 
 @all
+on-arrival: left_dissent -= 2; labor_dissent -= 2; center_dissent -= 2; reformist_dissent -= 2; neorevisionist_dissent -= 2; z_relation += 1 if z_ideology == "Left"; ddp_relation += 2 if ddp_ideology == "Left"; ddp_relation += 1 if ddp_ideology == "Moderate"; dvp_relation += 1 if dvp_ideology == "Left"; dvp_relation -= 1 if dvp_ideology == "Right"; lvp_relation += 1 if lvp_ideology == "Left"; lvp_relation -= 1 if lvp_relation == "Right"; kpd_relation -= 2; kpd_relation -= 1 if kpd_leader != "Conciliators"; rb_strength += 50; rb_militancy += 0.01; workers_spd += 3*(1-dissent)/4; unemployed_spd += 3*(1-dissent)/4; rural_spd += 1*(1-dissent)/4; new_middle_spd += 1*(1-dissent)/4; old_middle_spd += 1*(1-dissent)/4; workers_spd += 3*(1-dissent)/4 if wtb_implemented; unemployed_spd += 3*(1-dissent)/4 if wtb_implemented; rural_spd += 2*(1-dissent)/4 if wtb_implemented; new_middle_spd += 2*(1-dissent)/4 if wtb_implemented; old_middle_spd += 2*(1-dissent)/4 if wtb_implemented
 go-to: if_end
 
 @if_end
 
 The <span style="color: #c00000;">**Iron**</span> <span style="color: #1A1A1A;">**Front**</span> has given a new energy to our party.
+
+
