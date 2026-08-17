@@ -1166,11 +1166,7 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
     // accumulated economic growth/decline
     // Maybe there should be differences for positive/negative growth?
     if (Q.economic_growth < 0) {
-        if (Q.economic_expansion > 0) {
-            Q.economic_expansion = 0;
-        } else {
-            Q.economic_expansion += Q.economic_growth;
-        }
+        Q.economic_expansion += Q.economic_growth;
     }
     if (Q.economic_growth > 0 && Q.reparations <= -2 && Q.spd_in_government) {
         Q.economic_expansion += Q.economic_growth;
@@ -4185,6 +4181,8 @@ if (Q.spd_in_government_time >= 6) {
     }
     if (Q.economic_growth < 0) {
         Q.hindenburg_angry += ((Q.economic_growth*-1) / 2)
+    } else if (Q.economic_growth > 3) {
+        Q.hindenburg_angry -= (Q.economic_growth / 2)
     }
     if (Q.budget < 0) {
         Q.hindenburg_angry += Q.budget*-1;
