@@ -1,6 +1,6 @@
 title: <span style="color: #C0A054;">**DVP**</span> Congress
 subtitle: The <span style="color: #C0A054;">**DVP**</span> decides their future...
-view-if: year = 1928 and month = 12 and dvp_congress_trigger = 1 and dnvp_ideology != "Radical" and not lvp_formed and lvp_timer_trigger == 0
+view-if: year = 1928 and month = 12 and dvp_congress_trigger = 1 and not lvp_formed and lvp_timer_trigger == 0
 on-arrival: {!
 if (Q.dvp_relation >= 50) {
     Q.dvp_left += 1;
@@ -42,13 +42,13 @@ A party congress has been called within the <span style="color: #C0A054;">**DVP*
 
 German industry isn't going to abandon their voice within the <span style="color: #C0A054;">**DVP**</span> so easily, and this is likely to be the last chance Stresemann will have to maintain control of the party, with his declining health.[? if not in_grand_coalition: The left of the <span style="color: #C0A054;">**DVP**</span> has also been diminished by the current absence of a coalition including both parties. ?]
 
-- @resultsdvp: The party votes...
-
-@resultsdvp
-go-to: left if stresemann_reform_yay; right if stresemann_reform_nay; left_conflict if stresemann_reform_mid
+- @left: Stresemann maintains control of the party!
+- @left_conflict: Stresemann retains his grasp on the party.
+- @right: The industrialists vote Stresemann down.
 
 @left
-on-arrival: dvp_left += 10; dvp_relation += 10; liberal_cooperation += 3; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 4; new_middle_other -= 4; old_middle_dvp += 4; old_middle_other -= 4; rural_dvp += 2; rural_other -= 2; catholics_other -= 2; catholics_z -= 2; catholics_dvp += 4; coalition_dissent -= 2 if in_grand_coalition; dvp_reform = 1; pro_republic += 5; ddp_left += 1.5; ddp_cohesion += 1.5
+view-if: stresemann_reform_yay
+on-arrival: dvp_left += 10; dvp_relation += 10; liberal_cooperation += 3; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 4; new_middle_other -= 4; old_middle_dvp += 4; old_middle_other -= 4; rural_dvp += 2; rural_other -= 2; catholics_other -= 2; catholics_z -= 2; catholics_dvp += 4; coalition_dissent -= 2 if in_grand_coalition; dvp_reform = 1; pro_republic += 5; ddp_left += 1.5; ddp_cohesion += 1.5; new_middle_dnvp -= 2 if dnvp_ideology == "Radical"; old_middle_dnvp -= 2 if dnvp_ideology == "Radical"; rural_dnvp -= 2 if dnvp_ideology == "Radical"; new_middle_dvp += 4 if dnvp_ideology == "Radical"; new_middle_other -= 2 if dnvp_ideology == "Radical"; ddp_left += 0.5 if dnvp_ideology == "Radical"; ddp_cohesion += 0.5 if dnvp_ideology == "Radical"; old_middle_other += 2 if dnvp_ideology == "Radical"; rural_dvp += 2 if dnvp_ideology == "Radical"
 face-image: img/portraits/Stresemann.jpg
 
 Stresemann rallies what's left of the <span style="color: #C0A054;">**DVP**</span> that aren't bought out by industry into adopting the proposed reform, not without any fierce opposition from the other half of the party. The industrialists have diverted their efforts on maintaining influence within the <span style="color: #3E88B3;">**DNVP**</span> now, to make up for their loss.
@@ -56,7 +56,8 @@ Stresemann rallies what's left of the <span style="color: #C0A054;">**DVP**</spa
 We have noticed an improvement in relations with the <span style="color: #C0A054;">**DVP**</span>[? if in_grand_coalition:, and a decrease in coalition tensions?]. The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has also voiced approval to the actions of the congress and have opened up talks for further cooperation. This also has a ripple effect within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, shifting them leftwards.
 
 @left_conflict
-on-arrival: dvp_left += 5; dvp_relation += 5; liberal_cooperation += 2; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 2; new_middle_other -= 2; old_middle_dvp += 2; old_middle_other -= 2; catholics_other -= 2; catholics_dvp += 2; dvp_reform = 1; coalition_dissent -= 1 if in_grand_coalition; pro_republic += 3; ddp_left += 1; ddp_cohesion += 1
+view-if: stresemann_reform_mid
+on-arrival: dvp_left += 5; dvp_relation += 5; liberal_cooperation += 2; workers_dvp += 1; workers_other -= 1; new_middle_dvp += 2; new_middle_other -= 2; old_middle_dvp += 4; old_middle_other -= 2; catholics_other -= 2; catholics_dvp += 2; dvp_reform = 1; coalition_dissent -= 1 if in_grand_coalition; pro_republic += 3; ddp_left += 1; ddp_cohesion += 1; new_middle_dnvp -= 1 if dnvp_ideology == "Radical"; old_middle_dnvp -= 2 if dnvp_ideology == "Radical"; rural_dvp += 2 if dnvp_ideology == "Radical"; rural_dnvp -= 1 if dnvp_ideology == "Radical"; rural_other -= 1 if dnvp_ideology == "Radical" if dnvp_ideology == "Radical" new_middle_dvp += 1
 face-image: img/portraits/Stresemann.jpg
 
 Stresemann and the left-wing of the <span style="color: #C0A054;">**DVP**</span> pushed through the reform by an extremely narrow margin, only achieved by Stresemann's threats to resign if it were not to pass. Half of the party's Reichstag delegation is tied to industry, which are now without much influence within the <span style="color: #C0A054;">**DVP**</span>, and have mostly shifted to support the <span style="color: #3E88B3;">**DNVP**</span> now. Those in the Reichstag delegation are now in open conflict with the left-wing of the <span style="color: #C0A054;">**DVP**</span>.
@@ -64,7 +65,8 @@ Stresemann and the left-wing of the <span style="color: #C0A054;">**DVP**</span>
 We have noticed a small improvement in relations with the <span style="color: #C0A054;">**DVP**</span>[? if in_grand_coalition:, and a decrease in coalition tensions?]. The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has also voiced approval to the actions of the congress and have opened up talks for further cooperation. This also has a ripple effect within the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, shifting them leftwards.
 
 @right
-on-arrival: dvp_right += 5; dvp_relation -= 5; coalition_dissent += 1 if in_grand_coalition; old_middle_dnvp += 2; new_middle_dnvp += 2; dvp_reform = 0; pro_republic -= 3; ddp_right += 1; ddp_cohesion -= 1
+view-if: stresemann_reform_nay
+on-arrival: dvp_right += 5; dvp_relation -= 5; coalition_dissent += 1 if in_grand_coalition; dvp_reform = 0; pro_republic -= 3; ddp_right += 1; ddp_cohesion -= 1; old_middle_dnvp += 2 if dnvp_ideology != "Radical"; new_middle_dnvp += 2 if dnvp_ideology != "Radical"; old_middle_other += 2 if dnvp_ideology == "Radical"; new_middle_other += 2 if dnvp_ideology == "Radical"; pro_republic += 1 if dnvp_ideology == "Radical"
 face-image: img/portraits/ernst_scholz.jpg
 
 Stresemann has faced a resounding defeat at the hands of the right-wing industrial interests inside the <span style="color: #C0A054;">**DVP**</span>. They have capitalized on this defeat by restricting the powers of the party chairmanship under Stresemann towards the more conservative Reichstag delegation led by Ernst Scholz, the lead figure on the right-wing. 
