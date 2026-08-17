@@ -54,4 +54,4 @@ view-if: womens_work >= 3 and family_law >= 2 and bdf_cooperation = 0
 choose-if: (womens_rights >= 8 or abortion_rights) and nationalism <= 40 and advisor_action_timer = 0
 unavailable-subtitle: [? if nationalism > 40: The environment is too polarized: we must push against <span style="color: #3E88B3;">nationalist</span> propaganda. ?][? if womens_rights <= 7 or abortion_rights = 0: More work needs to be done. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: advisor_action_timer = 6; last_advisor_action = 1
-go-to: new_middle_consciousness
+go-to: bdf_cooperation
