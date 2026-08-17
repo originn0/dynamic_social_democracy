@@ -279,7 +279,7 @@ Albert Einstein is a Nobel Prize-winning scientist, director of the Kaiser Wilhe
 
 He did not wish to run for president, disliking the public nature of campaigning, but we have somehow convinced him that his candidacy will be crucial to the future of Germany and the world. As a <span style="color: #005EB8;">Jewish</span> German pacifist, his becoming president would be a repudiation of everything the <span style="color: #7A3C00;">Nazis</span> stand for.
 
-The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will endorse Einstein's candidacy.
+[? if not lvp_formed: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> will endorse Einstein's candidacy. ?]
 
 @mann_r1
 subtitle: -2 resources - He might be too <span style="color: #700000;">far left</span> for the bourgeois parties.
@@ -437,7 +437,7 @@ max-visits: 1
 @convince_lvp_spd
 title: Convince the <span style="color: #FFCC00;">**LVP**</span> to support [+ spd_candidate +].
 view-if: (spd_candidate = "Braun" or spd_candidate = "Schumacher" or spd_candidate = "Juchacz" or is_cultural_candidate) and lvp_candidate != spd_candidate and lvp_formed
-on-arrival: lvp_candidate = spd_candidate if lvp_relation >= 65
+on-arrival: lvp_candidate = spd_candidate if ((lvp_relation >= 65) or ((lvp_relation >= 50) and (spd_candidate = "Einstein")))
 go-to: r1_menu if round = 0; r2_campaigning if round > 0
 max-visits: 1
 
