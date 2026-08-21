@@ -29,7 +29,7 @@ If no action is taken, we risk permanently alienating the bourgeois parties.
 - @lower_militancy: We must lower the Reichsbanner's militancy.
 
 @let_go
-subtitle: The Reichsbanner is still needed, as the police cannot be trusted to do their job. [? if president == "Hindenburg" and spd_in_government: Hindenburg has threatened to sack our government if no action is taken. ?][? if spd_in_government and not in_left_front and not in_spd_majority: Our coalition partners will call a vote of no confidence. ?] The bourgeois parties will be forever antagonistic.
+subtitle: The Reichsbanner is still needed, as the police cannot be trusted to do their job. [? if president == "Hindenburg" and spd_in_government: Hindenburg has threatened to sack our government if no action is taken. ?][? if spd_in_government and not in_left_front and not in_spd_majority and not sapd_toleration: Our coalition partners will call a vote of no confidence. ?] The bourgeois parties will be forever antagonistic.
 unavailable-subtitle: The reformist wing of the party is able to dissuade the party from endorsing this option.
 choose-if: left_strength + neorevisionist_strength >= reformist_strength
 on-arrival: rb_strength *= 0.8; z_relation -= 20; ddp_relation -= 20; lvp_relation -= 20; rb_exit = 1; left_strength += 10*(1-dissent); neorevisionist_strength += 20*(1-dissent); ddp_right += 8; lvp_right += 10; dvp_right += 10; ddp_cohesion -= 5; pro_republic -= 10; coalition_dissent += 5; rb_massive = 1; hindenburg_angry += 100

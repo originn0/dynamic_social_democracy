@@ -30,7 +30,7 @@ After a second budget proposal, Schacht still considers Hilferding's budget to b
 
 
 @hilferding_resign
-on-arrival: finance_minister_party = "DVP" if in_grand_coalition; finance_minister_party = "LVP" if (in_grand_coalition or in_weimar_coalition) and lvp_formed; finance_minister_party = "I" if (in_weimar_coalition and not lvp_formed) or in_popular_front or in_left_front; finance_minister = "Moldenhauer"; finance_minister = "Köhler" if (in_weimar_coalition and not lvp_formed) or in_popular_front; economic_minister_granted = 1 if economic_minister_party != "SPD"; economic_minister_party = "SPD" if economic_minister_party != "SPD"; economic_minister = "Schmidt" if economic_minister_party = "SPD"
+on-arrival: finance_minister_party = "DVP" if in_grand_coalition; finance_minister_party = "LVP" if (in_grand_coalition or in_weimar_coalition) and lvp_formed; finance_minister_party = "I" if (in_weimar_coalition and not lvp_formed) or in_popular_front or in_left_front or sapd_toleration; finance_minister = "Moldenhauer"; finance_minister = "Köhler" if (in_weimar_coalition and not lvp_formed) or in_popular_front; economic_minister_granted = 1 if economic_minister_party != "SPD"; economic_minister_party = "SPD" if economic_minister_party != "SPD"; economic_minister = "Schmidt" if economic_minister_party = "SPD"
 
 With no other choice, Hilferding has resigned as Finance Minister, to be replaced by a [? if (in_grand_coalition or (in_weimar_coalition and lvp_formed)): center-right ?][? if not in_grand_coalition: technocratic ?] candidate.
 
