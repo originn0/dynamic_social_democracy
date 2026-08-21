@@ -1,6 +1,6 @@
 title: The <span style="color: #000000;">Center</span> merges with the <span style="color: #3E88B3;">**DNVP**</span>!
 subtitle: A behemoth of the German Right is formed...
-view-if: year >= 1931 and (100 - z_relation) >= spd_votes and z_ideology == "Right" and (z_leader == "Stegerwald" or z_leader == "Adenauer") and (((in_spd_majority or in_left_front) and (not spd_prussia or in_left_front_prussia or in_spd_majority_prussia)) or (spd_votes + pro_republic + left_strength >= 150)) and dnvp_leader == "Treviranus" and stegerwald_transformation_timer == 0 and not cvp_formed and not dkp_merger_waiting
+view-if: year >= 1931 and (100 - z_relation) >= spd_votes and z_ideology == "Right" and (z_leader == "Stegerwald" or z_leader == "Adenauer") and (((in_spd_majority or in_left_front or sapd_toleration) and (not spd_prussia or in_left_front_prussia or in_spd_majority_prussia or sapd_toleration_prussia)) or (spd_votes + pro_republic + left_strength >= 150)) and dnvp_leader == "Treviranus" and stegerwald_transformation_timer == 0 and not cvp_formed and not dkp_merger_waiting
 max-visits: 1
 tags: event
 priority: 3
@@ -20,7 +20,7 @@ new-page: true
 
 = The <span style="color: #000000;">Center</span> merges with the <span style="color: #3E88B3;">**DNVP**</span>
 
-The <span style="color: #000000;">Center Party</span>, having undergone a major transformation into a center-right <span style="color: #000000;">Christian People's Party</span> under [+ z_leader +], has been flirting with the idea of merging with [+ dnvp_leader +]'s <span style="color: #3E88B3;">**DNVP**</span> for the past few months. [? if spd_votes + pro_republic < 120 or ((in_spd_majority or in_left_front) and (not spd_prussia or in_left_front_prussia or in_spd_majority_prussia)): Their mutual opposition in the current governing coalition, newfound ideological closeness, and shared fears of both the <span style="color: #7A3C00;">Nazis</span> and <span style="color: #c00000;">socialists</span>—coupled with their electoral decline at the hands of the former—have pushed them toward closer cooperation. ?][? if spd_votes + pro_republic >= 120 and not ((in_spd_majority or in_left_front) and (not spd_prussia or in_left_front_prussia or in_spd_majority_prussia)): Their growing ideological alignment, shared commitment to the Republic, and mutual anxiety over the <span style="color: #c00000;">socialists</span>—whose monumental electoral gains threaten to overturn Germany’s conservative order—have pushed them toward closer cooperation. ?]
+The <span style="color: #000000;">Center Party</span>, having undergone a major transformation into a center-right <span style="color: #000000;">Christian People's Party</span> under [+ z_leader +], has been flirting with the idea of merging with [+ dnvp_leader +]'s <span style="color: #3E88B3;">**DNVP**</span> for the past few months. [? if spd_votes + pro_republic < 120 or ((in_spd_majority or in_left_front or sapd_toleration) and (not spd_prussia or in_left_front_prussia or in_spd_majority_prussia or sapd_toleration_prussia)): Their mutual opposition in the current governing coalition, newfound ideological closeness, and shared fears of both the <span style="color: #7A3C00;">Nazis</span> and <span style="color: #c00000;">socialists</span>—coupled with their electoral decline at the hands of the former—have pushed them toward closer cooperation. ?][? if spd_votes + pro_republic >= 120 and not ((in_spd_majority or sapd_toleration) and (not spd_prussia or in_left_front_prussia or in_spd_majority_prussia or sapd_toleration_prussia)): Their growing ideological alignment, shared commitment to the Republic, and mutual anxiety over the <span style="color: #c00000;">socialists</span>—whose monumental electoral gains threaten to overturn Germany’s conservative order—have pushed them toward closer cooperation. ?]
 
 We have suffered a falling out with the <span style="color: #000000;">Center Party</span>, which now seeks to sever its remaining ties to us in order to clear the path for a merger with the <span style="color: #3E88B3;">**DNVP**</span>. Our few remaining allies within their ranks have been sidelined—left powerless to obstruct the party’s rightward drift. This shift has enabled the party’s leadership, alongside newly integrated right-wing Protestant politicians, to open negotiations with the <span style="color: #3E88B3;">**DNVP**</span> on a possible unification. 
 
@@ -314,7 +314,7 @@ view-if: cvp_reparations and cvp_economy and cvp_coalition and cvp_monarchy
 on-arrival: {!
 Q.cvp_dvp_trigger = 0;
 if (Q.dvp_exist && Q.dvp_votes < 5 && !Q.lvp_formed && !Q.lvp_merger_2_timer && !Q.lvp_timer_2_trigger) Q.cvp_dvp_trigger = 1;
-if (Q.spd_prussia && !Q.in_spd_majority_prussia && !Q.in_left_front_prussia) Q.prussia_coalition_trigger = 1;
+if (Q.spd_prussia && !Q.in_spd_majority_prussia && !Q.in_left_front_prussia && !Q.sapd_toleration) Q.prussia_coalition_trigger = 1;
 if (Q.in_weimar_coalition && !Q.in_social_liberal_coalition || Q.in_grand_coalition || Q.in_popular_front) Q.federal_coalition_trigger = Q.time;
 !}
 face-image: img/cvp.jpg

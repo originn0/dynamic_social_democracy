@@ -1,13 +1,13 @@
-title: The <span style="color: #700000;">**KPD**</span> calls a vote of no confidence against the current government!
-subtitle: We have angered the <span style="color: #700000;">**KPD**</span> too much...
+title: The [? if not sapd_toleration: <span style="color: #700000;">**KPD**</span> ?][? if sapd_toleration: <span style="color: #9B0000;">**SAPD**</span> ?] calls a vote of no confidence against the current government!
+subtitle: We have angered the [? if not sapd_toleration: <span style="color: #700000;">**KPD**</span> ?][? if sapd_toleration: <span style="color: #9B0000;">**SAPD**</span> ?] too much...
 new-page: true
-view-if: spd_in_government = 1 and ((in_popular_front = 1 and kpd_coalition_dissent >= 3) or (in_left_front = 1 and kpd_coalition_dissent >= 4)) and spd_r < 50 and not constructive_vonc
+view-if: spd_in_government = 1 and ((in_popular_front = 1 and kpd_coalition_dissent >= 3) or (in_left_front = 1 and kpd_coalition_dissent >= 4) or (sapd_toleration and kpd_coalition_dissent >= 4)) and spd_r < 50 and not constructive_vonc
 tags: event
 go-to: menu
 
 = Vote of No Confidence
 
-The <span style="color: #700000;">**KPD**</span> has called a vote of no confidence against us, due to our various policies and disagreements. If this succeeds, there will be an election in a few months.
+The [? if not sapd_toleration: <span style="color: #700000;">**KPD**</span> ?][? if sapd_toleration: <span style="color: #9B0000;">**SAPD**</span> ?] has called a vote of no confidence against us, due to our various policies and disagreements. If this succeeds, there will be an election in a few months.
 
 @menu
 
@@ -17,15 +17,17 @@ The <span style="color: #700000;">**KPD**</span> has called a vote of no confide
 
 @try_assuage
 
-How do we assuage the <span style="color: #700000;">**KPD**</span>?
+How do we assuage the [? if not sapd_toleration: <span style="color: #700000;">**KPD**</span> ?][? if sapd_toleration: <span style="color: #9B0000;">**SAPD**</span> ?]?
 
 - @resources: Use our resources to reduce dissent within the coalition.
 - @thalmann: Appoint Thälmann as chancellor instead of [+ chancellor +].
+- @rosenfeld: Appoint Rosenfeld as chancellor instead of [+ chancellor +].
 - @support_center: Could we form a new government based on the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if dvp_exist: (and possibly <span style="color: #C0A054;">**DVP**</span>)?]?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?]?
 - @let_it_happen: Never mind. Let the vote happen.
 
 @thalmann
 choose-if: president_ideology == "Left"
+view-if: not sapd_toleration
 subtitle: This would be pretext for a right-wing coup.
 unavailable-subtitle: [? if president == "Hindenburg" : President Hindenburg would never allow this. ?]
 on-arrival: chancellor = "Thälmann"; chancellor_party = "KPD"
@@ -36,7 +38,12 @@ Immediately, [+ chancellor +] goes to work building a "<span style="color: #750e
 
 In response to [+ chancellor +] being appointed Chancellor, the right-wing forces launches almost immediately launch an attempted coup. Troops of the <span style="color: #3E88B3;">**Stahlhelm**</span> and <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> enter Berlin and immediately begin clashing with our supporters! <span style="color: #808080;">Reactionary</span> officers within the Reichswehr have taken their troops out of the barracks and joined them with the <span style="color: #3E88B3;">**Stahlhelm**</span> to stop the <span style="color: #700000;">**KPD**</span> from taking power. We are forced to be on the same side as the <span style="color: #700000;">**KPD**</span>, whether we want to or not.
 
-- @civil_war
+@rosenfeld
+view-if: sapd_toleration
+subtitle: The right-wing parties would not like this.
+on-arrival: chancellor = "Rosenfeld"; chancellor_party = "SAPD"; kpd_coalition_dissent -= 1; kpd_relation += 5; z_relation -= 3; lvp_relation -= 3; dvp_relation -= 3; ddp_relation -= 3; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; lvp_right += 1; reichswehr_loyalty -= 0.1;
+
+President [+ president +] has appointed [+ chancellor +] as chancellor.
 
 
 @resources
@@ -52,7 +59,7 @@ By transferring resources to our coalition partners, we can reduce their dissent
 choose-if: (weimar_coalition >= 50 and z_relation >= 40 and (ddp_relation >= 35 or lvp_relation >= 35)) or (grand_coalition >= 50 and z_relation >= 45 and ((dvp_relation >= 30 and ddp_relation >= 40) or lvp_relation >= 40))
 unavailable-subtitle: [? if grand_coalition < 50 : This would not give us a majority. ?] [? if z_relation < 45 : After working with the <span style="color: #700000;">Communists</span>, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] does not wish to form a coalition with us. ?] [? if dvp_relation < 30 and not lvp_formed and dvp_exist : The <span style="color: #C0A054;">**DVP**</span> would rather see the government fall than rescue us from the <span style="color: #700000;">Communists</span>. ?] [? if ddp_relation < 40 and not lvp_formed : The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is no longer our ally. ?] [? if lvp_relation < 40 and lvp_formed : The <span style="color: #FFCC00;">**LVP**</span> is no longer our ally. ?]
 
-We could try to boot the <span style="color: #700000;">**KPD**</span> from our governing coalition, and form a new government with the bourgeois parties.
+We could try to boot the [? if not sapd_toleration: <span style="color: #700000;">**KPD**</span> ?][? if sapd_toleration: <span style="color: #9B0000;">**SAPD**</span> ?] from our governing coalition, and form a new government with the bourgeois parties.
 
 - @election_1928.weimar_coalition: Form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition?
 - @election_1928.weimar_coalition_liberal_parliament: Form a <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span> Coalition?
@@ -68,14 +75,14 @@ go-to: let_it_happen_braun if president_ideology == "Left"; let_it_happen_hinden
 # if Braun is president, we are now a caretaker government. If Hindenburg is president, Brüning is a caretaker government
 
 @let_it_happen_braun
-on-arrival: next_election_time = time + 3 if next_election_time >= time + 3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; foreign_minister_party = "I"; interior_minister_party = "I"; justice_minister_party = "I"; labor_minister_party = "I"; reichswehr_minister_party = "I"; economic_minister_party = "I"; finance_minister_party = "I"; agriculture_minister_party = "I";
+on-arrival: next_election_time = time + 3 if next_election_time >= time + 3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; sapd_toleration = 0; foreign_minister_party = "I"; interior_minister_party = "I"; justice_minister_party = "I"; labor_minister_party = "I"; reichswehr_minister_party = "I"; economic_minister_party = "I"; finance_minister_party = "I"; agriculture_minister_party = "I";
 
 The vote succeeds, and our coalition has collapsed. Chancellor [+ chancellor +] will lead a caretaker government until the next election.
 
 New elections have been set for [+ next_election_month : month +] [+ next_election_year +].
 
 @let_it_happen_hindenburg
-on-arrival: time_to_election = 3; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; coalition_dissent = 0; kpd_coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; bruning_event_timer = 6 if not bruning_event_seen and year >= 1930
+on-arrival: time_to_election = 3; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; sapd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; coalition_dissent = 0; kpd_coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; bruning_event_timer = 6 if not bruning_event_seen and year >= 1930
 go-to: elections if bruning_event_seen or year < 1930
 
 The vote succeeds, and our government has resigned. Chancellor Brüning has been appointed as the head of an acting government, consisting solely of the bourgeois parties.
@@ -83,7 +90,7 @@ The vote succeeds, and our government has resigned. Chancellor Brüning has been
 [? if not bruning_event_seen and year >= 1930: New elections haven't been called yet but it's likely that they will be soon, considering Brüning most likely doesn't have the majority of the Reichstag behind him. ?]
 
 @let_it_happen_other
-on-arrival: time_to_election = 3; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; coalition_dissent = 0; kpd_coalition_dissent = 0; pro_republic -= 3; old_middle_spd -= 2; new_middle_spd -= 2; workers_spd -= 2 if pro_republic < 50; workers_spd -= 3 if pro_republic < 40; old_middle_nsdap += 3 if pro_republic < 50; new_middle_nsdap += 2 if pro_republic < 50
+on-arrival: time_to_election = 3; spd_in_government = 0; in_popular_front = 0; in_left_front = 0; sapd_toleration = 0; chancellor = "Brüning"; chancellor_party = "Z"; foreign_minister_party = "DVP"; foreign_minister_party = "LVP" if lvp_formed; interior_minister_party = "Z"; justice_minister_party = "I"; labor_minister_party = "Z"; reichswehr_minister_party = "I"; economic_minister_party = ddp_name; economic_minister_party = "LVP" if lvp_formed; finance_minister_party = "DVP"; finance_minister_party = "LVP" if lvp_formed; agriculture_minister_party = "Z"; coalition_dissent = 0; kpd_coalition_dissent = 0; pro_republic -= 3; old_middle_spd -= 2; new_middle_spd -= 2; workers_spd -= 2 if pro_republic < 50; workers_spd -= 3 if pro_republic < 40; old_middle_nsdap += 3 if pro_republic < 50; new_middle_nsdap += 2 if pro_republic < 50
 go-to: elections
 
 The vote succeeds, and our government has resigned. Chancellor Brüning has been appointed as the head of an acting government, consisting solely of the bourgeois parties.

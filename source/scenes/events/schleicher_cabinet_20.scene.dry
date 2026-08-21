@@ -403,6 +403,8 @@ if (Q.dnvp_ideology === "Moderate") {
 
 Q.left_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.sapd_r).toFixed(1));
 
+Q.socialist_front = parseFloat((Q.spd_r + Q.sapd_r).toFixed(1));
+
 if (Q.lvp_formed) {
     Q.popular_front_coalition = parseFloat((Q.spd_r + Q.kpd_r + Q.z_r - Q.bvp_r + Q.sapd_r).toFixed(1));
 } else if (Q.liberal_parliament == 0 && Q.bourgeois_parliament_ddp == 0) {
