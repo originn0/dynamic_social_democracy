@@ -232,7 +232,9 @@ Forming a "<span style="color: #FFDD00;">United States</span> of <span style="co
 
 @european_union_2
 title: We can sign a treaty to form a <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span>!
-view-if: west_relation >= 5 and east_relation >= 4 and eu_progress >= 3 and not eu and france_left_seen
+unavailable-subtitle: [? if west_relation < 5 : Our relations with the West are not good enough. ?] [? if east_relation < 4 : Our relations with the East are not good enough. ?]
+view-if: eu_progress >= 3 and not eu and france_left_seen
+choose-if: west_relation >= 5 and east_relation >= 4
 on-arrival: eu = 1; unemployed -= 2 if unemployed >= 10; inflation += 2 if inflation <= -2; inflation -= 1 if inflation >= 4.5; workers_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); old_middle_spd += 5*(1-dissent); rural_spd += 4*(1-dissent); catholics_spd += 4*(1-dissent); unemployed_spd += 4*(1-dissent); pro_republic += 5; nationalism -= 5; budget += 1; ddp_left += 3; ddp_cohesion += 3; ddp_relation += 10; lvp_relation += 5; foreign_goal_spd_peoples += 1; economic_growth += 1 if economic_growth < 3; kpd_coalition_dissent += 1; kpd_relation -= 10
 max-visits: 1
 achievement: eu
