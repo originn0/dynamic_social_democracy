@@ -344,7 +344,7 @@ We implore the [? if z_party_name != "CVP": <span style="color: #000000;">Center
 @convince_z_spd
 title: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to support [+ spd_candidate +].
 choose-if: spd_votes >= z_votes and not cvp_formed
-unavailable-subtitle: [? if z_votes < spd_votes: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate. ?] [? if cvp_formed: The former DNVP elements of the CVP would never support a Socialist candidate for president.  ?]
+unavailable-subtitle: [? if z_votes < spd_votes: The [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] knows that they are more popular than us; they do not see a reason to support our candidate. ?] [? if cvp_formed: The former <span style="color: #3E88B3;">**DNVP**</span> elements of the <span style="color: #000000;">**CVP**</span> would never support a Socialist candidate for president. ?]
 view-if: (spd_candidate = "Braun" or spd_candidate = "Schumacher" or spd_candidate = "Juchacz" or is_cultural_candidate) and z_candidate != spd_candidate and not cvp_formed
 on-arrival: {!
 Q.z_support_braun = 0;
