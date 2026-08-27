@@ -252,8 +252,11 @@ if (Q.dnef_formed) {
     Q.schleicher_left_coalition_prussia = parseFloat((Q.dnef_r_prussia + Q.spd_r_prussia + Q.lvp_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
 }
 
-if (Q.kpd_relation >= 30 && Q.sapd_formed == 1) {
+if (Q.kpd_relation >= 30 && Q.sapd_formed == 1 && Q.in_weimar_coalition_prussia < 50) {
     Q.weimar_coalition_prussia += Q.sapd_r_prussia;
+    Q.sapd_weimar_prussia = 1;
+} else {
+    Q.sapd_weimar_prussia = 0;
 }
 
 for (var record of Q.election_records) {
