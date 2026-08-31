@@ -17,6 +17,7 @@ We can enact policies in Prussia.
 - @police_strength: Recruit additional police.
 - @bureaucracy: Purge the bureaucracy of <span style="color: #808080;">reactionary</span> elements.
 - @ban_sa: Ban the <span style="color: #7A3C00;">**SA**</span>, the <span style="color: #7A3C00;">Nazi</span> paramilitary group.
+- @ban_sa_preussenschlag: Ban the <span style="color: #7A3C00;">**SA**</span>, the <span style="color: #7A3C00;">Nazi</span> paramilitary group.
 - @prosecute_sa: Target the <span style="color: #7A3C00;">**SA**</span>, and minimize their disruptions.
 - @unban_sa: Reverse the <span style="color: #7A3C00;">**SA**</span> ban.
 - @ban_rfb: Ban the <span style="color: #8B0000;">**RFB**</span>, the <span style="color: #700000;">Communist</span> paramilitary.
@@ -48,14 +49,24 @@ on-arrival: prussia_purge += 1; prussian_police_loyalty += 0.05; nationalism -= 
 The bureaucracy is deeply <span style="color: #808080;">reactionary</span>, and many abuse their power to favor the <span style="color: #3E88B3;">political right</span>. By removing the <span style="color: #3E88B3;">pro-monarchy</span> and <span style="color: #7A3C00;">pro-dictatorship</span> elements, we can democratize it. Some of our opponents claim that we are infringing on individual freedoms, but perhaps the security of the republic requires it.
 
 @ban_sa
-view-if: nazi_urgency >= 3 and sa_banned == 0
+view-if: nazi_urgency >= 3 and sa_banned == 0 and not prussia_coup_win
 choose-if: not sa_ban_repealed and (prussia_coup_win or not otl_prussian_coup_seen)
-unavailable-subtitle: [+ chancellor +] has threatened a <i>Reichsexekution</i>, if we don't follow the orders of his decree.
+unavailable-subtitle: [+ chancellor +] has threatened a <i>Reichsexekution</i> if we don't follow the orders of his decree.
 on-arrival: sa_strength *= 0.9; sa_strength *= 0.75 if prussian_police_loyalty >= 0.75; sa_banned_pro = 1 if prussian_police_loyalty >= 0.75; sa_banned_pro = 0 if prussian_police_loyalty < 0.75; sa_banned = 1; dvp_relation -= 3; prussian_police_loyalty -= 0.05; sa_militancy -= 0.05; sa_ban_timer = 6; coup_progress -= 2 if coup_progress >= 6
 
 As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has many allies in the police and bureaucracy. Our relationship with the police weakens, and the <span style="color: #7A3C00;">**SA**</span> can still organize illegally, right under the police's noses. [? if sa_banned_pro : Nevertheless, the <span style="color: #7A3C00;">**SA**</span> is substantially weakened by our ban. ?] 
 
 [? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have disrupted some of these plans, but the threat is still present. ?]
+
+@ban_sa_preussenschlag
+subtitle: What is [+ chancellor +] planning to do about this, threaten another <i>Reichsexekution</i>?
+view-if: nazi_urgency >= 3 and sa_banned == 0 and prussia_coup_win
+on-arrival: sa_strength *= 0.9; sa_strength *= 0.75 if prussian_police_loyalty >= 0.75; sa_banned_pro = 1 if prussian_police_loyalty >= 0.75; sa_banned_pro = 0 if prussian_police_loyalty < 0.75; sa_banned = 1; dvp_relation -= 3; prussian_police_loyalty -= 0.05; sa_militancy -= 0.05; sa_ban_timer = 6; coup_progress -= 2 if coup_progress >= 6
+
+The federal government may disapprove all it wants, but [+ chancellor +] is well aware that we could resist another <i>Reichsexekution</i> if push came to shove — and would rather not tempt fate. As it turns out, the <span style="color: #7A3C00;">Nazi</span> <span style="color: #7A3C00;">**SA**</span> has many allies in the police and bureaucracy. Our relationship with the police weakens, and the <span style="color: #7A3C00;">**SA**</span> can still organize illegally, right under the police's noses. [? if sa_banned_pro : Nevertheless, the <span style="color: #7A3C00;">**SA**</span> is substantially weakened by our ban. ?] 
+
+[? if coup_progress >= 6: There are reports of an imminent coup by the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>. We have disrupted some of these plans, but the threat is still present. ?]
+
 
 @prosecute_sa
 view-if: nazi_urgency >= 3 and not sa_banned and (chancellor == "Papen" or chancellor == "Schleicher")
