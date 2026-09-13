@@ -3932,7 +3932,7 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
     if (Q.reichswehr_goal_spd >= 1) {
         Q.goal_spd_total += 1
     }
-    if (Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2 && Q.new_middle_conscious == 0) {
+    if ((Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2) && Q.new_middle_conscious == 0) {
         Q.workers_spd *= 0.9;
         Q.unemployed_spd *= 0.9;
         Q.new_middle_spd *= 0.95;
@@ -3940,7 +3940,7 @@ if (Q.spd_government_burden_timer == 0 && Q.spd_government_burden_seen == 1 && Q
         Q.labor_dissent += 5;
         Q.gov_burden_fail += 1;
     }
-    if (Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2 && Q.new_middle_conscious == 1) {
+    if ((Q.goal_spd_cancel >= 1 || Q.goal_spd_total < 2) && Q.new_middle_conscious == 1) {
         Q.workers_spd *= 0.9;
         Q.unemployed_spd *= 0.9;
         Q.new_middle_spd *= 0.9;
