@@ -18,6 +18,7 @@ The <span style="color: #c00000;">**SPD**</span> is torn between many different 
 - @centrist: The Center <span style="color: #9B0000;">Marxism</span> of Karl Kautsky remains the best way to resolve our internal contradictions.
 - @labor: We should work with the trade unions to improve the lives of workers.
 - @reform: Following Eduard Bernstein, we should work for ethical <span style="color: #c00000;">socialism</span>, strengthen democracy, and expand the party's electorate.
+- @neorev: We must focus on opposing the <span style="color: #7A3C00;">Nazi</span> threat above preserving <span style="color: #9B0000;">orthodoxy</span>.
 - @socpat: Pursue the fusion of <span style='color: #c00000;'>socialism</span> and patriotism.
 - @easy_discard
 
@@ -64,6 +65,19 @@ go-to: changed if changed = 1
 on-departure: ideology = "reformist"; reformist_strength += 8; democratization += 1; reformist_dissent -= 5; left_dissent += 5; z_relation += 5; dvp_relation += 5; ddp_relation += 5; lvp_relation += 5; kpd_relation -= 8; moderate_plan_support += 1; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
 
 The reformist wing of the party seeks to preserve the Republic and the democratic system of government, and is most supportive of coalitions with the other pro-democracy parties.
+
+@neorev
+view-if: neorevisionism
+on-arrival: {!
+if (Q.ideology && Q.ideology != "neorevisionist") {
+    Q.changed = 1;
+}
+!}
+go-to: changed if changed = 1
+on-departure: ideology = "neorevisionist"; neorevisionist_strength += 10; neorevisionist_dissent -= 10; democratization += 1; peoples_party_support += 1; left_dissent += 5; center_dissent += 10; z_relation += 5; z_relation += 5 if not rb_exit; dvp_relation += 5; ddp_relation += 5; ddp_relation += 5 if not rb_exit; lvp_relation += 5; lvp_relation += 5 if not rb_exit; kpd_relation -= 8 if not kpd_truce
+
+The neorevisionists — represented by people like Carlo Mierendorff, Julius Leber and Karl Höltermann — argue for emotion-driven propaganda meant to peel voters away from <span style="color: #808080;">reactionary</span>, <span style="color: #7A3C00;">Nazi</span> and <span style="color: #700000;">Communist</span> viewpoints.
+
 
 @socpat
 view-if: social_patriot
