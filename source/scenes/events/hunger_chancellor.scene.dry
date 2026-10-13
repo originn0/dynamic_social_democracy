@@ -1,7 +1,7 @@
 title: The Hunger Chancellor
 subtitle: Popular discontent with Chancellor [+ chancellor +] rises.
 new-page: true
-view-if: year >= 1931 and month >= 2 and unemployed >= 18 and welfare < 0 and works_program == 0
+view-if: year >= 1931 and month >= 2 and effective_unemployed >= 18 and welfare < 0 and works_program == 0
 on-arrival: workers_spd *= 0.9 if chancellor_party == "SPD"; workers_spd *= 0.9 if spd_in_government == 1; workers_nsdap += 5 if spd_in_government; workers_kpd += 4 if spd_in_government; unemployed_nsdap += 5 if spd_in_government; hindenburg_angry += 10; hindenburg_angry_bruning += 10
 tags: event
 max-visits: 1

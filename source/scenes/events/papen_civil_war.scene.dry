@@ -59,7 +59,7 @@ if (Q.kpd_relation >= 60) {
 } else if (Q.kpd_relation >= 45) {
     Q.normalized_workers_total += Q.normalized_workers_kpd*0.5;
 }
-Q.total_power += (2 - Q.labor_dissent/100)*Q.normalized_workers_total*(2 - Q.unemployed/100)*2.5;
+Q.total_power += (2 - Q.labor_dissent/100)*Q.normalized_workers_total*(2 - Q.effective_unemployed/100)*2.5;
 console.log("Supporter strength:", Q.total_power);
 
 // our enemies

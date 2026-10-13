@@ -119,7 +119,7 @@ if (Q.kpd_relation >= 40) {
 } else if (Q.kpd_relation < 40) {
     Q.normalized_workers_total += Q.workers_kpd_normalized*0.5;
 }
-Q.spd_points += ((1 - Q.labor_dissent/100)*Q.normalized_workers_total*(1 - Q.unemployed/100)*2.5) / 5;
+Q.spd_points += ((1 - Q.labor_dissent/100)*Q.normalized_workers_total*(1 - Q.effective_unemployed/100)*2.5) / 5;
 
 Q.rb_power = Q.rb_strength*Q.rb_militancy;
 if (Q.dissent > 0.15) {

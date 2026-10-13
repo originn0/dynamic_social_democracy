@@ -53,7 +53,7 @@ Q.prussia_force_prussia = Math.round((Q.prussia_force_prussia/total_force_prussi
 Q.happy_forces = Q.rb_force*(1-Q.dissent) + Q.prussia_force;
 if (Q.prussia_leader == "Brüning" || Q.prussia_leader == "Stegerwald" && !Q.rb_stay) Q.happy_forces -= (Q.prussia_force / 2);
 if (Q.kpd_truce) Q.happy_forces += Q.rfb_force;
-Q.happy_forces += (Q.workers_spd_normalized*(1 - Q.dissent)*(1 - Q.unemployed/100))/5;
+Q.happy_forces += (Q.workers_spd_normalized*(1 - Q.dissent)*(1 - Q.effective_unemployed/100))/5;
 Q.angry_forces = Q.sh_force + Q.sa_force + (Q.army_force_prussia/2);
 
 Q.resist_coup = 1
