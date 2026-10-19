@@ -27,7 +27,7 @@ The Reichswehr and <span style="color: #3E88B3;">**Stahlhelm**</span> are alread
 - @surrender
 
 @defend_2
-on-arrival: resist_coup = 1; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if spd_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty); defense_strength += workers_spd_normalized*(2 - dissent)*(2 - unemployed/100); defense_strength += rfb_strength*rfb_militancy*(kpd_relation/100)
+on-arrival: resist_coup = 1; defense_strength = rb_strength*rb_militancy*(1-dissent/2); defense_strength += prussian_police_strength*prussian_police_militancy*prussian_police_loyalty if spd_prussia; enemy_strength = sa_strength*sa_militancy + sh_strength*sh_militancy; enemy_strength += reichswehr_strength*reichswehr_militancy*(1-reichswehr_loyalty); defense_strength += workers_spd_normalized*(2 - dissent)*(2 - effective_unemployed/100); defense_strength += rfb_strength*rfb_militancy*(kpd_relation/100)
 go-to: defend_2_civil_war if defense_strength < enemy_strength; defend_2_victory if defense_strength >= enemy_strength
 
 @defend_2_victory
