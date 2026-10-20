@@ -73,6 +73,10 @@ if ((Q.dynamic_mode || Q.historical_mode || Q.difficulty == 1) && !((Q.year == 1
   if (Q.year >= 1932  && Q.unemployed < 8.6 && Q.budget > 0 && Q.inflation < 5) {
       this.achieve('wirtschaftswunder');
   }
+  // Freie Marktwirtschaft - win without doing an economic plan.
+  if (!Q.economic_plan && !(Q.total_defeat || Q.long_war || Q.chancellor_party == "NSDAP" || Q.chancellor == "Hitler" || Q.president == "Göring" || Q.president == "Frick" || Q.president == "Hitler" || Q.president == "Hammerstein" || Q.president == "Seldte" || Q.hammerstein_win || (Q.president == "Hergt" && Q.chancellor == "Seldte"))) {
+      this.achieve('freie_marktwirtschaft');
+  }
   // Bollwerk der Demokratie - resist the Prussian Coup, and win.
   if (Q.republic_victory && Q.resist_coup) {
       this.achieve('bollwerk_der_demokratie');
