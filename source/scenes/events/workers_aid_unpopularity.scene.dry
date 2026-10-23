@@ -24,6 +24,12 @@ Unfortunately, Workers' Aid's effectiveness is dragged down by the <span style="
 - @workers_aid_joever: Unfortunate.
 
 @workers_aid_joever
-on-arrival: workers_aid = Math.floor(workers_aid * 0.8) if labor_strength < 40; workers_aid = Math.floor(workers_aid * 0.9) if labor_strength >= 40;
+on-arrival: {!
+    if (labor_strength < 40) {
+        workers_aid = Math.floor(workers_aid * 0.8);
+    } else {
+        workers_aid = Math.floor(workers_aid * 0.9);
+    }
+!}
 
 This will continue to be a problem if our popularity continues to flag.
