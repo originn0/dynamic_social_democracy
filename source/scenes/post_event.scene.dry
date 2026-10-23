@@ -178,6 +178,10 @@ for (var c of Q.classes) {
 
 Q.effective_unemployed = Q.unemployed - (Q.workers_aid * Q.workers_aid_support);
 
+if (Q.effective_unemployed < 0) {
+    Q.effective_unemployed = 0;
+}
+
 // calculate support for each of the parties
 var total_support = 0; 
 for (var party of Q.parties) {
