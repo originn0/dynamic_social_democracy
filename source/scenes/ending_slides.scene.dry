@@ -18,6 +18,10 @@ if (Q.president != "Hammerstein" && Q.president != "Hitler" && Q.president != "G
 
 Q.effective_unemployed = Q.unemployed - (Q.workers_aid * Q.workers_aid_support);
 
+if (Q.effective_unemployed < 0) {
+  Q.effective_unemployed = 0;
+}
+
 if (Q.weimar_win && (Q.president == "Rosenfeld" || Q.president == "Thälmann" || Q.president == "Münzenberg" || Q.president == "Ossietzky" || Q.president == "Mann") && Q.in_left_front && !Q.civil_war_seen) {
   Q.left_win = 1;
   Q.weimar_win = 0;

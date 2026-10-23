@@ -1,6 +1,6 @@
 title: Reichsbanner Membership Dwindles
 subtitle: Our unpopularity has impaired the Reichsbanner's recruitment ability.
-view-if: rb_militancy >= 0.1 and workers_spd_normalized + unemployed_spd_normalized < (workers_kpd_normalized + workers_nsdap_normalized + workers_dnvp_normalized + (rb_militancy*100)) and time >= reichsbanner_unpopularity_time
+view-if: rb_militancy >= 0.1 and workers_spd_normalized + unemployed_spd_normalized < (workers_kpd_normalized + workers_nsdap_normalized + workers_dnvp_normalized + (rb_militancy*100*(effective_unemployed/unemployed))) and time >= reichsbanner_unpopularity_time
 new-page: true
 tags: event
 on-display: {!  

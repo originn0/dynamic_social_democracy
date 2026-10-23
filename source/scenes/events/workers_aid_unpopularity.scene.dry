@@ -1,0 +1,29 @@
+title: Workers' Welfare Membership Dwindles
+subtitle: Our unpopularity has impaired Workers' Welfare's recruitment ability.
+view-if: workers_aid > 0 and workers_spd_normalized + unemployed_spd_normalized < (workers_kpd_normalized + workers_nsdap_normalized + workers_dnvp_normalized) and time >= workers_aid_unpopularity_time
+new-page: true
+tags: event
+on-display: {!  
+    var cardEl = document.createElement('div');  
+    cardEl.className = "face-figure2";  
+
+    var image = new Image();  
+    image.className = "face-img";  
+    image.src = "img/tnoreference.png";  
+
+    cardEl.appendChild(image);  
+    var contentDiv = document.querySelector("#page #mid_panel #content");
+    contentDiv.appendChild(cardEl);
+!}
+on-arrival: workers_aid_unpopularity_time = time + 6
+
+= Workers' Aid Membership Dwindles
+
+Unfortunately, Workers' Aid's effectiveness is dragged down by the <span style="color: #c00000;">**SPD**</span>'s unpopularity, as the workers aren't particularly enthusiastic about joining. [? if labor_strength >= 40: However, more dedicated union members have largely remained. ?] [? if spd_votes >= 29: Furthermore, we are unable to recruit significant amount of supporters from non-worker demographics. ?]
+
+- @workers_aid_joever: Unfortunate.
+
+@workers_aid_joever
+on-arrival: workers_aid = Math.floor(workers_aid * 0.8) if labor_strength < 40; workers_aid = Math.floor(workers_aid * 0.9) if labor_strength >= 40;
+
+This will continue to be a problem if our popularity continues to flag.
