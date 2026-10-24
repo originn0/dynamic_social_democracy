@@ -17,10 +17,22 @@ The <span style="color: #c00000;">**SPD**</span> cannot govern by itself yet. Be
 - @center: Strengthen our bonds with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?].
 - @cvp: Reconcile with the <span style="color: #000000;">Christian People's Party</span>.
 - @kpd: Work towards repairing relationships with the <span style="color: #700000;">Communist Party</span>.
+- @afa: Provide funding to <span style="color: #700000;">Antifaschistische</span> <span style="color: #c00000;">Aktion</span>, the <span style="color: #700000;">KPD</span>'s mass organization against </span><span style="color: #7A3C00;">Fascism</span>
 - @dnvp: Open dialogue with [? if dnvp_leader != "Lambach": Treviranus and the <span style="color: #0087DC;">People's Conservatives</span>?][? if dnvp_leader == "Lambach": Lambach and the <span style="color: #6D5298;">Christian Socials</span>?] of the <span style="color: #3E88B3;">**DNVP**</span>.
 - @nsdap: Establish contact with Strasser and the <span style="color: #7A3C00;">Nazi Party</span>'s left wing.
 - @spd_alone: The <span style="color: #c00000;">SPD</span> can stand alone for now.
 - @easy_discard
+
+@afa
+view-if: kpd_truce and afa_seen
+subtitle: -1 resources
+choose-if: resources > 0 and ((rfb_banned or rfb_banned_prussia) and (left_strength >= reformist_strength + neorevisionist_strength + center_strength)) or (not (rfb_banned or rfb_banned_prussia) and (left_strength >= reformist_strength + neorevisionist_strength))
+unavailable-subtitle: [? if resources < 0: Not enough resources. ?][? if not (rfb_banned or rfb_banned_prussia) and left_strength >= reformist_strength + neorevisionist_strength: The bulk of the party does not support funding a <span style="color: #700000;">Communist</span> paramilitary. ?][? if (rfb_banned or rfb_banned_prussia) and left_strength >= reformist_strength + neorevisionist_strength + center_strength: The bulk of the party does not support funding what they view a front organization for an illegal <span style="color: #700000;">Communist</span> paramilitary. ?]
+on-arrival: rfb_strength += 100; rfb_militancy += 0.1; kpd_relation += 3; ddp_relation -= 2 if not ddp_in_popular_front or ddp_in_popular_front_prussia; z_relation -= 3 if not in_popular_front or in_popular_front_prussia; dvp_relation -= 5; hindenburg_angry += 10; hindenburg_angry_bruning += 10; ddp_relation -= 2 if rfb_banned or rfb_banned_prussia; z_relation -= 3 if rfb_banned or rfb_banned_prussia; dvp_relation -= 5 if rfb_banned or rfb_banned_prussia; hindenburg_angry += 10 if rfb_banned or rfb_banned_prussia; hindenburg_angry_bruning += 10 if rfb_banned or rfb_banned_prussia; reformist_dissent += 2; reformist_dissent += 3 if rfb_banned or rfb_banned_prussia; center_dissent += 3 if rfb_banned or rfb_banned_prussia; new_middle_spd -= 2*(1-dissent) if not new_middle_conscious; old_middle_spd -= 2*(1-dissent); rural_spd -= 2*(1-dissent) if not rural_conscious; catholics_spd -= 2*(1-dissent) if not in_popular_front or in_popular_front_prussia; new_middle_spd -= 2*(1-dissent) if rfb_banned or rfb_banned_prussia; old_middle_spd -= 2*(1-dissent) if rfb_banned or rfb_banned_prussia; rural_spd -= 2*(1-dissent) if rfb_banned or rfb_banned_prussia; catholics_spd -= 2*(1-dissent) if rfb_banned or rfb_banned_prussia;
+
+We have provided funding to <span style="color: #700000;">Antifaschistische</span> <span style="color: #c00000;">Aktion</span> in the name of a united front against <span style="color: #7A3C00;">Fascism</span>.
+
+The <span style="color: #000000;">bourgeois</span> parties decry it as material support for [? if rfb_banned or rfb_banned_prussia: a front organization for an illegal ?][? if not rfb_banned and not rfb_banned_prussia: a ?] <span style="color: #700000;">Communist</span> paramilitary [? if (reformist_strength >= 20 and not (rfb_banned or rfb_banned_prussia)) or (reformist_strength + center_strength >= 20 and (rfb_banned or rfb_banned_prussia)): , a sentiment echoed by many within our party ?]
 
 @kpd
 subtitle: -1 resources
@@ -44,7 +56,7 @@ For further improvements in <span style="color: #700000;">**KPD**</span> relatio
 - @no_history: No, we have no need to apologize.
 
 @yes_history
-on-arrival: reformist_dissent += 12; reformist_strength -= 2; neorevisionist_dissent += 5; left_dissent -= 6; left_strength += 5; kpd_rectified_history = 1; z_relation -= 3; z_relation -= 3 if z_ideology == "Right"; dvp_relation -= 6; lvp_relation -= 6; ddp_relation -= 4; kpd_relation += 8*(1-dissent); coalition_dissent += 1; dvp_right += 2; ddp_right += 2; lvp_right += 2
+on-arrival: reformist_dissent += 12; reformist_strength -= 2; neorevisionist_dissent += 5; left_dissent -= 6; left_strength += 5; kpd_rectified_history = 1; z_relation -= 3; z_relation -= 3 if z_ideology == "Right"; dvp_relation -= 6; lvp_relation -= 6; ddp_relation -= 4; kpd_relation += 8*(1-dissent); coalition_dissent += 1; dvp_right += 2; ddp_right += 2; lvp_right += 2; kpd_nazi_urgency += 1 if kpd_nazi_urgency < 0;
 
 As part of normalizing relations with the <span style="color: #700000;">**KPD**</span>, we have to acknowledge the wrongdoings of our past. We have expelled Noske, and have held public commemorations for those killed by troops during the uprisings.
 

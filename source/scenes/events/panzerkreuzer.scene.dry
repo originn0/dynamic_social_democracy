@@ -18,7 +18,7 @@ The Reichswehr Ministry is demanding the construction of a new battlecruiser, as
 - @abstain: Abstain from the vote.
 
 @vote_yes
-on-arrival: left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; panzerkreuzer_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 2; workers_spd -= 4 if panzerkreuzer_campaign; unemployed_spd -= 2 if panzerkreuzer_campaign; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 1; lvp_left += 1; goal_spd_cancel += 1; hindenburg_angry -= 5
+on-arrival: left_dissent += 10; labor_dissent += 5; center_dissent += 5; reformist_dissent += 5; neorevisionist_dissent += 5; panzerkreuzer_funded = 1; kpd_coalition_dissent += 1; kpd_relation -= 6; workers_spd -= 2; workers_spd -= 4 if panzerkreuzer_campaign; unemployed_spd -= 2 if panzerkreuzer_campaign; dvp_left += 1; ddp_right += 1; ddp_cohesion -= 1; lvp_left += 1; goal_spd_cancel += 1; hindenburg_angry -= 5;
 
 Our grassroots party members are shocked by our intransigence! Many party branches have begun agitating against the cabinet, and our Reichstag members even plan a full vote on the proposal, contravening the government's decision. [? if panzerkreuzer_campaign: Our working-class base feels betrayed—we had promised to block the ship’s construction and fund children’s meals instead. ?]
 
@@ -32,7 +32,7 @@ go-to: vote_no_chancellor if chancellor_party = "SPD"; vote_no_pass if chancello
 go-to: braun if chancellor = "Braun"; built if (spd_r + kpd_r + sapd_r < 50) and chancellor = "Müller"; not_built if (spd_r + kpd_r + sapd_r >= 50) and chancellor = "Müller"
 
 @braun
-on-arrival: panzerkreuzer_funded = 0; nationalism -= 6*(1-dissent); reichswehr_loyalty -= 0.05; left_dissent -= 10; labor_dissent -= 10; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5; panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); ddp_left += 1; ddp_cohesion += 1; pacifism += 1; kpd_relation += 5; reichswehr_goal_spd += 1; hindenburg_angry += 5; coup_progress += 1
+on-arrival: panzerkreuzer_funded = 0; nationalism -= 6*(1-dissent); reichswehr_loyalty -= 0.05; left_dissent -= 10; labor_dissent -= 10; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5; panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); ddp_left += 1; ddp_cohesion += 1; pacifism += 1; kpd_relation += 5; reichswehr_goal_spd += 1; hindenburg_angry += 5; coup_progress += 1;
 
 Our coalition partners are shocked by our intransigence! However, Chancellor Braun manages to persuade our cabinet ministers to drop the plan to vote on the battlecruiser. The ship will not be built! Pacifism is starting to find support in the [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?].
 
@@ -52,7 +52,7 @@ on-arrival:  panzerkreuzer_funded = 1;
 Our coalition partners are shocked by our intransigence! Despite Chancellor Müller's rejection of the proposal, the other parties bring the matter to a Reichstag vote, which easily passes, with only the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span> voting against. The ship will be built.
 
 @not_built
-on-arrival:  panzerkreuzer_funded = 0; nationalism -= 6*(1-dissent); reichswehr_loyalty -= 0.05; left_dissent -= 10; labor_dissent -= 10; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5; panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); ddp_left += 1; ddp_cohesion += 1; pacifism += 1; kpd_relation += 5; reichswehr_goal_spd += 1; hindenburg_angry += 5; coup_progress += 1
+on-arrival:  panzerkreuzer_funded = 0; nationalism -= 6*(1-dissent); reichswehr_loyalty -= 0.05; left_dissent -= 10; labor_dissent -= 10; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5; panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); ddp_left += 1; ddp_cohesion += 1; pacifism += 1; kpd_relation += 5; reichswehr_goal_spd += 1; hindenburg_angry += 5; coup_progress += 1;
 
 Our coalition partners are shocked by our intransigence! Despite Chancellor Müller's rejection of the proposal, the other parties bring the matter to a Reichstag vote, but with the support of the <span style="color: #700000;">**KPD**</span>, our vote against the battlecruiser succeeds. The ship will not be built!
 
@@ -62,6 +62,6 @@ on-arrival:  panzerkreuzer_funded = 1;
 Our coalition partners are shocked by our intransigence! Chancellor [+ chancellor +] brings the matter to a Reichstag vote, which passes with all parties in favor except the <span style="color: #c00000;">**SPD**</span> and <span style="color: #700000;">**KPD**</span>. The ship will be built.
 
 @not_built_bruning
-on-arrival:  panzerkreuzer_funded = 0; nationalism -= 6*(1-dissent); reichswehr_loyalty -= 0.05; left_dissent -= 10; labor_dissent -= 10; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5; panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); ddp_left += 1; ddp_cohesion += 1; pacifism += 1; kpd_relation += 5; reichswehr_goal_spd += 1; hindenburg_angry += 5; coup_progress += 1
+on-arrival:  panzerkreuzer_funded = 0; nationalism -= 6*(1-dissent); reichswehr_loyalty -= 0.05; left_dissent -= 10; labor_dissent -= 10; center_dissent -= 5; reformist_dissent -= 5; neorevisionist_dissent -= 5; panzerkreuzer_failed = 1; workers_spd += 5*(1-dissent); ddp_left += 1; ddp_cohesion += 1; pacifism += 1; kpd_relation += 5; reichswehr_goal_spd += 1; hindenburg_angry += 5; coup_progress += 1;
 
 Our coalition partners are shocked by our intransigence! Chancellor [+ chancellor +] brings the matter to a Reichstag vote, but with the support of the <span style="color: #700000;">**KPD**</span>, our vote against the battlecruiser succeeds. The ship will not be built!

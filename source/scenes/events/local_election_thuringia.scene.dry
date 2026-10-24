@@ -522,7 +522,7 @@ Surprisingly, through our reconciliation with the bourgeois parties, they have a
 title: The incumbent coalition is expanded to include the <span style="color: #7A3C00;">**NSDAP**</span>.
 subtitle: A testament to how biased the "democratic" parties are when it comes to working with us.
 view-if: far_right_coalition_thuringia >= 50 and bourgeois_coalition_thuringia < 50
-on-arrival: thuringia_nsdap = 1; workers_nsdap += 2; new_middle_nsdap += 4; old_middle_nsdap += 6; rural_nsdap += 2; unemployed_kpd -= 2; unemployed_nsdap += 2; sa_strength += 20; sa_militancy += 0.05; prussian_police_loyalty -= 0.05; pro_republic -= 5
+on-arrival: thuringia_nsdap = 1; workers_nsdap += 2; new_middle_nsdap += 4; old_middle_nsdap += 6; rural_nsdap += 2; unemployed_kpd -= 2; unemployed_nsdap += 2; sa_strength += 20; sa_militancy += 0.05; prussian_police_loyalty -= 0.05; pro_republic -= 5; kpd_nazi_urgency += 1;
 face-image: img/portraits/frick.jpg
 
 Wilhelm Frick, a convicted Beer Hall Putsch participant, becomes the first <span style="color: #7A3C00;">Nazi</span> to hold a ministerial-level post in Germany. He is given control of the Interior and Education Ministries, and by passing an "Enabling Act" through a simple majority as an emergency decree, granting him the power to radically transform Thuringia.
@@ -555,7 +555,7 @@ We will use our positions in government to root out right-wing and <span style="
 title: The <span style="color: #c00000;">**SPD**</span> will form a coalition government with the <span style="color: #700000;">**KPD**</span>.
 subtitle: History will repeat itself.
 view-if: left_coalition_thuringia >= 50 and (kpd_relation >= 40 and kpd_leader == "Conciliators") or (kpd_relation >= 60 and kpd_leader != "Conciliators")
-on-arrival: red_thuringia = 1; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; coup_progress += 3; hindenburg_angry += 40; rfb_militancy += 0.05; rfb_strength += 100; sa_strength += 50; sh_strength += 50; strife += 1; workers_spd += 3; workers_kpd += 3; unemployed_spd += 3; new_middle_spd -= 3 if new_middle_conscious == 0; old_middle_spd -= 3; rural_spd -= 3 if rural_conscious == 0; communist_coalition += 3; kpd_relation += 10
+on-arrival: red_thuringia = 1; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5; coup_progress += 3; hindenburg_angry += 40; rfb_militancy += 0.05; rfb_strength += 100; sa_strength += 50; sh_strength += 50; strife += 1; workers_spd += 3; workers_kpd += 3; unemployed_spd += 3; new_middle_spd -= 3 if new_middle_conscious == 0; old_middle_spd -= 3; rural_spd -= 3 if rural_conscious == 0; communist_coalition += 3; kpd_relation += 10; kpd_nazi_urgency += 1 if kpd_nazi_urgency < 0;
 on-display: {!  
     var cardEl = document.createElement('div');  
     cardEl.className = "face-figure2";  

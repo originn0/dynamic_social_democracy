@@ -31,16 +31,16 @@ on-arrival: enemies = "far right"; left_strength += 5; left_dissent -= 5; worker
 Attacking the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span> is popular among the entire party, although the left considers the bourgeois parties to be just as dangerous, while the right is critical of our lack of response to the <span style="color: #700000;">**KPD**</span>. Our bourgeois coalition partners are also skeptical of our lack of commitment to anti-communism.
 
 @nsdap
-on-arrival: enemies = "NSDAP"; neorevisionist_strength += 5; nazi_urgency += 1; workers_nsdap -= 4; unemployed_nsdap -= 4; workers_nsdap += 8 if nsdap_votes < 8; unemployed_nsdap += 8 if nsdap_votes < 8
+on-arrival: enemies = "NSDAP"; neorevisionist_strength += 5; nazi_urgency += 1; workers_nsdap -= 4; unemployed_nsdap -= 4; workers_nsdap += 8 if nsdap_votes < 8; unemployed_nsdap += 8 if nsdap_votes < 8; kpd_nazi_urgency += 1 if kpd_nazi_urgency < 0;
 
 [? if nazi_urgency == 0 or nsdap_votes < 10: The <span style="color: #7A3C00;">**NSDAP**</span> is a tiny party right now, with more bark than bite. Many in our party are questioning our choices. [? if nsdap_votes < 8: Worst still, giving them too much attention might only end up helping them. ?] ?][? if nazi_urgency > 0 and nsdap_votes >= 10 : The <span style="color: #7A3C00;">Nazis</span> are the most urgent problem for us to deal with. ?]
 
 @kpd
-on-arrival: enemies = "KPD"; reformist_strength += 5; left_dissent += 8; reformist_dissent -= 5; kpd_relation -= 15; dvp_relation += 5; ddp_relation += 3; z_relation += 5; lvp_relation += 5; workers_kpd -= 3; unemployed_kpd -= 4; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1
+on-arrival: enemies = "KPD"; reformist_strength += 5; left_dissent += 8; reformist_dissent -= 5; kpd_relation -= 15; dvp_relation += 5; ddp_relation += 3; z_relation += 5; lvp_relation += 5; workers_kpd -= 3; unemployed_kpd -= 4; dvp_left += 1; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 1; kpd_nazi_urgency -= 1;
 
 Attacking the <span style="color: #700000;">**KPD**</span> is supported by all but the most left-wing <span style="color: #c00000;">socialists</span>, and wins us some measure of approval among the bourgeois parties. However, If we are to reconcile with the <span style="color: #700000;">**KPD**</span>, this may not be the best choice.
 
 @bourgeois
-on-arrival: enemies = "bourgeois parties"; left_strength += 8; left_dissent -= 5; dvp_relation -= 5; z_relation -= 5; ddp_relation -= 3; lvp_relation -= 3; kpd_relation += 5; reformist_dissent += 8; workers_z -= 3; new_middle_dvp -= 2; workers_dvp -= 1; workers_ddp -= 0.5; workers_ddp -= 0.5 if not dvp_exist; coalition_dissent += 1; dvp_right += 1; ddp_cohesion -= 1; ddp_right += 1; lvp_right += 1
+on-arrival: enemies = "bourgeois parties"; left_strength += 8; left_dissent -= 5; dvp_relation -= 5; z_relation -= 5; ddp_relation -= 3; lvp_relation -= 3; kpd_relation += 5; reformist_dissent += 8; workers_z -= 3; new_middle_dvp -= 2; workers_dvp -= 1; workers_ddp -= 0.5; workers_ddp -= 0.5 if not dvp_exist; coalition_dissent += 1; dvp_right += 1; ddp_cohesion -= 1; ddp_right += 1; lvp_right += 1; kpd_nazi_urgency += 1;
 
 Our anti-bourgeois rhetoric is popular among the left, but may make it harder to build the coalitions that are necessary for government in the future.

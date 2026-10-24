@@ -1824,6 +1824,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
         }
         Q.sa_strength += 75/12;
         Q.rfb_strength += 25/12;
+        if (Q.afa_seen) {
+            Q.rfb_strength += 25/24;
+        }
     } else if (Q.year == 1931) {
         Q.unemployed += 5/12;
         Q.inflation -= 5/12;
@@ -1932,6 +1935,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
             Q.sh_militancy += 0.05/12;
             Q.sa_militancy += 0.15/12;
             Q.rfb_strength += 25/12;
+            if (Q.afa_seen) {
+                Q.rfb_strength += 25/24;
+            }
             Q.catholics_nsdap += 2/12;
             Q.catholics_other -= 3/12;
             if (Q.kvp_formed) {
@@ -1948,6 +1954,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
                 Q.new_middle_dnf += 2/12;
                 }
         } else if (Q.effective_unemployed > 15) {
+            if (Q.afa_seen) {
+                Q.rfb_strength += 25/24;
+            }
             Q.new_middle_dvp -= 2/12;
             Q.old_middle_dvp -= 2/12;
             Q.rural_dvp -= 1/12;
@@ -1965,6 +1974,8 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
                 Q.old_middle_dnf += 4/12;
                 Q.new_middle_dnf += 2/12;
                 }
+        } else if (Q.afa_seen && !Q.return_to_normalcy) {
+            Q.rfb_strength += 25/24;
         }
     } else if (Q.year == 1932) {
         Q.workers_other -= 2/12;
@@ -2033,6 +2044,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
                 Q.sa_strength -= (50*(100 - Q.pro_republic) / 100) /12;
             }
             Q.rfb_strength += 25/12;
+            if (Q.afa_seen) {
+                Q.rfb_strength += 25/24;
+            }
             Q.sa_militancy += 0.1/12;
             Q.new_middle_dnvp += 4/12;
             if (Q.kvp_formed) {
@@ -2074,6 +2088,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
                 Q.new_middle_kvp -= 2/12;
                 Q.new_middle_dnvp += 2/12;
             }
+            if (Q.afa_seen) {
+                Q.rfb_strength += 25/24;
+            }
         } else if (Q.effective_unemployed > 20) {
             Q.rural_nsdap += 2/12;
             Q.unemployed_nsdap += 3/12;
@@ -2096,6 +2113,11 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
                 Q.new_middle_kvp -= 1/12;
                 Q.new_middle_dnvp += 1/12;
             }
+            if (Q.afa_seen) {
+                Q.rfb_strength += 25/24;
+            }
+        } else if (Q.afa_seen && !Q.return_to_normalcy) {
+            Q.rfb_strength += 25/24;
         }
     } else if (Q.year >= 1933) {
         if (Q.return_to_normalcy) {
@@ -2177,6 +2199,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
                 Q.catholics_spd -= 2/12;
             }
         }
+        if (!Q.works_program && Q.afa_seen && !Q.return_to_normalcy) {
+            Q.rfb_strength += 25/24;
+        }
     }
     // prevent forever support if the economy is bad
     if (Q.year >= 1934) {
@@ -2204,6 +2229,9 @@ if ((Q.month_actions >= 1 && !Q.rubicon) || (Q.month_actions >= 4 && Q.rubicon))
             if (Q.catholics_spd_normalized > 20) {
                 Q.catholics_spd -= 6/12;
             }
+        }
+        if (!Q.works_program && Q.afa_seen && !Q.return_to_normalcy) {
+            Q.rfb_strength += 25/24;
         }
     }
 

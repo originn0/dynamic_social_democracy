@@ -20,7 +20,7 @@ After our discussion with the <span style="color: #940000;">Soviets</span>, we a
 title: The Conciliators are the new leadership of the <span style="color: #700000;">**KPD**</span>.
 choose-if: (levi_advisor or rosenfeld_advisor) and (left_strength >= reformist_strength) and (kpd_relation >= 50) 
 unavailable-subtitle: [?  if not levi_advisor and not rosenfeld_advisor: Our party leadership is not left-wing enough. ?] [? if left_strength < reformist_strength: The <span style="color: #D50000;">Comintern</span> doubts our commitment to <span style="color: #c00000;">socialism</span>. ?]
-on-arrival: kpd_leader = "Conciliators"; communist_coalition += 3; kpd_relation += 10*(1-dissent); left_strength += 5; left_dissent -= 8; pro_republic += (kpd_votes / 2)
+on-arrival: kpd_leader = "Conciliators"; communist_coalition += 3; kpd_relation += 10*(1-dissent); left_strength += 5; left_dissent -= 8; pro_republic += (kpd_votes / 2); kpd_nazi_urgency += 1 if kpd_nazi_urgency < 0;
 achievement: versohnler
 
 With our support, the Conciliators have won the leadership contest! The new leadership is a group of Conciliators, including Arthur Ewert, Hugo Eberlein, and Ernst Meyer. Thälmann remains, but largely as a figurehead only, it seems. We hope that the new leadership will be more inclined towards cooperation.

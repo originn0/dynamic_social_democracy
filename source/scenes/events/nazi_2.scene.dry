@@ -57,7 +57,7 @@ subtitle: We've stripped down the wage cut by 90%! What else do they want?
 go-to: nay_strike_2 if workers_spd_normalized + pro_republic < 100; nay_strike_3 if workers_spd_normalized + pro_republic >= 100
 
 @nay_strike_2
-on-arrival: z_relation += 3; ddp_relation += 3; lvp_relation += 3; dvp_relation += 3; kpd_relation -= 10; communist_coalition -= 1
+on-arrival: z_relation += 3; ddp_relation += 3; lvp_relation += 3; dvp_relation += 3; kpd_relation -= 10; communist_coalition -= 1; kpd_nazi_urgency -= 1;
 
 Only 84% of the workforce participates in the vote, and of those that vote, 79% of workers have voted for a strike, owing to the <span style="color: #700000;">**RGO**</span>'s extensive influence on the strike committee. This doesn't follow the standard union practice of requiring 3/4ths of all employees to vote in favour, not just those who vote, as pointed out by the Gesamtverband. However, this position cannot be maintained with an increasingly radicalized and unorganized workforce, and a central strike commitee is formed between the three unions, with the <span style="color: #700000;">**RGO**</span> being dominant.
 
@@ -83,6 +83,7 @@ Q.pro_republic += 3;
 Q.labor_dissent -= 5;
 Q.reformist_dissent -= 5;
 Q.transport_strike_vote = Math.round((100 - Q.pro_republic) * 10) / 10;
+Q.kpd_nazi_urgency -= 1;
 !}
 
 Only 76% of the workforce participates in the vote, and of those, [+ transport_strike_vote +]% vote in favor of a strike—falling short of the required three-fourths of all employees. Regardless, the <span style="color: #700000;">**RGO**</span> and <span style="color: #7A3C00;">**NSBO**</span> form their own unauthorized strike committee. Their attempted strike collapses almost immediately, without Gesamtverband participation and as strikebreakers are swiftly brought in.
