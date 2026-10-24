@@ -1,7 +1,7 @@
 title: The Harzburg Front
 subtitle: The right-wing forces unite against the incumbent government.
 new-page: true
-on-arrival: harzburg_front_seen = 1; harzburg_front_time = time; sa_strength += 50; sa_militancy += 0.05; sh_militancy += 0.05; old_middle_nsdap += 3; rural_nsdap += 3; nazi_urgency += 1; iron_front_timer = 0; dvp_right += 1 if dvp_leader == "Dingeldey"; lvp_right += 1; pro_republic -= 3; hindenburg_angry += 10; hindenburg_angry_bruning += 10
+on-arrival: harzburg_front_seen = 1; harzburg_front_time = time; sa_strength += 50; sa_militancy += 0.05; sh_militancy += 0.05; old_middle_nsdap += 3; rural_nsdap += 3; nazi_urgency += 1; iron_front_timer = 0; dvp_right += 1 if dvp_leader == "Dingeldey"; lvp_right += 1; pro_republic -= 3; hindenburg_angry += 10; hindenburg_angry_bruning += 10; kpd_nazi_urgency += 1;
 tags: event
 view-if: year = 1931 and month >= 10 and chancellor != "Schleicher" and chancellor != "Papen" and dnvp_ideology == "Moderate"
 max-visits: 1
@@ -15,6 +15,9 @@ However, this show of unity lacks substance, as Hugenberg, Hitler, and the <span
 - @strategy: We must develop a coherent strategy to combat the Right.
 - @confronting_nazis.iron_front: We must form the <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span>!
 - @iron_front: The <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span> will be our answer!
+- @inter_party_relationships.afa: Provide funding to <span style="color: #700000;">Antifaschistische</span> <span style="color: #c00000;">Aktion</span>
+- @streetfighting.afa-truce: Reach out to the <span style="color: #700000;">KPD</span> to coordinate our forces in the name of <span style="color: #700000;">Anti</span><span style="color: #c00000;">-</span><span style="color: #7A3C00;">Fascism</span>
+- @streetfighting.afa-lol: Reach out to the <span style="color: #700000;">KPD</span> to coordinate our forces in the name of <span style="color: #700000;">Anti</span><span style="color: #c00000;">-</span><span style="color: #7A3C00;">Fascism</span>
 
 @strategy
 view-if: nazi_urgency < 3

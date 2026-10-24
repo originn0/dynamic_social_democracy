@@ -308,6 +308,7 @@ subtitle:[? if reichstag_fire_decree_schleicher: Different building, of course.?
 on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.reichstag_break = 0;
+Q.kpd_nazi_urgency += 1;
 
 Q.workers_schleicher_bonus -= 1;
 Q.republicans_schleicher_bonus -= 1;
@@ -350,6 +351,7 @@ on-arrival: {!
 Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
 Q.reichstag_break = 0;
+Q.kpd_nazi_urgency += 2;
 
 Q.reichswehr_strength -= 50;
 
@@ -422,6 +424,7 @@ Q.schleicher_post_protests = 1;
 Q.schleicher_rights = 1;
 Q.schleicher_pause = 1;
 Q.reichstag_break = 0;
+Q.kpd_nazi_urgency += 3;
 
 Q.reichswehr_strength -= 100;
 
@@ -506,6 +509,6 @@ The Reichstag will convene on [+ next_reichstag_month : month +] [+ next_reichst
 title: Demand the above, and Schleicher's resignation.
 unavailable-subtitle: Not enough leverage.
 choose-if: super_secret_mode
-on-arrival: dataminer_detected = 1; ip_grabber = 1
+on-arrival: dataminer_detected = 1; ip_grabber = 1; kpd_nazi_urgency += 5;
 
 Lol.

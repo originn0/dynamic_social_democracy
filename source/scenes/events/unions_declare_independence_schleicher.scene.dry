@@ -6,6 +6,7 @@ view-if: labor_dissent >= 60 and not unions_independent and chancellor == "Schle
 on-arrival: {!
 Q.unions_independent = 1;
 Q.unions_schleicher = 1;
+Q.kpd_nazi_urgency += 1;
 
 if (Q.labor_strength < 10) {
     Q.workers_spd -= 16;

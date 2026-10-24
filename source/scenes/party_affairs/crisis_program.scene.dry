@@ -66,7 +66,7 @@ We attempt to convince the party to support a program of mass nationalizations i
 We have not yet formally adopted the plan. More work needs to be done.
 
 @adopt_left
-on-arrival: left_strength += 15; left_dissent -= 10; reformist_dissent += 10; neorevisionist_dissent += 8; labor_dissent += 6; nationalization_adopted = 1; coup_progress += 1; economic_plan = 3; kpd_relation += 5*(1-dissent)
+on-arrival: left_strength += 15; left_dissent -= 10; reformist_dissent += 10; neorevisionist_dissent += 8; labor_dissent += 6; nationalization_adopted = 1; coup_progress += 1; economic_plan = 3; kpd_relation += 5*(1-dissent); kpd_nazi_urgency += 1 if kpd_nazi_urgency < 0;
 
 With our hard work, we have convinced the majority of the party to adopt the <span style="color: #c00000;">socialist</span> economic plan! [? if spd_in_government == 1 : We can begin implementing the plan as soon as possible, as long as we have the Economic or Finance ministries. ?] Bourgeois opposition is likely to be fierce. [? if spd_in_government == 0 : It might be difficult to enact the plan, given present conditions. ?]
 
