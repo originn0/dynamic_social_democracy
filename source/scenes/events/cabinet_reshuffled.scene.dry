@@ -2,7 +2,7 @@ title: The Right is expelling us from their government!
 subtitle: We have angered our coalition partners too much...
 new-page: true
 on-arrival: tried_supporting_kpd = 0; z_relation -= 6; dvp_relation -= 6; ddp_relation -= 6; lvp_relation -= 6; lvp_right += 3; dvp_right += 3; ddp_right += 3
-view-if: chancellor_party != "SPD" and chancellor_party != "KPD" and spd_in_government = 1 and ((in_grand_coalition = 1 or in_popular_front = 1 or in_minority_government = 1) and coalition_dissent >= 3) or (in_weimar_coalition = 1 and coalition_dissent >= 4) and spd_r < 50
+view-if: chancellor_party != "SPD" and chancellor_party != "KPD" and spd_in_government = 1 and (((in_grand_coalition = 1 or in_popular_front = 1 or in_minority_government = 1) and coalition_dissent >= 3) or (in_weimar_coalition = 1 and coalition_dissent >= 4) and spd_r < 50) or (federal_coalition_trigger == time and last_election_time != time)
 tags: event
 go-to: menu if chancellor != "Wirth"; wirth_resign_hindenburg if chancellor == "Wirth" and president_ideology != "Left"; wirth_resign_braun if chancellor == "Wirth" and president_ideology == "Left"
 
@@ -22,6 +22,7 @@ Chancellor [+ chancellor +] has announced his intentions to President [+ preside
 - @bruning_chain: What's next?
 - @tolerate: Let the reshuffle happen, and tolerate the new minority government.
 - @no_tolerate: Bring down this new backstabbing government!
+- @majority_vonc: Call a constructive motion of no confidence!
 
 @try_assuage
 
@@ -152,3 +153,39 @@ Unable to bear the stress of keeping the coalition together, Wirth has announced
 [+ president +] appoints Brüning from the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] as replacement, who immediately reforms the government.
 
 - @menu: Brüning sacks our ministers.
+
+@majority_vonc
+view-if: constructive_vonc and spd_r >= 50
+on-arrival: in_grand_coalition = 0; in_weimar_coalition = 0; chancellor = "Empty"; chancellor_party = "SPD"; spd_in_government = 1; in_spd_majority = 1; pro_republic += 5; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; reichswehr_loyalty -= 0.05;  ddp_right += 3; lvp_right += 4; dvp_right += 5; liberal_cooperation += 8; bourgeois_cooperation += 8; z_relation -= 5; ddp_relation -= 5; dvp_relation -= 5; lvp_relation -= 5
+With our majority in the Reichstag, our constructive vote of no confidence is assured to pass. But who should we nominate as chancellor?
+
+- @braun_majority_chancellor: Otto Braun for Chancellor.
+- @breitscheid_majority_chancellor: Rudolf Breitscheid for Chancellor.
+- @muller_majority_chancellor: Hermann Müller for Chancellor.
+- @wels_majority_chancellor: Otto Wels for Chancellor.
+
+@braun_majority_chancellor
+view-if: not historical_mode or not prussia_leader = "Braun"
+on-arrival: chancellor = "Braun"
+
+[? if president == "Braun": Our experts have checked the constitution, and have discovered that there is no specific prohibition against the Chancellor also being the President (the President may not be a member of the Reichstag; there is no law saying that the Chancellor must be a member of the Reichstag). Thus, we have Chancellor-President Otto Braun. ?]
+[? if president != "Braun": Otto Braun has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority. ?]
+
+@breitscheid_majority_chancellor
+on-arrival: chancellor = "Breitscheid"
+
+Rudolf Breitscheid has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority.
+
+@muller_majority_chancellor
+view-if: muller_dead = 0
+on-arrival: chancellor = "Müller"
+
+Hermann Müller has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority.
+
+@wels_majority_chancellor
+view-if: muller_dead = 1
+on-arrival: chancellor = "Wels"
+
+Otto Wels has become chancellor of the <span style="color: #c00000;">**SPD**</span> majority.
+
+With our majority, our constructive vote of no confidence is assured to pass. But who should we nominate as chancellor?
