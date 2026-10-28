@@ -1,5 +1,5 @@
 title: Antifaschistische Aktion
-subtitle: Communist forces unite against the far-right
+subtitle: Communist forces unite against the far-right...
 new-page: true
 on-arrival: afa_seen = 1; rfb_strength += 100; rfb_militancy += 0.1; workers_kpd += 3; unemployed_kpd += 3; nationalism -= 3; nazi_urgency += 1;
 tags: event
@@ -27,7 +27,7 @@ on-arrival: rfb_strength += 100; rfb_militancy += 0.1; kpd_relation += 3; ddp_re
 
 We have provided funding to <span style="color: #700000;">Antifaschistische</span> <span style="color: #c00000;">Aktion</span> in the name of a united front against <span style="color: #7A3C00;">Fascism</span>.
 
-The <span style="color: #000000;">bourgeois</span> parties decry it as material support for [? if rfb_banned or rfb_banned_prussia: a front organization for an illegal ?][? if not rfb_banned and not rfb_banned_prussia: a ?] <span style="color: #700000;">Communist</span> paramilitary [? if (reformist_strength >= 20 and not (rfb_banned or rfb_banned_prussia)) or (reformist_strength + center_strength >= 20 and (rfb_banned or rfb_banned_prussia)): , a sentiment echoed by many within our party ?]
+The <span style="color: #000000;">bourgeois</span> parties decry it as material support for [? if rfb_banned or rfb_banned_prussia: a front organization for an illegal ?][? if not (rfb_banned or rfb_banned_prussia): a ?] <span style="color: #700000;">Communist</span> paramilitary [? if (reformist_strength >= 20 and not (rfb_banned or rfb_banned_prussia)) or (reformist_strength + center_strength >= 20 and (rfb_banned or rfb_banned_prussia)): , a sentiment echoed by many within our party ?]
 
 @reach-out-truce
 view-if: kpd_truce and kpd_relation >= 50 and iron_front_formed
@@ -37,7 +37,7 @@ on-arrival: rb_militancy += 0.05; sa_strength += 50; rfb_militancy += 0.05; rfb_
 
 <span style="color: #700000;">Antifaschistische</span> <span style="color: #c00000;">Aktion</span> has [? if afa_training == 1: begun ?][? if afa_training >= 1: continued ?] conducting joint training operations with the <span style="color: #c00000;">Iron</span> <span style="color: #1A1A1A;">Front</span>
 
-The <span style="color: #000000;">bourgeois</span> parties [? if not rfb_banned or rfb_banned_prussia: decry our coordination with a front organization for an illegal ?][? if not rfb_banned or rfb_banned_prussia: grumble at our coordination with a ?] <span style="color: #700000;">Communist</span> paramilitary[? if not rfb_banned or rfb_banned_prussia: , even if it is in the name of <span style="color: #700000;">Anti</span><span style="color: #c00000;">-</span><span style="color: #7A3C00;">Fascism</span> ?][? if (reformist_strength >= 20 and not (rfb_banned or rfb_banned_prussia)) or (reformist_strength + center_strength >= 20 and (rfb_banned or rfb_banned_prussia)): , a sentiment echoed by many within our party ?]
+The <span style="color: #000000;">bourgeois</span> parties [? if not (rfb_banned or rfb_banned_prussia): decry our coordination with a front organization for an illegal ?][? if not (rfb_banned or rfb_banned_prussia): grumble at our coordination with a ?] <span style="color: #700000;">Communist</span> paramilitary[? if not (rfb_banned or rfb_banned_prussia): , even if it is in the name of <span style="color: #700000;">Anti</span><span style="color: #c00000;">-</span><span style="color: #7A3C00;">Fascism</span> ?][? if (reformist_strength >= 20 and not (rfb_banned or rfb_banned_prussia)) or (reformist_strength + center_strength >= 20 and (rfb_banned or rfb_banned_prussia)): , a sentiment echoed by many within our party ?]
 
 @reach-out-lol
 view-if: (not kpd_truce or kpd_relation < 50) and iron_front_formed
@@ -53,5 +53,7 @@ We have stayed silent on the matter, providing effective toleration to our local
 
 @oppose
 choose-if: ((rfb_banned or rfb_banned_prussia) or (reformist_strength + center_strength >= left_strength + neorevisionist_strength))
-unavailable-subtitle: [? if not rfb_banned or not rfb_banned_prussia or reformist_strength + center_strength < left_strength + neorevisionist_strength: The bulk of our party demansd a united front against <span style="color: #7A3C00;">Fascism</span> ?]
+unavailable-subtitle: [? if not (rfb_banned or rfb_banned_prussia) or reformist_strength + center_strength < left_strength + neorevisionist_strength: The bulk of our party demansd a united front against <span style="color: #7A3C00;">Fascism</span> ?]
 on-arrival: kpd_relation -= 3; ddp_relation += 2; z_relation += 3; dvp_relation += 5; left_dissent += 5; neorevisionist_dissent += 3 if not (rfb_banned or rfb_banned_prussia); 
+
+We have forbade our members from taking part in the mass organization [? if left_strength < 20 and (neorevisionist_strength < 20 or (rfb_banned or rfb_banned_prussia)): . ?][? if left_strength >= 20 or (neorevisionist_strength >= 20 and (rfb_banned or rfb_banned_prussia)): , which is protested by many in our party ?]
