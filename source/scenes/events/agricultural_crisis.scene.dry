@@ -28,14 +28,14 @@ What should we do?
 # 3. Increase agricultural financing
 
 @nothing
-on-arrival: rural_nsdap += 3; rural_spd -= 2; rural_ddp -= 2; pro_republic -= 3
+on-arrival: rural_nsdap += 3*(1-dissent); rural_spd -= 2; rural_ddp -= 2; pro_republic -= 3; nationalism += 5;
 
 There is nothing we can do. The peasant unrest rages on, only tempered by its own internal dissention. More and more, the peasant movement is being coopted by the growing Nazi party, who channel their grievances into demands for the overthrow of the Republic.
 
 @suppress
 unavailable-subtitle: The police are largely unwilling to take the action needed.
 choose-if: prussian_police_loyalty >= 0.6 or interior_police_loyalty >= 0.6
-on-arrival: rural_spd -= 4; rural_ddp -= 4; rural_nsdap -= 2
+on-arrival: rural_spd -= 4; rural_ddp -= 4; rural_nsdap -= 2*(1-dissent); pro_republic -= 1; nationalism += 3;
 
 The police are able to suppress the farmer unrest, preventing them from threatening the state. However, the peasants' economic circumstances remain poor, and they will only curse the SPD more and more.
 
@@ -44,7 +44,7 @@ subtitle: -1 budget - we have already funded agricultural credit, but more suppo
 choose-if: budget >= 1
 unavailable-subtitle: -1 budget - we do not have the funds.
 view-if: agricultural_finance == 1
-on-arrival: budget -= 1; agricultural_finance += 1; rural_policy += 1
+on-arrival: budget -= 1; agricultural_finance += 1; rural_policy += 1; center_dissent += 5; left_dissent += 4; rural_sol += 4; economic_growth += 0.2;
 go-to: financing_done
 
 @financing_2
@@ -52,7 +52,7 @@ subtitle: -2 budget
 choose-if: budget >= 2
 unavailable-subtitle: -2 budget - we do not have the funds.
 view-if: agricultural_finance < 1
-on-arrival: budget -= 2; rural_spd += 2*(1-dissent); coalition_dissent += 1; center_dissent += 3; agricultural_finance += 1; rural_policy += 1
+on-arrival: budget -= 2; rural_spd += 2*(1-dissent); coalition_dissent += 1; agricultural_finance += 1; rural_policy += 1; rural_nsdap -= 3*(1-dissent); center_dissent += 8; left_dissent += 6; rural_sol += 8; economic_growth += 0.4; dvp_right += 1; lvp_right += 1;
 go-to: financing_done
 
 @financing_done
