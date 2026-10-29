@@ -141,6 +141,15 @@ if (Q.rdp_r) {
     });
 }
 
+if (Q.srpd_formed && Q.srpd_r) {
+    data.push({
+        "id": "srpd",
+        "legend": "SRPD",
+        "name": "SRPD",
+        "seats": Math.round(Q.srpd_r * Q.reichstag_size),
+    });
+}
+
 if (Q.ddp_r && !Q.lvp_formed) {
     data.push({
         "id": "ddp",
@@ -317,6 +326,8 @@ They shouldâ€™ve simply not burned down the Reichstag. What were they thinkingâ€
 [? if dnef_formed: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div></td><td>!} SPD: {!</td><td>!} [+ spd_r +]% {!</td></tr>!} ?]
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div></td><td>!} SAPD: {!</td><td>!} [+ sapd_r +]% {!</td></tr>!} ?]
+
+[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div></td><td>!} SRPD: {!</td><td>!} [+ srpd_r +]% {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#700000'> </div></td><td>!} KPD: {!</td><td>!} [+ kpd_r +]% {!</td></tr>!}
 

@@ -31,6 +31,7 @@ on-arrival: {!
 var lippe_adjustment_factors = {
     spd: 1.5,
     sapd: 0.4,
+    srpd: 1.3,
     kpd: 0.65,
     ddp: 1.0,
     lvp: 1.2,
@@ -45,6 +46,7 @@ var lippe_adjustment_factors = {
 
 Q.spd_r_lippe = 0;
 Q.sapd_r_lippe = 0;
+Q.srpd_r_lippe = 0;
 Q.kpd_r_lippe = 0;
 Q.ddp_r_lippe = 0;
 Q.lvp_r_lippe = 0;
@@ -58,6 +60,7 @@ Q.dnf_r_lippe = 0;
 
 Q.spd_lippe_elections_vote = 0;
 Q.sapd_lippe_elections_vote = 0;
+Q.srpd_lippe_elections_vote = 0;
 Q.kpd_lippe_elections_vote = 0;
 Q.ddp_lippe_elections_vote = 0;
 Q.lvp_lippe_elections_vote = 0;
@@ -74,6 +77,7 @@ if (Q.rural_spd_normalized >= 20) lippe_adjustment_factors.spd += 0.15;
 if (Q.spd_lippe) lippe_adjustment_factors.spd *= Q.spd_lippe;
 Q.spd_lippe_elections_vote = Q.spd_votes*lippe_adjustment_factors.spd;
 Q.sapd_lippe_elections_vote = Q.sapd_votes*lippe_adjustment_factors.sapd;
+Q.srpd_lippe_elections_vote = Q.srpd_votes*lippe_adjustment_factors.srpd;
 Q.kpd_lippe_elections_vote = Q.kpd_votes*lippe_adjustment_factors.kpd;
 Q.ddp_lippe_elections_vote = Q.ddp_votes*lippe_adjustment_factors.ddp;
 Q.lvp_lippe_elections_vote = Q.lvp_votes*lippe_adjustment_factors.lvp;
@@ -94,11 +98,12 @@ Q.other_lippe_elections_vote = Q.other_votes*lippe_adjustment_factors.other;
 Q.kvp_lippe_elections_vote = Q.kvp_votes*lippe_adjustment_factors.kvp;
 Q.dnf_lippe_elections_vote = Q.dnf_votes*lippe_adjustment_factors.dnf;
 
-Q.total_votes_lippe = Q.spd_lippe_elections_vote + Q.sapd_lippe_elections_vote + Q.kpd_lippe_elections_vote + Q.ddp_lippe_elections_vote + Q.lvp_lippe_elections_vote + Q.z_lippe_elections_vote + Q.dvp_lippe_elections_vote + Q.dnvp_lippe_elections_vote + Q.nsdap_lippe_elections_vote + Q.other_lippe_elections_vote + Q.kvp_lippe_elections_vote + Q.dnf_lippe_elections_vote;
+Q.total_votes_lippe = Q.spd_lippe_elections_vote + Q.sapd_lippe_elections_vote + Q.srpd_lippe_elections_vote + Q.kpd_lippe_elections_vote + Q.ddp_lippe_elections_vote + Q.lvp_lippe_elections_vote + Q.z_lippe_elections_vote + Q.dvp_lippe_elections_vote + Q.dnvp_lippe_elections_vote + Q.nsdap_lippe_elections_vote + Q.other_lippe_elections_vote + Q.kvp_lippe_elections_vote + Q.dnf_lippe_elections_vote;
 
 if (Q.total_votes_lippe > 0) {
     Q.spd_lippe_elections_vote = (Q.spd_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.sapd_lippe_elections_vote = (Q.sapd_lippe_elections_vote / Q.total_votes_lippe) * 100;
+    Q.srpd_lippe_elections_vote = (Q.srpd_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.kpd_lippe_elections_vote = (Q.kpd_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.ddp_lippe_elections_vote = (Q.ddp_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.lvp_lippe_elections_vote = (Q.lvp_lippe_elections_vote / Q.total_votes_lippe) * 100;
@@ -113,9 +118,10 @@ if (Q.total_votes_lippe > 0) {
     Q.spd_lippe_elections_vote = Math.round((Q.spd_lippe_elections_vote + (target - Q.spd_lippe_elections_vote) * 0.2) * 10) / 10;
     let target_2 = 39.5;
     Q.nsdap_lippe_elections_vote = Math.round((Q.nsdap_lippe_elections_vote + (target_2 - Q.nsdap_lippe_elections_vote) * 0.2) * 10) / 10;
-    Q.total_votes_lippe = Q.spd_lippe_elections_vote + Q.sapd_lippe_elections_vote + Q.kpd_lippe_elections_vote + Q.ddp_lippe_elections_vote + Q.lvp_lippe_elections_vote + Q.z_lippe_elections_vote + Q.dvp_lippe_elections_vote + Q.dnvp_lippe_elections_vote + Q.nsdap_lippe_elections_vote + Q.other_lippe_elections_vote + Q.kvp_lippe_elections_vote + Q.dnf_lippe_elections_vote;
+    Q.total_votes_lippe = Q.spd_lippe_elections_vote + Q.sapd_lippe_elections_vote + Q.srpd_lippe_elections_vote + Q.kpd_lippe_elections_vote + Q.ddp_lippe_elections_vote + Q.lvp_lippe_elections_vote + Q.z_lippe_elections_vote + Q.dvp_lippe_elections_vote + Q.dnvp_lippe_elections_vote + Q.nsdap_lippe_elections_vote + Q.other_lippe_elections_vote + Q.kvp_lippe_elections_vote + Q.dnf_lippe_elections_vote;
     Q.spd_lippe_elections_vote = (Q.spd_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.sapd_lippe_elections_vote = (Q.sapd_lippe_elections_vote / Q.total_votes_lippe) * 100;
+    Q.sapd_lippe_elections_vote = (Q.srpd_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.kpd_lippe_elections_vote = (Q.kpd_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.ddp_lippe_elections_vote = (Q.ddp_lippe_elections_vote / Q.total_votes_lippe) * 100;
     Q.lvp_lippe_elections_vote = (Q.lvp_lippe_elections_vote / Q.total_votes_lippe) * 100;
@@ -130,6 +136,7 @@ if (Q.total_votes_lippe > 0) {
 
 Q.spd_lippe_elections_vote = (Q.spd_lippe_elections_vote != undefined ? parseFloat(Q.spd_lippe_elections_vote.toFixed(1)) : 0);
 Q.sapd_lippe_elections_vote = (Q.sapd_lippe_elections_vote != undefined ? parseFloat(Q.sapd_lippe_elections_vote.toFixed(1)) : 0);
+Q.srpd_lippe_elections_vote = (Q.srpd_lippe_elections_vote != undefined ? parseFloat(Q.srpd_lippe_elections_vote.toFixed(1)) : 0);
 Q.kpd_lippe_elections_vote = (Q.kpd_lippe_elections_vote != undefined ? parseFloat(Q.kpd_lippe_elections_vote.toFixed(1)) : 0);
 Q.ddp_lippe_elections_vote = (Q.ddp_lippe_elections_vote != undefined ? parseFloat(Q.ddp_lippe_elections_vote.toFixed(1)) : 0);
 Q.lvp_lippe_elections_vote = (Q.lvp_lippe_elections_vote != undefined ? parseFloat(Q.lvp_lippe_elections_vote.toFixed(1)) : 0);
@@ -143,6 +150,7 @@ Q.dnf_lippe_elections_vote = (Q.dnf_lippe_elections_vote != undefined ? parseFlo
 
 if (Q.spd_lippe_elections_vote >= 3.2) Q.spd_r_lippe = Q.spd_lippe_elections_vote;
 if (Q.sapd_lippe_elections_vote >= 3.2) Q.sapd_r_lippe = Q.sapd_lippe_elections_vote;
+if (Q.srpd_lippe_elections_vote >= 3.2) Q.srpd_r_lippe = Q.srpd_lippe_elections_vote;
 if (Q.kpd_lippe_elections_vote >= 3.2) Q.kpd_r_lippe = Q.kpd_lippe_elections_vote;
 if (Q.ddp_lippe_elections_vote >= 3.2) Q.ddp_r_lippe = Q.ddp_lippe_elections_vote;
 if (Q.lvp_lippe_elections_vote >= 3.2) Q.lvp_r_lippe = Q.lvp_lippe_elections_vote;
@@ -157,6 +165,7 @@ if (Q.dnf_lippe_elections_vote >= 3.2) Q.dnf_r_lippe = Q.dnf_lippe_elections_vot
 var lippe_adjustment_r_factors = {
     spd: 1.05,
     sapd: 1.0,
+    srpd: 1.0,
     kpd: 0.85,
     ddp: 1.0,
     lvp: 1.0,
@@ -171,6 +180,7 @@ var lippe_adjustment_r_factors = {
 
 Q.spd_r_lippe = Q.spd_r_lippe*lippe_adjustment_r_factors.spd;
 Q.sapd_r_lippe = Q.sapd_r_lippe*lippe_adjustment_r_factors.sapd;
+Q.srpd_r_lippe = Q.srpd_r_lippe*lippe_adjustment_r_factors.srpd;
 Q.kpd_r_lippe = Q.kpd_r_lippe*lippe_adjustment_r_factors.kpd;
 Q.ddp_r_lippe = Q.ddp_r_lippe*lippe_adjustment_r_factors.ddp;
 Q.lvp_r_lippe = Q.lvp_r_lippe*lippe_adjustment_r_factors.lvp;
@@ -188,6 +198,7 @@ Q.total_r_lippe = 0;
 
 if (Q.spd_r_lippe) Q.total_r_lippe += Q.spd_r_lippe;
 if (Q.sapd_r_lippe) Q.total_r_lippe += Q.sapd_r_lippe;
+if (Q.srpd_r_lippe) Q.total_r_lippe += Q.srpd_r_lippe;
 if (Q.kpd_r_lippe) Q.total_r_lippe += Q.kpd_r_lippe;
 if (Q.ddp_r_lippe) Q.total_r_lippe += Q.ddp_r_lippe;
 if (Q.lvp_r_lippe) Q.total_r_lippe += Q.lvp_r_lippe;
@@ -202,6 +213,7 @@ if (Q.dnf_r_lippe) Q.total_r_lippe += Q.dnf_r_lippe;
 if (Q.total_r_lippe > 0) {
     Q.spd_r_lippe = (Q.spd_r_lippe / Q.total_r_lippe) * 100;
     Q.sapd_r_lippe = (Q.sapd_r_lippe / Q.total_r_lippe) * 100;
+    Q.srpd_r_lippe = (Q.srpd_r_lippe / Q.total_r_lippe) * 100;
     Q.kpd_r_lippe = (Q.kpd_r_lippe / Q.total_r_lippe) * 100;
     Q.ddp_r_lippe = (Q.ddp_r_lippe / Q.total_r_lippe) * 100;
     Q.lvp_r_lippe = (Q.lvp_r_lippe / Q.total_r_lippe) * 100;
@@ -280,6 +292,7 @@ function allocateSeats(percentages, totalSeats = 21) {
 const inputPercentages = {
     spd_r_lippe: Q.spd_r_lippe,
     sapd_r_lippe: Q.sapd_r_lippe,
+    srpd_r_lippe: Q.srpd_r_lippe,
     kpd_r_lippe: Q.kpd_r_lippe,
     ddp_r_lippe: Q.ddp_r_lippe,
     lvp_r_lippe: Q.lvp_r_lippe,
@@ -317,6 +330,7 @@ Q.old_lvp_r_lippe = 0.0;
 Q.old_kvp_r_lippe = 0.0;
 Q.old_dnf_r_lippe = 0.0;
 Q.old_sapd_r_lippe = 0.0;
+Q.old_srpd_r_lippe = 0.0;
 
 if (Q.lvp_formed) Q.old_lvp_r_lippe = Q.old_dvp_r_lippe + Q.old_ddp_r_lippe;
 if (Q.kvp_formed) {
@@ -378,6 +392,15 @@ data = data.concat([{
     "name": "SPD",
     "seats": Math.round(Q.spd_r_lippe * 0.21),
 }]);
+
+if (Q.srpd_formed && Q.srpd_r_lippe) {
+    data.push({
+        "id": "srpd",
+        "legend": "SRPD",
+        "name": "SRPD",
+        "seats": Math.round(Q.srpd_r_lippe * 0.21),
+    });
+}
 
 if (Q.ddp_r_lippe && !Q.lvp_formed) {
     data.push({
@@ -499,6 +522,8 @@ Vote % changes are compared to the last *Reichstag* election. <br> Seat % change
 {!<tr><td><div class="box" style='background-color:#E3000F; outline: 2px; outline-style: solid;'> </div> !} **SPD:** {!</td><td>!} **[+ spd_lippe_elections_vote +]%** {!</td><td>!} **[+ str_votes_change_spd_lippe +]** {!</td><td>!} **[+ spd_r_lippe +]%** {!</td><td>!} **[+ str_change_spd_lippe +]** {!</td></tr>!}
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_lippe_elections_vote +]% {!</td><td>!} [+ str_votes_change_sapd_lippe +] {!</td><td>!} [+ sapd_r_lippe +]% {!</td><td>!} [+ str_change_sapd_lippe +] ?]
+
+[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div> !}SRPD: {!</td><td>!} [+ srpd_lippe_elections_vote +]% {!</td><td>!} [+ str_votes_change_srpd_lippe +] {!</td><td>!} [+ srpd_r_lippe +]% {!</td><td>!} [+ str_change_srpd_lippe +] ?]
 
 {!<tr><td><div class="box" style='background-color:#700000'> </div> !}KPD: {!</td><td>!} [+ kpd_lippe_elections_vote +]% {!</td><td>!} [+ str_votes_change_kpd_lippe +] {!</td><td>!} [+ kpd_r_lippe +]% {!</td><td>!} [+ str_change_kpd_lippe +] {! </td></tr>!}
 
