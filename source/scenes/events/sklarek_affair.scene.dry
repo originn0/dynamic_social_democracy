@@ -1,0 +1,44 @@
+title: Sklarek Affair
+subtitle: An investigation into a long-running corruption scandal in Berlin
+new-page: true
+view-if: (year = 1929 and month >= 11) and spd_prussia
+max-visits: 1
+on-arrival: sklarek_affair_seen = 1; workers_spd -= 1; new_middle_spd -= 1; old_middle_spd -= 1; rural_spd -= 1; catholics_spd -= 1; unemployed_spd -= 1; new_middle_ddp -= 2; pro_republic -= 2
+tags: event
+face-image: img/sklarek.jpg
+
+= Sklarek Affair
+
+# The Prussian committee of inquiry into the affair in 1929
+A great corruption scandal is being uncovered in Berlin and Prussia. In 1927, a business owned by members of the Sklarek family was contracted to provide uniforms for the Berlin government, but they absconded with the funds without providing the uniforms. It has now been discovered that the Sklareks are deeply embedded in Berlin politics, with family members in the SPD, DDP, and other parties, and have been bribing politicians in exchange for government contracts. The Right has seized upon this affair and is using it to attack the "Weimar" parties and the governing system of the republic, as well as fanning the flames of antisemitism, since the Sklareks are of Eastern European Jewish descent.
+
+The Prussian Landtag has formed a committee to investigate the affair. What should be our posture?
+
+# Corruption is unacceptable. Cooperate with the investigation fully to root out
+# The Sklareks also ingratiated themselves with the DNVP; turn the attacks back against the right. (requires judicial reform and either Prussian police reform or interior ministry reform  to succeed)
+
+- @downplay
+- @corruption_unacceptable
+- @turn_back
+
+@corruption_unacceptable
+title: Corruption is unacceptable. Cooperate with the investigation, even if it implicates the SPD.
+on-arrival: center_dissent += 5; reformist_dissent += 5; labor_dissent += 5
+
+We cooperate with the investigation fully, expelling any party member who has been credibly accused of corruption. This causes internal dissention as many loyal party members are purged. However, our actions have limited the damage to the SPD's support.
+
+@downplay
+title: Downplay the affair.
+on-arrival: workers_spd -= 1; new_middle_spd -= 2; old_middle_spd -= 2; rural_spd -= 2; catholics_spd -= 2; unemployed_spd -= 2; new_middle_ddp -= 2; pro_republic -= 2
+
+In our media outlets, we downplay the Sklarek affair, and we act only when we have been forced to. The standing of our party has been seriously damaged by the affair, and people are increasingly disillusioned about the Republic.
+
+@turn_back
+title: The Sklareks also ingratiated themselves with the DNVP; turn the attacks back against the right.
+choose-if: judicial_reform > 1 and prussian_police_loyalty > 0.5
+unavailable-subtitle: The judiciary and police are set against us.
+on-arrival: new_middle_spd -= 1; old_middle_spd -= 1; rural_spd -= 1; catholics_spd -= 1; new_middle_ddp -= 1; workers_dnvp -= 1; new_middle_dnvp -= 1; old_middle_dnvp -= 1; rural_dnvp -= 1; pro_republic -= 2
+
+The investigation has uncovered that the Sklareks' corruption had no party lines; the parties of the right are just as implicated as the Weimar Coalition. We turn the propaganda against them.
+
+The only parties that appear to be unscathed from the affair are the KPD and NSDAP.
