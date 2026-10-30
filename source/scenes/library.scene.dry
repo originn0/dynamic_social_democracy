@@ -112,13 +112,13 @@ Reichstag composition:
 
 [? if spd_government_burden_peoples: Secondary Government Goals: [? if goal_spd_cancel_peoples == 0: [+ goal_spd_total_peoples +]?][? if goal_spd_cancel_peoples >= 1: Failed?] / 1 completed, due in [+ spd_government_burden_timer +] months ?]
 
-[? if spd_in_government and (in_popular_front or in_weimar_coalition or in_grand_coalition or in_social_catholic_coalition : <span style="color: #000000;">**[+ z_party_name +]**</span> coalition dissent: [+ z_coalition_dissent : coalition_dissent +] ?]
+[? if spd_in_government and (in_minority_government or in_popular_front or in_weimar_coalition or in_grand_coalition or in_social_catholic_coalition : <span style="color: #000000;">**[+ z_party_name +]**</span> coalition dissent: [+ z_coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and not lvp_formed and (in_weimar_coalition or in_grand_coalition or in_social_liberal_coalition) : <span style="color: #D3C24D;">**[+ ddp_name +]**</span> coalition dissent: [+ ddp_coalition_dissent : coalition_dissent +] ?]
+[? if spd_in_government and not lvp_formed and (in_minority_government or in_weimar_coalition or in_grand_coalition or in_social_liberal_coalition) : <span style="color: #D3C24D;">**[+ ddp_name +]**</span> coalition dissent: [+ ddp_coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and not lvp_formed and dvp_exist and (in_grand_coalition): <span style="color: #C0A054;">**DVP**</span> coalition dissent: [+ dvp_coalition_dissent : coalition_dissent +] ?]
+[? if spd_in_government and not lvp_formed and dvp_exist and (in_minority_government or in_grand_coalition): <span style="color: #C0A054;">**DVP**</span> coalition dissent: [+ dvp_coalition_dissent : coalition_dissent +] ?]
 
-[? if spd_in_government and lvp_formed and (in_weimar_coalition or in_grand_coalition or in_social_liberal_coalition) : <span style="color: #FFCC00;">**LVP**</span> coalition dissent: [+ lvp_coalition_dissent : coalition_dissent +] ?]
+[? if spd_in_government and lvp_formed and (in_minority_government or in_weimar_coalition or in_grand_coalition or in_social_liberal_coalition) : <span style="color: #FFCC00;">**LVP**</span> coalition dissent: [+ lvp_coalition_dissent : coalition_dissent +] ?]
 
 [? if spd_in_government and president == "Hindenburg" : Hindenburg's approval: [+ hindenburg_angry : hindenburg_angry +] ?]
 
