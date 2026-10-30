@@ -17,10 +17,20 @@ if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 4))) {
     Q.dvp_ideology = "Moderate"
 }
 
-if ((Q.pro_republic >= 80 && Q.dvp_ideology == "Left") && Q.dvp_reform && Q.dnvp_leader != "Lambach") Q.thiel_unlock = 1;
-if ((Q.pro_republic < 80 || Q.dvp_ideology != "Left") && Q.dvp_reform && Q.dnvp_leader != "Lambach") Q.glatzel_unlock = 1;
-if (Q.dvp_ideology == "Right" && !Q.thiel_unlock && !Q.glatzel_unlock) Q.dingeldey_unlock = 1;
-if ((Q.dvp_ideology == "Moderate" || Q.dvp_ideology == "Left") && !Q.thiel_unlock && !Q.glatzel_unlock) Q.kardorff_unlock = 1;
+if (Q.dvp_reform && Q.dnvp_leader != "Lambach") {
+    if (Q.pro_republic >= 80 && Q.dvp_ideology == "Left") {
+        Q.thiel_unlock = 1
+    }
+    else {
+        Q.glatzel_unlock = 1
+    }
+} else {
+    if (Q.dvp_ideology == "Right") {
+        Q.dingeldey_unlock = 1
+    } else {
+        Q.kardorff_unlock = 1
+    }
+}
 
 !}
 max-visits: 1
@@ -43,7 +53,7 @@ An internal election must now be held to determine Curtius’s successor. With t
 subtitle: Thiel is a controversial unionist within the party, being more left wing than Glatzel.
 unavailable-subtitle: [? if not glatzel_unlock: The workers have no power within the <span style="color: #C0A054;">DVP</span>, and the wider party won't back a trade unionist. ?][? if glatzel_unlock: Thiel is still considered too left-wing for the party, and many prefer to back his colleague Glatzel instead. ?]
 choose-if: thiel_unlock
-on-arrival: dvp_leader = "Thiel"; bourgeois_cooperation -= 3; dvp_left += 10; coalition_dissent -= 1 if in_grand_coalition; dvp_relation += 15; workers_dvp += 6; workers_dnvp -= 2; workers_other -= 2; workers_spd -= 2; new_middle_dvp += 6; new_middle_nsdap -= 3; new_middle_other -= 3; catholics_dvp += 3; catholics_other -= 3; old_middle_dvp -= 4; old_middle_dnvp += 2; old_middle_kvp += 2 if kvp_formed; rural_dvp -= 4; rural_dnvp += 2; rural_dnvp += 2 if dnvp_ideology == "Moderate"; rural_kvp += 2 if kvp_formed; pro_republic += 5; ddp_left += 3; ddp_relation += 5
+on-arrival: dvp_leader = "Thiel"; bourgeois_cooperation -= 3; dvp_left += 10; dvp_coalition_dissent -= 1; dvp_relation += 15; workers_dvp += 6; workers_dnvp -= 2; workers_other -= 2; workers_spd -= 2; new_middle_dvp += 6; new_middle_nsdap -= 3; new_middle_other -= 3; catholics_dvp += 3; catholics_other -= 3; old_middle_dvp -= 4; old_middle_dnvp += 2; old_middle_kvp += 2 if kvp_formed; rural_dvp -= 4; rural_dnvp += 2; rural_dnvp += 2 if dnvp_ideology == "Moderate"; rural_kvp += 2 if kvp_formed; pro_republic += 5; ddp_left += 3; ddp_relation += 5
 face-image: img/portraits/thiel.jpg
 
 Surprisingly, Otto Thiel has been elected as the new leader of the <span style="color: #C0A054;">**DVP**</span>! Compared to his colleague Glatzel, Thiel leans further left within the party’s unionist faction. He has even voiced support for increased welfare spending, arguing that austerity measures would only deepen the hardships faced by the people. In his push for *Volksgemeinschaft*, he has begun introducing more labor-friendly policies into the party’s platform, backing collective bargaining rights and worker protections.

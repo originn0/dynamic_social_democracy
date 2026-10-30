@@ -17,7 +17,7 @@ The <span style="color: #FFCC00;">**LVP**</span>'s inaugural congress will play 
 
 @luther
 call: lvp_formed
-on-arrival: lvp_relation += 5; lvp_left += 3
+on-arrival: lvp_relation += 5; lvp_left += 3; lvp_coalition_dissent = ((ddp_coalition_dissent + dvp_coalition_dissent) - ((ddp_coalition_dissent + dvp_coalition_dissent) % 2))/2 #fancy way to ensure it rounds the average dissent down
 face-image: img/portraits/luther.jpg
 
 Hans Luther is chosen to lead the <span style="color: #FFCC00;">**LVP**</span>, a long-time advocate for liberal and bourgeois unity, and a figure acceptable to both wings of the newly unified party. His influence among the German business community undoubtedly is what secured him the selection, it's hard to imagine the mixture of the dissenting factions of both predecessor parties being able to choose a single candidate.
@@ -60,7 +60,7 @@ As a result of the left-liberal <span style="color: #D3C24D;">**[+ ddp_name +]**
 - @groko: Maintain the Grand Coalition.
 
 @weimar
-on-arrival: lvp_relation -= 4; z_relation -= 3; lvp_right += 1; in_weimar_coalition = 1; in_grand_coalition = 0; coalition_dissent += 1
+on-arrival: lvp_relation -= 4; z_relation -= 3; lvp_right += 1; in_weimar_coalition = 1; in_grand_coalition = 0; lvp_coalition_dissent += 1
 go-to: cabinet_reformation
 
 An expected move, but the bourgeois parties are displeased by the exclusion of the <span style="color: #A2D8E0;">**BVP**</span> from the ruling coalition.

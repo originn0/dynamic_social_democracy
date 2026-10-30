@@ -75,7 +75,7 @@ The <span style="color: #7A3C00;">**SA**</span> is no longer banned. They immedi
 
 @ban_sh
 subtitle: The <span style="color: #C0A054;">**DVP**</span> won't like this.
-on-arrival: sh_strength *= 0.9; sh_strength *= 0.75 if prussian_police_loyalty >= 0.75; sh_banned = 1; dvp_relation -= 6; prussian_police_loyalty -= 0.1; coalition_dissent += 1 if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg"; sh_ban_timer = 6; coalition_dissent += 1 if in_social_catholic_coalition_prussia and cvp_formed; coalition_dissent += 1 if in_grand_coalition; sh_coup_progress = coup_progress; coup_progress -= 1 if coup_progress >= 6; hindenburg_angry += 8
+on-arrival: sh_strength *= 0.9; sh_strength *= 0.75 if prussian_police_loyalty >= 0.75; sh_banned = 1; dvp_relation -= 6; prussian_police_loyalty -= 0.1; dvp_coalition_dissent += 1 if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg"; sh_ban_timer = 6; z_coalition_dissent += 1 if in_social_catholic_coalition_prussia and cvp_formed; dvp_coalition_dissent += 1 if in_grand_coalition; sh_coup_progress = coup_progress; coup_progress -= 1 if coup_progress >= 6; hindenburg_angry += 8
 view-if: sh_banned == 0
 
 [? if president == "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with President Hindenburg, as well as the political <span style="color: #3E88B3;">right</span> and the police. ?][? if president != "Hindenburg": Banning the <span style="color: #3E88B3;">**Stahlhelm**</span> weakens our relationship with the political <span style="color: #3E88B3;">right</span> and the police. ?] [? if spd_in_government = 1 and in_grand_coalition = 1 and president = "Hindenburg" : It also weakens our coalition due to the influence of Hindenburg on the <span style="color: #C0A054;">right</span> wing of our coalition. ?] In addition, the <span style="color: #3E88B3;">**Stahlhelm**</span> still operates out of public sight. 
@@ -109,7 +109,7 @@ We are making progress towards negotiating a concordat between Prussia and the C
 @sign_concordat
 subtitle: The <span style="color: #C0A054;">**DVP**</span> won't like this.
 view-if: (prussian_concordat_progress >= 2 and not z_leader = "Kaas") or (prussian_concordat_progress >= 1 and z_leader = "Kaas") and prussian_concordat = 0
-on-arrival: prussian_concordat = 1; z_relation += 5; catholics_spd += 3*(1-dissent); catholics_dnvp -= 2 if dnvp_ideology == "Radical"; coalition_dissent += 1 if in_grand_coalition; dvp_relation -= 5; ddp_relation -= 3; ddp_cohesion -= 1
+on-arrival: prussian_concordat = 1; z_relation += 5; catholics_spd += 3*(1-dissent); catholics_dnvp -= 2 if dnvp_ideology == "Radical"; z_coalition_dissent -= 1 if z_coalition_dissent > 0; dvp_coalition_dissent += 1 if in_grand_coalition; dvp_relation -= 5; ddp_relation -= 3; ddp_cohesion -= 1
 
 We have signed a Concordat between the Free State of Prussia and the Roman Catholic Church, guaranteeing religious freedom for Catholics in Prussia. This sets the stage for the negotiation of a national Concordat covering all of Germany.
 
