@@ -1,7 +1,7 @@
 title: Deficit Spending
 subtitle: This goes against our coalition agreement with the <span style="color: #000000;">**[+ z_party_name +]**</span>...
 new-page: true
-on-arrival: z_relation -= 8; hindenburg_angry += 20; coalition_dissent += 2; cvp_economy_accepted_time = time + 3
+on-arrival: z_relation -= 8; hindenburg_angry += 20; z_coalition_dissent += 2; cvp_economy_accepted_time = time + 3
 view-if: spd_in_government and in_social_catholic_coalition and cvp_formed and cvp_economy_accepted and budget < 0 and time >= cvp_economy_accepted_time
 tags: event
 
@@ -9,7 +9,7 @@ tags: event
 
 During the coalition formation process, we've promised the <span style="color: #000000;">**[+ z_party_name +]**</span> to maintain a budgetary surplus at all times. We've failed.
 
-[? if coalition_dissent < 3: The <span style="color: #000000;">**[+ z_party_name +]**</span> have given us more time, as they still believe that we'll follow through on our promises. ?][? if coalition_dissent >= 3: The <span style="color: #000000;">**[+ z_party_name +]**</span> have called a vote of no confidence against us. ?]
+[? if z_coalition_dissent < 3: The <span style="color: #000000;">**[+ z_party_name +]**</span> have given us more time, as they still believe that we'll follow through on our promises. ?][? if z_coalition_dissent >= 3: The <span style="color: #000000;">**[+ z_party_name +]**</span> have called a vote of no confidence against us. ?]
 
 - @careful: Ouch.
 
