@@ -17,7 +17,7 @@ The <span style="color: #FFCC00;">**LVP**</span>'s inaugural congress will play 
 
 @luther
 call: lvp_formed
-on-arrival: lvp_relation += 5; lvp_left += 3; lvp_coalition_dissent = ((ddp_coalition_dissent + dvp_coalition_dissent) - ((ddp_coalition_dissent + dvp_coalition_dissent) % 2))/2 #fancy way to ensure it rounds the average dissent down
+on-arrival: lvp_relation += 5; lvp_left += 3; lvp_coalition_dissent = .5*(ddp_coalition_dissent + dvp_coalition_dissent)
 face-image: img/portraits/luther.jpg
 
 Hans Luther is chosen to lead the <span style="color: #FFCC00;">**LVP**</span>, a long-time advocate for liberal and bourgeois unity, and a figure acceptable to both wings of the newly unified party. His influence among the German business community undoubtedly is what secured him the selection, it's hard to imagine the mixture of the dissenting factions of both predecessor parties being able to choose a single candidate.
