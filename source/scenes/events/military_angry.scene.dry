@@ -29,7 +29,7 @@ We have accepted Schleicher’s demands for increased funding toward the army’
 @reform
 title: Fire these rabble rousers immediately!
 subtitle: The bourgeois parties will not be pleased.
-choose-if: (coalition_dissent <= 0 and (z_relation >= 60 or (not in_grand_coalition and not in_weimar_coalition))) or in_left_front or sapd_toleration
+choose-if: (z_coalition_dissent <= 0 and ddp_coalition_dissent <= 0 and dvp_coalition_dissent <= 0 and lvp_coalition_dissent <= 0 and (z_relation >= 60 or (not in_grand_coalition and not in_weimar_coalition))) or in_left_front or sapd_toleration
 unavailable-subtitle: We lack the leverage—or sympathy—among our coalition partners.
 on-arrival: coalition_dissent += 1 if in_weimar_coalition or in_grand_coalition; new_middle_spd -= 2; old_middle_spd -= 2; rural_spd -= 2; z_relation -= 5; ddp_relation -= 5 if ddp_ideology != "Left"; dvp_relation -= 8; lvp_relation -= 5; lvp_right += 2; dvp_right += 2; ddp_right += 1; ddp_cohesion -= 1; hindenburg_angry += 25; reichswehr_minister = "Oster"; groener_explode = 1; reichswehr_loyalty += 0.2; coup_progress += 3; capital_strike_progress += 1
 face-image: img/portraits/oster.jpg
@@ -40,6 +40,6 @@ Schleicher has been dismissed from the Office for Ministerial Affairs, and von H
 
 @idc
 title: What are they going to do? Coup us?
-on-arrival: coalition_dissent += 2 if in_weimar_coalition or in_grand_coalition; workers_spd -= 2 if pacifism < 5; new_middle_spd -= 2; new_middle_spd -= 2 if pacifism < 5; old_middle_spd -= 4; old_middle_spd -= 2 if pacifism < 5; rural_spd -= 4; rural_spd -= 2 if pacifism < 5; z_relation -= 10; ddp_relation -= 10 if ddp_ideology != "Left"; dvp_relation -= 15; lvp_relation -= 15; lvp_right += 6; dvp_right += 6; ddp_right += 2; ddp_cohesion -= 2; hindenburg_angry += 100; coup_progress += 5; capital_strike_progress += 3
+on-arrival: z_coalition_dissent += 2 if in_weimar_coalition or in_grand_coalition; ddp_coalition_dissent += 2 if in_weimar_coalition or in_grand_coalition; dvp_coalition_dissent += 2 if in_grand_coalition; lvp_coalition_dissent += 2 if in_weimar_coalition or in_grand_coalition; workers_spd -= 2 if pacifism < 5; new_middle_spd -= 2; new_middle_spd -= 2 if pacifism < 5; old_middle_spd -= 4; old_middle_spd -= 2 if pacifism < 5; rural_spd -= 4; rural_spd -= 2 if pacifism < 5; z_relation -= 10; ddp_relation -= 10 if ddp_ideology != "Left"; dvp_relation -= 15; lvp_relation -= 15; lvp_right += 6; dvp_right += 6; ddp_right += 2; ddp_cohesion -= 2; hindenburg_angry += 100; coup_progress += 5; capital_strike_progress += 3
 
 The Reichswehr won’t go so far as to overthrow us, but Schleicher’s decade-long web of connections is proving effective. We are also the victim of a renewed propaganda campaign by the nationalist parties[? if pacifism >= 5:, which has fortunately failed to gain traction?]. [? if president == "Hindenburg": As a key figure in President Hindenburg’s camarilla, he has played a major role in stoking the old man’s growing hostility toward us. ?]
