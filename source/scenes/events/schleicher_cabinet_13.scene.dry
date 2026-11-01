@@ -14,6 +14,7 @@ go-to: reichstag
 on-arrival: {!
 Q.kpd_r_alt = 0;
 Q.sapd_r_alt = 0;
+Q.srpd_r_alt = 0;
 Q.spd_r_alt = 0;
 Q.ddp_r_alt = 0;
 Q.lvp_r_alt = 0;
@@ -30,20 +31,21 @@ if (Q.libs_against_schleicher && Q.lvp_formed) Q.lvp_r_alt = Q.lvp_r_pre;
 if (Q.libs_against_schleicher && Q.dvp_relation >= 40 && Q.dvp_leader != "Dingeldey" && (Q.industrialists_schleicher < 4 || Q.republicans_schleicher <= 0) && Q.dvp_exist && !Q.lvp_formed) Q.dvp_r_alt = Q.dvp_r_pre;
 if (Q.z_against_schleicher) Q.z_r_alt = Q.z_r_pre - Q.bvp_r;
 
-Q.total_r_alt = parseFloat(Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt).toFixed(1);
-Q.total_r_alt_2 = parseFloat(Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt).toFixed(1);
+Q.total_r_alt = parseFloat(Q.kpd_r_alt + Q.sapd_r_alt + Q.srpd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt).toFixed(1);
+Q.total_r_alt_2 = parseFloat(Q.kpd_r_alt + Q.sapd_r_alt + Q.srpd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt).toFixed(1);
 
 if (Q.total_r_alt < 100) {
     let scale = 100 / Q.total_r_alt;
     Q.kpd_r_alt = Math.round(Q.kpd_r_alt * scale * 10) / 10;
     Q.sapd_r_alt = Math.round(Q.sapd_r_alt * scale * 10) / 10;
+    Q.srpd_r_alt = Math.round(Q.srpd_r_alt * scale * 10) / 10;
     Q.spd_r_alt = Math.round(Q.spd_r_alt * scale * 10) / 10;
     Q.ddp_r_alt = Math.round(Q.ddp_r_alt * scale * 10) / 10;
     Q.dvp_r_alt = Math.round(Q.dvp_r_alt * scale * 10) / 10;
     Q.z_r_alt   = Math.round(Q.z_r_alt * scale * 10) / 10;
     Q.lvp_r_alt = Math.round(Q.lvp_r_alt * scale * 10) / 10;
 
-    Q.total_r_alt = Q.kpd_r_alt + Q.sapd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt;
+    Q.total_r_alt = Q.kpd_r_alt + Q.sapd_r_alt + Q.srpd_r_alt + Q.spd_r_alt + Q.ddp_r_alt + Q.dvp_r_alt + Q.z_r_alt + Q.lvp_r_alt;
 }
 
 for (var party of Q.parties) {
@@ -92,6 +94,15 @@ if (Q.rdp_r) {
         "legend": "RDP",
         "name": "RDP",
         "seats": Math.round(Q.rdp_r * 2),
+    });
+}
+
+if (Q.srpd_formed && Q.srpd_r) {
+    data.push({
+        "id": "srpd",
+        "legend": "SRPD",
+        "name": "SRPD",
+        "seats": Math.round(Q.srpd_r * Q.reichstag_size),
     });
 }
 
@@ -255,6 +266,8 @@ go-to: negotiation_menu_med if spd_med; negotiation_menu_win if spd_win
 [? if dnef_formed and spd_r_alt: {!<tr><td><div class="box" style='background-color:#E3000F;'> </div></td><td>!} SPD: {!</td><td>!} [+ spd_r_alt +]% {!</td></tr>!} ?]
 
 [? if sapd_formed and sapd_r_alt: {!<tr><td><div class="box" style='background-color:#9B0000'> </div></td><td>!} SAPD: {!</td><td>!} [+ sapd_r_alt +]% {!</td></tr>!} ?]
+
+[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div></td><td>!} SRPD: {!</td><td>!} [+ srpd_r +]% {!</td></tr>!} ?]
 
 [? if kpd_r_alt: {!<tr><td><div class="box" style='background-color:#700000'> </div></td><td>!} KPD: {!</td><td>!} [+ kpd_r_alt +]% {!</td></tr>!} ?]
 
