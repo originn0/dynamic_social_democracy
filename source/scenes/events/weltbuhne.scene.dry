@@ -27,7 +27,7 @@ The <span style="color: #c00000;">left-wing</span> news and literary magazine We
 view-if: spd_in_government
 choose-if: spd_in_government and justice_minister_party = "SPD"
 unavailable-subtitle: [? if not spd_in_government : <span style="color: #c00000;">SPD</span> not in government. ?] [? if spd_in_government and justice_minister_party != "SPD": The <span style="color: #c00000;">SPD</span> does not control the Justice Ministry. ?]
-on-arrival: weltbuhne_dropped = 1; dvp_relation -= 4; nationalism -= 3*(1-dissent); coalition_dissent += 1 if (in_grand_coalition or (in_weimar_coalition and lvp_formed)); reichswehr_loyalty -= 0.05; west_relation += 1; east_relation += 1; coup_progress += 1; reparations_negotiation += 1; pacifism += 1; ddp_relation += 3; ddp_left += 1; lvp_relation -= 2; hindenburg_angry += 5
+on-arrival: weltbuhne_dropped = 1; dvp_relation -= 4; nationalism -= 3*(1-dissent); dvp_coalition_dissent += 1; lvp_coalition_dissent += 1; reichswehr_loyalty -= 0.05; west_relation += 1; east_relation += 1; coup_progress += 1; reparations_negotiation += 1; pacifism += 1; ddp_relation += 3; ddp_left += 1; lvp_relation -= 2; hindenburg_angry += 5
 
 The Justice Ministry has dropped all persecution of Carl von Ossietzky and Walter Kreiser, the journalist responsible for the offending publication. In fact, some say that the Weltbühne journalists should be feted as heroes.
 
@@ -42,7 +42,7 @@ The case progresses slowly, given the military secrets involved, and there will 
 
 @pressure_drop
 view-if: spd_in_government and justice_minister_party != "SPD"
-on-arrival: weltbuhne_dropped = 1; dvp_relation -= 5; lvp_relation -= 3; nationalism += 3*(1-dissent); coalition_dissent += 1; coalition_dissent += 1 if (in_grand_coalition or (in_weimar_coalition and lvp_formed)); reichswehr_loyalty -= 0.05; coup_progress += 1; west_relation += 1; east_relation += 1; reparations_negotiation += 1; ddp_left += 1; hindenburg_angry += 5
+on-arrival: weltbuhne_dropped = 1; dvp_relation -= 5; lvp_relation -= 3; nationalism += 3*(1-dissent); z_coalition_dissent += 1; ddp_coalition_dissent += 1; dvp_coalition_dissent += 2; lvp_coalition_dissent += 2; reichswehr_loyalty -= 0.05; coup_progress += 1; west_relation += 1; east_relation += 1; reparations_negotiation += 1; ddp_left += 1; hindenburg_angry += 5
 
 We have pressured the Justice Ministry to drop the case against the Weltbühne, raising tensions with our coalition.
 

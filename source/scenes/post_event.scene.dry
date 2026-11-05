@@ -2893,8 +2893,8 @@ if (
     (
         Q.in_grand_coalition == 0 || 
         (
-            (Q.in_grand_coalition == 1 && Q.in_grand_coalition_prussia == 1 && Q.coalition_dissent < 1 && Q.foreign_minister_party == "DVP") || 
-            (Q.in_grand_coalition == 1 && Q.in_grand_coalition_prussia == 1 && Q.coalition_dissent < 2 && Q.foreign_minister_party != "DVP")
+            (Q.in_grand_coalition == 1 && Q.in_grand_coalition_prussia == 1 && Q.dvp_coalition_dissent < 1 && Q.foreign_minister_party == "DVP") || 
+            (Q.in_grand_coalition == 1 && Q.in_grand_coalition_prussia == 1 && Q.dvp_coalition_dissent < 2 && Q.foreign_minister_party != "DVP")
         )
     )
 ) {
@@ -4122,11 +4122,24 @@ if (Q.spd_in_government_time >= 6) {
     if (Q.judicial_reform >= 1) {
         Q.hindenburg_angry += (Q.judicial_reform / 2)
     }
-    if (Q.coalition_dissent <= 0) {
+    Q.net_coalition_dissent = 0;
+    if ((Q.z_coalition_dissent > Q.net_coalition_dissent) && (Q.in_popular_front || Q.in_weimar_coalition || Q.in_grand_coalition || Q.in_social_catholic_coalition)) {
+        Q.net_coalition_dissent = Q.z_coalition_dissent;
+    }
+    if ((Q.ddp_coalition_dissent > Q.net_coalition_dissent) && !Q.lvp_formed && (Q.in_weimar_coalition || Q.in_grand_coalition || Q.in_social_liberal_coalition)) {
+        Q.net_coalition_dissent = Q.ddp_coalition_dissent;
+    }
+    if ((Q.dvp_coalition_dissent > Q.net_coalition_dissent) && !Q.lvp_formed && Q.dvp_exist && Q.in_grand_coalition) {
+        Q.net_coalition_dissent = Q.dvp_coalition_dissent;
+    }
+    if ((Q.lvp_coalition_dissent > Q.net_coalition_dissent) && Q.lvp_formed && (Q.in_weimar_coalition || Q.in_grand_coalition || Q.in_social_liberal_coalition)) {
+        Q.net_coalition_dissent = Q.lvp_coalition_dissent;
+    }
+    if (Q.net_coalition_dissent < 1) {
         Q.hindenburg_angry -= 2;
-    } else if (Q.coalition_dissent == 2) {
+    } else if (Q.net_coalition_dissent == 2) {
         Q.hindenburg_angry += 2;
-    } else if (Q.coalition_dissent >= 3) {
+    } else if (Q.net_coalition_dissent >= 3) {
         Q.hindenburg_angry += 3;
     }
     if (Q.capital_strike_progress > 0) {

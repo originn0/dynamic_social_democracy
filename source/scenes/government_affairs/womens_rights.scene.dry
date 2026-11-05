@@ -31,7 +31,7 @@ These policies mean that our party is increasing in popularity among the "new wo
 
 @family
 subtitle: Change family and inheritance law to treat women more equally.
-on-arrival: family_law += 1; womens_rights += 1; new_middle_spd += 2*(1-dissent); workers_spd += 3*(1-dissent); old_middle_spd -= 2; rural_spd -= 2; catholics_spd -= 4; coalition_dissent += 1; z_relation -= 4; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 0.5; women_goal_spd += 1
+on-arrival: family_law += 1; womens_rights += 1; new_middle_spd += 2*(1-dissent); workers_spd += 3*(1-dissent); old_middle_spd -= 2; rural_spd -= 2; catholics_spd -= 4; z_coalition_dissent += 1; z_relation -= 4; ddp_left += 0.5; ddp_cohesion += 0.5; lvp_left += 0.5; women_goal_spd += 1
 max-visits: 2
 
 These policies aim to ensure that women have equal rights within a marriage, including the right to divorce. The more conservative segments of society treat our reforms as deleterious to the social fabric.
@@ -40,7 +40,7 @@ These policies aim to ensure that women have equal rights within a marriage, inc
 @welfare
 subtitle: -1 budget
 choose-if: budget > 0
-on-arrival: welfare += 1; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); budget -= 1; womens_rights += 1; coalition_dissent += 1 if welfare >= 1 and unemployed >= 15; unemployed -= 0.4; inflation += 0.2; dvp_right += 1 if welfare >= 1; lvp_right += 1 if welfare >= 1; women_goal_spd += 1; economic_growth += 0.3;
+on-arrival: welfare += 1; workers_spd += 5*(1-dissent); unemployed_spd += 5*(1-dissent); budget -= 1; womens_rights += 1; dvp_coalition_dissent += 1 if welfare >= 1 and unemployed >= 15; lvp_coalition_dissent += 1 if welfare >= 1 and unemployed >= 15; unemployed -= 0.4; inflation += 0.2; dvp_right += 1 if welfare >= 1; lvp_right += 1 if welfare >= 1; women_goal_spd += 1; economic_growth += 0.3;
 
 We have increased welfare spending on women and children. [? if welfare >= 1 and unemployed >= 15 : Some of our coalition partners consider increased welfare spending profligate at this time. ?]
 
@@ -51,11 +51,11 @@ subtitle: [? if progressive_coalition < 50 : This is unlikely to succeed; we do 
 go-to: liberalize_fail if progressive_coalition < 50; liberalize_success if progressive_coalition >= 50
 
 @liberalize_fail
-on-arrival: z_relation -= 5; coalition_dissent += 1; workers_spd += 3*(1-dissent); catholics_spd -= 5;
+on-arrival: z_relation -= 5; z_coalition_dissent += 1; workers_spd += 3*(1-dissent); catholics_spd -= 5;
 
 Unfortunately, our proposal is voted down in the Reichstag, with the Catholic [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] party (our long-time partners) speaking in particularly vehement opposition, and some of our own members breaking party discipline. The activists, feeling demoralized from this attempt, have decided to bide their time.
 
 @liberalize_success
-on-arrival: abortion_rights += 1; womens_rights += 1; coalition_dissent += 2; coalition_dissent += 3 if in_social_catholic_coalition; z_relation -= 8; catholics_spd -= 10; dvp_relation -= 5; ddp_relation += 4; lvp_relation -= 2; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); workers_z += 3; new_middle_z += 3; old_middle_z += 3; old_middle_dnvp += 3; rural_dnvp += 3; workers_nsdap -= 3; new_middle_nsdap -= 3; old_middle_nsdap -= 2; rural_nsdap -= 2; unemployed_nsdap -= 2; unemployed_z += 3; unemployed_spd += 3*(1-dissent); new_middle_ddp += 4; workers_ddp += 1; rural_ddp -= 2; ddp_left += 3; lvp_left += 1; rural_lvp -= 3; old_middle_lvp -= 3; new_middle_lvp += 3; workers_lvp += 2; women_goal_spd += 1
+on-arrival: abortion_rights += 1; womens_rights += 1; z_coalition_dissent += 2; dvp_coalition_dissent += 2; z_coalition_dissent += 3 if in_social_catholic_coalition; z_relation -= 8; catholics_spd -= 10; dvp_relation -= 5; ddp_relation += 4; lvp_relation -= 2; workers_spd += 3*(1-dissent); new_middle_spd += 3*(1-dissent); workers_z += 3; new_middle_z += 3; old_middle_z += 3; old_middle_dnvp += 3; rural_dnvp += 3; workers_nsdap -= 3; new_middle_nsdap -= 3; old_middle_nsdap -= 2; rural_nsdap -= 2; unemployed_nsdap -= 2; unemployed_z += 3; unemployed_spd += 3*(1-dissent); new_middle_ddp += 4; workers_ddp += 1; rural_ddp -= 2; ddp_left += 3; lvp_left += 1; rural_lvp -= 3; old_middle_lvp -= 3; new_middle_lvp += 3; workers_lvp += 2; women_goal_spd += 1
 
 With the support of a "progressive coalition" including the <span style="color: #700000;">**KPD**</span> and [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: leftist <span style="color: #FFCC00;">**LVP**</span> members?], we have successfully passed a bill to legalize abortion in Germany! This has heartened our more progressive supporters, while hurting our relations with the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?]. With the increasing political discourse around abortion, the religiously-oriented [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #3E88B3;">**DNVP**</span> have gained conservative votes at the expense of the <span style="color: #7A3C00;">**NSDAP**</span>.

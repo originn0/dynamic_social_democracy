@@ -1209,7 +1209,10 @@ if (Q.year >= 1932) {
 }
 Q.grand_coalition_failed = 0;
 // Reset government and ministers... Based on Brüning's 1930 govt
-Q.coalition_dissent = 0;
+Q.z_coalition_dissent = 0;
+Q.ddp_coalition_dissent = 0;
+Q.dvp_coalition_dissent = 0;
+Q.lvp_coalition_dissent = 0;
 Q.kpd_coalition_dissent = 0;
 if (!Q.spd_in_government) {
     Q.hindenburg_angry = 0;
@@ -2172,14 +2175,14 @@ The right will be more active in resisting our rule considering we are going to 
 
 @great_popular_front
 view-if: z_ideology == "Left" and kpd_leader == "Conciliators"
-on-arrival: spd_in_government = 1; in_popular_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; kpd_relation += 10; coup_progress += 1; in_left_front = 0; sapd_toleration = 0; in_weimar_coalition = 0; in_grand_coalition = 0; coalition_dissent = 0; coup_progress += 1 if in_popular_front_prussia; capital_strike_progress += 1 if in_popular_front_prussia; hindenburg_angry = 70; kpd_nazi_urgency += 0 if kpd_nazi_urgency < 0;
+on-arrival: spd_in_government = 1; in_popular_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; kpd_relation += 10; coup_progress += 1; in_left_front = 0; sapd_toleration = 0; in_weimar_coalition = 0; in_grand_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0; coup_progress += 1 if in_popular_front_prussia; capital_strike_progress += 1 if in_popular_front_prussia; hindenburg_angry = 70; kpd_nazi_urgency += 0 if kpd_nazi_urgency < 0;
 achievement: grosse_volksfront
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
 
 Somehow, the coalition is successfully formed! The conciliatory leadership of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #700000;">**KPD**</span> helped make the negotiations possible. We still need a chancellor; the only acceptable choice among the parties was Rudolf Breitscheid of the <span style="color: #c00000;">**SPD**</span>, acceptable to the [? if z_party_name != "CVP": <span style="color: #000000;">Center</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] and <span style="color: #700000;">**KPD**</span> [? if president == "Hindenburg" or president_ideology == "Moderate": as well as President [+ president +], albeit extremely reluctantly ?].
 
 @popular_front_success
-on-arrival: spd_in_government = 1; in_popular_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; kpd_relation += 10; coup_progress += 1; in_left_front = 0; sapd_toleration = 0; in_weimar_coalition = 0; in_grand_coalition = 0; coalition_dissent = 0; coup_progress += 1 if in_popular_front_prussia; capital_strike_progress += 1 if in_popular_front_prussia; hindenburg_angry = 75; kpd_nazi_urgency += 0 if kpd_nazi_urgency < 0;
+on-arrival: spd_in_government = 1; in_popular_front = 1; chancellor = "Breitscheid"; chancellor_party = "SPD"; kpd_relation += 10; coup_progress += 1; in_left_front = 0; sapd_toleration = 0; in_weimar_coalition = 0; in_grand_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0; coup_progress += 1 if in_popular_front_prussia; capital_strike_progress += 1 if in_popular_front_prussia; hindenburg_angry = 75; kpd_nazi_urgency += 0 if kpd_nazi_urgency < 0;
 go-to: popular_front_civil_war if coup_progress >= 10; popular_front_no_civil_war if coup_progress < 10
 achievement: volksfront
 
@@ -3499,7 +3502,7 @@ Who should be the chancellor?
 - @z_chancellor_wirth
 
 @weimar_z_lead
-on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage -= 5; coalition_dissent = 1; hindenburg_angry -= 10
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; leverage -= 5; z_coalition_dissent = 1; ddp_coalition_dissent = 1; dvp_coalition_dissent = 1; lvp_coalition_dissent = 1; hindenburg_angry -= 10
 go-to: ministries
 
 Normally, the <span style="color: #c00000;">**SPD**</span> takes the lead in forming such a coalition, however, the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?], under Stegerwald, has become a significant force in German politics. This development has led President [+ president +] to ask the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to take the lead role in forming government.
@@ -3761,7 +3764,7 @@ As expected, the [? if not lvp_formed: <span style="color: #C0A054;">**DVP**</sp
 @dvp_prussia
 subtitle: This will restrict our actions in Prussia.
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and dvp_was_in_prussia == 0 and not lvp_formed and dvp_exist
-on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; sapd_toleration_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 1; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; leverage += 5; dvp_relation += 10; z_relation -= 5; ddp_relation += 3; coalition_dissent = -1; left_dissent += 5; dvp_left += 3; new_middle_dvp += 3; dvp_prussia_asked = 1
+on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; sapd_toleration_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; spd_prussia = 1; right_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; leverage += 5; dvp_relation += 10; z_relation -= 5; ddp_relation += 3; dvp_coalition_dissent = -1; left_dissent += 5; dvp_left += 3; new_middle_dvp += 3; dvp_prussia_asked = 1
 go-to: join_bruning
 
 Letting the <span style="color: #C0A054;">**DVP**</span> into the Prussian government is an offer too good for them to refuse, no matter their leadership. However, this will negatively impact our actions involving the Prussian police force due to the <span style="color: #C0A054;">**DVP**</span> has ties to right-wing organizations such as the <span style="color: #3E88B3;">Stahlhelm</span>.
@@ -3861,7 +3864,7 @@ go-to: ministries
 @z_chancellor_cvp
 title: Let the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] have their chancellor.
 subtitle: [? if cvp_chancellor_accepted: Our coalition agreement stipulates that the chancellor must be from the <span style="color: #000000;">**[+ z_party_name +]**</span>, with Heinrich Brüning likely being their choice. ?][? if not cvp_chancellor_accepted: The <span style="color: #000000;">**[+ z_party_name +]**</span> would be happy with one of their own as chancellor, with Heinrich Brüning likely being their choice. ?]
-on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 1; z_relation += 5 if not cvp_chancellor_accepted; coalition_dissent = -1 if cvp_chancellor_accepted
+on-arrival: chancellor = "Brüning"; chancellor_party = "Z"; spd_in_government = 1; z_relation += 5 if not cvp_chancellor_accepted; z_coalition_dissent = -1 if cvp_chancellor_accepted
 go-to: ministries if z_r <= (spd_r + bvp_r); social_catholic_coalition_cvp_4 if z_r > (spd_r + bvp_r)
 
 Heinrich Brüning of the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has been appointed chancellor. He is approved by most factions of his party.
@@ -4231,7 +4234,7 @@ go-to: ministries
 @dvp_prussia_1
 subtitle: This will restrict our actions in Prussia.
 view-if: year <= 1929 and in_grand_coalition_prussia = 0 and (in_weimar_coalition_prussia or in_minority_weimar_coalition_prussia) and not in_left_front and not sapd_toleration and not in_popular_front and not in_weimar_coalition and not in_emergency_government and dvp_was_in_prussia == 0 and not lvp_formed and dvp_exist
-on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; sapd_toleration_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; leverage += 5; dvp_relation += 7; z_relation -= 5; coalition_dissent = -1; left_dissent += 5; dvp_left += 3; new_middle_dvp += 3
+on-arrival: in_right_coalition_prussia = 0; in_weimar_coalition_prussia = 0; in_grand_coalition_prussia = 1; in_minority_grand_coalition_prussia = 0; in_popular_front_prussia = 0; in_left_front_prussia = 0; sapd_toleration_prussia = 0; in_spd_majority_prussia = 0; in_center_right_coalition_prussia = 0; in_far_right_coalition_prussia = 0; in_minority_weimar_coalition_prussia = 0; ddp_in_popular_front_prussia = 0; kpd_goals_seen_prussia = 0; spd_toleration_prussia = 0; leverage += 5; dvp_relation += 7; z_relation -= 5; dvp_coalition_dissent = -1; left_dissent += 5; dvp_left += 3; new_middle_dvp += 3
 go-to: ministries
 
 Letting the <span style="color: #C0A054;">**DVP**</span> into the Prussian government is an offer too good for them to refuse, no matter their leadership. However, this will negatively impact our actions involving the Prussian police force due to the <span style="color: #C0A054;">**DVP**</span> has ties to right-wing organizations such as the <span style="color: #3E88B3;">Stahlhelm</span>.
