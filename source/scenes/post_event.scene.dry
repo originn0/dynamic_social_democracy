@@ -10,6 +10,10 @@ if (Q.chancellor == "Brüning" && Q.nationalization_progress > 0 && Q.lautenbach
     this.achieve('bruning_der_rotfrontkampfer');
 }
 
+if (Q.in_social_liberal_coalition && Q.secularized && Q.abortion_rights && Q.womens_work && Q.family_law && Q.trans_rights && Q.reformed_183 && Q.repealed_175) {
+    this.achieve('kulturkampf')
+}
+
 const q = dendryUI.dendryEngine.state.qualities;
 const dynamicMode = q.dynamic_mode;
 const historicalMode = q.historical_mode;
