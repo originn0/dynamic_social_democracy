@@ -6,6 +6,9 @@ on-arrival: kpd_policy_timer = 5
 #tags: event
 #max-choices: 1
 
+# honestly who cares about this 
+# i will still update dissents — archie
+
 # disable this event for now - the <span style="color: #700000;">**KPD**</span> is abstentionist in government. This position is loosely based on Paul Levi's ideas during the Kapp Putsch. A <span style="color: #700000;">**KPD**</span> that is willing to support an SPD government would necessarily have some different policy ideas from the Thälmann Stalinist line, so I looked to the earlier Paul Levi <span style="color: #700000;">**KPD**</span> as well as the French popular front for ideas.
 
 # ironically the hypothetical <span style="color: #700000;">**KPD**</span> position towards the Popular Front is basically analogous to the SPD position towards the Brüning government (i.e. toleration).
@@ -39,7 +42,7 @@ Do we support their radical labor policy?
 - @labor_oppose: No, this is too radical.
 
 @labor_support
-on-arrival: capital_strike_progress += 2; workers_kpd += 5; workers_spd += 3*(1-dissent); kpd_labor_support += 1; coalition_dissent += 1; z_relation -= 6; unemployment += 2; kpd_influence += 2
+on-arrival: capital_strike_progress += 2; workers_kpd += 5; workers_spd += 3*(1-dissent); kpd_labor_support += 1; z_coalition_dissent += 1; z_relation -= 6; unemployment += 2; kpd_influence += 2
 
 The pro-labor policy is popular among workers and is bringing the <span style="color: #700000;">**KPD**</span> more support, but in response businesses are laying off more workers and reducing hours. This is setting the government up for a confrontation with the capitalists.
 
@@ -61,7 +64,7 @@ Do we support this policy?
 - @economy_oppose: No, this must be stopped.
 
 @economy_support
-on-arrival: nationalization_progress += 1; capital_strike_progress += 4; unemployed -= 2.5 if unemployed >= 6; unemployed -= 1.2 if works_councils >= 3; budget -= 3; works_program += 1; workers_spd += 4*(1-dissent); workers_kpd += 8*(1-dissent); unemployed_kpd += 4*(1-dissent); coalition_dissent += 2; dvp_relation -= 6; lvp_relation -= 6; z_relation -= 4; new_middle_spd -= 3; old_middle_spd -= 3; economy_goal_completed += 1; kpd_influence += 2
+on-arrival: nationalization_progress += 1; capital_strike_progress += 4; unemployed -= 2.5 if unemployed >= 6; unemployed -= 1.2 if works_councils >= 3; budget -= 3; works_program += 1; workers_spd += 4*(1-dissent); workers_kpd += 8*(1-dissent); unemployed_kpd += 4*(1-dissent); dvp_coalition_dissent += 2; lvp_coalition_dissent += 2; ddp_coalition_dissent += 2; z_coalition_dissent += 1; dvp_relation -= 6; lvp_relation -= 6; z_relation -= 4; new_middle_spd -= 3; old_middle_spd -= 3; economy_goal_completed += 1; kpd_influence += 2
 
 The <span style="color: #700000;">**KPD**</span> has gained credit with the workers for enabling many to keep their jobs. Meanwhile, the bourgeois parties and middle-class voters blame the <span style="color: #c00000;">**SPD**</span> for enabling the nationalizations.
 

@@ -25,7 +25,7 @@ if (Q.dvp_right > (Q.dvp_left*1.5) || (Q.dvp_right > (Q.dvp_left + 4))) {
     Q.dvp_ideology = "Moderate"
 }
 !}
-go-to: curtius if dvp_ideology == "Left" or (dvp_ideology == "Moderate" and (coalition_dissent < 2 and in_grand_coalition)) and in_grand_coalition; scholz if dvp_ideology == "Right" or (dvp_ideology == "Moderate" and not in_grand_coalition); luther if (dvp_ideology == "Moderate" and (coalition_dissent >= 2 and in_grand_coalition)) or (dvp_ideology == "Left" and not in_grand_coalition)
+go-to: curtius if dvp_ideology == "Left" or (dvp_ideology == "Moderate" and (dvp_coalition_dissent < 2 and in_grand_coalition)) and in_grand_coalition; scholz if dvp_ideology == "Right" or (dvp_ideology == "Moderate" and not in_grand_coalition); luther if (dvp_ideology == "Moderate" and (dvp_coalition_dissent >= 2 and in_grand_coalition)) or (dvp_ideology == "Left" and not in_grand_coalition)
 
 @curtius
 on-arrival: dvp_leader = "Curtius"; liberal_cooperation += 1; bourgeois_cooperation += 1; dvp_left += 3; dvp_relation += 5; new_middle_dvp += 5; rural_dvp += 2; pro_republic += 5; ddp_left += 1; ddp_cohesion += 1
