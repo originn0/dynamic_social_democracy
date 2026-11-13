@@ -78,7 +78,7 @@ The <span style="color: #940000;">Soviets</span> are pleased that we have sent t
 @soviet_economic_aid_yes
 choose-if: budget >= 1
 subtitle: -1 budget
-on-arrival: soviet_aid_forpol = 1; budget -= 1; soviet_relation += 2; coalition_dissent += 1; foreign_goal_completed += 1
+on-arrival: soviet_aid_forpol = 1; budget -= 1; soviet_relation += 2; z_coalition_dissent += 1; ddp_coalition_dissent += 1; dvp_coalition_dissent += 1; lvp_coalition_dissent += 1; foreign_goal_completed += 1
 
 The <span style="color: #940000;">Soviets</span> are pleased that we have sent them aid, and have not asked for anything specific in exchange. Our coalition partners are less pleased.
 
@@ -120,7 +120,7 @@ However, the Allies, especially <span style="color: #002654;">France</span>, are
 - @fp_menu: No, we should do something else.
 
 @customs_union_2
-on-arrival: banking_crisis_timer = 4; customs_union = 1; west_relation -= 2; east_relation -= 2; z_relation += 6; dvp_relation += 6; ddp_relation += 4; lvp_relation += 6; coalition_dissent -= 1 if coalition_dissent > 0; coup_progress -= 1; hindenburg_angry -= 15
+on-arrival: banking_crisis_timer = 4; customs_union = 1; west_relation -= 2; east_relation -= 2; z_relation += 6; dvp_relation += 6; ddp_relation += 4; lvp_relation += 6; z_coalition_dissent -= 1 if coalition_dissent > 0; ddp_coalition_dissent -= 1 if coalition_dissent > 0; dvp_coalition_dissent -= 1 if coalition_dissent > 0; lvp_coalition_dissent -= 1 if coalition_dissent > 0; coup_progress -= 1; hindenburg_angry -= 15
 max-visits: 1
 
 We have formed a customs union with Austria! The right-wing parties are praising us for this unexpected turn of events.
@@ -143,7 +143,7 @@ subtitle: Our negotiations have been successful.
 unavailable-subtitle: [? if not young_plan_ratified: We must wait for the ratification of the Young Plan. ?][? if west_relation < 4: <span style="color: #002654;">France</span>'s government has major quarrels with other Western powers regarding a pause in reparations, higher relations with the West are required. ?]
 choose-if: young_plan_ratified == 1 and west_relation >= 4
 view-if: reparations_negotiation >= 3 and reparations > -2 and young_plan_seen
-on-arrival: west_relation += 1; reparations = -2; budget += 2 if hoover_memorandum_seen == 0; budget += 1 if hoover_memorandum_seen == 1; coalition_dissent -= 1 if coalition_dissent > 0; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); coup_progress -= 2 if coup_progress > 2; dvp_left += 3; pro_republic += 8; ddp_left += 1; ddp_cohesion += 1; lvp_left += 3; hindenburg_angry -= 20; economic_growth += 0.5 if economic_growth < 0; labor_dissent -= 15; dvp_relation += 5; ddp_relation += 5; z_relation += 5; lvp_relation += 5
+on-arrival: west_relation += 1; reparations = -2; budget += 2 if hoover_memorandum_seen == 0; budget += 1 if hoover_memorandum_seen == 1; z_coalition_dissent -= 1 if coalition_dissent > 0; ddp_coalition_dissent -= 1 if coalition_dissent > 0; dvp_coalition_dissent -= 1 if coalition_dissent > 0; lvp_coalition_dissent -= 1 if coalition_dissent > 0; workers_spd += 8*(1-dissent); old_middle_spd += 5*(1-dissent); new_middle_spd += 5*(1-dissent); rural_spd += 5*(1-dissent); coup_progress -= 2 if coup_progress > 2; dvp_left += 3; pro_republic += 8; ddp_left += 1; ddp_cohesion += 1; lvp_left += 3; hindenburg_angry -= 20; economic_growth += 0.5 if economic_growth < 0; labor_dissent -= 15; dvp_relation += 5; ddp_relation += 5; z_relation += 5; lvp_relation += 5
 max-visits: 1
 
 Finally, given both the economic circumstances and our continued negotiations, the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> are willing to pause our reparations payments! Much of the credit must go to <span style="color: #0A3161;">Western</span> president Hoover, who has been friendlier towards us than the <span style="color: #001489;">Europeans</span>.
@@ -156,7 +156,7 @@ subtitle: The issue of reparations and future payments will finally be resolved.
 unavailable-subtitle: [? if west_relation < 6: <span style="color: #002654;">France</span>'s government has major quarrels with other Western powers regarding an outright abolition of reparations. ?][? if not france_left_seen and year < 1932: <span style="color: #002654;">France</span>'s right-wing government won't approve of this; we must wait until a more favorable cabinet comes to power. ?][? if not france_left_seen and year >= 1932: <span style="color: #002654;">France</span>'s government won't be able to make a decision with its own elections approaching in May. ?]
 choose-if: west_relation >= 6 and france_left_seen
 view-if: reparations == -2 and not lausanne_seen
-on-arrival: west_relation += 1; eu_progress += 1; reparations_resolved = 1; budget += 1; coalition_dissent -= 3 if coalition_dissent > 0; workers_spd += 8*(1-dissent); old_middle_spd += 6*(1-dissent); new_middle_spd += 6*(1-dissent); rural_spd += 6*(1-dissent); catholics_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); coup_progress -= 4 if coup_progress > 4; dvp_left += 8; ddp_left += 4; ddp_cohesion += 4; pro_republic += 15; lvp_left += 8; hindenburg_angry -= 100; economic_growth += 2.5; unemployed -= 3; labor_dissent -= 15; workers_nsdap -= 5; unemployed_nsdap -= 5; new_middle_nsdap -= 5; old_middle_nsdap -= 5; rural_nsdap -= 5; catholics_nsdap -= 5; dvp_relation += 10; ddp_relation += 10; z_relation += 10; lvp_relation += 10
+on-arrival: west_relation += 1; eu_progress += 1; reparations_resolved = 1; budget += 1; z_coalition_dissent -= 3 if coalition_dissent > 0; ddp_coalition_dissent -= 3 if coalition_dissent > 0; dvp_coalition_dissent -= 3 if coalition_dissent > 0; lvp_coalition_dissent -= 3 if coalition_dissent > 0; workers_spd += 8*(1-dissent); old_middle_spd += 6*(1-dissent); new_middle_spd += 6*(1-dissent); rural_spd += 6*(1-dissent); catholics_spd += 6*(1-dissent); unemployed_spd += 6*(1-dissent); coup_progress -= 4 if coup_progress > 4; dvp_left += 8; ddp_left += 4; ddp_cohesion += 4; pro_republic += 15; lvp_left += 8; hindenburg_angry -= 100; economic_growth += 2.5; unemployed -= 3; labor_dissent -= 15; workers_nsdap -= 5; unemployed_nsdap -= 5; new_middle_nsdap -= 5; old_middle_nsdap -= 5; rural_nsdap -= 5; catholics_nsdap -= 5; dvp_relation += 10; ddp_relation += 10; z_relation += 10; lvp_relation += 10
 max-visits: 1
 
 With our success in negotiating a pause in reparation payments, the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> have been convinced of our sincere commitment to pacifism and distancing from militarism. Additionally, <span style="color: #002654;">France</span>'s new <span style="color: #E0B0FF;">left-wing</span> Prime Minister has been considerably more amicable than their predecessor. As a result, we have secured their agreement to a conference aimed at finally settling the reparations issue.
@@ -180,7 +180,7 @@ General Schleicher has demanded that we raise the issue of rearmament, which rem
 @expose
 title: Expose the secret rearmament plans of the previous foreign ministry!
 view-if: rearmament_exposed == 0
-on-arrival: west_relation += 2; east_relation += 1; nationalism -= 5*(1-dissent); pro_republic += 5*(1-dissent); coalition_dissent += 1; reichswehr_loyalty -= 0.05; rearmament_exposed += 1; reparations_negotiation += 3; coup_progress += 2; dvp_right += 2; ddp_left += 1; ddp_cohesion -= 1; lvp_right += 1; hindenburg_angry += 20
+on-arrival: west_relation += 2; east_relation += 1; nationalism -= 5*(1-dissent); pro_republic += 5*(1-dissent); z_coalition_dissent += 1; ddp_coalition_dissent += 1; dvp_coalition_dissent += 1; lvp_coalition_dissent += 1; reichswehr_loyalty -= 0.05; rearmament_exposed += 1; reparations_negotiation += 3; coup_progress += 2; dvp_right += 2; ddp_left += 1; ddp_cohesion -= 1; lvp_right += 1; hindenburg_angry += 20
 
 The previous foreign ministry, despite its benevolent and peaceful face, was secretly helping the Reichswehr to build up its forces, in contravention of the Treaty of Versailles.
 

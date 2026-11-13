@@ -31,6 +31,7 @@ on-arrival: {!
 var saxony_adjustment_factors = {
     spd: 1.25,
     sapd: 1.0,
+    srpd: 1.0,
     kpd: 1.25,
     ddp: 1.0,
     lvp: 1.5,
@@ -45,6 +46,7 @@ var saxony_adjustment_factors = {
 
 Q.spd_r_saxony = 0;
 Q.sapd_r_saxony = 0;
+Q.srpd_r_saxony = 0;
 Q.kpd_r_saxony = 0;
 Q.ddp_r_saxony = 0;
 Q.lvp_r_saxony = 0;
@@ -58,6 +60,7 @@ Q.dnf_r_saxony = 0;
 
 Q.spd_saxony_elections_vote = 0;
 Q.sapd_saxony_elections_vote = 0;
+Q.srpd_saxony_elections_vote = 0;
 Q.kpd_saxony_elections_vote = 0;
 Q.ddp_saxony_elections_vote = 0;
 Q.lvp_saxony_elections_vote = 0;
@@ -70,9 +73,11 @@ Q.kvp_saxony_elections_vote = 0;
 Q.dnf_saxony_elections_vote = 0;
 
 if (Q.new_middle_spd_normalized + Q.old_middle_spd_normalized >= 30) saxony_adjustment_factors.spd += 0.1;
+if (Q.new_middle_spd_normalized + Q.old_middle_spd_normalized < 30) saxony_adjustment_factors.srpd += 0.1;
 if (Q.workers_spd_normalized >= 70) saxony_adjustment_factors.spd += 0.1;
 Q.spd_saxony_elections_vote = Q.spd_votes*saxony_adjustment_factors.spd;
 Q.sapd_saxony_elections_vote = Q.sapd_votes*saxony_adjustment_factors.sapd;
+Q.srpd_saxony_elections_vote = Q.srpd_votes*saxony_adjustment_factors.srpd;
 Q.kpd_saxony_elections_vote = Q.kpd_votes*saxony_adjustment_factors.kpd;
 if (Q.stolper_program_adopted) saxony_adjustment_factors.ddp += 0.2;
 Q.ddp_saxony_elections_vote = Q.ddp_votes*saxony_adjustment_factors.ddp;
@@ -88,11 +93,12 @@ Q.other_saxony_elections_vote = Q.other_votes*saxony_adjustment_factors.other;
 Q.kvp_saxony_elections_vote = Q.kvp_votes*saxony_adjustment_factors.kvp;
 Q.dnf_saxony_elections_vote = Q.dnf_votes*saxony_adjustment_factors.dnf;
 
-Q.total_votes_saxony = Q.spd_saxony_elections_vote + Q.sapd_saxony_elections_vote + Q.kpd_saxony_elections_vote + Q.ddp_saxony_elections_vote + Q.lvp_saxony_elections_vote + Q.z_saxony_elections_vote + Q.dvp_saxony_elections_vote + Q.dnvp_saxony_elections_vote + Q.nsdap_saxony_elections_vote + Q.other_saxony_elections_vote + Q.kvp_saxony_elections_vote + Q.dnf_saxony_elections_vote;
+Q.total_votes_saxony = Q.spd_saxony_elections_vote + Q.sapd_saxony_elections_vote + Q.srpd_saxony_elections_vote + Q.kpd_saxony_elections_vote + Q.ddp_saxony_elections_vote + Q.lvp_saxony_elections_vote + Q.z_saxony_elections_vote + Q.dvp_saxony_elections_vote + Q.dnvp_saxony_elections_vote + Q.nsdap_saxony_elections_vote + Q.other_saxony_elections_vote + Q.kvp_saxony_elections_vote + Q.dnf_saxony_elections_vote;
 
 if (Q.total_votes_saxony > 0) {
     Q.spd_saxony_elections_vote = (Q.spd_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.sapd_saxony_elections_vote = (Q.sapd_saxony_elections_vote / Q.total_votes_saxony) * 100;
+    Q.srpd_saxony_elections_vote = (Q.srpd_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.kpd_saxony_elections_vote = (Q.kpd_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.ddp_saxony_elections_vote = (Q.ddp_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.lvp_saxony_elections_vote = (Q.lvp_saxony_elections_vote / Q.total_votes_saxony) * 100;
@@ -105,9 +111,10 @@ if (Q.total_votes_saxony > 0) {
     Q.dnf_saxony_elections_vote = (Q.dnf_saxony_elections_vote / Q.total_votes_saxony) * 100;
     let target = 34;
     Q.spd_saxony_elections_vote = Math.round((Q.spd_saxony_elections_vote + (target - Q.spd_saxony_elections_vote) * 0.35) * 10) / 10;
-    Q.total_votes_saxony = Q.spd_saxony_elections_vote + Q.sapd_saxony_elections_vote + Q.kpd_saxony_elections_vote + Q.ddp_saxony_elections_vote + Q.lvp_saxony_elections_vote + Q.z_saxony_elections_vote + Q.dvp_saxony_elections_vote + Q.dnvp_saxony_elections_vote + Q.nsdap_saxony_elections_vote + Q.other_saxony_elections_vote + Q.kvp_saxony_elections_vote + Q.dnf_saxony_elections_vote;
+    Q.total_votes_saxony = Q.spd_saxony_elections_vote + Q.sapd_saxony_elections_vote + Q.srpd_saxony_elections_vote + Q.kpd_saxony_elections_vote + Q.ddp_saxony_elections_vote + Q.lvp_saxony_elections_vote + Q.z_saxony_elections_vote + Q.dvp_saxony_elections_vote + Q.dnvp_saxony_elections_vote + Q.nsdap_saxony_elections_vote + Q.other_saxony_elections_vote + Q.kvp_saxony_elections_vote + Q.dnf_saxony_elections_vote;
     Q.spd_saxony_elections_vote = (Q.spd_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.sapd_saxony_elections_vote = (Q.sapd_saxony_elections_vote / Q.total_votes_saxony) * 100;
+    Q.srpd_saxony_elections_vote = (Q.srpd_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.kpd_saxony_elections_vote = (Q.kpd_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.ddp_saxony_elections_vote = (Q.ddp_saxony_elections_vote / Q.total_votes_saxony) * 100;
     Q.lvp_saxony_elections_vote = (Q.lvp_saxony_elections_vote / Q.total_votes_saxony) * 100;
@@ -122,6 +129,7 @@ if (Q.total_votes_saxony > 0) {
 
 Q.spd_saxony_elections_vote = (Q.spd_saxony_elections_vote != undefined ? parseFloat(Q.spd_saxony_elections_vote.toFixed(1)) : 0);
 Q.sapd_saxony_elections_vote = (Q.sapd_saxony_elections_vote != undefined ? parseFloat(Q.sapd_saxony_elections_vote.toFixed(1)) : 0);
+Q.srpd_saxony_elections_vote = (Q.srpd_saxony_elections_vote != undefined ? parseFloat(Q.srpd_saxony_elections_vote.toFixed(1)) : 0);
 Q.kpd_saxony_elections_vote = (Q.kpd_saxony_elections_vote != undefined ? parseFloat(Q.kpd_saxony_elections_vote.toFixed(1)) : 0);
 Q.ddp_saxony_elections_vote = (Q.ddp_saxony_elections_vote != undefined ? parseFloat(Q.ddp_saxony_elections_vote.toFixed(1)) : 0);
 Q.lvp_saxony_elections_vote = (Q.lvp_saxony_elections_vote != undefined ? parseFloat(Q.lvp_saxony_elections_vote.toFixed(1)) : 0);
@@ -135,6 +143,7 @@ Q.dnf_saxony_elections_vote = (Q.dnf_saxony_elections_vote != undefined ? parseF
 
 if (Q.spd_saxony_elections_vote >= 1.4) Q.spd_r_saxony = Q.spd_saxony_elections_vote;
 if (Q.sapd_saxony_elections_vote >= 1.4) Q.sapd_r_saxony = Q.sapd_saxony_elections_vote;
+if (Q.srpd_saxony_elections_vote >= 1.4) Q.srpd_r_saxony = Q.srpd_saxony_elections_vote;
 if (Q.kpd_saxony_elections_vote >= 1.4) Q.kpd_r_saxony = Q.kpd_saxony_elections_vote;
 if (Q.ddp_saxony_elections_vote >= 1.4) Q.ddp_r_saxony = Q.ddp_saxony_elections_vote;
 if (Q.lvp_saxony_elections_vote >= 1.4) Q.lvp_r_saxony = Q.lvp_saxony_elections_vote;
@@ -149,6 +158,7 @@ if (Q.dnf_saxony_elections_vote >= 1.4) Q.dnf_r_saxony = Q.dnf_saxony_elections_
 var saxony_adjustment_r_factors = {
     spd: 1.0,
     sapd: 1.0,
+    srpd: 1.0,
     kpd: 0.98,
     ddp: 0.96,
     lvp: 1.0,
@@ -163,6 +173,7 @@ var saxony_adjustment_r_factors = {
 
 Q.spd_r_saxony = Q.spd_r_saxony*saxony_adjustment_r_factors.spd;
 Q.sapd_r_saxony = Q.sapd_r_saxony*saxony_adjustment_r_factors.sapd;
+Q.srpd_r_saxony = Q.srpd_r_saxony*saxony_adjustment_r_factors.srpd;
 Q.kpd_r_saxony = Q.kpd_r_saxony*saxony_adjustment_r_factors.kpd;
 if (Q.stolper_program_adopted) saxony_adjustment_r_factors.ddp += 0.04;
 Q.ddp_r_saxony = Q.ddp_r_saxony*saxony_adjustment_r_factors.ddp;
@@ -180,6 +191,7 @@ Q.total_r_saxony = 0;
 
 if (Q.spd_r_saxony) Q.total_r_saxony += Q.spd_r_saxony;
 if (Q.sapd_r_saxony) Q.total_r_saxony += Q.sapd_r_saxony;
+if (Q.srpd_r_saxony) Q.total_r_saxony += Q.srpd_r_saxony;
 if (Q.kpd_r_saxony) Q.total_r_saxony += Q.kpd_r_saxony;
 if (Q.ddp_r_saxony) Q.total_r_saxony += Q.ddp_r_saxony;
 if (Q.lvp_r_saxony) Q.total_r_saxony += Q.lvp_r_saxony;
@@ -194,6 +206,7 @@ if (Q.dnf_r_saxony) Q.total_r_saxony += Q.dnf_r_saxony;
 if (Q.total_r_saxony > 0) {
     Q.spd_r_saxony = (Q.spd_r_saxony / Q.total_r_saxony) * 100;
     Q.sapd_r_saxony = (Q.sapd_r_saxony / Q.total_r_saxony) * 100;
+    Q.srpd_r_saxony = (Q.srpd_r_saxony / Q.total_r_saxony) * 100;
     Q.kpd_r_saxony = (Q.kpd_r_saxony / Q.total_r_saxony) * 100;
     Q.ddp_r_saxony = (Q.ddp_r_saxony / Q.total_r_saxony) * 100;
     Q.lvp_r_saxony = (Q.lvp_r_saxony / Q.total_r_saxony) * 100;
@@ -221,7 +234,7 @@ Q.spd_saxony_elections_vote = Q.spd_saxony_elections_vote*spd_share;
 Q.spd_r_saxony = Q.spd_r_saxony*spd_share;
 
 Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share;
-Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share;
+Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share + Q.srpd_r_saxony;
 
 let farm_share = 0.27;
 if (Q.dnvp_ideology == "Moderate") farm_share -= 0.1;
