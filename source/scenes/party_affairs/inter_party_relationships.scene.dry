@@ -254,6 +254,15 @@ if (Q.rdp_r) {
     });
 }
 
+if (Q.srpd_formed && Q.srpd_r) {
+    data.push({
+        "id": "srpd",
+        "legend": "SRPD",
+        "name": "SRPD",
+        "seats": Math.round(Q.srpd_r * Q.reichstag_size),
+    });
+}
+
 if (Q.dnvp_r && Q.dnvp_wholesome) {
     data.push({
         "id": "dnvp_wholesome",
