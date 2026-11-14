@@ -96,10 +96,13 @@ if (Q.dnvp_candidate_1932 == "Duesterberg") {
 }
 
 Q.ddp_president_crossover = 0;
-Q.srpd_president_crossover = 0;
 Q.dvp_president_crossover = 0; 
 Q.lvp_president_crossover = 0;
 Q.center_president_crossover = 0;
+
+if (Q.srpd_formed) {
+    Q.srpd_president_crossover = 0;
+}
 
 if (Q.spd_campaign) {
     Q.spd_president_votes += Q.spd_normalized;
@@ -387,9 +390,12 @@ if (Q.spd_campaign) {
 
     Q.hindenburg_votes += Q.z_normalized;
     Q.hindenburg_votes += Q.ddp_normalized;
-    Q.hindenburg_votes += Q.srpd_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
     Q.hindenburg_votes += Q.lvp_normalized;
+    
+    if (Q.srpd_formed) {
+        Q.hindenburg_votes += Q.srpd_normalized;
+    }
 
 } else {
     if (!Q.hindenburg_democracy_bonus && Q.hindenburg_run && !Q.spd_abstain_1932) {
@@ -409,10 +415,13 @@ if (Q.spd_campaign) {
     }
 
     Q.hindenburg_votes += Q.z_normalized;
-    Q.hindenburg_votes += Q.srpd_normalized;
     Q.hindenburg_votes += Q.ddp_normalized;
     Q.hindenburg_votes += Q.dvp_normalized;
     Q.hindenburg_votes += Q.lvp_normalized;
+    
+    if (Q.srpd_formed) {
+        Q.hindenburg_votes += Q.srpd_normalized;
+    }
 
     Q.thalmann_votes += Q.kpd_normalized;
 
@@ -479,12 +488,15 @@ if (!Q.hindenburg_run) {
         Q.dvp_normalized += Q.dvp_president_crossover;
         Q.dvp_president_crossover = 0;
     }
-    if (Q.srpd_formed && (Q.srpd_support_spd || (lvp_formed && lvp_support_spd) || (!lvp_formed && ddp_support_spd))) {
-        Q.srpd_choice = Q.spd_candidate_1932;
-    } else {
-        Q.srpd_normalized += srpd_president_crossover;
-        Q.srpd_president_crossover = 0;
-    }
+
+    if (Q.srpd_formed) {
+        if (Q.srpd_support_spd || (lvp_formed && lvp_support_spd) || (!lvp_formed && ddp_support_spd)) {
+            Q.srpd_choice = Q.spd_candidate_1932;
+        } else {
+            Q.srpd_normalized += srpd_president_crossover;
+            Q.srpd_president_crossover = 0;
+        }
+    } 
 
     if (Q.z_choice == Q.spd_candidate_1932 && Q.center_president_crossover) {
         if (Q.reactionary_candidate_1932 && Q.reactionary_candidate_1932_ideology == "Liberal" && Q.center_president_crossover != 0) {
@@ -503,7 +515,7 @@ if (!Q.hindenburg_run) {
         }
     }
 
-    if (Q.srpd_choice == Q.spd_candidate_1932 && Q.srpd_president_crossover) {
+    if (srpd_formed && Q.srpd_choice == Q.spd_candidate_1932 && Q.srpd_president_crossover) {
         if (Q.reactionary_candidate_1932 && (Q.reactionary_candidate_1932_ideology == "Centrist" || Q.reactionary_candidate_1932_ideology == "Liberal") && Q.srpd_president_crossover != 0) {
             Q.reactionary_candidate_1_votes += Q.srpd_president_crossover;
             Q.srpd_president_crossover = 0;
@@ -1272,13 +1284,16 @@ if (!Q.hindenburg_run) {
         Q.secondary_reactionary_candidate_1932 = 0;
         Q.secondary_reactionary_candidate_1932_disp = 0;
         Q.z_choice = Q.reactionary_candidate_1932;
-        Q.srpd_choice = Q.reactionary_candidate_1932;
         Q.ddp_choice = Q.reactionary_candidate_1932;
         Q.dvp_choice = Q.reactionary_candidate_1932;
         Q.lvp_choice = Q.reactionary_candidate_1932;
         Q.other_choice = Q.reactionary_candidate_1932;
         Q.kvp_choice = Q.reactionary_candidate_1932;
         Q.dnvp_choice = Q.reactionary_candidate_1932;
+
+        if (Q.srpd_formed) {
+            Q.srpd_choice = Q.reactionary_candidate_1932;
+        }
     } else {
         if (Q.lib_drop_out_2 || Q.lib_drop_out_bourgeois) {
             if (Q.reactionary_candidate_1932 == "Luther") {
@@ -1309,13 +1324,16 @@ if (!Q.hindenburg_run) {
                 Q.secondary_reactionary_candidate_1932_disp = 0;
             }
             Q.z_choice = Q.reactionary_candidate_1932;
-            Q.srpd_choice = Q.reactionary_candidate_1932;
             Q.ddp_choice = Q.reactionary_candidate_1932;
             Q.dvp_choice = Q.reactionary_candidate_1932;
             Q.lvp_choice = Q.reactionary_candidate_1932;
             Q.other_choice = Q.reactionary_candidate_1932;
             Q.kvp_choice = Q.reactionary_candidate_1932;
             Q.dnvp_choice = Q.reactionary_candidate_1932;
+            
+            if (Q.srpd_formed) {
+                Q.srpd_choice = Q.reactionary_candidate_1932;
+            }
         } else if (Q.z_drop_out_2 || Q.z_drop_out_bourgeois) {
             if (Q.reactionary_candidate_1932 == "Brüning") {
                 Q.reactionary_candidate_1932 = Q.secondary_reactionary_candidate_1932;
@@ -1345,13 +1363,16 @@ if (!Q.hindenburg_run) {
                 Q.secondary_reactionary_candidate_1932_disp = 0;
             }
             Q.z_choice = Q.reactionary_candidate_1932;
-            Q.srpd_choice = Q.reactionary_candidate_1932;
             Q.ddp_choice = Q.reactionary_candidate_1932;
             Q.dvp_choice = Q.reactionary_candidate_1932;
             Q.lvp_choice = Q.reactionary_candidate_1932;
             Q.other_choice = Q.reactionary_candidate_1932;
             Q.kvp_choice = Q.reactionary_candidate_1932;
             Q.dnvp_choice = Q.reactionary_candidate_1932;
+
+            if (Q.srpd_formed) {
+                Q.srpd_choice = Q.reactionary_candidate_1932;
+            }
         }
     }
 
