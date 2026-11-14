@@ -289,6 +289,16 @@ Q.spd_r_saxony = Q.spd_r_saxony*spd_share;
 Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share;
 Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share;
 
+if (Q.srpd_formed) {
+    if (Q.aspd_dead) {
+        Q.aspd_r_saxony +=  Q.srpd_r_saxony;
+        Q.aspd_saxony_elections_vote + Q.srpd_saxony_elections_vote;
+    } else {
+        Q.srpd_r_saxony +=  Q.aspd_r_saxony;
+        Q.srpd_saxony_elections_vote + Q.aspd_saxony_elections_vote;
+    }
+}
+
 let farm_share = 0.18;
 if (Q.dnvp_ideology == "Moderate") farm_share -= 0.1;
 let wp_share = 0.45;
@@ -492,7 +502,7 @@ data = data.concat([{
     "seats": Math.round(Q.spd_r_saxony * 0.96),
 }]);
 
-if (Q.srpd_formed && Q.srd_r_saxony) {
+if (Q.srpd_formed && Q.srd_r_saxony && Q.aspd_dead) {
     data.push({
         "id": "srpd",
         "legend": "SRPD",
@@ -501,7 +511,7 @@ if (Q.srpd_formed && Q.srd_r_saxony) {
     });
 }
 
-if (Q.aspd_r_saxony) {
+if (Q.aspd_r_saxony && (!Q.aspd_dead || !Q.srpd_formed)) {
     data.push({
         "id": "aspd",
         "legend": "ASPD",
@@ -663,9 +673,9 @@ go-to: saxony_coalition_menu
 
 [? if sapd_formed : {!<tr><td><div class="box" style='background-color:#9B0000'> </div> !}SAPD: {!</td><td>!} [+ sapd_saxony_elections_vote +]% {!</td><td>!} [+ sapd_r_saxony +]% {!</td></tr>!} ?]
 
-[? if srpd_formed : {!<tr><td><div class="box" style='background-color:#F4A460'> </div> !}SRPD: {!</td><td>!} [+ srpd_saxony_elections_vote +]% {!</td><td>!} [+ srpd_r_saxony +]% {!</td></tr>!} ?]
+[? if srpd_formed and aspd_dead : {!<tr><td><div class="box" style='background-color:#F4A460'> </div> !}SRPD: {!</td><td>!} [+ srpd_saxony_elections_vote +]% {!</td><td>!} [+ srpd_r_saxony +]% {!</td></tr>!} ?]
 
-{!<tr><td><div class="box" style='background-color:#fe9e00'> </div> !}ASPD: {!</td><td>!} [+ aspd_saxony_elections_vote +]% {!</td><td>!} [+ aspd_r_saxony +]% {!</td></tr>!}
+[? if not srpd_formed or not aspd_dead: {!<tr><td><div class="box" style='background-color:#fe9e00'> </div> !}ASPD: {!</td><td>!} [+ aspd_saxony_elections_vote +]% {!</td><td>!} [+ aspd_r_saxony +]% {!</td></tr>!} ?]
 
 {!<tr><td><div class="box" style='background-color:#700000'> </div> !}KPD: {!</td><td>!} [+ kpd_saxony_elections_vote +]% {!</td><td>!} [+ kpd_r_saxony +]%  {!</td></tr>!}
 
@@ -706,7 +716,7 @@ go-to: saxony_coalition_menu
 <hr id="read-marker">
 United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_saxony +]% 
 
-Grand Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #F4A460;">**SRPD**</span> + <span style="color: #fe9e00;">**ASPD**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_saxony:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_saxony +]% 
+Grand Coalition (<span style="color: #c00000;">**SPD**</span> + [? if aspd_dead and srpd_formed: <span style="color: #F4A460;">**SRPD**</span> ?] [? if not aspd_dead or not srpd_formed: <span style="color: #fe9e00;">**ASPD**</span> ?] + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_saxony:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_saxony +]% 
 
 [? if dnvp_ideology == "Moderate": Bourgeois Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
 
@@ -825,9 +835,9 @@ Once again, the bourgeois parties have secured a majority all on their own.
 The continued bourgeois strength is demoralizing both to the <span style="color: #7A3C00;">**NSDAP**</span> and to us, as we are once again relegated to the powerless opposition role. 
 
 @ddp_saxony
-title: We will form a coalition with only the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if reformists_resign or not aspd_dead: and the <span style="color: #fe9e00;">**ASPD**</span>?].
+title: We will form a coalition with only the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>[? if reformists_resign or not aspd_dead: and the [? if aspd_dead and srpd_formed: <span style="color: #F4A460;">**SRPD**</span> ?] [? if not aspd_dead or not srpd_formed: <span style="color: #fe9e00;">**ASPD**</span> ?]?].
 subtitle: With the <span style="color: #C0A054;">**DVP**</span> having lurched to the right, this may be a viable option.
-view-if: (spd_r_saxony + aspd_r_saxony + ddp_r_saxony >= 50) and dvp_exist and not toleration_possible_saxony
+view-if: (spd_r_saxony + aspd_r_saxony + srpd_r_saxony + ddp_r_saxony >= 50) and dvp_exist and not toleration_possible_saxony
 choose-if: ddp_relation >= 100 and ddp_ideology == "Left" and not bourgeois_parliament_ddp and liberal_cooperation < 10
 unavailable-subtitle: [? if ddp_relation < 100: We need higher relations with the <span style="color: #D3C24D;">**[+ ddp_name +]**</span>. ?][? if ddp_ideology != "Left": The <span style="color: #D3C24D;">**[+ ddp_name +]**</span>'s Saxon chapter is too right-wing to agree to this. ?][? if bourgeois_parliament_ddp or liberal_cooperation >= 10: The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is still too closely tied with the <span style="color: #C0A054;">**DVP**</span> to agree to this. ?]
 on-arrival: saxony_spd = 1; saxony_groko = 0; saxony_toleration = 0; workers_nsdap -= 4; unemployed_nsdap -= 4; workers_spd += 4; unemployed_spd += 3; workers_nsdap -= 3; unemployed_nsdap -= 3; workers_ddp += 3; unemployed_ddp += 3; ddp_relation += 3; pro_republic += 5; reformist_dissent -= 10; reformist_strength += 5; red_saxony = 0; saxony_joever = 0; saxony_right_2 = 0; saxony_nsdap = 0; saxony_spd_splinter = 0; saxony_soclib = 1; saxony_nsdap_maj = 0; saxony_kpd = 0; saxony_spd_maj = 0
@@ -835,9 +845,9 @@ on-arrival: saxony_spd = 1; saxony_groko = 0; saxony_toleration = 0; workers_nsd
 Somehow, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is willing to form a coalition with us, without the increasingly <span style="color: #808080;">reactionary</span> <span style="color: #C0A054;">**DVP**</span> on board.
 
 @soclib_saxony_cvp
-title: We will form a coalition with only the <span style="color: #FFCC00;">liberals</span>[? if reformists_resign or not aspd_dead: and the <span style="color: #fe9e00;">**ASPD**</span>?].
+title: We will form a coalition with only the <span style="color: #FFCC00;">liberals</span>[? if reformists_resign or not aspd_dead: and the [? if aspd_dead and srpd_formed: <span style="color: #F4A460;">**SRPD**</span> ?] [? if not aspd_dead or not srpd_formed: <span style="color: #fe9e00;">**ASPD**</span> ?]?].
 subtitle: With the <span style="color: #000000;">**CVP**</span> having lurched to the right, this may be a viable option.
-view-if: true_bourgeois_coalition_saxony < 50 and (spd_r_saxony + aspd_r_saxony + ddp_r_saxony + dvp_r_saxony + lvp_r_saxony >= 50) and cvp_formed and cvp_coalition_right
+view-if: true_bourgeois_coalition_saxony < 50 and (spd_r_saxony + aspd_r_saxony + srpd_r_saxony + ddp_r_saxony + dvp_r_saxony + lvp_r_saxony >= 50) and cvp_formed and cvp_coalition_right
 choose-if: (dvp_relation >= 60 and dvp_ideology == "Left" and not lvp_formed and dvp_exist) or (lvp_relation >= 70 and lvp_ideology != "Right" and lvp_formed) or (ddp_relation >= 70 and not dvp_exist)
 unavailable-subtitle: We need higher relations with the [? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if dvp_exist and not lvp_formed: <span style="color: #C0A054;">**DVP**</span>?][? if not dvp_exist: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?].
 on-arrival: saxony_spd = 1; saxony_groko = 0; saxony_toleration = 0; workers_nsdap -= 3; unemployed_nsdap -= 3; workers_spd += 3; unemployed_spd += 3; new_middle_nsdap -= 3; unemployed_nsdap -= 3; ddp_relation += 3; lvp_relation += 3; dvp_relation += 5; pro_republic += 3; reformist_dissent -= 10; reformist_strength += 5; red_saxony = 0; saxony_joever = 0; saxony_right_2 = 0; saxony_nsdap = 0; saxony_spd_splinter = 0; saxony_soclib = 1; saxony_nsdap_maj = 0; saxony_kpd = 0; saxony_spd_maj = 0

@@ -5063,10 +5063,13 @@ if (Q.dnef_formed) {
 if (Q.srpd_r) {
     Q.weimar_coalition = parseFloat((Q.weimar_coalition + Q.srpd_r).toFixed(1));
     Q.grand_coalition = parseFloat((Q.grand_coalition + Q.srpd_r).toFixed(1));
-    Q.popular_front_coalition = parseFloat((Q.popular_front_coalition + Q.srpd_r).toFixed(1));
+    Q.popular_front_coalition = parseFloat((Q.popular_front_coalition + Q.srpd_r).toFixed(1))
     Q.neo_weimar_coalition = parseFloat((Q.neo_weimar_coalition + Q.srpd_r).toFixed(1));
     Q.progressive_coalition = parseFloat((Q.progressive_coalition + Q.srpd_r).toFixed(1));
-    Q.schleicher_left_coalition = parseFloat((Q.schleicher_left_coalition + Q.srpd_r).toFixed(1));
+    Q.schleicher_left_coalition = parseFloat((Q.schleicher_left_coalition + Q.srpd_r).toFixed(1)); 
+    Q.social_catholic_coalition = parseFloat((Q.social_catholic_coalition + Q.srpd_r).toFixed(1)); 
+    Q.social_liberal_coalition = parseFloat((Q.social_liberal_coalition + Q.srpd_r).toFixed(1));
+    Q.socialist_front = parseFloat((Q.socialist_front + Q.srpd_r).toFixed(1));
 }
 
 if (Q.lvp_formed) {
@@ -5183,13 +5186,16 @@ if (Q.kpd_relation >= 30 && Q.sapd_formed == 1 && Q.weimar_coalition_prussia < 5
     Q.sapd_weimar_prussia = 0;
 }
 
-if (Q.srpd_r) {
-    Q.weimar_coalition_prussia += Q.srpd_r;
-    Q.grand_coalition_prussia += Q.srpd_r;
-    Q.popular_front_coalition_prussia += Q.srpd_r;
-    Q.neo_weimar_coalition_prussia += Q.srpd_r;
-    Q.progressive_coalition_prussia += Q.srpd_r;
-    Q.schleicher_left_coalition_prussia += Q.srpd_r;
+if (Q.srpd_r_prussia) {
+    Q.weimar_coalition_prussia = parseFloat((Q.weimar_coalition_prussia + Q.srpd_r_prussia).toFixed(1));
+    Q.grand_coalition_prussia = parseFloat((Q.grand_coalition_prussia + Q.srpd_r_prussia).toFixed(1));
+    Q.popular_front_coalition_prussia = parseFloat((Q.popular_front_coalition_prussia + Q.srpd_r_prussia).toFixed(1));
+    Q.neo_weimar_coalition_prussia = parseFloat((Q.neo_weimar_coalition_prussia + Q.srpd_r_prussia).toFixed(1));
+    Q.progressive_coalition_prussia = parseFloat((Q.progressive_coalition_prussia + Q.srpd_r_prussia).toFixed(1));
+    Q.schleicher_left_coalition_prussia = parseFloat((Q.schleicher_left_coalition_prussia + Q.srpd_r_prussia).toFixed(1)); 
+    Q.social_catholic_coalition_prussia = parseFloat((Q.social_catholic_coalition_prussia + Q.srpd_r_prussia).toFixed(1)); 
+    Q.social_liberal_coalition_prussia = parseFloat((Q.social_liberal_coalition_prussia + Q.srpd_r_prussia).toFixed(1)); 
+    Q.socialist_front_prussia = parseFloat((Q.socialist_front_prussia + Q.srpd_r_prussia).toFixed(1));
 }
 
 if (Q.in_social_catholic_coalition_prussia || Q.in_social_liberal_coalition_prussia || Q.in_weimar_coalition_prussia == 1 || Q.in_grand_coalition_prussia == 1 || Q.in_popular_front_prussia == 1 || Q.in_left_front_prussia == 1 || Q.sapd_toleration_prussia || Q.in_spd_majority_prussia == 1 || Q.in_minority_weimar_coalition_prussia == 1 || Q.in_minority_grand_coalition_prussia == 1) {
