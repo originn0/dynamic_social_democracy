@@ -22,7 +22,9 @@ on-display: {!
 
 Presumably aiming to win over the unions' affiliated parties—the <span style="color: #000000;">Center Party</span> and the <span style="color: #c00000;">SPD</span>—and to bolster public confidence in his leadership at the grassroots level, Schleicher has enacted a new decree.
 
-An eight-hour workday is now mandated across most industries, intended to "spread out" employment among more workers. The means test for unemployment insurance has been abolished, and welfare funding has been increased to offset years of austerity.
+An eight-hour workday is now mandated across most industries, intended to "spread out" employment among more workers. The means test for unemployment insurance has been abolished, and welfare funding has been increased to offset years of austerity. 
+
+Additionally, Schleicher has included measures to ensure equal pay for women and maternity leave, stating how he respects woman more then anyone. This has attracted many women voters to the DNEF and away from their traditional parties. [? if lvp_leader == "Bäumer": Gertrud Baumer has shown increased interest in bringing her party closer to Schleicher as a result, a worrying sign for the <span style="color: #FFCC00;">**LVP**</span>'s commitment to <span style="color: #000000;">repub</span><span style="color: #DD0000;">lica</span><span style="color: #FFCC00;">nism</span>.]
 
 The <span style="color: #c00000;">Social</span> General has lived up to his nickname. Yet, cynically, the cost is clear—Schleicher now wields significant leverage over the unions, and many workers are beginning to shift their loyalty toward the chancellor, who delivers results, rather than the opposition parties. His image as a strongman, standing above the old parties, is slowly conditioning the workers to accept a more authoritarian system.
 
@@ -32,15 +34,19 @@ The <span style="color: #c00000;">Social</span> General has lived up to his nick
 title: The decree is signed into law.
 on-arrival: {!
 Q.schleicher_labor = 1; 
+Q.schleicher_women = 1;
 Q.schleicher_spd_influence += 3; 
 Q.schleicher_spd_support += 2; 
 Q.schleicher_spd_r += 2; 
 Q.schleicher_approval += 4;
 
+Q.womens_work += 1;
+Q.womens_rights += 1;
+
 Q.adgb_explode = 1;
 
 Q.unemployed -= 1.8;
-Q.economic_growth += 0.8;
+Q.economic_growth += 0.9;
 Q.inflation += 1.4;
 Q.budget -= 1;
 
@@ -49,12 +55,16 @@ Q.unemployed_kpd -= 6;
 Q.workers_nsdap -= 2; 
 Q.unemployed_nsdap -= 2; 
 Q.workers_spd -= 2; 
+Q.new_middle_spd -= 2
 Q.unemployed_spd -= 2; 
+Q.new_middle_ddp -= 3
+Q.new_middle_lvp -= 4
 Q.workers_z += 2;
 Q.unemployed_z += 2;
-Q.workers_dnef += 8;
+Q.workers_dnef += 9;
 Q.unemployed_dnef += 6;
-Q.workers_dnef_bonus += 8; 
+Q.new_middle_dnef += 5
+Q.workers_dnef_bonus += 9; 
 Q.unemployed_dnef_bonus += 6; 
 
 Q.pro_republic -= 5; 
@@ -63,6 +73,6 @@ Q.social_patriot_dissent += 20;
 Q.labor_strength += 5; 
 !}
 
-With Schleicher granting concessions to the workers on his own initiative—rather than under pressure from the <span style="color: #c00000;">SPD</span>—he alone reaps the political rewards. Even some radicalized <span style="color: #700000;">Communist</span> workers begin to drift away, as the less ideological and politically disengaged prioritize their livelihoods over loyalty to their traditional parties.
+With Schleicher granting concessions to the workers on his own initiative—rather than under pressure from the <span style="color: #c00000;">SPD</span>—he alone reaps the political rewards. Even some radicalized <span style="color: #700000;">Communist</span> workers begin to drift away, as the less ideological and politically disengaged prioritize their livelihoods over loyalty to their traditional parties. 
 
 But hey, at least the workers aren’t suffering as much anymore. This alone has led the ADGB to adopt a friendlier stance toward the chancellor, giving Schleicher growing influence within our party, using the unions as his middleman.
