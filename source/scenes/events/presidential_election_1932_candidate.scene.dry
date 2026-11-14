@@ -570,6 +570,8 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 
 [? if kpd_support_spd == 1 and sapd_formed and spd_campaign: - <span style="color: #9B0000;">**SAPD**</span> ?]
 
+[? if ((ddp_support_spd and not lvp_formed) or (lvp_support_spd and lvp_formed) or srpd_support_spd) and srpd_formed and spd_campaign: - <span style="color: #F4A460;">**SRPD**</span> ?]
+
 [? if kpd_support_spd == 1 and spd_campaign: - <span style="color: #700000;">**KPD**</span> ?]
 
 [? if z_support_spd == 1 and spd_campaign: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
@@ -585,6 +587,8 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 [? if reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Gessler" or reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if (reactionary_candidate_1932 == "Luther" or reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if ((reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ reactionary_candidate_1932_disp +]**</span>?][? if reactionary_candidate_1932 == "Adenauer" or reactionary_candidate_1932 == "Brüning" or reactionary_candidate_1932 == "Stegerwald" or (reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
 
 [? if (spd_support_reactionary_1 or (spd_support_reactionary and hindenburg_run)) and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
+
+[? if (spd_support_reactionary_1 or (spd_support_reactionary and hindenburg_run) or ((ddp_choice == reactionary_candidate_1932 and not lvp_formed) or (lvp_choice == reactionary_candidate_1932 and lvp_formed) and not srpd_support_spd)) and reactionary_candidate_1932: - <span style="color: #F4A460;">**SRPD**</span> ?]
 
 [? if z_support_spd != 1 and (z_choice == reactionary_candidate_1932 or hindenburg_run) and reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
 
@@ -605,6 +609,8 @@ go-to: endorsements_braun if braun_campaign; endorsements_eckener if eckener_cam
 [? if secondary_reactionary_candidate_1932: [? if hindenburg_run: <span style="color: #808080;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Gessler" or secondary_reactionary_candidate_1932 == "Jarres") and lvp_formed: <span style="color: #FFCC00;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if (secondary_reactionary_candidate_1932 == "Luther" or secondary_reactionary_candidate_1932 == "Jarres") and not lvp_formed: <span style="color: #C0A054;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Gessler" and not lvp_formed: <span style="color: #D3C24D;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and not kvp_formed: <span style="color: #3E88B3;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if ((secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and not cvp_formed) or secondary_reactionary_candidate_1932 == "Westarp") and kvp_formed: <span style="color: #0087DC;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?][? if secondary_reactionary_candidate_1932 == "Adenauer" or secondary_reactionary_candidate_1932 == "Brüning" or secondary_reactionary_candidate_1932 == "Stegerwald" or (secondary_reactionary_candidate_1932 == "Lettow-Vorbeck" and cvp_formed): <span style="color: #000000;">**[+ secondary_reactionary_candidate_1932_disp +]**</span>?]  - supported by: ?]
 
 [? if spd_support_reactionary_2 and reactionary_candidate_1932: - <span style="color: #c00000;">**SPD**</span> ?]
+
+[? if (spd_support_reactionary_2 or ((ddp_choice == secondary_reactionary_candidate_1932 and not lvp_formed) or (lvp_choice == secondary_reactionary_candidate_1932 and lvp_formed) and not srpd_support_spd)) and reactionary_candidate_1932: - <span style="color: #F4A460;">**SRPD**</span> ?]
 
 [? if z_support_spd != 1 and (z_choice == secondary_reactionary_candidate_1932 or hindenburg_run) and secondary_reactionary_candidate_1932: - [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] ?]
 
@@ -884,6 +890,7 @@ We can't win this election alone, we need support from other parties. [? if spd_
 
 - @convince_z: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to back <span style="color: #c00000;">Braun</span>[? if center_reactionary_candidate_1932:&nbsp;and withdraw support from [+ center_reactionary_candidate_1932_name +]?].
 - @convince_kpd: Convince the <span style="color: #700000;">**Communists**</span> to back <span style="color: #c00000;">Braun</span>.
+- @convince_srpd: Convince the <span style="color: #F4A460;">**SRPD**</span> to back <span style="color: #c00000;">Braun</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @convince_ddp: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to back <span style="color: #c00000;">Braun</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @convince_lvp: Convince the <span style="color: #FFCC00;">**LVP**</span> to back <span style="color: #c00000;">Braun</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @view_candidates: View party endorsements.
@@ -1016,13 +1023,32 @@ The <span style="color: #FFCC00;">liberal</span> vote has been falling over time
 on-arrival: ddp_support_spd = 1; ddp_left += 3; ddp_cohesion -= 2; ddp_relation += 5
 go-to: endorsements_braun
 
-Thanks to our friendly relations and connections with their left wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Braun in the election.
+Thanks to our friendly relations and connections with their left wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Braun in the election[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_ddp_fail
 on-arrival: ddp_support_spd = 0; ddp_right += 3; ddp_cohesion -= 2; ddp_relation -= 5
 go-to: endorsements_braun
 
 Unfortunately, under the influence of their business wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has refused to support a <span style="color: #c00000;">socialist</span> for the presidency. 
+
+@convince_srpd
+view-if: srpd_formed and not ((ddp_support_spd and not lvp_formed) or (lvp_support_spd and lvp_formed))
+max-visits: 1
+go-to: convince_srpd_success if (reformist_strength > left_strength or (reformist_strength + neorevisionist_strength > left_strength and not lvp_leave_reichsbanner) or ((reformist_strength + labor_strength > left_strength) and ((ddp_relation >= 50 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed))) or ((reformist_strength + labor_strength + center_strength > left_strength) and ((ddp_relation >= 60 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))) or ((reformist_strength + labor_strength + neorevisionist_strength > left_strength) and not lvp_leave_reichsbanner and ((ddp_relation >= 50 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed))) or ((reformist_strength + labor_strength + center_strength + neorevisionist_strength > left_strength) and not lvp_leave_reichsbanner and ((ddp_relation >= 60 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))) or ((ddp_relation >= 70 and not lvp_formed) or (lvp_relation >= 60 and lvp_formed))); convince_srpd_fail if not (reformist_strength > left_strength or (reformist_strength + neorevisionist_strength > left_strength and not lvp_leave_reichsbanner) or ((reformist_strength + labor_strength > left_strength) and ((ddp_relation >= 50 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed))) or ((reformist_strength + labor_strength + center_strength > left_strength) and ((ddp_relation >= 60 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))) or ((reformist_strength + labor_strength + neorevisionist_strength > left_strength) and not lvp_leave_reichsbanner and ((ddp_relation >= 50 and not lvp_formed) or (lvp_relation >= 40 and lvp_formed))) or ((reformist_strength + labor_strength + center_strength + neorevisionist_strength > left_strength) and not lvp_leave_reichsbanner and ((ddp_relation >= 60 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))) or ((ddp_relation >= 70 and not lvp_formed) or (lvp_relation >= 60 and lvp_formed)))
+
+We reach out to the <span style="color: #F4A460;">SRPD</span>, and ask them to back Braun in the name of <span style="color: #c00000;">socialist</span> <span style="color: F4A460#;">unity</span> and <span style="color: #c00000;">Anti</span><span style="color: #F4A460;">-</span><span style="color: #7A3C00;">Fascism</span>.
+
+@convince_srpd_success
+on-arrival: srpd_support_spd = 1; reformist_dissent -= 3;
+go-to: endorsements_braun
+
+As expected, the <span style="color: #F4A460;">**SRPD**</span> is now campaigning for Braun in the election.
+
+@convince_srpd_fail
+on-arrival: srpd_support_spd = 0; reformist_strength -= 2;
+go-to: endorsements_braun
+
+Surprisingly, the <span style="color: #F4A460;">**SRPD**</span>, worried we have forsaken our commitment to <span style="color: #000000;">dem</span><span style="color: #DD0000;">ocr</span><span style="color: #FFCC00;">acy</span>, has refused to support Braun for the presidency.
 
 @convince_lvp
 view-if: lvp_formed
@@ -1035,7 +1061,7 @@ The <span style="color: #FFCC00;">liberal</span> vote has been falling over time
 on-arrival: lvp_support_spd = 1; lvp_left += 6; lvp_relation += 5; new_middle_dnvp += new_middle_lvp*0.1 if not kvp_formed; old_middle_dnvp += old_middle_lvp*0.2 if not kvp_formed; rural_dnvp += rural_lvp*0.2 if not kvp_formed; new_middle_kvp += new_middle_lvp*0.1 if not kvp_formed; old_middle_kvp += old_middle_lvp*0.2 if not kvp_formed; rural_kvp += rural_lvp*0.2 if not kvp_formed; new_middle_lvp *= 0.9; old_middle_lvp *= 0.8; rural_lvp *= 0.8
 go-to: endorsements_braun
 
-Surprisingly, we have convinced the <span style="color: #FFCC00;">**LVP**</span> to give <span style="color: #c00000;">Braun</span> an official endorsement, to the shock of the party's industrial backers. In response, they begin to withdraw their support from the party en masse, and a significant portion of right-wing voters are refusing to support us.
+Surprisingly, we have convinced the <span style="color: #FFCC00;">**LVP**</span> to give <span style="color: #c00000;">Braun</span> an official endorsement, to the shock of the party's industrial backers. In response, they begin to withdraw their support from the party en masse, and a significant portion of right-wing voters are refusing to support us[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_lvp_fail
 on-arrival: lvp_support_spd = 0; lvp_right += 3; lvp_relation -= 5
@@ -1133,6 +1159,7 @@ The <span style="color: #700000;">**KPD**</span> now endorses Braun in the presi
 We can't win this election alone, we need support from other parties. [? if spd_votes >= 50: Nevermind. We actually can win this election alone. ?]
 
 - @convince_kpd_rosenfeld: Convince the <span style="color: #700000;">**Communists**</span> to back <span style="color: #c00000;">Rosenfeld</span>.
+- @convince_srpd_rosenfeld: Convince the <span style="color: #F4A460;">SRPD</span> to back <span style="color: #c00000;">Rosenfeld</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @convince_z_rosenfeld: Convince the [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] to back <span style="color: #c00000;">Rosenfeld</span>[? if center_reactionary_candidate_1932:&nbsp;and withdraw support from [+ center_reactionary_candidate_1932_name +]?].
 - @view_candidates: View party endorsements.
 - @hope: We have concluded negotiations with other parties.
@@ -1177,6 +1204,25 @@ go-to: endorsements_rosenfeld
 
 It's a long shot, but some in our party believed we could convince the <span style="color: #000000;">Center Party</span> to back Rosenfeld. As expected, this effort failed—their leadership declared uncompromising opposition to cooperating with the <span style="color: #700000;">**Communists**</span> to elect a candidate from our left wing.
 
+@convince_srpd_rosenfeld
+choose-if: srpd_formed and not srpd_support_spd
+max-visits: 1
+go-to: convince_srpd_rosenfeld_success if (neorevisionist_strength + reformist_strength > left_strength + center_strength) or (neorevisionist_strength + reformist_strength + center_strength > left_strength and goerdeler_seen); convince_srpd_rosenfeld_fail if not (neorevisionist_strength + reformist_strength > left_strength + center_strength) or (neorevisionist_strength + reformist_strength + center_strength > left_strength and goerdeler_seen)
+
+We reach out to the <span style="color: #F4A460;">SRPD</span>, and ask them to back Braun in the name of <span style="color: #c00000;">socialism</span> and <span style="color: #c00000;">Anti</span><span style="color: #F4A460;">-</span><span style="color: #7A3C00;">Fascism</span>.
+
+@convince_srpd_rosenfeld_success
+on-arrival: srpd_support_spd = 1; reformist_dissent -= 2;
+go-to: endorsements_rosenfeld
+
+Surprisingly, the <span style="color: #F4A460;">**SRPD**</span> has agreed to support Rosenfeld in the election.
+
+@convince_srpd_rosenfeld_fail
+on-arrival: srpd_support_spd = 0; reformist_strength -= 1;
+go-to: endorsements_rosenfeld
+
+As expected, the <span style="color: #F4A460;">**SRPD**</span> refuses to cooperation with the <span style="color: #700000;">**Communists**</span>.
+
 @endorsements_eckener
 
 Eckener can't win this election alone, he needs support from other parties.
@@ -1185,8 +1231,28 @@ Eckener can't win this election alone, he needs support from other parties.
 - @convince_ddp_eckener: Convince the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @convince_lvp_eckener: Convince the <span style="color: #FFCC00;">**LVP**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @convince_dvp_eckener: Convince the <span style="color: #C0A054;">**DVP**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
+- @convince_srpd_eckener: Convince the <span style="color: #F4A460;">**SRPD**</span> to back <span style="color: #000000;">**Ec**</span><span style="color: #DD0000;">**ken**</span><span style="color: #FFCC00;">**er**</span>[? if liberal_reactionary_candidate_1932:&nbsp;and withdraw support from [+ liberal_reactionary_candidate_1932_name +]?].
 - @view_candidates: View party endorsements.
 - @hope: We have concluded negotiations with other parties.
+
+@convince_srpd_eckener
+view-if: srpd_formed and not (ddp_support_spd and not lvp_formed) or (lvp_support_spd and lvp_formed)
+max-visits: 1
+go-to: convince_srpd_success if (reformist_strength + neorevisionist_strength > left_strength or ((reformist_strength + labor_strength + neorevisionist_strength > left_strength) and ((ddp_relation >= 60 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))) or ((reformist_strength + labor_strength + center_strength + neorevisionist_strength > left_strength) and ((ddp_relation >= 70 and not lvp_formed) or (lvp_relation >= 60 and lvp_formed))) or ((ddp_relation >= 80 and not lvp_formed) or (lvp_relation >= 70 and lvp_formed))); convince_srpd_fail if not (reformist_strength + neorevisionist_strength > left_strength or ((reformist_strength + labor_strength + neorevisionist_strength > left_strength) and ((ddp_relation >= 60 and not lvp_formed) or (lvp_relation >= 50 and lvp_formed))) or ((reformist_strength + labor_strength + center_strength + neorevisionist_strength > left_strength) and ((ddp_relation >= 70 and not lvp_formed) or (lvp_relation >= 60 and lvp_formed))) or ((ddp_relation >= 80 and not lvp_formed) or (lvp_relation >= 70 and lvp_formed)))
+
+We reach out to the <span style="color: #F4A460;">SRPD</span>, and ask them to back Eckener in the name of <span style="color: #FFCC00;">democratic</span> <span style="color: #c00000;">unity</span> and <span style="color: #c00000;">Anti</span><span style="color: #F4A460;">-</span><span style="color: #7A3C00;">Fascism</span>.
+
+@convince_srpd_success_eckener
+on-arrival: srpd_support_spd = 1; reformist_dissent -= 4;
+go-to: endorsements_eckener
+
+As expected, the <span style="color: #F4A460;">**SRPD**</span> is now campaigning for Eckener in the election.
+
+@convince_srpd_fail_eckener
+on-arrival: srpd_support_spd = 0; reformist_strength -= 3;
+go-to: endorsements_eckener
+
+Surprisingly, the <span style="color: #F4A460;">**SRPD**</span>, worried we have forsaken our commitment to <span style="color: #000000;">Dem</span><span style="color: #DD0000;">ocr</span><span style="color: #FFCC00;">acy</span>, has refused to support Eckener for the presidency.
 
 @convince_ddp_eckener
 view-if: not lvp_formed
@@ -1199,7 +1265,7 @@ The <span style="color: #FFCC00;">liberal</span> vote has been falling over time
 on-arrival: ddp_support_spd = 1; ddp_left += 1; ddp_cohesion -= 1; ddp_relation += 3
 go-to: endorsements_eckener
 
-Thanks to our friendly relations, connections with their left wing, and Eckener's non-partisanship, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Eckener in the election.
+Thanks to our friendly relations, connections with their left wing, and Eckener's non-partisanship, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Eckener in the election[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_ddp_fail_eckener
 on-arrival: ddp_support_spd = 0; ddp_right += 1; ddp_cohesion -= 1; ddp_relation -= 3
@@ -1218,7 +1284,7 @@ The <span style="color: #FFCC00;">liberal</span> vote has been falling over time
 on-arrival: lvp_support_spd = 1; lvp_left += 3; lvp_relation += 4; old_middle_lvp -= 2; rural_lvp -= 2; old_middle_kvp += 2; rural_kvp += 2; old_middle_kvp += 2 if not kvp_formed; rural_kvp += 2 if not kvp_formed
 go-to: endorsements_eckener
 
-We have convinced the <span style="color: #FFCC00;">**LVP**</span> to give Eckener an official endorsement, to the displeasure of the party's industrial backers. In response, they begin to withdraw their support from the party, and a notable portion of right-wing voters are opting to abstain.
+We have convinced the <span style="color: #FFCC00;">**LVP**</span> to give Eckener an official endorsement, to the displeasure of the party's industrial backers. In response, they begin to withdraw their support from the party, and a notable portion of right-wing voters are opting to abstain[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_lvp_fail_eckener
 on-arrival: lvp_support_spd = 0; lvp_right += 3; lvp_relation -= 5

@@ -263,8 +263,8 @@ spd_share = (spd_share / total_spd_share);
 Q.spd_saxony_elections_vote = Q.spd_saxony_elections_vote*spd_share;
 Q.spd_r_saxony = Q.spd_r_saxony*spd_share;
 
-Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share;
-Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share;
+Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share + Q.srpd_saxony_elections_vote;
+Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share + Q.srpd_r_saxony;
 
 let farm_share = 0.22;
 if (Q.dnvp_ideology == "Moderate") farm_share -= 0.1;
@@ -314,7 +314,6 @@ Q.total_r_saxony = 0;
 if (Q.spd_r_saxony) Q.total_r_saxony += Q.spd_r_saxony;
 if (Q.aspd_r_saxony) Q.total_r_saxony += Q.aspd_r_saxony;
 if (Q.sapd_r_saxony) Q.total_r_saxony += Q.sapd_r_saxony;
-if (Q.srpd_r_saxony) Q.total_r_saxony += Q.srpd_r_saxony;
 if (Q.kpd_r_saxony) Q.total_r_saxony += Q.kpd_r_saxony;
 if (Q.ddp_r_saxony) Q.total_r_saxony += Q.ddp_r_saxony;
 if (Q.lvp_r_saxony) Q.total_r_saxony += Q.lvp_r_saxony;
@@ -330,7 +329,6 @@ if (Q.total_r_saxony > 0) {
     Q.spd_r_saxony = (Q.spd_r_saxony / Q.total_r_saxony) * 100;
     Q.aspd_r_saxony = (Q.aspd_r_saxony / Q.total_r_saxony) * 100;
     Q.sapd_r_saxony = (Q.sapd_r_saxony / Q.total_r_saxony) * 100;
-    Q.srpd_r_saxony = (Q.srpd_r_saxony / Q.total_r_saxony) * 100;
     Q.kpd_r_saxony = (Q.kpd_r_saxony / Q.total_r_saxony) * 100;
     Q.ddp_r_saxony = (Q.ddp_r_saxony / Q.total_r_saxony) * 100;
     Q.lvp_r_saxony = (Q.lvp_r_saxony / Q.total_r_saxony) * 100;
@@ -342,8 +340,6 @@ if (Q.total_r_saxony > 0) {
     Q.kvp_r_saxony = (Q.kvp_r_saxony / Q.total_r_saxony) * 100;
     Q.dnf_r_saxony = (Q.dnf_r_saxony / Q.total_r_saxony) * 100;
 }
-
-Q.aspd_r_saxony += Q.srpd_r_saxony;
 
 function allocateSeats(percentages, totalSeats = 96) {
     const exactSeats = {};
