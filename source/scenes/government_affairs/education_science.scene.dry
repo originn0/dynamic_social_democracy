@@ -97,6 +97,7 @@ Education in Germany has traditionally been organized on religious and class lin
 
 - @secularize
 - @public_hs
+- @universities
 - @school_boards
 - @ed_menu: Do not change school funding or organization.
 - @cancel_advisor_action
@@ -133,12 +134,21 @@ The <span style="color: #c00000;">**SPD**</span>, [? if not lvp_formed: <span st
 title: Increase educational opportunities for the working class by funding public high schools.
 subtitle: -1 budget
 choose-if: budget >= 1
-on-arrival: budget -= 1; public_hs += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); prussian_police_loyalty += 0.04; education_science += 0.5; unemployed -= 0.1; economic_growth += 0.2; pro_republic += 4*(1-dissent); dvp_left += 1; ddp_left += 0.5; education_goal_spd += 1
+on-arrival: budget -= 1; public_hs += 1; workers_spd += 6*(1-dissent); unemployed_spd += 3*(1-dissent); new_middle += 1; workers -= 1; prussian_police_loyalty += 0.04; education_science += 0.5; unemployed -= 0.1; economic_growth += 0.2; pro_republic += 4*(1-dissent); dvp_left += 1; ddp_left += 0.5; education_goal_spd += 1
 max-visits: 3
 
 # this makes the bureaucracy more proletarian
 We have funded more public secondary schools so that proletarian children may receive the same education as middle and upper-class children, and can be prepared for universities.
 
+@universities
+title: Increase educational opportunities for the working and lower middle classes by funding public universities.
+subtitle: -2 budget
+choose-if: budget >= 2
+on-arrival: budget -= 2; universities += 1; workers_spd += 8*(1-dissent); unemployed_spd += 2*(1-dissent); new_middle_spd += 4*(1-dissent); new_middle += 3; workers -= 3; prussian_police_loyalty += 0.1; education_science += 1; unemployed -= 0.3; economic_growth += 0.5; pro_republic += 6*(1-dissent); dvp_left += 1; ddp_left += 1; education_goal_spd += 1; education_goal_spd_peoples += 1
+max-visits: 3
+
+# this makes the bureaucracy more proletarian
+We have funded public universities so that the proletarian and petty bourgeois youth may finally access tertiary education which had previously been locked to only the wealthier classes.
 
 @school_boards
 title: Create elected school boards to give local areas more control over education.
