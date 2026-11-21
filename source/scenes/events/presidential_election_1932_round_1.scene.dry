@@ -910,7 +910,7 @@ The <span style="color: #FFCC00;">liberal</span> vote has been falling over time
 on-arrival: ddp_support_spd = 1; ddp_left += 1; ddp_cohesion -= 1; ddp_relation += 3
 go-to: round2_menu
 
-Thanks to our friendly relations, connections with their left wing, and Eckener's non-partisanship, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Eckener in the election.
+Thanks to our friendly relations, connections with their left wing, and Eckener's non-partisanship, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Eckener in the election[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_ddp_fail_eckener
 on-arrival: ddp_support_spd = 0; ddp_right += 1; ddp_cohesion -= 1; ddp_relation -= 3
@@ -929,7 +929,7 @@ The <span style="color: #FFCC00;">liberal</span> vote has been falling over time
 on-arrival: lvp_support_spd = 1; lvp_left += 3; lvp_relation += 4; old_middle_lvp -= 2; rural_lvp -= 2; old_middle_kvp += 2; rural_kvp += 2; old_middle_kvp += 2 if not kvp_formed; rural_kvp += 2 if not kvp_formed
 go-to: round2_menu
 
-We have convinced the <span style="color: #FFCC00;">**LVP**</span> to give Eckener an official endorsement, to the displeasure of the party's industrial backers. In response, they begin to withdraw their support from the party, and a notable portion of right-wing voters are opting to abstain.
+We have convinced the <span style="color: #FFCC00;">**LVP**</span> to give Eckener an official endorsement, to the displeasure of the party's industrial backers. In response, they begin to withdraw their support from the party, and a notable portion of right-wing voters are opting to abstain[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_lvp_fail_eckener
 on-arrival: lvp_support_spd = 0; lvp_right += 3; lvp_relation -= 5
@@ -1167,7 +1167,7 @@ The <span style="color: #D3C24D;">**[+ ddp_name +]**</span> has always been the 
 on-arrival: ddp_support_spd = 1; ddp_left += 2; ddp_cohesion -= 1; ddp_relation += 4
 go-to: round2_menu
 
-Thanks to our friendly relations and connections with their left wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Braun in the election.
+Thanks to our friendly relations and connections with their left wing, the <span style="color: #D3C24D;">**[+ ddp_name +]**</span> is now campaigning for Braun in the election[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @convince_ddp_fail
 on-arrival: ddp_support_spd = 0
@@ -1195,7 +1195,7 @@ go-to: round2_convince_lvp_success if convince_lvp_success == 1; round2_convince
 on-arrival: lvp_support_spd = 1; lvp_left += 4; lvp_relation += 3; new_middle_dnvp += new_middle_lvp*0.05 if not kvp_formed; old_middle_dnvp += old_middle_lvp*0.15 if not kvp_formed; rural_dnvp += rural_lvp*0.15 if not kvp_formed; new_middle_kvp += new_middle_lvp*0.05 if not kvp_formed; old_middle_kvp += old_middle_lvp*0.15 if not kvp_formed; rural_kvp += rural_lvp*0.15 if not kvp_formed; new_middle_lvp *= 0.95; old_middle_lvp *= 0.85; rural_lvp *= 0.85
 go-to: round2_menu
 
-Surprisingly, we have convinced the <span style="color: #FFCC00;">**LVP**</span> to give <span style="color: #c00000;">Braun</span> an official endorsement, to the shock of the party's industrial backers. In response, some die-hard Hindenburg supporters begin withdrawing from the party.
+Surprisingly, we have convinced the <span style="color: #FFCC00;">**LVP**</span> to give <span style="color: #c00000;">Braun</span> an official endorsement, to the shock of the party's industrial backers. In response, some die-hard Hindenburg supporters begin withdrawing from the party[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?].
 
 @round2_convince_lvp_fail
 on-arrival: lvp_support_spd = 0
@@ -1218,7 +1218,7 @@ on-arrival: resources -= 4; lvp_support_spd = 1; lvp_partial = 1
 on-departure: hitler_support_hindenburg = 1 if spd_president_votes + lvp_votes > nsdap_presidential_votes and z_support_spd != 1; hitler_support_hindenburg = 1 if spd_president_votes + lvp_votes + z_votes > nsdap_presidential_votes and z_support_spd == 1; 
 go-to: round2_menu
 
-With our resources, the <span style="color: #FFCC00;">**LVP**</span> are convinced to drop their endorsement of Hindenburg. [? if lvp_ideology == "Left": Through our friendly relations with their left wing, we are able to get them to endorse Braun! ?][? if lvp_ideology != "Left": The business and industrial influences within their party prevent any shows of explicit support toward Braun however. ?]
+With our resources, the <span style="color: #FFCC00;">**LVP**</span> are convinced to drop their endorsement of Hindenburg. [? if lvp_ideology == "Left": Through our friendly relations with their left wing, we are able to get them to endorse Braun[? if srpd_formed and not srpd_support_spd:, in response, the <span style="color: #F4A460;">**SRPD**</span> have announced their support in kind?]! ?][? if lvp_ideology != "Left": The business and industrial influences within their party prevent any shows of explicit support toward Braun however. ?]
 
 [? if not hitler_support_hindenburg and ((spd_president_votes + lvp_votes > nsdap_presidential_votes and z_support_spd != 1) or spd_president_votes + lvp_votes > nsdap_presidential_votes and z_support_spd == 1): With the <span style="color: #FFCC00;">liberals</span> supporting Braun, [+ nsdap_candidate_1932 +] has dropped out of the race, and the <span style="color: #7A3C00;">Nazis</span> have endorsed Hindenburg to prevent a <span style="color: #c00000;">socialist</span> from becoming president. ?]
 
@@ -1253,7 +1253,7 @@ We have switched our support to Hindenburg. [? if bruning_time: Hindenburg is re
 
 @round2_reactionary
 view-if: not hindenburg_run and reactionary_candidate_1932 and reactionary_candidate_1932 != "Westarp" and reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (lib_drop_out_2 and liberal_reactionary_candidate_1932_name == reactionary_candidate_1932) and not (z_drop_out_2 and center_reactionary_candidate_1932_name == reactionary_candidate_1932) and spd_choice != reactionary_candidate_1932
-on-arrival: spd_support_reactionary = 1; spd_support_reactionary_1 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = reactionary_candidate_1932 if spd_campaign; srpd_choice = secondary_reactionary_candidate_1932 if srpd_exists and spd_campaign; ddp_choice = reactionary_candidate_1932 if spd_campaign; lvp_choice = reactionary_candidate_1932 if spd_campaign; dvp_choice = reactionary_candidate_1932 if spd_campaign; spd_choice = reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3; kpd_nazi_urgency -= 1;
+on-arrival: spd_support_reactionary = 1; spd_support_reactionary_1 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = reactionary_candidate_1932 if spd_campaign; srpd_choice = secondary_reactionary_candidate_1932 if srpd_formed and spd_campaign; ddp_choice = reactionary_candidate_1932 if spd_campaign; lvp_choice = reactionary_candidate_1932 if spd_campaign; dvp_choice = reactionary_candidate_1932 if spd_campaign; spd_choice = reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3; kpd_nazi_urgency -= 1;
 
 We have switched our support to [+ reactionary_candidate_1932 +].
 
@@ -1261,7 +1261,7 @@ We have switched our support to [+ reactionary_candidate_1932 +].
 
 @round2_reactionary_2
 view-if: not hindenburg_run and secondary_reactionary_candidate_1932 and secondary_reactionary_candidate_1932 != "Westarp" and secondary_reactionary_candidate_1932 != "Lettow-Vorbeck" and not (lib_drop_out_bourgeois and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_bourgeois and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (lib_drop_out_2 and liberal_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and not (z_drop_out_2 and center_reactionary_candidate_1932_name == secondary_reactionary_candidate_1932) and spd_choice != secondary_reactionary_candidate_1932
-on-arrival: spd_support_reactionary = 1; spd_support_reactionary_2 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = secondary_reactionary_candidate_1932 if spd_campaign; ddp_choice = secondary_reactionary_candidate_1932 if spd_campaign; srpd_choice = secondary_reactionary_candidate_1932 if srpd_exists and spd_campaign; lvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; dvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; spd_choice = secondary_reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3;  kpd_nazi_urgency -= 1;
+on-arrival: spd_support_reactionary = 1; spd_support_reactionary_2 = 1; spd_campaign = 0; braun_campaign = 0; rosenfeld_campaign = 0; eckener_campaign = 0; z_choice = secondary_reactionary_candidate_1932 if spd_campaign; ddp_choice = secondary_reactionary_candidate_1932 if spd_campaign; srpd_choice = secondary_reactionary_candidate_1932 if srpd_formed and spd_campaign; lvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; dvp_choice = secondary_reactionary_candidate_1932 if spd_campaign; spd_choice = secondary_reactionary_candidate_1932; left_dissent += 15; labor_dissent += 10; hindenburg_angry -= 40; workers_spd -= 3; workers_kpd += 3; unemployed_spd -= 3; unemployed_kpd += 3;  kpd_nazi_urgency -= 1;
 
 We have switched our support to [+ reactionary_candidate_1932 +].
 
