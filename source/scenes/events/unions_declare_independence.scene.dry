@@ -9,9 +9,17 @@ Q.unions_independent = 1;
 if (Q.labor_strength < 10) {
     Q.workers_spd -= 16;
     Q.unemployed_spd -= 8;
-    if (Q.sapd_formed) {
+    if (Q.sapd_formed && !Q.srpd_formed) {
         Q.workers_sapd += 8;
         Q.unemployed_sapd += 4;
+    } else if (Q.srpd_formed && !Q.sapd_formed) {
+        Q.workers_srpd += 8;
+        Q.unemployed_srpd += 4;
+    } else if (Q.srpd_formed && Q.sapd_formed) {
+        Q.workers_sapd += 3;
+        Q.unemployed_sapd += 3;
+        Q.workers_srpd += 5;
+        Q.unemployed_srpd += 1;
     } else {
         Q.workers_kpd += 4;
     }
@@ -21,9 +29,17 @@ if (Q.labor_strength < 10) {
 } else if (Q.labor_strength < 25) {
     Q.workers_spd -= 20;
     Q.unemployed_spd -= 10;
-    if (Q.sapd_formed) {
+    if (Q.sapd_formed && !Q.srpd_formed) {
         Q.workers_sapd += 10;
         Q.unemployed_sapd += 6;
+    } else if (Q.srpd_formed && !Q.sapd_formed) {
+        Q.workers_srpd += 10;
+        Q.unemployed_srpd += 6;
+    } else if (Q.srpd_formed && Q.sapd_formed) {
+        Q.workers_sapd += 4;
+        Q.unemployed_sapd += 4;
+        Q.workers_srpd += 6;
+        Q.unemployed_srpd += 2;
     } else {
         Q.workers_kpd += 5;
     }
@@ -33,9 +49,17 @@ if (Q.labor_strength < 10) {
 } else if (Q.labor_strength < 40) {
     Q.workers_spd -= 22;
     Q.unemployed_spd -= 12;
-    if (Q.sapd_formed) {
+    if (Q.sapd_formed && !Q.srpd_formed) {
         Q.workers_sapd += 12;
         Q.unemployed_sapd += 8;
+    } else if (Q.srpd_formed && !Q.sapd_formed) {
+        Q.workers_srpd += 12;
+        Q.unemployed_srpd += 8;
+    } else if (Q.srpd_formed && Q.sapd_formed) {
+        Q.workers_sapd += 5;
+        Q.unemployed_sapd += 5;
+        Q.workers_srpd += 7;
+        Q.unemployed_srpd += 3;
     } else {
         Q.workers_kpd += 6;
     }
@@ -45,9 +69,17 @@ if (Q.labor_strength < 10) {
 } else if (Q.labor_strength < 60) {
     Q.workers_spd -= 24;
     Q.unemployed_spd -= 14;
-    if (Q.sapd_formed) {
+    if (Q.sapd_formed && !Q.srpd_formed) {
         Q.workers_sapd += 15;
         Q.unemployed_sapd += 10;
+    } else if (Q.srpd_formed && !Q.sapd_formed) {
+        Q.workers_srpd += 15;
+        Q.unemployed_srpd += 10;
+    } else if (Q.srpd_formed && Q.sapd_formed) {
+        Q.workers_sapd += 6;
+        Q.unemployed_sapd += 6;
+        Q.workers_srpd += 9;
+        Q.unemployed_srpd += 4;
     } else {
         Q.workers_kpd += 7;
     }
@@ -57,9 +89,17 @@ if (Q.labor_strength < 10) {
 } else {
     Q.workers_spd -= 26;
     Q.unemployed_spd -= 16;
-    if (Q.sapd_formed) {
+    if (Q.sapd_formed && !Q.srpd_formed) {
         Q.workers_sapd += 18;
         Q.unemployed_sapd += 12;
+    } else if (Q.srpd_formed && !Q.sapd_formed) {
+        Q.workers_srpd += 18;
+        Q.unemployed_srpd += 12;
+    } else if (Q.srpd_formed && Q.sapd_formed) {
+        Q.workers_sapd += 7;
+        Q.unemployed_sapd += 8;
+        Q.workers_srpd += 11;
+        Q.unemployed_srpd += 4;
     } else {
         Q.workers_kpd += 8;
     }

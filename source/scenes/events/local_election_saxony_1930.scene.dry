@@ -245,26 +245,40 @@ Q.other_r_saxony = (Q.other_r_saxony != undefined ? parseFloat(Q.other_r_saxony.
 Q.kvp_r_saxony = (Q.kvp_r_saxony != undefined ? parseFloat(Q.kvp_r_saxony.toFixed(1)) : 0);
 Q.dnf_r_saxony = (Q.dnf_r_saxony != undefined ? parseFloat(Q.dnf_r_saxony.toFixed(1)) : 0);
 
-let spd_share = 0.98;
-let aspd_share = 0.02;
+if (!Q.srpd_formed) {
+    Q.srpd_saxony_elections_vote = 0;
+}
+
+let aspd_share = (Q.nationalism-60)/1000.0;
+let spd_share = 1 - aspd_share;
+
+let aspd_srpd_share = (Q.nationalism/100.0);
+let spd_srpd_share = 1-aspd_srpd_share;
 
 if (Q.reformists_resign) aspd_share += 0.03;
 if (Q.unions_independent) aspd_share += 0.06;
 if (Q.year >= 1932 && Q.month >= 7){
-aspd_share = 0; 
-spd_share = 100;
+    aspd_share = 0; 
+    spd_share = 100;
+
+    aspd_srpd_share = 0; 
+    spd_srpd_share = 100;
 }
 
 let total_spd_share = aspd_share + spd_share;
+let total_srpd_share = aspd_srpd_share + spd_srpd_share;
 
 aspd_share = (aspd_share / total_spd_share);
 spd_share = (spd_share / total_spd_share);
 
-Q.spd_saxony_elections_vote = Q.spd_saxony_elections_vote*spd_share;
-Q.spd_r_saxony = Q.spd_r_saxony*spd_share;
+aspd_srpd_share = (aspd_srpd_share / total_srpd_share);
+spd_srpd_share = (spd_srpd_share / total_srpd_share);
 
-Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share + Q.srpd_saxony_elections_vote;
-Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share + Q.srpd_r_saxony;
+Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share + Q.srpd_saxony_elections_vote*aspd_srpd_share;
+Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share + Q.srpd_r_saxony*aspd_srpd_share;
+
+Q.spd_saxony_elections_vote = Q.spd_saxony_elections_vote*spd_share + Q.srpd_saxony_elections_vote*spd_srpd_share;
+Q.spd_r_saxony = Q.spd_r_saxony*spd_share + Q.srpd_r_saxony*spd_srpd_share;
 
 let farm_share = 0.22;
 if (Q.dnvp_ideology == "Moderate") farm_share -= 0.1;
