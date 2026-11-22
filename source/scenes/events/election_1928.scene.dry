@@ -1201,7 +1201,7 @@ if (Q.srpd_r_prussia) {
 }
 
 if (Q.kpd_relation >= 30 && Q.sapd_formed == 1 && Q.sapd_r && Q.weimar_coalition <= 50) {
-    Q.weimar_coalition = parseFloat((Q.weimar_coalition_prussia + Q.sapd_r_prussia).toFixed(1));
+    Q.weimar_coalition = parseFloat((Q.weimar_coalition + Q.sapd_r).toFixed(1));
     Q.sapd_weimar = 1;
 } else {
     Q.sapd_weimar = 0;
