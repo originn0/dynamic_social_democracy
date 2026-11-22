@@ -89,7 +89,7 @@ if (Q.nsdap_local_elections_vote >= 34) {
     Q.z_relation -= 3;
 }
 
-if (Q.spd_local_elections_vote >= 30) {
+if (Q.spd_local_elections_vote + Q.srpd_local_elections_vote >= 30) {
     if (Q.pro_republic < 50) Q.pro_republic += 8;
     Q.pro_republic += 3;
     Q.z_relation += 5;
@@ -100,9 +100,14 @@ if (Q.spd_local_elections_vote >= 30) {
     Q.ddp_cohesion += 1;
     Q.dvp_left += 1.5;
     Q.lvp_left += 3;
-    Q.new_middle_spd += 2;
-    Q.workers_spd += 2;
     Q.hindenburg_angry += 30;
+    if (Q.srpd_formed) {
+        Q.workers_spd += 2;
+        Q.new_middle_srpd += 2;
+    } else {
+        Q.workers_spd += 2;
+        Q.new_middle_spd += 2;
+    }
 }
 
 if (Q.kpd_local_elections_vote + Q.sapd_local_elections_vote >= 16) {

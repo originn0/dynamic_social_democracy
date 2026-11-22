@@ -53,10 +53,19 @@ if (Q.kpd_relation >= 60) {
 // use normalized workers_spd instead of labor_strength?
 Q.normalized_workers_spd = 100*Q.workers_spd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z);
 Q.normalized_workers_kpd = 100*Q.workers_kpd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z);
-if (Q.sapd_formed) {
+if (Q.sapd_formed && !Q.srpd_formed) {
     Q.normalized_workers_spd = 100*Q.workers_spd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd);
     Q.normalized_workers_kpd = 100*Q.workers_kpd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd);
     Q.normalized_workers_sapd = 100*Q.workers_sapd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd);
+} else if (!Q.sapd_formed && Q.srpd_formed) {
+    Q.normalized_workers_spd = 100*Q.workers_spd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_srpd);
+    Q.normalized_workers_kpd = 100*Q.workers_kpd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_srpd);
+    Q.normalized_workers_srpd = 100*Q.workers_srpd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_srpd);
+} else if (Q.sapd_formed && Q.srpd_formed) {
+    Q.normalized_workers_spd = 100*Q.workers_spd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd + Q.workers_srpd);
+    Q.normalized_workers_kpd = 100*Q.workers_kpd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd + Q.workers_srpd);
+    Q.normalized_workers_sapd = 100*Q.workers_sapd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd + Q.workers_srpd);
+    Q.normalized_workers_srpd = 100*Q.workers_srpd/(Q.workers_spd + Q.workers_kpd + Q.workers_nsdap + Q.workers_other + Q.workers_dnvp + Q.workers_z + Q.workers_sapd + Q.workers_srpd);
 }
 Q.normalized_workers_total = Q.normalized_workers_spd;
 if (Q.kpd_relation >= 60) {
@@ -68,6 +77,9 @@ if (Q.kpd_relation >= 30 && Q.sapd_formed) {
     Q.normalized_workers_total += Q.normalized_workers_sapd;
 } else if (Q.kpd_relation >= 15 && Q.sapd_formed) {
     Q.normalized_workers_total += Q.normalized_workers_sapd*0.5;
+}
+if (Q.srpd_formed) {
+    Q.normalized_workers_total += Q.normalized_workers_srpd*0.5;
 }
 
 

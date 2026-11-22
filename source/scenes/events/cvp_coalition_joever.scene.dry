@@ -18,6 +18,7 @@ Due to the formation of the <span style="color: #000000;">**[+ z_party_name +]**
 - @bruning_vonc: The <span style="color: #000000;">**[+ z_party_name +]**</span> calls for a constructive vote of no confidence against us!
 - @support_kpd_left: Could we form a United Left coalition with the <span style="color: #700000;">**KPD**</span>?
 - @spd_majority: We have a majority without them.
+- @socialist_front: Can we form a <span style="color: #9B0000;">Soc</span><span style="color: #c00000;">ial</span><span style="color: #F4A460;">ist</span> Front?
 - @no_vonc: They cannot call a vote of no confidence due to the constitutional reforms, but they can obstruct our government at every opportunity.
 
 @social_liberal_coalition
@@ -102,6 +103,16 @@ go-to: election_1928.left_coalition_success
 @spd_majority
 view-if: spd_r >= 50
 on-arrival: in_popular_front = 0; in_weimar_coalition = 0; in_social_catholic_coalition = 0; in_grand_coalition = 0; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; in_spd_majority = 1
+
+We were so kind.
+
+@socialist_front
+subtitle: <span style="color: #c00000;">**SPD**</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span> + ?] [? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front +]%)
+view-if: socialist_front >= 50
+unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;<span style="color: #9B0000;">**SAPD**</span>?] [? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front +]%). [? if kpd_relation < 50 : The [? if not blutmai or not kpd_rectified_history: <span style="color: #9B0000;">**SAPD**</span> ?][? if blutmai and kpd_rectified_history: <span style="color: #c00000;">**SPD**</span> ?] are unwilling to support an enemy of their <span style="color: #700000;">**KPD**</span> allies[? if blutmai and kpd_rectified_history: ... wait, what? ?] ?] [? if rubicon: - President Hindenburg will not allow a return to <span style="color: #c00000;">socialist</span> governance. ?][? if president_ideology == "Right": - President [+ president +] is fiercely opposed to <span style="color: #c00000;">socialist</span> governance. ?]
+choose-if: (kpd_relation >= 50 or spd_r + srpd_r >= 50) and not rubicon and president_ideology != "Right"
+
+on-arrival: in_popular_front = 0; in_weimar_coalition = 0; in_social_catholic_coalition = 0; in_grand_coalition = 0; foreign_minister_party = "SPD"; foreign_minister = "Breitscheid"; interior_minister_party = "SPD"; interior_minister = "Severing"; justice_minister_party = "SPD"; justice_minister = "Radbruch"; labor_minister_party = "SPD"; labor_minister = "Wissell"; reichswehr_minister_party = "SPD"; reichswehr_minister = "Leber"; economic_minister_party = "SPD"; economic_minister = "Schmidt"; finance_minister_party = "SPD"; finance_minister = "Hilferding"; agriculture_minister_party = "SPD"; agriculture_minister = "Baade"; in_spd_majority = 0; in_socialsit_front = 1;
 
 We were so kind.
 

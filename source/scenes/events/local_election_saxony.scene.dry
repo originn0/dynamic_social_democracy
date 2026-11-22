@@ -219,22 +219,33 @@ if (Q.total_r_saxony > 0) {
     Q.dnf_r_saxony = (Q.dnf_r_saxony / Q.total_r_saxony) * 100;
 }
 
-let spd_share = 0.95;
-let aspd_share = 0.05;
+if (!Q.srpd_formed) {
+    Q.srpd_saxony_elections_vote = 0;
+}
+
+let aspd_share = 0.05 + (Q.nationalism-60)/1000.0;
+let spd_share = 1 - aspd_share;
+
+let aspd_srpd_share = (Q.nationalism/100.0);
+let spd_srpd_share = 1-aspd_srpd_share;
 
 if (Q.reformists_resign) aspd_share += 0.1;
 if (Q.unions_independent) aspd_share += 0.2;
 
 let total_spd_share = aspd_share + spd_share;
+let total_srpd_share = aspd_srpd_share + spd_srpd_share;
 
 aspd_share = (aspd_share / total_spd_share);
 spd_share = (spd_share / total_spd_share);
 
-Q.spd_saxony_elections_vote = Q.spd_saxony_elections_vote*spd_share;
-Q.spd_r_saxony = Q.spd_r_saxony*spd_share;
+aspd_srpd_share = (aspd_srpd_share / total_srpd_share);
+spd_srpd_share = (spd_srpd_share / total_srpd_share);
 
-Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share + Q.srpd_saxony_elections_vote;
-Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share + Q.srpd_r_saxony;
+Q.aspd_saxony_elections_vote = Q.spd_saxony_elections_vote*aspd_share + Q.srpd_saxony_elections_vote*aspd_srpd_share;
+Q.aspd_r_saxony = Q.spd_r_saxony*aspd_share + Q.srpd_r_saxony*aspd_srpd_share;
+
+Q.spd_saxony_elections_vote = Q.spd_saxony_elections_vote*spd_share + Q.srpd_saxony_elections_vote*spd_srpd_share;
+Q.spd_r_saxony = Q.spd_r_saxony*spd_share + Q.srpd_r_saxony*spd_srpd_share;
 
 let farm_share = 0.27;
 if (Q.dnvp_ideology == "Moderate") farm_share -= 0.1;
@@ -717,4 +728,4 @@ subtitle: Sweat...
 view-if: spd_r_saxony >= 50 
 on-arrival: saxony_spd = 1; reformist_dissent -= 5; left_dissent -= 30; left_strength += 10; center_dissent -= 10; labor_dissent -= 10; aspd_dead = 1; workers_spd += 7; workers_kpd -= 4; new_middle_spd += 3; old_middle_spd += 2; unemployed_spd += 4; unemployed_nsdap -= 3; pro_republic += 5
 
-Unexpectedly, we've found ourselves controlling a majority of the Saxony landtag and being able to form a government of just the <span style="color: #c00000;">**SPD**</span>! It is unclear how the bourgeois and <span style="color: #808080;">reactionaries</span> will react to a <span style="color: #c00000;">Red</span> Saxony but without the <span style="color: #700000;">**Communists**</span>... [? if aspd_share > 0: The <span style="color: #fe9e00;">**ASPD**</span> seeing as we no longer require on coalition negotiations to form government has decided to join us. ?] 
+Unexpectedly, we've found ourselves controlling a majority of the Saxony landtag and being able to form a government of just the <span style="color: #c00000;">**SPD**</span>! It is unclear how the bourgeois and <span style="color: #808080;">reactionaries</span> will react to a <span style="color: #c00000;">Red</span> Saxony but without the <span style="color: #700000;">**Communists**</span>... [? if aspd_share + aspd_srpd_share > 0: The <span style="color: #fe9e00;">**ASPD**</span> seeing as we no longer require on coalition negotiations to form government has decided to join us. ?] 
