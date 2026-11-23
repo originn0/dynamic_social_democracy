@@ -108,7 +108,7 @@ We were so kind.
 
 @socialist_front
 subtitle: <span style="color: #c00000;">**SPD**</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span> + ?] [? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front +]%)
-view-if: socialist_front >= 50
+view-if: socialist_front >= 50 and (srpd_formed or sapd_formed)
 unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;<span style="color: #9B0000;">**SAPD**</span>?] [? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front +]%). [? if kpd_relation < 50 : The [? if not blutmai or not kpd_rectified_history: <span style="color: #9B0000;">**SAPD**</span> ?][? if blutmai and kpd_rectified_history: <span style="color: #c00000;">**SPD**</span> ?] are unwilling to support an enemy of their <span style="color: #700000;">**KPD**</span> allies[? if blutmai and kpd_rectified_history: ... wait, what? ?] ?] [? if rubicon: - President Hindenburg will not allow a return to <span style="color: #c00000;">socialist</span> governance. ?][? if president_ideology == "Right": - President [+ president +] is fiercely opposed to <span style="color: #c00000;">socialist</span> governance. ?]
 choose-if: (kpd_relation >= 50 or spd_r + srpd_r >= 50) and not rubicon and president_ideology != "Right"
 
