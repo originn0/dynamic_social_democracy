@@ -2444,6 +2444,11 @@ if (Q.lautenbach_adopted && Q.lautenbach_plan_time >= Q.time && !Q.spd_in_govern
             Q.new_middle_lvp += 6/12;
         }
     }
+    if (Q.srpd_formed && Q.srpd_in_government) {
+        Q.workers_srpd += 4/12;
+        Q.new_middle_srpd += 6/12;
+        Q.rural_srpd += 4/12;
+    }
     if (Q.spd_toleration_right || Q.in_right_coalition || Q.in_center_right_coalition) {
         Q.workers_dnvp += 4/12;
         if (Q.dnvp_leader == "Lambach") Q.workers_dnvp += 12/12;
@@ -2518,6 +2523,11 @@ if (Q.lautenbach_adopted && Q.lautenbach_plan_time >= Q.time && !Q.spd_in_govern
             Q.new_middle_lvp += 4/12;
         }
     }
+    if (Q.srpd_formed && Q.srpd_in_government) {
+        Q.workers_srpd += 4/12;
+        Q.new_middle_srpd += 4/12;
+        Q.rural_srpd += 2/12;
+    }
     if (Q.spd_toleration_right || Q.in_right_coalition || Q.in_center_right_coalition) {
         Q.workers_dnvp += 3/12;
         if (Q.dnvp_leader == "Lambach") Q.workers_dnvp += 6/12;
@@ -2554,7 +2564,7 @@ if (Q.reformist_plan_time >= Q.time) {
     } else if (Q.inflation < 4) {
         Q.inflation += 0.2;
     }
-    if (Q.srpd_formed && (Q.in_weimar_coalition || Q.in_grand_coalition || Q.in_social_catholic_coalition || Q.in_social_liberal_coalition || Q.in_socialist_front)) {
+    if (Q.srpd_formed && (Q.srpd_in_government)) {
         Q.workers_srpd += 4/12;
         Q.new_middle_srpd += 4/12;
         Q.old_middle_srpd += 2/12;
@@ -2954,7 +2964,7 @@ if (Q.year == 1929 && Q.month == 12 && Q.dnf_formed == 0) {
     Q.young_plan_votes = Math.round(Q.young_plan_votes * 10) / 10;
 }
 
-if (Q.young_plan_votes && !Q.in_grand_coalition && !Q.spd_toleration && !Q.in_right_coalition && !Q.in_center_right_coalition) {
+if (Q.young_plan_votes && !Q.in_grand_coalition && !(Q.srpd_in_government && !Q.spd_in_government) && !Q.spd_toleration && !Q.in_right_coalition && !Q.in_center_right_coalition) {
     Q.young_plan_votes += (Q.dvp_votes / 10);
     Q.young_plan_votes = Math.round(Q.young_plan_votes * 10) / 10;
 }
@@ -3076,7 +3086,7 @@ if (
     Q.liberal_parliament_seen = 1;
 }
 
-if (Q.year == 1928 && Q.month == 12 && (Q.in_center_right_coalition == 1 || Q.in_right_coalition == 1)) {
+if (Q.year == 1928 && Q.month == 12 && ((Q.srpd_in_government == 1 && !Q.spd_in_government) || Q.in_center_right_coalition == 1 || Q.in_right_coalition == 1)) {
     if (!Q.lvp_formed) {
         Q.liberal_parliament = 1;
         Q.liberal_parliament_seen = 1;
@@ -3125,7 +3135,7 @@ if (Q.year >= 1930 && Q.lvp_relation < 30) {
     Q.lvp_right += 1;
 }
 
-if (Q.in_right_coalition || Q.in_center_right_coalition) {
+if (Q.in_right_coalition || Q.in_center_right_coalition || (Q.srpd_in_government && !Q.spd_in_government)) {
     Q.bourgeois_cooperation += 0.25;
     if (Q.in_center_right_coalition) {
         Q.liberal_cooperation += 0.25;
@@ -3342,7 +3352,7 @@ if (Q.ddp_factionless && Q.ddp_r + Q.wp_r < 3.6 && !Q.bourgeois_parliament_ddp &
 }
 
 // total middle class death cuz bruning cut salaries n stuff
-if (Q.total_bruning_time >= 12 && !Q.in_center_right_coalition && !Q.in_right_coalition && !Q.bourgeois_parliament && Q.year >= 1930 && !Q.bruning_austerity_seen) {
+if (Q.total_bruning_time >= 12 && !Q.in_center_right_coalition && !(Q.srpd_in_government && !Q.spd_in_government) && !Q.in_right_coalition && !Q.bourgeois_parliament && Q.year >= 1930 && !Q.bruning_austerity_seen) {
     Q.new_middle_ddp *= 0.75;
     Q.new_middle_dvp *= 0.75;
     Q.bruning_austerity_seen = 1;
@@ -3357,7 +3367,7 @@ if (Q.total_bruning_time >= 12 && !Q.in_center_right_coalition && !Q.in_right_co
     Q.bruning_austerity_seen = 1;
 }
 
-if (Q.year >= 1930 && Q.total_bruning_time >= 8 && !Q.kvp_cnblp_sister && !Q.in_center_right_coalition && !Q.in_right_coalition && !Q.bourgeois_parliament && !Q.bourgeois_parliament_no_liberals && !Q.spd_toleration_right && !Q.cnblp_defect && !Q.eastern_aid) {
+if (Q.year >= 1930 && Q.total_bruning_time >= 8 && !Q.kvp_cnblp_sister && !(Q.srpd_in_government && !Q.spd_in_government) && !Q.in_center_right_coalition && !Q.in_right_coalition && !Q.bourgeois_parliament && !Q.bourgeois_parliament_no_liberals && !Q.spd_toleration_right && !Q.cnblp_defect && !Q.eastern_aid) {
     Q.bruning_coalition_loss += Q.cnblp_r;
     Q.bourgeois_cooperation -= 2;
     Q.cnblp_defect = 1;
@@ -3402,7 +3412,7 @@ if (Q.cnblp_defect_pt2_time == Q.time && Q.cnblp_defect == 1) {
     Q.bourgeois_cooperation -= 3;
 }
 
-if (Q.total_bruning_time >= 7 && !Q.in_center_right_coalition && !Q.in_right_coalition && !Q.bourgeois_parliament && !Q.bourgeois_parliament_no_liberals && !Q.spd_toleration_right && Q.year >= 1930 && !Q.kvp_cnblp_sister && Q.dnvp_ideology == "Radical" && Q.chancellor == "Brüning") {
+if (Q.total_bruning_time >= 7 && !Q.in_center_right_coalition && !(Q.srpd_in_government && !Q.spd_in_government) && !Q.in_right_coalition && !Q.bourgeois_parliament && !Q.bourgeois_parliament_no_liberals && !Q.spd_toleration_right && Q.year >= 1930 && !Q.kvp_cnblp_sister && Q.dnvp_ideology == "Radical" && Q.chancellor == "Brüning") {
     Q.rlb_nazi = 1;
     Q.rural_other *= 0.85;
 }
@@ -3414,9 +3424,9 @@ if (Q.year >= 1930 && Q.ddp_factionless) {
     }
 }
 
-if (Q.year >= 1930 && Q.total_bruning_time >= 7 && !Q.in_center_right_coalition && !Q.in_right_coalition && !Q.bourgeois_parliament && !Q.bourgeois_parliament_no_liberals && !Q.wp_conflict_time_trigger && !Q.wp_conflict_alt_time_trigger) {
+if (Q.year >= 1930 && Q.total_bruning_time >= 7 && !(Q.srpd_in_government && !Q.spd_in_government) && !Q.in_center_right_coalition && !Q.in_right_coalition && !Q.bourgeois_parliament && !Q.bourgeois_parliament_no_liberals && !Q.wp_conflict_time_trigger && !Q.wp_conflict_alt_time_trigger) {
     Q.wp_conflict_time_trigger = 1;
-} else if (Q.year >= 1930 && Q.total_bruning_time >= 7 && (Q.in_center_right_coalition || Q.in_right_coalition || Q.bourgeois_parliament || Q.bourgeois_parliament_no_liberals) && !Q.wp_conflict_time_trigger && !Q.wp_conflict_alt_time_trigger) {
+} else if (Q.year >= 1930 && Q.total_bruning_time >= 7 && ((Q.srpd_in_government && !Q.spd_in_government) || Q.in_center_right_coalition || Q.in_right_coalition || Q.bourgeois_parliament || Q.bourgeois_parliament_no_liberals) && !Q.wp_conflict_time_trigger && !Q.wp_conflict_alt_time_trigger) {
     Q.wp_conflict_alt_time_trigger = 1;
 }
 
@@ -3463,18 +3473,18 @@ if (Q.year == 1931 && Q.month == 4 && Q.dvp_leader == "Dingeldey" && !Q.lvp_form
     Q.pro_republic -= Q.dvp_votes;
 }
 
-if (Q.emergency_decree_seen && !Q.in_center_right_coalition && !Q.right_coalition && Q.dvp_leader == "Dingeldey" && !Q.dvp_defect && !Q.lvp_formed) {
+if (Q.emergency_decree_seen && !Q.in_center_right_coalition && !(Q.srpd_in_government && !Q.spd_in_government) && !Q.right_coalition && Q.dvp_leader == "Dingeldey" && !Q.dvp_defect && !Q.lvp_formed) {
     Q.dvp_right += 3;
     Q.new_middle_dvp -= 2;
     Q.old_middle_dvp -= 2;
 }
 
-if (Q.total_bruning_time > 0 && (Q.in_center_right_coalition || Q.in_right_coalition || Q.spd_toleration_right) && Q.banking_crisis_seen && !Q.dnvp_conflict_time) {
+if (Q.total_bruning_time > 0 && (Q.in_center_right_coalition || (Q.srpd_in_government && !Q.spd_in_government) || Q.in_right_coalition || Q.spd_toleration_right) && Q.banking_crisis_seen && !Q.dnvp_conflict_time) {
     Q.dnvp_conflict_time = Q.time + 1;
     Q.curtius_resign = Q.time + 3;
 }
 
-if (Q.dnvp_conflict_time == Q.time && (Q.in_center_right_coalition || Q.in_right_coalition || Q.spd_toleration_right) && !Q.cvp_formed) {
+if (Q.dnvp_conflict_time == Q.time && (Q.in_center_right_coalition || (Q.srpd_in_government && !Q.spd_in_government) || Q.in_right_coalition || Q.spd_toleration_right) && !Q.cvp_formed) {
     Q.bruning_coalition_dissent += 1;
     Q.new_middle_dnf += 2;
     Q.old_middle_dnf += 3;
@@ -3484,12 +3494,12 @@ if (Q.dnvp_conflict_time == Q.time && (Q.in_center_right_coalition || Q.in_right
     Q.rural_dnvp -= 2;
 }
 
-if (Q.time >= Q.dnvp_scared_hitler_time && (Q.in_center_right_coalition || Q.in_right_coalition) && (Q.nsdap_votes + Q.dnf_votes) >= (Q.dnvp_votes * 3) && !Q.cvp_formed) {
+if (Q.time >= Q.dnvp_scared_hitler_time && (Q.in_center_right_coalition || (Q.srpd_in_government && !Q.spd_in_government) || Q.in_right_coalition) && (Q.nsdap_votes + Q.dnf_votes) >= (Q.dnvp_votes * 3) && !Q.cvp_formed) {
     Q.dnvp_scared_hitler_time = Q.time + 4;
     Q.bruning_coalition_dissent += 1;
 }
 
-if (Q.curtius_resign && !Q.curtius_resign_seen && (Q.in_center_right_coalition || Q.in_right_coalition || Q.spd_toleration_right)) {
+if (Q.curtius_resign && !Q.curtius_resign_seen && (Q.in_center_right_coalition || (Q.srpd_in_government && !Q.spd_in_government) || Q.in_right_coalition || Q.spd_toleration_right)) {
     Q.bruning_coalition_dissent += 1;
     if (!Q.dvp_exist && !Q.lvp_formed) {
         Q.new_middle_ddp -= 2;
@@ -5121,6 +5131,12 @@ if (Q.lvp_formed) {
 }
 
 if (Q.lvp_formed) {
+    Q.srpd_weimar_coalition = parseFloat((Q.srpd_r + Q.lvp_r + Q.z_r - Q.bvp_r).toFixed(1));
+} else {
+    Q.srpd_weimar_coalition = parseFloat((Q.srpd_r + Q.ddp_r + Q.z_r - Q.bvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
     Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.lvp_r).toFixed(1));
 } else {
     Q.social_liberal_coalition = parseFloat((Q.spd_r + Q.ddp_r).toFixed(1));
@@ -5132,6 +5148,12 @@ if (Q.lvp_formed) {
     Q.grand_coalition = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r).toFixed(1));
 } else {
     Q.grand_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.srpd_grand_coalition = parseFloat((Q.srpd_r + Q.lvp_r + Q.z_r).toFixed(1));
+} else {
+    Q.srpd_grand_coalition = parseFloat((Q.srpd_r + Q.ddp_r + Q.z_r + Q.dvp_r).toFixed(1));
 }
 
 if (Q.kvp_formed && Q.lvp_formed) {
@@ -5200,6 +5222,12 @@ if (Q.lvp_formed) {
     Q.neo_weimar_coalition = parseFloat((Q.spd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
 }
 
+if (Q.lvp_formed) {
+    Q.srpd_neo_weimar_coalition = parseFloat((Q.srpd_r + Q.lvp_r + Q.z_r + Q.other_r).toFixed(1));
+} else {
+    Q.srpd_neo_weimar_coalition = parseFloat((Q.srpd_r + Q.ddp_r + Q.z_r + Q.dvp_r + Q.other_r).toFixed(1));
+}
+
 if (Q.kvp_formed && Q.lvp_formed) {
     Q.cordon_sanitaire = parseFloat((Q.spd_r + Q.lvp_r + Q.z_r + Q.other_r + Q.kvp_r).toFixed(1));
 } else if (Q.kvp_formed && !Q.lvp_formed) {
@@ -5244,6 +5272,12 @@ if (Q.lvp_formed) {
 }
 
 if (Q.lvp_formed) {
+    Q.srpd_weimar_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia ).toFixed(1));
+} else {
+    Q.srpd_weimar_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
     Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia).toFixed(1));
 } else {
     Q.social_liberal_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia).toFixed(1));
@@ -5255,6 +5289,18 @@ if (Q.lvp_formed) {
     Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
 } else {
     Q.grand_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.srpd_grand_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
+} else {
+    Q.srpd_grand_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.srpd_grand_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia).toFixed(1));
+} else {
+    Q.srpd_grand_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia).toFixed(1));
 }
 
 if (Q.kvp_formed && Q.lvp_formed) {
@@ -5321,6 +5367,12 @@ if (Q.lvp_formed) {
     Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia).toFixed(1));
 } else {
     Q.neo_weimar_coalition_prussia = parseFloat((Q.spd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
+}
+
+if (Q.lvp_formed) {
+    Q.srpd_neo_weimar_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.lvp_r_prussia + Q.z_r_prussia + Q.other_r_prussia).toFixed(1));
+} else {
+    Q.srpd_neo_weimar_coalition_prussia = parseFloat((Q.srpd_r_prussia + Q.ddp_r_prussia + Q.z_r_prussia + Q.dvp_r_prussia + Q.other_r_prussia).toFixed(1));
 }
 
 if (Q.kvp_formed && Q.lvp_formed) {

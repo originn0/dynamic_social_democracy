@@ -37,6 +37,11 @@ Q.kpd_nazi_urgency += 1;
 Q.rb_strength -= 400;
 Q.workers_spd -= 15;
 Q.workers_dnef += 10;
+if (Q.srpd_formed) {
+    Q.workers_srpd += 2;
+} else {
+    Q.workers_srpd_pre = 2;
+}
 Q.unemployed_spd -= 10;
 Q.unemployed_dnef += 10;
 Q.labor_strength *= 0.5;

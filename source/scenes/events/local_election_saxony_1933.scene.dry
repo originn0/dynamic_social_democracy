@@ -483,6 +483,11 @@ Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.srpd_r_saxony
 if (Q.dnvp_ideology == "Moderate") Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.srpd_r_saxony + Q.aspd_r_saxony + Q.z_r_saxony + Q.ddp_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony).toFixed(1));
 Q.far_right_coalition_saxony = parseFloat((Q.z_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.dnvp_r_saxony + Q.kvp_r_saxony + Q.dnf_r_saxony + Q.nsdap_r_saxony - Q.vnr_r_saxony - Q.csvd_r_saxony).toFixed(1));
 Q.spd_coalition_saxony = parseFloat((Q.aspd_r_saxony + Q.spd_r_saxony + Q.srpd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony).toFixed(1));
+Q.aspd_coalition_saxony = parseFloat((Q.aspd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony + Q.other_r_saxony + Q.kvp_r_saxony).toFixed(1));
+if (Q.dnvp_ideology == "Moderate") Q.mega_bourgeois_coalition_saxony = parseFloat((Q.spd_r_saxony + Q.aspd_r_saxony + Q.z_r_saxony + Q.ddp_r_saxony + Q.dvp_r_saxony + Q.lvp_r_saxony + Q.other_r_saxony + Q.kvp_r_saxony + Q.dnvp_r_saxony).toFixed(1));
+Q.srpd_coalition_saxony = parseFloat((Q.srpd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony + Q.other_r_saxony).toFixed(1));
+if (!Q.aspd_dead) Q.srpd_coalition_saxony = parseFloat((Q.srpd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony + Q.other_r_saxony + Q.kvp_r_saxony).toFixed(1));
+if (!Q.aspd_dead && Q.dnvp_ideology == "Moderate") Q.srpd_coalition_saxony = parseFloat((Q.srpd_r_saxony + Q.ddp_r_saxony + Q.lvp_r_saxony + Q.z_r_saxony + Q.dvp_r_saxony + Q.other_r_saxony + Q.kvp_r_saxony + Q.dnvp_r_saxony).toFixed(1));
 !}
 on-display: {!
 data = [{
@@ -722,6 +727,10 @@ go-to: saxony_coalition_menu
 <hr id="read-marker">
 United Left Coalition (<span style="color: #c00000;">**SPD**</span> + <span style="color: #C43988;">**KPO**</span> + <span style="color: #700000;">**KPD**</span>[? if sapd_formed:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?]): [+ left_coalition_saxony +]% 
 
+[? if srpd_r_saxony: Republican Coalition ([? if srpd_r_saxony: <span style="color: #fe9e00;">**SRPD**</span> + ?][? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if kvp_formed and not aspd_dead:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?][? if dnvp_ideology == "Moderate" and not aspd_dead:&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span> ?]): [+ srpd_coalition_saxony +]% ?]
+
+[? if aspd_r_saxony: Moderate Coalition ([? if aspd_r_saxony: <span style="color: #fe9e00;">**ASPD**</span> + ?][? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if kvp_formed:&nbsp;+ <span style="color: #0087DC;">**KVP**</span> ?][? if dnvp_ideology == "Moderate":&nbsp;+ <span style="color: #3E88B3;">**DNVP**</span> ?]): [+ aspd_coalition_saxony +]% ?]
+
 Grand Coalition (<span style="color: #c00000;">**SPD**</span> + [? if aspd_dead and srpd_formed: <span style="color: #F4A460;">**SRPD**</span> ?] [? if not aspd_dead or not srpd_formed: <span style="color: #fe9e00;">**ASPD**</span> ?] + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if z_r_saxony:&nbsp;+&nbsp;<span style="color: #000000;">**[+ z_party_name +]**</span> ?][? if not lvp_formed:&nbsp;+&nbsp;<span style="color: #C0A054;">**DVP**</span>?]): [+ spd_coalition_saxony +]% 
 
 [? if dnvp_ideology == "Moderate": Bourgeois Coalition ([? if z_r_saxony: <span style="color: #000000;">**[+ z_party_name +]**</span> + ?][? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?][? if vnr_formed:&nbsp;+ <span style="color: #D3D3A9;">**VNR**</span> ?] + <span style="color: #11DD11;">**SLV**</span> + <span style="color: #b8996f;">**WP**</span> + <span style="color: #0075EB;">**VRP**</span>[? if csvd_formed:&nbsp;+ <span style="color: #8ED8E4;">**CSVD**</span> ?] + <span style="color: #3E88B3;">**DNVP**</span>): [+ true_bourgeois_coalition_saxony +]% ?]
@@ -804,6 +813,9 @@ if ((Q.dvp_relation < (dvp_toleration_threshold + 5) && !Q.lvp_formed) || (Q.lvp
 - @continue_spd_majority
 - @continue_left_saxony
 - @continue_borko_saxony
+- @moderate_coalition_saxony
+- @continue_modko_saxony
+- @republican_coalition_saxony
 - @new_grand_coalition_saxony
 - @toleration_saxony
 - @true_bourgeois_coalition_saxony
@@ -961,6 +973,30 @@ unavailable-subtitle: [? if not toleration_possible_saxony: The bourgeois partie
 on-arrival: saxony_toleration = 1; pro_republic += 1; left_dissent += 10; workers_kpd += 2; workers_sapd += 2 if sapd_formed; workers_spd -= 3; unemployed_kpd += 3; unemployed_sapd += 3 if sapd_formed; unemployed_spd -= 5; saxony_groko = 0; red_saxony = 0; saxony_joever = 0; saxony_spd = 0; saxony_right_2 = 0; saxony_nsdap = 0; saxony_spd_splinter = 0; saxony_soclib = 0; saxony_nsdap_maj = 0; saxony_kpd = 0; saxony_spd_maj = 0
 
 Our toleration agreement in Saxony continues.  Our party's remaining leftist elements grow weary of this arrangement, and they are increasingly defecting to the <span style="color: #700000;">**KPD**</span> [? if sapd_formed: and <span style="color: #9B0000;">**SAPD**</span>?].  Nevertheless, we have at least avoided repeat elections.
+
+@moderate_coalition_saxony
+title: A Moderate Coalition is formed!
+subtitle: The <span style="color: #fe9e00;">**ASPD**</span> no longer needs to rely on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
+view-if: aspd_coalition_saxony >= 50 and not saxony_center
+on-arrival: saxony_center = 1; saxony_leader = "Heldt"; pro_republic += 2; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_srpd += 2 if srpd_formed; rural_other += 2 if not srpd_formed; old_middle_srpd += 2 if srpd_formed; old_middle_other += 2 if not srpd_formed; workers_dnvp -= 2; unemployed_dnvp -= 2; workers_srpd += 2 if srpd_formed; workers_other += 2 if not srpd_formed; unemployed_srpd += 2 if srpd_formed; unemployed_other += 2 if not srpd_formed; reformist_strength += 10 if not srpd_formed;
+
+The surprisingly good results for the bourgeois parties[? if aspd_saxony_elections_vote >= 4:&nbsp;and <span style="color: #fe9e00;">**ASPD**</span>?] have allowed them and Heldt to continue governing without need of further reliance on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
+
+@continue_modko_saxony
+title: The Moderate Coalition is maintained.
+subtitle: The <span style="color: #fe9e00;">**ASPD**</span>'s national-proletarian theory has proved surprisingly successful...
+view-if: aspd_coalition_saxony >= 50 and saxony_center
+on-arrival: saxony_center = 1; saxony_leader = "Heldt"; pro_republic += 2; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_srpd += 2 if srpd_formed; rural_other += 2 if not srpd_formed; old_middle_srpd += 2 if srpd_formed; old_middle_other += 2 if not srpd_formed; workers_dnvp -= 2; unemployed_dnvp -= 2; workers_srpd += 2 if srpd_formed; workers_other += 2 if not srpd_formed; unemployed_srpd += 2 if srpd_formed; unemployed_other += 2 if not srpd_formed; reformist_strength += 10 if not srpd_formed;
+
+The surprisingly good results for the bourgeois parties[? if aspd_saxony_elections_vote >= 4:&nbsp;and <span style="color: #fe9e00;">**ASPD**</span>?] have allowed them and Heldt to continue governing without need of further reliance on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
+
+@republican_coalition_saxony
+title: A Republican Coalition is formed!
+subtitle: The <span style="color: #fe9e00;">**SRPD**</span> has negotiated a coalition of the bourgeois left and center.
+view-if: srpd_coalition_saxony >= 50 and srpd_formed
+on-arrival: saxony_republican = 1; saxony_leader = "Heldt"; pro_republic += 3; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_dnf -= 2 if dnf_formed; old_middle_dnf -= 2 if dnf_formed; rural_srpd += 2; rural_other += 2; old_middle_srpd += 2; old_middle_other += 2; workers_dnvp -= 2; unemployed_dnvp -= 2; workers_kvp -= 2 if kvp_formed; unemployed_kvp -= 2 if kvp_formed; workers_srpd += 2; workers_other += 2; unemployed_srpd += 2; unemployed_other += 2;
+
+The surprisingly good results for the republican parties[? if srpd_saxony_elections_vote >= 4:&nbsp;and <span style="color: #fe9e00;">**SRPD**</span>?] have allowed them and Heldt to continue governing without need of further reliance on the anti-democratic parties.
 
 @continue_groko_saxony
 title: The [? if lvp_formed and stegerwald_path: <span style="color: #000000;">We</span><span style="color: #DD0000;">im</span><span style="color: #FFCC00;">ar</span>?][? if not lvp_formed or not stegerwald_path: Grand?] Coalition is maintained!

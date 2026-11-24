@@ -3,7 +3,7 @@ subtitle: We have angered our coalition partners too much...
 new-page: true
 on-arrival: tried_supporting_kpd = 0; z_relation -= 5 if not in_social_catholic_coalition; dvp_relation -= 5 if in_grand_coalition; ddp_relation -= 5 if not in_social_catholic_coalition; lvp_relation -= 5 if in_weimar_coalition and not in_social_catholic_coalition or in_grand_coalition; lvp_right += 2 if in_weimar_coalition or in_grand_coalition; dvp_right += 2 if in_grand_coalition; ddp_right += 1; hindenburg_angry += 20
 on-departure: secularized = 0
-view-if: chancellor_party == "SPD" and spd_in_government = 1 and (((in_grand_coalition or in_popular_front or in_minority_government or (in_social_catholic_coalition and cvp_formed)) and z_coalition_dissent >= 3) or ((in_weimar_coalition or (in_social_catholic_coalition and not cvp_formed)) and z_coalition_dissent >= 4)) or (in_grand_coalition and dvp_coalition_dissent >= 3 and (not lvp_formed) and dvp_exist) or ((in_weimar_coalition or in_grand_coalition or in_social_liberal_coalition) and lvp_coalition_dissent >= 3 and lvp_formed) or ((in_weimar_coalition or in_social_liberal_coalition or in_grand_coalition or (ddp_in_popular_front and in_popular_front)) and (ddp_coalition_dissent >= 4)) and spd_r < 50 and constructive_vonc and ((bourgeois_coalition >= 50) or (dnvp_ideology == "Moderate" and center_right_coalition >= 50 and dnf_formed and not (year = 1929 and month >= 7)) or (right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)))
+view-if: chancellor_party == "SPD" and spd_in_government = 1 and (((in_grand_coalition or in_popular_front or in_minority_government or (in_social_catholic_coalition and cvp_formed)) and z_coalition_dissent >= 3) or ((in_weimar_coalition or (in_social_catholic_coalition and not cvp_formed)) and z_coalition_dissent >= 4)) or (in_grand_coalition and dvp_coalition_dissent >= 3 and (not lvp_formed) and dvp_exist) or ((in_weimar_coalition or in_grand_coalition or in_social_liberal_coalition) and lvp_coalition_dissent >= 3 and lvp_formed) or ((in_weimar_coalition or in_social_liberal_coalition or in_grand_coalition or (ddp_in_popular_front and in_popular_front)) and (ddp_coalition_dissent >= 4)) and spd_r < 50 and constructive_vonc and ((bourgeois_coalition >= 50 and not (srpd_neo_weimar_coalition >= 50 and srpd_in_government)) or (dnvp_ideology == "Moderate" and center_right_coalition >= 50 and dnf_formed and not (year = 1929 and month >= 7)) or (right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)))
 tags: event
 go-to: vonc_menu
 
@@ -65,17 +65,17 @@ By transferring resources to our coalition partners, we can reduce their dissent
 
 @right_coalition
 view-if: right_coalition >= 50 and (dnvp_ideology == "Moderate" or dnvp_westarp) and not (year = 1929 and month >= 7)
-on-arrival: center_dissent += 5; reformist_dissent += 5; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0;
+on-arrival: center_dissent += 5; reformist_dissent += 5; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; in_weimar_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0;
 go-to: election_1928.right_coalition_2
 
 @center_right_coalition
 view-if: dnvp_ideology == "Moderate" and not lvp_formed and center_right_coalition >= 50 and dnf_formed and right_coalition < 50 and not (year = 1929 and month >= 7)
-on-arrival: center_dissent += 5; reformist_dissent += 5; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0;
+on-arrival: center_dissent += 5; reformist_dissent += 5; spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; in_weimar_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0;
 go-to: election_1928.center_right_coalition_2
 
 @bourgeois_coalition
 view-if: bourgeois_coalition >= 50 and not cvp_formed
-on-arrival: spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; in_weimar_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0;
+on-arrival: spd_in_government = 0; grand_coalition_collapsed = 1 if in_grand_coalition; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; in_weimar_coalition = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0;
 go-to: election_1928.bourgeois_coalition
 
 @snap_elections
@@ -83,6 +83,6 @@ view-if: president_ideology == "Left"
 choose-if: presidential_powers != 1
 unavailable-subtitle: We don't have that power anymore. You really screwed us here with your reforms, you know that?
 call: set_next_election_time
-on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; in_weimar_coalition = 0; in_popular_front = 0; spd_toleration = 0; spd_toleration_right = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; lvp_right += 3; ddp_right += 2; ddp_cohesion -= 1; dvp_right += 3
+on-arrival: time_to_election = 3; spd_in_government = 0; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; in_weimar_coalition = 0; in_popular_front = 0; spd_toleration = 0; spd_toleration_right = 0; z_coalition_dissent = 0; ddp_coalition_dissent = 0; dvp_coalition_dissent = 0; lvp_coalition_dissent = 0; pro_republic -= 5; old_middle_spd -= 3; new_middle_spd -= 2; workers_spd -= 3 if pro_republic < 50; workers_spd -= 4 if pro_republic < 40; old_middle_nsdap += 4 if pro_republic < 50; new_middle_nsdap += 3 if pro_republic < 50; lvp_right += 3; ddp_right += 2; ddp_cohesion -= 1; dvp_right += 3
 
 To prevent being relegated to the opposition, we have called for new elections for [+ next_election_month : month +] [+ next_election_year +].

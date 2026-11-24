@@ -4,20 +4,15 @@ Q.srpd_formed = 1;
 Q.parties.push('srpd');
 Q.parties_graph.push('srpd');
 
-Q.workers_srpd = 6;
+Q.workers_srpd = 6 + Q.workers_srpd_pre + Q.workers_srpd_pre2;
 Q.workers_spd -= 3;
-Q.new_middle_srpd = 6;
-Q.old_middle_srpd = 1;
-Q.rural_srpd = 1;
-Q.unemployed_srpd = 2;
+Q.new_middle_srpd = 6 + Q.new_middle_srpd_pre;
+Q.old_middle_srpd = 1 + Q.old_middle_srpd_pre;
+Q.rural_srpd = 1 + Q.rural_srpd_pre;
+Q.unemployed_srpd = 2 + Q.unemployed_srpd_pre + Q.unemployed_srpd_pre2;
 Q.catholics_srpd = 1;
 
 Q.workers_other -= 2;
-
-if (Q.unions_independent) {
-    Q.workers_srpd += 8;
-    Q.unemployed_srpd += 4;
-}
 
 Q.old_workers_srpd_display = 0
 Q.old_new_middle_srpd_display = 0
