@@ -409,7 +409,7 @@ Q.tolerated_minority = parseFloat((Q.spd_r + Q.sapd_r).toFixed(1));
 Q.socialist_front = parseFloat((Q.spd_r).toFixed(1));
 
 if (Q.kpd_relation >= 50) {
-    Q.socialist_front += Q.sapd_r;
+    Q.socialist_front = parseFloat((Q.socialist_front +  Q.sapd_r).toFixed(1));
 }
 
 if (Q.lvp_formed) {

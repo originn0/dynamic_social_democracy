@@ -541,8 +541,8 @@ Q.tolerated_minority_prussia = parseFloat((Q.spd_r_prussia + Q.sapd_r_prussia).t
 
 Q.socialist_front_prussia = parseFloat((Q.spd_r_prussia).toFixed(1));
 
-if (Q.kpd_relation >= 50 && Q.sapd_formed && Q.sapd_r_prussia) {
-    Q.socialist_front_prussia += parseFloat((Q.socialist_front_prussia + Q.sapd_r_prussia).toFixed(1));
+if (Q.kpd_relation >= 50) {
+    Q.socialist_front_prussia + Q.parseFloat((Q.socialist_front_prussia + Q.sapd_r_prussia).toFixed(1));;
 }
 
 if (Q.lvp_formed) {
@@ -947,7 +947,7 @@ Braun is selected to be the Minister-President of Prussia.
 
 @socialist_front
 title: We can form a <span style="color: #9B0000;">Soc</span><span style="color: #c00000;">ial</span><span style="color: #F4A460;">ist</span> Front.
-subtitle: <span style="color: #c00000;">**SPD**</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;+ <span style="color: #9B0000;">**SAPD**</span>?][? if srpd_formed and sapd_formed and kpd_relation >= 50: + ?][? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front_prussia +]%)
+subtitle: <span style="color: #c00000;">**SPD**</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;<span style="color: #9B0000;">**SAPD**</span>?][? if srpd_formed and sapd_formed and kpd_relation >= 50: + ?][? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front_prussia +]%)
 view-if: socialist_front_prussia >= 50 and (srpd_formed or sapd_formed)
 unavailable-subtitle: <span style="color: #c00000;">SPD</span> + [? if sapd_formed and kpd_relation >= 50:&nbsp;<span style="color: #9B0000;">**SAPD**</span>?][? if srpd_formed and sapd_formed and kpd_relation >= 50: + ?][? if srpd_formed:&nbsp;<span style="color: #F4A460;">**SRPD**</span>?] ([+ socialist_front_prussia +]%). [? if kpd_relation < 50 : The [? if not blutmai or not kpd_rectified_history: <span style="color: #9B0000;">**SAPD**</span> ?][? if blutmai and kpd_rectified_history: <span style="color: #c00000;">**SPD**</span> ?] are unwilling to support an enemy of their <span style="color: #700000;">**KPD**</span> allies[? if blutmai and kpd_rectified_history: ... wait, what? ?] ?]
 choose-if: (kpd_relation >= 50 or spd_r_prussia + srpd_r_prussia >= 50)
