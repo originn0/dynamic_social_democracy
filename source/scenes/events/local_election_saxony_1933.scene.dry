@@ -977,7 +977,7 @@ Our toleration agreement in Saxony continues.  Our party's remaining leftist ele
 @moderate_coalition_saxony
 title: A Moderate Coalition is formed!
 subtitle: The <span style="color: #fe9e00;">**ASPD**</span> no longer needs to rely on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
-view-if: aspd_coalition_saxony >= 50 and not saxony_center
+view-if: aspd_coalition_saxony >= 50 and not saxony_center and not aspd_dead
 on-arrival: saxony_center = 1; saxony_leader = "Heldt"; pro_republic += 2; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_srpd += 2 if srpd_formed; rural_other += 2 if not srpd_formed; old_middle_srpd += 2 if srpd_formed; old_middle_other += 2 if not srpd_formed; workers_dnvp -= 2; unemployed_dnvp -= 2; workers_srpd += 2 if srpd_formed; workers_other += 2 if not srpd_formed; unemployed_srpd += 2 if srpd_formed; unemployed_other += 2 if not srpd_formed; reformist_strength += 10 if not srpd_formed;
 
 The surprisingly good results for the bourgeois parties[? if aspd_saxony_elections_vote >= 4:&nbsp;and <span style="color: #fe9e00;">**ASPD**</span>?] have allowed them and Heldt to continue governing without need of further reliance on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
@@ -985,7 +985,7 @@ The surprisingly good results for the bourgeois parties[? if aspd_saxony_electio
 @continue_modko_saxony
 title: The Moderate Coalition is maintained.
 subtitle: The <span style="color: #fe9e00;">**ASPD**</span>'s national-proletarian theory has proved surprisingly successful...
-view-if: aspd_coalition_saxony >= 50 and saxony_center
+view-if: aspd_coalition_saxony >= 50 and saxony_center and not aspd_dead
 on-arrival: saxony_center = 1; saxony_leader = "Heldt"; pro_republic += 2; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_srpd += 2 if srpd_formed; rural_other += 2 if not srpd_formed; old_middle_srpd += 2 if srpd_formed; old_middle_other += 2 if not srpd_formed; workers_dnvp -= 2; unemployed_dnvp -= 2; workers_srpd += 2 if srpd_formed; workers_other += 2 if not srpd_formed; unemployed_srpd += 2 if srpd_formed; unemployed_other += 2 if not srpd_formed; reformist_strength += 10 if not srpd_formed;
 
 The surprisingly good results for the bourgeois parties[? if aspd_saxony_elections_vote >= 4:&nbsp;and <span style="color: #fe9e00;">**ASPD**</span>?] have allowed them and Heldt to continue governing without need of further reliance on the <span style="color: #7A3C00;">far</span>-<span style="color: #3E88B3;">right</span>.
@@ -993,7 +993,7 @@ The surprisingly good results for the bourgeois parties[? if aspd_saxony_electio
 @republican_coalition_saxony
 title: A Republican Coalition is formed!
 subtitle: The <span style="color: #fe9e00;">**SRPD**</span> has negotiated a coalition of the bourgeois left and center.
-view-if: srpd_coalition_saxony >= 50 and srpd_formed
+view-if: srpd_coalition_saxony >= 50 and srpd_formed and aspd_dead
 on-arrival: saxony_republican = 1; saxony_leader = "Heldt"; pro_republic += 3; rural_nsdap -= 2; old_middle_nsdap -= 2; rural_dnf -= 2 if dnf_formed; old_middle_dnf -= 2 if dnf_formed; rural_srpd += 2; rural_other += 2; old_middle_srpd += 2; old_middle_other += 2; workers_dnvp -= 2; unemployed_dnvp -= 2; workers_kvp -= 2 if kvp_formed; unemployed_kvp -= 2 if kvp_formed; workers_srpd += 2; workers_other += 2; unemployed_srpd += 2; unemployed_other += 2;
 
 The surprisingly good results for the republican parties[? if srpd_saxony_elections_vote >= 4:&nbsp;and <span style="color: #fe9e00;">**SRPD**</span>?] have allowed them and Heldt to continue governing without need of further reliance on the anti-democratic parties.
