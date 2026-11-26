@@ -29,7 +29,7 @@ Secret mode is on.
 title: Support the vote of no confidence, voting against the government.
 subtitle: The government will collapse, and there will be new elections.
 view-if: cordon_sanitaire >= 50 and right_coalition < 50
-on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 2; dvp_relation -= 4; z_relation -= 4; dnvp_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; old_middle_dnf += 3; rural_dnf += 3
+on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 2; dvp_relation -= 4; z_relation -= 4; dnvp_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; old_middle_dnf += 3; rural_dnf += 3
 call: set_next_election_time
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
@@ -51,7 +51,7 @@ title: It does not matter what we do.
 subtitle: The anti-government parties have over 50% of the vote, no matter our choices.
 view-if: cordon_sanitaire < 50
 call: set_next_election_time
-on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5
+on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; spd_toleration = 0; spd_toleration_right = 0; pro_republic -= 5
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
 The right-wing coalition has fallen. New elections have been set for [+ next_election_month : month +] [+ next_election_year +].

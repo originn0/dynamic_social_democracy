@@ -1,7 +1,7 @@
 title: The Second Brüning cabinet
 subtitle: Chancellor [+ chancellor +] has reorganized his cabinet!
 new-page: true
-view-if: total_bruning_time > 0 and bruning_toleration_time and not in_center_right_coalition and not in_right_coalition and banking_crisis_seen and emergency_decree_seen and not emergency_decree_mitigated and dvp_leader == "Dingeldey" and not lvp_formed and flavour_24_trigger and time == flavour_24_trigger_time + 3 and not second_bruning_cabinet_seen and dvp_exist
+view-if: total_bruning_time > 0 and bruning_toleration_time and not in_center_right_coalition and not (srpd_in_government and not spd_in_government) and not in_right_coalition and banking_crisis_seen and emergency_decree_seen and not emergency_decree_mitigated and dvp_leader == "Dingeldey" and not lvp_formed and flavour_24_trigger and time == flavour_24_trigger_time + 3 and not second_bruning_cabinet_seen and dvp_exist
 on-arrival: {!
 Q.second_bruning_cabinet_seen = 1;
 Q.judicial_reform -= 1;

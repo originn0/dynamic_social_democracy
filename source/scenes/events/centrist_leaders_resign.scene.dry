@@ -7,22 +7,35 @@ on-arrival: {!
 
 if (Q.center_strength < 10) {
     Q.workers_spd -= 3; 
+    Q.workers_sapd_pre = 1;
     Q.rb_strength -= 50; 
+    if (!Q.rfb_banned && Q.kpd_relations >= 50 && Q.kpd_truce) Q.rfb_strength += 25;
 } else if (Q.center_strength < 25) {
     Q.workers_spd -= 4; 
+    Q.workers_sapd_pre = 2;
     Q.rb_strength -= 75; 
+    if (!Q.rfb_banned && Q.kpd_relations >= 50 && Q.kpd_truce) Q.rfb_strength += 33;
 } else if (Q.center_strength < 40) {
     Q.workers_spd -= 5; 
+    Q.workers_sapd_pre = 2;
     Q.rb_strength -= 100; 
+    if (!Q.rfb_banned && Q.kpd_relations >= 50 && Q.kpd_truce) Q.rfb_strength += 50;
 } else if (Q.center_strength < 60) {
     Q.workers_spd -= 6; 
     Q.new_middle_spd -= 2; 
+    Q.workers_sapd_pre = 3;
+    Q.new_middle_sapd_pre = 1;
     Q.rb_strength -= 150; 
+    if (!Q.rfb_banned && Q.kpd_relations >= 50 && Q.kpd_truce) Q.rfb_strength += 75;
 } else {
     Q.workers_spd -= 8; 
     Q.new_middle_spd -= 4; 
     Q.unemployed_spd -= 2;
-    Q.rb_strength -= 200; 
+    Q.workers_sapd_pre = 4;
+    Q.unemployed_sapd_pre2 -= 1;
+    Q.new_middle_sapd_pre = 2;
+    Q.rb_strength -= 200;
+    if (!Q.rfb_banned && Q.kpd_relations >= 50 && Q.kpd_truce) Q.rfb_strength += 100;
 }
 
 Q.center_strength *= 0.3; 

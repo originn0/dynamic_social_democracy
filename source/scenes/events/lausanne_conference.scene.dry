@@ -47,7 +47,7 @@ if (Q.spd_in_government) {
 }
 
 if (Q.bruning_time) {
-    if (Q.dnvp_ideology == "Moderate" && (Q.in_center_right_coalition || Q.in_right_coalition || Q.spd_toleration_right)) {
+    if (Q.dnvp_ideology == "Moderate" && (Q.in_center_right_coalition || (Q.srpd_in_government && !Q.spd_in_government) || Q.in_right_coalition || Q.spd_toleration_right)) {
         Q.workers_dnvp += 2;
         Q.new_middle_dnvp += 4;
         Q.old_middle_dnvp += 4;
@@ -122,6 +122,7 @@ Therefore, our reparations have been reduced by 90%! In the end, Germany is requ
 
 - @military_parity
 - @military_parity_bruning
+- @military_parity_srpd
 
 @military_parity
 title: But of course, Schleicher stipulates that we demand military parity.
@@ -134,6 +135,18 @@ General Schleicher has demanded that we raise the issue of rearmament, which rem
 [? if military_parity:[? if eu: However, with the formation of the <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span> and its defense agreements, preventing Germany’s rearmament has become increasingly irrelevant. As a result, military restrictions are lifted!?][? if not eu: However, our exceptionally friendly relations with the <span style="color: #0A3161;">Western</span> <span style="color: #C8102E;">Allies</span> have led them to begrudgingly grant us flexibility in rearmament, believing that we could serve as a bulwark against the <span style="color: #700000;">Bolsheviks</span>.?] As a result, the <span style="color: #7A3C00;">**NSDAP**</span> has lost yet another propaganda tool. However, we continue to suffer heavy losses to the <span style="color: #700000;">**Communists**</span>[? if not lvp_formed: and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, who we have suffered serious defections to?]. ?]
 
 [? if not military_parity: This has caused great embarrassment to our pacifist and democratic image, both at home and abroad. Damn you, Schleicher! ?]
+
+@military_parity_srpd
+title: But of course, General Schleicher has stipulated a demand of military parity.
+subtitle: This will be a severe betrayal of the <span style="color: #F4A460;">**SRPD**</span>'s values!
+view-if: srpd_in_government and not spd_in_government and president == "Hindenburg" and foreign_minister_party == "SPD"
+on-arrival: military_parity = 1 if eu; reichswehr_strength += 300 if military_parity; sh_strength -= 100 if military_parity; sa_strength -= 50 if military_parity; reichswehr_militancy += 2 if military_parity; workers_srpd -= 6; old_middle_srpd -= 2; new_middle_srpd -= 4; rural_srpd -= 2; catholics_srpd -= 2; unemployed_srpd -= 4; workers_spd += 6; old_middle_ddp += 2; new_middle_ddp += 4; rural_ddp += 2; catholics_spd += 2; unemployed_spd += 4; old_middle_srpd += 20 if military_parity; workers_nsdap -= 3 if military_parity; unemployed_nsdap -= 4 if military_parity; new_middle_nsdap -= 3 if military_parity; old_middle_nsdap -= 15 if military_parity; rural_nsdap -= 3 if military_parity; catholics_nsdap -= 3 if military_parity; ddp_cohesion += 5; new_middle_ddp += 10 if ddp_leader == "Lüders"; new_middle_srpd -= 10 if ddp_leader == "Lüders"; workers_ddp += 5 if ddp_leader == "Lüders"; workers_srpd -= 5 if ddp_leader == "Lüders"; west_relation -= 3; eu_progress -= 2
+
+General Schleicher has demanded that the issue of rearmament bhe raised, which remains restricted under the Treaty of Versailles. However, <span style="color: #002654;">French</span> Premier Édouard Herriot seized on this as an admission that Germany is, in fact, capable of paying its reparations and would simply redirect freed-up funds toward rearmament.
+
+[? if military_parity:[? if eu: However, with the formation of the <span style="color: #001489;">European</span> <span style="color: #FFDD00;">Union</span> and its defense agreements, preventing Germany’s rearmament has become increasingly irrelevant. As a result, military restrictions are lifted!?] As a result, the <span style="color: #7A3C00;">**NSDAP**</span> has lost yet another propaganda tool. However, the <span style="color: #F4A460;">**SRPD**</span> continue to suffer heavy losses to us[? if not lvp_formed: and <span style="color: #D3C24D;">**[+ ddp_name +]**</span>, who they have suffered serious defections to?]. ?]
+
+[? if not military_parity: This has caused great embarrassment to the <span style="color: #F4A460;">**SRPD**</span>'s pacifist and democratic image, both at home and abroad. ?]
 
 @military_parity_bruning
 title: [? if not cvp_formed: But of course, the <span style="color: #3E88B3;">**DNVP**</span>, in Brüning's coalition demands the right to rearm. ?][? if cvp_formed: But of course, the <span style="color: #3E88B3;">nationalists</span> in the <span style="color: #000000;">**[+ z_party_name +]**</span> demands the right to rearm. ?]

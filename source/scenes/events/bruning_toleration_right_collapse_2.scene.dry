@@ -36,13 +36,13 @@ Q.bruning_coalition = Math.round((Q.bruning_coalition - Q.bruning_coalition_loss
 go-to: election_set if hindenburg_angry_bruning >= 100 or bruning_coalition < 50; spd_toleration if hindenburg_angry_bruning < 100 and bruning_coalition >= 50
 
 @spd_toleration
-on-arrival: spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 1; spd_toleration_right = 0
+on-arrival: spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; spd_toleration = 1; spd_toleration_right = 0
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
 President [+ president +] has allowed Brüning to reshuffle his cabinet, replacing the <span style="color: #3E88B3;">**DNVP**</span>-affiliated ministers with bourgeois ones. At least this is a step up from what we had previously.
 
 @election_set
-on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; spd_toleration = 0; spd_toleration_right = 0
+on-arrival: time_to_election = 3; spd_in_government = 0; in_right_coalition = 0; in_center_right_coalition = 0; in_grand_coalition = 0; srpd_in_government = 0; in_srpd_weimar_coalition = 0; in_srpd_grand_coalition = 0; in_srpd_unity_government = 0; spd_toleration = 0; spd_toleration_right = 0
 call: set_next_election_time
 go-to: new_prussia_election if (in_center_right_coalition_prussia or in_right_coalition_prussia)
 
