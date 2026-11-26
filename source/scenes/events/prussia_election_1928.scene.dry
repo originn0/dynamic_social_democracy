@@ -1140,7 +1140,7 @@ We no longer control the government of Prussia. Hopefully, this move will pay of
 
 @srpd_grand_coalition_prussia
 title: The <span style="color: #F4A460;">SRPD</span> can form a Grand Coalition.
-view-if: srpd_grand_coalition_prussia >= 45 and not lvp_formed and dvp_exist and not cvp_formed
+view-if: srpd_formed and srpd_grand_coalition_prussia >= 45 and not lvp_formed and dvp_exist and not cvp_formed
 subtitle: <span style="color: #F4A460;">**SRPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] ([+ srpd_grand_coalition_prussia +]%)
 unavailable-subtitle: <span style="color: #F4A460;">SRPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #D3C24D;">[+ ddp_name +]</span> + <span style="color: #C0A054;">DVP</span> ([+ srpd_grand_coalition_prussia +]%) [? if srpd_weimar_coalition_prussia > 50: The <span style="color: #F4A460;">SRPD</span> would prefer to form a <span style="color: #000000;">We</span><span style="color: #F4A460;">im</span><span style="color: #FFCC00;">ar</span> Coalition.?]
 choose-if: srpd_grand_coalition_prussia >= 50 and srpd_weimar_coalition_prussia < 50
@@ -1190,10 +1190,10 @@ We have formed a minority coalition with the <span style="color: #c00000;">**SPD
 
 @srpd_unity_coalition_prussia
 title: The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] has convinced the <span style="color: #F4A460;">SRPD</span> to form a government with the minor bourgeois parties.
-view-if: srpd_unity_coalition_prussia >= 50 and srpd_grand_coalition_prussia < 50 and srpd_weimar_coalition_prussia < 50
+view-if: srpd_formed and srpd_neo_weimar_coalition_prussia >= 50
 subtitle: <span style="color: #F4A460;">**SRPD**</span> + <span style="color: #000000;">**[+ z_party_name +]**</span> + <span style="color: #A2D8E0;">**BVP**</span> + [? if not lvp_formed: <span style="color: #D3C24D;">**[+ ddp_name +]**</span> + <span style="color: #C0A054;">**DVP**</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + **Others** ([+ srpd_neo_weimar_coalition_prussia +]%)
 unavailable-subtitle: <span style="color: #F4A460;">SRPD</span> + <span style="color: #000000;">[+ z_party_name +]</span> + <span style="color: #A2D8E0;">BVP</span> + [? if not lvp_formed: <span style="color: #D3C24D;">[+ ddp_name +]</span> + <span style="color: #C0A054;">DVP</span>?][? if lvp_formed: <span style="color: #FFCC00;">**LVP**</span>?] + **Others** ([+ srpd_neo_weimar_coalition_prussia +]%) [? if srpd_weimar_coalition_prussia > 50: The <span style="color: #F4A460;">SRPD</span> would prefer to form a <span style="color: #000000;">We</span><span style="color: #F4A460;">im</span><span style="color: #FFCC00;">ar</span> Coalition.?] [? if srpd_grand_coalition_prussia > 50: The <span style="color: #F4A460;">SRPD</span> would prefer to form a Grand Coalition.?]
-choose-if: srpd_grand_coalition_prussia >= 50 and srpd_weimar_coalition < 50
+choose-if: srpd_grand_coalition_prussia < 50 and srpd_weimar_coalition < 50
 on-arrival: in_srpd_unity_coalition_prussia = 1; prussia_leader = "Stegerwald" if z_leader != "Stegerwald"; prussia_leader = "Brüning" if z_leader == "Stegerwald";
 
 The [? if z_party_name != "CVP": <span style="color: #000000;">Center Party</span>?][? if z_party_name == "CVP": <span style="color: #000000;">**CVP**</span>?] leader, [? if z_leader == "Joos": Joseph Joos?][? if z_leader == "Kaiser": Jakob Kaiser?], has brokered the inclusion of the <span style="color: #F4A460;">**SRPD**</span> in an otherwise bourgeois government.
